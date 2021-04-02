@@ -74,6 +74,7 @@
                                     <asp:ListItem>三浦</asp:ListItem>
                                     <asp:ListItem>三津谷</asp:ListItem>
                                     <asp:ListItem>全員</asp:ListItem>
+                                    <asp:ListItem>柳沢</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                         </td>
