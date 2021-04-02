@@ -551,7 +551,7 @@
             <asp:Panel runat="server">
                 <table>
                     <tr>
-                        <td>
+                        <td style="background-color:green">
                             <p>日付</p>
                             <td>
                                 <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>月
