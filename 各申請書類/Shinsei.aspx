@@ -6,123 +6,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="Shinsei.css" type="text/css" rel="stylesheet" />
-    <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="stylesheet" type="text/css" href="Shinsei.css" />
+    <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
 
-    <title></title>
+    <title>申請書類</title>
+
     <style type="text/css">
-        #Riyuu {
-            width: 418px;
-        }
+     </style>
 
-        #Bikou {
-            width: 418px;
-        }
-
-        #name2 {
-            font-size: 12px;
-            height: 50px;
-        }
-
-        #Syacho2 {
-            text-align: center;
-            width: 50px;
-            border: 1px solid #000000;
-            height: 20px;
-            font-size: 12px;
-            margin-left: 10px;
-        }
-
-        #yohaku2 {
-            width: 380px;
-        }
-
-        #yohaku3 {
-            height: 10px;
-        }
-
-        #date2 {
-            width: 100px;
-            font-size: 12px;
-            height: 50px;
-        }
-
-
-        .naiyou {
-            border: 1px solid #000000;
-            width: 50px;
-            height: 40px;
-            text-align: center;
-            font-size: 12px;
-        }
-
-        .nakami {
-            border: 1px solid #000000;
-            height: 30px;
-            font-size: 12px;
-        }
-
-        #top {
-            height: 70px;
-            text-align: center;
-        }
-
-        #foot {
-            height: 30px;
-            font-size: 12px;
-        }
-
-        #yohaku4 {
-            width: 200px;
-            height: 60px;
-        }
-
-        #yohaku5 {
-            width: 100px;
-        }
-
-        .hanko2 {
-            border: 1px solid #000000;
-            width: px;
-            height: 40px;
-        }
-
-        #Todoke {
-            font-family: 'MS Mincho';
-            margin-left: 100px;
-        }
-
-        #Btn2 {
-            text-align: center;
-            width: 120px;
-            display: inline-block;
-            padding: 0.3em 1em;
-            text-decoration: none;
-            color: #16ba00;
-            border: solid 2px #16ba00;
-            border-radius: 3px;
-            transition: .4s;
-            font-family: Meiryo;
-            border-radius: 3px;
-        }
-
-            #Btn2:hover {
-                background: #16ba00;
-                color: white;
-            }
-
-        #sinsei {
-            margin-left: 100px;
-        }
-
-        #buppintouroku {
-            margin-left: 100px;
-        }
-
-        #kyuka {
-            margin-left: 100px;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
