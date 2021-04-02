@@ -548,7 +548,7 @@
 
             </asp:Panel>
 
-            <asp:Panel>
+            <asp:Panel runat="server">
                 <table>
                     <tr>
                         <td>
