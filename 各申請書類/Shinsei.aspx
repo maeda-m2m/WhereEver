@@ -111,17 +111,17 @@
                 color: white;
             }
 
-            #sinsei{
-                margin-left:100px;
-            }
+        #sinsei {
+            margin-left: 100px;
+        }
 
-            #buppintouroku{
-                margin-left:100px;
-            }
+        #buppintouroku {
+            margin-left: 100px;
+        }
 
-            #kyuka{
-                margin-left:100px;
-            }
+        #kyuka {
+            margin-left: 100px;
+        }
     </style>
 </head>
 <body>
@@ -548,7 +548,7 @@
 
             </asp:Panel>
 
-            <asp:Panel>
+            <asp:Panel runat="server">
                 <table>
                     <tr>
                         <td>
@@ -564,12 +564,11 @@
                     <tr>
                         <td>
                             <p>出張先</p>
-                            <td>
-                                <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
-                            </td>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
                         </td>
                     </tr>
-                        
                 </table>
             </asp:Panel>
         </div>
