@@ -42,17 +42,7 @@ namespace WhereEver
 
         protected void btnOut_Click(object sender, EventArgs e)
         {
-            DataSet2.M_UserRow dr = Class1.GetM_UserRow(ID, PW, Global.GetConnection());
-
-
-            SessionManager.Login(dr);
-            DataSet2.T_LogoutListDataTable dd = Class2.GetLogoutListDataTable(Global.GetConnection());
-            DataSet2.T_LoginListRow dl = dd.NewT_LogoutListRow();
-
-            dl.name = dr.name;
-            dl.Date = DateTime.Now;
-            dd.AddT_LogoutListRow(dl);
-            Class2.InsertLoginList(dd, Global.GetConnection());
+            
             this.Response.Redirect("Login.aspx");
         }
     }
