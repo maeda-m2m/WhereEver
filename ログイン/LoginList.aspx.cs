@@ -46,10 +46,6 @@ namespace WhereEver
         protected void btnOut_Click(object sender, EventArgs e)
         {
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 58fcb85d824689bd144a9b42e7b7f24d6a3ae7e9
         }
     }
 }
