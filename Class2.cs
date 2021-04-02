@@ -228,15 +228,15 @@ namespace WhereEver
 
         //public static DataSet1.T_FileDataTable GetT_Files(SqlConnection sql)
         //{
-        //    //SqlCommand da = new SqlCommand("", sql);
-        //    //da.CommandText =
-        //    //   "INSERT INTO image_data(title,type,datum) VALUES(@title, @type, @datum)";
-        //    //da.Parameters.AddWithValue("@title", Path.GetFileName(datum.PostedFile.FileName));
-        //    //da.Parameters.Add("@type", datum.PostedFile.ContentType);
+        //    SqlCommand da = new SqlCommand("", sql);
+        //    da.CommandText =
+        //       "INSERT INTO image_data(title,type,datum) VALUES(@title, @type, @datum)";
+        //    da.Parameters.AddWithValue("@title", Path.GetFileName(datum.PostedFile.FileName));
+        //    da.Parameters.Add("@type", datum.PostedFile.ContentType);
 
-        //    //DataSet1.T_FileDataTable dt = new DataSet1.T_FileDataTable();
-        //    //return (dt);
-            
+        //    DataSet1.T_FileDataTable dt = new DataSet1.T_FileDataTable();
+        //    return (dt);
+
         //}
     }
 }
