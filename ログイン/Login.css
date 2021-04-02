@@ -1,0 +1,65 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: Meiryo;
+}
+
+#LoginBack {
+    position: absolute;
+    width: 1500px;
+    z-index: 1;
+}
+
+#LoginArea {
+    margin:0;
+    padding:0;
+    width: 500px;
+    margin-left: 600px;
+    z-index: 10;
+}
+
+#ImageButton1 {
+    width: 30px;
+    height: 30px;
+    position: center;
+    margin-top: 3px;
+}
+
+#Label1 {
+    font-size: 200px;
+    position: absolute;
+    margin-left: 50%;
+    margin-top: 500px;
+}
+
+#TbxID {
+    width: 200px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+#TbxPW {
+    width: 200px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+#p {
+    width: 50px;
+    color: #16ba00;
+    margin-left: 100px;
+}
+
+#ue{
+    width:1000px;
+}
+
+#sita{
+    width:1000px;
+}
+
+#LblError {
+    margin: 0;
+    padding: 0;
+    margin-left: 600px;
+}

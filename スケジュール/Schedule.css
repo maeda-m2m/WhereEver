@@ -1,0 +1,81 @@
+﻿body {
+    font-family: Meiryo;
+}
+
+#title {
+    width: 300px;
+    text-align: center;
+}
+
+.btn-flat-border {
+    text-align: center;
+    width: 120px;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #16ba00;
+    border: solid 2px #16ba00;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+    background-color: white;
+}
+
+    .btn-flat-border:hover {
+        background: #16ba00;
+        color: white;
+    }
+
+.Title {
+    background-color: #16ba00;
+    color: white;
+    text-align: center;
+}
+
+#Button2 {
+    margin-left: 50px;
+}
+
+
+#ImgDiv {
+    width: 515px;
+}
+
+#Scd {
+    width: 474px;
+    height: 553px;
+}
+
+#Label2{
+    position:absolute;
+    font-size:5px;
+}
+
+.Label{
+    font-size:8px;
+}
+
+#SCDL{
+    margin-left:100px;
+}
+
+#Scdl3{
+    margin-left:100px;
+}
+
+#ScdlList{
+    margin-left:100px;
+}
+
+#btn{
+    margin-left:100px;
+}
+
+#tourokuform{
+    margin-left:100px;
+}
+
+#Calendar1 {
+    margin-left: 100px;
+}
