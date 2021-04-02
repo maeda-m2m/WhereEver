@@ -33,21 +33,21 @@ namespace WhereEver
                 DataSet2.T_LoginListRow dr = (e.Item.DataItem as DataRowView).Row as DataSet2.T_LoginListRow;
                 Label lblName = e.Item.FindControl("lblName") as Label;
                 Label lblLoginTime = e.Item.FindControl("lblLoginTime") as Label;
+                Label lblLogoutTime = e.Item.FindControl("lblLogoutTime") as Label;
                 DataSet2.T_LoginListRow dl = Class2.UserLoginMAXTime(Global.GetConnection(), dr.name.ToString());
-                
+                DataSet2.T_LoginListRow dt = Class2.UserLogoutMAXTime(Global.GetConnection(), dr.name.ToString());
+
                 lblName.Text = dr.name.ToString();
                 lblLoginTime.Text = dl.Date.ToString();
+                lblLogoutTime.Text = dt.Date.ToString();
             }
         }
 
         protected void btnOut_Click(object sender, EventArgs e)
         {
-            //DataSet2.M_UserRow dr = Class1.GetM_UserRow(ID, PW, Global.GetConnection());
-
-
-            //SessionManager.Login(dr);
+            //SessionManager.Logout(dr);
             //DataSet2.T_LogoutListDataTable dd = Class2.GetLogoutListDataTable(Global.GetConnection());
-            //DataSet2.T_LoginListRow dl = dd.NewT_LogoutListRow();
+            //DataSet2.T_LogoutListRow dl = dd.NewT_LogoutListRow();
 
             //dl.name = dr.name;
             //dl.Date = DateTime.Now;
