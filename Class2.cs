@@ -99,6 +99,15 @@ namespace WhereEver
             da.Fill(dt);
             return dt;
         }
+        public static DataSet2.T_LogoutListDataTable GetLogoutListDataTable(SqlConnection sqlConnection)//LogoutListの重複してある名前をまとめてreturn name
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "SELECT DISTINCT name FROM T_LogoutList";
+            DataSet2.T_LogoutListDataTable dt = new DataSet2.T_LogoutListDataTable();
+            da.Fill(dt);
+            return dt;
+        }
 
         public static DataSet2.T_LoginListRow GetLoginListRow(SqlConnection schedule)//T_LoginListのすべて
         {
