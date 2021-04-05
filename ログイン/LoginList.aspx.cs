@@ -16,14 +16,13 @@ namespace WhereEver
         {
             if (!IsPostBack)
             {
-                    DataSet2.T_LoginListDataTable dt = Class2.GetLoginListDataTable(Global.GetConnection());
+                DataSet2.T_LoginListDataTable dt = Class2.GetLoginListDataTable(Global.GetConnection());
 
-                    DgTimeDetail.DataSource = dt;
+                DgTimeDetail.DataSource = dt;
+                DgTimeDetail.DataBind();
 
-                    DgTimeDetail.DataBind();
-
-                }
             }
+        }
 
         protected void DgTimeDetail_ItemDataBound(object sender, DataGridItemEventArgs e)
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WhereEver.ClassLibrary;
 
 namespace WhereEver
 {
@@ -11,8 +12,9 @@ namespace WhereEver
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //初期選択パネル
             Panel1.Visible = true;
+            //
             Panel2.Visible = false;
             Panel3.Visible = false;
             Panel4.Visible = false;

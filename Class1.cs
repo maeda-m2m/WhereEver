@@ -29,9 +29,13 @@ namespace WhereEver
             DataSet2.M_UserDataTable dt = new DataSet2.M_UserDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
+            {
                 return dt[0];
+            }
             else
+            {
                 return null;
+            }
         }
 
         public static DataSet2.M_UserRow gotM_UserRow(SqlConnection schedule)
