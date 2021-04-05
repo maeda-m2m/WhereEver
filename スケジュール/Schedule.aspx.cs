@@ -360,5 +360,10 @@ namespace WhereEver
             Response.Redirect("PrintSchedule.aspx");
 
         }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

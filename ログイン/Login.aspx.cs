@@ -46,5 +46,10 @@ namespace WhereEver
                 
             this.Response.Redirect("LoginList.aspx");
         }
+
+        protected void TbxPW_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
