@@ -39,7 +39,7 @@ namespace WhereEver
 
                 lblName.Text = dr.name.ToString();
                 lblLoginTime.Text = dl.Date.ToString();
-                lblLogoutTime.Text = dt.Date.ToString();
+                lblLogoutTime.Text = dl.Date.ToString();
             }
         }
 
