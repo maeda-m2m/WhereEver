@@ -38,7 +38,7 @@ namespace WhereEver
             }
         }
 
-        public static DataSet2.M_UserRow gotM_UserRow(SqlConnection schedule)
+        public static DataSet2.M_UserRow GetM_UserRow(SqlConnection schedule)
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
@@ -135,7 +135,7 @@ namespace WhereEver
 
         }
 
-        public static DataSet2.T_ScheduleDataTable GetT_ScheduleDataTable(SqlConnection Sqlco)
+        public static DataSet2.T_ScheduleDataTable GetTDataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
@@ -163,7 +163,7 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", update);
             da.SelectCommand.CommandText =
-                "UPDATE FROM T_schedule1 ";
+                "UPDATE FROM T_schedule ";
             DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
@@ -178,7 +178,7 @@ namespace WhereEver
         {
             SqlCommand cmdDelSave = new SqlCommand("", sqlconnection);
             cmdDelSave.CommandText =
-                "DELETE FROM T_schedule1 WHERE time=@c";
+                "DELETE FROM T_schedule WHERE time=@c";
             cmdDelSave.Parameters.AddWithValue("@c", time);
             SqlTransaction sql = null;
             try
@@ -207,7 +207,7 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "Select * From T_Schedule";
+                "SELECT * FROM T_Schedule";
             da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
 
             SqlTransaction sql = null;
@@ -236,73 +236,75 @@ namespace WhereEver
 
 
 
-        public static DataSet1.T_Schedule3DataTable GetT_Schedule3DataTable(SqlConnection Sqlco)
+        public static DataSet2.T_ScheduleDataTable GetT_Schedule3DataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-               "SELECT [time], [titile], [name], [KanriFrag] FROM T_Schedule3 WHERE KanriFrag IS NOT NULL";
-            DataSet1.T_Schedule3DataTable df = new DataSet1.T_Schedule3DataTable();
+               "SELECT * FROM T_Schedule";
+            //"SELECT [time], [title], [name], [KanriFlag],[SdlNo] FROM T_Schedule WHERE KanriFlag IS NOT NULL"
+            DataSet2.T_ScheduleDataTable df = new DataSet2.T_ScheduleDataTable();
             da.Fill(df);
             return df;
         }
 
 
-        public static DataSet1.T_Schedule3DataTable GetSchedule3DataTable(SqlConnection Sqlco)
+        public static DataSet2.T_EmptyTableDataTable GetSchedule3DataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule3 WHERE KanriFrag IS NULL";
-            DataSet1.T_Schedule3DataTable df = new DataSet1.T_Schedule3DataTable();
+                "SELECT * FROM T_EmptyTable";
+            //T_Schedule WHERE KanriFlag IS NULL
+            var df = new DataSet2.T_EmptyTableDataTable();
             da.Fill(df);
             return df;
         }
 
-        public static DataSet1.T_Schedule3DataTable SwitchScdl3DataTable(SqlConnection Sqlco)
+        public static DataSet2.T_ScheduleDataTable SwitchScdl3DataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule3 WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
-            DataSet1.T_Schedule3DataTable df = new DataSet1.T_Schedule3DataTable();
+                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
+            DataSet2.T_ScheduleDataTable df = new DataSet2.T_ScheduleDataTable();
             da.Fill(df);
             return df;
         }
 
         //SdlNoがある列を持ってくる
-        public static DataSet1.T_Schedule3Row SwitchScdl3Row(SqlConnection schedule)
+        public static DataSet2.T_ScheduleRow SwitchScdl3Row(SqlConnection schedule)
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule3 WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
-            DataSet1.T_Schedule3DataTable dt = new DataSet1.T_Schedule3DataTable();
+                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
+            DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
-                return dt[0] as DataSet1.T_Schedule3Row;
+                return dt[0] as DataSet2.T_ScheduleRow;
             else
                 return null;
 
         }
 
         //SdlNoの最大値を持ってくる
-        public static DataSet1.T_Schedule3DataTable MaxSdlDataTable(SqlConnection Sqlco)
+        public static DataSet2.T_ScheduleDataTable MaxSdlDataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "SELECT MAX(SdlNo) AS SdlNo FROM T_Schedule3";
-            DataSet1.T_Schedule3DataTable df = new DataSet1.T_Schedule3DataTable();
+                "SELECT MAX(SdlNo) AS SdlNo FROM T_Schedule";
+            DataSet2.T_ScheduleDataTable df = new DataSet2.T_ScheduleDataTable();
             da.Fill(df);
             return df;
         }
 
         //SdlNoの最大値を持ってくる
-        public static DataSet1.T_Schedule3Row MaxSdlNo(SqlConnection schedule)
+        public static DataSet2.T_ScheduleRow MaxSdlNo(SqlConnection schedule)
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
-                "SELECT MAX(SdlNo) AS SdlNo FROM T_Schedule3";
-            DataSet1.T_Schedule3DataTable dt = new DataSet1.T_Schedule3DataTable();
+                "SELECT MAX(SdlNo) AS SdlNo FROM T_Schedule";
+            DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
-                return dt[0] as DataSet1.T_Schedule3Row;
+                return dt[0] as DataSet2.T_ScheduleRow;
             else
                 return null;
         }
@@ -310,11 +312,11 @@ namespace WhereEver
 
 
         //スケジュールを追加する
-        public static void InsertList(DataSet1.T_Schedule3DataTable dt, SqlConnection sql)
+        public static void InsertList(DataSet2.T_ScheduleDataTable dt, SqlConnection sql)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule3 WHERE SdlNo IS NOT NULL";
+                "SELECT * FROM T_Schedule WHERE SdlNo IS NOT NULL";
             da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
 
             SqlTransaction sqltra = null;
@@ -346,7 +348,7 @@ namespace WhereEver
         {
             SqlCommand da = new SqlCommand("", sql);
             da.CommandText =
-                "DELETE FROM T_Schedule3 where [SdlNo] = @k ";//SdlNoを取ってくる
+                "DELETE FROM T_Schedule where [SdlNo] = @k ";//SdlNoを取ってくる
             da.Parameters.AddWithValue("@k", sdl);// Class1.DeleteList(sdl, Global.GetConnection()); のsdl
             SqlTransaction sqltra = null;
 

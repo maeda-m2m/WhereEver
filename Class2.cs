@@ -180,48 +180,48 @@ namespace WhereEver
             return dt[0];
         }
 
-        public static DataSet1.T_Schedule3DataTable Insatsu1(SqlConnection sqlConnection)
+        public static DataSet2.T_ScheduleDataTable Insatsu1(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule3 WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE())-1 order by time";
-            DataSet1.T_Schedule3DataTable dt = new DataSet1.T_Schedule3DataTable();
+                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE())-1 order by time";
+            DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
             da.Fill(dt);
             return (dt);
         }
-        internal static DataSet1.T_LoginListRow Insatsu1Row(SqlConnection sqlConnection)
+        internal static DataSet2.T_LoginListRow Insatsu1Row(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule3 WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE())-1 order by time";
-            DataSet1.T_LoginListDataTable dt = new DataSet1.T_LoginListDataTable();
+                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE())-1 order by time";
+            DataSet2.T_LoginListDataTable dt = new DataSet2.T_LoginListDataTable();
             da.Fill(dt);
             if (dt.Rows.Count >= 1)
-                return dt[0] as DataSet1.T_LoginListRow;
+                return dt[0] as DataSet2.T_LoginListRow;
             else
                 return null;
         }
 
 
-        public static DataSet1.T_Schedule3DataTable Insatsu2(SqlConnection sqlConnection)
+        public static DataSet2.T_ScheduleDataTable Insatsu2(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule3 WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE()) order by date";
-            DataSet1.T_Schedule3DataTable dt = new DataSet1.T_Schedule3DataTable();
+                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE()) order by date";
+            DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
             da.Fill(dt);
             return (dt);
         }
 
-        internal static DataSet1.T_LoginListRow Insatsu2Row(SqlConnection sqlConnection)
+        internal static DataSet2.T_LoginListRow Insatsu2Row(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule3 WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE()) order by date";
-            DataSet1.T_LoginListDataTable dt = new DataSet1.T_LoginListDataTable();
+                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE()) order by date";
+            DataSet2.T_LoginListDataTable dt = new DataSet2.T_LoginListDataTable();
             da.Fill(dt);
             if (dt.Rows.Count >= 1)
-                return dt[0] as DataSet1.T_LoginListRow;
+                return dt[0] as DataSet2.T_LoginListRow;
             else
                 return null;
         }
