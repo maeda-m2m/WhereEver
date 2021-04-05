@@ -19,7 +19,6 @@ namespace WhereEver
                     DataSet2.T_LoginListDataTable dt = Class2.GetLoginListDataTable(Global.GetConnection());
 
                     DgTimeDetail.DataSource = dt;
-
                     DgTimeDetail.DataBind();
 
                 }
