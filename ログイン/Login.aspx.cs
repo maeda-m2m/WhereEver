@@ -39,7 +39,7 @@ namespace WhereEver
             DataSet2.T_LoginListDataTable dd = Class2.GetLoginListDataTable(Global.GetConnection());
             DataSet2.T_LoginListRow dl = dd.NewT_LoginListRow();
 
-            dr.name = dr.name;
+            dl.name = dr.name;
             dl.Date = DateTime.Now;
             dd.AddT_LoginListRow(dl);
             Class2.InsertLoginList(dd, Global.GetConnection());
