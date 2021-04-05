@@ -51,13 +51,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
 
         /// <summary>
-        /// Button3 コントロール。
+        /// Button_Master コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button Button_Master;
 
         /// <summary>
         /// Panel2 コントロール。
@@ -69,67 +69,121 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Panel Panel2;
 
         /// <summary>
-        /// TextBox1 コントロール。
+        /// TextBox_purchaseName コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_purchaseName;
 
         /// <summary>
-        /// TextBox2 コントロール。
+        /// RequiredFieldValidator_purchaseName コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_purchaseName;
 
         /// <summary>
-        /// TextBox3 コントロール。
+        /// TextBox_classification コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_classification;
 
         /// <summary>
-        /// TextBox4 コントロール。
+        /// RequiredFieldValidator_classification コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_classification;
 
         /// <summary>
-        /// TextBox5 コントロール。
+        /// TextBox_howMany コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_howMany;
 
         /// <summary>
-        /// TextArea1 コントロール。
+        /// RequiredFieldValidator_howMany コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_howMany;
 
         /// <summary>
-        /// TextArea2 コントロール。
+        /// TextBox_howMach コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea2;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_howMach;
+
+        /// <summary>
+        /// RequiredFieldValidator_howMach コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_howMach;
+
+        /// <summary>
+        /// TextBox_marketPlace コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_marketPlace;
+
+        /// <summary>
+        /// RequiredFieldValidator_marketPlace コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_marketPlace;
+
+        /// <summary>
+        /// TextArea_buy_purpose コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea_buy_purpose;
+
+        /// <summary>
+        /// RequiredFieldValidator_buy_purpose コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_buy_purpose;
+
+        /// <summary>
+        /// TextArea_ps コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea_ps;
 
         /// <summary>
         /// Button1 コントロール。
@@ -139,6 +193,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// BtnBackA1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnBackA1;
 
         /// <summary>
         /// Panel3 コントロール。
@@ -159,13 +222,13 @@ namespace WhereEver
         protected global::System.Web.UI.HtmlControls.HtmlTable kyuka;
 
         /// <summary>
-        /// DropDownList2 コントロール。
+        /// DropDownList_DetailsOfNotification コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_DetailsOfNotification;
 
         /// <summary>
         /// Calendar1 コントロール。
@@ -177,31 +240,31 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
 
         /// <summary>
-        /// DropDownList3 コントロール。
+        /// DropDownList_A_Time コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_A_Time;
 
         /// <summary>
-        /// Label16 コントロール。
+        /// lblSelectedDateA1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label16;
+        protected global::System.Web.UI.WebControls.Label lblSelectedDateA1;
 
         /// <summary>
-        /// Label17 コントロール。
+        /// lblSelectedDateA2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label17;
+        protected global::System.Web.UI.WebControls.Label lblSelectedDateA2;
 
         /// <summary>
         /// Calendar2 コントロール。
@@ -213,49 +276,58 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Calendar Calendar2;
 
         /// <summary>
-        /// DropDownList4 コントロール。
+        /// DropDownList_B_Time コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_B_Time;
 
         /// <summary>
-        /// Label18 コントロール。
+        /// lblSelectedDateB1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label18;
+        protected global::System.Web.UI.WebControls.Label lblSelectedDateB1;
 
         /// <summary>
-        /// Label19 コントロール。
+        /// lblSelectedDateB2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label19;
+        protected global::System.Web.UI.WebControls.Label lblSelectedDateB2;
 
         /// <summary>
-        /// TextArea3 コントロール。
+        /// TextArea_Notification_Purpose コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea3;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea_Notification_Purpose;
 
         /// <summary>
-        /// TextArea4 コントロール。
+        /// RequiredFieldValidator_Notification_Purpose コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea4;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Notification_Purpose;
+
+        /// <summary>
+        /// TextArea_Notification_ps コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea_Notification_ps;
 
         /// <summary>
         /// Button2 コントロール。
@@ -265,6 +337,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
+
+        /// <summary>
+        /// btnBack_A2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBack_A2;
 
         /// <summary>
         /// Panel4 コントロール。
@@ -321,13 +402,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label Suryo;
 
         /// <summary>
-        /// Label1 コントロール。
+        /// Kingaku コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label Kingaku;
 
         /// <summary>
         /// KonyuSaki コントロール。
@@ -366,31 +447,31 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Panel Panel5;
 
         /// <summary>
-        /// Label2 コントロール。
+        /// lblDiligenceClassification1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblDiligenceClassification1;
 
         /// <summary>
-        /// Label3 コントロール。
+        /// lblDiligenceDate コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lblDiligenceDate;
 
         /// <summary>
-        /// Label4 コントロール。
+        /// lblDiligenceUser コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lblDiligenceUser;
 
         /// <summary>
         /// Label13 コントロール。
@@ -402,49 +483,49 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label Label13;
 
         /// <summary>
-        /// Label5 コントロール。
+        /// lblDiligenceClassification2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label lblDiligenceClassification2;
 
         /// <summary>
-        /// Label6 コントロール。
+        /// lblDiligenceDateA1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
+        protected global::System.Web.UI.WebControls.Label lblDiligenceDateA1;
 
         /// <summary>
-        /// Label7 コントロール。
+        /// lblDiligenceDateA2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.Label lblDiligenceDateA2;
 
         /// <summary>
-        /// Label8 コントロール。
+        /// lblDiligenceDateB1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Label lblDiligenceDateB1;
 
         /// <summary>
-        /// Label9 コントロール。
+        /// lblDiligenceDateB2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label9;
+        protected global::System.Web.UI.WebControls.Label lblDiligenceDateB2;
 
         /// <summary>
         /// TextArea5 コントロール。
@@ -465,30 +546,21 @@ namespace WhereEver
         protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea6;
 
         /// <summary>
-        /// TextBox6 コントロール。
+        /// Panel_Print コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.Panel Panel_Print;
 
         /// <summary>
-        /// TextBox7 コントロール。
+        /// Btn_BackMaster コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
-
-        /// <summary>
-        /// TextBox8 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.Button Btn_BackMaster;
     }
 }
