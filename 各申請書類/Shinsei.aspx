@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="Shinsei.css" />
     <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
 
+
     <title>申請書類</title>
 
     <style type="text/css">
@@ -33,17 +34,15 @@
                     <tr>
                             <td class="title">申請書類</td>
                             <td class="text">
-                                <asp:DropDownList ID="DropDownList1" runat="server">
+                                <asp:DropDownList ID="DropDownList1" runat="server" OnTextChanged="DropDownList_Master_SelectionChanged" AutoPostBack="True">
+                                    <asp:ListItem>【申請書類を選択】</asp:ListItem>
                                     <asp:ListItem>物品購入申請</asp:ListItem>
-                                    <asp:ListItem>休暇・早退・出社・遅刻届</asp:ListItem>
-                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>勤怠関連申請</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <asp:Button ID="Button3" runat="server" Text="確定" CssClass="btn-flat-border" OnClick="Button3_Click" />
-                        </td>
+                            <td>
+                                <asp:Button ID="Button_Master" CssClass="btn-flat-border" runat="server" Text="申請" OnClick="DropDownList_Master_SelectionChanged" CausesValidation="False" />
+                            </td>
                     </tr>
                 </table>
             </asp:Panel>
@@ -52,63 +51,83 @@
                 <table id="buppintouroku">
                     <tr>
                         <td class="title">
-                            <p>購入品名</p>
+                            <p>購入品名*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox1" runat="server" CssClass="textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_purchaseName" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_purchaseName"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>種別</p>
+                            <p>種別*</p>
                         </td>
-                            <td class="text">
-                                <asp:TextBox ID="TextBox2" runat="server" CssClass="textbox"></asp:TextBox>
-                            </td>
+                        <td class="text">
+                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_classification" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_classification"></asp:RequiredFieldValidator>
+                        </td>
+
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>数量</p>
+                            <p>購入点数*</p>
                         </td>
-                            <td class="text">
-                                <asp:TextBox ID="TextBox3" runat="server" CssClass="textbox"></asp:TextBox>
-                            </td>
+                        <td class="text">
+                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox"></asp:TextBox>点
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMany" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMany"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>金額</p>
+                            <p>合計金額*</p>
                         </td>
-                            <td class="text">
-                                <asp:TextBox ID="TextBox4" runat="server" CssClass="textbox"></asp:TextBox>
-                            </td>
+                        <td class="text">
+                            \<asp:TextBox ID="TextBox_howMach" runat="server" CssClass="textbox" Width="128px"></asp:TextBox>-
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMach" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMach"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>購入先</p>
+                            <p>購入元*</p>
                         </td>
-                            <td class="text">
-                                <asp:TextBox ID="TextBox5" runat="server" CssClass="textbox"></asp:TextBox>
-                            </td>
+                        <td class="text">
+                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_marketPlace" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_marketPlace"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>購入目的</p>
+                            <p>購入目的*</p>
                         </td>
-                            <td>
-                                <textarea id="TextArea1" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
-                            </td>
+                        <td>
+                            <textarea id="TextArea_buy_purpose" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_buy_purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextArea_buy_purpose"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     <tr>
                         <td class="title">
                             <p>備考</p>
                         </td>
                             <td class="text">
-                                <textarea id="TextArea2" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
+                                <textarea id="TextArea_ps" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
                             </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:Button ID="Button1" runat="server" Text="確定" CssClass="btn-flat-border" OnClick="Button1_Click" />
+                            <asp:Button ID="Button1" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Button1_Click" />
+                            <asp:Button ID="BtnBackA1" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" />
                         </td>
                     </tr>
                 </table>
@@ -121,22 +140,23 @@
                             <p>届出内容</p>
                         </td>
                             <td class="text">
-                                <asp:DropDownList ID="DropDownList2" runat="server">
+                                <asp:DropDownList ID="DropDownList_DetailsOfNotification" runat="server">
+                                    <asp:ListItem>出社届</asp:ListItem>
+                                    <asp:ListItem>出張届</asp:ListItem>
                                     <asp:ListItem>休暇届</asp:ListItem>
                                     <asp:ListItem>半休届</asp:ListItem>
                                     <asp:ListItem>早退届</asp:ListItem>
                                     <asp:ListItem>遅刻届</asp:ListItem>
-                                    <asp:ListItem>出社届</asp:ListItem>
                                 </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>日時</p>
+                            <p>日時*</p>
                         </td>
                             <td class="text">
                                 <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
-                                <asp:DropDownList ID="DropDownList3" runat="server">
+                                <asp:DropDownList ID="DropDownList_A_Time" runat="server" OnTextChanged="DropDownList_A_Time_SelectionChanged" AutoPostBack="True">
                                     <asp:ListItem>9:00</asp:ListItem>
                                     <asp:ListItem>9:30</asp:ListItem>
                                     <asp:ListItem>10:00</asp:ListItem>
@@ -160,13 +180,13 @@
 
                                 <br />
 
-                                <asp:Label ID="Label16" runat="server" Text="Label"></asp:Label>
-                                <asp:Label ID="Label17" runat="server" Text="Label"></asp:Label>から
+                                <asp:Label ID="lblSelectedDateA1" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="lblSelectedDateA2" runat="server" Text="9:00"></asp:Label>から
 
                                 </td>
                                 <td>
                                     <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
-                                    <asp:DropDownList ID="DropDownList4" runat="server">
+                                    <asp:DropDownList ID="DropDownList_B_Time" runat="server" OnTextChanged="DropDownList_B_Time_SelectionChanged" AutoPostBack="True">
                                         <asp:ListItem>9:00</asp:ListItem>
                                         <asp:ListItem>9:30</asp:ListItem>
                                         <asp:ListItem>10:00</asp:ListItem>
@@ -187,18 +207,21 @@
                                         <asp:ListItem>17:30</asp:ListItem>
                                         <asp:ListItem>18:00</asp:ListItem>
                                     </asp:DropDownList><br />
-                                    <asp:Label ID="Label18" runat="server" Text="Label"></asp:Label>
-                                    <asp:Label ID="Label19" runat="server" Text="Label"></asp:Label>まで
+                                    <asp:Label ID="lblSelectedDateB1" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="lblSelectedDateB2" runat="server" Text="9:00"></asp:Label>まで
 
                                 </td>
 
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>理由</p>
+                            <p>理由*</p>
                         </td>
                         <td class="text">
-                                <textarea id="TextArea3" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
+                                <textarea id="TextArea_Notification_Purpose" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Notification_Purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextArea_Notification_Purpose"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -206,12 +229,13 @@
                             <p>備考</p>
                         </td>
                         <td class="text">
-                                <textarea id="TextArea4" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
+                                <textarea id="TextArea_Notification_ps" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:Button ID="Button2" runat="server" Text="確定" CssClass="btn-flat-border" OnClick="Button2_Click" />
+                            <asp:Button ID="Button2" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Button2_Click" />
+                            <asp:Button ID="btnBack_A2" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" />
                         </td>
                     </tr>
                 </table>
@@ -297,27 +321,27 @@
                     </tr>
                     <tr>
                         <td class="TableTitle">
-                            <p>数量</p>
+                            <p>購入点数</p>
                         </td>
                         <td colspan="3" class="zone">
-                            <asp:Label ID="Suryo" runat="server" Text="数量を記載してください"></asp:Label>
+                            <asp:Label ID="Suryo" runat="server" Text="購入点数を記載してください"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td class="TableTitle">
-                            <p>金額</p>
+                            <p>合計金額</p>
                         </td>
                         <td colspan="3" class="zone">
-                            <asp:Label ID="Label1" runat="server" Text="金額を記載してください"></asp:Label>
+                            <asp:Label ID="Kingaku" runat="server" Text="合計金額を記載してください"></asp:Label>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="TableTitle">
-                            <p>購入先</p>
+                            <p>購入元</p>
                         </td>
                         <td colspan="3" class="zone">
-                            <asp:Label ID="KonyuSaki" runat="server" Text="購入先を記載してください"></asp:Label>
+                            <asp:Label ID="KonyuSaki" runat="server" Text="購入元を記載してください"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -342,25 +366,26 @@
                         </td>
                     </tr>
                 </table>
-                <input type="button" id="Btn" value="印刷" onclick="window.print();" class="noprint" />
             </asp:Panel>
             <%-- lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll --%>
             <asp:Panel ID="Panel5" runat="server">
                 <table id="Todoke">
                     <tr>
                         <td colspan="4" id="top">
-                            <asp:Label ID="Label2" runat="server" Text="届ける項目を選択してください"></asp:Label>
+                            <asp:Label ID="lblDiligenceClassification1" runat="server" Text="届ける項目を選択してください"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td id="date2" class="takasa">
-                            <asp:Label ID="Label3" runat="server" Text="date"></asp:Label>
+                            <p>日時</p>
                         </td>
-                        <td colspan="3"></td>
+                        <td colspan="3">
+                            <asp:Label ID="lblDiligenceDate" runat="server" Text="DiligenceDate"></asp:Label>
+                        </td>
                     </tr>
                     <tr class="takasa">
                         <td colspan="2" id="name2">
-                            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label><asp:Label ID="Label13" runat="server" Text="（印）"></asp:Label>
+                            <asp:Label ID="lblDiligenceUser" runat="server" Text=""></asp:Label><asp:Label ID="Label13" runat="server" Text="（印）"></asp:Label>
                         </td>
                         <td colspan="2">
                         </td>
@@ -394,26 +419,26 @@
                             <p>届出内容</p>
                         </td>
                         <td colspan="3" runat="server" class="nakami">
-                            <asp:Label ID="Label5" runat="server" Text="項目を選択してください"></asp:Label>
+                            <asp:Label ID="lblDiligenceClassification2" runat="server" Text="項目を選択してください"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td class="naiyou">
                             <p>日時</p>
-                            <td colspan="3" class="nakami">
-                                <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
-                                <asp:Label ID="Label7" runat="server" Text="Label"></asp:Label>から<br />
-                                <asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
-                                <asp:Label ID="Label9" runat="server" Text="Label"></asp:Label>まで
-                            </td>
+                        </td>
+                        <td colspan="3" class="nakami">
+                            <asp:Label ID="lblDiligenceDateA1" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="lblDiligenceDateA2" runat="server" Text=""></asp:Label>から<br />
+                            <asp:Label ID="lblDiligenceDateB1" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="lblDiligenceDateB2" runat="server" Text=""></asp:Label>まで
                         </td>
                     </tr>
                     <tr>
                         <td class="naiyou">
                             <p>理由</p>
-                            <td colspan="3" class="nakami">
-                                <textarea id="TextArea5" cols="55" rows="5" runat="server"></textarea>
-                            </td>
+                        </td>
+                        <td colspan="3" class="nakami">
+                            <textarea id="TextArea5" cols="55" rows="5" runat="server"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -431,26 +456,21 @@
                             </p>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="4">
-                            <input type="button" id="Btn2" value="印刷" onclick="window.print();" class="noprint" />
-                        </td>
-                    </tr>
                 </table>
 
             </asp:Panel>
 
-            <asp:Panel runat="server">
+<%--            <asp:Panel ID="Panel6" runat="server" CssClass="noprint">
                 <table>
                     <tr>
                         <td style="background-color:green">
                             <p>日付</p>
                         </td>
                             <td>
-                                <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>月
+                                <asp:TextBox ID="TextBox_TripMonth" runat="server"></asp:TextBox>月
                             </td>
                             <td>
-                                <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>日
+                                <asp:TextBox ID="TextBox_TripDay" runat="server"></asp:TextBox>日
                             </td>
 
                     </tr>
@@ -459,11 +479,22 @@
                             <p>出張先</p>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_TripArea" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                 </table>
+            </asp:Panel>--%>
+
+            <asp:Panel ID="Panel_Print" runat="server" CssClass="noprint">
+
+                <p class="noprint">
+                    <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
+                    <asp:Button ID="Btn_BackMaster" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="BackButton_Click" CausesValidation="False" />
+                    　※印刷プレビューには申請書のデータが反映されます。
+                </p>
+
             </asp:Panel>
+
         </div>
     </form>
 </body>
