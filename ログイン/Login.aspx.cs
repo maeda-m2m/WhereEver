@@ -39,12 +39,17 @@ namespace WhereEver
             DataSet2.T_LoginListDataTable dd = Class2.GetLoginListDataTable(Global.GetConnection());
             DataSet2.T_LoginListRow dl = dd.NewT_LoginListRow();
 
-            dl.name = dr.name;
+            dr.name = dr.name;
             dl.Date = DateTime.Now;
             dd.AddT_LoginListRow(dl);
             Class2.InsertLoginList(dd, Global.GetConnection());
                 
             this.Response.Redirect("LoginList.aspx");
+        }
+
+        protected void TbxPW_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
