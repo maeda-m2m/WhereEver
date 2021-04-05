@@ -11,14 +11,14 @@ namespace WhereEver
 {
     public class Class2
     {
-        public static DataSet1.T_ChatDataTable GetChatDataTable(SqlConnection sqlConnection)
+        public static DataSet2.T_ChatDataTable GetChatDataTable(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Chat";
             DataSet1.T_ChatDataTable dt = new DataSet1.T_ChatDataTable();
             da.Fill(dt);
-            return (dt);
+            return dt;
         }
 
         public static DataSet1.T_ChatRow GetChatRow(SqlConnection schedule)
@@ -46,7 +46,7 @@ namespace WhereEver
         }
 
         //Noの最大値を持ってくる
-        public static DataSet1.T_ChatRow MaxNoRow(SqlConnection schedule)
+        public static DataSet2.T_ChatRow MaxNoRow(SqlConnection schedule)
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
@@ -54,7 +54,7 @@ namespace WhereEver
             DataSet1.T_ChatDataTable dt = new DataSet1.T_ChatDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
-                return dt[0] as DataSet1.T_ChatRow;
+                return dt[0] as DataSet2.T_ChatRow;
             else
                 return null;
         }

@@ -24,7 +24,7 @@ namespace WhereEver
 
         private void Create()
         {
-            DataSet1.T_ChatDataTable dt = Class2.GetChatDataTable(Global.GetConnection());
+            DataSet2.T_ChatDataTable dt = Class2.GetChatDataTable(Global.GetConnection());
             ChatArea.DataSource = dt;
             ChatArea.DataBind();
         }
@@ -33,7 +33,7 @@ namespace WhereEver
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                DataSet1.T_ChatRow dr = (e.Item.DataItem as DataRowView).Row as DataSet1.T_ChatRow;
+                DataSet2.T_ChatRow dr = (e.Item.DataItem as DataRowView).Row as DataSet2.T_ChatRow;
 
                 Label No = e.Item.FindControl("No") as Label;
                 Label Name = e.Item.FindControl("ID") as Label;
@@ -56,8 +56,8 @@ namespace WhereEver
 
         protected void Send_Click(object sender, EventArgs e)
         {
-            DataSet1.T_ChatDataTable dt = Class2.GetChatDataTable(Global.GetConnection());
-            DataSet1.T_ChatRow dr = dt.NewT_ChatRow();
+            DataSet2.T_ChatDataTable dt = Class2.GetChatDataTable(Global.GetConnection());
+            DataSet2.T_ChatRow dr = dt.NewT_ChatRow();
 
             dr.Date = DateTime.Now;
             if(Label1.Text == "")
@@ -67,7 +67,7 @@ namespace WhereEver
             dr.Name = Label1.Text;
             dr.Naiyou = TextBox1.Text;
 
-            DataSet1.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());
+            DataSet2.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());
             int sl = dl.No;
             dr.No = sl + 1;
             dt.AddT_ChatRow(dr);

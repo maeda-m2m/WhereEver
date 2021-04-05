@@ -118,6 +118,7 @@
     <Content Include="ShinseiMenu.css" />
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
+    <Content Include="チャット\blue.png" />
     <Content Include="ログイン\back-1.jpg" />
     <Content Include="ログイン\back-2.jpg" />
     <Content Include="ログイン\LoginList.css" />
