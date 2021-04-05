@@ -31,8 +31,7 @@
             <asp:Panel ID="Panel1" runat="server" CssClass="noprint">
                 <table id="sinsei">
                     <tr>
-                        <td class="title">
-                            <p>申請書類</p>
+                            <td class="title">申請書類</td>
                             <td class="text">
                                 <asp:DropDownList ID="DropDownList1" runat="server">
                                     <asp:ListItem>物品購入申請</asp:ListItem>
@@ -40,7 +39,6 @@
                                     <asp:ListItem></asp:ListItem>
                                 </asp:DropDownList>
                             </td>
-                        </td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -55,58 +53,58 @@
                     <tr>
                         <td class="title">
                             <p>購入品名</p>
-                            <td class="text">
-                                <asp:TextBox ID="TextBox1" runat="server" CssClass="textbox"></asp:TextBox>
-                            </td>
+                        </td>
+                        <td class="text">
+                            <asp:TextBox ID="TextBox1" runat="server" CssClass="textbox"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td class="title">
                             <p>種別</p>
+                        </td>
                             <td class="text">
                                 <asp:TextBox ID="TextBox2" runat="server" CssClass="textbox"></asp:TextBox>
                             </td>
-                        </td>
                     </tr>
                     <tr>
                         <td class="title">
                             <p>数量</p>
+                        </td>
                             <td class="text">
                                 <asp:TextBox ID="TextBox3" runat="server" CssClass="textbox"></asp:TextBox>
                             </td>
-                        </td>
                     </tr>
                     <tr>
                         <td class="title">
                             <p>金額</p>
+                        </td>
                             <td class="text">
                                 <asp:TextBox ID="TextBox4" runat="server" CssClass="textbox"></asp:TextBox>
                             </td>
-                        </td>
                     </tr>
                     <tr>
                         <td class="title">
                             <p>購入先</p>
+                        </td>
                             <td class="text">
                                 <asp:TextBox ID="TextBox5" runat="server" CssClass="textbox"></asp:TextBox>
                             </td>
-                        </td>
                     </tr>
                     <tr>
                         <td class="title">
                             <p>購入目的</p>
+                        </td>
                             <td>
                                 <textarea id="TextArea1" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
                             </td>
-                        </td>
                     </tr>
                     <tr>
                         <td class="title">
                             <p>備考</p>
+                        </td>
                             <td class="text">
                                 <textarea id="TextArea2" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
                             </td>
-                        </td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -121,6 +119,7 @@
                     <tr>
                         <td class="title">
                             <p>届出内容</p>
+                        </td>
                             <td class="text">
                                 <asp:DropDownList ID="DropDownList2" runat="server">
                                     <asp:ListItem>休暇届</asp:ListItem>
@@ -129,13 +128,12 @@
                                     <asp:ListItem>遅刻届</asp:ListItem>
                                     <asp:ListItem>出社届</asp:ListItem>
                                 </asp:DropDownList>
-
-                            </td>
                         </td>
                     </tr>
                     <tr>
                         <td class="title">
                             <p>日時</p>
+                        </td>
                             <td class="text">
                                 <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
                                 <asp:DropDownList ID="DropDownList3" runat="server">
@@ -164,6 +162,8 @@
 
                                 <asp:Label ID="Label16" runat="server" Text="Label"></asp:Label>
                                 <asp:Label ID="Label17" runat="server" Text="Label"></asp:Label>から
+
+                                </td>
                                 <td>
                                     <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
                                     <asp:DropDownList ID="DropDownList4" runat="server">
@@ -191,23 +191,22 @@
                                     <asp:Label ID="Label19" runat="server" Text="Label"></asp:Label>まで
 
                                 </td>
-                            </td>
-                        </td>
+
                     </tr>
                     <tr>
                         <td class="title">
                             <p>理由</p>
-                            <td class="text">
+                        </td>
+                        <td class="text">
                                 <textarea id="TextArea3" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
-                            </td>
                         </td>
                     </tr>
                     <tr>
                         <td class="title">
                             <p>備考</p>
-                            <td class="text">
+                        </td>
+                        <td class="text">
                                 <textarea id="TextArea4" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
-                            </td>
                         </td>
                     </tr>
                     <tr>
@@ -226,113 +225,115 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <td class="aa">
-                                <td>
-                                    <td>
-                                        <asp:Label ID="date" runat="server" Text="Select Date"></asp:Label>
-                                    </td>
+                                <td class="aa">
+                                    <p>日時</p>
                                 </td>
-                            </td>
-                        </td>
+                                <td>
+                                  <asp:Label ID="date" runat="server" Text="Select Date"></asp:Label>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
                     </tr>
                     <tr>
                         <td id="name">
                             <asp:Label ID="name1" runat="server" Text="No Name"></asp:Label>
-                            <td>
-                                <td>
-                                    <td></td>
-                                </td>
-                            </td>
                         </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
                     </tr>
 
                     <tr>
                         <td>
-                            <td>
-                                <td>
-                                    <td id="Syacho">
-                                        <p style="width: 71px">社長</p>
-                                    </td>
-                                </td>
-                            </td>
                         </td>
-
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td id="Syacho">
+                           <p style="width: 71px">社長</p>
+                        </td>
                     </tr>
                     <tr>
                         <td>
-                            <td>
-                                <td>
-                                    <td class="hanko"></td>
-                                </td>
-                            </td>
                         </td>
-
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td class="hanko">
+                        </td>
                     </tr>
                     <tr>
                         <td>
-                            <td id="yohaku">
-                                <td>
-                                    <td></td>
-                                </td>
-                            </td>
+                        </td>
+                        <td id="yohaku">
+                        </td>
+                        <td>
+                        </td>
+                        <td>
                         </td>
                     </tr>
                     <tr>
                         <td class="TableTitle">
                             <p>購入品名</p>
-                            <td colspan="3" class="zone">
+                        </td>
+                        <td colspan="3" class="zone">
                                 <asp:Label ID="Konyu" runat="server" Text="購入品を記載してください"></asp:Label>
-                            </td>
                         </td>
                     </tr>
                     <tr>
                         <td class="TableTitle">
                             <p>種別</p>
-                            <td colspan="3" class="zone">
-                                <asp:Label ID="Syubetsu" runat="server" Text="種別を記載してください"></asp:Label>
-                            </td>
+                        </td>
+                        <td colspan="3" class="zone">
+                            <asp:Label ID="Syubetsu" runat="server" Text="種別を記載してください"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td class="TableTitle">
                             <p>数量</p>
-                            <td colspan="3" class="zone">
-                                <asp:Label ID="Suryo" runat="server" Text="数量を記載してください"></asp:Label>
-                            </td>
+                        </td>
+                        <td colspan="3" class="zone">
+                            <asp:Label ID="Suryo" runat="server" Text="数量を記載してください"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td class="TableTitle">
                             <p>金額</p>
-                            <td colspan="3" class="zone">
-                                <asp:Label ID="Label1" runat="server" Text="金額を記載してください"></asp:Label>
-                            </td>
+                        </td>
+                        <td colspan="3" class="zone">
+                            <asp:Label ID="Label1" runat="server" Text="金額を記載してください"></asp:Label>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="TableTitle">
                             <p>購入先</p>
-                            <td colspan="3" class="zone">
-                                <asp:Label ID="KonyuSaki" runat="server" Text="購入先を記載してください"></asp:Label>
-                            </td>
+                        </td>
+                        <td colspan="3" class="zone">
+                            <asp:Label ID="KonyuSaki" runat="server" Text="購入先を記載してください"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td class="TableTitle">
                             <p>購入理由/目的</p>
-                            <td colspan="3" class="area">
-                                <textarea id="Riyuu" rows="7" runat="server"></textarea>
-                            </td>
+                        </td>
+                        <td colspan="3" class="area">
+                            <textarea id="Riyuu" rows="7" runat="server"></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td class="TableTitle">
                             <p>備考</p>
-                            <td colspan="3" class="area">
-                                <textarea id="Bikou" rows="7" runat="server"></textarea>
-                            </td>
+                        </td>
+                        <td colspan="3" class="area">
+                            <textarea id="Bikou" rows="7" runat="server"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -354,37 +355,35 @@
                     <tr>
                         <td id="date2" class="takasa">
                             <asp:Label ID="Label3" runat="server" Text="date"></asp:Label>
-                            <td colspan="3"></td>
                         </td>
+                        <td colspan="3"></td>
                     </tr>
                     <tr class="takasa">
                         <td colspan="2" id="name2">
                             <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label><asp:Label ID="Label13" runat="server" Text="（印）"></asp:Label>
-
-                            <td colspan="2"></td>
+                        </td>
+                        <td colspan="2">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <td>
-                                <td>
-                                    <td id="Syacho2">
-                                        <p>社長</p>
-                                    </td>
-
-                                </td>
-                            </td>
-
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td id="Syacho2">
+                                  <p>社長</p>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <td id="yohaku5">
-                                <td id="yohaku4">
-                                    <td class="hanko2"></td>
-                                </td>
-                            </td>
                         </td>
+                        <td id="yohaku5">
+                        </td>
+                        <td id="yohaku4">
+                        </td>
+                        <td class="hanko2">
                         </td>
                     </tr>
                     <tr>
@@ -393,9 +392,9 @@
                     <tr>
                         <td class="naiyou">
                             <p>届出内容</p>
-                            <td colspan="3" runat="server" class="nakami">
-                                <asp:Label ID="Label5" runat="server" Text="項目を選択してください"></asp:Label>
-                            </td>
+                        </td>
+                        <td colspan="3" runat="server" class="nakami">
+                            <asp:Label ID="Label5" runat="server" Text="項目を選択してください"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -404,7 +403,8 @@
                             <td colspan="3" class="nakami">
                                 <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
                                 <asp:Label ID="Label7" runat="server" Text="Label"></asp:Label>から<br />
-                                <asp:Label ID="Label8" runat="server" Text="Label"></asp:Label><asp:Label ID="Label9" runat="server" Text="Label"></asp:Label>まで
+                                <asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="Label9" runat="server" Text="Label"></asp:Label>まで
                             </td>
                         </td>
                     </tr>
@@ -419,9 +419,9 @@
                     <tr>
                         <td class="naiyou">
                             <p>備考</p>
-                            <td colspan="3" class="nakami">
-                                <textarea id="TextArea6" cols="55" rows="5" runat="server"></textarea>
-                            </td>
+                        </td>
+                        <td colspan="3" class="nakami">
+                            <textarea id="TextArea6" cols="55" rows="5" runat="server"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -445,13 +445,14 @@
                     <tr>
                         <td style="background-color:green">
                             <p>日付</p>
+                        </td>
                             <td>
                                 <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>月
-                                <td>
-                                    <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>日
-                                </td>
                             </td>
-                        </td>
+                            <td>
+                                <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>日
+                            </td>
+
                     </tr>
                     <tr>
                         <td>
