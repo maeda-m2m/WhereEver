@@ -233,6 +233,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DATASET\Schedule.cs" />
     <Compile Include="Insatsu.ascx.cs">
       <DependentUpon>Insatsu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

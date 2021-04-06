@@ -76,6 +76,11 @@
                                     <asp:ListItem>全員</asp:ListItem>
                                     <asp:ListItem>柳沢</asp:ListItem>
                                     <asp:ListItem>張</asp:ListItem>
+                                    <asp:ListItem>鯉淵</asp:ListItem>
+                                    <asp:ListItem>坂口</asp:ListItem>
+                                    <asp:ListItem>坂田</asp:ListItem>
+                                    <asp:ListItem>一番ケ瀬</asp:ListItem>
+                                    <asp:ListItem>髙栁社長</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                         </td>
