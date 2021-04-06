@@ -161,17 +161,6 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
     <Content Include="Format\立替金明細表%28交通費+宿泊費%29.xlsx" />
-    <Content Include="DataSet2.xsc">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </Content>
-    <None Include="DataSet2.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="DataSet2.xss">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </Content>
     <Content Include="DATASET\DS-M_User.xsc">
       <DependentUpon>DS-M_User.xsd</DependentUpon>
     </Content>
@@ -259,11 +248,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="DATASET\DS-M_User.Designer.cs">
       <AutoGen>True</AutoGen>
