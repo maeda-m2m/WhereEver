@@ -16,7 +16,7 @@ namespace WhereEver
         {
             if (!IsPostBack)
             {
-                DataSet2.T_LoginListDataTable dt = Class2.GetLoginListDataTable(Global.GetConnection());
+                DATASET.DataSet.T_LoginListDataTable dt = Class2.GetLoginListDataTable(Global.GetConnection());
 
                 DgTimeDetail.DataSource = dt;
                 DgTimeDetail.DataBind();
@@ -29,12 +29,12 @@ namespace WhereEver
             if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
             {
 
-                DataSet2.T_LoginListRow dr = (e.Item.DataItem as DataRowView).Row as DataSet2.T_LoginListRow;
+                DATASET.DataSet.T_LoginListRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_LoginListRow;
                 Label lblName = e.Item.FindControl("lblName") as Label;
                 Label lblLoginTime = e.Item.FindControl("lblLoginTime") as Label;
                 Label lblLogoutTime = e.Item.FindControl("lblLogoutTime") as Label;
-                DataSet2.T_LoginListRow dl = Class2.UserLoginMAXTime(Global.GetConnection(), dr.name.ToString());
-                DataSet2.T_LoginListRow dt = Class2.UserLogoutMAXTime(Global.GetConnection(), dr.name.ToString());
+                DATASET.DataSet.T_LoginListRow dl = Class2.UserLoginMAXTime(Global.GetConnection(), dr.name.ToString());
+                DATASET.DataSet.T_LoginListRow dt = Class2.UserLogoutMAXTime(Global.GetConnection(), dr.name.ToString());
 
                 lblName.Text = dr.name.ToString();
                 lblLoginTime.Text = dl.Date.ToString();

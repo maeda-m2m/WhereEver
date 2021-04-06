@@ -19,7 +19,7 @@ namespace WhereEver
             System.Web.Security.FormsAuthentication.SignOut();
         }
 
-        internal static void Login(DataSet2.M_UserRow dr)
+        internal static void Login(DATASET.DataSet.M_UserRow dr)
         {
             System.Web.Security.FormsAuthentication.SetAuthCookie(dr.id.ToString(), false);
             System.Web.Security.FormsAuthentication.SetAuthCookie(dr.pw.ToString(), false);
@@ -34,13 +34,13 @@ namespace WhereEver
 
         public class LoginUser
         {
-            private DataSet2.M_UserRow _drUser = null;
+            private DATASET.DataSet.M_UserRow _drUser = null;
 
             internal static LoginUser New(string ID, string PW)
             {
                 LoginUser u = new LoginUser
                 {
-                    _drUser = Class1.GetM_UserRow(ID, PW,Global.GetConnection())
+                    _drUser = Class.Login.GetM_UserRow(ID, PW,Global.GetConnection())
                 };
                 if (null == u._drUser) return null;
 
@@ -49,7 +49,7 @@ namespace WhereEver
                 return u;
             }
 
-            public DS-M_User.M_UserRow M_User
+            public DATASET.DataSet.M_UserRow M_User
             {
                 get { return this._drUser; }
                 set { this._drUser = value; }
@@ -66,7 +66,7 @@ namespace WhereEver
 
         }
 
-        internal static void Logout(DataSet2.M_UserRow dr)
+        internal static void Logout(DATASET.DataSet.M_UserRow dr)
         {
             throw new NotImplementedException();
         }

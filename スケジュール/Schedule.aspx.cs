@@ -35,7 +35,7 @@ namespace WhereEver
         //スケジュールリストにデータを格納　→　ScdlList_ItemDataBound　に移動
         private void Create()
         {
-            DataSet2.T_ScheduleDataTable dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+            DATASET.DataSet.T_ScheduleDataTable dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataSource = dt;
             ScdlList.DataBind();
         }
@@ -43,7 +43,7 @@ namespace WhereEver
         //スケジュール表にデータを格納　→　Scdl3_ItemDataBound　に移動　→　Create2 に移動
         public void Create3()
         {
-            DataSet2.T_EmptyTableDataTable dt = Class1.GetSchedule3DataTable(Global.GetConnection());
+            DATASET.DataSet.T_EmptyTableDataTable dt = Class1.GetSchedule3DataTable(Global.GetConnection());
 
             Scdl3.DataSource = dt;
             Scdl3.DataBind();
@@ -84,7 +84,7 @@ namespace WhereEver
             dr.name = DropDownList2.SelectedValue.ToString();　　　　 //選択した名前をname列に入れる
 
 
-            DataSet2.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());　　
+            DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());　　
             //SdlNoの最大値を持ってくるためだけのコード（MaxSdlNo）をClass.1に作る
 
             int no = int.Parse(dl.SdlNo);
@@ -104,11 +104,11 @@ namespace WhereEver
         private void Create2()
         {
 
-            DataSet2.T_ScheduleDataTable dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
+            DATASET.DataSet.T_ScheduleDataTable dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
 
             for (int j = 0; j < dd.Count; j++)
             {
-                DataSet2.T_ScheduleRow dl = dd.Rows[j] as DataSet2.T_ScheduleRow;
+                DATASET.DataSet.T_ScheduleRow dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
 
                 DateTime DT = DateTime.Parse(dl.date.ToString());
                 string week = DT.ToString("ddd");
@@ -254,11 +254,11 @@ namespace WhereEver
 
         protected void Scdl3_ItemDataBound(object sender, DataGridItemEventArgs e)
         {　　//未使用
-            //DataSet2.T_ScheduleDataTable dd = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+            //DATASET.DataSet.T_ScheduleDataTable dd = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
 
-                var dr = (e.Item.DataItem as DataRowView).Row as DataSet2.T_EmptyTableRow;
+                var dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_EmptyTableRow;
 
                 Label time = e.Item.FindControl("Jikan") as Label;
                 Label monday = e.Item.FindControl("MondayTitle") as Label;
@@ -310,7 +310,7 @@ namespace WhereEver
         {
             Panel1.Visible = true;
             //未使用
-            //DataSet2.T_ScheduleDataTable dt = Class1.SwitchScdl3DataTable(Global.GetConnection());
+            //DATASET.DataSet.T_ScheduleDataTable dt = Class1.SwitchScdl3DataTable(Global.GetConnection());
 
             Calendar1.DataBind();
 
@@ -321,7 +321,7 @@ namespace WhereEver
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
 
-                var dr = (e.Item.DataItem as DataRowView).Row as DataSet2.T_EmptyTableRow;
+                var dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_EmptyTableRow;
 
                 Label date = e.Item.FindControl("hiduke") as Label;
                 Label jikan = e.Item.FindControl("jikan") as Label;
@@ -348,8 +348,8 @@ namespace WhereEver
         protected void ScdlList_ItemCommand(object source, DataGridCommandEventArgs e)
         {
             int a = e.Item.ItemIndex;
-            DataSet2.T_ScheduleDataTable dt = Class1.SwitchScdl3DataTable(Global.GetConnection());
-            DataSet2.T_ScheduleRow dr = dt.Rows[a] as DataSet2.T_ScheduleRow;//T_Schedule3のa行目を取って来る
+            DATASET.DataSet.T_ScheduleDataTable dt = Class1.SwitchScdl3DataTable(Global.GetConnection());
+            DATASET.DataSet.T_ScheduleRow dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;//T_Schedule3のa行目を取って来る
             string.Format("if (!confirm('{0}')) return false;", "削除しますか。");
             int sdl = int.Parse(dr.SdlNo);//とってきたSdlNoをsdlに入れる
 

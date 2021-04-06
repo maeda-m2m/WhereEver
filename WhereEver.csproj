@@ -161,38 +161,16 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
     <Content Include="Format\立替金明細表%28交通費+宿泊費%29.xlsx" />
-    <Content Include="DATASET\DataSetM_User.xsc">
-      <DependentUpon>DataSetM_User.xsd</DependentUpon>
+    <Content Include="DATASET\DataSet.xsc">
+      <DependentUpon>DataSet.xsd</DependentUpon>
     </Content>
-    <Content Include="DATASET\DataSetT_Logout.xsc">
-      <DependentUpon>DataSetT_Logout.xsd</DependentUpon>
-    </Content>
-    <None Include="DATASET\DataSetT_Logout.xsd">
+    <None Include="DATASET\DataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetT_Logout.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSet.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="DATASET\DataSetT_Logout.xss">
-      <DependentUpon>DataSetT_Logout.xsd</DependentUpon>
-    </Content>
-    <None Include="DATASET\DataSetM_User.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetM_User.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="DATASET\DataSetM_User.xss">
-      <DependentUpon>DataSetM_User.xsd</DependentUpon>
-    </Content>
-    <Content Include="DATASET\DataSetT_Login.xsc">
-      <DependentUpon>DataSetT_Login.xsd</DependentUpon>
-    </Content>
-    <None Include="DATASET\DataSetT_Login.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetT_Login.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="DATASET\DataSetT_Login.xss">
-      <DependentUpon>DataSetT_Login.xsd</DependentUpon>
+    <Content Include="DATASET\DataSet.xss">
+      <DependentUpon>DataSet.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="ログイン\Login.css" />
@@ -241,6 +219,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Class2.cs" />
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
+    <Compile Include="Class\Login.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -249,20 +228,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DATASET\DataSetT_Logout.Designer.cs">
+    <Compile Include="DATASET\DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetT_Logout.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DATASET\DataSetM_User.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetM_User.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DATASET\DataSetT_Login.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetT_Login.xsd</DependentUpon>
+      <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Insatsu.ascx.cs">
       <DependentUpon>Insatsu.ascx</DependentUpon>

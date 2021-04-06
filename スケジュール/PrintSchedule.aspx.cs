@@ -678,7 +678,7 @@ namespace WhereEver
                     break;
             }
 
-            DataSet2.T_ScheduleDataTable dd = Class2.Insatsu1(Global.GetConnection());
+            DATASET.DataSet.T_ScheduleDataTable dd = Class2.Insatsu1(Global.GetConnection());
 
 
             for (int j = 0; j < dd.Count; j++)
@@ -866,7 +866,7 @@ namespace WhereEver
 
             }
 
-            DataSet2.T_ScheduleDataTable dp = Class2.Insatsu2(Global.GetConnection());
+            DATASET.DataSet.T_ScheduleDataTable dp = Class2.Insatsu2(Global.GetConnection());
 
 
             for (int j = 0; j < dp.Count; j++)

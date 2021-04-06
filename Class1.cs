@@ -10,164 +10,68 @@ namespace WhereEver
 {
     public class Class1
     {
-        public static DataSet2.M_UserDataTable GetM_UserDataTable(SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM M_User";
-            DataSet2.M_UserDataTable dt = new DataSet2.M_UserDataTable();
-            da.Fill(dt);
-            return (dt);
-        }
-        internal static DataSet2.M_UserRow GetM_UserRow(string id, string pw, SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM M_User WHERE (id = @id) and (pw = @pw)";
-            da.SelectCommand.Parameters.AddWithValue("@id", id);
-            da.SelectCommand.Parameters.AddWithValue("@pw", pw);
-            DataSet2.M_UserDataTable dt = new DataSet2.M_UserDataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count == 1)
-            {
-                return dt[0];
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public static DataSet2.M_UserRow GetM_UserRow(SqlConnection schedule)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", schedule);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM M_User";
-            DataSet2.M_UserDataTable dt = new DataSet2.M_UserDataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count == 1)
-                return dt[0] as DataSet2.M_UserRow;
-            else
-                return null;
-        }
-
-
-        public static DataSet2.T_LoginListDataTable GetLoginListDataTable(SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_LoginList";
-            DataSet2.T_LoginListDataTable dt = new DataSet2.T_LoginListDataTable();
-            da.Fill(dt);
-            return dt;
-        }
-
-        internal static DataSet2.T_LoginListRow GetT_LoginListRow(SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_LoginList";
-            DataSet2.T_LoginListDataTable dt = new DataSet2.T_LoginListDataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count >= 1)
-                return dt[0] as DataSet2.T_LoginListRow;
-            else
-                return null;
-        }
-
-        public static void UpdateLogin(DataSet2.M_UserDataTable dt, SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "Select * From M_User";
-            da.UpdateCommand = (new SqlCommandBuilder(da)).GetUpdateCommand();
-
-            SqlTransaction sql = null;
-
-            try
-            {
-                sqlConnection.Open();
-                sql = sqlConnection.BeginTransaction();
-
-                da.SelectCommand.Transaction = da.UpdateCommand.Transaction = sql;
-
-                da.Update(dt);
-
-                sql.Commit();
-            }
-            catch (Exception ex)
-            {
-                if (sql != null)
-                    sql.Rollback();
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-        }
-
-
-        internal static DataSet2.M_UserRow LogoutM_UserRow(SqlConnection sqlConnection)
+        
+        internal static DATASET.DataSet.M_UserRow LogoutM_UserRow(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT * FROM M_User WHERE LogoutTime IS NULL";
-            DataSet2.M_UserDataTable dt = new DataSet2.M_UserDataTable();
+            DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
-                return dt[0] as DataSet2.M_UserRow;
+                return dt[0] as DATASET.DataSet.M_UserRow;
             else
                 return null;
 
         }
 
-        internal static DataSet2.M_UserRow InsertLogoutTime(SqlConnection Sql)
+        internal static DATASET.DataSet.M_UserRow InsertLogoutTime(SqlConnection Sql)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sql);
             da.InsertCommand.CommandText =
                 "SELECT * FROM M_User WHERE LogoutTime IS NULL";
-            DataSet2.M_UserDataTable dt = new DataSet2.M_UserDataTable();
+            DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
-                return dt[0] as DataSet2.M_UserRow;
+                return dt[0] as DATASET.DataSet.M_UserRow;
             else
                 return null;
 
         }
 
-        public static DataSet2.T_ScheduleDataTable GetTDataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable GetTDataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule";
-            DataSet2.T_ScheduleDataTable df = new DataSet2.T_ScheduleDataTable();
+            DATASET.DataSet.T_ScheduleDataTable df = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(df);
             return df;
         }
 
-        public static DataSet2.T_ScheduleRow GetT_ScheduleRow(SqlConnection schedule)
+        public static DATASET.DataSet.T_ScheduleRow GetT_ScheduleRow(SqlConnection schedule)
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule";
-            DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
+            DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
-                return dt[0] as DataSet2.T_ScheduleRow;
+                return dt[0] as DATASET.DataSet.T_ScheduleRow;
             else
                 return null;
 
         }
 
-        public static DataSet2.T_ScheduleRow UpdateT_ScheduleRow(SqlConnection update)
+        public static DATASET.DataSet.T_ScheduleRow UpdateT_ScheduleRow(SqlConnection update)
         {
             SqlDataAdapter da = new SqlDataAdapter("", update);
             da.SelectCommand.CommandText =
                 "UPDATE FROM T_schedule ";
-            DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
+            DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
-                return dt[0] as DataSet2.T_ScheduleRow;
+                return dt[0] as DATASET.DataSet.T_ScheduleRow;
             else
                 return null;
 
@@ -203,7 +107,7 @@ namespace WhereEver
 
         }
 
-        public static void InsertSchedule(DataSet2.T_ScheduleDataTable dt, SqlConnection sqlConnection)
+        public static void InsertSchedule(DATASET.DataSet.T_ScheduleDataTable dt, SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
@@ -236,75 +140,75 @@ namespace WhereEver
 
 
 
-        public static DataSet2.T_ScheduleDataTable GetT_Schedule3DataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
                "SELECT * FROM T_Schedule";
             //"SELECT [time], [title], [name], [KanriFlag],[SdlNo] FROM T_Schedule WHERE KanriFlag IS NOT NULL"
-            DataSet2.T_ScheduleDataTable df = new DataSet2.T_ScheduleDataTable();
+            DATASET.DataSet.T_ScheduleDataTable df = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(df);
             return df;
         }
 
 
-        public static DataSet2.T_EmptyTableDataTable GetSchedule3DataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_EmptyTableDataTable GetSchedule3DataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_EmptyTable";
             //T_Schedule WHERE KanriFlag IS NULL
-            var df = new DataSet2.T_EmptyTableDataTable();
+            var df = new DATASET.DataSet.T_EmptyTableDataTable();
             da.Fill(df);
             return df;
         }
 
-        public static DataSet2.T_ScheduleDataTable SwitchScdl3DataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable SwitchScdl3DataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
-            DataSet2.T_ScheduleDataTable df = new DataSet2.T_ScheduleDataTable();
+            DATASET.DataSet.T_ScheduleDataTable df = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(df);
             return df;
         }
 
         //SdlNoがある列を持ってくる
-        public static DataSet2.T_ScheduleRow SwitchScdl3Row(SqlConnection schedule)
+        public static DATASET.DataSet.T_ScheduleRow SwitchScdl3Row(SqlConnection schedule)
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
-            DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
+            DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
-                return dt[0] as DataSet2.T_ScheduleRow;
+                return dt[0] as DATASET.DataSet.T_ScheduleRow;
             else
                 return null;
 
         }
 
         //SdlNoの最大値を持ってくる
-        public static DataSet2.T_ScheduleDataTable MaxSdlDataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable MaxSdlDataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
                 "SELECT MAX(SdlNo) AS SdlNo FROM T_Schedule";
-            DataSet2.T_ScheduleDataTable df = new DataSet2.T_ScheduleDataTable();
+            DATASET.DataSet.T_ScheduleDataTable df = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(df);
             return df;
         }
 
         //SdlNoの最大値を持ってくる
-        public static DataSet2.T_ScheduleRow MaxSdlNo(SqlConnection schedule)
+        public static DATASET.DataSet.T_ScheduleRow MaxSdlNo(SqlConnection schedule)
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
                 "SELECT MAX(SdlNo) AS SdlNo FROM T_Schedule";
-            DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
+            DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
-                return dt[0] as DataSet2.T_ScheduleRow;
+                return dt[0] as DATASET.DataSet.T_ScheduleRow;
             else
                 return null;
         }
@@ -312,7 +216,7 @@ namespace WhereEver
 
 
         //スケジュールを追加する
-        public static void InsertList(DataSet2.T_ScheduleDataTable dt, SqlConnection sql)
+        public static void InsertList(DATASET.DataSet.T_ScheduleDataTable dt, SqlConnection sql)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
             da.SelectCommand.CommandText =

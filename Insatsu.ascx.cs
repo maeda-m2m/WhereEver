@@ -11,7 +11,7 @@ namespace WhereEver
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataSet2.T_ScheduleDataTable dt = Class2.Insatsu1(Global.GetConnection());
+            DATASET.DataSet.T_ScheduleDataTable dt = Class2.Insatsu1(Global.GetConnection());
             //for (int j = 0; j < dt.Count; j++)
             //{
             //    DataSet1.T_Schedule3Row dr = dt.Rows[j] as DataSet1.T_Schedule3Row;

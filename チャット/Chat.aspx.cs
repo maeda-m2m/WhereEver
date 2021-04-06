@@ -24,16 +24,16 @@ namespace WhereEver
 
         private void Create()
         {
-            DataSet2.T_ChatDataTable dt = Class2.GetChatDataTable(Global.GetConnection());
-            ChatArea.DataSource = dt;
-            ChatArea.DataBind();
+        //    DATASET.DataSet.T_ChatDataTable dt = Class2.GetChatDataTable(Global.GetConnection());
+        //    ChatArea.DataSource = dt;
+        //    ChatArea.DataBind();
         }
 
         protected void Chat_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                DataSet2.T_ChatRow dr = (e.Item.DataItem as DataRowView).Row as DataSet2.T_ChatRow;
+                DATASET.DataSet.T_ChatRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_ChatRow;
 
                 Label No = e.Item.FindControl("No") as Label;
                 Label Name = e.Item.FindControl("ID") as Label;
@@ -56,23 +56,23 @@ namespace WhereEver
 
         protected void Send_Click(object sender, EventArgs e)
         {
-            DataSet2.T_ChatDataTable dt = Class2.GetChatDataTable(Global.GetConnection());
-            DataSet2.T_ChatRow dr = dt.NewT_ChatRow();
+        //    DATASET.DataSet.T_ChatDataTable dt = Class2.GetChatDataTable(Global.GetConnection());
+        //    DATASET.DataSet.T_ChatRow dr = dt.NewT_ChatRow();
 
-            dr.Date = DateTime.Now;
-            if(Label1.Text == "")
-            {
-                string.Format("if (!confirm('{0}')) return false;", "本文が入力されていません");
-            }
-            dr.Name = Label1.Text;
-            dr.Naiyou = TextBox1.Text;
+        //    dr.Date = DateTime.Now;
+        //    if(Label1.Text == "")
+        //    {
+        //        string.Format("if (!confirm('{0}')) return false;", "本文が入力されていません");
+        //    }
+        //    dr.Name = Label1.Text;
+        //    dr.Naiyou = TextBox1.Text;
 
-            DataSet2.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());
-            int sl = dl.No;
-            dr.No = sl + 1;
-            dt.AddT_ChatRow(dr);
-            Class2.InsertList(dt, Global.GetConnection());
-            Create();
+        //    DATASET.DataSet.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());
+        //    int sl = dl.No;
+        //    dr.No = sl + 1;
+        //    dt.AddT_ChatRow(dr);
+        //    Class2.InsertList(dt, Global.GetConnection());
+        //    Create();
         }
     }
 }

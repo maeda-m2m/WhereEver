@@ -11,15 +11,6 @@ namespace WhereEver
 {
     public class Class2
     {
-        public static DataSet2.T_ChatDataTable GetChatDataTable(SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_Chat";
-            DataSet1.T_ChatDataTable dt = new DataSet1.T_ChatDataTable();
-            da.Fill(dt);
-            return dt;
-        }
 
         public static DataSet1.T_ChatRow GetChatRow(SqlConnection schedule)
         {
@@ -43,20 +34,6 @@ namespace WhereEver
             DataSet1.T_ChatDataTable df = new DataSet1.T_ChatDataTable();
             da.Fill(df);
             return df;
-        }
-
-        //Noの最大値を持ってくる
-        public static DataSet2.T_ChatRow MaxNoRow(SqlConnection schedule)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", schedule);
-            da.SelectCommand.CommandText =
-                "SELECT MAX(No) AS No FROM T_Chat";
-            DataSet1.T_ChatDataTable dt = new DataSet1.T_ChatDataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count == 1)
-                return dt[0] as DataSet2.T_ChatRow;
-            else
-                return null;
         }
 
         public static void InsertList(DataSet1.T_ChatDataTable dt, SqlConnection sql)
@@ -90,40 +67,40 @@ namespace WhereEver
 
         }
 
-        public static DataSet2.T_LoginListDataTable GetLoginListDataTable(SqlConnection sqlConnection)//LoginListの重複してある名前をまとめてreturn name
+        public static DATASET.DataSet.T_LoginListDataTable GetLoginListDataTable(SqlConnection sqlConnection)//LoginListの重複してある名前をまとめてreturn name
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT DISTINCT name FROM T_LoginList";
-            DataSet2.T_LoginListDataTable dt = new DataSet2.T_LoginListDataTable();
+            DATASET.DataSet.T_LoginListDataTable dt = new DATASET.DataSet.T_LoginListDataTable();
             da.Fill(dt);
             return dt;
         }
-        public static DataSet2.T_LogoutListDataTable GetLogoutListDataTable(SqlConnection sqlConnection)//LogoutListの重複してある名前をまとめてreturn name
+        public static DATASET.DataSet.T_LogoutListDataTable GetLogoutListDataTable(SqlConnection sqlConnection)//LogoutListの重複してある名前をまとめてreturn name
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT DISTINCT name FROM T_LogoutList";
-            DataSet2.T_LogoutListDataTable dt = new DataSet2.T_LogoutListDataTable();
+            DATASET.DataSet.T_LogoutListDataTable dt = new DATASET.DataSet.T_LogoutListDataTable();
             da.Fill(dt);
             return dt;
         }
 
-        public static DataSet2.T_LoginListRow GetLoginListRow(SqlConnection schedule)//T_LoginListのすべて
+        public static DATASET.DataSet.T_LoginListRow GetLoginListRow(SqlConnection schedule)//T_LoginListのすべて
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_LoginList";
-            DataSet2.T_LoginListDataTable dt = new DataSet2.T_LoginListDataTable();
+            DATASET.DataSet.T_LoginListDataTable dt = new DATASET.DataSet.T_LoginListDataTable();
             da.Fill(dt);
             if (dt.Rows.Count == 1)
-                return dt[0] as DataSet2.T_LoginListRow;
+                return dt[0] as DATASET.DataSet.T_LoginListRow;
             else
                 return null;
 
         }
 
-        public static void InsertLoginList(DataSet2.T_LoginListDataTable dt, SqlConnection sql)//ログインするたびにnameとDateをLoginListにInsert
+        public static void InsertLoginList(DATASET.DataSet.T_LoginListDataTable dt, SqlConnection sql)//ログインするたびにnameとDateをLoginListにInsert
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
             da.SelectCommand.CommandText =
@@ -140,7 +117,7 @@ namespace WhereEver
             sql.Close();
 
         }
-        public static void InsertLogoutList(DataSet2.T_LoginListDataTable dt, SqlConnection sql)//ログアウトするたびにnameとDateをLogoutListにInsert
+        public static void InsertLogoutList(DATASET.DataSet.T_LoginListDataTable dt, SqlConnection sql)//ログアウトするたびにnameとDateをLogoutListにInsert
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
             da.SelectCommand.CommandText =
@@ -159,69 +136,69 @@ namespace WhereEver
         }
 
 
-        internal static DataSet2.T_LoginListRow UserLoginMAXTime(SqlConnection sqlConnection,string name)//最新LoginDateの取得
+        internal static DATASET.DataSet.T_LoginListRow UserLoginMAXTime(SqlConnection sqlConnection,string name)//最新LoginDateの取得
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT MAX(Date) as date FROM T_LoginList where name like @i ORDER BY Date DESC ";
             da.SelectCommand.Parameters.AddWithValue("@i", name);
-            DataSet2.T_LoginListDataTable dt = new DataSet2.T_LoginListDataTable();
+            DATASET.DataSet.T_LoginListDataTable dt = new DATASET.DataSet.T_LoginListDataTable();
             da.Fill(dt);
             return dt[0];
         }
-        internal static DataSet2.T_LoginListRow UserLogoutMAXTime(SqlConnection sqlConnection, string name)//最新LogoutDateの取得
+        internal static DATASET.DataSet.T_LoginListRow UserLogoutMAXTime(SqlConnection sqlConnection, string name)//最新LogoutDateの取得
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT MAX(Date) as date FROM T_LogoutList where name like @i ORDER BY Date DESC ";
             da.SelectCommand.Parameters.AddWithValue("@i", name);
-            DataSet2.T_LoginListDataTable dt = new DataSet2.T_LoginListDataTable();
+            DATASET.DataSet.T_LoginListDataTable dt = new DATASET.DataSet.T_LoginListDataTable();
             da.Fill(dt);
             return dt[0];
         }
 
-        public static DataSet2.T_ScheduleDataTable Insatsu1(SqlConnection sqlConnection)
+        public static DATASET.DataSet.T_ScheduleDataTable Insatsu1(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE())-1 order by time";
-            DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
+            DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             return (dt);
         }
-        internal static DataSet2.T_LoginListRow Insatsu1Row(SqlConnection sqlConnection)
+        internal static DATASET.DataSet.T_LoginListRow Insatsu1Row(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE())-1 order by time";
-            DataSet2.T_LoginListDataTable dt = new DataSet2.T_LoginListDataTable();
+            DATASET.DataSet.T_LoginListDataTable dt = new DATASET.DataSet.T_LoginListDataTable();
             da.Fill(dt);
             if (dt.Rows.Count >= 1)
-                return dt[0] as DataSet2.T_LoginListRow;
+                return dt[0] as DATASET.DataSet.T_LoginListRow;
             else
                 return null;
         }
 
 
-        public static DataSet2.T_ScheduleDataTable Insatsu2(SqlConnection sqlConnection)
+        public static DATASET.DataSet.T_ScheduleDataTable Insatsu2(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE()) order by date";
-            DataSet2.T_ScheduleDataTable dt = new DataSet2.T_ScheduleDataTable();
+            DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             return (dt);
         }
 
-        internal static DataSet2.T_LoginListRow Insatsu2Row(SqlConnection sqlConnection)
+        internal static DATASET.DataSet.T_LoginListRow Insatsu2Row(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE()) order by date";
-            DataSet2.T_LoginListDataTable dt = new DataSet2.T_LoginListDataTable();
+            DATASET.DataSet.T_LoginListDataTable dt = new DATASET.DataSet.T_LoginListDataTable();
             da.Fill(dt);
             if (dt.Rows.Count >= 1)
-                return dt[0] as DataSet2.T_LoginListRow;
+                return dt[0] as DATASET.DataSet.T_LoginListRow;
             else
                 return null;
         }

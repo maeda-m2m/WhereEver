@@ -27,7 +27,7 @@ namespace WhereEver
             string PW = TbxPW.Text.Trim();
 
             //GetM_UserRowでチェック、テーブルにあれば戻り値dt[0]=1、なければnull
-            DataSet2.M_UserRow dr = Class1.GetM_UserRow(ID, PW, Global.GetConnection());
+            DATASET.DataSet.M_UserRow dr = Class.Login.GetM_UserRow(ID, PW, Global.GetConnection());
 
             if (dr == null)
             {
@@ -36,8 +36,8 @@ namespace WhereEver
             }
 
             SessionManager.Login(dr);
-            DataSet2.T_LoginListDataTable dd = Class2.GetLoginListDataTable(Global.GetConnection());
-            DataSet2.T_LoginListRow dl = dd.NewT_LoginListRow();
+            DATASET.DataSet.T_LoginListDataTable dd = Class2.GetLoginListDataTable(Global.GetConnection());
+            DATASET.DataSet.T_LoginListRow dl = dd.NewT_LoginListRow();
 
             dl.name = dr.name;
             dl.Date = DateTime.Now;
