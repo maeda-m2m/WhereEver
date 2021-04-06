@@ -44,7 +44,7 @@ namespace WhereEver
 
         protected void btnOut_Click(object sender, EventArgs e)
         {
-
+            Class.Logout.InsertLogoutList(Global.GetConnection());
         }
     }
 }
