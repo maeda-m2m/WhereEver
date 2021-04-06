@@ -219,6 +219,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Class2.cs" />
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
+    <Compile Include="Class\Chat.cs" />
     <Compile Include="Class\Login.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
