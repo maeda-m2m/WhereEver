@@ -26,7 +26,7 @@ namespace WhereEver
             string ID = TbxID.Text.Trim();
             string PW = TbxPW.Text.Trim();
 
-            //GetM_UserRowでチェック、テーブルにあれば戻り値dt[0]=1、なければnull
+            //GetM_UserRowでチェック、テーブルにあれば戻り値dt[0]=、なければnull
             DATASET.DataSet.M_UserRow dr = Class.Login.GetM_UserRow(ID, PW, Global.GetConnection());
 
             if (dr == null)
