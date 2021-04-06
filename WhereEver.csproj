@@ -172,6 +172,39 @@
     <Content Include="DataSet2.xss">
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Content>
+    <Content Include="DATASET\DS-M_User.xsc">
+      <DependentUpon>DS-M_User.xsd</DependentUpon>
+    </Content>
+    <None Include="DATASET\DS-M_User.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS-M_User.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DATASET\DS-M_User.xss">
+      <DependentUpon>DS-M_User.xsd</DependentUpon>
+    </Content>
+    <Content Include="DATASET\DS-T_LoginAndLogout.xsc">
+      <DependentUpon>DS-T_LoginAndLogout.xsd</DependentUpon>
+    </Content>
+    <None Include="DATASET\DS-T_LoginAndLogout.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS-T_LoginAndLogout.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DATASET\DS-T_LoginAndLogout.xss">
+      <DependentUpon>DS-T_LoginAndLogout.xsd</DependentUpon>
+    </Content>
+    <Content Include="DATASET\DS-T_Schedule.xsc">
+      <DependentUpon>DS-T_Schedule.xsd</DependentUpon>
+    </Content>
+    <None Include="DATASET\DS-T_Schedule.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS-T_Schedule.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DATASET\DS-T_Schedule.xss">
+      <DependentUpon>DS-T_Schedule.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="ログイン\Login.css" />
     <Content Include="ログイン\Login.aspx" />
@@ -231,6 +264,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DATASET\DS-M_User.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS-M_User.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DATASET\DS-T_LoginAndLogout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS-T_LoginAndLogout.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DATASET\DS-T_Schedule.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS-T_Schedule.xsd</DependentUpon>
     </Compile>
     <Compile Include="Insatsu.ascx.cs">
       <DependentUpon>Insatsu.ascx</DependentUpon>
@@ -353,7 +401,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DATASET\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
