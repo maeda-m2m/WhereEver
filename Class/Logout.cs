@@ -15,8 +15,11 @@ namespace WhereEver.Class
             DateTime dtime = DateTime.Now;
             DATASET.DataSet.T_LogoutListDataTable dt = new DATASET.DataSet.T_LogoutListDataTable();
 
-            dt[0][0] = GetUserName;
-            dt[0][1] = dtime;
+            DATASET.DataSet.T_LogoutListRow dr = dt.NewT_LogoutListRow();
+            dr.name = GetUserName;
+            dr.Date = dtime;
+
+            dt.Rows.Add(dr);
 
             SqlDataAdapter da = new SqlDataAdapter("", sql);
             da.SelectCommand.CommandText =
