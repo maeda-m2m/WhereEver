@@ -8,7 +8,6 @@
 <head runat="server">
     <link href="Chat.css" type="text/css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="refresh" content="5"; URL="Chat.aspx"/>
     <title>Mちゃんねる</title>
 </head>
 <body>
@@ -20,7 +19,6 @@
                         <Menu:c_menu ID="m" runat="server"></Menu:c_menu>
                     </td>
                 </tr>
-
             </table>
         </div>
         <div>
