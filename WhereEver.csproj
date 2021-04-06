@@ -161,38 +161,38 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
     <Content Include="Format\立替金明細表%28交通費+宿泊費%29.xlsx" />
-    <Content Include="DATASET\DS-M_User.xsc">
-      <DependentUpon>DS-M_User.xsd</DependentUpon>
+    <Content Include="DATASET\DataSetM_User.xsc">
+      <DependentUpon>DataSetM_User.xsd</DependentUpon>
     </Content>
-    <None Include="DATASET\DS-M_User.xsd">
+    <Content Include="DATASET\DataSetT_Logout.xsc">
+      <DependentUpon>DataSetT_Logout.xsd</DependentUpon>
+    </Content>
+    <None Include="DATASET\DataSetT_Logout.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS-M_User.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetT_Logout.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="DATASET\DS-M_User.xss">
-      <DependentUpon>DS-M_User.xsd</DependentUpon>
+    <Content Include="DATASET\DataSetT_Logout.xss">
+      <DependentUpon>DataSetT_Logout.xsd</DependentUpon>
     </Content>
-    <Content Include="DATASET\DS-T_LoginAndLogout.xsc">
-      <DependentUpon>DS-T_LoginAndLogout.xsd</DependentUpon>
-    </Content>
-    <None Include="DATASET\DS-T_LoginAndLogout.xsd">
+    <None Include="DATASET\DataSetM_User.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS-T_LoginAndLogout.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetM_User.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="DATASET\DS-T_LoginAndLogout.xss">
-      <DependentUpon>DS-T_LoginAndLogout.xsd</DependentUpon>
+    <Content Include="DATASET\DataSetM_User.xss">
+      <DependentUpon>DataSetM_User.xsd</DependentUpon>
     </Content>
-    <Content Include="DATASET\DS-T_Schedule.xsc">
-      <DependentUpon>DS-T_Schedule.xsd</DependentUpon>
+    <Content Include="DATASET\DataSetT_Login.xsc">
+      <DependentUpon>DataSetT_Login.xsd</DependentUpon>
     </Content>
-    <None Include="DATASET\DS-T_Schedule.xsd">
+    <None Include="DATASET\DataSetT_Login.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS-T_Schedule.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetT_Login.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="DATASET\DS-T_Schedule.xss">
-      <DependentUpon>DS-T_Schedule.xsd</DependentUpon>
+    <Content Include="DATASET\DataSetT_Login.xss">
+      <DependentUpon>DataSetT_Login.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="ログイン\Login.css" />
@@ -249,20 +249,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DATASET\DS-M_User.Designer.cs">
+    <Compile Include="DATASET\DataSetT_Logout.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DS-M_User.xsd</DependentUpon>
+      <DependentUpon>DataSetT_Logout.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DATASET\DS-T_LoginAndLogout.Designer.cs">
+    <Compile Include="DATASET\DataSetM_User.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DS-T_LoginAndLogout.xsd</DependentUpon>
+      <DependentUpon>DataSetM_User.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DATASET\DS-T_Schedule.Designer.cs">
+    <Compile Include="DATASET\DataSetT_Login.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DS-T_Schedule.xsd</DependentUpon>
+      <DependentUpon>DataSetT_Login.xsd</DependentUpon>
     </Compile>
     <Compile Include="Insatsu.ascx.cs">
       <DependentUpon>Insatsu.ascx</DependentUpon>

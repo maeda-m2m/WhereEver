@@ -20,17 +20,17 @@ namespace WhereEver.DATASET {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("_DS_M_User")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DataSetT_Login")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class _DS_M_User : global::System.Data.DataSet {
+    public partial class DataSetT_Login : global::System.Data.DataSet {
         
-        private M_UserDataTable tableM_User;
+        private T_LoginListDataTable tableT_LoginList;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public _DS_M_User() {
+        public DataSetT_Login() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace WhereEver.DATASET {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected _DS_M_User(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DataSetT_Login(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace WhereEver.DATASET {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["M_User"] != null)) {
-                    base.Tables.Add(new M_UserDataTable(ds.Tables["M_User"]));
+                if ((ds.Tables["T_LoginList"] != null)) {
+                    base.Tables.Add(new T_LoginListDataTable(ds.Tables["T_LoginList"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace WhereEver.DATASET {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public M_UserDataTable M_User {
+        public T_LoginListDataTable T_LoginList {
             get {
-                return this.tableM_User;
+                return this.tableT_LoginList;
             }
         }
         
@@ -127,7 +127,7 @@ namespace WhereEver.DATASET {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            _DS_M_User cln = ((_DS_M_User)(base.Clone()));
+            DataSetT_Login cln = ((DataSetT_Login)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace WhereEver.DATASET {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["M_User"] != null)) {
-                    base.Tables.Add(new M_UserDataTable(ds.Tables["M_User"]));
+                if ((ds.Tables["T_LoginList"] != null)) {
+                    base.Tables.Add(new T_LoginListDataTable(ds.Tables["T_LoginList"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace WhereEver.DATASET {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableM_User = ((M_UserDataTable)(base.Tables["M_User"]));
+            this.tableT_LoginList = ((T_LoginListDataTable)(base.Tables["T_LoginList"]));
             if ((initTable == true)) {
-                if ((this.tableM_User != null)) {
-                    this.tableM_User.InitVars();
+                if ((this.tableT_LoginList != null)) {
+                    this.tableT_LoginList.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace WhereEver.DATASET {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DS-M_User";
+            this.DataSetName = "DataSetT_Login";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DS-M_User.xsd";
+            this.Namespace = "http://tempuri.org/DataSetT_Login.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableM_User = new M_UserDataTable();
-            base.Tables.Add(this.tableM_User);
+            this.tableT_LoginList = new T_LoginListDataTable();
+            base.Tables.Add(this.tableT_LoginList);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeM_User() {
+        private bool ShouldSerializeT_LoginList() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace WhereEver.DATASET {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            _DS_M_User ds = new _DS_M_User();
+            DataSetT_Login ds = new DataSetT_Login();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,25 +270,25 @@ namespace WhereEver.DATASET {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void M_UserRowChangeEventHandler(object sender, M_UserRowChangeEvent e);
+        public delegate void T_LoginListRowChangeEventHandler(object sender, T_LoginListRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class M_UserDataTable : global::System.Data.TypedTableBase<M_UserRow> {
+        public partial class T_LoginListDataTable : global::System.Data.TypedTableBase<T_LoginListRow> {
             
             private global::System.Data.DataColumn columnid;
             
-            private global::System.Data.DataColumn columnpw;
-            
             private global::System.Data.DataColumn columnname;
+            
+            private global::System.Data.DataColumn columnDate;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public M_UserDataTable() {
-                this.TableName = "M_User";
+            public T_LoginListDataTable() {
+                this.TableName = "T_LoginList";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -296,7 +296,7 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal M_UserDataTable(global::System.Data.DataTable table) {
+            internal T_LoginListDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -313,7 +313,7 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected M_UserDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected T_LoginListDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -328,17 +328,17 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn pwColumn {
+            public global::System.Data.DataColumn nameColumn {
                 get {
-                    return this.columnpw;
+                    return this.columnname;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn nameColumn {
+            public global::System.Data.DataColumn DateColumn {
                 get {
-                    return this.columnname;
+                    return this.columnDate;
                 }
             }
             
@@ -353,47 +353,47 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public M_UserRow this[int index] {
+            public T_LoginListRow this[int index] {
                 get {
-                    return ((M_UserRow)(this.Rows[index]));
+                    return ((T_LoginListRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event M_UserRowChangeEventHandler M_UserRowChanging;
+            public event T_LoginListRowChangeEventHandler T_LoginListRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event M_UserRowChangeEventHandler M_UserRowChanged;
+            public event T_LoginListRowChangeEventHandler T_LoginListRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event M_UserRowChangeEventHandler M_UserRowDeleting;
+            public event T_LoginListRowChangeEventHandler T_LoginListRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event M_UserRowChangeEventHandler M_UserRowDeleted;
+            public event T_LoginListRowChangeEventHandler T_LoginListRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddM_UserRow(M_UserRow row) {
+            public void AddT_LoginListRow(T_LoginListRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public M_UserRow AddM_UserRow(string id, string pw, string name) {
-                M_UserRow rowM_UserRow = ((M_UserRow)(this.NewRow()));
+            public T_LoginListRow AddT_LoginListRow(string id, string name, System.DateTime Date) {
+                T_LoginListRow rowT_LoginListRow = ((T_LoginListRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
-                        pw,
-                        name};
-                rowM_UserRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowM_UserRow);
-                return rowM_UserRow;
+                        name,
+                        Date};
+                rowT_LoginListRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowT_LoginListRow);
+                return rowT_LoginListRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                M_UserDataTable cln = ((M_UserDataTable)(base.Clone()));
+                T_LoginListDataTable cln = ((T_LoginListDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -401,15 +401,15 @@ namespace WhereEver.DATASET {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new M_UserDataTable();
+                return new T_LoginListDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnid = base.Columns["id"];
-                this.columnpw = base.Columns["pw"];
                 this.columnname = base.Columns["name"];
+                this.columnDate = base.Columns["Date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -417,39 +417,38 @@ namespace WhereEver.DATASET {
             private void InitClass() {
                 this.columnid = new global::System.Data.DataColumn("id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid);
-                this.columnpw = new global::System.Data.DataColumn("pw", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpw);
                 this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnname);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
                 this.columnid.MaxLength = 10;
-                this.columnpw.MaxLength = 10;
                 this.columnname.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public M_UserRow NewM_UserRow() {
-                return ((M_UserRow)(this.NewRow()));
+            public T_LoginListRow NewT_LoginListRow() {
+                return ((T_LoginListRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new M_UserRow(builder);
+                return new T_LoginListRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(M_UserRow);
+                return typeof(T_LoginListRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.M_UserRowChanged != null)) {
-                    this.M_UserRowChanged(this, new M_UserRowChangeEvent(((M_UserRow)(e.Row)), e.Action));
+                if ((this.T_LoginListRowChanged != null)) {
+                    this.T_LoginListRowChanged(this, new T_LoginListRowChangeEvent(((T_LoginListRow)(e.Row)), e.Action));
                 }
             }
             
@@ -457,8 +456,8 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.M_UserRowChanging != null)) {
-                    this.M_UserRowChanging(this, new M_UserRowChangeEvent(((M_UserRow)(e.Row)), e.Action));
+                if ((this.T_LoginListRowChanging != null)) {
+                    this.T_LoginListRowChanging(this, new T_LoginListRowChangeEvent(((T_LoginListRow)(e.Row)), e.Action));
                 }
             }
             
@@ -466,8 +465,8 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.M_UserRowDeleted != null)) {
-                    this.M_UserRowDeleted(this, new M_UserRowChangeEvent(((M_UserRow)(e.Row)), e.Action));
+                if ((this.T_LoginListRowDeleted != null)) {
+                    this.T_LoginListRowDeleted(this, new T_LoginListRowChangeEvent(((T_LoginListRow)(e.Row)), e.Action));
                 }
             }
             
@@ -475,14 +474,14 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.M_UserRowDeleting != null)) {
-                    this.M_UserRowDeleting(this, new M_UserRowChangeEvent(((M_UserRow)(e.Row)), e.Action));
+                if ((this.T_LoginListRowDeleting != null)) {
+                    this.T_LoginListRowDeleting(this, new T_LoginListRowChangeEvent(((T_LoginListRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveM_UserRow(M_UserRow row) {
+            public void RemoveT_LoginListRow(T_LoginListRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -491,7 +490,7 @@ namespace WhereEver.DATASET {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                _DS_M_User ds = new _DS_M_User();
+                DataSetT_Login ds = new DataSetT_Login();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -509,7 +508,7 @@ namespace WhereEver.DATASET {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "M_UserDataTable";
+                attribute2.FixedValue = "T_LoginListDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -553,15 +552,15 @@ namespace WhereEver.DATASET {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class M_UserRow : global::System.Data.DataRow {
+        public partial class T_LoginListRow : global::System.Data.DataRow {
             
-            private M_UserDataTable tableM_User;
+            private T_LoginListDataTable tableT_LoginList;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal M_UserRow(global::System.Data.DataRowBuilder rb) : 
+            internal T_LoginListRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableM_User = ((M_UserDataTable)(this.Table));
+                this.tableT_LoginList = ((T_LoginListDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -569,30 +568,14 @@ namespace WhereEver.DATASET {
             public string id {
                 get {
                     try {
-                        return ((string)(this[this.tableM_User.idColumn]));
+                        return ((string)(this[this.tableT_LoginList.idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'M_User\' にある列 \'id\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'T_LoginList\' にある列 \'id\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableM_User.idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string pw {
-                get {
-                    try {
-                        return ((string)(this[this.tableM_User.pwColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'M_User\' にある列 \'pw\' の値は DBNull です。", e);
-                    }
-                }
-                set {
-                    this[this.tableM_User.pwColumn] = value;
+                    this[this.tableT_LoginList.idColumn] = value;
                 }
             }
             
@@ -601,51 +584,67 @@ namespace WhereEver.DATASET {
             public string name {
                 get {
                     try {
-                        return ((string)(this[this.tableM_User.nameColumn]));
+                        return ((string)(this[this.tableT_LoginList.nameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'M_User\' にある列 \'name\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'T_LoginList\' にある列 \'name\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableM_User.nameColumn] = value;
+                    this[this.tableT_LoginList.nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime Date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableT_LoginList.DateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'T_LoginList\' にある列 \'Date\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableT_LoginList.DateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsidNull() {
-                return this.IsNull(this.tableM_User.idColumn);
+                return this.IsNull(this.tableT_LoginList.idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetidNull() {
-                this[this.tableM_User.idColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IspwNull() {
-                return this.IsNull(this.tableM_User.pwColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetpwNull() {
-                this[this.tableM_User.pwColumn] = global::System.Convert.DBNull;
+                this[this.tableT_LoginList.idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsnameNull() {
-                return this.IsNull(this.tableM_User.nameColumn);
+                return this.IsNull(this.tableT_LoginList.nameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetnameNull() {
-                this[this.tableM_User.nameColumn] = global::System.Convert.DBNull;
+                this[this.tableT_LoginList.nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDateNull() {
+                return this.IsNull(this.tableT_LoginList.DateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDateNull() {
+                this[this.tableT_LoginList.DateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -653,22 +652,22 @@ namespace WhereEver.DATASET {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class M_UserRowChangeEvent : global::System.EventArgs {
+        public class T_LoginListRowChangeEvent : global::System.EventArgs {
             
-            private M_UserRow eventRow;
+            private T_LoginListRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public M_UserRowChangeEvent(M_UserRow row, global::System.Data.DataRowAction action) {
+            public T_LoginListRowChangeEvent(T_LoginListRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public M_UserRow Row {
+            public T_LoginListRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -684,7 +683,7 @@ namespace WhereEver.DATASET {
         }
     }
 }
-namespace WhereEver.DATASET._DS_M_UserTableAdapters {
+namespace WhereEver.DATASET.DataSetT_LoginTableAdapters {
     
     
     /// <summary>
@@ -696,7 +695,7 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class M_UserTableAdapter : global::System.ComponentModel.Component {
+    public partial class T_LoginListTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -710,7 +709,7 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public M_UserTableAdapter() {
+        public T_LoginListTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -807,18 +806,18 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "M_User";
+            tableMapping.DataSetTable = "T_LoginList";
             tableMapping.ColumnMappings.Add("id", "id");
-            tableMapping.ColumnMappings.Add("pw", "pw");
             tableMapping.ColumnMappings.Add("name", "name");
+            tableMapping.ColumnMappings.Add("Date", "Date");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [M_User] ([id], [pw], [name]) VALUES (@id, @pw, @name)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [T_LoginList] ([id], [name], [Date]) VALUES (@id, @name, @Date)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pw", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pw", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -834,7 +833,8 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT                      M_User.*\r\nFROM                         M_User";
+            this._commandCollection[0].CommandText = "SELECT                      T_LoginList.*\r\nFROM                         T_LoginLi" +
+                "st";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -842,7 +842,7 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(_DS_M_User.M_UserDataTable dataTable) {
+        public virtual int Fill(DataSetT_Login.T_LoginListDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -855,9 +855,9 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual _DS_M_User.M_UserDataTable GetData() {
+        public virtual DataSetT_Login.T_LoginListDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            _DS_M_User.M_UserDataTable dataTable = new _DS_M_User.M_UserDataTable();
+            DataSetT_Login.T_LoginListDataTable dataTable = new DataSetT_Login.T_LoginListDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -865,15 +865,15 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(_DS_M_User.M_UserDataTable dataTable) {
+        public virtual int Update(DataSetT_Login.T_LoginListDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(_DS_M_User dataSet) {
-            return this.Adapter.Update(dataSet, "M_User");
+        public virtual int Update(DataSetT_Login dataSet) {
+            return this.Adapter.Update(dataSet, "T_LoginList");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -890,45 +890,6 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
         }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string id, string pw, string name) {
-            if ((id == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(id));
-            }
-            if ((pw == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(pw));
-            }
-            if ((name == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(name));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
     }
     
     /// <summary>
@@ -943,7 +904,7 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private M_UserTableAdapter _m_UserTableAdapter;
+        private T_LoginListTableAdapter _t_LoginListTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -965,12 +926,12 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public M_UserTableAdapter M_UserTableAdapter {
+        public T_LoginListTableAdapter T_LoginListTableAdapter {
             get {
-                return this._m_UserTableAdapter;
+                return this._t_LoginListTableAdapter;
             }
             set {
-                this._m_UserTableAdapter = value;
+                this._t_LoginListTableAdapter = value;
             }
         }
         
@@ -993,9 +954,9 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._m_UserTableAdapter != null) 
-                            && (this._m_UserTableAdapter.Connection != null))) {
-                    return this._m_UserTableAdapter.Connection;
+                if (((this._t_LoginListTableAdapter != null) 
+                            && (this._t_LoginListTableAdapter.Connection != null))) {
+                    return this._t_LoginListTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1010,7 +971,7 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._m_UserTableAdapter != null)) {
+                if ((this._t_LoginListTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1022,14 +983,14 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(_DS_M_User dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DataSetT_Login dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._m_UserTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.M_User.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._t_LoginListTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.T_LoginList.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._m_UserTableAdapter.Update(updatedRows));
+                    result = (result + this._t_LoginListTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1041,13 +1002,13 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(_DS_M_User dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DataSetT_Login dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._m_UserTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.M_User.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._t_LoginListTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.T_LoginList.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._m_UserTableAdapter.Update(addedRows));
+                    result = (result + this._t_LoginListTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1059,13 +1020,13 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(_DS_M_User dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DataSetT_Login dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._m_UserTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.M_User.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._t_LoginListTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.T_LoginList.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._m_UserTableAdapter.Update(deletedRows));
+                    result = (result + this._t_LoginListTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1101,15 +1062,15 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(_DS_M_User dataSet) {
+        public virtual int UpdateAll(DataSetT_Login dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._m_UserTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._m_UserTableAdapter.Connection) == false))) {
+            if (((this._t_LoginListTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._t_LoginListTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。");
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
@@ -1143,13 +1104,13 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._m_UserTableAdapter != null)) {
-                    revertConnections.Add(this._m_UserTableAdapter, this._m_UserTableAdapter.Connection);
-                    this._m_UserTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._m_UserTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._m_UserTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._m_UserTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._m_UserTableAdapter.Adapter);
+                if ((this._t_LoginListTableAdapter != null)) {
+                    revertConnections.Add(this._t_LoginListTableAdapter, this._t_LoginListTableAdapter.Connection);
+                    this._t_LoginListTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._t_LoginListTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._t_LoginListTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._t_LoginListTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._t_LoginListTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1210,9 +1171,9 @@ namespace WhereEver.DATASET._DS_M_UserTableAdapters {
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._m_UserTableAdapter != null)) {
-                    this._m_UserTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._m_UserTableAdapter]));
-                    this._m_UserTableAdapter.Transaction = null;
+                if ((this._t_LoginListTableAdapter != null)) {
+                    this._t_LoginListTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._t_LoginListTableAdapter]));
+                    this._t_LoginListTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

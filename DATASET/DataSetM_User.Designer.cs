@@ -20,17 +20,17 @@ namespace WhereEver.DATASET {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("_DS_T_Schedule")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DataSetM_User")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class _DS_T_Schedule : global::System.Data.DataSet {
+    public partial class DataSetM_User : global::System.Data.DataSet {
         
-        private T_ScheduleDataTable tableT_Schedule;
+        private M_UserDataTable tableM_User;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public _DS_T_Schedule() {
+        public DataSetM_User() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace WhereEver.DATASET {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected _DS_T_Schedule(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DataSetM_User(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace WhereEver.DATASET {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["T_Schedule"] != null)) {
-                    base.Tables.Add(new T_ScheduleDataTable(ds.Tables["T_Schedule"]));
+                if ((ds.Tables["M_User"] != null)) {
+                    base.Tables.Add(new M_UserDataTable(ds.Tables["M_User"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace WhereEver.DATASET {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public T_ScheduleDataTable T_Schedule {
+        public M_UserDataTable M_User {
             get {
-                return this.tableT_Schedule;
+                return this.tableM_User;
             }
         }
         
@@ -127,7 +127,7 @@ namespace WhereEver.DATASET {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            _DS_T_Schedule cln = ((_DS_T_Schedule)(base.Clone()));
+            DataSetM_User cln = ((DataSetM_User)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace WhereEver.DATASET {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["T_Schedule"] != null)) {
-                    base.Tables.Add(new T_ScheduleDataTable(ds.Tables["T_Schedule"]));
+                if ((ds.Tables["M_User"] != null)) {
+                    base.Tables.Add(new M_UserDataTable(ds.Tables["M_User"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace WhereEver.DATASET {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableT_Schedule = ((T_ScheduleDataTable)(base.Tables["T_Schedule"]));
+            this.tableM_User = ((M_UserDataTable)(base.Tables["M_User"]));
             if ((initTable == true)) {
-                if ((this.tableT_Schedule != null)) {
-                    this.tableT_Schedule.InitVars();
+                if ((this.tableM_User != null)) {
+                    this.tableM_User.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace WhereEver.DATASET {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DS-T_Schedule";
+            this.DataSetName = "DataSetM_User";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DS-T_Schedule.xsd";
+            this.Namespace = "http://tempuri.org/DataSetM_User.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableT_Schedule = new T_ScheduleDataTable();
-            base.Tables.Add(this.tableT_Schedule);
+            this.tableM_User = new M_UserDataTable();
+            base.Tables.Add(this.tableM_User);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeT_Schedule() {
+        private bool ShouldSerializeM_User() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace WhereEver.DATASET {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            _DS_T_Schedule ds = new _DS_T_Schedule();
+            DataSetM_User ds = new DataSetM_User();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,31 +270,25 @@ namespace WhereEver.DATASET {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void T_ScheduleRowChangeEventHandler(object sender, T_ScheduleRowChangeEvent e);
+        public delegate void M_UserRowChangeEventHandler(object sender, M_UserRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class T_ScheduleDataTable : global::System.Data.TypedTableBase<T_ScheduleRow> {
+        public partial class M_UserDataTable : global::System.Data.TypedTableBase<M_UserRow> {
             
-            private global::System.Data.DataColumn columndate;
+            private global::System.Data.DataColumn columnid;
             
-            private global::System.Data.DataColumn columntime;
-            
-            private global::System.Data.DataColumn columntitle;
+            private global::System.Data.DataColumn columnpw;
             
             private global::System.Data.DataColumn columnname;
             
-            private global::System.Data.DataColumn columnKanriFlag;
-            
-            private global::System.Data.DataColumn columnSdlNo;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_ScheduleDataTable() {
-                this.TableName = "T_Schedule";
+            public M_UserDataTable() {
+                this.TableName = "M_User";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -302,7 +296,7 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal T_ScheduleDataTable(global::System.Data.DataTable table) {
+            internal M_UserDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -319,32 +313,24 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected T_ScheduleDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected M_UserDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn dateColumn {
+            public global::System.Data.DataColumn idColumn {
                 get {
-                    return this.columndate;
+                    return this.columnid;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn timeColumn {
+            public global::System.Data.DataColumn pwColumn {
                 get {
-                    return this.columntime;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn titleColumn {
-                get {
-                    return this.columntitle;
+                    return this.columnpw;
                 }
             }
             
@@ -353,22 +339,6 @@ namespace WhereEver.DATASET {
             public global::System.Data.DataColumn nameColumn {
                 get {
                     return this.columnname;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn KanriFlagColumn {
-                get {
-                    return this.columnKanriFlag;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SdlNoColumn {
-                get {
-                    return this.columnSdlNo;
                 }
             }
             
@@ -383,57 +353,47 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_ScheduleRow this[int index] {
+            public M_UserRow this[int index] {
                 get {
-                    return ((T_ScheduleRow)(this.Rows[index]));
+                    return ((M_UserRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event T_ScheduleRowChangeEventHandler T_ScheduleRowChanging;
+            public event M_UserRowChangeEventHandler M_UserRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event T_ScheduleRowChangeEventHandler T_ScheduleRowChanged;
+            public event M_UserRowChangeEventHandler M_UserRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event T_ScheduleRowChangeEventHandler T_ScheduleRowDeleting;
+            public event M_UserRowChangeEventHandler M_UserRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event T_ScheduleRowChangeEventHandler T_ScheduleRowDeleted;
+            public event M_UserRowChangeEventHandler M_UserRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddT_ScheduleRow(T_ScheduleRow row) {
+            public void AddM_UserRow(M_UserRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_ScheduleRow AddT_ScheduleRow(System.DateTime date, string time, string title, string name, string KanriFlag, string SdlNo) {
-                T_ScheduleRow rowT_ScheduleRow = ((T_ScheduleRow)(this.NewRow()));
+            public M_UserRow AddM_UserRow(string id, string pw, string name) {
+                M_UserRow rowM_UserRow = ((M_UserRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        date,
-                        time,
-                        title,
-                        name,
-                        KanriFlag,
-                        SdlNo};
-                rowT_ScheduleRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowT_ScheduleRow);
-                return rowT_ScheduleRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_ScheduleRow FindBySdlNo(string SdlNo) {
-                return ((T_ScheduleRow)(this.Rows.Find(new object[] {
-                            SdlNo})));
+                        id,
+                        pw,
+                        name};
+                rowM_UserRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowM_UserRow);
+                return rowM_UserRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                T_ScheduleDataTable cln = ((T_ScheduleDataTable)(base.Clone()));
+                M_UserDataTable cln = ((M_UserDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -441,70 +401,55 @@ namespace WhereEver.DATASET {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new T_ScheduleDataTable();
+                return new M_UserDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columndate = base.Columns["date"];
-                this.columntime = base.Columns["time"];
-                this.columntitle = base.Columns["title"];
+                this.columnid = base.Columns["id"];
+                this.columnpw = base.Columns["pw"];
                 this.columnname = base.Columns["name"];
-                this.columnKanriFlag = base.Columns["KanriFlag"];
-                this.columnSdlNo = base.Columns["SdlNo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columndate = new global::System.Data.DataColumn("date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndate);
-                this.columntime = new global::System.Data.DataColumn("time", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntime);
-                this.columntitle = new global::System.Data.DataColumn("title", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntitle);
+                this.columnid = new global::System.Data.DataColumn("id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
+                this.columnpw = new global::System.Data.DataColumn("pw", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpw);
                 this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnname);
-                this.columnKanriFlag = new global::System.Data.DataColumn("KanriFlag", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKanriFlag);
-                this.columnSdlNo = new global::System.Data.DataColumn("SdlNo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSdlNo);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnSdlNo}, true));
-                this.columntime.MaxLength = 10;
-                this.columntitle.MaxLength = 10;
+                this.columnid.MaxLength = 10;
+                this.columnpw.MaxLength = 10;
                 this.columnname.MaxLength = 10;
-                this.columnKanriFlag.MaxLength = 10;
-                this.columnSdlNo.AllowDBNull = false;
-                this.columnSdlNo.Unique = true;
-                this.columnSdlNo.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_ScheduleRow NewT_ScheduleRow() {
-                return ((T_ScheduleRow)(this.NewRow()));
+            public M_UserRow NewM_UserRow() {
+                return ((M_UserRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new T_ScheduleRow(builder);
+                return new M_UserRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(T_ScheduleRow);
+                return typeof(M_UserRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.T_ScheduleRowChanged != null)) {
-                    this.T_ScheduleRowChanged(this, new T_ScheduleRowChangeEvent(((T_ScheduleRow)(e.Row)), e.Action));
+                if ((this.M_UserRowChanged != null)) {
+                    this.M_UserRowChanged(this, new M_UserRowChangeEvent(((M_UserRow)(e.Row)), e.Action));
                 }
             }
             
@@ -512,8 +457,8 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.T_ScheduleRowChanging != null)) {
-                    this.T_ScheduleRowChanging(this, new T_ScheduleRowChangeEvent(((T_ScheduleRow)(e.Row)), e.Action));
+                if ((this.M_UserRowChanging != null)) {
+                    this.M_UserRowChanging(this, new M_UserRowChangeEvent(((M_UserRow)(e.Row)), e.Action));
                 }
             }
             
@@ -521,8 +466,8 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.T_ScheduleRowDeleted != null)) {
-                    this.T_ScheduleRowDeleted(this, new T_ScheduleRowChangeEvent(((T_ScheduleRow)(e.Row)), e.Action));
+                if ((this.M_UserRowDeleted != null)) {
+                    this.M_UserRowDeleted(this, new M_UserRowChangeEvent(((M_UserRow)(e.Row)), e.Action));
                 }
             }
             
@@ -530,14 +475,14 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.T_ScheduleRowDeleting != null)) {
-                    this.T_ScheduleRowDeleting(this, new T_ScheduleRowChangeEvent(((T_ScheduleRow)(e.Row)), e.Action));
+                if ((this.M_UserRowDeleting != null)) {
+                    this.M_UserRowDeleting(this, new M_UserRowChangeEvent(((M_UserRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveT_ScheduleRow(T_ScheduleRow row) {
+            public void RemoveM_UserRow(M_UserRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -546,7 +491,7 @@ namespace WhereEver.DATASET {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                _DS_T_Schedule ds = new _DS_T_Schedule();
+                DataSetM_User ds = new DataSetM_User();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -564,7 +509,7 @@ namespace WhereEver.DATASET {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "T_ScheduleDataTable";
+                attribute2.FixedValue = "M_UserDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -608,62 +553,46 @@ namespace WhereEver.DATASET {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class T_ScheduleRow : global::System.Data.DataRow {
+        public partial class M_UserRow : global::System.Data.DataRow {
             
-            private T_ScheduleDataTable tableT_Schedule;
+            private M_UserDataTable tableM_User;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal T_ScheduleRow(global::System.Data.DataRowBuilder rb) : 
+            internal M_UserRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableT_Schedule = ((T_ScheduleDataTable)(this.Table));
+                this.tableM_User = ((M_UserDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime date {
+            public string id {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableT_Schedule.dateColumn]));
+                        return ((string)(this[this.tableM_User.idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'T_Schedule\' にある列 \'date\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'M_User\' にある列 \'id\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableT_Schedule.dateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string time {
-                get {
-                    try {
-                        return ((string)(this[this.tableT_Schedule.timeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'T_Schedule\' にある列 \'time\' の値は DBNull です。", e);
-                    }
-                }
-                set {
-                    this[this.tableT_Schedule.timeColumn] = value;
+                    this[this.tableM_User.idColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string title {
+            public string pw {
                 get {
                     try {
-                        return ((string)(this[this.tableT_Schedule.titleColumn]));
+                        return ((string)(this[this.tableM_User.pwColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'T_Schedule\' にある列 \'title\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'M_User\' にある列 \'pw\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableT_Schedule.titleColumn] = value;
+                    this[this.tableM_User.pwColumn] = value;
                 }
             }
             
@@ -672,102 +601,51 @@ namespace WhereEver.DATASET {
             public string name {
                 get {
                     try {
-                        return ((string)(this[this.tableT_Schedule.nameColumn]));
+                        return ((string)(this[this.tableM_User.nameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'T_Schedule\' にある列 \'name\' の値は DBNull です。", e);
+                        throw new global::System.Data.StrongTypingException("テーブル \'M_User\' にある列 \'name\' の値は DBNull です。", e);
                     }
                 }
                 set {
-                    this[this.tableT_Schedule.nameColumn] = value;
+                    this[this.tableM_User.nameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string KanriFlag {
-                get {
-                    try {
-                        return ((string)(this[this.tableT_Schedule.KanriFlagColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'T_Schedule\' にある列 \'KanriFlag\' の値は DBNull です。", e);
-                    }
-                }
-                set {
-                    this[this.tableT_Schedule.KanriFlagColumn] = value;
-                }
+            public bool IsidNull() {
+                return this.IsNull(this.tableM_User.idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string SdlNo {
-                get {
-                    return ((string)(this[this.tableT_Schedule.SdlNoColumn]));
-                }
-                set {
-                    this[this.tableT_Schedule.SdlNoColumn] = value;
-                }
+            public void SetidNull() {
+                this[this.tableM_User.idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsdateNull() {
-                return this.IsNull(this.tableT_Schedule.dateColumn);
+            public bool IspwNull() {
+                return this.IsNull(this.tableM_User.pwColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetdateNull() {
-                this[this.tableT_Schedule.dateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IstimeNull() {
-                return this.IsNull(this.tableT_Schedule.timeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SettimeNull() {
-                this[this.tableT_Schedule.timeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IstitleNull() {
-                return this.IsNull(this.tableT_Schedule.titleColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SettitleNull() {
-                this[this.tableT_Schedule.titleColumn] = global::System.Convert.DBNull;
+            public void SetpwNull() {
+                this[this.tableM_User.pwColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsnameNull() {
-                return this.IsNull(this.tableT_Schedule.nameColumn);
+                return this.IsNull(this.tableM_User.nameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetnameNull() {
-                this[this.tableT_Schedule.nameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsKanriFlagNull() {
-                return this.IsNull(this.tableT_Schedule.KanriFlagColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetKanriFlagNull() {
-                this[this.tableT_Schedule.KanriFlagColumn] = global::System.Convert.DBNull;
+                this[this.tableM_User.nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -775,22 +653,22 @@ namespace WhereEver.DATASET {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class T_ScheduleRowChangeEvent : global::System.EventArgs {
+        public class M_UserRowChangeEvent : global::System.EventArgs {
             
-            private T_ScheduleRow eventRow;
+            private M_UserRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_ScheduleRowChangeEvent(T_ScheduleRow row, global::System.Data.DataRowAction action) {
+            public M_UserRowChangeEvent(M_UserRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_ScheduleRow Row {
+            public M_UserRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -806,7 +684,7 @@ namespace WhereEver.DATASET {
         }
     }
 }
-namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
+namespace WhereEver.DATASET.DataSetM_UserTableAdapters {
     
     
     /// <summary>
@@ -818,7 +696,7 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class T_ScheduleTableAdapter : global::System.ComponentModel.Component {
+    public partial class M_UserTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -832,7 +710,7 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public T_ScheduleTableAdapter() {
+        public M_UserTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -929,43 +807,18 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "T_Schedule";
-            tableMapping.ColumnMappings.Add("date", "date");
-            tableMapping.ColumnMappings.Add("time", "time");
-            tableMapping.ColumnMappings.Add("title", "title");
+            tableMapping.DataSetTable = "M_User";
+            tableMapping.ColumnMappings.Add("id", "id");
+            tableMapping.ColumnMappings.Add("pw", "pw");
             tableMapping.ColumnMappings.Add("name", "name");
-            tableMapping.ColumnMappings.Add("KanriFlag", "KanriFlag");
-            tableMapping.ColumnMappings.Add("SdlNo", "SdlNo");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [T_Schedule] WHERE (([SdlNo] = @Original_SdlNo))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SdlNo", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SdlNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [T_Schedule] ([date], [time], [title], [name], [KanriFlag], [SdlNo]) " +
-                "VALUES (@date, @time, @title, @name, @KanriFlag, @SdlNo)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [M_User] ([id], [pw], [name]) VALUES (@id, @pw, @name)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@time", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "time", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@title", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pw", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pw", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KanriFlag", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KanriFlag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SdlNo", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SdlNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [T_Schedule] SET [date] = @date, [time] = @time, [title] = @title, [name] " +
-                "= @name, [KanriFlag] = @KanriFlag, [SdlNo] = @SdlNo WHERE (([SdlNo] = @Original_" +
-                "SdlNo))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@time", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "time", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@title", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KanriFlag", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KanriFlag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SdlNo", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SdlNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SdlNo", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SdlNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -981,8 +834,7 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT                      T_Schedule.*\r\nFROM                         T_Schedule" +
-                "";
+            this._commandCollection[0].CommandText = "SELECT                      M_User.*\r\nFROM                         M_User";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -990,7 +842,7 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(_DS_T_Schedule.T_ScheduleDataTable dataTable) {
+        public virtual int Fill(DataSetM_User.M_UserDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1003,9 +855,9 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual _DS_T_Schedule.T_ScheduleDataTable GetData() {
+        public virtual DataSetM_User.M_UserDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            _DS_T_Schedule.T_ScheduleDataTable dataTable = new _DS_T_Schedule.T_ScheduleDataTable();
+            DataSetM_User.M_UserDataTable dataTable = new DataSetM_User.M_UserDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1013,15 +865,15 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(_DS_T_Schedule.T_ScheduleDataTable dataTable) {
+        public virtual int Update(DataSetM_User.M_UserDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(_DS_T_Schedule dataSet) {
-            return this.Adapter.Update(dataSet, "T_Schedule");
+        public virtual int Update(DataSetM_User dataSet) {
+            return this.Adapter.Update(dataSet, "M_User");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1042,70 +894,25 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_SdlNo) {
-            if ((Original_SdlNo == null)) {
-                throw new global::System.ArgumentNullException("Original_SdlNo");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_SdlNo));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<global::System.DateTime> date, string time, string title, string name, string KanriFlag, string SdlNo) {
-            if ((date.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(date.Value));
-            }
-            else {
+        public virtual int Insert(string id, string pw, string name) {
+            if ((id == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((time == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(id));
+            }
+            if ((pw == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(time));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(pw));
             }
-            if ((title == null)) {
+            if ((name == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(title));
-            }
-            if ((name == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(name));
-            }
-            if ((KanriFlag == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(KanriFlag));
-            }
-            if ((SdlNo == null)) {
-                throw new global::System.ArgumentNullException("SdlNo");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(SdlNo));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(name));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1122,77 +929,6 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
                 }
             }
         }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<global::System.DateTime> date, string time, string title, string name, string KanriFlag, string SdlNo, string Original_SdlNo) {
-            if ((date.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(date.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((time == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(time));
-            }
-            if ((title == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(title));
-            }
-            if ((name == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(name));
-            }
-            if ((KanriFlag == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(KanriFlag));
-            }
-            if ((SdlNo == null)) {
-                throw new global::System.ArgumentNullException("SdlNo");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(SdlNo));
-            }
-            if ((Original_SdlNo == null)) {
-                throw new global::System.ArgumentNullException("Original_SdlNo");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_SdlNo));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<global::System.DateTime> date, string time, string title, string name, string KanriFlag, string Original_SdlNo) {
-            return this.Update(date, time, title, name, KanriFlag, Original_SdlNo, Original_SdlNo);
-        }
     }
     
     /// <summary>
@@ -1207,7 +943,7 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private T_ScheduleTableAdapter _t_ScheduleTableAdapter;
+        private M_UserTableAdapter _m_UserTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1229,12 +965,12 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public T_ScheduleTableAdapter T_ScheduleTableAdapter {
+        public M_UserTableAdapter M_UserTableAdapter {
             get {
-                return this._t_ScheduleTableAdapter;
+                return this._m_UserTableAdapter;
             }
             set {
-                this._t_ScheduleTableAdapter = value;
+                this._m_UserTableAdapter = value;
             }
         }
         
@@ -1257,9 +993,9 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._t_ScheduleTableAdapter != null) 
-                            && (this._t_ScheduleTableAdapter.Connection != null))) {
-                    return this._t_ScheduleTableAdapter.Connection;
+                if (((this._m_UserTableAdapter != null) 
+                            && (this._m_UserTableAdapter.Connection != null))) {
+                    return this._m_UserTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1274,7 +1010,7 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._t_ScheduleTableAdapter != null)) {
+                if ((this._m_UserTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1286,14 +1022,14 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(_DS_T_Schedule dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DataSetM_User dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._t_ScheduleTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.T_Schedule.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._m_UserTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.M_User.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._t_ScheduleTableAdapter.Update(updatedRows));
+                    result = (result + this._m_UserTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1305,13 +1041,13 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(_DS_T_Schedule dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DataSetM_User dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._t_ScheduleTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.T_Schedule.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._m_UserTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.M_User.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._t_ScheduleTableAdapter.Update(addedRows));
+                    result = (result + this._m_UserTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1323,13 +1059,13 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(_DS_T_Schedule dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DataSetM_User dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._t_ScheduleTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.T_Schedule.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._m_UserTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.M_User.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._t_ScheduleTableAdapter.Update(deletedRows));
+                    result = (result + this._m_UserTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1365,15 +1101,15 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(_DS_T_Schedule dataSet) {
+        public virtual int UpdateAll(DataSetM_User dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._t_ScheduleTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._t_ScheduleTableAdapter.Connection) == false))) {
+            if (((this._m_UserTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._m_UserTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。");
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
@@ -1407,13 +1143,13 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._t_ScheduleTableAdapter != null)) {
-                    revertConnections.Add(this._t_ScheduleTableAdapter, this._t_ScheduleTableAdapter.Connection);
-                    this._t_ScheduleTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._t_ScheduleTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._t_ScheduleTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._t_ScheduleTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._t_ScheduleTableAdapter.Adapter);
+                if ((this._m_UserTableAdapter != null)) {
+                    revertConnections.Add(this._m_UserTableAdapter, this._m_UserTableAdapter.Connection);
+                    this._m_UserTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._m_UserTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._m_UserTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._m_UserTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._m_UserTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1474,9 +1210,9 @@ namespace WhereEver.DATASET._DS_T_ScheduleTableAdapters {
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._t_ScheduleTableAdapter != null)) {
-                    this._t_ScheduleTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._t_ScheduleTableAdapter]));
-                    this._t_ScheduleTableAdapter.Transaction = null;
+                if ((this._m_UserTableAdapter != null)) {
+                    this._m_UserTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._m_UserTableAdapter]));
+                    this._m_UserTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
