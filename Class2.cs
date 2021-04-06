@@ -100,40 +100,8 @@ namespace WhereEver
 
         }
 
-        public static void InsertLoginList(DATASET.DataSet.T_LoginListDataTable dt, SqlConnection sql)//ログインするたびにnameとDateをLoginListにInsert
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sql);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_LoginList";
-            da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
-
-            sql.Open();
-            SqlTransaction sqltra = sql.BeginTransaction();
-
-            da.SelectCommand.Transaction = da.InsertCommand.Transaction = sqltra;
-
-            da.Update(dt);
-            sqltra.Commit();
-            sql.Close();
-
-        }
-        public static void InsertLogoutList(DATASET.DataSet.T_LoginListDataTable dt, SqlConnection sql)//ログアウトするたびにnameとDateをLogoutListにInsert
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sql);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_LogoutList";
-            da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
-
-            sql.Open();
-            SqlTransaction sqltra = sql.BeginTransaction();
-
-            da.SelectCommand.Transaction = da.InsertCommand.Transaction = sqltra;
-
-            da.Update(dt);
-            sqltra.Commit();
-            sql.Close();
-
-        }
+        
+        
 
 
         internal static DATASET.DataSet.T_LoginListRow UserLoginMAXTime(SqlConnection sqlConnection,string name)//最新LoginDateの取得

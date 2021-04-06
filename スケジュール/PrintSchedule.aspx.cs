@@ -221,7 +221,6 @@ namespace WhereEver
                     break;
 
                 case DayOfWeek.Tuesday:
-                    int tue = 2;
                     DateTime monday3 = today.AddDays(-8);
                     for (int n = 0; n <= 13; n++)
                     {
@@ -312,7 +311,6 @@ namespace WhereEver
                     break;
 
                 case DayOfWeek.Wednesday:
-                    int wed = 3;
                     DateTime monday4 = today.AddDays(-9);
                     for (int n = 0; n <= 13; n++)
                     {
@@ -403,7 +401,6 @@ namespace WhereEver
                     break;
 
                 case DayOfWeek.Thursday:
-                    int thu = 4;
                     DateTime monday5 = today.AddDays(-10);
                     for (int n = 0; n <= 13; n++)
                     {
@@ -494,7 +491,6 @@ namespace WhereEver
                     break;
 
                 case DayOfWeek.Friday:
-                    int fri = 5;
                     DateTime monday6 = today.AddDays(-11);
 
                     for (int n = 0; n <= 13; n++)
@@ -587,7 +583,6 @@ namespace WhereEver
                     break;
 
                 case DayOfWeek.Saturday:
-                    int sat = 6;
                     DateTime monday7 = today.AddDays(-12);
                     for (int n = 0; n <= 13; n++)
                     {

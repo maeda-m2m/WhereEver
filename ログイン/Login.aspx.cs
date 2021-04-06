@@ -42,7 +42,7 @@ namespace WhereEver
             dl.name = dr.name;
             dl.Date = DateTime.Now;
             dd.AddT_LoginListRow(dl);
-            Class2.InsertLoginList(dd, Global.GetConnection());
+            Class.Login.InsertLoginList(dd, Global.GetConnection());
                 
             this.Response.Redirect("LoginList.aspx");
         }

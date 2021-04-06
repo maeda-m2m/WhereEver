@@ -8,7 +8,7 @@ namespace WhereEver.Class
 {
     public class Login
     {
-        internal static DATASET.DataSet.M_UserRow GetM_UserRow(string id, string pw, SqlConnection sqlConnection)
+        public static DATASET.DataSet.M_UserRow GetM_UserRow(string id, string pw, SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
@@ -51,7 +51,23 @@ namespace WhereEver.Class
 
 
 
+        public static void InsertLoginList(DATASET.DataSet.T_LoginListDataTable dt, SqlConnection sql)//ログインするたびにnameとDateをLoginListにInsert
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sql);
+            da.SelectCommand.CommandText =
+                "SELECT * FROM T_LoginList";
+            da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
 
+            sql.Open();
+            SqlTransaction sqltra = sql.BeginTransaction();
+
+            da.SelectCommand.Transaction = da.InsertCommand.Transaction = sqltra;
+
+            da.Update(dt);
+            sqltra.Commit();
+            sql.Close();
+
+        }
 
         public static DATASET.DataSet.T_LoginListDataTable GetLoginListDataTable(SqlConnection sqlConnection)
         {
@@ -63,7 +79,7 @@ namespace WhereEver.Class
             return dt;
         }
 
-        internal static DATASET.DataSet.T_LoginListRow GetT_LoginListRow(SqlConnection sqlConnection)
+        public static DATASET.DataSet.T_LoginListRow GetT_LoginListRow(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
@@ -83,30 +99,15 @@ namespace WhereEver.Class
                 "Select * From M_User";
             da.UpdateCommand = (new SqlCommandBuilder(da)).GetUpdateCommand();
 
-            SqlTransaction sql = null;
+            sqlConnection.Open();
+            SqlTransaction sql = sqlConnection.BeginTransaction();
 
-            try
-            {
-                sqlConnection.Open();
-                sql = sqlConnection.BeginTransaction();
+            da.SelectCommand.Transaction = da.UpdateCommand.Transaction = sql;
 
-                da.SelectCommand.Transaction = da.UpdateCommand.Transaction = sql;
+            da.Update(dt);
 
-                da.Update(dt);
-
-                sql.Commit();
-            }
-            catch (Exception ex)
-            {
-                if (sql != null)
-                    sql.Rollback();
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
+            sql.Commit();
+            sqlConnection.Close();
         }
-
-
     }
 }
