@@ -36,7 +36,7 @@ namespace WhereEver
             return df;
         }
 
-        public static void InsertList(DataSet1.T_ChatDataTable dt, SqlConnection sql)
+        public static void InsertList(DATASET.DataSet.T_ChatDataTable dt, SqlConnection sql)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
             da.SelectCommand.CommandText =
@@ -76,6 +76,17 @@ namespace WhereEver
             da.Fill(dt);
             return dt;
         }
+
+        internal static DATASET.DataSet.T_ChatRow MaxNoRow(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "select MAX(No) as No from T_Chat";
+            DATASET.DataSet.T_ChatDataTable dt = new DATASET.DataSet.T_ChatDataTable();
+            da.Fill(dt);
+            return dt[0];
+        }
+
         public static DATASET.DataSet.T_LogoutListDataTable GetLogoutListDataTable(SqlConnection sqlConnection)//LogoutListの重複してある名前をまとめてreturn name
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);

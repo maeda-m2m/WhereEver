@@ -10,6 +10,8 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Drawing.Printing;
+using WhereEver.DATASET;
+using WhereEver.Class;
 
 namespace WhereEver
 {
@@ -24,10 +26,11 @@ namespace WhereEver
 
         private void Create()
         {
-        //    DATASET.DataSet.T_ChatDataTable dt = Class2.GetChatDataTable(Global.GetConnection());
-        //    ChatArea.DataSource = dt;
-        //    ChatArea.DataBind();
+            DATASET.DataSet.T_ChatDataTable dt = WhereEver.Class.Chat.GetChatDataTable(Global.GetConnection());
+            ChatArea.DataSource = dt;
+            ChatArea.DataBind();
         }
+
 
         protected void Chat_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
@@ -56,23 +59,25 @@ namespace WhereEver
 
         protected void Send_Click(object sender, EventArgs e)
         {
-        //    DATASET.DataSet.T_ChatDataTable dt = Class2.GetChatDataTable(Global.GetConnection());
-        //    DATASET.DataSet.T_ChatRow dr = dt.NewT_ChatRow();
+            DATASET.DataSet.T_ChatDataTable dt = new DATASET.DataSet.T_ChatDataTable();
+            DATASET.DataSet.T_ChatRow dr = dt.NewT_ChatRow();
 
-        //    dr.Date = DateTime.Now;
-        //    if(Label1.Text == "")
-        //    {
-        //        string.Format("if (!confirm('{0}')) return false;", "本文が入力されていません");
-        //    }
-        //    dr.Name = Label1.Text;
-        //    dr.Naiyou = TextBox1.Text;
+            dr.Date = DateTime.Now;
+            if (TextBox1.Text == "")
+            {
+                string.Format("if (!confirm('{0}')) return false;", "本文が入力されていません");
+            }
+            dr.Name = Label1.Text;
+            dr.Naiyou = TextBox1.Text;
 
-        //    DATASET.DataSet.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());
-        //    int sl = dl.No;
-        //    dr.No = sl + 1;
-        //    dt.AddT_ChatRow(dr);
-        //    Class2.InsertList(dt, Global.GetConnection());
-        //    Create();
+            DATASET.DataSet.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());
+            int sl = dl.No;
+            dr.No = sl + 1;
+            dt.AddT_ChatRow(dr);
+            Class2.InsertList(dt, Global.GetConnection());
+            Create();
+
+         
         }
     }
 }
