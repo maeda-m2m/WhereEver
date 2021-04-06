@@ -49,7 +49,7 @@ namespace WhereEver
                 return u;
             }
 
-            public DataSet2.M_UserRow M_User
+            public DS-M_User.M_UserRow M_User
             {
                 get { return this._drUser; }
                 set { this._drUser = value; }
