@@ -5,18 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="Pichiran.css" rel="stylesheet" type="text/css" />
+
     <title></title>
-    
-
-    
-    <style type="text/css">
-        .auto-style1 {
-            width: 34px;
-        }
-    </style>
-    
-
-    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,7 +22,7 @@
                                         プロジェクト一覧
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <table class="auto-style1">
+                                        <table class="table">
                                             <tr>
                                                 <td class="auto-style1">
                                                     <asp:LinkButton ID="lbPName" runat="server" >プロジェクト名</asp:LinkButton>
@@ -40,7 +31,7 @@
                                                     <asp:Label ID="lblCustomer" runat="server">顧客名</asp:Label>
                                                 </td>
                                                 <td class="auto-style1">
-                                                    <asp:LinkButton ID="lblResponsible" runat="server">担当者</asp:LinkButton>
+                                                    <asp:LinkButton ID="lbResponsible" runat="server">担当者</asp:LinkButton>
                                                 </td>
                                                 <td class="auto-style1">
                                                     <asp:Label ID="lblCategory" runat="server">カテゴリー</asp:Label>

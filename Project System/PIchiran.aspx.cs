@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +14,22 @@ namespace WhereEver.Project_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                DATASET.DataSet.T_PdbDataTable dt = GetPdbDataTable(Global.GetConnection());
 
+                DgPIchiran.DataSource = dt;
+                DgPIchiran.DataBind();
+            }
+        }
+        public static DATASET.DataSet.T_PdbDataTable GetPdbDataTable(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "SELECT * FROM T_Pdb";
+            DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
+            da.Fill(dt);
+            return dt;
         }
 
         protected void DgTimeDetail_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -19,24 +37,20 @@ namespace WhereEver.Project_System
             if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
             {
 
-                DATASET.DataSet.T_LoginListRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_LoginListRow;
-                Label lblName = e.Item.FindControl("lblName") as Label;
-                Label lblLoginTime = e.Item.FindControl("lblLoginTime") as Label;
-                Label lblLogoutTime = e.Item.FindControl("lblLogoutTime") as Label;
-                DATASET.DataSet.T_LoginListRow dl = Class.Login.UserLoginMAXTime(Global.GetConnection(), dr.name.ToString());
-                DATASET.DataSet.T_LogoutListRow dt = Class.Login.UserLogoutMAXTime(Global.GetConnection(), dr.name.ToString());
+                DATASET.DataSet.T_PdbRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbRow;
+                LinkButton lbPName = e.Item.FindControl("lbPName") as LinkButton;
+                Label lblCustomer = e.Item.FindControl("lblCustomer") as Label;
+                LinkButton lbResponsible = e.Item.FindControl("lbResponsible") as LinkButton;
+                Label lblCategory = e.Item.FindControl("lblCategory") as Label;
+                Label lblStartTime = e.Item.FindControl("lblStartTime") as Label;
+                Label lblOverTime = e.Item.FindControl("lblOverTime") as Label;
 
-                lblName.Text = dr.name.ToString();
-                lblLoginTime.Text = dl.Date.ToString();
-                if (dt == null)
-                {
-                    lblLogoutTime.Text = "";
-                }
-                else
-                {
-                    lblLogoutTime.Text = dt.Date.ToString();
-                }
-
+                lbPName.Text = dr.Pname.ToString();
+                lblCustomer.Text = dr.Pcustomer.ToString();
+                lbResponsible.Text = dr.Presponsible.ToString();
+                lblCategory.Text = dr.Pcategory.ToString();
+                lblStartTime.Text = dr.Pstarttime.ToString();
+                lblOverTime.Text = dr.Povertime.ToString();
             }
         }
     }
