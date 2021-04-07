@@ -91,6 +91,7 @@
                     <asp:TemplateColumn>
                         <ItemTemplate>
                             <asp:Button ID="Button1" runat="server" Text="編集" />
+                            <asp:Button ID="btnDelete" runat="server" Text="削除" />
                         </ItemTemplate>
                         <HeaderStyle Wrap="True" />
                         <ItemStyle CssClass="scdl" HorizontalAlign="Left" Width="150px" Wrap="True" />
@@ -140,11 +141,11 @@
                     </td>
                     <td class="auto-style3">
 
-                        <asp:Label ID="lblNewCategory" runat="server" Text="カテゴリー"></asp:Label>
+                        <asp:Label ID="lblNewCategory" runat="server" Text="カテゴリー(△)"></asp:Label>
                     </td>
                     <td class="auto-style3">
 
-                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNewCategory" runat="server"></asp:TextBox>
                     </td>
                     <td class="auto-style3">
 
