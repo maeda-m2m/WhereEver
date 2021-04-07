@@ -60,10 +60,9 @@ namespace WhereEver
         //Calender1で日付をクリックしたらLabel1に表示される
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
-            // DataSet1.T_Schedule3Row dl = Class1.SwitchScdl3Row(Global.GetConnection());
 
             Label1.Text = Calendar1.SelectedDate.ToString("yyyy/MM/dd");
-            // string s = Label1.Text;
+
             Panel1.Visible = true;
         }
 
@@ -74,15 +73,25 @@ namespace WhereEver
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             var dr = dt.NewT_ScheduleRow();
 
-            string t = DropDownList1.SelectedValue;　　　　　　　　　　　　　//選択したリストのValue（名前？）tに入れる
-            DateTime.Parse(t);　　　　　　　　　　　　　　　　　　　　　　　//tを日付型に変換①
-            string f = Label1.Text;　　　　　　　　　　　　　　　　　　　　//fにLabel1の文字を入れる
-            DateTime dd = DateTime.Parse(f);　　　　　　　　　　　　　　　//fを日付型に変換しddに入れる
-            dr.date = dd;　　　　　　　　　　　　　　　　　　　　　　　　//ddをdate列にいれる
-            dr.time = t;　　　　　　　　　　　　　　　　//time列にtを入れる（①がいらない説）
-            dr.title = TextBox1.Text;
-            dr.name = DropDownList2.SelectedValue.ToString();　　　　 //選択した名前をname列に入れる
+            string t = DropDownList1.SelectedValue;
+            //選択したリストの名前をtに入れる
 
+            string f = (Label1.Text) + " " + (DropDownList1.SelectedValue);　　　　　　　　　　　　　　　　　　　
+            //fにLabel1の何月何日何時何分を入れる
+
+            DateTime dd = DateTime.Parse(f);　　　　　　　　　　　　　
+           //fを日付型に変換しddに入れる
+
+            dr.date = dd;　　　　　　　　　　　　　　　　　　　　　　　　
+            //ddをdate列にいれる
+
+            dr.time = t;　　　　　　　　　　　　　　　　
+            //time列にtを入れる
+
+            dr.title = TextBox1.Text;
+
+            dr.name = DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString();
+            //選択した名前をname列に入れる
 
             DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
             //SdlNoの最大値を持ってくるためだけのコード（MaxSdlNo）をClass.1に作る
@@ -265,15 +274,17 @@ namespace WhereEver
 
                 Label time = e.Item.FindControl("Jikan") as Label;
                 Label monday = e.Item.FindControl("MondayTitle") as Label;
-                Label name1 = e.Item.FindControl("Label7") as Label;
                 Label tuesday = e.Item.FindControl("TuesdayTitle") as Label;
-                Label name2 = e.Item.FindControl("Label8") as Label;
                 Label wednesday = e.Item.FindControl("WednesdayTitle") as Label;
-                Label name3 = e.Item.FindControl("Label9") as Label;
                 Label thursday = e.Item.FindControl("ThursdayTitle") as Label;
-                Label name4 = e.Item.FindControl("Label10") as Label;
                 Label friday = e.Item.FindControl("FridayTitle") as Label;
-                Label name5 = e.Item.FindControl("Label11") as Label;
+
+                //必要なら使う
+                //Label name1 = e.Item.FindControl("Label7") as Label;
+                //Label name2 = e.Item.FindControl("Label8") as Label;
+                //Label name3 = e.Item.FindControl("Label9") as Label;
+                //Label name4 = e.Item.FindControl("Label10") as Label;
+                //Label name5 = e.Item.FindControl("Label11") as Label;
 
                 time.Text = dr.時間.ToString();
 
@@ -331,22 +342,29 @@ namespace WhereEver
                 if (!dr.IsnameNull())
                     name.Text = dr.name;
 
-                No.Text = dr.SdlNo.ToString();
+                //No.Text = dr.SdlNo.ToString();
+                //値を隠す
             }
         }
 
+        //削除ボタンの処理
         protected void ScdlList_ItemCommand(object source, DataGridCommandEventArgs e)
         {
             int a = e.Item.ItemIndex;
             DATASET.DataSet.T_ScheduleDataTable dt = Class1.SwitchScdl3DataTable(Global.GetConnection());
-            DATASET.DataSet.T_ScheduleRow dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;//T_Schedule3のa行目を取って来る
+            DATASET.DataSet.T_ScheduleRow dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;
+            //T_Schedule3のa行目を取って来る
             string.Format("if (!confirm('{0}')) return false;", "削除しますか。");
-            int sdl = dr.SdlNo;//とってきたSdlNoをsdlに入れる
+            int sdl = dr.SdlNo;
+            //とってきたSdlNoをsdlに入れる
 
-            if (sdl > 0)//sdlが0より大きい場合
+            if (sdl > 0)
+                //sdlが0より大きい場合
                 Class1.DeleteList(sdl, Global.GetConnection());
             ScdlList.Items[a].FindControl("No");
             Create();
+            Create3();
+            Create2();
         }
 
         protected void Button1_Click1(object sender, System.EventArgs e)
