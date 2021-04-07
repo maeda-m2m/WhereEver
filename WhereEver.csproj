@@ -155,6 +155,8 @@
     <Content Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
+    <Content Include="管理ページ\Kanri.css" />
+    <Content Include="管理ページ\Kanri.aspx" />
     <None Include="DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -363,6 +365,13 @@
     </Compile>
     <Compile Include="その他\ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="管理ページ\Kanri.aspx.cs">
+      <DependentUpon>Kanri.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="管理ページ\Kanri.aspx.designer.cs">
+      <DependentUpon>Kanri.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
