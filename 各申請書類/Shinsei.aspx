@@ -54,7 +54,7 @@
                             <p>購入品名*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox" ValidateRequestMode="Disabled"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_purchaseName" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_purchaseName"></asp:RequiredFieldValidator>
@@ -65,7 +65,7 @@
                             <p>種別*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox" ValidateRequestMode="Disabled"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_classification" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_classification"></asp:RequiredFieldValidator>
@@ -77,7 +77,7 @@
                             <p>購入点数*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox" ValidateRequestMode="Disabled"></asp:TextBox>点
+                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角305文字以内"></asp:TextBox>点
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMany" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMany"></asp:RequiredFieldValidator>
@@ -88,7 +88,7 @@
                             <p>合計金額*</p>
                         </td>
                         <td class="text">
-                            \<asp:TextBox ID="TextBox_howMach" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled"></asp:TextBox>-
+                            \<asp:TextBox ID="TextBox_howMach" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角305文字以内"></asp:TextBox>-
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMach" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMach"></asp:RequiredFieldValidator>
@@ -99,7 +99,7 @@
                             <p>購入元*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox" ValidateRequestMode="Disabled"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_marketPlace" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_marketPlace"></asp:RequiredFieldValidator>
@@ -110,7 +110,7 @@
                             <p>購入目的*</p>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox_buy_purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" Style="resize: none"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_buy_purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_buy_purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_buy_purpose"></asp:RequiredFieldValidator>
@@ -118,10 +118,10 @@
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>備考</p>
+                            <p>備考）</p>
                         </td>
                             <td class="text">
-                                <asp:TextBox ID="TextBox_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" Style="resize: none"></asp:TextBox>
+                                <asp:TextBox ID="TextBox_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内"></asp:TextBox>
                             </td>
                     </tr>
                     <tr>
@@ -226,7 +226,7 @@
                             <p>理由*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Notification_Purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" Style="resize: none"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Notification_Purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Notification_Purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Notification_Purpose"></asp:RequiredFieldValidator>
@@ -237,7 +237,7 @@
                             <p>備考</p>
                         </td>
                         <td class="text">
-                           <asp:TextBox ID="TextBox_Notification_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" Style="resize: none"></asp:TextBox>
+                           <asp:TextBox ID="TextBox_Notification_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -357,7 +357,7 @@
                             <p>購入理由/目的</p>
                         </td>
                         <td colspan="3" class="area">
-                           <asp:TextBox ID="TextBox_Riyuu" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True" Style="resize: none"></asp:TextBox>
+                           <asp:Label ID="Label_Riyuu" runat="server" Text="" ValidateRequestMode="Disabled" Height="100px" Width="415px"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -365,7 +365,7 @@
                             <p>備考</p>
                         </td>
                         <td colspan="3" class="area">
-                            <asp:TextBox ID="TextBox_Bikou" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True" Style="resize: none"></asp:TextBox>
+                            <asp:Label ID="Label_Bikou" runat="server" Text="" ValidateRequestMode="Disabled" Height="100px" Width="415px"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -446,7 +446,7 @@
                             <p>理由</p>
                         </td>
                         <td colspan="3" class="nakami">
-                           <asp:TextBox ID="TextBox_Diligence_because" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True" Style="resize: none"></asp:TextBox>
+                           <asp:Label ID="Label_Diligence_because" runat="server" Text="" ValidateRequestMode="Disabled" Height="100px" Width="415px"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -454,7 +454,7 @@
                             <p>備考</p>
                         </td>
                         <td colspan="3" class="nakami">
-                           <asp:TextBox ID="TextBox_Diligence_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True" Style="resize: none"></asp:TextBox>
+                           <asp:Label ID="Label_Diligence_ps" runat="server" Text="" ValidateRequestMode="Disabled" Height="100px" Width="415px"></asp:Label>
                         </td>
                     </tr>
                     <tr>
