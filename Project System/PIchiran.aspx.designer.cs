@@ -105,13 +105,13 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Label lblNewCategory;
 
         /// <summary>
-        /// TextBox5 コントロール。
+        /// txtNewCategory コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox txtNewCategory;
 
         /// <summary>
         /// lblNewStartTime コントロール。
