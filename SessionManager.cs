@@ -23,7 +23,7 @@ namespace WhereEver
         {
             System.Web.Security.FormsAuthentication.SetAuthCookie(dr.id.ToString(), false);
             System.Web.Security.FormsAuthentication.SetAuthCookie(dr.pw.ToString(), false);
-            System.Web.HttpContext.Current.Session[SESSION_USER_KUBUN] = dr.name;
+            System.Web.HttpContext.Current.Session[SESSION_USER_KUBUN] = dr.name1;
 
             System.Web.HttpContext.Current.Session[SESSION_USER_ID] = dr.id;
             System.Web.HttpContext.Current.Session[SESSION_USER_PW] = dr.pw;
