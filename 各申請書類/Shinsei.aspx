@@ -357,7 +357,7 @@
                             <p>購入理由/目的</p>
                         </td>
                         <td colspan="3" class="area">
-                           <asp:TextBox ID="TextBox_Riyuu" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                           <asp:TextBox ID="TextBox_Riyuu" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -365,7 +365,7 @@
                             <p>備考</p>
                         </td>
                         <td colspan="3" class="area">
-                            <asp:TextBox ID="TextBox_Bikou" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Bikou" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -446,7 +446,7 @@
                             <p>理由</p>
                         </td>
                         <td colspan="3" class="nakami">
-                           <asp:TextBox ID="TextBox_Diligence_because" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                           <asp:TextBox ID="TextBox_Diligence_because" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -454,7 +454,7 @@
                             <p>備考</p>
                         </td>
                         <td colspan="3" class="nakami">
-                           <asp:TextBox ID="TextBox_Diligence_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                           <asp:TextBox ID="TextBox_Diligence_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
