@@ -115,26 +115,7 @@ namespace WhereEver
         
 
 
-        internal static DATASET.DataSet.T_LoginListRow UserLoginMAXTime(SqlConnection sqlConnection,string name)//最新LoginDateの取得
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT MAX(Date) as date FROM T_LoginList where name like @i ORDER BY Date DESC ";
-            da.SelectCommand.Parameters.AddWithValue("@i", name);
-            DATASET.DataSet.T_LoginListDataTable dt = new DATASET.DataSet.T_LoginListDataTable();
-            da.Fill(dt);
-            return dt[0];
-        }
-        internal static DATASET.DataSet.T_LoginListRow UserLogoutMAXTime(SqlConnection sqlConnection, string name)//最新LogoutDateの取得
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT MAX(Date) as date FROM T_LogoutList where name like @i ORDER BY Date DESC ";
-            da.SelectCommand.Parameters.AddWithValue("@i", name);
-            DATASET.DataSet.T_LoginListDataTable dt = new DATASET.DataSet.T_LoginListDataTable();
-            da.Fill(dt);
-            return dt[0];
-        }
+        
 
         public static DATASET.DataSet.T_ScheduleDataTable Insatsu1(SqlConnection sqlConnection)
         {
