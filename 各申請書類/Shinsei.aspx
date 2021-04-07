@@ -110,7 +110,7 @@
                             <p>購入目的*</p>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox_buy_purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_buy_purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" Style="resize: none"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_buy_purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_buy_purpose"></asp:RequiredFieldValidator>
@@ -121,7 +121,7 @@
                             <p>備考</p>
                         </td>
                             <td class="text">
-                                <asp:TextBox ID="TextBox_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                                <asp:TextBox ID="TextBox_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" Style="resize: none"></asp:TextBox>
                             </td>
                     </tr>
                     <tr>
@@ -226,7 +226,7 @@
                             <p>理由*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Notification_Purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Notification_Purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" Style="resize: none"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_Notification_Purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Notification_Purpose"></asp:RequiredFieldValidator>
@@ -237,7 +237,7 @@
                             <p>備考</p>
                         </td>
                         <td class="text">
-                           <asp:TextBox ID="TextBox_Notification_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                           <asp:TextBox ID="TextBox_Notification_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" Style="resize: none"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -357,7 +357,7 @@
                             <p>購入理由/目的</p>
                         </td>
                         <td colspan="3" class="area">
-                           <asp:TextBox ID="TextBox_Riyuu" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                           <asp:TextBox ID="TextBox_Riyuu" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True" Style="resize: none"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -365,7 +365,7 @@
                             <p>備考</p>
                         </td>
                         <td colspan="3" class="area">
-                            <asp:TextBox ID="TextBox_Bikou" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Bikou" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True" Style="resize: none"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -446,7 +446,7 @@
                             <p>理由</p>
                         </td>
                         <td colspan="3" class="nakami">
-                           <asp:TextBox ID="TextBox_Diligence_because" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                           <asp:TextBox ID="TextBox_Diligence_because" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True" Style="resize: none"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -454,7 +454,7 @@
                             <p>備考</p>
                         </td>
                         <td colspan="3" class="nakami">
-                           <asp:TextBox ID="TextBox_Diligence_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
+                           <asp:TextBox ID="TextBox_Diligence_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px" ReadOnly="True" Style="resize: none"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -495,11 +495,13 @@
 
             <asp:Panel ID="Panel_Print" runat="server" CssClass="noprint">
 
+                <div id="fotter">
                 <p class="noprint">
                     <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
                     <asp:Button ID="Btn_BackMaster" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="BackButton_Click" CausesValidation="False" />
                     　※印刷プレビューには申請書のデータが反映されます。
                 </p>
+                </div>
 
             </asp:Panel>
 
