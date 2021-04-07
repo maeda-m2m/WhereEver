@@ -115,6 +115,7 @@
     <Content Include="IMG\LoginBtn.png" />
     <Content Include="IMG\日付2.png" />
     <Content Include="Insatsu.ascx" />
+    <Content Include="Project System\PIchiran.aspx" />
     <Content Include="ShinseiMenu.css" />
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
@@ -153,6 +154,8 @@
     <Content Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
+    <Content Include="管理ページ\Kanri.css" />
+    <Content Include="管理ページ\Kanri.aspx" />
     <None Include="DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -223,6 +226,7 @@
     <Compile Include="Class\Chat.cs" />
     <Compile Include="Class\Login.cs" />
     <Compile Include="Class\Logout.cs" />
+    <Compile Include="Class\Schedule.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -236,13 +240,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DATASET\Schedule.cs" />
     <Compile Include="Insatsu.ascx.cs">
       <DependentUpon>Insatsu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Insatsu.ascx.designer.cs">
       <DependentUpon>Insatsu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Project System\PIchiran.aspx.cs">
+      <DependentUpon>PIchiran.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Project System\PIchiran.aspx.designer.cs">
+      <DependentUpon>PIchiran.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tatekae.ascx.cs">
       <DependentUpon>Tatekae.ascx</DependentUpon>
@@ -354,6 +364,13 @@
     </Compile>
     <Compile Include="その他\ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="管理ページ\Kanri.aspx.cs">
+      <DependentUpon>Kanri.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="管理ページ\Kanri.aspx.designer.cs">
+      <DependentUpon>Kanri.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

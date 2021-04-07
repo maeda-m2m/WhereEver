@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WhereEver
+namespace WhereEver.管理ページ
 {
-    public partial class MenuControl : System.Web.UI.UserControl
+    public partial class Kanri : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = SessionManager.User.M_User.name1;
+
         }
     }
 }
