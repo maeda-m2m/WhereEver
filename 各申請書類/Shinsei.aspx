@@ -54,7 +54,7 @@
                             <p>購入品名*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_purchaseName" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_purchaseName"></asp:RequiredFieldValidator>
@@ -65,7 +65,7 @@
                             <p>種別*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_classification" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_classification"></asp:RequiredFieldValidator>
@@ -99,7 +99,7 @@
                             <p>購入元*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_marketPlace" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_marketPlace"></asp:RequiredFieldValidator>
