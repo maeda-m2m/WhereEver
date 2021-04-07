@@ -10,7 +10,7 @@ namespace WhereEver
 {
     public class Class1
     {
-        
+
         internal static DATASET.DataSet.M_UserRow LogoutM_UserRow(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
@@ -44,7 +44,7 @@ namespace WhereEver
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule";
-            DATASET.DataSet.T_ScheduleDataTable df = new DATASET.DataSet.T_ScheduleDataTable();
+            var df = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(df);
             return df;
         }
@@ -146,9 +146,10 @@ namespace WhereEver
             da.SelectCommand.CommandText =
                "SELECT * FROM T_Schedule";
             //"SELECT [time], [title], [name], [KanriFlag],[SdlNo] FROM T_Schedule WHERE KanriFlag IS NOT NULL"
-            DATASET.DataSet.T_ScheduleDataTable df = new DATASET.DataSet.T_ScheduleDataTable();
-            da.Fill(df);
-            return df;
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+            da.Fill(dt);
+            return dt;
+            //dfから変更
         }
 
 
@@ -156,11 +157,11 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_EmptyTable";
+                "SELECT * FROM T_EmptyTable order by 時間 asc";
             //T_Schedule WHERE KanriFlag IS NULL
-            var df = new DATASET.DataSet.T_EmptyTableDataTable();
-            da.Fill(df);
-            return df;
+            var dt = new DATASET.DataSet.T_EmptyTableDataTable();
+            da.Fill(dt);
+            return dt;
         }
 
         public static DATASET.DataSet.T_ScheduleDataTable SwitchScdl3DataTable(SqlConnection Sqlco)
@@ -168,9 +169,9 @@ namespace WhereEver
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
-            DATASET.DataSet.T_ScheduleDataTable df = new DATASET.DataSet.T_ScheduleDataTable();
-            da.Fill(df);
-            return df;
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+            da.Fill(dt);
+            return dt;
         }
 
         //SdlNoがある列を持ってくる
@@ -204,13 +205,10 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
-                "SELECT MAX(SdlNo) AS SdlNo FROM T_Schedule";
+                "SELECT * FROM T_Schedule ORDER BY SdlNo desc";
             DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
-            if (dt.Rows.Count == 1)
-                return dt[0] as DATASET.DataSet.T_ScheduleRow;
-            else
-                return null;
+            return dt[0];
         }
 
 
@@ -220,7 +218,8 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule WHERE SdlNo IS NOT NULL";
+                "SELECT * FROM T_Schedule";
+            //"SELECT * FROM T_EmptyTable WHERE SdlNo IS NOT NULL"
             da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
 
             SqlTransaction sqltra = null;

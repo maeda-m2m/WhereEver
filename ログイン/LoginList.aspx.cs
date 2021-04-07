@@ -16,9 +16,9 @@ namespace WhereEver
         {
             if (!IsPostBack)
             {
-                DATASET.DataSet.T_LoginListDataTable dt = Class2.GetLoginListDataTable(Global.GetConnection());
+                DATASET.DataSet.T_LoginListDataTable dtLogin = Class2.GetLoginListDataTable(Global.GetConnection());
 
-                DgTimeDetail.DataSource = dt;
+                DgTimeDetail.DataSource = dtLogin;
                 DgTimeDetail.DataBind();
 
             }
@@ -33,17 +33,29 @@ namespace WhereEver
                 Label lblName = e.Item.FindControl("lblName") as Label;
                 Label lblLoginTime = e.Item.FindControl("lblLoginTime") as Label;
                 Label lblLogoutTime = e.Item.FindControl("lblLogoutTime") as Label;
-                DATASET.DataSet.T_LoginListRow dl = Class2.UserLoginMAXTime(Global.GetConnection(), dr.name.ToString());
-                DATASET.DataSet.T_LoginListRow dt = Class2.UserLogoutMAXTime(Global.GetConnection(), dr.name.ToString());
+                DATASET.DataSet.T_LoginListRow dl = Class.Login.UserLoginMAXTime(Global.GetConnection(), dr.name.ToString());
+                DATASET.DataSet.T_LogoutListRow dt = Class.Login.UserLogoutMAXTime(Global.GetConnection(), dr.name.ToString());
 
                 lblName.Text = dr.name.ToString();
                 lblLoginTime.Text = dl.Date.ToString();
-                lblLogoutTime.Text = dl.Date.ToString();
+                if(dt == null)
+                {
+                    lblLogoutTime.Text = "";
+                }
+                else
+                {
+                    lblLogoutTime.Text = dt.Date.ToString();
+                }
+                
             }
         }
 
         protected void btnOut_Click(object sender, EventArgs e)
         {
+            Class.Logout.InsertLogoutList(Global.GetConnection());
+            this.Response.Redirect("Login.aspx");
+
+
 
         }
     }

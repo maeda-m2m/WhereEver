@@ -26,7 +26,7 @@ namespace WhereEver
             string ID = TbxID.Text.Trim();
             string PW = TbxPW.Text.Trim();
 
-            //GetM_UserRowでチェック、テーブルにあれば戻り値dt[0]=1、なければnull
+            //GetM_UserRowでチェック、テーブルにあれば戻り値dt[0]=、なければnull
             DATASET.DataSet.M_UserRow dr = Class.Login.GetM_UserRow(ID, PW, Global.GetConnection());
 
             if (dr == null)
@@ -42,7 +42,7 @@ namespace WhereEver
             dl.name = dr.name;
             dl.Date = DateTime.Now;
             dd.AddT_LoginListRow(dl);
-            Class2.InsertLoginList(dd, Global.GetConnection());
+            Class.Login.InsertLoginList(dd, Global.GetConnection());
                 
             this.Response.Redirect("LoginList.aspx");
         }

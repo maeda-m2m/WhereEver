@@ -222,6 +222,7 @@
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
     <Compile Include="Class\Chat.cs" />
     <Compile Include="Class\Login.cs" />
+    <Compile Include="Class\Logout.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -235,6 +236,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DATASET\Schedule.cs" />
     <Compile Include="Insatsu.ascx.cs">
       <DependentUpon>Insatsu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

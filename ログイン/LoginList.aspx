@@ -77,7 +77,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnOut" runat="server" CssClass="auto-style4" Text="ログアウト" OnClick="btnOut_Click" />
+                        <asp:Button ID="btnOut" runat="server" CssClass="auto-style4" Text="ログアウト" OnClick="btnOut_Click" style="height: 21px" />
                     </td>
                     <td>
                         &nbsp;</td>
