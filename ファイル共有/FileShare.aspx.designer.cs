@@ -33,21 +33,57 @@ namespace WhereEver
         protected global::WhereEver.MenuControl m;
 
         /// <summary>
-        /// datum コントロール。
+        /// FileUpload_userfile コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile datum;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_userfile;
 
         /// <summary>
-        /// Button1 コントロール。
+        /// Button_Upload コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button Button_Upload;
+
+        /// <summary>
+        /// lblResult コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResult;
+
+        /// <summary>
+        /// TextBox_dl コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_dl;
+
+        /// <summary>
+        /// Button_Download コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Download;
+
+        /// <summary>
+        /// lblDLResult コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDLResult;
     }
 }
