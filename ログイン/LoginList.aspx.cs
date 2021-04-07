@@ -54,6 +54,9 @@ namespace WhereEver
         {
             Class.Logout.InsertLogoutList(Global.GetConnection());
             this.Response.Redirect("Login.aspx");
+
+
+
         }
     }
 }
