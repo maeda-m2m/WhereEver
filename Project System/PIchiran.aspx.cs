@@ -32,7 +32,7 @@ namespace WhereEver.Project_System
             return dt;
         }
 
-        protected void DgTimeDetail_ItemDataBound(object sender, DataGridItemEventArgs e)
+        protected void DgPIchiran_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
             if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
             {
