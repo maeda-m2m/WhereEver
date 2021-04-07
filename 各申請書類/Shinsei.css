@@ -18,6 +18,7 @@
 .text {
     width: 300px;
     height: 40px;
+    resize: none;
 }
 
 .textbox {
@@ -80,6 +81,7 @@ h1 {
     height: 100px;
     border: 1px solid #000000;
     font-family: 'MS Mincho';
+    resize: none;
 }
 
 .aa {
@@ -109,8 +111,6 @@ h1 {
     width: 500px;
     height: 800px;
     margin-left: 80px;
-    margin: 0;
-    height: 0;
 }
 
 .TextDate {
@@ -160,6 +160,7 @@ h1 {
     border: 1px solid #000000;
     height: 30px;
     font-size: 12px;
+    resize: none;
 }
 
 #top {
@@ -174,7 +175,7 @@ h1 {
 
 #yohaku4 {
     width: 200px;
-    height: 60px;
+    height: 40px;
 }
 
 #yohaku5 {
@@ -200,6 +201,10 @@ h1 {
 
 #kyuka {
     margin-left: 100px;
+}
+
+#fotter {
+    margin-left: 80px;
 }
 
 .btn-flat-border {
