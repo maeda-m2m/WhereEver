@@ -18,15 +18,6 @@
             height: 52px;
         }
 
-        .auto-style5 {
-            height: 52px;
-            width: 355px;
-        }
-
-        .auto-style6 {
-            width: 355px;
-        }
-
         .auto-style7 {
             height: 52px;
             width: 500px;
@@ -34,6 +25,19 @@
 
         .auto-style8 {
             width: 500px;
+        }
+
+        .auto-style9 {
+            margin-bottom: 0px;
+        }
+
+        .auto-style10 {
+            height: 83px;
+        }
+
+        .auto-style11 {
+            height: 83px;
+            width: 875px;
         }
     </style>
 
@@ -69,13 +73,21 @@
                                     <asp:ListItem>9:00</asp:ListItem>
                                     <asp:ListItem>9:30</asp:ListItem>
                                     <asp:ListItem>10:00</asp:ListItem>
+                                    <asp:ListItem>10:30</asp:ListItem>
                                     <asp:ListItem>11:00</asp:ListItem>
+                                    <asp:ListItem>11:30</asp:ListItem>
                                     <asp:ListItem>12:00</asp:ListItem>
+                                    <asp:ListItem>12:30</asp:ListItem>
                                     <asp:ListItem>13:00</asp:ListItem>
+                                    <asp:ListItem>13:30</asp:ListItem>
                                     <asp:ListItem>14:00</asp:ListItem>
+                                    <asp:ListItem>14:30</asp:ListItem>
                                     <asp:ListItem>15:00</asp:ListItem>
+                                    <asp:ListItem>15:30</asp:ListItem>
                                     <asp:ListItem>16:00</asp:ListItem>
+                                    <asp:ListItem>16:30</asp:ListItem>
                                     <asp:ListItem>17:00</asp:ListItem>
+                                    <asp:ListItem>17:30</asp:ListItem>
                                     <asp:ListItem>18:00</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
@@ -85,7 +97,7 @@
                         <td runat="server" class="Title">
                             <p>タイトル</p>
                             <td class="auto-style8">
-                                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
                             </td>
                         </td>
                     </tr>
@@ -152,7 +164,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:Button ID="Button2" runat="server" Text="登録/消去/編集" class="btn-flat-border" OnClick="Button2_Click" />
+                            <asp:Button ID="Button2" runat="server" Text="登録" class="btn-flat-border" OnClick="Button2_Click" />
                         </td>
                     </tr>
                 </table>
@@ -160,7 +172,7 @@
         </div>
 
         <div>
-            <asp:DataGrid runat="server" ID="Scdl3" AutoGenerateColumns="False" OnItemDataBound="Scdl3_ItemDataBound" CssClass="scdl" HeaderStyle-Width="200px">
+            <asp:DataGrid runat="server" ID="Scdl3" AutoGenerateColumns="False" OnItemDataBound="Scdl3_ItemDataBound" CssClass="scdl" HeaderStyle-Width="200px" OnSelectedIndexChanged="Scdl3_SelectedIndexChanged">
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
                     <asp:TemplateColumn HeaderText="時間" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
@@ -227,10 +239,12 @@
         </div>
         <table id="btn">
             <tr>
-                <td>
-                    <asp:Button ID="Button3" runat="server" Text="登録/編集/消去" class="btn-flat-border" OnClick="Button3_Click" />
-                    <td>
-                        <asp:Button ID="Button1" runat="server" Text="印刷" OnClick="Button1_Click1" class="btn-flat-border" />
+                <td class="auto-style10">
+                    <td class="auto-style11">
+                        <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="10px" Width="1300px">
+                            <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
+                            &nbsp;<asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷" />
+                        </asp:Panel>
                     </td>
                 </td>
             </tr>

@@ -132,6 +132,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.DataGrid Scdl3;
 
         /// <summary>
+        /// Panel2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel2;
+
+        /// <summary>
         /// Button3 コントロール。
         /// </summary>
         /// <remarks>
