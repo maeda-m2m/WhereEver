@@ -49,9 +49,14 @@ namespace WhereEver.Project_System
                 lblCustomer.Text = dr.Pcustomer.ToString();
                 lbResponsible.Text = dr.Presponsible.ToString();
                 lblCategory.Text = dr.Pcategory.ToString();
-                lblStartTime.Text = dr.Pstarttime.ToString();
-                lblOverTime.Text = dr.Povertime.ToString();
+                lblStartTime.Text = dr.Pstarttime.ToShortDateString();
+                lblOverTime.Text = dr.Povertime.ToShortDateString();
             }
+        }
+
+        protected void btnNewP_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

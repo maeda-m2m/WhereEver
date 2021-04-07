@@ -116,7 +116,6 @@
     <Content Include="IMG\日付2.png" />
     <Content Include="Insatsu.ascx" />
     <Content Include="Project System\PIchiran.aspx" />
-    <Content Include="Project System\Pichiran.css" />
     <Content Include="ShinseiMenu.css" />
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
