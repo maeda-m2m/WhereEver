@@ -420,22 +420,22 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label KonyuSaki;
 
         /// <summary>
-        /// TextBox_Riyuu コントロール。
+        /// Label_Riyuu コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Riyuu;
+        protected global::System.Web.UI.WebControls.Label Label_Riyuu;
 
         /// <summary>
-        /// TextBox_Bikou コントロール。
+        /// Label_Bikou コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Bikou;
+        protected global::System.Web.UI.WebControls.Label Label_Bikou;
 
         /// <summary>
         /// Panel5 コントロール。
@@ -528,22 +528,22 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label lblDiligenceDateB2;
 
         /// <summary>
-        /// TextBox_Diligence_because コントロール。
+        /// Label_Diligence_because コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Diligence_because;
+        protected global::System.Web.UI.WebControls.Label Label_Diligence_because;
 
         /// <summary>
-        /// TextBox_Diligence_ps コントロール。
+        /// Label_Diligence_ps コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Diligence_ps;
+        protected global::System.Web.UI.WebControls.Label Label_Diligence_ps;
 
         /// <summary>
         /// Panel_Print コントロール。

@@ -12,6 +12,9 @@ namespace WhereEver
 {
     public partial class Calender : System.Web.UI.Page
     {
+        //文字入力最大値
+        const int maxstr = 306;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -97,13 +100,30 @@ namespace WhereEver
             //------------------------------------------------------------
 
             //購入品のテキストを印刷フォームに代入
-            Konyu.Text = TextBox_purchaseName.Text;
-            Syubetsu.Text = TextBox_classification.Text;
-            Suryo.Text = TextBox_howMany.Text + "点";
-            Kingaku.Text = "\\" + TextBox_howMach.Text + "-";
-            KonyuSaki.Text = TextBox_marketPlace.Text;
-            TextBox_Riyuu.Text = TextBox_buy_purpose.Text;
-            TextBox_Bikou.Text = TextBox_ps.Text;
+
+            int rleng = Math.Min(TextBox_purchaseName.Text.Length, maxstr);
+            Konyu.Text = TextBox_purchaseName.Text.Substring(0, rleng);
+
+            rleng = Math.Min(TextBox_classification.Text.Length, maxstr);
+            Syubetsu.Text = TextBox_classification.Text.Substring(0, rleng);
+
+            string str = TextBox_howMany.Text;
+            rleng = Math.Min(str.Length, maxstr - 1);
+            Suryo.Text = str.Substring(0, rleng) + "点";
+
+            str = TextBox_howMach.Text;
+            rleng = Math.Min(str.Length, maxstr - 1);
+            Kingaku.Text = "\\" + str.Substring(0, rleng) + "-";
+
+            rleng = Math.Min(TextBox_marketPlace.Text.Length, maxstr);
+            KonyuSaki.Text = TextBox_marketPlace.Text.Substring(0, rleng);
+
+            rleng = Math.Min(TextBox_buy_purpose.Text.Length, maxstr);
+            Label_Riyuu.Text = TextBox_buy_purpose.Text.Substring(0, rleng);
+
+            rleng = Math.Min(TextBox_ps.Text.Length, maxstr);
+            Label_Bikou.Text = TextBox_ps.Text.Substring(0, rleng);
+
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -128,7 +148,7 @@ namespace WhereEver
 
 
             //勤怠届の印刷フォームに名前と日付を代入
-            lblDiligenceUser.Text = "氏名：" + SessionManager.User.M_User.name;
+            lblDiligenceUser.Text = "氏名：" + SessionManager.User.M_User.name1;
             DateTime dt = DateTime.Now;
             lblDiligenceDate.Text = dt.ToShortDateString();
 
@@ -143,8 +163,12 @@ namespace WhereEver
             lblDiligenceDateA2.Text = " " + DropDownList_A_Time.SelectedValue;
             lblDiligenceDateB1.Text = lblSelectedDateB1.Text;
             lblDiligenceDateB2.Text = " " + DropDownList_B_Time.SelectedValue;
-            TextBox_Diligence_because.Text = TextBox_Notification_Purpose.Text;
-            TextBox_Diligence_ps.Text = TextBox_Notification_ps.Text;
+
+            int rleng = Math.Min(TextBox_Notification_Purpose.Text.Length, maxstr);
+            Label_Diligence_because.Text = TextBox_Notification_Purpose.Text.Substring(0, rleng);
+
+            rleng = Math.Min(TextBox_Notification_ps.Text.Length, maxstr);
+            Label_Diligence_ps.Text = TextBox_Notification_ps.Text.Substring(0, rleng);
 
             //DateTime dateTime1 = Calendar1.SelectedDate;
             //DateTime dateTime2 = Calendar2.SelectedDate;
@@ -188,7 +212,7 @@ namespace WhereEver
                 Panel_Print.Visible = false;
 
             }
-            name1.Text = "氏名：" + SessionManager.User.M_User.name;
+            name1.Text = "氏名：" + SessionManager.User.M_User.name1;
             DateTime dt = DateTime.Now;
             date.Text = dt.ToShortDateString();
             //ChangeValidate(true);
@@ -199,26 +223,26 @@ namespace WhereEver
         {
             //カレンダー１の値が変更されたときに実行されます
             lblSelectedDateA1.Text = Calendar1.SelectedDate.ToShortDateString();
-            lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
+            //lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
         }
 
         protected void Calendar2_SelectionChanged(object sender, EventArgs e)
         {
             //カレンダー２の値が変更されたときに実行されます
             lblSelectedDateB1.Text = Calendar2.SelectedDate.ToShortDateString();
-            lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
+            //lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
         }
 
         protected void DropDownList_A_Time_SelectionChanged(object sender, EventArgs e)
         {
             //カレンダー１の時間の値が変更されたときに実行されます
-            lblSelectedDateA1.Text = Calendar1.SelectedDate.ToShortDateString();
+            //lblSelectedDateA1.Text = Calendar1.SelectedDate.ToShortDateString();
             lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
         }
         protected void DropDownList_B_Time_SelectionChanged(object sender, EventArgs e)
         {
             //カレンダー２の時間の値が変更されたときに実行されます
-            lblSelectedDateB1.Text = Calendar2.SelectedDate.ToShortDateString();
+            //lblSelectedDateB1.Text = Calendar2.SelectedDate.ToShortDateString();
             lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
         }
 

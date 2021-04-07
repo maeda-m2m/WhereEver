@@ -1,13 +1,25 @@
 ﻿body {
+    font-family: Meiryo;
 }
 
+#title {
+    width: 300px;
+    text-align: center;
+}
 
+.title {
+    background-color: #16ba00;
+    text-align: center;
+    width: 230px;
+    height: 30px;
+    color: white;
+}
 
 .form-flat-border {
     margin-left: 10px;
     margin-right: 10px;
-    text-align: center;
-
+    text-align: left;
+    width: 1200px;
     display: inline-block;
     padding: 0.3em 1em;
     text-decoration: none;
@@ -33,7 +45,22 @@
     border-radius: 3px;
 }
 
+.btn-flat-border {
+    text-align: center;
+    width: 120px;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #16ba00;
+    border: solid 2px #16ba00;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
     .btn-flat-border:hover {
         background: #16ba00;
         color: white;
     }
+

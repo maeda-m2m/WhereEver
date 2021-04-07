@@ -9,6 +9,11 @@
 
 
     <title>m2m ログインページ</title>
+    <style type="text/css">
+        .auto-style2 {
+            width: 102px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -21,7 +26,7 @@
             <img src="../ログイン/back-1.jpg" runat="server" id="ue" /></td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="auto-style2">
                         <asp:TextBox ID="TbxID" runat="server" MaxLength="30" placeholder="UserID"></asp:TextBox>
                     </td>
                     <td>
@@ -35,7 +40,6 @@
                 </tr>
             </table>
         </div>
-
         <div>
             
             <br />
@@ -44,7 +48,6 @@
         </div>
         <div>
             &nbsp;</div>
-
     </form>
 </body>
 </html>

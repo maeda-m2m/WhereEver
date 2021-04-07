@@ -24,6 +24,9 @@
                     <a href="ファイル共有/FileShare.aspx" class="btn-flat-border" runat="server">ファイル共有</a>
                </td>
                <td>
+                    <a href="Project System/PIchiran.aspx" class="btn-flat-border" runat="server">プロジェクト</a>
+               </td>
+               <td>
                     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                </td>
     </tr>

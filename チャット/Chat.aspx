@@ -6,6 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
     <link href="Chat.css" type="text/css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Mちゃんねる</title>
@@ -22,14 +23,16 @@
             </table>
         </div>
         <div>
-            <h1>Mちゃんねる</h1>
+            <h2>Mちゃんねる</h2>
         </div>
         <div>
+        <table>
             <asp:DataGrid runat="server" ID="ChatArea" AutoGenerateColumns="False" OnItemDataBound="Chat_ItemDataBound" BorderStyle="None" >
                 <AlternatingItemStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+                
                 <Columns>
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
-                        <HeaderStyle Wrap="true" />
+                        <HeaderStyle Wrap="true"/>
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="50px" CssClass="scdl" />
                         <ItemTemplate>
                             <asp:Label ID="No" runat="server" Text=""></asp:Label>
@@ -63,26 +66,23 @@
                 </Columns>
                 <EditItemStyle BorderStyle="None" />
                 <FooterStyle BorderStyle="None" />
-                <HeaderStyle BorderStyle="None" HorizontalAlign="Left" />
+                <HeaderStyle BorderStyle="None" HorizontalAlign="Left" BackColor="Azure" />
                 <ItemStyle BorderStyle="None" HorizontalAlign="Left" />
                 <PagerStyle BorderStyle="None" />
                 <SelectedItemStyle BorderStyle="None" />
             </asp:DataGrid>
+         </table>
         </div>
         <div>
-            <table>
-                <tr>
-                    <td>
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                        <td>
-                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                        </td>
-                    </td>
-                </tr>
-                <td colspan="2">
-                    <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
-                </td>
-            </table>
+
+            <div id ="chatbox">
+                <p>
+                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                 &nbsp;&nbsp;
+                 <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
+                </p>
+           </div>
         </div>
     </form>
 </body>
