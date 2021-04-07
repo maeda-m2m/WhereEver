@@ -148,7 +148,7 @@ namespace WhereEver
 
 
             //勤怠届の印刷フォームに名前と日付を代入
-            lblDiligenceUser.Text = "氏名：" + SessionManager.User.M_User.name;
+            lblDiligenceUser.Text = "氏名：" + SessionManager.User.M_User.name1;
             DateTime dt = DateTime.Now;
             lblDiligenceDate.Text = dt.ToShortDateString();
 
@@ -212,7 +212,7 @@ namespace WhereEver
                 Panel_Print.Visible = false;
 
             }
-            name1.Text = "氏名：" + SessionManager.User.M_User.name;
+            name1.Text = "氏名：" + SessionManager.User.M_User.name1;
             DateTime dt = DateTime.Now;
             date.Text = dt.ToShortDateString();
             //ChangeValidate(true);

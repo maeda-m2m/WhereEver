@@ -19,6 +19,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <p><a href="../管理ページ/Kanri.aspx" class="btn-flat-border" runat="server">管理ページ（臨時）</a></p>
         <div>
             <table class="noprint">
                 <tr>
