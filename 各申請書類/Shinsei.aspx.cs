@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WhereEver.ClassLibrary;
 using System.ComponentModel.DataAnnotations;
+using static System.Web.HttpUtility;
 
 namespace WhereEver
 {
@@ -85,12 +86,12 @@ namespace WhereEver
             ShinseiClass reg = new ShinseiClass();
 
             //必須入力フォームをチェック
-            reg.buy_purpose = TextBox_purchaseName.Text.ToString();
-            reg.classification = TextBox_classification.Text.ToString();
-            reg.howMany = TextBox_howMany.Text.ToString();
-            reg.howMach = TextBox_howMach.Text.ToString();
-            reg.marketPlace = TextBox_marketPlace.Text.ToString();
-            reg.buy_purpose = TextArea_buy_purpose.ToString();
+            reg.buy_purpose = HtmlEncode(TextBox_purchaseName.Text.ToString());
+            reg.classification = HtmlEncode(TextBox_classification.Text.ToString());
+            reg.howMany = HtmlEncode(TextBox_howMany.Text.ToString());
+            reg.howMach = HtmlEncode(TextBox_howMach.Text.ToString());
+            reg.marketPlace = HtmlEncode(TextBox_marketPlace.Text.ToString());
+            reg.buy_purpose = HtmlEncode(TextBox_buy_purpose.ToString());
 
             Reg(reg);
             //------------------------------------------------------------
@@ -101,8 +102,8 @@ namespace WhereEver
             Suryo.Text = TextBox_howMany.Text + "点";
             Kingaku.Text = "\\" + TextBox_howMach.Text + "-";
             KonyuSaki.Text = TextBox_marketPlace.Text;
-            Riyuu.InnerText = TextArea_buy_purpose.InnerText;
-            Bikou.InnerText = TextArea_ps.InnerText;
+            TextBox_Riyuu.Text = TextBox_buy_purpose.Text;
+            TextBox_Bikou.Text = TextBox_ps.Text;
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -120,7 +121,7 @@ namespace WhereEver
             ShinseiClass reg = new ShinseiClass();
 
             //必須入力フォームをチェック
-            reg.Notification_Purpose = TextArea_Notification_Purpose.ToString();
+            reg.Notification_Purpose = HtmlEncode(TextBox_Notification_Purpose.ToString());
 
             Reg(reg);
             //------------------------------------------------------------
@@ -142,8 +143,8 @@ namespace WhereEver
             lblDiligenceDateA2.Text = " " + DropDownList_A_Time.SelectedValue;
             lblDiligenceDateB1.Text = lblSelectedDateB1.Text;
             lblDiligenceDateB2.Text = " " + DropDownList_B_Time.SelectedValue;
-            TextArea5.InnerText = TextArea_Notification_Purpose.InnerText;
-            TextArea6.InnerText = TextArea_Notification_ps.InnerText;
+            TextBox_Diligence_because.Text = TextBox_Notification_Purpose.Text;
+            TextBox_Diligence_ps.Text = TextBox_Notification_ps.Text;
 
             //DateTime dateTime1 = Calendar1.SelectedDate;
             //DateTime dateTime2 = Calendar2.SelectedDate;

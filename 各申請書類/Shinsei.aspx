@@ -54,7 +54,7 @@
                             <p>購入品名*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox" ValidateRequestMode="Disabled"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_purchaseName" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_purchaseName"></asp:RequiredFieldValidator>
@@ -65,7 +65,7 @@
                             <p>種別*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox" ValidateRequestMode="Disabled"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_classification" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_classification"></asp:RequiredFieldValidator>
@@ -77,7 +77,7 @@
                             <p>購入点数*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox"></asp:TextBox>点
+                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox" ValidateRequestMode="Disabled"></asp:TextBox>点
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMany" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMany"></asp:RequiredFieldValidator>
@@ -88,7 +88,7 @@
                             <p>合計金額*</p>
                         </td>
                         <td class="text">
-                            \<asp:TextBox ID="TextBox_howMach" runat="server" CssClass="textbox" Width="128px"></asp:TextBox>-
+                            \<asp:TextBox ID="TextBox_howMach" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled"></asp:TextBox>-
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMach" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMach"></asp:RequiredFieldValidator>
@@ -99,7 +99,7 @@
                             <p>購入元*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox" ValidateRequestMode="Disabled"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_marketPlace" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_marketPlace"></asp:RequiredFieldValidator>
@@ -110,10 +110,10 @@
                             <p>購入目的*</p>
                         </td>
                         <td>
-                            <textarea id="TextArea_buy_purpose" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
+                            <asp:TextBox ID="TextBox_buy_purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_buy_purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextArea_buy_purpose"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_buy_purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_buy_purpose"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -121,7 +121,7 @@
                             <p>備考</p>
                         </td>
                             <td class="text">
-                                <textarea id="TextArea_ps" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
+                                <asp:TextBox ID="TextBox_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
                             </td>
                     </tr>
                     <tr>
@@ -155,73 +155,81 @@
                             <p>日時*</p>
                         </td>
                             <td class="text">
-                                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
-                                <asp:DropDownList ID="DropDownList_A_Time" runat="server" OnTextChanged="DropDownList_A_Time_SelectionChanged" AutoPostBack="True">
-                                    <asp:ListItem>9:00</asp:ListItem>
-                                    <asp:ListItem>9:30</asp:ListItem>
-                                    <asp:ListItem>10:00</asp:ListItem>
-                                    <asp:ListItem>10:00</asp:ListItem>
-                                    <asp:ListItem>10:30</asp:ListItem>
-                                    <asp:ListItem>11:00</asp:ListItem>
-                                    <asp:ListItem>11:30</asp:ListItem>
-                                    <asp:ListItem>12:00</asp:ListItem>
-                                    <asp:ListItem>13:00</asp:ListItem>
-                                    <asp:ListItem>13:30</asp:ListItem>
-                                    <asp:ListItem>14:00</asp:ListItem>
-                                    <asp:ListItem>14:30</asp:ListItem>
-                                    <asp:ListItem>15:00</asp:ListItem>
-                                    <asp:ListItem>15:30</asp:ListItem>
-                                    <asp:ListItem>16:00</asp:ListItem>
-                                    <asp:ListItem>16:30</asp:ListItem>
-                                    <asp:ListItem>17:00</asp:ListItem>
-                                    <asp:ListItem>17:30</asp:ListItem>
-                                    <asp:ListItem>18:00</asp:ListItem>
-                                </asp:DropDownList>
+
+                                 <table>
+                                    <tr>
+                                      <td>
+                                        <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
+                                        <asp:DropDownList ID="DropDownList_A_Time" runat="server" OnTextChanged="DropDownList_A_Time_SelectionChanged" AutoPostBack="True">
+                                            <asp:ListItem>9:00</asp:ListItem>
+                                            <asp:ListItem>9:30</asp:ListItem>
+                                            <asp:ListItem>10:00</asp:ListItem>
+                                            <asp:ListItem>10:00</asp:ListItem>
+                                            <asp:ListItem>10:30</asp:ListItem>
+                                            <asp:ListItem>11:00</asp:ListItem>
+                                            <asp:ListItem>11:30</asp:ListItem>
+                                            <asp:ListItem>12:00</asp:ListItem>
+                                            <asp:ListItem>13:00</asp:ListItem>
+                                            <asp:ListItem>13:30</asp:ListItem>
+                                            <asp:ListItem>14:00</asp:ListItem>
+                                            <asp:ListItem>14:30</asp:ListItem>
+                                            <asp:ListItem>15:00</asp:ListItem>
+                                            <asp:ListItem>15:30</asp:ListItem>
+                                            <asp:ListItem>16:00</asp:ListItem>
+                                            <asp:ListItem>16:30</asp:ListItem>
+                                            <asp:ListItem>17:00</asp:ListItem>
+                                            <asp:ListItem>17:30</asp:ListItem>
+                                            <asp:ListItem>18:00</asp:ListItem>
+                                        </asp:DropDownList>
 
                                 <br />
 
                                 <asp:Label ID="lblSelectedDateA1" runat="server" Text=""></asp:Label>
                                 <asp:Label ID="lblSelectedDateA2" runat="server" Text="9:00"></asp:Label>から
+                                      </td>
+                                      <td>
+                                        <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
+                                        <asp:DropDownList ID="DropDownList_B_Time" runat="server" OnTextChanged="DropDownList_B_Time_SelectionChanged" AutoPostBack="True">
+                                            <asp:ListItem>9:00</asp:ListItem>
+                                            <asp:ListItem>9:30</asp:ListItem>
+                                            <asp:ListItem>10:00</asp:ListItem>
+                                            <asp:ListItem>10:00</asp:ListItem>
+                                            <asp:ListItem>10:30</asp:ListItem>
+                                            <asp:ListItem>11:00</asp:ListItem>
+                                            <asp:ListItem>11:30</asp:ListItem>
+                                            <asp:ListItem>12:00</asp:ListItem>
+                                            <asp:ListItem>13:00</asp:ListItem>
+                                            <asp:ListItem>13:30</asp:ListItem>
+                                            <asp:ListItem>14:00</asp:ListItem>
+                                            <asp:ListItem>14:30</asp:ListItem>
+                                            <asp:ListItem>15:00</asp:ListItem>
+                                            <asp:ListItem>15:30</asp:ListItem>
+                                            <asp:ListItem>16:00</asp:ListItem>
+                                            <asp:ListItem>16:30</asp:ListItem>
+                                            <asp:ListItem>17:00</asp:ListItem>
+                                            <asp:ListItem>17:30</asp:ListItem>
+                                            <asp:ListItem>18:00</asp:ListItem>
+                                        </asp:DropDownList><br />
+                                    <asp:Label ID="lblSelectedDateB1" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="lblSelectedDateB2" runat="server" Text="9:00"></asp:Label>まで
+                                      </td>
+                                    </tr>
+                                 </table>
 
                                 </td>
                                 <td>
-                                    <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
-                                    <asp:DropDownList ID="DropDownList_B_Time" runat="server" OnTextChanged="DropDownList_B_Time_SelectionChanged" AutoPostBack="True">
-                                        <asp:ListItem>9:00</asp:ListItem>
-                                        <asp:ListItem>9:30</asp:ListItem>
-                                        <asp:ListItem>10:00</asp:ListItem>
-                                        <asp:ListItem>10:00</asp:ListItem>
-                                        <asp:ListItem>10:30</asp:ListItem>
-                                        <asp:ListItem>11:00</asp:ListItem>
-                                        <asp:ListItem>11:30</asp:ListItem>
-                                        <asp:ListItem>12:00</asp:ListItem>
-                                        <asp:ListItem>13:00</asp:ListItem>
-                                        <asp:ListItem>13:30</asp:ListItem>
-                                        <asp:ListItem>14:00</asp:ListItem>
-                                        <asp:ListItem>14:30</asp:ListItem>
-                                        <asp:ListItem>15:00</asp:ListItem>
-                                        <asp:ListItem>15:30</asp:ListItem>
-                                        <asp:ListItem>16:00</asp:ListItem>
-                                        <asp:ListItem>16:30</asp:ListItem>
-                                        <asp:ListItem>17:00</asp:ListItem>
-                                        <asp:ListItem>17:30</asp:ListItem>
-                                        <asp:ListItem>18:00</asp:ListItem>
-                                    </asp:DropDownList><br />
-                                    <asp:Label ID="lblSelectedDateB1" runat="server" Text=""></asp:Label>
-                                    <asp:Label ID="lblSelectedDateB2" runat="server" Text="9:00"></asp:Label>まで
-
                                 </td>
-
                     </tr>
+
                     <tr>
-                        <td class="title">
+                        <td class="title" runat="server">
                             <p>理由*</p>
                         </td>
                         <td class="text">
-                                <textarea id="TextArea_Notification_Purpose" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
+                            <asp:TextBox ID="TextBox_Notification_Purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Notification_Purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextArea_Notification_Purpose"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Notification_Purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Notification_Purpose"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -229,7 +237,7 @@
                             <p>備考</p>
                         </td>
                         <td class="text">
-                                <textarea id="TextArea_Notification_ps" cols="27" rows="3" cssclass="textbox" runat="server"></textarea>
+                           <asp:TextBox ID="TextBox_Notification_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -250,7 +258,7 @@
                     </tr>
                     <tr>
                                 <td class="aa">
-                                    <p>日時</p>
+                                    <p>申請日</p>
                                 </td>
                                 <td>
                                   <asp:Label ID="date" runat="server" Text="Select Date"></asp:Label>
@@ -308,7 +316,7 @@
                             <p>購入品名</p>
                         </td>
                         <td colspan="3" class="zone">
-                                <asp:Label ID="Konyu" runat="server" Text="購入品を記載してください"></asp:Label>
+                                <asp:Label ID="Konyu" runat="server" Text="購入品を記載してください" ValidateRequestMode="Disabled"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -316,7 +324,7 @@
                             <p>種別</p>
                         </td>
                         <td colspan="3" class="zone">
-                            <asp:Label ID="Syubetsu" runat="server" Text="種別を記載してください"></asp:Label>
+                            <asp:Label ID="Syubetsu" runat="server" Text="種別を記載してください" ValidateRequestMode="Disabled"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -324,7 +332,7 @@
                             <p>購入点数</p>
                         </td>
                         <td colspan="3" class="zone">
-                            <asp:Label ID="Suryo" runat="server" Text="購入点数を記載してください"></asp:Label>
+                            <asp:Label ID="Suryo" runat="server" Text="購入点数を記載してください" ValidateRequestMode="Disabled"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -332,7 +340,7 @@
                             <p>合計金額</p>
                         </td>
                         <td colspan="3" class="zone">
-                            <asp:Label ID="Kingaku" runat="server" Text="合計金額を記載してください"></asp:Label>
+                            <asp:Label ID="Kingaku" runat="server" Text="合計金額を記載してください" ValidateRequestMode="Disabled"></asp:Label>
                         </td>
                     </tr>
 
@@ -341,7 +349,7 @@
                             <p>購入元</p>
                         </td>
                         <td colspan="3" class="zone">
-                            <asp:Label ID="KonyuSaki" runat="server" Text="購入元を記載してください"></asp:Label>
+                            <asp:Label ID="KonyuSaki" runat="server" Text="購入元を記載してください" ValidateRequestMode="Disabled"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -349,7 +357,7 @@
                             <p>購入理由/目的</p>
                         </td>
                         <td colspan="3" class="area">
-                            <textarea id="Riyuu" rows="7" runat="server"></textarea>
+                           <asp:TextBox ID="TextBox_Riyuu" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -357,7 +365,7 @@
                             <p>備考</p>
                         </td>
                         <td colspan="3" class="area">
-                            <textarea id="Bikou" rows="7" runat="server"></textarea>
+                            <asp:TextBox ID="TextBox_Bikou" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -372,12 +380,12 @@
                 <table id="Todoke">
                     <tr>
                         <td colspan="4" id="top">
-                            <asp:Label ID="lblDiligenceClassification1" runat="server" Text="届ける項目を選択してください"></asp:Label>
+                            <asp:Label ID="lblDiligenceClassification1" runat="server" Text="届ける項目を選択してください" ValidateRequestMode="Disabled"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td id="date2" class="takasa">
-                            <p>日時</p>
+                            <p>申請日</p>
                         </td>
                         <td colspan="3">
                             <asp:Label ID="lblDiligenceDate" runat="server" Text="DiligenceDate"></asp:Label>
@@ -438,7 +446,7 @@
                             <p>理由</p>
                         </td>
                         <td colspan="3" class="nakami">
-                            <textarea id="TextArea5" cols="55" rows="5" runat="server"></textarea>
+                           <asp:TextBox ID="TextBox_Diligence_because" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -446,7 +454,7 @@
                             <p>備考</p>
                         </td>
                         <td colspan="3" class="nakami">
-                            <textarea id="TextArea6" cols="55" rows="5" runat="server"></textarea>
+                           <asp:TextBox ID="TextBox_Diligence_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="100" Height="90px" Width="415px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>

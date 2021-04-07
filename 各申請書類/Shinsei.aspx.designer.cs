@@ -159,13 +159,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_marketPlace;
 
         /// <summary>
-        /// TextArea_buy_purpose コントロール。
+        /// TextBox_buy_purpose コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea_buy_purpose;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_buy_purpose;
 
         /// <summary>
         /// RequiredFieldValidator_buy_purpose コントロール。
@@ -177,13 +177,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_buy_purpose;
 
         /// <summary>
-        /// TextArea_ps コントロール。
+        /// TextBox_ps コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea_ps;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ps;
 
         /// <summary>
         /// Button1 コントロール。
@@ -303,13 +303,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label lblSelectedDateB2;
 
         /// <summary>
-        /// TextArea_Notification_Purpose コントロール。
+        /// TextBox_Notification_Purpose コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea_Notification_Purpose;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Notification_Purpose;
 
         /// <summary>
         /// RequiredFieldValidator_Notification_Purpose コントロール。
@@ -321,13 +321,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Notification_Purpose;
 
         /// <summary>
-        /// TextArea_Notification_ps コントロール。
+        /// TextBox_Notification_ps コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea_Notification_ps;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Notification_ps;
 
         /// <summary>
         /// Button2 コントロール。
@@ -420,22 +420,22 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label KonyuSaki;
 
         /// <summary>
-        /// Riyuu コントロール。
+        /// TextBox_Riyuu コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea Riyuu;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Riyuu;
 
         /// <summary>
-        /// Bikou コントロール。
+        /// TextBox_Bikou コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea Bikou;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Bikou;
 
         /// <summary>
         /// Panel5 コントロール。
@@ -528,22 +528,22 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label lblDiligenceDateB2;
 
         /// <summary>
-        /// TextArea5 コントロール。
+        /// TextBox_Diligence_because コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea5;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Diligence_because;
 
         /// <summary>
-        /// TextArea6 コントロール。
+        /// TextBox_Diligence_ps コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextArea6;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Diligence_ps;
 
         /// <summary>
         /// Panel_Print コントロール。
