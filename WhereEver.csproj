@@ -119,7 +119,8 @@
     <Content Include="ShinseiMenu.css" />
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
-    <Content Include="チャット\blue.png" />
+    <Content Include="チャット\blue1_m.jpg" />
+    <Content Include="チャット\purple.jpg" />
     <Content Include="ログイン\back-1.jpg" />
     <Content Include="ログイン\back-2.jpg" />
     <Content Include="ログイン\LoginList.css" />
@@ -223,6 +224,7 @@
     <Compile Include="Class\Chat.cs" />
     <Compile Include="Class\Login.cs" />
     <Compile Include="Class\Logout.cs" />
+    <Compile Include="Class\Schedule.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -236,7 +238,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DATASET\Schedule.cs" />
     <Compile Include="Insatsu.ascx.cs">
       <DependentUpon>Insatsu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
