@@ -5,7 +5,7 @@
     background-attachment: fixed; /* 固定 */
     background-position: center center; /* 縦横中央 */
 }
-h1 {
+h2 {
     width: 400px;
     text-align: center;
     color: white;
@@ -44,5 +44,9 @@ h1 {
 #ChatArea {
     border-style: none;
     border: none;
-    margin-left: 370px;
+    margin-left: 300px;
+}
+
+#chatbox {
+    margin-left: 660px;
 }
