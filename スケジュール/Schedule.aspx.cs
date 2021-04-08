@@ -145,12 +145,12 @@ namespace WhereEver
                         if (Scdl3.Items[0].Cells[1].Text != "")
                         {
 
-                            DATASET.DataSet.T_ScheduleRow C = dd.Rows[++j] as DATASET.DataSet.T_ScheduleRow;
+                            DATASET.DataSet.T_ScheduleRow C = dd.Rows[j++] as DATASET.DataSet.T_ScheduleRow;
                             string D = C.time + C.title + "<font color=#16ba00>" + C.name + "</font>";
                             Scdl3.Items[0].Cells[1].Text = B + Environment.NewLine + D;
                         }
-                        
-                       
+
+
                         //switch (a = 1)
                         //{
 
@@ -179,129 +179,129 @@ namespace WhereEver
                     if (week == "火")
                         Scdl3.Items[0].Cells[2].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "水")
-                        Scdl3.Items[0].Cells[3].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[0].Cells[3].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "木")
-                        Scdl3.Items[0].Cells[4].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[0].Cells[4].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "金")
-                        Scdl3.Items[0].Cells[5].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[0].Cells[5].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                 }
                 else if (tm == "10:00" || tm == "10:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[1].Cells[1].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[1].Cells[1].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "火")
-                        Scdl3.Items[1].Cells[2].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[1].Cells[2].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "水")
-                        Scdl3.Items[1].Cells[3].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[1].Cells[3].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "木")
-                        Scdl3.Items[1].Cells[4].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[1].Cells[4].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "金")
-                        Scdl3.Items[1].Cells[5].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[1].Cells[5].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                 }
                 else if (tm == "11:00" || tm == "11:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[2].Cells[1].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[2].Cells[1].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "火")
-                        Scdl3.Items[2].Cells[2].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[2].Cells[2].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "水")
-                        Scdl3.Items[2].Cells[3].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[2].Cells[3].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "木")
-                        Scdl3.Items[2].Cells[4].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[2].Cells[4].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "金")
-                        Scdl3.Items[2].Cells[5].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[2].Cells[5].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                 }
                 else if (tm == "12:00" || tm == "12:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[3].Cells[1].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[3].Cells[1].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "火")
-                        Scdl3.Items[3].Cells[2].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[3].Cells[2].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "水")
-                        Scdl3.Items[3].Cells[3].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[3].Cells[3].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "木")
-                        Scdl3.Items[3].Cells[4].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[3].Cells[4].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "金")
-                        Scdl3.Items[3].Cells[5].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[3].Cells[5].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                 }
                 else if (tm == "13:00" || tm == "13:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[4].Cells[1].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[4].Cells[1].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "火")
-                        Scdl3.Items[4].Cells[2].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[4].Cells[2].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "水")
-                        Scdl3.Items[4].Cells[3].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[4].Cells[3].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "木")
-                        Scdl3.Items[4].Cells[4].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[4].Cells[4].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "金")
-                        Scdl3.Items[4].Cells[5].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[4].Cells[5].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                 }
                 else if (tm == "14:00" || tm == "14:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[5].Cells[1].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[5].Cells[1].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "火")
-                        Scdl3.Items[5].Cells[2].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[5].Cells[2].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "水")
-                        Scdl3.Items[5].Cells[3].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[5].Cells[3].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "木")
-                        Scdl3.Items[5].Cells[4].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[5].Cells[4].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "金")
-                        Scdl3.Items[5].Cells[5].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[5].Cells[5].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                 }
                 else if (tm == "15:00" || tm == "15:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[6].Cells[1].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[6].Cells[1].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "火")
-                        Scdl3.Items[6].Cells[2].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[6].Cells[2].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "水")
-                        Scdl3.Items[6].Cells[3].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[6].Cells[3].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "木")
-                        Scdl3.Items[6].Cells[4].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[6].Cells[4].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "金")
-                        Scdl3.Items[6].Cells[5].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[6].Cells[5].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                 }
                 else if (tm == "16:00" || tm == "16:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[7].Cells[1].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[7].Cells[1].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "火")
-                        Scdl3.Items[7].Cells[2].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[7].Cells[2].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "水")
-                        Scdl3.Items[7].Cells[3].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[7].Cells[3].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "木")
-                        Scdl3.Items[7].Cells[4].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[7].Cells[4].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "金")
-                        Scdl3.Items[7].Cells[5].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[7].Cells[5].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
 
                 }
                 else if (tm == "17:00" || tm == "17:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[8].Cells[1].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[8].Cells[1].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "火")
-                        Scdl3.Items[8].Cells[2].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[8].Cells[2].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "水")
-                        Scdl3.Items[8].Cells[3].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[8].Cells[3].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "木")
-                        Scdl3.Items[8].Cells[4].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[8].Cells[4].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "金")
-                        Scdl3.Items[8].Cells[5].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[8].Cells[5].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                 }
                 else if (tm == "18:00")
                 {
                     if (week == "月")
-                        Scdl3.Items[9].Cells[1].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[9].Cells[1].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "火")
-                        Scdl3.Items[9].Cells[2].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[9].Cells[2].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "水")
-                        Scdl3.Items[9].Cells[3].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[9].Cells[3].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "木")
-                        Scdl3.Items[9].Cells[4].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[9].Cells[4].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
                     if (week == "金")
-                        Scdl3.Items[9].Cells[5].Text = dl.time + dl.title + "\r\n" + "<font color=#16ba00>" + dl.name + "</font>";
+                        Scdl3.Items[9].Cells[5].Text = dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
 
                 }
             }
