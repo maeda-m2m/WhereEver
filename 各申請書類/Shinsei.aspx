@@ -14,12 +14,14 @@
     <title>申請書類</title>
 
     <style type="text/css">
-     </style>
+        .auto-style10 {
+            height: 40px;
+        }
+        </style>
 
 </head>
 <body>
     <form id="form1" runat="server">
-        <p><a href="../管理ページ/Kanri.aspx" class="btn-flat-border" runat="server">管理ページ（臨時）</a></p>
         <div>
             <table class="noprint">
                 <tr>
@@ -39,6 +41,7 @@
                                     <asp:ListItem>【申請書類を選択】</asp:ListItem>
                                     <asp:ListItem>物品購入申請</asp:ListItem>
                                     <asp:ListItem>勤怠関連申請</asp:ListItem>
+                                    <asp:ListItem>立替金明細表申請</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                             <td>
@@ -249,6 +252,194 @@
                     </tr>
                 </table>
             </asp:Panel>
+
+
+
+
+
+                <asp:Panel ID="Panel6" runat="server" CssClass="noprint">
+                <table id="meisai">
+                    <tr>
+                        <td class="title">
+                            <p>日付（〇月〇日）*</p>
+                        </td>
+                        <td class="text">
+                            <asp:TextBox ID="TextBox_Tatekae_Date" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_Date"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">
+                            <p>出張先*</p>
+                        </td>
+                        <td class="text">
+                            <asp:TextBox ID="TextBox_Tatekae_WPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_WPlace"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="title">
+                            <p>交通機関*</p>
+                        </td>
+                        <td class="text">
+                            <asp:TextBox ID="TextBox_Tatekae_TUse" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TUse"></asp:RequiredFieldValidator>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="title">
+                            <p>乗車駅*</p>
+                        </td>
+                        <td class="text">
+                            <asp:TextBox ID="TextBox_Tatekae_TIn" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TIn"></asp:RequiredFieldValidator>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="title">
+                            <p>降車駅*</p>
+                        </td>
+                        <td class="text">
+                            <asp:TextBox ID="TextBox_Tatekae_TOut" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TOut"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">
+                            <p>交通費*</p>
+                        </td>
+                        <td class="text">
+                            \<asp:TextBox ID="TextBox_Tatekae_TWaste" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角305文字以内" Text="0"></asp:TextBox>-
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TWaste"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="title">
+                            <p>宿泊場所*</p>
+                        </td>
+                        <td class="text">
+                            <asp:TextBox ID="TextBox_Tatekae_Place" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_Place"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">
+                            <p>宿泊金額*</p>
+                        </td>
+                        <td class="text">
+                            \<asp:TextBox ID="TextBox_Tatekae_PWaste" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角305文字以内" Text="0"></asp:TextBox>-
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_PWaste"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="title">
+                            <p>領収証*</p>
+                        </td>
+                        <td class="text">
+                            <asp:CheckBox ID="CheckBox_Tatekae_Receipt" runat="server" Text="あり" />
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="title">
+                            <p>備考</p>
+                        </td>
+                            <td class="text">
+                                <asp:TextBox ID="TextBox_Tatekae_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内"></asp:TextBox>
+                            </td>
+                    </tr>
+
+                    <tr>
+                        <td class="title">
+                            <p>定期券代*</p>
+                        </td>
+                        <td class="text">
+                            \<asp:TextBox ID="TextBox_Tatekae_Teiki" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角305文字以内" Text="0"></asp:TextBox>-
+                            <asp:Button ID="Button5" CssClass="btn-flat-border" runat="server" Text="反映" OnClick="Change_Text_T_Teiki" CausesValidation="False" />
+                        </td>
+
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_Teiki"></asp:RequiredFieldValidator>
+                        </td>
+                   </tr>
+
+
+                    
+                    <tr>
+                        <td colspan="2">
+                             <asp:Button ID="Button3" CssClass="btn-flat-border" runat="server" Text="挿入" OnClick="Button3_Click" />
+                            <asp:Button ID="Button6" CssClass="btn-flat-border" runat="server" Text="初期化" OnClick="Button4_Click" CausesValidation="False" />
+                            <asp:Button ID="Button8" CssClass="btn-flat-border" runat="server" Text="UNDO" OnClick="Button_Undo" CausesValidation="False" />
+                             <asp:Button ID="Button7" CssClass="btn-flat-border" runat="server" Text="印刷" OnClick="Button5_Click" CausesValidation="False" />
+                            <asp:Button ID="Button4" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" />
+                        </td>
+                    </tr>
+                </table>
+            </asp:Panel>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <asp:Panel ID="Panel4" runat="server">
                 <table id="buppin">
@@ -468,6 +659,94 @@
                 </table>
 
             </asp:Panel>
+
+
+
+
+
+
+
+
+
+
+               <asp:Panel ID="Panel7" runat="server">
+                <table id="TatekaeTodoke">
+                    <tr>
+                        <td colspan="4" id="Tatekaetop">
+                            立替金明細表
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="date3" class="takasa">
+                            <p>申請日</p>
+                        </td>
+                        <td colspan="3">
+                            <asp:Label ID="lblTatekaeDate" runat="server" Text="TatekaeDate"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr class="takasa">
+                        <td colspan="2" id="name3">
+                            <asp:Label ID="lblTatekaeName" runat="server" Text=""></asp:Label><asp:Label ID="lblTatekaeHanko" runat="server" Text="（印）"></asp:Label>
+                        </td>
+                        <td colspan="2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td id="Syacho3">
+                                  <p>社長</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td id="yohaku8">
+                        </td>
+                        <td id="yohaku7">
+                        </td>
+                        <td class="hanko2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="yohaku6" colspan="4"></td>
+                    </tr>
+                    </table>
+
+
+              <table id="TatekaeTable">
+                  <tr class="naiyou"><td class="nakami">日付</td><td class="nakami">出張先</td><td class="nakami">交通機関</td><td class="nakami">乗車駅</td><td class="nakami">降車駅</td><td class="nakami">交通費</td><td class="nakami">宿泊場所</td><td class="nakami">宿泊費</td><td class="nakami">領収証</td><td class="nakami">備考</td></tr>
+                  <asp:Label ID="lblTatekaeResult" runat="server" ValidateRequestMode="Disabled"></asp:Label>               
+                  <tr class="naiyou"><td colspan="3" class="naiyou"></td><td  colspan="2" class="nakami">交通費計</td><td  class="naiyou-b"><asp:Label ID="lblTatekae_Koutuuhi" runat="server" ValidateRequestMode="Disabled" Text="\0-"></asp:Label></td><td class="nakami">宿泊費計</td><td  class="naiyou-b"><asp:Label ID="lblTatekae_Shukuhakuhi" runat="server" ValidateRequestMode="Disabled" Text="\0-"></asp:Label></td><td colspan="2" class="naiyou"></td></tr>
+                  <tr class="naiyou"><td colspan="10" class="naiyou"></td></tr>
+                  <tr class="naiyou"><td class="nakami" colspan="4">交通費＋宿泊費</td><td class="naiyou-b"><asp:Label ID="lblTatekae_Result1" runat="server" ValidateRequestMode="Disabled" Text="\0-"></asp:Label></td><td colspan="5" class="naiyou"></td></tr>
+                  <tr class="naiyou"><td class="nakami" colspan="4">定期券代</td><td class="naiyou-b"><asp:Label ID="lblTatekae_Result2" runat="server" ValidateRequestMode="Disabled" Text="\0-"></asp:Label></td><td colspan="5" class="naiyou"></td></tr>
+                  <tr class="naiyou"><td class="nakami" colspan="4">立替金合計</td><td class="naiyou-b"><asp:Label ID="lblTatekae_Result3" runat="server" ValidateRequestMode="Disabled" Text="\0-"></asp:Label></td><td colspan="5" class="naiyou"></td></tr>
+              </table>
+
+
+                <table id="TatekaeTodoke2">
+                    <tr>
+                        <td id="foot2">
+                            <p>
+                                上記の通り、申請いたします。
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+            </asp:Panel>
+
+
+
+
+
+
+
 
 <%--            <asp:Panel ID="Panel6" runat="server" CssClass="noprint">
                 <table>
