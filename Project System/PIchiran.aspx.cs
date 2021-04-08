@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -56,7 +58,7 @@ namespace WhereEver.Project_System
             DATASET.DataSet.T_PdbDataTable t_Pdbs = new DATASET.DataSet.T_PdbDataTable();
             DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
 
-            dr.Pname= txtNewPName.Text.Trim();
+            dr.Pname = txtNewPName.Text.Trim();
             dr.Pcustomer = txtNewCustomer.Text.Trim();
             dr.Presponsible = ddlResponsible.SelectedItem.Text.Trim();
             dr.Pcategory = txtNewCategory.Text.Trim();
@@ -72,7 +74,7 @@ namespace WhereEver.Project_System
             DgPIchiran.DataSource = dt;
             DgPIchiran.DataBind();
 
-            txtNewPName.Text= "";
+            txtNewPName.Text = "";
             txtNewCustomer.Text = "";
             txtNewCategory.Text = "";
         }

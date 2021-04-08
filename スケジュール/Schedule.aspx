@@ -303,6 +303,7 @@
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
                         <ItemTemplate>
                             <asp:Button ID="Delete" runat="server" Text="削除" CssClass="btn-flat-border" CommandName="Delete" />
+                            <asp:Button ID="UpData" runat="server" Text="編集" CommandName="UpData" CssClass="btn-flat-border" ButtonType="PushButton"></asp:Button>
                         </ItemTemplate>
                     </asp:TemplateColumn>
                 </Columns>
