@@ -71,7 +71,7 @@
                 <PagerStyle BorderStyle="None" />
                 <SelectedItemStyle BorderStyle="None" />
             </asp:DataGrid>
-         </table>
+            </table>
         </div>
         <div>
 
