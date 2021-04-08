@@ -55,11 +55,9 @@
 
 
            <p>
-            あなたのid: <asp:Label ID="lblResult" runat="server" Text="null"></asp:Label>
+            <asp:Label ID="lblResult" runat="server" Text="null" Visible="False"></asp:Label>
            </p>
-           <p>
-            処理結果: <asp:Label ID="lblResult2" runat="server" Text="ready"></asp:Label>
-           </p>
+
 
 
         </div>
