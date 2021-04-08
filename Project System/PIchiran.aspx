@@ -10,6 +10,16 @@
 
     <title></title>
     
+    <style type="text/css">
+        .auto-style1 {
+            margin-bottom: 0px;
+        }
+        .auto-style2 {
+            height: 232px;
+            margin-bottom: 0px;
+        }
+    </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -25,9 +35,9 @@
         <div>
             <table class="auto-style1">
                 <tr>
-                    <td colspan="5">
+                    <td colspan="4">
 
-            <asp:DataGrid runat="server" ID="DgPIchiran" AutoGenerateColumns="False" OnItemDataBound="DgPIchiran_ItemDataBound">
+            <asp:DataGrid runat="server" ID="DgPIchiran" AutoGenerateColumns="False" OnItemDataBound="DgPIchiran_ItemDataBound" OnItemCommand="DgPIchiran_ItemCommand">
                 <AlternatingItemStyle BackColor="#CCFFCC" />
                 <Columns>
                     <asp:TemplateColumn HeaderText="プロジェクト名">
@@ -80,8 +90,7 @@
 
                     <asp:TemplateColumn>
                         <ItemTemplate>
-                            <asp:Button ID="btnChange" runat="server" Text="編集" OnClick="btnChange_Click" />
-                            <asp:Button ID="btnDelete" runat="server" Text="削除" />
+                            <asp:Button ID="btnChange" runat="server" Text="編集" />
                         </ItemTemplate>
                         <HeaderStyle Wrap="True" />
                         <ItemStyle CssClass="scdl" HorizontalAlign="Left" Width="150px" Wrap="True" />
@@ -108,11 +117,8 @@
                     </td>
                     <td class="auto-style2">
 
-                        <asp:TextBox ID="txtNewCustomer" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNewCustomer" runat="server" CssClass="auto-style1"></asp:TextBox>
                     </td>
-                    <td class="auto-style2">
-
-                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style3">
@@ -137,39 +143,33 @@
 
                         <asp:TextBox ID="txtNewCategory" runat="server"></asp:TextBox>
                     </td>
-                    <td class="auto-style3">
-
-                    </td>
                 </tr>
                 <tr>
-                    <td class="auto-style1">
+                    <td class="auto-style2">
 
                         <asp:Label ID="lblNewStartTime" runat="server" Text="開始日"></asp:Label>
                     </td>
-                    <td class="auto-style1">
+                    <td class="auto-style2">
 
                 <asp:Calendar ID="Calendar1" runat="server" ></asp:Calendar>
                     </td>
-                    <td class="auto-style1">
+                    <td class="auto-style2">
 
                         <asp:Label ID="lblNewOverTime" runat="server" Text="終了日"></asp:Label>
                     </td>
-                    <td class="auto-style1">
+                    <td class="auto-style2">
 
                 <asp:Calendar ID="Calendar2" runat="server"></asp:Calendar>
                     </td>
-                    <td class="auto-style1">
-
-                    </td>
                 </tr>
                 <tr>
-                    <td colspan="4" class="auto-style1">
+                    <td colspan="2" class="auto-style1">
 
                         <asp:Button ID="btnNewP" runat="server" OnClick="btnNewP_Click" Text="新規として保存" />
                     </td>
-                    <td class="auto-style1">
+                    <td colspan="2" class="auto-style1">
 
-                        <asp:Button ID="btnBack" runat="server" Text="戻る" />
+                        <asp:Button ID="btnDelete" runat="server" Text="削除" />
                     </td>
                 </tr>
             </table>
