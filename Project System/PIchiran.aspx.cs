@@ -25,7 +25,7 @@ namespace WhereEver.Project_System
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Pdb";
+                "SELECT * FROM T_Pdb order by Pid";
             DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
             da.Fill(dt);
             return dt;
@@ -50,6 +50,7 @@ namespace WhereEver.Project_System
                 lblCategory.Text = dr.Pcategory.ToString();
                 lblStartTime.Text = dr.Pstarttime.ToShortDateString();
                 lblOverTime.Text = dr.Povertime.ToShortDateString();
+
             }
         }
 
@@ -58,6 +59,9 @@ namespace WhereEver.Project_System
             DATASET.DataSet.T_PdbDataTable t_Pdbs = new DATASET.DataSet.T_PdbDataTable();
             DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
 
+            DATASET.DataSet.T_PdbRow dl = GetMaxPidRow(Global.GetConnection());
+            int sl = dl.Pid;
+            dr.Pid = sl + 1;
             dr.Pname= txtNewPName.Text.Trim();
             dr.Pcustomer = txtNewCustomer.Text.Trim();
             dr.Presponsible = ddlResponsible.SelectedItem.Text.Trim();
@@ -77,6 +81,16 @@ namespace WhereEver.Project_System
             txtNewPName.Text= "";
             txtNewCustomer.Text = "";
             txtNewCategory.Text = "";
+        }
+
+        internal static DATASET.DataSet.T_PdbRow GetMaxPidRow(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "select MAX(Pid) as Pid from T_Pdb";
+            DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
+            da.Fill(dt);
+            return dt[0];
         }
 
         public static void InsertProject(DATASET.DataSet.T_PdbDataTable dt, SqlConnection sqlConnection)
@@ -109,10 +123,18 @@ namespace WhereEver.Project_System
                 sqlConnection.Close();
             }
         }
-
-        protected void btnChange_Click(object sender, EventArgs e)
+        protected void DgPIchiran_ItemCommand(object source, DataGridCommandEventArgs e)
         {
-
+            LinkButton lbPName = DgPIchiran.Items[e.Item.ItemIndex].Cells[0].FindControl("lbPName") as LinkButton;
+            Label lblCustomer = DgPIchiran.Items[e.Item.ItemIndex].Cells[1].FindControl("lblCustomer") as Label;
+            LinkButton lbResponsible = DgPIchiran.Items[e.Item.ItemIndex].Cells[2].FindControl("lbResponsible") as LinkButton;
+            Label lblCategory = DgPIchiran.Items[e.Item.ItemIndex].Cells[3].FindControl("lblCategory") as Label;
+            txtNewPName.Text = lbPName.Text;
+            txtNewCustomer.Text = lblCustomer.Text;
+            ddlResponsible.Text = lbResponsible.Text;
+            txtNewCategory.Text = lblCategory.Text;
         }
+
+
     }
 }
