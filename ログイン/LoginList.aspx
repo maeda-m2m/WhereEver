@@ -77,12 +77,17 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnOut" runat="server" CssClass="auto-style4" Text="ログアウト" OnClick="btnOut_Click" style="height: 21px" />
+                        
                     </td>
                     <td>
                         &nbsp;</td>
                 </tr>
             </table>
+
+            <hr />
+            <p><asp:Button ID="btnOut" runat="server" CssClass="l-btn-flat-border" Text="ログアウト" OnClick="btnOut_Click" />WhereEverから退出します。</p>
+            <p><asp:Button ID="btnKanri" runat="server" CssClass="l-btn-flat-border" Text="ユーザー情報変更" OnClick="btnKanri_Click" />あなたのパスワードや名前を変更できます。</p>
+
         </div>
     </form>
 </body>

@@ -15,50 +15,15 @@ namespace WhereEver.管理ページ
         }
 
 
-        /* GridView1はデータバインドしているためUpdateMethod="MyGrid_Update" は追加できません。*/
-        void MyGrid_Update(object sender, DataGridCommandEventArgs e)
+        //GridViewのRowCommand属性に参照可能なメソッドを入力すると↓が自動生成されます。
+        //GridViewが読み込まれたときに実行されます。
+        protected void grid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            TextBox tb1 = (TextBox)e.Item.Cells[1].Controls[0];
-            TextBox tb2 = (TextBox)e.Item.Cells[2].Controls[0];
-            TextBox tb3 = (TextBox)e.Item.Cells[1].Controls[0];
-            TextBox tb4 = (TextBox)e.Item.Cells[2].Controls[0];
+            //好きなコードを入れて下さい。
 
-            // tb1.Textとtb2.Textの値によりデータソースを更新
-          
-           // GridView1.EditItemIndex = -1;
-        //BindMyGrid();
+            //なにもしない
+            return;
         }
-
-
-        //例
-        /*
-
-        void MyGrid_Edit(object sender, DataGridCommandEventArgs e) {
-         MyGrid.EditItemIndex = e.Item.ItemIndex;
-        BindMyGrid();
-        }
-
-        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            //string test = ((TextBox)(GridView1.Rows[e.NewEditIndex].FindControl("TextBox1"))).Text;
-        }
-
-        void MyGrid_Cancel(object sender, DataGridCommandEventArgs e) {
-         MyGrid.EditItemIndex = -1;
-        BindMyGrid();
-        }
-
-        void MyGrid_Update(object sender, DataGridCommandEventArgs e)
-        {
-            TextBox tb1 = (TextBox)e.Item.Cells[1].Controls[0];
-            TextBox tb2 = (TextBox)e.Item.Cells[2].Controls[0];
-
-            // tb1.Textとtb2.Textの値によりデータソースを更新
-
-            MyGrid.EditItemIndex = -1;
-            BindMyGrid();
-        }
-        */
 
     }
 }

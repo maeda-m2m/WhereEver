@@ -9,8 +9,8 @@
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <link rel="stylesheet" type="text/css" href="Kanri.css" />
     <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
-
     <title>管理ページ</title>
+
 </head>
 <body>
     <form id="form1" runat="server" enctype="multipart/form-data">
@@ -26,20 +26,27 @@
 
 
            <p>ユーザー情報を変更できます。</p>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataSourceID="SqlDataSource1" CssClass="form-flat-border">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
                 <Columns>
+                    <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" ReadOnly="true" />
                     <asp:BoundField DataField="pw" HeaderText="pw" SortExpression="pw" />
                     <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
                     <asp:BoundField DataField="name1" HeaderText="name1" SortExpression="name1" />
                     <asp:CommandField ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn-flat-border" HeaderText="管理">
-<ControlStyle CssClass="btn-flat-border"></ControlStyle>
+                    <ControlStyle CssClass="btn-flat-border"></ControlStyle>
                     </asp:CommandField>
                 </Columns>
             </asp:GridView>
 
 
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" UpdateCommand="MyGrid_Update"  ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT [pw], [name], [name1] FROM [M_User] WHERE ([id] = @id)">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+                ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>"
+                SelectCommand="SELECT [id], [pw], [name], [name1] FROM [M_User] WHERE ([id] = @id)"
+                UpdateCommand="UPDATE [M_User] SET [pw] = @pw, [name] = @name, [name1] = @name1 WHERE ([id] = @id)">
+                <UpdateParameters>
+                       <asp:ControlParameter Name="id" ControlId="lblResult" PropertyName="Text"/>
+                </UpdateParameters>
                 <SelectParameters>
                     <asp:ControlParameter ControlID="lblResult" DefaultValue="null" Name="id" PropertyName="Text" Type="String" />
                 </SelectParameters>
@@ -48,8 +55,9 @@
 
 
            <p>
-            あなたのid: <asp:Label ID="lblResult" runat="server" Text="null"></asp:Label>
+            <asp:Label ID="lblResult" runat="server" Text="null" Visible="False"></asp:Label>
            </p>
+
 
 
         </div>

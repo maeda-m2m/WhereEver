@@ -66,11 +66,13 @@
                 </Columns>
                 <EditItemStyle BorderStyle="None" />
                 <FooterStyle BorderStyle="None" />
-                <HeaderStyle BorderStyle="None" HorizontalAlign="Left" BackColor="Azure" />
-                <ItemStyle BorderStyle="None" HorizontalAlign="Left" />
+                <HeaderStyle BorderStyle="None" HorizontalAlign="Left" />
+                <ItemStyle BorderStyle="None" HorizontalAlign="Left" BackColor="#FFFFE0" />
                 <PagerStyle BorderStyle="None" />
                 <SelectedItemStyle BorderStyle="None" />
             </asp:DataGrid>
+            <tr>
+            </tr>
          </table>
         </div>
         <div>
@@ -78,9 +80,12 @@
             <div id ="chatbox">
                 <p>
                  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                 <asp:TextBox ID="TextBox1" runat="server" Width="180px"></asp:TextBox>
                  &nbsp;&nbsp;
                  <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
+                </p>
+                <p>
+                    <asp:Button ID="Button1" runat="server" Text="更新" CssClass="Button-style" OnClick="Button1_Click"/>
                 </p>
            </div>
         </div>

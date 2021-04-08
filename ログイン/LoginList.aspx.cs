@@ -54,9 +54,11 @@ namespace WhereEver
         {
             Class.Logout.InsertLogoutList(Global.GetConnection());
             this.Response.Redirect("Login.aspx");
+        }
 
-
-
+        protected void btnKanri_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("../管理ページ/Kanri.aspx");
         }
     }
 }

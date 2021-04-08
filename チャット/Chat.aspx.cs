@@ -19,9 +19,10 @@ namespace WhereEver
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            Create();
-
+            if (!IsPostBack)
+            {
+                Create();
+            }
         }
 
         private void Create()
@@ -51,7 +52,7 @@ namespace WhereEver
 
                 Naiyou.Text = dr.Naiyou;
 
-                Label1.Text = SessionManager.User.M_User.name;
+                Label1.Text = SessionManager.User.M_User.name1;
 
 
             }
@@ -78,6 +79,11 @@ namespace WhereEver
             Create();
 
          
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Create();
         }
     }
 }
