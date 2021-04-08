@@ -52,7 +52,7 @@ namespace WhereEver
 
                 Naiyou.Text = dr.Naiyou;
 
-                Label1.Text = SessionManager.User.M_User.name;
+                Label1.Text = SessionManager.User.M_User.name1;
 
 
             }

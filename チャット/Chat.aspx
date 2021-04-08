@@ -78,7 +78,7 @@
             <div id ="chatbox">
                 <p>
                  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                 <asp:TextBox ID="TextBox1" runat="server" Width="180px"></asp:TextBox>
                  &nbsp;&nbsp;
                  <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
                 </p>
