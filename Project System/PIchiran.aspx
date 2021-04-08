@@ -23,7 +23,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="form">
             <table>
                 <tr>
                     <td id="menu">
