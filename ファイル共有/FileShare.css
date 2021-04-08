@@ -32,3 +32,8 @@
     font-family: Meiryo;
     border-radius: 3px;
 }
+
+    .btn-flat-border:hover {
+        background: #16ba00;
+        color: white;
+    }

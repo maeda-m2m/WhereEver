@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -111,5 +110,9 @@ namespace WhereEver.Project_System
             }
         }
 
+        protected void btnChange_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

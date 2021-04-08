@@ -144,12 +144,10 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-               "SELECT * FROM T_Schedule";
-            //"SELECT [time], [title], [name], [KanriFlag],[SdlNo] FROM T_Schedule WHERE KanriFlag IS NOT NULL"
+               "SELECT * FROM T_Schedule order by date asc";
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             return dt;
-            //dfから変更
         }
 
 
@@ -158,7 +156,6 @@ namespace WhereEver
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_EmptyTable order by 時間 asc";
-            //T_Schedule WHERE KanriFlag IS NULL
             var dt = new DATASET.DataSet.T_EmptyTableDataTable();
             da.Fill(dt);
             return dt;

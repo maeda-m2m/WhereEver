@@ -9,21 +9,11 @@
     <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
 
     <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            height: 25px;
-        }
-        .auto-style2 {
-            height: 24px;
-        }
-        .auto-style3 {
-            height: 23px;
-        }
-    </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="form">
             <table>
                 <tr>
                     <td id="menu">
@@ -90,7 +80,7 @@
 
                     <asp:TemplateColumn>
                         <ItemTemplate>
-                            <asp:Button ID="Button1" runat="server" Text="編集" />
+                            <asp:Button ID="btnChange" runat="server" Text="編集" OnClick="btnChange_Click" />
                             <asp:Button ID="btnDelete" runat="server" Text="削除" />
                         </ItemTemplate>
                         <HeaderStyle Wrap="True" />

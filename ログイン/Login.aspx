@@ -23,7 +23,7 @@
             &nbsp;<table class="auto-style1">
                 <tr>
                     <td colspan="2">
-            <img src="../ログイン/back-1.jpg" runat="server" id="ue" /></td>
+            <img src="../ログイン/haikei-1.png" runat="server" id="ue" /></td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
@@ -36,7 +36,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-            <img src="..//ログイン/back-2.jpg" runat="server" id="sita" /></td>
+            <img src="..//ログイン/haikei-2.png" runat="server" id="sita" /></td>
                 </tr>
             </table>
         </div>

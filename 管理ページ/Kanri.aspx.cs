@@ -11,7 +11,19 @@ namespace WhereEver.管理ページ
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblResult.Text = SessionManager.User.M_User.id;
         }
+
+
+        //GridViewのRowCommand属性に参照可能なメソッドを入力すると↓が自動生成されます。
+        //GridViewが読み込まれたときに実行されます。
+        protected void grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //好きなコードを入れて下さい。
+
+            //なにもしない
+            return;
+        }
+
     }
 }
