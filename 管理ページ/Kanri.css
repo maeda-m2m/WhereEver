@@ -35,20 +35,6 @@
     text-align: center;
     width: 120px;
     display: inline-block;
-    padding: 0.15em 1em;
-    text-decoration: none;
-    color: #16ba00;
-    border: solid 2px #16ba00;
-    border-radius: 3px;
-    transition: .4s;
-    font-family: Meiryo;
-    border-radius: 3px;
-}
-
-.btn-flat-border {
-    text-align: center;
-    width: 120px;
-    display: inline-block;
     padding: 0.3em 1em;
     text-decoration: none;
     color: #16ba00;
