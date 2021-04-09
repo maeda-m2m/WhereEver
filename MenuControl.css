@@ -7,7 +7,6 @@
 
 .menu {
     width: 100%;
-    border-bottom: 1px solid #2f5597;
 }
 
 h1 {
@@ -20,9 +19,8 @@ h1 {
     text-align: center;
 }
 
-.btn-flat-border {
+.btnmenu {
     text-align: center;
-    width: 120px;
     display: inline-block;
     padding: 0.3em 1em;
     text-decoration: none;
@@ -34,7 +32,7 @@ h1 {
     border-radius: 3px;
 }
 
-    .btn-flat-border:hover {
+    .btnmenu:hover {
         background: #16ba00;
         color: white;
     }
