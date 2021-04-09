@@ -80,10 +80,28 @@ namespace WhereEver
 
          
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Update_Click(object sender, EventArgs e)
         {
             Create();
+        }
+
+        //削除ボタンの処理
+        protected void ChatArea_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            int a = e.Item.ItemIndex;
+            var dt = Class2.MaxNoDataTable(Global.GetConnection());
+            var dr = dt.Rows[a] as DATASET.DataSet.T_ChatRow;
+            string.Format("if (!confirm('{0}')) return false;", "削除しますか。");
+            int sdl = dr.SdlNo;
+
+            if (e.CommandName == "Delete")
+            {
+                if (sdl > 0)
+                    Class1.DeleteList(sdl, Global.GetConnection());
+                ChatArea.Items[a].FindControl("No");
+                Create();
+            }
+            else;
         }
     }
 }
