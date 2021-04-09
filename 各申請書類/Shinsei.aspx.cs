@@ -910,35 +910,33 @@ namespace WhereEver
                     Kingaku.Text = GridView1.Rows[args].Cells[8].Text; ;
                     KonyuSaki.Text = GridView1.Rows[args].Cells[9].Text; ;
                     Label_Riyuu.Text = GridView1.Rows[args].Cells[10].Text; ;
-                    Label_Riyuu.Text = GridView1.Rows[args].Cells[11].Text; ;
-                    Label_Bikou.Text = GridView1.Rows[args].Cells[12].Text; ;
+                    Label_Bikou.Text = GridView1.Rows[args].Cells[11].Text; ;
                 }
                 else if(isbn_kind == "勤怠関連申請")
                 {
-                    // クリックされた[args]行の左から14番目の列[0-nで数える]のセルにある「テキスト」を取得
+                    // クリックされた[args]行の左から13番目の列[0-nで数える]のセルにある「テキスト」を取得
                     //申請内容を１つずつロードしていく……
                     lblDiligenceUser.Text = isbn_date;                  
                     lblDiligenceDate.Text = isbn_date;
-                    lblDiligenceClassification1.Text = GridView1.Rows[args].Cells[13].Text; ;
-                    lblDiligenceClassification2.Text = GridView1.Rows[args].Cells[14].Text; ;
-                    lblDiligenceDateA1.Text = GridView1.Rows[args].Cells[15].Text; ;
-                    lblDiligenceDateA2.Text = GridView1.Rows[args].Cells[16].Text; ;
-                    lblDiligenceDateB1.Text = GridView1.Rows[args].Cells[17].Text; ;
-                    lblDiligenceDateB2.Text = GridView1.Rows[args].Cells[18].Text; ;
+                    lblDiligenceClassification1.Text = GridView1.Rows[args].Cells[12].Text; ;
+                    lblDiligenceClassification2.Text = GridView1.Rows[args].Cells[13].Text; ;
+                    lblDiligenceDateA1.Text = GridView1.Rows[args].Cells[14].Text; ;
+                    lblDiligenceDateA2.Text = GridView1.Rows[args].Cells[15].Text; ;
+                    lblDiligenceDateB1.Text = GridView1.Rows[args].Cells[16].Text; ;
+                    lblDiligenceDateB2.Text = GridView1.Rows[args].Cells[17].Text; ;
                 }
                 else if (isbn_kind == "立替金明細表申請")
                 {
-                    // クリックされた[args]行の左から20番目の列[0-nで数える]のセルにある「テキスト」を取得
+                    // クリックされた[args]行の左から19番目の列[0-nで数える]のセルにある「テキスト」を取得
                     //申請内容を１つずつロードしていく……
                     lblTatekaeName.Text = isbn_date;
                     lblTatekaeDate.Text = isbn_date;
-                    lblTatekaeResult.Text = GridView1.Rows[args].Cells[19].Text; ;
-                    lblTatekae_Result2.Text = GridView1.Rows[args].Cells[20].Text; ;
-                    lblTatekae_Koutuuhi.Text = GridView1.Rows[args].Cells[21].Text; ;
-                    lblTatekae_Shukuhakuhi.Text = GridView1.Rows[args].Cells[221].Text; ;
-                    lblTatekae_Result1.Text = GridView1.Rows[args].Cells[23].Text; ;
-                    lblTatekae_Result2.Text = GridView1.Rows[args].Cells[24].Text; ;
-                    lblTatekae_Result3.Text = GridView1.Rows[args].Cells[25].Text; ;
+                    lblTatekaeResult.Text = GridView1.Rows[args].Cells[18].Text; ;
+                    lblTatekae_Koutuuhi.Text = GridView1.Rows[args].Cells[19].Text; ;
+                    lblTatekae_Shukuhakuhi.Text = GridView1.Rows[args].Cells[20].Text; ;
+                    lblTatekae_Result1.Text = GridView1.Rows[args].Cells[21].Text; ;
+                    lblTatekae_Result2.Text = GridView1.Rows[args].Cells[22].Text; ;
+                    lblTatekae_Result3.Text = GridView1.Rows[args].Cells[23].Text; ;
                 }
 
             }
@@ -997,7 +995,6 @@ namespace WhereEver
             lblTatekaeDate.Text
 
             lblTatekaeResult.Text
-            lblTatekae_Result2.Text
 
             lblTatekae_Koutuuhi.Text
             lblTatekae_Shukuhakuhi.Text
