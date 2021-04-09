@@ -37,7 +37,7 @@ namespace WhereEver.ClassLibrary
         /// <param name="C_Tatekae_Result1"></param>
         /// <param name="C_Tatekae_Result2"></param>
         /// <param name="C_Tatekae_Result3"></param>
-        public static void SetT_ShinseiLogUpdate(SqlConnection sqlConnection, string id, string name1, string shinseiSyubetsu, string A_BuyItem, string A_BuyKind, string A_BuyHowMany, string A_BuyHowMach, string A_BuyPlace, string B_DiligenceClassification1, string B_DiligenceClassification2, string B_DiligenceDateA1, string B_DiligenceDateA2, string B_DiligenceDateB1, string B_DiligenceDateB2, string C_Tatekae_Result_Main, string C_Tatekae_TWaste, string C_Tatekae_PWaste, string C_Tatekae_Result1, string C_Tatekae_Result2, string C_Tatekae_Result3)
+        public static void SetT_ShinseiLogUpdate(SqlConnection sqlConnection, string id, string name1, string SinseiSyubetsu, string A_BuyItem, string A_BuyKind, string A_BuyHowMany, string A_BuyHowMach, string A_BuyPlace, string B_DiligenceClassification1, string B_DiligenceClassification2, string B_DiligenceDateA1, string B_DiligenceDateA2, string B_DiligenceDateB1, string B_DiligenceDateB2, string C_Tatekae_Result_Main, string C_Tatekae_TWaste, string C_Tatekae_PWaste, string C_Tatekae_Result1, string C_Tatekae_Result2, string C_Tatekae_Result3)
         {
             sqlConnection.Open();
 
@@ -65,7 +65,7 @@ namespace WhereEver.ClassLibrary
                     //-------------------------------------------------------------------------------------------------------------------
                     command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NChar, 20, "id")).Value = id;
                     command.Parameters.Add(new SqlParameter("@name1", System.Data.SqlDbType.NVarChar, 50, "name1")).Value = name1;
-                    command.Parameters.Add(new SqlParameter("@ShinseiSyubetsu", System.Data.SqlDbType.NVarChar, -1, "ShinseiSyubetsu")).Value = shinseiSyubetsu;
+                    command.Parameters.Add(new SqlParameter("@SinseiSyubetsu", System.Data.SqlDbType.NVarChar, -1, "SinseiSyubetsu")).Value = SinseiSyubetsu;
                     command.Parameters.Add(new SqlParameter("@LastUpdate", System.Data.SqlDbType.DateTime, 8, "LastUpdate")).Value = date;
 
                     command.Parameters.Add(new SqlParameter("@A_BuyItem", System.Data.SqlDbType.NVarChar, 20, "A_BuyItem")).Value = A_BuyItem;
@@ -165,7 +165,7 @@ namespace WhereEver.ClassLibrary
         /// <param name="C_Tatekae_Result1"></param>
         /// <param name="C_Tatekae_Result2"></param>
         /// <param name="C_Tatekae_Result3"></param>
-        public static void SetT_ShinseiLogInsert(SqlConnection sqlConnection, string id, string name1, string shinseiSyubetsu, string A_BuyItem, string A_BuyKind, string A_BuyHowMany, string A_BuyHowMach, string A_BuyPlace, string B_DiligenceClassification1, string B_DiligenceClassification2, string B_DiligenceDateA1, string B_DiligenceDateA2, string B_DiligenceDateB1, string B_DiligenceDateB2, string C_Tatekae_Result_Main, string C_Tatekae_TWaste, string C_Tatekae_PWaste, string C_Tatekae_Result1, string C_Tatekae_Result2, string C_Tatekae_Result3)
+        public static void SetT_ShinseiLogInsert(SqlConnection sqlConnection, string id, string name1, string SinseiSyubetsu, string A_BuyItem, string A_BuyKind, string A_BuyHowMany, string A_BuyHowMach, string A_BuyPlace, string B_DiligenceClassification1, string B_DiligenceClassification2, string B_DiligenceDateA1, string B_DiligenceDateA2, string B_DiligenceDateB1, string B_DiligenceDateB2, string C_Tatekae_Result_Main, string C_Tatekae_TWaste, string C_Tatekae_PWaste, string C_Tatekae_Result1, string C_Tatekae_Result2, string C_Tatekae_Result3)
         {
 
             sqlConnection.Open();
@@ -186,8 +186,7 @@ namespace WhereEver.ClassLibrary
                 command.Connection = sqlConnection;
                 command.Transaction = transaction;
 
-                DateTime date = DateTime.Now; //DateTime取得
-
+                DateTime LastUpdate = DateTime.Now; //DateTime取得
 
                 try
                 {
@@ -196,8 +195,8 @@ namespace WhereEver.ClassLibrary
                     //-------------------------------------------------------------------------------------------------------------------
                     command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NChar, 20, "id")).Value = id;
                     command.Parameters.Add(new SqlParameter("@name1", System.Data.SqlDbType.NVarChar, 50, "name1")).Value = name1;
-                    command.Parameters.Add(new SqlParameter("@ShinseiSyubetsu", System.Data.SqlDbType.NVarChar, -1, "ShinseiSyubetsu")).Value = shinseiSyubetsu;
-                    command.Parameters.Add(new SqlParameter("@LastUpdate", System.Data.SqlDbType.DateTime, 8, "LastUpdate")).Value = date;
+                    command.Parameters.Add(new SqlParameter("@SinseiSyubetsu", System.Data.SqlDbType.NVarChar, -1, "SinseiSyubetsu")).Value = SinseiSyubetsu;
+                    command.Parameters.Add(new SqlParameter("@LastUpdate", System.Data.SqlDbType.DateTime, 8, "LastUpdate")).Value = LastUpdate;
 
                     command.Parameters.Add(new SqlParameter("@A_BuyItem", System.Data.SqlDbType.NVarChar, 20, "A_BuyItem")).Value = A_BuyItem;
                     command.Parameters.Add(new SqlParameter("@A_BuyKind", System.Data.SqlDbType.NVarChar, 20, "A_BuyKind")).Value = A_BuyKind;
@@ -221,7 +220,7 @@ namespace WhereEver.ClassLibrary
 
 
                     //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
-                    command.CommandText = "INSERT INTO T_ShinseiLog(id, name1, shinseiSyubetsu, date, A_BuyItem, A_BuyKind, A_BuyHowMany, A_BuyHowMach, A_BuyPlace, B_DiligenceClassification1, B_DiligenceClassification2, B_DiligenceDateA1, B_DiligenceDateA2, B_DiligenceDateB1, B_DiligenceDateB2, C_Tatekae_Result_Main, C_Tatekae_TWaste, C_Tatekae_PWaste, C_Tatekae_Result1, C_Tatekae_Result2, C_Tatekae_Result3) VALUES(@id, @name1, @shinseiSyubetsu, @LastUpdate, @A_BuyItem, @A_BuyKind, @A_BuyHowMany, @A_BuyHowMach, @A_BuyPlace, @B_DiligenceClassification1, @B_DiligenceClassification2, @B_DiligenceDateA1, @B_DiligenceDateA2, @B_DiligenceDateB1, @B_DiligenceDateB2, @C_Tatekae_Result_Main, @C_Tatekae_TWaste, @C_Tatekae_PWaste, @C_Tatekae_Result1, @C_Tatekae_Result2, @C_Tatekae_Result3)";
+                    command.CommandText = "INSERT INTO T_ShinseiLog(id, name1, SinseiSyubetsu, LastUpdate, A_BuyItem, A_BuyKind, A_BuyHowMany, A_BuyHowMach, A_BuyPlace, B_DiligenceClassification1, B_DiligenceClassification2, B_DiligenceDateA1, B_DiligenceDateA2, B_DiligenceDateB1, B_DiligenceDateB2, C_Tatekae_Result_Main, C_Tatekae_TWaste, C_Tatekae_PWaste, C_Tatekae_Result1, C_Tatekae_Result2, C_Tatekae_Result3) VALUES(@id, @name1, @SinseiSyubetsu, @LastUpdate, @A_BuyItem, @A_BuyKind, @A_BuyHowMany, @A_BuyHowMach, @A_BuyPlace, @B_DiligenceClassification1, @B_DiligenceClassification2, @B_DiligenceDateA1, @B_DiligenceDateA2, @B_DiligenceDateB1, @B_DiligenceDateB2, @C_Tatekae_Result_Main, @C_Tatekae_TWaste, @C_Tatekae_PWaste, @C_Tatekae_Result1, @C_Tatekae_Result2, @C_Tatekae_Result3)";
 
                     //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。
                     //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。
@@ -230,6 +229,7 @@ namespace WhereEver.ClassLibrary
                     //Attempt to commit the transaction.
                     da.InsertCommand = command;
                     transaction.Commit();
+
 
                     //Console.WriteLine("Insert Completed");
                 }
