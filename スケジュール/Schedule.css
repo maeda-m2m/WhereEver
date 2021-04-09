@@ -47,33 +47,34 @@
     height: 553px;
 }
 
-#Label2{
-    position:absolute;
-    font-size:5px;
+#Label2 {
+    position: absolute;
+    font-size: 5px;
 }
 
-.Label{
-    font-size:8px;
+.Label {
+    font-size: 8px;
 }
 
-#SCDL{
-    margin-left:100px;
+#SCDL {
+    margin-left: 100px;
 }
 
-#Scdl3{
-    margin-left:100px;
+#Scdl3 {
+    margin-left: 100px;
 }
 
-#ScdlList{
-    margin-left:100px;
+#ScdlList {
+    margin-left: 100px;
+    margin-right: auto;
 }
 
-#btn{
-    margin-left:100px;
+#btn {
+    margin-left: 100px;
 }
 
-#tourokuform{
-    margin-left:100px;
+#tourokuform {
+    margin-left: 100px;
 }
 
 #Calendar1 {
