@@ -29,9 +29,9 @@
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" ReadOnly="true" />
-                    <asp:BoundField DataField="pw" HeaderText="pw" SortExpression="pw" />
-                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
-                    <asp:BoundField DataField="name1" HeaderText="name1" SortExpression="name1" />
+                    <asp:BoundField DataField="pw" HeaderText="パスワード" SortExpression="pw" />
+                    <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" />
+                    <asp:BoundField DataField="name1" HeaderText="ご芳名" SortExpression="name1" />
                     <asp:CommandField ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn-flat-border" HeaderText="管理">
                     <ControlStyle CssClass="btn-flat-border"></ControlStyle>
                     </asp:CommandField>

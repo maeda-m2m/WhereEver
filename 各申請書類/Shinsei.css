@@ -64,7 +64,7 @@ h1 {
 .hanko2 {
     border: 1px solid #000000;
     width: 50px;
-    height: 40px;
+    height: 70px;
 }
 
 
@@ -73,7 +73,7 @@ h1 {
     width: 90px;
     height: 30px;
     text-align: center;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .area {
@@ -122,11 +122,38 @@ h1 {
     margin-left: 80px;
 }
 
+#Tatekaetop {
+    height: 24px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#TatekaeTodoke {
+    font-family: 'MS Mincho';
+    width: 1280px;
+    height: 40px;
+    margin-left: 80px;
+}
+
+#TatekaeTable {
+    font-family: 'MS Mincho';
+    width: 1280px;
+    height: auto;
+    margin-left: 80px;
+    border: 1px solid #000000;
+    border-collapse: collapse;
+}
+
 .TextDate {
     width: 20px;
 }
 
 #name2 {
+    font-size: 12px;
+}
+
+#name3 {
     font-size: 12px;
 }
 
@@ -139,17 +166,17 @@ h1 {
     margin-left: 10px;
 }
 
-#yohaku2 {
-    width: 380px;
-}
-
-#yohaku3 {
-    height: 10px;
-}
 
 #date2 {
     width: 100px;
     font-size: 12px;
+}
+
+#date3 {
+    width: 100px;
+    height: 14px;
+    font-size: 12px;
+    text-align: left;
 }
 
 .takasa {
@@ -159,17 +186,45 @@ h1 {
 
 .naiyou {
     border: 1px solid #000000;
-    width: 50px;
-    height: 40px;
+    width: auto;
+    height: 20px;
     text-align: center;
+    font-size: 12px;
+}
+
+.naiyou-c {
+    border: 1px solid #000000;
+    border-collapse: collapse;
+    width: auto;
+    height: 20px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.naiyou-b {
+    border: 5px solid #000000;
+    width: auto;
+    height: 20px;
+    text-align: right;
     font-size: 12px;
 }
 
 .nakami {
     border: 1px solid #000000;
-    height: 30px;
+    width: auto;
+    height: 20px;
     font-size: 12px;
     resize: none;
+}
+
+.nakami-b {
+    border: 1px solid #000000;
+    width: auto;
+    height: 20px;
+    font-size: 12px;
+    resize: none;
+    font-weight: bold;
+    text-align: right;
 }
 
 #top {
@@ -182,6 +237,15 @@ h1 {
     font-size: 12px;
 }
 
+#yohaku2 {
+    width: 380px;
+}
+
+
+#yohaku3 {
+    height: 10px;
+}
+
 #yohaku4 {
     width: 200px;
     height: 40px;
@@ -190,6 +254,10 @@ h1 {
 #yohaku5 {
     width: 100px;
 }
+
+
+
+
 
 #Riyuu {
     width: 418px;
@@ -205,6 +273,10 @@ h1 {
 }
 
 #buppintouroku {
+    margin-left: 100px;
+}
+
+#meisai {
     margin-left: 100px;
 }
 

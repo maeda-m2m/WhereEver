@@ -150,6 +150,15 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Calendar Calendar2;
 
         /// <summary>
+        /// btnClear コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClear;
+
+        /// <summary>
         /// btnNewP コントロール。
         /// </summary>
         /// <remarks>
@@ -159,12 +168,12 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Button btnNewP;
 
         /// <summary>
-        /// btnBack コントロール。
+        /// lblAisatu コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
+        protected global::System.Web.UI.WebControls.Label lblAisatu;
     }
 }

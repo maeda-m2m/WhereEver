@@ -20,15 +20,14 @@ namespace WhereEver.Project_System
                 DgPIchiran.DataSource = dt;
                 DgPIchiran.DataBind();
             }
-        }
-        public static DATASET.DataSet.T_PdbDataTable GetPdbDataTable(SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_Pdb";
-            DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
-            da.Fill(dt);
-            return dt;
+            DgPIchiran.EditCommand +=
+             new DataGridCommandEventHandler(this.DgPIchiran_EditCommand);
+            DgPIchiran.CancelCommand +=
+                new DataGridCommandEventHandler(this.DgPIchiran_CancelCommand);
+            DgPIchiran.UpdateCommand +=
+                new DataGridCommandEventHandler(this.DgPIchiran_UpdateCommand);
+            DgPIchiran.ItemCommand +=
+                new DataGridCommandEventHandler(this.DgPIchiran_ItemCommand);
         }
 
         protected void DgPIchiran_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -37,19 +36,74 @@ namespace WhereEver.Project_System
             {
 
                 DATASET.DataSet.T_PdbRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbRow;
-                LinkButton lbPName = e.Item.FindControl("lbPName") as LinkButton;
-                Label lblCustomer = e.Item.FindControl("lblCustomer") as Label;
-                LinkButton lbResponsible = e.Item.FindControl("lbResponsible") as LinkButton;
-                Label lblCategory = e.Item.FindControl("lblCategory") as Label;
-                Label lblStartTime = e.Item.FindControl("lblStartTime") as Label;
-                Label lblOverTime = e.Item.FindControl("lblOverTime") as Label;
+                e.Item.Cells[0].Text = dr.Pname.ToString();
+                e.Item.Cells[1].Text = dr.Pcustomer.ToString();
+                e.Item.Cells[2].Text = dr.Presponsible.ToString();
+                e.Item.Cells[3].Text = dr.Pcategory.ToString();
+                e.Item.Cells[4].Text = dr.Pstarttime.ToShortDateString();
+                e.Item.Cells[5].Text = dr.Povertime.ToShortDateString();
 
-                lbPName.Text = dr.Pname.ToString();
-                lblCustomer.Text = dr.Pcustomer.ToString();
-                lbResponsible.Text = dr.Presponsible.ToString();
-                lblCategory.Text = dr.Pcategory.ToString();
-                lblStartTime.Text = dr.Pstarttime.ToShortDateString();
-                lblOverTime.Text = dr.Povertime.ToShortDateString();
+            }
+        }
+        public static DATASET.DataSet.T_PdbDataTable GetPdbDataTable(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "SELECT * FROM T_Pdb order by Pid";
+            DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
+        protected void DgPIchiran_EditCommand(object source, DataGridCommandEventArgs e)
+        {
+            DgPIchiran.EditItemIndex = e.Item.ItemIndex;
+            DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
+            DgPIchiran.DataBind();
+        }
+
+        protected void DgPIchiran_CancelCommand(object source, DataGridCommandEventArgs e)
+        {
+            DgPIchiran.EditItemIndex = -1;
+            DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
+            DgPIchiran.DataBind();
+        }
+
+        protected void DgPIchiran_UpdateCommand(object source, DataGridCommandEventArgs e)
+        {
+        }
+        
+        protected void DgPIchiran_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            string txtPname = e.Item.Cells[0].Text;
+            switch (((LinkButton)e.CommandSource).CommandName)
+            {
+
+                case "Delete":
+                    Delete(txtPname);
+                    break;
+                    // Add other cases here, if there are multiple ButtonColumns in 
+                    // the DataGrid control.
+                    
+                default:
+                    // Do nothing.
+                    break;
+
+            }
+        }
+        public void Delete(string Pname)
+        {
+            string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "DELETE FROM T_Pdb WHERE PName = @i";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                da.SelectCommand.Parameters.AddWithValue("@i", Pname);
+
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
             }
         }
 
@@ -58,6 +112,9 @@ namespace WhereEver.Project_System
             DATASET.DataSet.T_PdbDataTable t_Pdbs = new DATASET.DataSet.T_PdbDataTable();
             DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
 
+            DATASET.DataSet.T_PdbRow dl = GetMaxPidRow(Global.GetConnection());
+            int sl = dl.Pid;
+            dr.Pid = sl + 1;
             dr.Pname = txtNewPName.Text.Trim();
             dr.Pcustomer = txtNewCustomer.Text.Trim();
             dr.Presponsible = ddlResponsible.SelectedItem.Text.Trim();
@@ -77,6 +134,17 @@ namespace WhereEver.Project_System
             txtNewPName.Text = "";
             txtNewCustomer.Text = "";
             txtNewCategory.Text = "";
+            ddlResponsible.Text = "";
+        }
+
+        internal static DATASET.DataSet.T_PdbRow GetMaxPidRow(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "select MAX(Pid) as Pid from T_Pdb";
+            DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
+            da.Fill(dt);
+            return dt[0];
         }
 
         public static void InsertProject(DATASET.DataSet.T_PdbDataTable dt, SqlConnection sqlConnection)
@@ -110,9 +178,6 @@ namespace WhereEver.Project_System
             }
         }
 
-        protected void btnChange_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

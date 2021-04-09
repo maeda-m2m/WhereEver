@@ -53,5 +53,65 @@ namespace WhereEver.ClassLibrary
             get;
             set;
         }
+        [Required(ErrorMessage = " ")]
+        public string T_Date
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = " ")]
+        public string T_W_Place
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = " ")]
+        public string T_Use
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = " ")]
+        public string T_In
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = " ")]
+        public string T_Out
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = " ")]
+        public string T_T_Waste
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = " ")]
+        public string T_Place
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = " ")]
+        public string T_P_Waste
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = " ")]
+        public string T_ps
+        {
+            get;
+            set;
+        }
+        [Required(ErrorMessage = " ")]
+        public string T_Teiki
+        {
+            get;
+            set;
+        }
     }
 }

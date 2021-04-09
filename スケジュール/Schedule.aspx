@@ -55,7 +55,14 @@
         <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
         <div>
             <asp:Panel ID="Panel1" runat="server">
-                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
+                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                    <OtherMonthDayStyle ForeColor="#999999" />
+                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                    <TodayDayStyle BackColor="#CCCCCC" />
+                </asp:Calendar>
                 <table id="tourokuform">
                     <tr>
                         <td runat="server" class="auto-style1">
@@ -172,8 +179,12 @@
         </div>
 
         <div>
-            <asp:DataGrid runat="server" ID="Scdl3" AutoGenerateColumns="False" OnItemDataBound="Scdl3_ItemDataBound" CssClass="scdl" HeaderStyle-Width="200px" OnSelectedIndexChanged="Scdl3_SelectedIndexChanged">
-                <AlternatingItemStyle BackColor="#ccffcc" />
+            <asp:DataGrid runat="server"
+                ID="Scdl3"
+                AutoGenerateColumns="False"
+                OnItemDataBound="Scdl3_ItemDataBound"
+                CssClass="scdl" HeaderStyle-Width="200px" OnSelectedIndexChanged="Scdl3_SelectedIndexChanged" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+                <AlternatingItemStyle BackColor="#ccffcc" HorizontalAlign="Left" VerticalAlign="Top" />
                 <Columns>
                     <asp:TemplateColumn HeaderText="時間" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
@@ -186,7 +197,8 @@
 
                     <asp:TemplateColumn HeaderText="月" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemStyle Wrap="true" Height="50" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+
                         <ItemTemplate>
                             <asp:Label ID="MondayTitle" runat="server" Text=""></asp:Label>
                             <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
@@ -232,8 +244,13 @@
                 </Columns>
 
 
+                <FooterStyle BackColor="#CCCCCC" />
+
+
                 <HeaderStyle Width="200px" BackColor="#16BA00" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="12px"></HeaderStyle>
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="10px" />
+                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                <SelectedItemStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
             </asp:DataGrid>
 
         </div>
@@ -252,7 +269,7 @@
 
         <div>
 
-            <asp:DataGrid runat="server" ID="ScdlList" AutoGenerateColumns="False" OnItemDataBound="ScdlList_ItemDataBound" CssClass="scdl" HeaderStyle-Width="200px" OnItemCommand="ScdlList_ItemCommand">
+            <asp:DataGrid runat="server" ID="ScdlList" AutoGenerateColumns="false" OnItemDataBound="ScdlList_ItemDataBound" CssClass="scdl" HeaderStyle-Width="200px" OnItemCommand="ScdlList_ItemCommand" Style="margin-right: 0px" HorizontalAlign="Left">
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
                     <asp:TemplateColumn HeaderText="日付" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
@@ -302,9 +319,14 @@
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
                         <ItemTemplate>
+
                             <asp:Button ID="Delete" runat="server" Text="削除" CssClass="btn-flat-border" CommandName="Delete" />
+
+
                             <asp:Button ID="UpData" runat="server" Text="編集" CommandName="UpData" CssClass="btn-flat-border" ButtonType="PushButton"></asp:Button>
+
                         </ItemTemplate>
+
                     </asp:TemplateColumn>
                 </Columns>
 
@@ -312,6 +334,8 @@
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="10px" />
             </asp:DataGrid>
         </div>
+
+        <br />
     </form>
 </body>
 </html>
