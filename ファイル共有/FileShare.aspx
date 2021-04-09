@@ -46,8 +46,6 @@
             <asp:Label ID="lblDLResult" runat="server" Text="ファイルをダウンロードできます。"></asp:Label>
            </p>
 
-
-
         </div>
     </form>
 </body>
