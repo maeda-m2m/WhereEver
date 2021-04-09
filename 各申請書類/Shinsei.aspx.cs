@@ -40,7 +40,7 @@ namespace WhereEver
                 //GridViewパネル
                 Panel0.Visible = true;
                 //初期選択パネル
-                Panel1.Visible = false;
+                Panel1.Visible = true;
                 //物品購入申請書パネル
                 Panel2.Visible = false;
                 //勤怠パネル
@@ -105,6 +105,16 @@ namespace WhereEver
             Panel4.Visible = true;
             //印刷ボタンパネル
             Panel_Print.Visible = true;
+
+
+
+            Set_Konyu_Data();
+
+        }
+
+        //購入品
+        protected void Set_Konyu_Data()
+        {
 
             name1.Text = "氏名：" + SessionManager.User.M_User.name;
             DateTime dt = DateTime.Now;
@@ -174,7 +184,6 @@ namespace WhereEver
 
             rleng = Math.Min(TextBox_ps.Text.Length, maxstr);
             Label_Bikou.Text = TextBox_ps.Text.Substring(0, rleng);
-
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -186,6 +195,12 @@ namespace WhereEver
             //印刷ボタンパネル
             Panel_Print.Visible = true;
 
+            Set_Kintai_Data();
+
+        }
+
+        protected void Set_Kintai_Data()
+        {
 
             //------------------------------------------------------------
             //Varidation用のクラスをインスタンス化します。
@@ -196,7 +211,6 @@ namespace WhereEver
 
             Reg(reg);
             //------------------------------------------------------------
-
 
             //勤怠届の印刷フォームに名前と日付を代入
             lblDiligenceUser.Text = "氏名：" + SessionManager.User.M_User.name1;
@@ -223,9 +237,7 @@ namespace WhereEver
 
             //DateTime dateTime1 = Calendar1.SelectedDate;
             //DateTime dateTime2 = Calendar2.SelectedDate;
-
         }
-
 
         protected void Button3_Click(object sender, EventArgs e)
         {
@@ -240,6 +252,12 @@ namespace WhereEver
             DateTime dt = DateTime.Now;
             lblTatekaeDate.Text = dt.ToShortDateString();
 
+            Set_Tatekae_Data();
+
+        }
+
+        protected void Set_Tatekae_Data()
+        {
             //------------------------------------------------------------
             //Varidation用のクラスをインスタンス化します。
             ShinseiClass reg = new ShinseiClass();
@@ -262,8 +280,8 @@ namespace WhereEver
             //------------------------------------------------------------
 
             CreateTatekaeTableRow();
-
         }
+
 
         /// <summary>
         /// Tatekae_Tableを初期化するボタンです。
@@ -883,7 +901,8 @@ namespace WhereEver
 
                 // 主キー（isbn列）の値を取得
                 //ユーザー名をロード（いらない）
-                String isbn_key = (String)GridView1.DataKeys[args].Value;
+                //String isbn_key = (String)GridView1.DataKeys[args].Value;
+                String isbn_name = GridView1.Rows[args].Cells[1].Text; ;
 
                 // クリックされた[args]行の左から3番目の列[0-nで数える]のセルにある「テキスト」を取得
                 //申請種別をロード
@@ -902,7 +921,7 @@ namespace WhereEver
                 {
                     // クリックされた[args]行の左から6番目の列[0-nで数える]のセルにある「テキスト」を取得
                     //申請内容を１つずつロードしていく……
-                    name1.Text = isbn_key;
+                    name1.Text = isbn_name;
                     date.Text = isbn_date;
                     Konyu.Text = GridView1.Rows[args].Cells[5].Text; ;
                     Syubetsu.Text = GridView1.Rows[args].Cells[6].Text; ;
@@ -916,7 +935,7 @@ namespace WhereEver
                 {
                     // クリックされた[args]行の左から13番目の列[0-nで数える]のセルにある「テキスト」を取得
                     //申請内容を１つずつロードしていく……
-                    lblDiligenceUser.Text = isbn_date;                  
+                    lblDiligenceUser.Text = isbn_name;                  
                     lblDiligenceDate.Text = isbn_date;
                     lblDiligenceClassification1.Text = GridView1.Rows[args].Cells[12].Text; ;
                     lblDiligenceClassification2.Text = GridView1.Rows[args].Cells[13].Text; ;
@@ -929,7 +948,7 @@ namespace WhereEver
                 {
                     // クリックされた[args]行の左から19番目の列[0-nで数える]のセルにある「テキスト」を取得
                     //申請内容を１つずつロードしていく……
-                    lblTatekaeName.Text = isbn_date;
+                    lblTatekaeName.Text = isbn_name;
                     lblTatekaeDate.Text = isbn_date;
                     lblTatekaeResult.Text = GridView1.Rows[args].Cells[18].Text; ;
                     lblTatekae_Koutuuhi.Text = GridView1.Rows[args].Cells[19].Text; ;
@@ -946,7 +965,7 @@ namespace WhereEver
 
         protected void SaveButton_Click_1(object sender, EventArgs e)
         {
-            //Set 物品購入申請書
+            //Set 物品購入申請
             //印刷フォームのテキストをT_ShinseiDBに代入
             /*
             //name1.Text
@@ -960,11 +979,14 @@ namespace WhereEver
             Label_Riyuu.Text
             Label_Bikou.Text
             */
+            Set_Konyu_Data();
+
+            ShinseiLog.SetT_ShinseiLogInsert(Global.GetConnection(), SessionManager.User.M_User.id, SessionManager.User.M_User.name1, "物品購入申請", Konyu.Text, Syubetsu.Text, Suryo.Text, Kingaku.Text, KonyuSaki.Text, Label_Riyuu.Text, Label_Bikou.Text, "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし");
         }
 
         protected void SaveButton_Click_2(object sender, EventArgs e)
         {
-            //Set 勤怠届
+            //Set 勤怠関連申請
             //印刷フォームのテキストをT_ShinseiDBに代入
             /*
             //lblDiligenceUser.Text
@@ -980,11 +1002,14 @@ namespace WhereEver
             Label_Diligence_because.Text
             Label_Diligence_ps.Text
             */
+            Set_Kintai_Data();
+
+            ShinseiLog.SetT_ShinseiLogInsert(Global.GetConnection(), SessionManager.User.M_User.id, SessionManager.User.M_User.name1, "勤怠関連申請", "なし", "なし", "なし", "なし", "なし", lblDiligenceClassification1.Text, lblDiligenceClassification2.Text, lblDiligenceDateA1.Text, lblDiligenceDateA2.Text, lblDiligenceDateB1.Text, lblDiligenceDateB2.Text, "なし", "なし", "なし", "なし", "なし", "なし");
         }
 
         protected void SaveButton_Click_3(object sender, EventArgs e)
         {
-            //Set 立替金明細表
+            //Set 立替金明細表申請
 
             //初期化
             resetTatekaeTable();
@@ -1004,6 +1029,8 @@ namespace WhereEver
             */
 
             SetTatekaeString();
+
+            ShinseiLog.SetT_ShinseiLogInsert(Global.GetConnection(), SessionManager.User.M_User.id, SessionManager.User.M_User.name1, "立替金明細表申請", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", lblTatekaeResult.Text, lblTatekae_Koutuuhi.Text, lblTatekae_Shukuhakuhi.Text, lblTatekae_Result1.Text, lblTatekae_Result2.Text, lblTatekae_Result3.Text);
 
         }
 

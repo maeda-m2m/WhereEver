@@ -28,13 +28,31 @@
 
           <asp:Panel ID="Panel0" runat="server" CssClass="noprint">
                        <p>各種申請情報を管理できます。</p>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,DateTime" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
                 <Columns>
-                    <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" ReadOnly="true" />
-                    <asp:BoundField DataField="pw" HeaderText="pw" SortExpression="pw" />
-                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
-                    <asp:BoundField DataField="name1" HeaderText="name1" SortExpression="name1" />
-                    <asp:CommandField ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn-flat-border" HeaderText="管理" ShowDeleteButton="True" EditText="直接編集">
+                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
+                    <asp:BoundField DataField="name1" HeaderText="ご芳名" SortExpression="name1" />
+                    <asp:BoundField DataField="SinseiSyubetsu" HeaderText="申請種別" SortExpression="SinseiSyubetsu" />
+                    <asp:BoundField DataField="DateTime" HeaderText="発行日" SortExpression="DateTime" />
+                    <asp:BoundField DataField="LastUpdate" HeaderText="最終更新日" ReadOnly="True" SortExpression="LastUpdate" />
+                    <asp:BoundField DataField="A_BuyItem" HeaderText="A_BuyItem" SortExpression="A_BuyItem" Visible="False" />
+                    <asp:BoundField DataField="A_BuyKind" HeaderText="A_BuyKind" SortExpression="A_BuyKind" Visible="False" />
+                    <asp:BoundField DataField="A_BuyHowMany" HeaderText="A_BuyHowMany" SortExpression="A_BuyHowMany" Visible="False" />
+                    <asp:BoundField DataField="A_BuyHowMach" HeaderText="A_BuyHowMach" SortExpression="A_BuyHowMach" Visible="False" />
+                    <asp:BoundField DataField="A_BuyPlace" HeaderText="A_BuyPlace" SortExpression="A_BuyPlace" Visible="False" />
+                    <asp:BoundField DataField="B_DiligenceClassification1" HeaderText="B_DiligenceClassification1" SortExpression="B_DiligenceClassification1" Visible="False" />
+                    <asp:BoundField DataField="B_DiligenceClassification2" HeaderText="B_DiligenceClassification2" SortExpression="B_DiligenceClassification2" Visible="False" />
+                    <asp:BoundField DataField="B_DiligenceDateA1" HeaderText="B_DiligenceDateA1" SortExpression="B_DiligenceDateA1" Visible="False" />
+                    <asp:BoundField DataField="B_DiligenceDateA2" HeaderText="B_DiligenceDateA2" SortExpression="B_DiligenceDateA2" Visible="False" />
+                    <asp:BoundField DataField="B_DiligenceDateB1" HeaderText="B_DiligenceDateB1" SortExpression="B_DiligenceDateB1" Visible="False" />
+                    <asp:BoundField DataField="B_DiligenceDateB2" HeaderText="B_DiligenceDateB2" SortExpression="B_DiligenceDateB2" Visible="False" />
+                    <asp:BoundField DataField="C_Tatekae_Result_Main" HeaderText="C_Tatekae_Result_Main" SortExpression="C_Tatekae_Result_Main" Visible="False" />
+                    <asp:BoundField DataField="C_Tatekae_TWaste" HeaderText="C_Tatekae_TWaste" SortExpression="C_Tatekae_TWaste" Visible="False" />
+                    <asp:BoundField DataField="C_Tatekae_PWaste" HeaderText="C_Tatekae_PWaste" SortExpression="C_Tatekae_PWaste" Visible="False" />
+                    <asp:BoundField DataField="C_Tatekae_Result1" HeaderText="C_Tatekae_Result1" SortExpression="C_Tatekae_Result1" Visible="False" />
+                    <asp:BoundField DataField="C_Tatekae_Result2" HeaderText="C_Tatekae_Result2" SortExpression="C_Tatekae_Result2" Visible="False" />
+                    <asp:BoundField DataField="C_Tatekae_Result3" HeaderText="C_Tatekae_Result3" SortExpression="C_Tatekae_Result3" Visible="False" />
+                    <asp:CommandField ShowEditButton="False" ButtonType="Button" ControlStyle-CssClass="btn-flat-border" HeaderText="削除" ShowDeleteButton="True" EditText="直接編集">
                     <ControlStyle CssClass="btn-flat-border"></ControlStyle>
                     </asp:CommandField>
                     <asp:ButtonField ButtonType="Button" Text="修正" ControlStyle-CssClass="btn-flat-border"  HeaderText="修正" CommandName="Reform" >
@@ -43,12 +61,10 @@
                 </Columns>
             </asp:GridView>
 
-
-
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+             <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                 ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>"
-                SelectCommand="SELECT [id], [pw], [name], [name1] FROM [M_User] WHERE ([id] = @id)"
-                UpdateCommand="UPDATE [M_User] SET [pw] = @pw, [name] = @name, [name1] = @name1 WHERE ([id] = @id)">
+                SelectCommand="SELECT * FROM [T_ShinseiLog]  WHERE ([id] = @id)"
+                UpdateCommand="UPDATE [T_ShinseiLog] SET[LastUpdate] = @LastUpdate, [A_BuyItem]= @A_BuyItem, [A_BuyKind]= @A_BuyKind, [A_BuyHowMany]= @A_BuyHowMany, [A_BuyHowMach]= @A_BuyHowMach, [A_BuyPlace]= @A_BuyPlace, [B_DiligenceClassification1]= @B_DiligenceClassification1, [B_DiligenceClassification2]= @B_DiligenceClassification2, [B_DiligenceDateA1]= @B_DiligenceDateA1, [B_DiligenceDateA2]= @B_DiligenceDateA2, [B_DiligenceDateB1]= @B_DiligenceDateB1, [B_DiligenceDateB2]= @B_DiligenceDateB2, [C_Tatekae_Result_Main]= @C_Tatekae_Result_Main, [C_Tatekae_TWaste]= @C_Tatekae_TWaste, [C_Tatekae_PWaste]= @C_Tatekae_PWaste, [C_Tatekae_Result1]= @C_Tatekae_Result1, [C_Tatekae_Result2]= @C_Tatekae_Result2, [C_Tatekae_Result3]= @C_Tatekae_Result3 WHERE([id] = @id, [DateTime] = @DateTime)">
                 <UpdateParameters>
                        <asp:ControlParameter Name="id" ControlId="lblResult" PropertyName="Text"/>
                 </UpdateParameters>
