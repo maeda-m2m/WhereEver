@@ -10,16 +10,6 @@
 
     <title></title>
     
-    <style type="text/css">
-        .auto-style1 {
-            margin-bottom: 0px;
-        }
-        .auto-style2 {
-            height: 232px;
-            margin-bottom: 0px;
-        }
-    </style>
-    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -35,70 +25,47 @@
         <div>
             <table class="auto-style1">
                 <tr>
-                    <td colspan="4">
+                    <td class="auto-style2" colspan="5">
 
-            <asp:DataGrid runat="server" ID="DgPIchiran" AutoGenerateColumns="False" OnItemDataBound="DgPIchiran_ItemDataBound" OnItemCommand="DgPIchiran_ItemCommand">
-                <AlternatingItemStyle BackColor="#CCFFCC" />
+            <asp:DataGrid runat="server" ID="DgPIchiran" OnItemDataBound="DgPIchiran_ItemDataBound"
+                OnEditCommand="DgPIchiran_EditCommand"
+           OnCancelCommand="DgPIchiran_CancelCommand"
+           OnUpdateCommand="DgPIchiran_UpdateCommand"
+           OnItemCommand="DgPIchiran_ItemCommand"
+                
+           AutoGenerateColumns="False"
+                BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
                 <Columns>
-                    <asp:TemplateColumn HeaderText="プロジェクト名">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="lbPName" runat="server">プロジェクト名</asp:LinkButton>
-                        </ItemTemplate>
-                        <HeaderStyle Wrap="True" />
-                        <ItemStyle Height="50px" HorizontalAlign="Left" Width="100px" Wrap="True" />
-                    </asp:TemplateColumn>
+                    <asp:BoundColumn HeaderText="プロジェクト名"
+                        DataField="Pname"/>
+                    <asp:BoundColumn HeaderText="取引先" 
+                        DataField="Pcustomer"/>
+                    <asp:BoundColumn HeaderText="担当者" 
+                        DataField="Presponsible"/>
+                    <asp:BoundColumn HeaderText="カテゴリー" 
+                        DataField="Pcategory"/>
+                    <asp:BoundColumn HeaderText="開始日" 
+                        DataField="PstartTime"/>
+                    <asp:BoundColumn HeaderText="終了日" 
+                        DataField="PoverTime"/>
+                    <asp:EditCommandColumn
+                         EditText="変更"
+                         CancelText="キャンセル"
+                        UpdateText="保存" >
 
-                    <asp:TemplateColumn HeaderText="顧客名">
-                        <ItemTemplate>
-                            <asp:Label ID="lblCustomer" runat="server">顧客名</asp:Label>
-                        </ItemTemplate>
-                        <HeaderStyle Wrap="True" />
-                        <ItemStyle CssClass="scdl" HorizontalAlign="Left" Width="150px" Wrap="True" />
-                    </asp:TemplateColumn>
-
-                    <asp:TemplateColumn HeaderText="担当者">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="lbResponsible" runat="server">担当者</asp:LinkButton>
-                        </ItemTemplate>
-                        <HeaderStyle Wrap="True" />
-                        <ItemStyle CssClass="scdl" HorizontalAlign="Left" Width="150px" Wrap="True" />
-                    </asp:TemplateColumn>
-
-                    <asp:TemplateColumn HeaderText="カテゴリー">
-                        <ItemTemplate>
-                            <asp:Label ID="lblCategory" runat="server">カテゴリー</asp:Label>
-                        </ItemTemplate>
-                        <HeaderStyle Wrap="True" />
-                        <ItemStyle CssClass="scdl" HorizontalAlign="Left" Width="150px" Wrap="True" />
-                    </asp:TemplateColumn>
-
-                    <asp:TemplateColumn HeaderText="開始日">
-                        <ItemTemplate>
-                            <asp:Label ID="lblStartTime" runat="server">開始日</asp:Label>
-                        </ItemTemplate>
-                        <HeaderStyle Wrap="True" />
-                        <ItemStyle CssClass="scdl" HorizontalAlign="Left" Width="150px" Wrap="True" />
-                    </asp:TemplateColumn>
-
-                    <asp:TemplateColumn HeaderText="終了日">
-                        <ItemTemplate>
-                            <asp:Label ID="lblOverTime" runat="server">終了日</asp:Label>
-                        </ItemTemplate>
-                        <HeaderStyle Wrap="True" />
-                        <ItemStyle CssClass="scdl" HorizontalAlign="Left" Width="150px" Wrap="True" />
-                    </asp:TemplateColumn>
-
-                    <asp:TemplateColumn>
-                        <ItemTemplate>
-                            <asp:Button ID="btnChange" runat="server" Text="編集" />
-                        </ItemTemplate>
-                        <HeaderStyle Wrap="True" />
-                        <ItemStyle CssClass="scdl" HorizontalAlign="Left" Width="150px" Wrap="True" />
-                    </asp:TemplateColumn>
+                    </asp:EditCommandColumn>
+                    <asp:ButtonColumn 
+                         ButtonType="LinkButton" 
+                 Text="削除" 
+                 CommandName="Delete"/>
                 </Columns>
 
-                <HeaderStyle Width="200px" BackColor="#16BA00" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="12px"></HeaderStyle>
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="10px" />
+                <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+
+                <HeaderStyle Width="200px" BackColor="#A55129" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle"></HeaderStyle>
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BackColor="#FFF7E7" ForeColor="#8C4510" />
+                <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" Mode="NumericPages" />
+                <SelectedItemStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
             </asp:DataGrid>
                     </td>
                 </tr>
@@ -115,7 +82,7 @@
 
                         <asp:Label ID="lblNewCustomer" runat="server" Text="顧客名"></asp:Label>
                     </td>
-                    <td class="auto-style2">
+                    <td class="auto-style2" colspan="2">
 
                         <asp:TextBox ID="txtNewCustomer" runat="server" CssClass="auto-style1"></asp:TextBox>
                     </td>
@@ -128,6 +95,7 @@
                     <td class="auto-style3">
 
                         <asp:DropDownList ID="ddlResponsible" runat="server">
+                            <asp:ListItem></asp:ListItem>
                             <asp:ListItem>chou</asp:ListItem>
                             <asp:ListItem>yanagisawa</asp:ListItem>
                             <asp:ListItem>sakaguchi</asp:ListItem>
@@ -139,7 +107,7 @@
 
                         <asp:Label ID="lblNewCategory" runat="server" Text="カテゴリー(△)"></asp:Label>
                     </td>
-                    <td class="auto-style3">
+                    <td class="auto-style3" colspan="2">
 
                         <asp:TextBox ID="txtNewCategory" runat="server"></asp:TextBox>
                     </td>
@@ -161,16 +129,25 @@
 
                 <asp:Calendar ID="Calendar2" runat="server"></asp:Calendar>
                     </td>
+                    <td class="auto-style2">
+
+                        <asp:Button ID="btnClear" runat="server" Text="クリア" />
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2" class="auto-style1">
 
-                        <asp:Button ID="btnNewP" runat="server" OnClick="btnNewP_Click" Text="新規として保存" />
+                        <asp:Button ID="btnNewP" runat="server" Text="新規として保存" OnClick="btnNewP_Click" />
                     </td>
+                </tr>
+                <tr>
                     <td colspan="2" class="auto-style1">
 
-                        <asp:Button ID="btnDelete" runat="server" Text="削除" />
+                        <asp:Label ID="lblAisatu" runat="server"></asp:Label>
                     </td>
+                    <td colspan="3" class="auto-style1">
+
+                        &nbsp;</td>
                 </tr>
             </table>
         </div>

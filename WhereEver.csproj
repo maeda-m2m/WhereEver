@@ -116,6 +116,7 @@
     <Content Include="IMG\日付2.png" />
     <Content Include="Insatsu.ascx" />
     <Content Include="Project System\PIchiran.aspx" />
+    <Content Include="Project System\WebForm1.aspx" />
     <Content Include="ShinseiMenu.css" />
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
@@ -253,6 +254,13 @@
     </Compile>
     <Compile Include="Project System\PIchiran.aspx.designer.cs">
       <DependentUpon>PIchiran.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Project System\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Project System\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tatekae.ascx.cs">
       <DependentUpon>Tatekae.ascx</DependentUpon>
