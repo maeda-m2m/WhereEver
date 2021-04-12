@@ -116,6 +116,7 @@
     <Content Include="IMG\日付2.png" />
     <Content Include="Insatsu.ascx" />
     <Content Include="Project System\PIchiran.aspx" />
+    <Content Include="Project System\PIchiran.css" />
     <Content Include="Project System\WebForm1.aspx" />
     <Content Include="ShinseiMenu.css" />
     <Content Include="Tatekae.ascx" />
@@ -125,6 +126,7 @@
     <Content Include="ログイン\LoginList.aspx" />
     <Content Include="MenuControl.css" />
     <Content Include="その他\About.aspx" />
+    <Content Include="ログイン\m2m-logo.png" />
     <Content Include="ログイン\white.jpg" />
     <Content Include="各申請書類\Shinsei.aspx" />
     <Content Include="各申請書類\Shinsei.css" />

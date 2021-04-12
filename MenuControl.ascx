@@ -2,32 +2,32 @@
 
 <link href="MenuControl.css" type="text/css" rel="stylesheet" />
 
-
-<table class="menu">
+<table>
     <tr>
-        <td id="logo">
-            <td id="title">
-                <h1 class="TitleClass">WhereEver</h1>
+        <td class="All">
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/ログイン/m2m-logo.png"/>
+            <td>
+                <h1>WhereEver</h1>
                 <td>
-                    <a href="ログイン/LoginList.aspx" class="btnmenu" runat="server">ログインリスト</a>
+                    <a href="ログイン/LoginList.aspx" class="btn" runat="server">ログインリスト</a>
                 </td>
                 <td>
-                    <a href="スケジュール/Schedule.aspx" class="btnmenu" runat="server">スケジュール</a>
+                    <a href="スケジュール/Schedule.aspx" class="btn" runat="server">スケジュール</a>
                 </td>
                <td>
-                    <a href="~/各申請書類/Shinsei.aspx" class="btnmenu" runat="server">各申請書類</a>
+                    <a href="~/各申請書類/Shinsei.aspx" class="btn" runat="server">各申請書類</a>
                </td>
                <td>
-                    <a href="チャット/Chat.aspx" class="btnmenu" runat="server">チャット</a>
+                    <a href="チャット/Chat.aspx" class="btn" runat="server">チャット</a>
                </td>
                <td>
-                    <a href="ファイル共有/FileShare.aspx" class="btnmenu" runat="server">ファイル共有</a>
+                    <a href="ファイル共有/FileShare.aspx" class="btn" runat="server">ファイル共有</a>
                </td>
                <td>
-                    <a href="Project System/PIchiran.aspx" class="btnmenu" runat="server">プロジェクト</a>
+                    <a href="Project System/PIchiran.aspx" class="btn" runat="server">プロジェクト</a>
                </td>
                <td>
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Label1" CssClass="label" runat="server" Text="Label"></asp:Label>
                </td>
     </tr>
 </table>
