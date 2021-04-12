@@ -57,6 +57,9 @@ namespace WhereEver.Project_System
 
         protected void DgPIchiran_EditCommand(object source, DataGridCommandEventArgs e)
         {
+            //string txtPname = e.Item.Cells[0].Text;
+            //DATASET.DataSet.T_PdbRow dr = GetT_PdbRow(txtPname, Global.GetConnection());
+            //SessionManager.Project(dr);
             DgPIchiran.EditItemIndex = e.Item.ItemIndex;
             DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
             DgPIchiran.DataBind();
@@ -75,37 +78,53 @@ namespace WhereEver.Project_System
         
         protected void DgPIchiran_ItemCommand(object source, DataGridCommandEventArgs e)
         {
-            string txtPname = e.Item.Cells[0].Text;
-            switch (((LinkButton)e.CommandSource).CommandName)
-            {
+            //string txtPname = e.Item.Cells[0].Text;
+            //switch (((LinkButton)e.CommandSource).CommandName)
+            //{
 
-                case "Delete":
-                    Delete(txtPname);
-                    break;
-                    // Add other cases here, if there are multiple ButtonColumns in 
-                    // the DataGrid control.
+            //    case "Delete":
+            //        Delete(txtPname);
+            //        break;
+            //        // Add other cases here, if there are multiple ButtonColumns in 
+            //        // the DataGrid control.
                     
-                default:
-                    // Do nothing.
-                    break;
+            //    default:
+            //        // Do nothing.
+            //        break;
 
-            }
+            //}
         }
-        public void Delete(string Pname)
-        {
-            string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
-            using (SqlConnection connection = new SqlConnection(cstr))
-            {
-                string sql = "DELETE FROM T_Pdb WHERE PName = @i";
-                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
-                da.SelectCommand.Parameters.AddWithValue("@i", Pname);
+        //public void Update(string Pname)
+        //{
+        //    string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+        //    using (SqlConnection connection = new SqlConnection(cstr))
+        //    {
+        //        string sql = "DELETE FROM T_Pdb WHERE PName = @i";
+        //        SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
-                connection.Open();
-                int cnt = da.SelectCommand.ExecuteNonQuery();
-                connection.Close();
-            }
-        }
+        //        da.SelectCommand.Parameters.AddWithValue("@i", Pname);
+
+        //        connection.Open();
+        //        int cnt = da.SelectCommand.ExecuteNonQuery();
+        //        connection.Close();
+        //    }
+        //}
+        //public void Delete(string Pname)
+        //{
+        //    string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+        //    using (SqlConnection connection = new SqlConnection(cstr))
+        //    {
+        //        string sql = "DELETE FROM T_Pdb WHERE PName = @i";
+        //        SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+        //        da.SelectCommand.Parameters.AddWithValue("@i", Pname);
+
+        //        connection.Open();
+        //        int cnt = da.SelectCommand.ExecuteNonQuery();
+        //        connection.Close();
+        //    }
+        //}
 
         protected void btnNewP_Click(object sender, EventArgs e)
         {
@@ -146,6 +165,16 @@ namespace WhereEver.Project_System
             da.Fill(dt);
             return dt[0];
         }
+        //internal static DATASET.DataSet.T_PdbRow GetT_PdbRow(string name,SqlConnection sqlConnection)
+        //{
+        //    SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+        //    da.SelectCommand.CommandText =
+        //        "select * from T_Pdb where Pname is @i";
+        //    da.SelectCommand.Parameters.AddWithValue("@i", name);
+        //    DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
+        //    da.Fill(dt);
+        //    return dt[0];
+        //}
 
         public static void InsertProject(DATASET.DataSet.T_PdbDataTable dt, SqlConnection sqlConnection)
         {

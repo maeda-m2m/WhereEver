@@ -12,7 +12,7 @@
     color: #000000;
     background: #ECECEC;
     transition: .4s;
-    font-size: 1em;
+    font-size: 1.5em;
 }
 
     .btn:hover {
@@ -20,17 +20,11 @@
         color: white;
     }
 
+.label {
+    font-size: 1em;
+}
+
 .All {
     text-align: center;
     font-weight: bold;
-}
-.bg_test-text {
-    display: inline-block; /* インラインブロックにする */
-    padding: 10px 20px; /* 余白指定 */
-    padding-bottom: 200px;
-    margin: 30px;
-}
-
-.bg_test {
-    text-align: center; /* 文字中央寄せ */
 }

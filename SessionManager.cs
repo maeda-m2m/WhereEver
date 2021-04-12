@@ -66,11 +66,6 @@ namespace WhereEver
 
         }
 
-        internal static void Logout(DATASET.DataSet.M_UserRow dr)
-        {
-            throw new NotImplementedException();
-        }
-
         public static LoginUser User
         {
             get
@@ -87,6 +82,31 @@ namespace WhereEver
                     return null;
                 }
             }
+        }
+
+        private const string SESSION_PROJECT_NAME = "SESSION_PROJECT_NAME";
+        private const string SESSION_PROJECT_CUSTOMER = "SESSION_PROJECT_CUSTOMER";
+        private const string SESSION_PROJECT_RESPONSIBLE = "SESSION_PROJECT_RESPONSIBLE";
+        private const string SESSION_PROJECT_CATEGORY = "SESSION_PROJECT_CATEGORY";
+        private const string SESSION_PROJECT_STARTTIME = "SESSION_PROJECT_STARTTIME";
+        private const string SESSION_PROJECT_OVERTIME = "SESSION_PROJECT_OVERTIME";
+
+        internal static void Project(DATASET.DataSet.T_PdbRow dr)
+        {
+            System.Web.Security.FormsAuthentication.SetAuthCookie(dr.Pname.ToString(), false);
+            System.Web.Security.FormsAuthentication.SetAuthCookie(dr.Pcustomer.ToString(), false);
+            System.Web.Security.FormsAuthentication.SetAuthCookie(dr.Presponsible.ToString(), false);
+            System.Web.Security.FormsAuthentication.SetAuthCookie(dr.Pcategory.ToString(), false);
+            System.Web.Security.FormsAuthentication.SetAuthCookie(dr.Pstarttime.ToString(), false);
+            System.Web.Security.FormsAuthentication.SetAuthCookie(dr.Povertime.ToString(), false);
+
+            System.Web.HttpContext.Current.Session[SESSION_PROJECT_NAME] = dr.Pname;
+            System.Web.HttpContext.Current.Session[SESSION_PROJECT_CUSTOMER] = dr.Pcustomer;
+            System.Web.HttpContext.Current.Session[SESSION_PROJECT_RESPONSIBLE] = dr.Presponsible;
+            System.Web.HttpContext.Current.Session[SESSION_PROJECT_CATEGORY] = dr.Pcategory;
+            System.Web.HttpContext.Current.Session[SESSION_PROJECT_STARTTIME] = dr.Pstarttime;
+            System.Web.HttpContext.Current.Session[SESSION_PROJECT_OVERTIME] = dr.Povertime;
+
         }
     }
 }

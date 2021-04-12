@@ -1,6 +1,6 @@
 ﻿body {
     background-image: url(white.jpg);
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; /* 画像重複しない */
     background-size: cover;
     font-weight: bold; /*太字にする*/
 }
@@ -8,12 +8,12 @@
 .bg_test-text {
     display: inline-block; /* インラインブロックにする */
     padding: 10px 20px; /* 余白指定 */
-    padding-bottom: 250px;
+    padding-bottom: 200px;
     margin: 30px;
 }
 .bg_test {
     text-align: center; /* 文字中央寄せ */
-    padding: 150px; /* 余白指定 */
+    padding: 50px; /* 余白指定 */
 }
 #lblID {
     width: 200px;
@@ -24,21 +24,21 @@
 #lblPassword {
     width: 200px;
     height: 30px;
-    letter-spacing: 0.5em;
+    letter-spacing: 0.5em; /* 文字間隔指定 */
     font-size: 1.5em;
 }
 #TbxID {
     width: 200px;
     height: 40px;
-    border-radius: 3px;
     margin: 50px;
+    opacity: 0.5; /* 不透明度指定 */
 }
 
 #TbxPW {
     width: 200px;
     height: 40px;
-    border-radius: 3px;
     margin: 50px;
+    opacity: 0.5;
 }
 #lblError {
     width: 200px;

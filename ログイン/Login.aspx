@@ -9,6 +9,11 @@
 
 
     <title>m2m ログインページ</title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -16,6 +21,13 @@
             <table class="bg_test-text">
                 <tr>
                     <td>
+                        <table class="auto-style1">
+                            <tr>
+                                <td>
+                                    <asp:Image ID="Image1" runat="server" ImageUrl="~/ログイン/m2m-logo.png" />
+                                </td>
+                            </tr>
+                        </table>
                         <asp:Label ID="lblID" runat="server" Text="社員ID" Width="200px"></asp:Label>
                         <asp:TextBox ID="TbxID" runat="server"></asp:TextBox>
 

@@ -6,8 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
-
+    <link href="PIchiran.css" type="text/css" rel="stylesheet" />
     <title></title>
     
 </head>
@@ -34,7 +33,8 @@
            OnItemCommand="DgPIchiran_ItemCommand"
                 
            AutoGenerateColumns="False"
-                BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
+                BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+                <AlternatingItemStyle BackColor="White" />
                 <Columns>
                     <asp:BoundColumn HeaderText="プロジェクト名"
                         DataField="Pname"/>
@@ -52,21 +52,24 @@
                          EditText="変更"
                          CancelText="キャンセル"
                         UpdateText="保存" >
+                      
 
                     </asp:EditCommandColumn>
                     <asp:ButtonColumn 
                          ButtonType="LinkButton" 
                  Text="削除" 
                  CommandName="Delete"/>
+                    
                 </Columns>
 
-                <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                <FooterStyle BackColor="#CCCC99" />
 
-                <HeaderStyle Width="200px" BackColor="#A55129" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle"></HeaderStyle>
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BackColor="#FFF7E7" ForeColor="#8C4510" />
-                <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" Mode="NumericPages" />
-                <SelectedItemStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle Width="200px" BackColor="#6B696B" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle"></HeaderStyle>
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BackColor="#F7F7DE" />
+                <PagerStyle ForeColor="Black" HorizontalAlign="Right" Mode="NumericPages" BackColor="#F7F7DE" />
+                <SelectedItemStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
             </asp:DataGrid>
+
                     </td>
                 </tr>
                 <tr>
