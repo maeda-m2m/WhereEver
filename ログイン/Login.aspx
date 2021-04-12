@@ -9,26 +9,22 @@
 
 
     <title>m2m ログインページ</title>
-    <style type="text/css">
-        .auto-style1 {
-            height: 42px;
-        }
-    </style>
 </head>
 <body>
     <form class="form" runat="server">
         <div class ="bg_test">
             <table class="bg_test-text">
                 <tr>
-                    <td class="auto-style1">
+                    <td>
                         <asp:Label ID="lblID" runat="server" Text="社員ID" Width="200px"></asp:Label>
-                        <asp:TextBox ID="TbxPW" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="TbxID" runat="server"></asp:TextBox>
+
                         </td>
                 </tr>
                 <tr>
-                    <td class="auto-style1">
+                    <td>
                         <asp:Label ID="lblPassword" runat="server" Text="パスワード" Width="200px"></asp:Label>
-                        <asp:TextBox ID="TbxID" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TbxPW" runat="server" TextMode="Password"></asp:TextBox>
 
                     </td>
                 </tr>

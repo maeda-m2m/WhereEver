@@ -24,13 +24,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label lblID;
 
         /// <summary>
-        /// TbxPW コントロール。
+        /// TbxID コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxPW;
+        protected global::System.Web.UI.WebControls.TextBox TbxID;
 
         /// <summary>
         /// lblPassword コントロール。
@@ -42,13 +42,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label lblPassword;
 
         /// <summary>
-        /// TbxID コントロール。
+        /// TbxPW コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxID;
+        protected global::System.Web.UI.WebControls.TextBox TbxPW;
 
         /// <summary>
         /// btnLogin コントロール。

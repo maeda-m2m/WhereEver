@@ -1,4 +1,7 @@
 ﻿body {
+    background-image: url(white.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .bg_test-text {
@@ -8,34 +11,38 @@
     padding-bottom: 250px;
 }
 .form {
-    background-image: url(white.jpg);
-    background-repeat: no-repeat;
-    background-size:cover;
 }
 .bg_test {
-    
     text-align: center; /* 文字中央寄せ */
     padding: 150px; /* 余白指定 */
 }
-
-#TbxID {
+#lblID {
     width: 200px;
     height: 30px;
+}
+#lblPassword {
+    width: 200px;
+    height: 30px;
+}
+#TbxID {
+    width: 200px;
+    height: 40px;
     border-radius: 3px;
 }
 
 #TbxPW {
     width: 200px;
-    height: 30px;
+    height: 40px;
     border-radius: 3px;
 }
-#LblError {
-    margin-left: 50px;
+#lblError {
+    width: 200px;
+    height: 30px;
 }
 
 .btn-flat-simple {
-    width:200px;
-    
+    width: 200px;
+    height: 40px;
     position: relative;
     display: inline-block;
     font-weight: bold;
