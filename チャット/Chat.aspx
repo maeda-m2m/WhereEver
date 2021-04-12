@@ -27,7 +27,7 @@
         </div>
         <div>
         <table>
-            <asp:DataGrid runat="server" ID="ChatArea" AutoGenerateColumns="False" OnItemDataBound="Chat_ItemDataBound" BorderStyle="None" >
+            <asp:DataGrid runat="server" ID="ChatArea" AutoGenerateColumns="false" OnItemDataBound="Chat_ItemDataBound" BorderStyle="None" OnItemCommand="ChatArea_ItemCommand" >
                 <AlternatingItemStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                 
                 <Columns>
@@ -61,6 +61,8 @@
                         <ItemTemplate>
                             <asp:Label ID="Date" runat="server" Text=""></asp:Label>
                         </ItemTemplate>
+                            
+                        
                     </asp:TemplateColumn>
 
                 </Columns>
@@ -83,7 +85,7 @@
                  <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
                 </p>
                 <p>
-                    <asp:Button ID="Button1" runat="server" Text="更新" CssClass="Button-style" OnClick="Button1_Click"/>
+                    <asp:Button ID="Update" runat="server" Text="更新" CssClass="Button-style" OnClick="Update_Click"/>
                 </p>
            </div>
         </div>
