@@ -52,6 +52,7 @@
             </tr>
         </table>
 
+
         <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
         <div>
             <asp:Panel ID="Panel1" runat="server">
@@ -184,7 +185,7 @@
                 AutoGenerateColumns="False"
                 OnItemDataBound="Scdl3_ItemDataBound"
                 CssClass="scdl" HeaderStyle-Width="200px" OnSelectedIndexChanged="Scdl3_SelectedIndexChanged" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
-                <AlternatingItemStyle BackColor="#ccffcc" HorizontalAlign="Left" VerticalAlign="Top" />
+               <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
                     <asp:TemplateColumn HeaderText="時間" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
@@ -197,7 +198,7 @@
 
                     <asp:TemplateColumn HeaderText="月" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" Height="50" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
 
                         <ItemTemplate>
                             <asp:Label ID="MondayTitle" runat="server" Text=""></asp:Label>

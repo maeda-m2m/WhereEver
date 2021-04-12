@@ -91,7 +91,7 @@ namespace WhereEver
 
             dr.title = TextBox1.Text;
 
-            dr.name = DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString() + "\n\r";
+            dr.name = DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString();
             //選択した名前をname列に入れる
 
             DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
@@ -119,8 +119,6 @@ namespace WhereEver
         {
             var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
 
-            string E;
-
             for (int j = 0; j < dd.Count; j++)
             {
                 var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
@@ -131,157 +129,339 @@ namespace WhereEver
 
                 string tm = dl.time.Trim();
 
-                string A;
-
                 if (tm == "9:00" || tm == "9:15" || tm == "9:30" || tm == "9:45")
                 {
                     if (week == "月")
                     {
-                        string scdl = Scdl3.Items[0].Cells[1].Text;
-                        if(scdl !="")
-                        {
-                            scdl += Environment.NewLine + dl.time + dl.title + dl.name + " " + Environment.NewLine;
-                            Scdl3.Items[0].Cells[1].Text = scdl;
-                        }
-                        else
-                        {
-                            Scdl3.Items[0].Cells[1].Text = Environment.NewLine + dl.time + dl.title + dl.name + " " + Environment.NewLine;
-                        }
-                        //E = Environment.NewLine + dl.time + dl.title + dl.name + " " + Environment.NewLine;
-                        //Scdl3.Items[0].Cells[1].Text += E;
-
-                        //"\r\n" + Environment.NewLine
+                        string A1 = Scdl3.Items[0].Cells[1].Text;
+                        A1 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[0].Cells[1].Text = A1.Replace("\r\n", "<br>");
                     }
-
                     if (week == "火")
-                        Scdl3.Items[0].Cells[2].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A2 = Scdl3.Items[0].Cells[2].Text;
+                        A2 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[0].Cells[2].Text = A2.Replace("\r\n", "<br>");
+                    }
                     if (week == "水")
-                        Scdl3.Items[0].Cells[3].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A3 = Scdl3.Items[0].Cells[3].Text;
+                        A3 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[0].Cells[3].Text = A3.Replace("\r\n", "<br>");
+                    }
                     if (week == "木")
-                        Scdl3.Items[0].Cells[4].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A4 = Scdl3.Items[0].Cells[4].Text;
+                        A4 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[0].Cells[4].Text = A4.Replace("\r\n", "<br>");
+                    }
                     if (week == "金")
-                        Scdl3.Items[0].Cells[5].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A5 = Scdl3.Items[0].Cells[5].Text;
+                        A5 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[0].Cells[5].Text = A5.Replace("\r\n", "<br>");
+                    }
                 }
                 else if (tm == "10:00" || tm == "10:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[1].Cells[1].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A6 = Scdl3.Items[1].Cells[1].Text;
+                        A6 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[1].Cells[1].Text = A6.Replace("\r\n", "<br>");
+                    }
                     if (week == "火")
-                        Scdl3.Items[1].Cells[2].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A7 = Scdl3.Items[1].Cells[2].Text;
+                        A7 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[1].Cells[2].Text = A7.Replace("\r\n", "<br>");
+                    }
                     if (week == "水")
-                        Scdl3.Items[1].Cells[3].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A8 = Scdl3.Items[1].Cells[3].Text;
+                        A8 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[1].Cells[3].Text = A8.Replace("\r\n", "<br>");
+                    }
                     if (week == "木")
-                        Scdl3.Items[1].Cells[4].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A9 = Scdl3.Items[1].Cells[4].Text;
+                        A9 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[1].Cells[4].Text = A9.Replace("\r\n", "<br>");
+                    }
                     if (week == "金")
-                        Scdl3.Items[1].Cells[5].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A10 = Scdl3.Items[1].Cells[5].Text;
+                        A10 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[1].Cells[5].Text = A10.Replace("\r\n", "<br>");
+                    }
                 }
                 else if (tm == "11:00" || tm == "11:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[2].Cells[1].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A11 = Scdl3.Items[2].Cells[1].Text;
+                        A11 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[2].Cells[1].Text = A11.Replace("\r\n", "<br>");
+                    }
                     if (week == "火")
-                        Scdl3.Items[2].Cells[2].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A12 = Scdl3.Items[2].Cells[2].Text;
+                        A12 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[2].Cells[2].Text = A12.Replace("\r\n", "<br>");
+                    }
                     if (week == "水")
-                        Scdl3.Items[2].Cells[3].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A13 = Scdl3.Items[2].Cells[3].Text;
+                        A13 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[2].Cells[3].Text = A13.Replace("\r\n", "<br>");
+                    }
                     if (week == "木")
-                        Scdl3.Items[2].Cells[4].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A14 = Scdl3.Items[2].Cells[4].Text;
+                        A14 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[2].Cells[4].Text = A14.Replace("\r\n", "<br>");
+                    }
                     if (week == "金")
-                        Scdl3.Items[2].Cells[5].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A15 = Scdl3.Items[2].Cells[5].Text;
+                        A15 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[2].Cells[5].Text = A15.Replace("\r\n", "<br>");
+                    }
                 }
                 else if (tm == "12:00" || tm == "12:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[3].Cells[1].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A16 = Scdl3.Items[3].Cells[1].Text;
+                        A16 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[3].Cells[1].Text = A16.Replace("\r\n", "<br>");
+                    }
                     if (week == "火")
-                        Scdl3.Items[3].Cells[2].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A17 = Scdl3.Items[3].Cells[2].Text;
+                        A17 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[3].Cells[2].Text = A17.Replace("\r\n", "<br>");
+                    }
                     if (week == "水")
-                        Scdl3.Items[3].Cells[3].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A18 = Scdl3.Items[3].Cells[3].Text;
+                        A18 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[3].Cells[3].Text = A18.Replace("\r\n", "<br>");
+                    }
                     if (week == "木")
-                        Scdl3.Items[3].Cells[4].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A19 = Scdl3.Items[3].Cells[4].Text;
+                        A19 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[3].Cells[4].Text = A19.Replace("\r\n", "<br>");
+                    }
                     if (week == "金")
-                        Scdl3.Items[3].Cells[5].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A20 = Scdl3.Items[3].Cells[5].Text;
+                        A20 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[3].Cells[5].Text = A20.Replace("\r\n", "<br>");
+                    }
                 }
                 else if (tm == "13:00" || tm == "13:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[4].Cells[1].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A21 = Scdl3.Items[4].Cells[1].Text;
+                        A21 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[4].Cells[1].Text = A21.Replace("\r\n", "<br>");
+                    }
                     if (week == "火")
-                        Scdl3.Items[4].Cells[2].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A22 = Scdl3.Items[4].Cells[2].Text;
+                        A22 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[4].Cells[2].Text = A22.Replace("\r\n", "<br>");
+                    }
                     if (week == "水")
-                        Scdl3.Items[4].Cells[3].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A23 = Scdl3.Items[4].Cells[3].Text;
+                        A23 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[1].Cells[1].Text = A23.Replace("\r\n", "<br>");
+                    }
                     if (week == "木")
-                        Scdl3.Items[4].Cells[4].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A24 = Scdl3.Items[4].Cells[4].Text;
+                        A24 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[4].Cells[4].Text = A24.Replace("\r\n", "<br>");
+                    }
                     if (week == "金")
-                        Scdl3.Items[4].Cells[5].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A25 = Scdl3.Items[4].Cells[5].Text;
+                        A25 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[4].Cells[5].Text = A25.Replace("\r\n", "<br>");
+                    }
                 }
                 else if (tm == "14:00" || tm == "14:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[5].Cells[1].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A26 = Scdl3.Items[5].Cells[1].Text;
+                        A26 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[5].Cells[1].Text = A26.Replace("\r\n", "<br>");
+                    }
                     if (week == "火")
-                        Scdl3.Items[5].Cells[2].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A27 = Scdl3.Items[5].Cells[2].Text;
+                        A27 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[5].Cells[2].Text = A27.Replace("\r\n", "<br>");
+                    }
                     if (week == "水")
-                        Scdl3.Items[5].Cells[3].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A28 = Scdl3.Items[5].Cells[3].Text;
+                        A28 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[5].Cells[3].Text = A28.Replace("\r\n", "<br>");
+                    }
                     if (week == "木")
-                        Scdl3.Items[5].Cells[4].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A29 = Scdl3.Items[5].Cells[4].Text;
+                        A29 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[5].Cells[4].Text = A29.Replace("\r\n", "<br>");
+                    }
                     if (week == "金")
-                        Scdl3.Items[5].Cells[5].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A30 = Scdl3.Items[5].Cells[5].Text;
+                        A30 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[5].Cells[5].Text = A30.Replace("\r\n", "<br>");
+                    }
                 }
                 else if (tm == "15:00" || tm == "15:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[6].Cells[1].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A31 = Scdl3.Items[6].Cells[1].Text;
+                        A31 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[6].Cells[1].Text = A31.Replace("\r\n", "<br>");
+                    }
                     if (week == "火")
-                        Scdl3.Items[6].Cells[2].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A32 = Scdl3.Items[6].Cells[2].Text;
+                        A32 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[6].Cells[2].Text = A32.Replace("\r\n", "<br>");
+                    }
                     if (week == "水")
-                        Scdl3.Items[6].Cells[3].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A33 = Scdl3.Items[6].Cells[3].Text;
+                        A33 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[6].Cells[3].Text = A33.Replace("\r\n", "<br>");
+                    }
                     if (week == "木")
-                        Scdl3.Items[6].Cells[4].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A34 = Scdl3.Items[6].Cells[4].Text;
+                        A34 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[6].Cells[4].Text = A34.Replace("\r\n", "<br>");
+                    }
                     if (week == "金")
-                        Scdl3.Items[6].Cells[5].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A35 = Scdl3.Items[6].Cells[5].Text;
+                        A35 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[6].Cells[5].Text = A35.Replace("\r\n", "<br>");
+                    }
                 }
                 else if (tm == "16:00" || tm == "16:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[7].Cells[1].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A36 = Scdl3.Items[7].Cells[1].Text;
+                        A36 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[7].Cells[1].Text = A36.Replace("\r\n", "<br>");
+                    }
+                    if (week == "火")
+                    {
+                        string A37 = Scdl3.Items[7].Cells[2].Text;
+                        A37 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[7].Cells[2].Text = A37.Replace("\r\n", "<br>");
+                    }
                     if (week == "水")
-                        Scdl3.Items[7].Cells[3].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A38 = Scdl3.Items[7].Cells[3].Text;
+                        A38 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[7].Cells[3].Text = A38.Replace("\r\n", "<br>");
+                    }
                     if (week == "木")
-                        Scdl3.Items[7].Cells[4].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A39 = Scdl3.Items[7].Cells[4].Text;
+                        A39 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[7].Cells[4].Text = A39.Replace("\r\n", "<br>");
+                    }
                     if (week == "金")
-                        Scdl3.Items[7].Cells[5].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
-
+                    {
+                        string A40 = Scdl3.Items[7].Cells[5].Text;
+                        A40 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[7].Cells[5].Text = A40.Replace("\r\n", "<br>");
+                    }
                 }
                 else if (tm == "17:00" || tm == "17:30")
                 {
                     if (week == "月")
-                        Scdl3.Items[8].Cells[1].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A41 = Scdl3.Items[8].Cells[1].Text;
+                        A41 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[8].Cells[1].Text = A41.Replace("\r\n", "<br>");
+                    }
                     if (week == "火")
-                        Scdl3.Items[8].Cells[2].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A42 = Scdl3.Items[8].Cells[2].Text;
+                        A42 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[8].Cells[2].Text = A42.Replace("\r\n", "<br>");
+                    }
                     if (week == "水")
-                        Scdl3.Items[8].Cells[3].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A43 = Scdl3.Items[8].Cells[3].Text;
+                        A43 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[8].Cells[3].Text = A43.Replace("\r\n", "<br>");
+                    }
                     if (week == "木")
-                        Scdl3.Items[8].Cells[4].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A44 = Scdl3.Items[8].Cells[4].Text;
+                        A44 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[8].Cells[4].Text = A44.Replace("\r\n", "<br>");
+                    }
                     if (week == "金")
-                        Scdl3.Items[8].Cells[5].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A45 = Scdl3.Items[8].Cells[5].Text;
+                        A45 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[8].Cells[5].Text = A45.Replace("\r\n", "<br>");
+                    }
                 }
                 else if (tm == "18:00")
                 {
                     if (week == "月")
-                        Scdl3.Items[9].Cells[1].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A46 = Scdl3.Items[9].Cells[1].Text;
+                        A46 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[9].Cells[1].Text = A46.Replace("\r\n", "<br>");
+                    }
                     if (week == "火")
-                        Scdl3.Items[9].Cells[2].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A47 = Scdl3.Items[9].Cells[2].Text;
+                        A47 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[9].Cells[2].Text = A47.Replace("\r\n", "<br>");
+                    }
                     if (week == "水")
-                        Scdl3.Items[9].Cells[3].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A48 = Scdl3.Items[9].Cells[3].Text;
+                        A48 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[9].Cells[3].Text = A48.Replace("\r\n", "<br>");
+                    }
                     if (week == "木")
-                        Scdl3.Items[9].Cells[4].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A49 = Scdl3.Items[9].Cells[4].Text;
+                        A49 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[9].Cells[4].Text = A49.Replace("\r\n", "<br>");
+                    }
                     if (week == "金")
-                        Scdl3.Items[9].Cells[5].Text += dl.time + dl.title + "<font color=#16ba00>" + dl.name + "</font>";
+                    {
+                        string A50 = Scdl3.Items[9].Cells[5].Text;
+                        A50 += dl.time + dl.title + dl.name + "\r\n";
+                        Scdl3.Items[9].Cells[5].Text = A50.Replace("\r\n", "<br>");
+                    }
 
                 }
             }
         }
-
 
 
         protected void Scdl3_ItemDataBound(object sender, DataGridItemEventArgs e)
