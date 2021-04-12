@@ -10,44 +10,41 @@
 
     <title>m2m ログインページ</title>
     <style type="text/css">
-        .auto-style2 {
-            width: 102px;
+        .auto-style1 {
+            height: 42px;
         }
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-        <div>
-            &nbsp;<table class="auto-style1">
+    <form class="form" runat="server">
+        <div class ="bg_test">
+            <table class="bg_test-text">
                 <tr>
-                    <td colspan="2">
-            <img src="../ログイン/haikei-1.png" runat="server" id="ue" /></td>
+                    <td class="auto-style1">
+                        <asp:Label ID="lblID" runat="server" Text="社員ID" Width="200px"></asp:Label>
+                        <asp:TextBox ID="TbxPW" runat="server" TextMode="Password"></asp:TextBox>
+                        </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
-                        <asp:TextBox ID="TbxID" runat="server" MaxLength="30" placeholder="UserID"></asp:TextBox>
+                    <td class="auto-style1">
+                        <asp:Label ID="lblPassword" runat="server" Text="パスワード" Width="200px"></asp:Label>
+                        <asp:TextBox ID="TbxID" runat="server"></asp:TextBox>
+
                     </td>
-                    <td>
-                        <asp:TextBox ID="TbxPW" runat="server" MaxLength="30" placeholder="Password" TextMode="Password"></asp:TextBox>
-                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/IMG/LoginBtn.png" OnClick="ImgBtn_Click" Width="30px" />
-            <asp:Label ID="LblError" runat="server" ForeColor="Red"></asp:Label> </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
-            <img src="..//ログイン/haikei-2.png" runat="server" id="sita" /></td>
+                    <td>
+                        <asp:Button ID="btnLogin" CssClass="btn-flat-simple" runat="server" Text="ログイン" OnClick="btnLogin_Click" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
+                    </td>
                 </tr>
             </table>
         </div>
-        <div>
-            
-            <br />
-
-
-        </div>
-        <div>
-            &nbsp;</div>
     </form>
 </body>
 </html>

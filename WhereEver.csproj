@@ -121,12 +121,11 @@
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
     <Content Include="チャット\purple.jpg" />
-    <Content Include="ログイン\haikei-1.png" />
-    <Content Include="ログイン\haikei-2.png" />
     <Content Include="ログイン\LoginList.css" />
     <Content Include="ログイン\LoginList.aspx" />
     <Content Include="MenuControl.css" />
     <Content Include="その他\About.aspx" />
+    <Content Include="ログイン\white.jpg" />
     <Content Include="各申請書類\Shinsei.aspx" />
     <Content Include="各申請書類\Shinsei.css" />
     <Content Include="チャット\Chat.aspx" />

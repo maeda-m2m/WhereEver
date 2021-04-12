@@ -20,8 +20,7 @@ namespace WhereEver
         {
 
         }
-
-        protected void ImgBtn_Click(object sender, ImageClickEventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
             string ID = TbxID.Text.Trim();
             string PW = TbxPW.Text.Trim();
@@ -31,7 +30,7 @@ namespace WhereEver
 
             if (dr == null)
             {
-                LblError.Text = "ログインできませんでした<br/>ログインIDまたはパスワードをお確かめ下さい";
+                lblError.Text = "ログインできませんでした<br/>ログインIDまたはパスワードをお確かめ下さい";
                 return;
             }
 
@@ -43,13 +42,8 @@ namespace WhereEver
             dl.Date = DateTime.Now;
             dd.AddT_LoginListRow(dl);
             Class.Login.InsertLoginList(dd, Global.GetConnection());
-                
+
             Response.Redirect("LoginList.aspx");
-        }
-
-        protected void TbxPW_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
