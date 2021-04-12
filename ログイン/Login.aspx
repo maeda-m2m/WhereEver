@@ -11,7 +11,7 @@
     <title>m2m ログインページ</title>
 </head>
 <body>
-    <form class="form" runat="server">
+    <form runat="server">
         <div class ="bg_test">
             <table class="bg_test-text">
                 <tr>
@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnLogin" CssClass="btn-flat-simple" runat="server" Text="ログイン" OnClick="btnLogin_Click" />
+                        <asp:Button ID="btnLogin" CssClass="btn" runat="server" Text="ログイン" OnClick="btnLogin_Click" />
 
                     </td>
                 </tr>

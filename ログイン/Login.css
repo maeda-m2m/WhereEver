@@ -2,15 +2,14 @@
     background-image: url(white.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    font-weight: bold; /*太字にする*/
 }
 
 .bg_test-text {
     display: inline-block; /* インラインブロックにする */
     padding: 10px 20px; /* 余白指定 */
-    padding-top: 150px;
     padding-bottom: 250px;
-}
-.form {
+    margin: 30px;
 }
 .bg_test {
     text-align: center; /* 文字中央寄せ */
@@ -19,28 +18,34 @@
 #lblID {
     width: 200px;
     height: 30px;
+    letter-spacing: 0.5em;
+    font-size: 1.5em;
 }
 #lblPassword {
     width: 200px;
     height: 30px;
+    letter-spacing: 0.5em;
+    font-size: 1.5em;
 }
 #TbxID {
     width: 200px;
     height: 40px;
     border-radius: 3px;
+    margin: 50px;
 }
 
 #TbxPW {
     width: 200px;
     height: 40px;
     border-radius: 3px;
+    margin: 50px;
 }
 #lblError {
     width: 200px;
     height: 30px;
 }
 
-.btn-flat-simple {
+.btn {
     width: 200px;
     height: 40px;
     position: relative;
@@ -48,12 +53,12 @@
     font-weight: bold;
     padding: 0.25em 0.5em;
     text-decoration: none;
-    color: #00BCD4;
+    color: #000000;
     background: #ECECEC;
     transition: .4s;
 }
 
-    .btn-flat-simple:hover {
-        background: #00bcd4;
+    .btn:hover {
+        background: #000000;
         color: white;
     }
