@@ -91,7 +91,7 @@ namespace WhereEver
 
             dr.title = TextBox1.Text;
 
-            dr.name = DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString();
+            dr.name = DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString() + "\n\r";
             //選択した名前をname列に入れる
 
             DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
@@ -142,6 +142,10 @@ namespace WhereEver
                         {
                             scdl += Environment.NewLine + dl.time + dl.title + dl.name + " " + Environment.NewLine;
                             Scdl3.Items[0].Cells[1].Text = scdl;
+                        }
+                        else
+                        {
+                            Scdl3.Items[0].Cells[1].Text = Environment.NewLine + dl.time + dl.title + dl.name + " " + Environment.NewLine;
                         }
                         //E = Environment.NewLine + dl.time + dl.title + dl.name + " " + Environment.NewLine;
                         //Scdl3.Items[0].Cells[1].Text += E;

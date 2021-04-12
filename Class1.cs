@@ -216,7 +216,6 @@ namespace WhereEver
             SqlDataAdapter da = new SqlDataAdapter("", sql);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule";
-            //"SELECT * FROM T_EmptyTable WHERE SdlNo IS NOT NULL"
             da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
 
             SqlTransaction sqltra = null;
@@ -246,9 +245,9 @@ namespace WhereEver
         //削除ボタン
         internal static void DeleteList(int sdl, SqlConnection sql)
         {
-            SqlCommand da = new SqlCommand("", sql);
+            var da = new SqlCommand("", sql);
             da.CommandText =
-                "DELETE FROM T_Schedule where [SdlNo] = @k ";//SdlNoを取ってくる
+                "DELETE FROM T_Schedule where [SdlNo] = @k ";
             da.Parameters.AddWithValue("@k", sdl);// Class1.DeleteList(sdl, Global.GetConnection()); のsdl
             SqlTransaction sqltra = null;
 
