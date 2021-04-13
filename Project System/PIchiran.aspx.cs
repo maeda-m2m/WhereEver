@@ -36,13 +36,13 @@ namespace WhereEver.Project_System
             {
 
                 DATASET.DataSet.T_PdbRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbRow;
-                e.Item.Cells[0].Text = dr.Pname.ToString();
-                e.Item.Cells[1].Text = dr.Pcustomer.ToString();
-                e.Item.Cells[2].Text = dr.Presponsible.ToString();
-                e.Item.Cells[3].Text = dr.Pcategory.ToString();
-                e.Item.Cells[4].Text = dr.Pstarttime.ToShortDateString();
-                e.Item.Cells[5].Text = dr.Povertime.ToShortDateString();
-
+                e.Item.Cells[0].Text = dr.Pid.ToString();
+                e.Item.Cells[1].Text = dr.Pname.ToString();
+                e.Item.Cells[2].Text = dr.Pcustomer.ToString();
+                e.Item.Cells[3].Text = dr.Presponsible.ToString();
+                e.Item.Cells[4].Text = dr.Pcategory.ToString();
+                e.Item.Cells[5].Text = dr.Pstarttime.ToShortDateString();
+                e.Item.Cells[6].Text = dr.Povertime.ToShortDateString();
             }
         }
         public static DATASET.DataSet.T_PdbDataTable GetPdbDataTable(SqlConnection sqlConnection)
@@ -54,12 +54,9 @@ namespace WhereEver.Project_System
             da.Fill(dt);
             return dt;
         }
-
-        protected void DgPIchiran_EditCommand(object source, DataGridCommandEventArgs e)
+        
+        public void DgPIchiran_EditCommand(object source, DataGridCommandEventArgs e)
         {
-            //string txtPname = e.Item.Cells[0].Text;
-            //DATASET.DataSet.T_PdbRow dr = GetT_PdbRow(txtPname, Global.GetConnection());
-            //SessionManager.Project(dr);
             DgPIchiran.EditItemIndex = e.Item.ItemIndex;
             DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
             DgPIchiran.DataBind();
@@ -74,64 +71,69 @@ namespace WhereEver.Project_System
 
         protected void DgPIchiran_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
+            TextBox txtPid = (TextBox)e.Item.Cells[0].Controls[0];
+            TextBox txtPname =(TextBox)e.Item.Cells[1].Controls[0];
+            TextBox txtPcustomer = (TextBox)e.Item.Cells[2].Controls[0];
+            TextBox txtPresponsible = (TextBox)e.Item.Cells[3].Controls[0];
+            TextBox txtPcategory = (TextBox)e.Item.Cells[4].Controls[0];
+            TextBox txtPstartTime = (TextBox)e.Item.Cells[5].Controls[0];
+            TextBox txtPoverTime = (TextBox)e.Item.Cells[6].Controls[0];
+
+            string Pid = txtPid.Text;
+            string Pname = txtPname.Text;
+            string Pcustomer = txtPcustomer.Text;
+            string Presponsible = txtPresponsible.Text;
+            string Pcategory = txtPcategory.Text;
+            string PstartTime = txtPstartTime.Text;
+            string PoverTime = txtPoverTime.Text;
+
+            DATASET.DataSet.T_PdbDataTable t_Pdbs = GetPdbDataTable(Global.GetConnection());
+            DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
+
+            dr[0] = Pname;
+            dr[1] = Pcustomer;
+            dr[2] = Presponsible;
+            dr[3] = Pcategory;
+            dr[4] = PstartTime;
+            dr[5] = PoverTime;
+            dr[6] = Pid;
+            Update.UpdateProject(dr);
+
+            DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
+            DgPIchiran.DataBind();
         }
         
         protected void DgPIchiran_ItemCommand(object source, DataGridCommandEventArgs e)
         {
-            //string txtPname = e.Item.Cells[0].Text;
-            //switch (((LinkButton)e.CommandSource).CommandName)
-            //{
+            string id = e.Item.Cells[0].Text; 
+            switch (((LinkButton)e.CommandSource).CommandName)
+            {
 
-            //    case "Delete":
-            //        Delete(txtPname);
-            //        break;
-            //        // Add other cases here, if there are multiple ButtonColumns in 
-            //        // the DataGrid control.
-                    
-            //    default:
-            //        // Do nothing.
-            //        break;
+                case "Delete":
+                    Delete.DeleteProject(id);
+                    break;
 
-            //}
+                // Add other cases here, if there are multiple ButtonColumns in 
+                // the DataGrid control.
+
+                default:
+                    // Do nothing.
+                    break;
+
+            }
+            DgPIchiran.EditItemIndex = -1;
+            DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
+            DgPIchiran.DataBind();
         }
 
-        //public void Update(string Pname)
-        //{
-        //    string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
-        //    using (SqlConnection connection = new SqlConnection(cstr))
-        //    {
-        //        string sql = "DELETE FROM T_Pdb WHERE PName = @i";
-        //        SqlDataAdapter da = new SqlDataAdapter(sql, connection);
-
-        //        da.SelectCommand.Parameters.AddWithValue("@i", Pname);
-
-        //        connection.Open();
-        //        int cnt = da.SelectCommand.ExecuteNonQuery();
-        //        connection.Close();
-        //    }
-        //}
-        //public void Delete(string Pname)
-        //{
-        //    string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
-        //    using (SqlConnection connection = new SqlConnection(cstr))
-        //    {
-        //        string sql = "DELETE FROM T_Pdb WHERE PName = @i";
-        //        SqlDataAdapter da = new SqlDataAdapter(sql, connection);
-
-        //        da.SelectCommand.Parameters.AddWithValue("@i", Pname);
-
-        //        connection.Open();
-        //        int cnt = da.SelectCommand.ExecuteNonQuery();
-        //        connection.Close();
-        //    }
-        //}
+        
 
         protected void btnNewP_Click(object sender, EventArgs e)
         {
             DATASET.DataSet.T_PdbDataTable t_Pdbs = new DATASET.DataSet.T_PdbDataTable();
             DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
 
-            DATASET.DataSet.T_PdbRow dl = GetMaxPidRow(Global.GetConnection());
+            DATASET.DataSet.T_PdbRow dl =Insert.GetMaxPidRow(Global.GetConnection());
             int sl = dl.Pid;
             dr.Pid = sl + 1;
             dr.Pname = txtNewPName.Text.Trim();
@@ -143,7 +145,7 @@ namespace WhereEver.Project_System
 
             t_Pdbs.Rows.Add(dr);
 
-            InsertProject(t_Pdbs, Global.GetConnection());
+            Insert.InsertProject(t_Pdbs, Global.GetConnection());
 
             DATASET.DataSet.T_PdbDataTable dt = GetPdbDataTable(Global.GetConnection());
 
@@ -155,58 +157,5 @@ namespace WhereEver.Project_System
             txtNewCategory.Text = "";
             ddlResponsible.Text = "";
         }
-
-        internal static DATASET.DataSet.T_PdbRow GetMaxPidRow(SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "select MAX(Pid) as Pid from T_Pdb";
-            DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
-            da.Fill(dt);
-            return dt[0];
-        }
-        //internal static DATASET.DataSet.T_PdbRow GetT_PdbRow(string name,SqlConnection sqlConnection)
-        //{
-        //    SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-        //    da.SelectCommand.CommandText =
-        //        "select * from T_Pdb where Pname is @i";
-        //    da.SelectCommand.Parameters.AddWithValue("@i", name);
-        //    DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
-        //    da.Fill(dt);
-        //    return dt[0];
-        //}
-
-        public static void InsertProject(DATASET.DataSet.T_PdbDataTable dt, SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_Pdb";
-            da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
-
-            SqlTransaction sql = null;
-
-            try
-            {
-                sqlConnection.Open();
-                sql = sqlConnection.BeginTransaction();
-
-                da.SelectCommand.Transaction = da.InsertCommand.Transaction = sql;
-
-                da.Update(dt);
-
-                sql.Commit();
-            }
-            catch (Exception ex)
-            {
-                if (sql != null)
-                    sql.Rollback();
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-        }
-
-        
     }
 }
