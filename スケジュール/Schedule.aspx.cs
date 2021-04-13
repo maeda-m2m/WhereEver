@@ -29,6 +29,10 @@ namespace WhereEver
                 Scdl3.Columns[3].ItemStyle.Wrap = true;
                 Scdl3.Columns[4].ItemStyle.Wrap = true;
             }
+
+            ScdlList.EditCommand += new DataGridCommandEventHandler(this.ScdlList_EditCommand);
+            ScdlList.CancelCommand += new DataGridCommandEventHandler(this.ScdlList_CancelCommand);
+            ScdlList.UpdateCommand += new DataGridCommandEventHandler(this.ScdlList_UpdateCommand);
         }
 
         //スケジュールリストにデータを格納　→　ScdlList_ItemDataBound　に移動
@@ -591,18 +595,19 @@ namespace WhereEver
         {
 
         }
-        protected void ScdlList_EditCommand(object source, DataGridCommandEventArgs e)
+        protected void ScdlList_EditCommand(object sender, DataGridCommandEventArgs e)
         {
-            int a = e.Item.ItemIndex;
+
+            ScdlList.EditItemIndex = e.Item.ItemIndex;
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-            var dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;
             ScdlList.DataSource = dt;
             ScdlList.DataBind();
-
-            //DgPIchiran.EditItemIndex = e.Item.ItemIndex;
-            //DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
-            //DgPIchiran.DataBind();
         }
+
+        //DgPIchiran.EditItemIndex = e.Item.ItemIndex;
+        //DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
+        //DgPIchiran.DataBind();
+
         protected void ScdlList_CancelCommand(object source, DataGridCommandEventArgs e)
         {
             ScdlList.EditItemIndex = -1;
@@ -612,9 +617,11 @@ namespace WhereEver
 
         protected void ScdlList_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
+
         }
 
     }
-
-
 }
+
+
+

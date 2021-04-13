@@ -270,12 +270,19 @@
 
         <div>
 
-            <asp:DataGrid runat="server" 
-                ID="ScdlList" 
-                AutoGenerateColumns="false" 
+            <asp:DataGrid runat="server"
+
+                ID="ScdlList"
+                AutoGenerateColumns="false"
                 OnEditCommand="ScdlList_EditCommand"
                 OnCancelCommand="ScdlList_CancelCommand"
-                OnUpdateCommand="ScdlList_UpdateCommand" OnItemDataBound="ScdlList_ItemDataBound" CssClass="scdl" HeaderStyle-Width="200px" OnItemCommand="ScdlList_ItemCommand" Style="margin-right: 0px" HorizontalAlign="Left">
+                OnUpdateCommand="ScdlList_UpdateCommand" 
+                OnItemDataBound="ScdlList_ItemDataBound" 
+                CssClass="scdl"
+                HeaderStyle-Width="200px" 
+                OnItemCommand="ScdlList_ItemCommand" 
+                Style="margin-right: 0px" HorizontalAlign="Left">
+
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
                     <asp:TemplateColumn HeaderText="日付" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
@@ -335,11 +342,14 @@
                     </asp:TemplateColumn>
 
                     <asp:EditCommandColumn
+
                         HeaderText="編集"
                         ItemStyle-Width="100px"
                         EditText="編集"
                         CancelText="キャンセル"
-                        UpdateText="保存"></asp:EditCommandColumn>
+                        UpdateText="保存">
+
+                    </asp:EditCommandColumn>
 
                     <%--                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
