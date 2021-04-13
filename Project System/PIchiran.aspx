@@ -9,6 +9,13 @@
     <link href="PIchiran.css" type="text/css" rel="stylesheet" />
     <title></title>
     
+    <style type="text/css">
+        .auto-style1 {
+            width: 200px;
+            margin-bottom: 3px;
+        }
+    </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -22,19 +29,18 @@
             </table>
         </div>
         <div>
-            <table class="auto-style1">
+            <table>
                 <tr>
-                    <td class="auto-style2" colspan="5">
+                    <td class="datagrid" colspan="4">
 
-            <asp:DataGrid runat="server" ID="DgPIchiran" OnItemDataBound="DgPIchiran_ItemDataBound"
+            <asp:DataGrid runat="server" ID="DgPIchiran" Width="100%"
+                OnItemDataBound="DgPIchiran_ItemDataBound"
                 OnEditCommand="DgPIchiran_EditCommand"
            OnCancelCommand="DgPIchiran_CancelCommand"
            OnUpdateCommand="DgPIchiran_UpdateCommand"
            OnItemCommand="DgPIchiran_ItemCommand"
                 
-           AutoGenerateColumns="False"
-                BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
-                <AlternatingItemStyle BackColor="White" />
+           AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundColumn HeaderText="プロジェクトID" 
                         DataField="Pid"/>
@@ -64,42 +70,43 @@
                     
                 </Columns>
 
-                <FooterStyle BackColor="#CCCC99" />
-
-                <HeaderStyle Width="200px" BackColor="#6B696B" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle"></HeaderStyle>
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" BackColor="#F7F7DE" />
-                <PagerStyle ForeColor="Black" HorizontalAlign="Right" Mode="NumericPages" BackColor="#F7F7DE" />
-                <SelectedItemStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle Width="200px" Height="50px" HorizontalAlign="Center" VerticalAlign="Middle"></HeaderStyle>
+                <ItemStyle Width="200px" Height="30px" HorizontalAlign="Center" VerticalAlign="Middle" />
             </asp:DataGrid>
 
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
+                    <td class="cell">
 
-                        <asp:Label ID="lblNewPName" runat="server" Text="プロジェクト名"></asp:Label>
+                        <asp:Label ID="lblNewPName" CssClass="lbl" runat ="server" Text="プロジェクト名"></asp:Label>
+
                     </td>
-                    <td class="auto-style2">
+                    <td class="cell">
 
-                        <asp:TextBox ID="txtNewPName" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNewPName" CssClass="txt" runat="server"></asp:TextBox>
+
                     </td>
-                    <td class="auto-style2">
+                    <td class="cell">
 
-                        <asp:Label ID="lblNewCustomer" runat="server" Text="顧客名"></asp:Label>
+                        <asp:Label ID="lblNewCustomer" CssClass="lbl" runat="server" Text="顧客名"></asp:Label>
+
                     </td>
-                    <td class="auto-style2" colspan="2">
+                    <td class="cell">
 
-                        <asp:TextBox ID="txtNewCustomer" runat="server" CssClass="auto-style1"></asp:TextBox>
+                        <asp:TextBox ID="txtNewCustomer" CssClass="txt" runat="server"></asp:TextBox>
+
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style3">
+                    <td class="cell">
 
-                        <asp:Label ID="lblNewResponsible" runat="server" Text="担当者"></asp:Label>
+                        <asp:Label ID="lblNewResponsible" CssClass="lbl" runat="server" Text="担当者"></asp:Label>
+
                     </td>
-                    <td class="auto-style3">
+                    <td class="cell">
 
-                        <asp:DropDownList ID="ddlResponsible" runat="server">
+                        <asp:DropDownList ID="ddlResponsible" CssClass="txt" runat="server">
                             <asp:ListItem></asp:ListItem>
                             <asp:ListItem>chou</asp:ListItem>
                             <asp:ListItem>yanagisawa</asp:ListItem>
@@ -107,54 +114,64 @@
                             <asp:ListItem>koibuchi</asp:ListItem>
                             <asp:ListItem>maeda</asp:ListItem>
                         </asp:DropDownList>
-                    </td>
-                    <td class="auto-style3">
 
-                        <asp:Label ID="lblNewCategory" runat="server" Text="カテゴリー(△)"></asp:Label>
                     </td>
-                    <td class="auto-style3" colspan="2">
+                    <td class="cell">
 
-                        <asp:TextBox ID="txtNewCategory" runat="server"></asp:TextBox>
+                        <asp:Label ID="lblNewCategory" CssClass="lbl" runat="server" Text="カテゴリー(△)"></asp:Label>
+
+                    </td>
+                    <td class="cell">
+
+                        <asp:TextBox ID="txtNewCategory" CssClass="txt" runat="server"></asp:TextBox>
+
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
+                    <td class="cell" colspan="2">
 
                         <asp:Label ID="lblNewStartTime" runat="server" Text="開始日"></asp:Label>
-                    </td>
-                    <td class="auto-style2">
 
-                <asp:Calendar ID="Calendar1" runat="server" ></asp:Calendar>
+                <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" >
+                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                    <OtherMonthDayStyle ForeColor="#999999" />
+                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                    <TodayDayStyle BackColor="#CCCCCC" />
+                        </asp:Calendar>
+
                     </td>
-                    <td class="auto-style2">
+                    <td class="cell" colspan="2">
 
                         <asp:Label ID="lblNewOverTime" runat="server" Text="終了日"></asp:Label>
-                    </td>
-                    <td class="auto-style2">
 
-                <asp:Calendar ID="Calendar2" runat="server"></asp:Calendar>
-                    </td>
-                    <td class="auto-style2">
+                <asp:Calendar ID="Calendar2" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                    <OtherMonthDayStyle ForeColor="#999999" />
+                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                    <TodayDayStyle BackColor="#CCCCCC" />
+                        </asp:Calendar>
 
-                        <asp:Button ID="btnClear" runat="server" Text="クリア" />
                     </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="auto-style1">
-
-                        <asp:Button ID="btnNewP" runat="server" Text="新規として保存" OnClick="btnNewP_Click" />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="auto-style1">
-
-                        <asp:Label ID="lblAisatu" runat="server"></asp:Label>
-                    </td>
-                    <td colspan="3" class="auto-style1">
+                    <td class="cell">
 
                         &nbsp;</td>
                 </tr>
-            </table>
+                <tr>
+                    <td class="cell" colspan="4">
+
+                        <asp:Button ID="btnNewP" CssClass="label" runat="server" Text="新規として保存" OnClick="btnNewP_Click"/>
+
+                        <asp:Label ID="lblAisatu" CssClass="label" runat="server"></asp:Label>
+
+                        <asp:Button ID="btnClear" runat="server" Text="クリア" />
+
+                    </td>
+                </tr>
+                </table>
         </div>
     </form>
 </body>

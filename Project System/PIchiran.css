@@ -1,4 +1,8 @@
 ﻿body {
+    background-image: url(../ログイン/white.jpg);
+    background-repeat: no-repeat; /* 画像重複しない */
+    background-size: cover;
+    font-weight: bold; /*太字にする*/
 }
 
 .btn {
@@ -19,12 +23,21 @@
         background: #000000;
         color: white;
     }
-
-.label {
-    font-size: 1em;
+.cell {
+    text-align: center;
+    height:50px;
 }
-
 .All {
     text-align: center;
     font-weight: bold;
+}
+.datagrid {
+    width: 100%
+}
+.txt{
+    width:200px;
+    height:25px;
+}
+.lbl{
+    width:150px;
 }

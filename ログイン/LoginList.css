@@ -1,4 +1,8 @@
 ﻿body {
+    background-image: url(white.jpg);
+    background-repeat: no-repeat; /* 画像重複しない */
+    background-size: cover;
+    font-weight: bold; /*太字にする*/
 }
 
 .btn {
