@@ -142,7 +142,7 @@ namespace WhereEver
 
         public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTable(SqlConnection Sqlco)
         {
-            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+            var da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
                "SELECT * FROM T_Schedule order by date asc";
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
@@ -248,7 +248,8 @@ namespace WhereEver
             var da = new SqlCommand("", sql);
             da.CommandText =
                 "DELETE FROM T_Schedule where [SdlNo] = @k ";
-            da.Parameters.AddWithValue("@k", sdl);// Class1.DeleteList(sdl, Global.GetConnection()); のsdl
+            da.Parameters.AddWithValue("@k", sdl);
+            // Class1.DeleteList(sdl, Global.GetConnection()); のsdl
             SqlTransaction sqltra = null;
 
 

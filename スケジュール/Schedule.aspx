@@ -185,7 +185,7 @@
                 AutoGenerateColumns="False"
                 OnItemDataBound="Scdl3_ItemDataBound"
                 CssClass="scdl" HeaderStyle-Width="200px" OnSelectedIndexChanged="Scdl3_SelectedIndexChanged" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
-               <AlternatingItemStyle BackColor="#ccffcc" />
+                <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
                     <asp:TemplateColumn HeaderText="時間" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
@@ -270,7 +270,12 @@
 
         <div>
 
-            <asp:DataGrid runat="server" ID="ScdlList" AutoGenerateColumns="false" OnItemDataBound="ScdlList_ItemDataBound" CssClass="scdl" HeaderStyle-Width="200px" OnItemCommand="ScdlList_ItemCommand" Style="margin-right: 0px" HorizontalAlign="Left">
+            <asp:DataGrid runat="server" 
+                ID="ScdlList" 
+                AutoGenerateColumns="false" 
+                OnEditCommand="ScdlList_EditCommand"
+                OnCancelCommand="ScdlList_CancelCommand"
+                OnUpdateCommand="ScdlList_UpdateCommand" OnItemDataBound="ScdlList_ItemDataBound" CssClass="scdl" HeaderStyle-Width="200px" OnItemCommand="ScdlList_ItemCommand" Style="margin-right: 0px" HorizontalAlign="Left">
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
                     <asp:TemplateColumn HeaderText="日付" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
@@ -316,19 +321,35 @@
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
-                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="100px">
+                    <asp:TemplateColumn HeaderText="削除" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
                         <ItemTemplate>
-
-                            <asp:Button ID="Delete" runat="server" Text="削除" CssClass="btn-flat-border" CommandName="Delete" />
-
-
-                            <asp:Button ID="UpData" runat="server" Text="編集" CommandName="UpData" CssClass="btn-flat-border" ButtonType="PushButton"></asp:Button>
+                            <asp:Button
+                                runat="server"
+                                ButtonType="LinkButton"
+                                Text="削除"
+                                CommandName="Delete" />
 
                         </ItemTemplate>
-
                     </asp:TemplateColumn>
+
+                    <asp:EditCommandColumn
+                        HeaderText="編集"
+                        ItemStyle-Width="100px"
+                        EditText="編集"
+                        CancelText="キャンセル"
+                        UpdateText="保存"></asp:EditCommandColumn>
+
+                    <%--                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="100px">
+                        <HeaderStyle Wrap="true" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemTemplate>
+                            <asp:Button ID="Delete" runat="server" Text="削除" CssClass="btn-flat-border" CommandName="Delete" />
+                            <asp:Button ID="Edit" runat="server" Text="編集" CssClass="btn-flat-border" CommandName="Edit" />--%>
+                    <%--  </ItemTemplate>
+
+                    </asp:TemplateColumn>--%>
                 </Columns>
 
                 <HeaderStyle Width="200px" BackColor="#16BA00" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="12px"></HeaderStyle>
