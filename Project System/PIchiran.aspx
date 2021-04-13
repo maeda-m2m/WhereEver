@@ -36,6 +36,8 @@
                 BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
                 <AlternatingItemStyle BackColor="White" />
                 <Columns>
+                    <asp:BoundColumn HeaderText="プロジェクトID" 
+                        DataField="Pid"/>
                     <asp:BoundColumn HeaderText="プロジェクト名"
                         DataField="Pname"/>
                     <asp:BoundColumn HeaderText="取引先" 
@@ -53,7 +55,7 @@
                          CancelText="キャンセル"
                         UpdateText="保存" >
                       
-
+                    
                     </asp:EditCommandColumn>
                     <asp:ButtonColumn 
                          ButtonType="LinkButton" 
