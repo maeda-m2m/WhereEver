@@ -23,16 +23,19 @@ namespace WhereEver
                 Create();
                 Panel1.Visible = false;
                 Create3();
-                Scdl3.Columns[0].ItemStyle.Wrap = true;
-                Scdl3.Columns[1].ItemStyle.Wrap = true;
-                Scdl3.Columns[2].ItemStyle.Wrap = true;
-                Scdl3.Columns[3].ItemStyle.Wrap = true;
-                Scdl3.Columns[4].ItemStyle.Wrap = true;
+                //Scdl3.Columns[0].ItemStyle.Wrap = true;
+                //Scdl3.Columns[1].ItemStyle.Wrap = true;
+                //Scdl3.Columns[2].ItemStyle.Wrap = true;
+                //Scdl3.Columns[3].ItemStyle.Wrap = true;
+                //Scdl3.Columns[4].ItemStyle.Wrap = true;
             }
 
-            ScdlList.EditCommand += new DataGridCommandEventHandler(this.ScdlList_EditCommand);
-            ScdlList.CancelCommand += new DataGridCommandEventHandler(this.ScdlList_CancelCommand);
-            ScdlList.UpdateCommand += new DataGridCommandEventHandler(this.ScdlList_UpdateCommand);
+            //ScdlList.EditCommand += 
+            //    new DataGridCommandEventHandler(this.ScdlList_Edit);
+            ScdlList.CancelCommand +=
+                new DataGridCommandEventHandler(this.ScdlList_CancelCommand);
+            ScdlList.UpdateCommand +=
+                new DataGridCommandEventHandler(this.ScdlList_UpdateCommand);
         }
 
         //スケジュールリストにデータを格納　→　ScdlList_ItemDataBound　に移動
@@ -166,7 +169,7 @@ namespace WhereEver
                         Scdl3.Items[0].Cells[5].Text = A5.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "10:00" || tm == "10:30")
+                else if (tm == "10:00" || tm == "10:15" || tm == "10:30" || tm == "10:45")
                 {
                     if (week == "月")
                     {
@@ -199,7 +202,7 @@ namespace WhereEver
                         Scdl3.Items[1].Cells[5].Text = A10.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "11:00" || tm == "11:30")
+                else if (tm == "11:00" || tm == "11:15" || tm == "11:30" || tm == "11:45")
                 {
                     if (week == "月")
                     {
@@ -232,7 +235,7 @@ namespace WhereEver
                         Scdl3.Items[2].Cells[5].Text = A15.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "12:00" || tm == "12:30")
+                else if (tm == "12:00" || tm == "12:15" || tm == "12:30" || tm == "12:45")
                 {
                     if (week == "月")
                     {
@@ -265,7 +268,7 @@ namespace WhereEver
                         Scdl3.Items[3].Cells[5].Text = A20.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "13:00" || tm == "13:30")
+                else if (tm == "13:00" || tm == "13:15" || tm == "13:30" || tm == "13:45")
                 {
                     if (week == "月")
                     {
@@ -298,7 +301,7 @@ namespace WhereEver
                         Scdl3.Items[4].Cells[5].Text = A25.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "14:00" || tm == "14:30")
+                else if (tm == "14:00" || tm == "14:15" || tm == "14:30" || tm == "14:45")
                 {
                     if (week == "月")
                     {
@@ -331,7 +334,7 @@ namespace WhereEver
                         Scdl3.Items[5].Cells[5].Text = A30.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "15:00" || tm == "15:30")
+                else if (tm == "15:00" || tm == "15:15" || tm == "15:30" || tm == "15:45")
                 {
                     if (week == "月")
                     {
@@ -364,7 +367,7 @@ namespace WhereEver
                         Scdl3.Items[6].Cells[5].Text = A35.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "16:00" || tm == "16:30")
+                else if (tm == "16:00" || tm == "16:15" || tm == "16:30" || tm == "16:45")
                 {
                     if (week == "月")
                     {
@@ -397,7 +400,7 @@ namespace WhereEver
                         Scdl3.Items[7].Cells[5].Text = A40.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "17:00" || tm == "17:30")
+                else if (tm == "17:00" || tm == "17:15" || tm == "17:30" || tm == "17:45")
                 {
                     if (week == "月")
                     {
@@ -483,6 +486,7 @@ namespace WhereEver
                 Label thursday = e.Item.FindControl("ThursdayTitle") as Label;
                 Label friday = e.Item.FindControl("FridayTitle") as Label;
 
+
                 //必要なら使う
                 //Label name1 = e.Item.FindControl("Label7") as Label;
                 //Label name2 = e.Item.FindControl("Label8") as Label;
@@ -530,28 +534,34 @@ namespace WhereEver
 
                 var dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_ScheduleRow;
 
-                Label date = e.Item.FindControl("hiduke") as Label;
-                Label jikan = e.Item.FindControl("jikan") as Label;
-                Label title = e.Item.FindControl("taitoru") as Label;
-                Label name = e.Item.FindControl("namae") as Label;
+                //Label date = e.Item.FindControl("hiduke") as Label;
+                //Label jikan = e.Item.FindControl("jikan") as Label;
+                //Label title = e.Item.FindControl("taitoru") as Label;
+                //Label name = e.Item.FindControl("namae") as Label;
 
-                //Label No = e.Item.FindControl("nanba") as Label;
+                ////Label No = e.Item.FindControl("nanba") as Label;
 
-                if (!dr.IsdateNull())
-                    date.Text = dr.date.ToString();
+                //if (!dr.IsdateNull())
+                //    date.Text = dr.date.ToString();
 
-                if (!dr.IstimeNull())
-                    jikan.Text = dr.time.ToString();
+                //if (!dr.IstimeNull())
+                //    jikan.Text = dr.time.ToString();
 
-                if (!dr.IstitleNull())
-                    title.Text = dr.title;
+                //if (!dr.IstitleNull())
+                //    title.Text = dr.title;
 
-                if (!dr.IsnameNull())
-                    name.Text = dr.name;
+                //if (!dr.IsnameNull())
+                //    name.Text = dr.name;
 
-                //No.Text = dr.SdlNo.ToString();
-                //値を隠している
+                ////No.Text = dr.SdlNo.ToString();
+                ////値を隠している
 
+
+
+                e.Item.Cells[0].Text = dr.date.ToString();
+                e.Item.Cells[1].Text = dr.time.ToString();
+                e.Item.Cells[2].Text = dr.title.ToString();
+                e.Item.Cells[3].Text = dr.name.ToString();
             }
         }
 
@@ -602,6 +612,10 @@ namespace WhereEver
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataSource = dt;
             ScdlList.DataBind();
+            Create();
+            Create3();
+
+
         }
 
         //DgPIchiran.EditItemIndex = e.Item.ItemIndex;
@@ -617,9 +631,51 @@ namespace WhereEver
 
         protected void ScdlList_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
-
+            TextBox a = (TextBox)e.Item.Cells[0].Controls[0];
+            string Pid = a.Text;
+            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+            ScdlList.DataSource = dt;
+            var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
+            var dl = dd.Rows[0] as DATASET.DataSet.T_ScheduleRow;
+            dl[0] = Pid;
+            UpdateProject(dl,connection);
+            ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+            ScdlList.DataBind();
         }
 
+        internal static void UpdateProject(DATASET.DataSet.T_ScheduleRow dt, SqlConnection connection)
+        {
+            //    string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+            using (connection)
+            {
+                string sql = "UPDATE T_Schedule SET date=@date WHERE date = '2021-04-12 10:00:00.00'";
+
+                var da = new SqlDataAdapter(sql, connection); 
+
+                da.SelectCommand.Parameters.AddWithValue("@date", dt.date);
+
+                try
+                {
+                    connection.Open();
+                    da.SelectCommand.ExecuteNonQuery();
+                }
+                catch
+                {
+
+
+                }
+
+
+                finally
+                { 
+                    connection.Close(); 
+                }
+            }
+        }
+        protected void ScdlList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
