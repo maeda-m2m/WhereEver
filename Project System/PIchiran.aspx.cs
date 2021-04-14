@@ -157,5 +157,13 @@ namespace WhereEver.Project_System
             txtNewCategory.Text = "";
             ddlResponsible.Text = "";
         }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            txtNewPName.Text = "";
+            txtNewCustomer.Text = "";
+            txtNewCategory.Text = "";
+            ddlResponsible.Text = "";
+        }
     }
 }

@@ -15,13 +15,13 @@ namespace WhereEver.Project_System
     {
 
         /// <summary>
-        /// form1 コントロール。
+        /// All コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm All;
 
         /// <summary>
         /// m コントロール。
