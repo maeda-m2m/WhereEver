@@ -7,8 +7,9 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
-    <link rel="stylesheet" type="text/css" href="Shinsei.css" />
     <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
+    <link rel="stylesheet" type="text/css" href="Shinsei.css" />
+
 
 
     <title>申請書類</title>
@@ -16,7 +17,7 @@
     </head>
 <body>
     <form id="form1" runat="server">
-        <div id="Wrap">
+        <div>
             <table class="noprint">
                 <tr>
                     <td id="menu">
@@ -24,8 +25,9 @@
                     </td>
                 </tr>
             </table>
+        </div>
 
-
+        <div id="Wrap">
           <asp:Panel ID="Panel0" runat="server" CssClass="noprint">
                        <p>各種申請情報を管理できます。</p>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
