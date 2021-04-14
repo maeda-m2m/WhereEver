@@ -23,9 +23,10 @@
                     </td>
                 </tr>
             </table>
+       </div>
 
 
-
+       <div id="Wrap">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />

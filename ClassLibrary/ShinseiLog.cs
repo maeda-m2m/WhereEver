@@ -81,7 +81,7 @@ namespace WhereEver.ClassLibrary
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             //idとuidからNULL以外の列数を取得します。
             da.SelectCommand.CommandText =
-                "DELETE * FROM T_Shinsei_Main WHERE id = LTRIM(RTRIM(@id)) AND uid = LTRIM(RTRIM(@uid)) LIMIT 1";
+                "DELETE FROM T_Shinsei_Main WHERE id = LTRIM(RTRIM(@id)) AND uid = LTRIM(RTRIM(@uid))";
 
             //パラメータを取得
             da.SelectCommand.Parameters.AddWithValue("@id", id);
@@ -91,12 +91,12 @@ namespace WhereEver.ClassLibrary
             DATASET.DataSet.T_Shinsei_MainDataTable dt = new DATASET.DataSet.T_Shinsei_MainDataTable();
 
 
-            try
-            {
                 //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
                 da.Fill(dt);
                 return true;
-
+            try
+            {
+                //test
             }
             catch
             {
@@ -119,7 +119,7 @@ namespace WhereEver.ClassLibrary
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             //idとuidからNULL以外の列数を取得します。
             da.SelectCommand.CommandText =
-                "DELETE * FROM T_Shinsei_A_Buy WHERE id = LTRIM(RTRIM(@id)) AND uid = LTRIM(RTRIM(@uid)) LIMIT 1";
+                "DELETE FROM T_Shinsei_A_Buy WHERE id = LTRIM(RTRIM(@id)) AND uid = LTRIM(RTRIM(@uid))";
 
             //パラメータを取得
             da.SelectCommand.Parameters.AddWithValue("@id", id);
@@ -135,6 +135,7 @@ namespace WhereEver.ClassLibrary
                 da.Fill(dt);
                 return true;
 
+                //test
             }
             catch
             {
@@ -157,7 +158,7 @@ namespace WhereEver.ClassLibrary
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             //idとuidからNULL以外の列数を取得します。
             da.SelectCommand.CommandText =
-                "DELETE * FROM T_Shinsei_B_Delegence WHERE id = LTRIM(RTRIM(@id)) AND uid = LTRIM(RTRIM(@uid)) LIMIT 1";
+                "DELETE FROM T_Shinsei_B_Delegence WHERE id = LTRIM(RTRIM(@id)) AND uid = LTRIM(RTRIM(@uid))";
 
             //パラメータを取得
             da.SelectCommand.Parameters.AddWithValue("@id", id);
@@ -196,7 +197,7 @@ namespace WhereEver.ClassLibrary
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             //idとuidからNULL以外の列数を取得します。
             da.SelectCommand.CommandText =
-                "DELETE * FROM T_Shinsei_C_Tatekae WHERE id = LTRIM(RTRIM(@id)) AND uid = LTRIM(RTRIM(@uid)) LIMIT 1";
+                "DELETE FROM T_Shinsei_C_Tatekae WHERE id = LTRIM(RTRIM(@id)) AND uid = LTRIM(RTRIM(@uid))";
 
             //パラメータを取得
             da.SelectCommand.Parameters.AddWithValue("@id", id);

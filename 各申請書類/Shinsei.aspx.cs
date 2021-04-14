@@ -144,7 +144,12 @@ namespace WhereEver
             rleng = Math.Min(TextBox_classification.Text.Length, s_maxstr);
             Syubetsu.Text = TextBox_classification.Text.Substring(0, rleng);
 
-            string str = TextBox_howMany.Text;
+            //string str = TextBox_howMany.Text;
+
+            StringBuilder sb = new StringBuilder(HtmlEncode(TextBox_howMany.Text).ToString());
+            sb.Replace("点", "");
+            string str = sb.ToString();
+
             rleng = Math.Min(str.Length, maxstr - 1);
             Suryo.Text = str.Substring(0, rleng) + "点";
 
@@ -152,7 +157,7 @@ namespace WhereEver
             rleng = Math.Min(str.Length, s_maxstr - 1);
             //Kingaku.Text = "\\" + str.Substring(0, rleng) + "-";
 
-            StringBuilder sb = new StringBuilder(HtmlEncode(TextBox_howMach.Text).ToString());
+            sb = new StringBuilder(HtmlEncode(TextBox_howMach.Text).ToString());
             sb.Replace("-", "");
             sb.Replace(",", "");
             sb.Replace("\\", "");
@@ -911,6 +916,7 @@ namespace WhereEver
                 //申請種別をロード
                 String isbn_kind = GridView1.Rows[args].Cells[3].Text.Trim();
 
+                //個別テーブルから削除
                 if (isbn_kind == "物品購入申請")
                 {
                     ShinseiLog.DeleteT_Shinsei_A_BuyRow(Global.GetConnection(), isbn_name, isbn_uid);
@@ -924,6 +930,12 @@ namespace WhereEver
                     ShinseiLog.DeleteT_Shinsei_C_Tatekae(Global.GetConnection(), isbn_name, isbn_uid);
                 }
 
+                //一覧から削除
+                ShinseiLog.DeleteT_Shinsei_MainRow(Global.GetConnection(), isbn_name, isbn_uid);
+                lbluid.Text = "null";
+
+                //レスポンスリダイレクト
+                Response.Redirect("Shinsei.aspx");
 
                 // コマンド名が“Reform”の場合にのみ処理（修正ボタン）
             }
@@ -943,7 +955,7 @@ namespace WhereEver
                 // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
                 //uidをロード
                 string isbn_uid = GridView1.Rows[args].Cells[1].Text.Trim();
-                    lbluid.Text = isbn_uid;
+                lbluid.Text = isbn_uid;
 
                 // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
                 //name1をロード
@@ -1060,8 +1072,8 @@ namespace WhereEver
                         //DataTableを参照
                         DATASET.DataSet.T_Shinsei_C_TatekaeDataTable dt = ShinseiLog.GetT_Shinsei_C_TatekaeRow(Global.GetConnection(), isbn_name, isbn_uid);
 
-                        //入力フォーム
-                        TextBox_Tatekae_TWaste.Text = dt[0].C_Tatekae_Result2;
+                         //入力フォーム
+                        TextBox_Tatekae_Teiki.Text = dt[0].C_Tatekae_Result2;
 
                         //印刷フォーム
                         lblTatekaeResult.Text = dt[0].C_Tatekae_Result_Main.Trim();
@@ -1415,6 +1427,15 @@ namespace WhereEver
 
         }
 
-
+        /// <summary>
+        /// リスト更新ボタンが押されたときの処理です。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Button_reload_Click(object sender, EventArgs e)
+        {
+            //レスポンスリダイレクト
+            Response.Redirect("Shinsei.aspx");
+        }
     }
 }
