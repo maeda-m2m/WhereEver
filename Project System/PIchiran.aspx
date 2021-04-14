@@ -18,11 +18,11 @@
     
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="All" runat="server">
         <div class="form">
             <table>
-                <tr>
-                    <td id="menu">
+                <tr class="All">
+                    <td>
                         <Menu:c_menu ID="m" runat="server"></Menu:c_menu>
                     </td>
                 </tr>
@@ -42,7 +42,7 @@
                 
            AutoGenerateColumns="False">
                 <Columns>
-                    <asp:BoundColumn HeaderText="プロジェクトID" 
+                    <asp:BoundColumn HeaderText="プロジェクトID(変更✖)" 
                         DataField="Pid"/>
                     <asp:BoundColumn HeaderText="プロジェクト名"
                         DataField="Pname"/>
@@ -108,11 +108,11 @@
 
                         <asp:DropDownList ID="ddlResponsible" CssClass="txt" runat="server">
                             <asp:ListItem></asp:ListItem>
-                            <asp:ListItem>chou</asp:ListItem>
-                            <asp:ListItem>yanagisawa</asp:ListItem>
-                            <asp:ListItem>sakaguchi</asp:ListItem>
-                            <asp:ListItem>koibuchi</asp:ListItem>
-                            <asp:ListItem>maeda</asp:ListItem>
+                            <asp:ListItem>張</asp:ListItem>
+                            <asp:ListItem>柳沢</asp:ListItem>
+                            <asp:ListItem>坂口</asp:ListItem>
+                            <asp:ListItem>鯉淵</asp:ListItem>
+                            <asp:ListItem>前田</asp:ListItem>
                         </asp:DropDownList>
 
                     </td>
@@ -163,11 +163,11 @@
                 <tr>
                     <td class="cell" colspan="4">
 
-                        <asp:Button ID="btnNewP" CssClass="label" runat="server" Text="新規として保存" OnClick="btnNewP_Click"/>
+                        <asp:Button ID="btnNewP" CssClass="btn" runat="server" Text="新規として保存" OnClick="btnNewP_Click"/>
 
                         <asp:Label ID="lblAisatu" CssClass="label" runat="server"></asp:Label>
 
-                        <asp:Button ID="btnClear" runat="server" Text="クリア" />
+                        <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" OnClick="btnClear_Click" />
 
                     </td>
                 </tr>

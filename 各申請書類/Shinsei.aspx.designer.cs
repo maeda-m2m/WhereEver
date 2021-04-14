@@ -42,6 +42,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Panel Panel0;
 
         /// <summary>
+        /// Button_reload コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_reload;
+
+        /// <summary>
         /// GridView1 コントロール。
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblResult;
+
+        /// <summary>
+        /// lbluid コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbluid;
 
         /// <summary>
         /// Panel1 コントロール。
@@ -240,6 +258,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button_Save1;
 
         /// <summary>
+        /// Button_SaveAs1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_SaveAs1;
+
+        /// <summary>
         /// BtnBackA1 コントロール。
         /// </summary>
         /// <remarks>
@@ -391,6 +418,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_Save2;
+
+        /// <summary>
+        /// Button_SaveAs2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_SaveAs2;
 
         /// <summary>
         /// btnBack_A2 コントロール。
@@ -643,6 +679,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_Save3;
+
+        /// <summary>
+        /// Button_SaveAs3 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_SaveAs3;
 
         /// <summary>
         /// Button4 コントロール。

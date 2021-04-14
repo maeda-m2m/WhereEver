@@ -17,5 +17,19 @@ namespace WhereEver.Class
             da.Fill(dt);
             return (dt);
         }
+        internal static void DeleteChat(string id)
+        {
+            string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "DELETE FROM T_Chat WHERE No = @i";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                da.SelectCommand.Parameters.AddWithValue("@i", Int32.Parse(id));
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }

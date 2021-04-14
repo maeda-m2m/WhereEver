@@ -36,7 +36,8 @@ namespace WhereEver
                 DATASET.DataSet.T_LoginListRow dl = Class.Login.UserLoginMAXTime(Global.GetConnection(), dr.name.ToString());
                 DATASET.DataSet.T_LogoutListRow dt = Class.Login.UserLogoutMAXTime(Global.GetConnection(), dr.name.ToString());
 
-                lblName.Text = dr.name.ToString();
+                DATASET.DataSet.M_UserRow ml = Class2.Getname1(Global.GetConnection(), dr.name.ToString());
+                lblName.Text = ml.name1.ToString();
                 lblLoginTime.Text = dl.Date.ToString();
                 if(dt == null)
                 {

@@ -42,7 +42,14 @@ namespace WhereEver.Project_System
                 e.Item.Cells[3].Text = dr.Presponsible.ToString();
                 e.Item.Cells[4].Text = dr.Pcategory.ToString();
                 e.Item.Cells[5].Text = dr.Pstarttime.ToShortDateString();
-                e.Item.Cells[6].Text = dr.Povertime.ToShortDateString();
+                if(dr.Povertime.ToString() == "0001/01/01 0:00:00")
+                {
+                    e.Item.Cells[6].Text = "未定";
+                }
+                else
+                {
+                    e.Item.Cells[6].Text = dr.Povertime.ToShortDateString();
+                }
             }
         }
         public static DATASET.DataSet.T_PdbDataTable GetPdbDataTable(SqlConnection sqlConnection)
@@ -152,6 +159,14 @@ namespace WhereEver.Project_System
             DgPIchiran.DataSource = dt;
             DgPIchiran.DataBind();
 
+            txtNewPName.Text = "";
+            txtNewCustomer.Text = "";
+            txtNewCategory.Text = "";
+            ddlResponsible.Text = "";
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
             txtNewPName.Text = "";
             txtNewCustomer.Text = "";
             txtNewCategory.Text = "";

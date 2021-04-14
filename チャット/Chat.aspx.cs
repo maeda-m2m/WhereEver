@@ -83,23 +83,26 @@ namespace WhereEver
             Create();
         }
 
-        //削除ボタンの処理
-        //protected void ChatArea_ItemCommand(object source, DataGridCommandEventArgs e)
-        //{
-        //    int a = e.Item.ItemIndex;
-        //    var dt = Class2.MaxNoDataTable(Global.GetConnection());
-        //    var dr = dt.Rows[a] as DATASET.DataSet.T_ChatRow;
-        //    string.Format("if (!confirm('{0}')) return false;", "削除しますか。");
-        //    int sdl = dr.SdlNo;
+        protected void ChatArea_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            Label Cno = (Label)e.Item.Cells[0].FindControl("No");
+            string Cid = Cno.Text;
+            switch (((LinkButton)e.CommandSource).CommandName)
+            {
 
-        //    if (e.CommandName == "Delete")
-        //    {
-        //        if (sdl > 0)
-        //            Class1.DeleteList(sdl, Global.GetConnection());
-        //        ChatArea.Items[a].FindControl("No");
-        //        Create();
-        //    }
-        //    else;
-        //}
+                case "Delete":
+                    Class.Chat.DeleteChat(Cid);
+                    break;
+
+                // Add other cases here, if there are multiple ButtonColumns in 
+                // the DataGrid control.
+
+                default:
+                    // Do nothing.
+                    break;
+
+            }
+            Create();
+        }
     }
 }

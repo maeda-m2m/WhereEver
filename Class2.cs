@@ -67,6 +67,16 @@ namespace WhereEver
 
         }
 
+        internal static DATASET.DataSet.M_UserRow Getname1(SqlConnection sqlConnection, string name)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "SELECT name1 FROM M_User where name = @i";
+            da.SelectCommand.Parameters.AddWithValue("@i", name);
+            DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
+            da.Fill(dt);
+            return dt[0];
+        }
         public static DATASET.DataSet.T_LoginListDataTable GetLoginListDataTable(SqlConnection sqlConnection)//LoginListの重複してある名前をまとめてreturn name
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);

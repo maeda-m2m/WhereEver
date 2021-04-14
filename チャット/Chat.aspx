@@ -27,8 +27,9 @@
         </div>
         <div>
         <table>
-            <asp:DataGrid runat="server" ID="ChatArea" AutoGenerateColumns="false" OnItemDataBound="Chat_ItemDataBound" BorderStyle="None" OnItemCommand="ChatArea_ItemCommand" >
-                <AlternatingItemStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
+            <asp:DataGrid runat="server" ID="ChatArea" AutoGenerateColumns="false" 
+                OnItemDataBound="Chat_ItemDataBound"
+                OnItemCommand="ChatArea_ItemCommand" >
                 
                 <Columns>
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
@@ -64,14 +65,9 @@
                             
                         
                     </asp:TemplateColumn>
-
+                    <asp:ButtonColumn 
+                         ButtonType="LinkButton" Text="削除"  CommandName="Delete" />
                 </Columns>
-                <EditItemStyle BorderStyle="None" />
-                <FooterStyle BorderStyle="None" />
-                <HeaderStyle BorderStyle="None" HorizontalAlign="Left" />
-                <ItemStyle BorderStyle="None" HorizontalAlign="Left" BackColor="#FFFFE0" />
-                <PagerStyle BorderStyle="None" />
-                <SelectedItemStyle BorderStyle="None" />
             </asp:DataGrid>
             </table>
         </div>
