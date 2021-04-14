@@ -23,8 +23,6 @@ namespace WhereEver
             {
                 Create();
             }
-            ChatArea.ItemCommand +=
-                new DataGridCommandEventHandler(this.ChatArea_ItemCommand);
         }
 
         private void Create()
@@ -104,42 +102,7 @@ namespace WhereEver
                     break;
 
             }
-            ChatArea.DataSource = WhereEver.Class.Chat.GetChatDataTable(Global.GetConnection());
-            ChatArea.DataBind();
+            Create();
         }
-
-        protected void ChatArea_EditCommand(object source, DataGridCommandEventArgs e)
-        {
-
-        }
-
-        protected void ChatArea_CancelCommand(object source, DataGridCommandEventArgs e)
-        {
-
-        }
-
-        protected void ChatArea_UpdateCommand(object source, DataGridCommandEventArgs e)
-        {
-
-        }
-
-        //削除ボタンの処理
-        //protected void ChatArea_ItemCommand(object source, DataGridCommandEventArgs e)
-        //{
-        //    int a = e.Item.ItemIndex;
-        //    var dt = Class2.MaxNoDataTable(Global.GetConnection());
-        //    var dr = dt.Rows[a] as DATASET.DataSet.T_ChatRow;
-        //    string.Format("if (!confirm('{0}')) return false;", "削除しますか。");
-        //    int sdl = dr.SdlNo;
-
-        //    if (e.CommandName == "Delete")
-        //    {
-        //        if (sdl > 0)
-        //            Class1.DeleteList(sdl, Global.GetConnection());
-        //        ChatArea.Items[a].FindControl("No");
-        //        Create();
-        //    }
-        //    else;
-        //}
     }
 }

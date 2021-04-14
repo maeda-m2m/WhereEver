@@ -42,7 +42,7 @@
                 
            AutoGenerateColumns="False">
                 <Columns>
-                    <asp:BoundColumn HeaderText="プロジェクトID" 
+                    <asp:BoundColumn HeaderText="プロジェクトID(変更✖)" 
                         DataField="Pid"/>
                     <asp:BoundColumn HeaderText="プロジェクト名"
                         DataField="Pname"/>

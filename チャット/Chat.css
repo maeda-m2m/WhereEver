@@ -67,20 +67,3 @@ h2 {
 #Edit {
     margin-left: 200px;
 }
-.btn-circle-flat {
-    display: inline-block;
-    text-decoration: none;
-    background: #C0C0C0;
-    color: #FFF;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    border-radius: 50%;
-    text-align: center;
-    overflow: hidden;
-    transition: .4s;
-}
-
-    .btn-circle-flat:hover {
-        background: #668ad8;
-    }
