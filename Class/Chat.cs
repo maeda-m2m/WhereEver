@@ -25,7 +25,10 @@ namespace WhereEver.Class
                 string sql = "DELETE FROM T_Chat WHERE No = @i";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
-                da.SelectCommand.Parameters.AddWithValue("@i", id);
+                da.SelectCommand.Parameters.AddWithValue("@i", Int32.Parse(id));
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
             }
         }
     }

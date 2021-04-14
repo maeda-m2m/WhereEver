@@ -28,12 +28,8 @@
         <div>
         <table>
             <asp:DataGrid runat="server" ID="ChatArea" AutoGenerateColumns="false" 
-                OnEditCommand="ChatArea_EditCommand"
-           OnCancelCommand="ChatArea_CancelCommand"
-           OnUpdateCommand="ChatArea_UpdateCommand"
-                OnItemDataBound="Chat_ItemDataBound" BorderStyle="None" 
+                OnItemDataBound="Chat_ItemDataBound"
                 OnItemCommand="ChatArea_ItemCommand" >
-                <AlternatingItemStyle BackColor="White" BorderColor="Black" BorderStyle="None" />
                 
                 <Columns>
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
