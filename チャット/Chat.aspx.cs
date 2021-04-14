@@ -23,6 +23,8 @@ namespace WhereEver
             {
                 Create();
             }
+            ChatArea.ItemCommand +=
+                new DataGridCommandEventHandler(this.ChatArea_ItemCommand);
         }
 
         private void Create()
@@ -81,6 +83,44 @@ namespace WhereEver
         protected void Update_Click(object sender, EventArgs e)
         {
             Create();
+        }
+
+        protected void ChatArea_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            Label Cno = (Label)e.Item.Cells[0].FindControl("No");
+            string Cid = Cno.Text;
+            switch (((LinkButton)e.CommandSource).CommandName)
+            {
+
+                case "Delete":
+                    Class.Chat.DeleteChat(Cid);
+                    break;
+
+                // Add other cases here, if there are multiple ButtonColumns in 
+                // the DataGrid control.
+
+                default:
+                    // Do nothing.
+                    break;
+
+            }
+            ChatArea.DataSource = WhereEver.Class.Chat.GetChatDataTable(Global.GetConnection());
+            ChatArea.DataBind();
+        }
+
+        protected void ChatArea_EditCommand(object source, DataGridCommandEventArgs e)
+        {
+
+        }
+
+        protected void ChatArea_CancelCommand(object source, DataGridCommandEventArgs e)
+        {
+
+        }
+
+        protected void ChatArea_UpdateCommand(object source, DataGridCommandEventArgs e)
+        {
+
         }
 
         //削除ボタンの処理
