@@ -17,6 +17,7 @@
     background: #ECECEC;
     transition: .4s;
     font-size: 1em;
+    margin: 50px;
 }
 
     .btn:hover {
