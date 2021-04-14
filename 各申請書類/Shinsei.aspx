@@ -16,7 +16,7 @@
     </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div id="Wrap">
             <table class="noprint">
                 <tr>
                     <td id="menu">
@@ -28,49 +28,41 @@
 
           <asp:Panel ID="Panel0" runat="server" CssClass="noprint">
                        <p>各種申請情報を管理できます。</p>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,DateTime" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
-                    <asp:BoundField DataField="name1" HeaderText="ご芳名" SortExpression="name1" />
-                    <asp:BoundField DataField="SinseiSyubetsu" HeaderText="申請種別" SortExpression="SinseiSyubetsu" />
+                    <asp:BoundField DataField="uid" HeaderText="uid" ReadOnly="True" SortExpression="uid" />
+                    <asp:BoundField DataField="name1" HeaderText="お名前" SortExpression="name1" />
+                    <asp:BoundField DataField="ShinseiSyubetsu" HeaderText="申請種別" SortExpression="ShinseiSyubetsu" />
                     <asp:BoundField DataField="DateTime" HeaderText="発行日" SortExpression="DateTime" />
                     <asp:BoundField DataField="LastUpdate" HeaderText="最終更新日" ReadOnly="True" SortExpression="LastUpdate" />
-                    <asp:BoundField DataField="A_BuyItem" HeaderText="A_BuyItem" SortExpression="A_BuyItem" Visible="False" />
-                    <asp:BoundField DataField="A_BuyKind" HeaderText="A_BuyKind" SortExpression="A_BuyKind" Visible="False" />
-                    <asp:BoundField DataField="A_BuyHowMany" HeaderText="A_BuyHowMany" SortExpression="A_BuyHowMany" Visible="False" />
-                    <asp:BoundField DataField="A_BuyHowMach" HeaderText="A_BuyHowMach" SortExpression="A_BuyHowMach" Visible="False" />
-                    <asp:BoundField DataField="A_BuyPlace" HeaderText="A_BuyPlace" SortExpression="A_BuyPlace" Visible="False" />
-                    <asp:BoundField DataField="B_DiligenceClassification1" HeaderText="B_DiligenceClassification1" SortExpression="B_DiligenceClassification1" Visible="False" />
-                    <asp:BoundField DataField="B_DiligenceClassification2" HeaderText="B_DiligenceClassification2" SortExpression="B_DiligenceClassification2" Visible="False" />
-                    <asp:BoundField DataField="B_DiligenceDateA1" HeaderText="B_DiligenceDateA1" SortExpression="B_DiligenceDateA1" Visible="False" />
-                    <asp:BoundField DataField="B_DiligenceDateA2" HeaderText="B_DiligenceDateA2" SortExpression="B_DiligenceDateA2" Visible="False" />
-                    <asp:BoundField DataField="B_DiligenceDateB1" HeaderText="B_DiligenceDateB1" SortExpression="B_DiligenceDateB1" Visible="False" />
-                    <asp:BoundField DataField="B_DiligenceDateB2" HeaderText="B_DiligenceDateB2" SortExpression="B_DiligenceDateB2" Visible="False" />
-                    <asp:BoundField DataField="C_Tatekae_Result_Main" HeaderText="C_Tatekae_Result_Main" SortExpression="C_Tatekae_Result_Main" Visible="False" />
-                    <asp:BoundField DataField="C_Tatekae_TWaste" HeaderText="C_Tatekae_TWaste" SortExpression="C_Tatekae_TWaste" Visible="False" />
-                    <asp:BoundField DataField="C_Tatekae_PWaste" HeaderText="C_Tatekae_PWaste" SortExpression="C_Tatekae_PWaste" Visible="False" />
-                    <asp:BoundField DataField="C_Tatekae_Result1" HeaderText="C_Tatekae_Result1" SortExpression="C_Tatekae_Result1" Visible="False" />
-                    <asp:BoundField DataField="C_Tatekae_Result2" HeaderText="C_Tatekae_Result2" SortExpression="C_Tatekae_Result2" Visible="False" />
-                    <asp:BoundField DataField="C_Tatekae_Result3" HeaderText="C_Tatekae_Result3" SortExpression="C_Tatekae_Result3" Visible="False" />
-                    <asp:CommandField ShowEditButton="False" ButtonType="Button" ControlStyle-CssClass="btn-flat-border" HeaderText="削除" ShowDeleteButton="True" EditText="直接編集">
-                    <ControlStyle CssClass="btn-flat-border"></ControlStyle>
-                    </asp:CommandField>
+
+                    <asp:ButtonField ButtonType="Button" Text="削除" ControlStyle-CssClass="btn-flat-border"  HeaderText="削除" CommandName="Remove" >
+                    <ControlStyle CssClass="btn-flat-border" />
+                    </asp:ButtonField>
+
                     <asp:ButtonField ButtonType="Button" Text="修正" ControlStyle-CssClass="btn-flat-border"  HeaderText="修正" CommandName="Reform" >
                     <ControlStyle CssClass="btn-flat-border" />
                     </asp:ButtonField>
+
                 </Columns>
             </asp:GridView>
 
              <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                 ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>"
-                SelectCommand="SELECT * FROM [T_ShinseiLog]  WHERE ([id] = @id)"
-                UpdateCommand="UPDATE [T_ShinseiLog] SET[LastUpdate] = @LastUpdate, [A_BuyItem]= @A_BuyItem, [A_BuyKind]= @A_BuyKind, [A_BuyHowMany]= @A_BuyHowMany, [A_BuyHowMach]= @A_BuyHowMach, [A_BuyPlace]= @A_BuyPlace, [B_DiligenceClassification1]= @B_DiligenceClassification1, [B_DiligenceClassification2]= @B_DiligenceClassification2, [B_DiligenceDateA1]= @B_DiligenceDateA1, [B_DiligenceDateA2]= @B_DiligenceDateA2, [B_DiligenceDateB1]= @B_DiligenceDateB1, [B_DiligenceDateB2]= @B_DiligenceDateB2, [C_Tatekae_Result_Main]= @C_Tatekae_Result_Main, [C_Tatekae_TWaste]= @C_Tatekae_TWaste, [C_Tatekae_PWaste]= @C_Tatekae_PWaste, [C_Tatekae_Result1]= @C_Tatekae_Result1, [C_Tatekae_Result2]= @C_Tatekae_Result2, [C_Tatekae_Result3]= @C_Tatekae_Result3 WHERE([id] = @id, [DateTime] = @DateTime)">
+                SelectCommand="SELECT * FROM [T_Shinsei_Main]  WHERE ([id] = @id) ORDER BY ShinseiSyubetsu ASC, LastUpdate DESC"
+                UpdateCommand="UPDATE [T_Shinsei_Main] SET[LastUpdate] = @LastUpdate WHERE([id] = @id, [uid] = @uid)"
+                DeleteCommand="DELETE * FROM [T_Shinsei_Main]  WHERE ([id] = @id, [uid] = @uid)">
                 <UpdateParameters>
                        <asp:ControlParameter Name="id" ControlId="lblResult" PropertyName="Text"/>
                 </UpdateParameters>
                 <SelectParameters>
                     <asp:ControlParameter ControlID="lblResult" DefaultValue="null" Name="id" PropertyName="Text" Type="String" />
                 </SelectParameters>
+                <DeleteParameters>
+                    <asp:ControlParameter ControlID="lblResult" DefaultValue="null" Name="id" PropertyName="Text" Type="String" />
+                    <asp:ControlParameter ControlID="lbluid" DefaultValue="null" Name="uid" PropertyName="Text" Type="String" />
+                </DeleteParameters>
             </asp:SqlDataSource>
 
 
@@ -78,6 +70,10 @@
            <p>
             <asp:Label ID="lblResult" runat="server" Text="null" Visible="False"></asp:Label>
            </p>
+           <p>
+            選択中uid: <asp:Label ID="lbluid" runat="server" Text="null"></asp:Label>
+           </p>
+
             </asp:Panel>
 
 
@@ -108,7 +104,7 @@
                             <p>購入品名*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_purchaseName" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_purchaseName"></asp:RequiredFieldValidator>
@@ -119,7 +115,7 @@
                             <p>種別*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_classification" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_classification"></asp:RequiredFieldValidator>
@@ -131,7 +127,7 @@
                             <p>購入点数*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角305文字以内"></asp:TextBox>点
+                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角49文字以内"></asp:TextBox>点
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMany" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMany"></asp:RequiredFieldValidator>
@@ -142,7 +138,7 @@
                             <p>合計金額*</p>
                         </td>
                         <td class="text">
-                            \<asp:TextBox ID="TextBox_howMach" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角305文字以内"></asp:TextBox>-
+                            \<asp:TextBox ID="TextBox_howMach" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角49文字以内"></asp:TextBox>-
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMach" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMach"></asp:RequiredFieldValidator>
@@ -153,7 +149,7 @@
                             <p>購入元*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_marketPlace" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_marketPlace"></asp:RequiredFieldValidator>
@@ -172,16 +168,17 @@
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>備考）</p>
+                            <p>備考</p>
                         </td>
                             <td class="text">
-                                <asp:TextBox ID="TextBox_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内"></asp:TextBox>
+                                <asp:TextBox ID="TextBox_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内" Text="なし"></asp:TextBox>
                             </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <asp:Button ID="Button1" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Button1_Click" />
-                            <asp:Button ID="Button_Save1" CssClass="btn-flat-border" runat="server" Text="DBに保存" OnClick="SaveButton_Click_1" />
+                            <asp:Button ID="Button_Save1" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_1" />
+                            <asp:Button ID="Button_SaveAs1" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_1" />
                             <asp:Button ID="BtnBackA1" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" />
                         </td>
                     </tr>
@@ -292,13 +289,14 @@
                             <p>備考</p>
                         </td>
                         <td class="text">
-                           <asp:TextBox ID="TextBox_Notification_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内"></asp:TextBox>
+                           <asp:TextBox ID="TextBox_Notification_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内" Text="なし"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <asp:Button ID="Button2" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Button2_Click" />
-                            <asp:Button ID="Button_Save2" CssClass="btn-flat-border" runat="server" Text="DBに保存" OnClick="SaveButton_Click_2" />
+                            <asp:Button ID="Button_Save2" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_2" />
+                            <asp:Button ID="Button_SaveAs2" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_2" />
                             <asp:Button ID="btnBack_A2" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" />
                         </td>
                     </tr>
@@ -316,7 +314,7 @@
                             <p>日付*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_Date" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内" placeholder="例：１月１日"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_Date" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：１月１日"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_Date"></asp:RequiredFieldValidator>
@@ -327,7 +325,7 @@
                             <p>出張先*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_WPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内" placeholder="例：m2m　出張していない場合は「なし」"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_WPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：m2m　出張していない場合は「なし」"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_WPlace"></asp:RequiredFieldValidator>
@@ -339,7 +337,7 @@
                             <p>交通機関*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_TUse" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内" placeholder="例：電車　交通機関を利用していない場合は「徒歩」"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_TUse" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：電車　交通機関を利用していない場合は「徒歩」"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TUse"></asp:RequiredFieldValidator>
@@ -351,7 +349,7 @@
                             <p>乗車駅*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_TIn" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内" placeholder="例：西新宿駅　ない場合は「なし」" Text=""></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_TIn" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：西新宿駅　ない場合は「なし」" Text=""></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TIn"></asp:RequiredFieldValidator>
@@ -363,7 +361,7 @@
                             <p>降車駅*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_TOut" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内" placeholder="例：西新宿駅　ない場合は「なし」" Text=""></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_TOut" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：西新宿駅　ない場合は「なし」" Text=""></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TOut"></asp:RequiredFieldValidator>
@@ -374,7 +372,7 @@
                             <p>交通費*</p>
                         </td>
                         <td class="text">
-                            \<asp:TextBox ID="TextBox_Tatekae_TWaste" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角305文字以内" Text="0"></asp:TextBox>-
+                            \<asp:TextBox ID="TextBox_Tatekae_TWaste" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>-
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TWaste"></asp:RequiredFieldValidator>
@@ -386,7 +384,7 @@
                             <p>宿泊場所*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_Place" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角306文字以内" Text="" placeholder="例：〇〇宿　ない場合は「なし」" ></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_Place" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" placeholder="例：〇〇宿　ない場合は「なし」" ></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_Place"></asp:RequiredFieldValidator>
@@ -397,7 +395,7 @@
                             <p>宿泊金額*</p>
                         </td>
                         <td class="text">
-                            \<asp:TextBox ID="TextBox_Tatekae_PWaste" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角305文字以内" Text="0"></asp:TextBox>-
+                            \<asp:TextBox ID="TextBox_Tatekae_PWaste" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角49文字以内" Text="0"></asp:TextBox>-
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_PWaste"></asp:RequiredFieldValidator>
@@ -424,7 +422,7 @@
                             <p>備考</p>
                         </td>
                             <td class="text">
-                                <asp:TextBox ID="TextBox_Tatekae_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内"></asp:TextBox>
+                                <asp:TextBox ID="TextBox_Tatekae_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内" Text="なし"></asp:TextBox>
                             </td>
                     </tr>
 
@@ -433,7 +431,7 @@
                             <p>定期券代*</p>
                         </td>
                         <td class="text">
-                            \<asp:TextBox ID="TextBox_Tatekae_Teiki" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角305文字以内" Text="0"></asp:TextBox>-
+                            \<asp:TextBox ID="TextBox_Tatekae_Teiki" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角49文字以内" Text="0"></asp:TextBox>-
                             <asp:Button ID="Button5" CssClass="btn-flat-border" runat="server" Text="反映" OnClick="Change_Text_T_Teiki" CausesValidation="False" />
                         </td>
 
@@ -450,7 +448,8 @@
                             <asp:Button ID="Button6" CssClass="btn-flat-border" runat="server" Text="初期化" OnClick="Button4_Click" CausesValidation="False" />
                             <asp:Button ID="Button8" CssClass="btn-flat-border" runat="server" Text="UNDO" OnClick="Button_Undo" CausesValidation="False" />
                             <asp:Button ID="Button7" CssClass="btn-flat-border" runat="server" Text="印刷ビュー" OnClick="Button5_Click" CausesValidation="False" />
-                            <asp:Button ID="Button_Save3" CssClass="btn-flat-border" runat="server" Text="DBに保存" OnClick="SaveButton_Click_3" />
+                            <asp:Button ID="Button_Save3" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_3" />
+                            <asp:Button ID="Button_SaveAs3" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_3" />
                             <asp:Button ID="Button4" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" />
                         </td>
                     </tr>

@@ -15,6 +15,7 @@ namespace WhereEver
     {
         //文字入力最大値
         protected const int maxstr = 306;
+        protected const int s_maxstr = 100;
 
         //立替金計算
         protected int waste1 = 0;
@@ -137,10 +138,10 @@ namespace WhereEver
 
             //購入品のテキストを印刷フォームに代入
 
-            int rleng = Math.Min(TextBox_purchaseName.Text.Length, maxstr);
+            int rleng = Math.Min(TextBox_purchaseName.Text.Length, s_maxstr);
             Konyu.Text = TextBox_purchaseName.Text.Substring(0, rleng);
 
-            rleng = Math.Min(TextBox_classification.Text.Length, maxstr);
+            rleng = Math.Min(TextBox_classification.Text.Length, s_maxstr);
             Syubetsu.Text = TextBox_classification.Text.Substring(0, rleng);
 
             string str = TextBox_howMany.Text;
@@ -148,7 +149,7 @@ namespace WhereEver
             Suryo.Text = str.Substring(0, rleng) + "点";
 
             str = TextBox_howMach.Text;
-            rleng = Math.Min(str.Length, maxstr - 1);
+            rleng = Math.Min(str.Length, s_maxstr - 1);
             //Kingaku.Text = "\\" + str.Substring(0, rleng) + "-";
 
             StringBuilder sb = new StringBuilder(HtmlEncode(TextBox_howMach.Text).ToString());
@@ -169,14 +170,14 @@ namespace WhereEver
                 lp += 1;
             }
 
-            rleng = Math.Min(sb.Length, maxstr - 1);
+            rleng = Math.Min(sb.Length, s_maxstr - 1);
             str = sb.ToString();
             Kingaku.Text = "\\" + str.Substring(0, rleng) + "-";
 
             lblTatekae_Result2.Text = "\\" + wasteR2.ToString() + "-";
 
 
-            rleng = Math.Min(TextBox_marketPlace.Text.Length, maxstr);
+            rleng = Math.Min(TextBox_marketPlace.Text.Length, s_maxstr);
             KonyuSaki.Text = TextBox_marketPlace.Text.Substring(0, rleng);
 
             rleng = Math.Min(TextBox_buy_purpose.Text.Length, maxstr);
@@ -569,27 +570,27 @@ namespace WhereEver
 
             str = TextBox_Tatekae_Date.Text;
             str = HtmlEncode(str);
-            int rleng = Math.Min(str.Length, maxstr);
+            int rleng = Math.Min(str.Length, s_maxstr);
             string cell0 = str.Substring(0, rleng);
 
             str = TextBox_Tatekae_WPlace.Text;
             str = HtmlEncode(str);
-            rleng = Math.Min(str.Length, maxstr);
+            rleng = Math.Min(str.Length, s_maxstr);
             string cell1 = str.Substring(0, rleng);
 
             str = TextBox_Tatekae_TUse.Text;
             str = HtmlEncode(str);
-            rleng = Math.Min(str.Length, maxstr);
+            rleng = Math.Min(str.Length, s_maxstr);
             string cell2 = str.Substring(0, rleng);
 
             str = TextBox_Tatekae_TIn.Text;
             str = HtmlEncode(str);
-            rleng = Math.Min(str.Length, maxstr);
+            rleng = Math.Min(str.Length, s_maxstr);
             string cell3 = str.Substring(0, rleng);
 
             str = TextBox_Tatekae_TOut.Text;
             str = HtmlEncode(str);
-            rleng = Math.Min(str.Length, maxstr);
+            rleng = Math.Min(str.Length, s_maxstr);
             string cell4 = str.Substring(0, rleng);
 
             str = TextBox_Tatekae_TWaste.Text;
@@ -612,12 +613,12 @@ namespace WhereEver
             }
             sb.Append("-");
             //--------------------------
-            rleng = Math.Min(sb.Length, maxstr - 1); //"\\"と"-"のぶんだけ-1
+            rleng = Math.Min(sb.Length, s_maxstr - 1); //"\\"と"-"のぶんだけ-1
             string cell5 = "\\" + sb.ToString().Substring(0, rleng);
 
             str = TextBox_Tatekae_Place.Text;
             str = HtmlEncode(str);
-            rleng = Math.Min(str.Length, maxstr);
+            rleng = Math.Min(str.Length, s_maxstr);
             string cell6 = str.Substring(0, rleng);
 
             str = TextBox_Tatekae_PWaste.Text;
@@ -640,7 +641,7 @@ namespace WhereEver
             }
             //--------------------------
             sb.Append("-");
-            rleng = Math.Min(sb.Length, maxstr - 1); //"\\"と"-"のぶんだけ-1
+            rleng = Math.Min(sb.Length, s_maxstr - 1); //"\\"と"-"のぶんだけ-1
             string cell7 = "\\" + sb.ToString().Substring(0, rleng);
 
             string cell8 = "";
@@ -891,79 +892,315 @@ namespace WhereEver
         {
             //好きなコードを入れて下さい。
 
-            // コマンド名が“Reform”の場合にのみ処理（修正ボタン）
-            if (e.CommandName == "Reform")
+            // コマンド名が“Remove”の場合にのみ処理（独自の削除ボタン）
+            if (e.CommandName == "Remove")
             {
                 //コマンドの引数を取得
-                int args = Int32.Parse((String)e.CommandArgument);
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドしている必要がある。Panelなどで消しているぶんには問題なし。
+
+                //String isbn_key = (String)GridView1.DataKeys[args].Value;
+                String isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
+
+                // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
+                //uidをロード
+                String isbn_uid = GridView1.Rows[args].Cells[1].Text.Trim();
+
+                // クリックされた[args]行の左から3番目の列[0-nで数える]のセルにある「テキスト」を取得
+                //申請種別をロード
+                String isbn_kind = GridView1.Rows[args].Cells[3].Text.Trim();
+
+                if (isbn_kind == "物品購入申請")
+                {
+                    ShinseiLog.DeleteT_Shinsei_A_BuyRow(Global.GetConnection(), isbn_name, isbn_uid);
+                }
+                else if (isbn_kind == "勤怠関連申請")
+                {
+                    ShinseiLog.DeleteT_Shinsei_B_Diligence(Global.GetConnection(), isbn_name, isbn_uid);
+                }
+                else if (isbn_kind == "立替金明細表申請")
+                {
+                    ShinseiLog.DeleteT_Shinsei_C_Tatekae(Global.GetConnection(), isbn_name, isbn_uid);
+                }
+
+
+                // コマンド名が“Reform”の場合にのみ処理（修正ボタン）
+            }
+            else if(e.CommandName == "Reform")
+            {
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
 
                 //ロードのためにテーブルには用いるデータをバインドしている必要がある。Panelなどで消しているぶんには問題なし。
 
                 // 主キー（isbn列）の値を取得
                 //ユーザー名をロード（いらない）
+
                 //String isbn_key = (String)GridView1.DataKeys[args].Value;
-                String isbn_name = GridView1.Rows[args].Cells[1].Text; ;
+                string isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
+
+                // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
+                //uidをロード
+                string isbn_uid = GridView1.Rows[args].Cells[1].Text.Trim();
+                    lbluid.Text = isbn_uid;
+
+                // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
+                //name1をロード
+                string isbn_name1 = GridView1.Rows[args].Cells[2].Text.Trim();
 
                 // クリックされた[args]行の左から3番目の列[0-nで数える]のセルにある「テキスト」を取得
                 //申請種別をロード
-                String isbn_kind = GridView1.Rows[args].Cells[2].Text; ;
+                string isbn_kind = GridView1.Rows[args].Cells[3].Text.Trim();
 
                 // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
-                //日付をロード
-                String isbn_date = GridView1.Rows[args].Cells[3].Text; ;
+                //作成日付をロード
+                //String isbn_date = GridView1.Rows[args].Cells[4].Text.Trim();
 
                 // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
                 //最終更新日をロード
-                String isbn_finaldate = GridView1.Rows[args].Cells[4].Text; ;
+                string isbn_date = GridView1.Rows[args].Cells[5].Text.Trim();
+
+                    if (isbn_kind == "物品購入申請")
+                    {
+                        name1.Text = isbn_name1;
+                        date.Text = isbn_date;
+
+                        //DataTableを参照
+                        DATASET.DataSet.T_Shinsei_A_BuyDataTable dt = ShinseiLog.GetT_Shinsei_A_BuyRow(Global.GetConnection(), isbn_name, isbn_uid);
+
+                        //入力フォームに代入
+                        TextBox_purchaseName.Text = dt[0].A_BuyItem;
+                        TextBox_classification.Text = dt[0].A_BuyItem;
+                        TextBox_howMany.Text = dt[0].A_BuyHowMany;
+                        TextBox_howMach.Text = Kingaku.Text = dt[0].A_BuyHowMach;
+                        TextBox_marketPlace.Text = dt[0].A_BuyPlace;
+                        TextBox_buy_purpose.Text = dt[0].A_Buy_Because;
+                        TextBox_ps.Text = dt[0].A_Buy_ps;
+
+                        //印刷ビューに代入
+                        Konyu.Text = dt[0].A_BuyItem;
+                        Syubetsu.Text = dt[0].A_BuyItem;
+                        Suryo.Text = dt[0].A_BuyHowMany;
+                        Kingaku.Text = dt[0].A_BuyHowMach;
+                        KonyuSaki.Text = dt[0].A_BuyPlace;
+                        Label_Riyuu.Text = dt[0].A_Buy_Because;
+                        Label_Bikou.Text = dt[0].A_Buy_ps;
 
 
-                if (isbn_kind == "物品購入申請")
-                {
-                    // クリックされた[args]行の左から6番目の列[0-nで数える]のセルにある「テキスト」を取得
-                    //申請内容を１つずつロードしていく……
-                    name1.Text = isbn_name;
-                    date.Text = isbn_date;
-                    Konyu.Text = GridView1.Rows[args].Cells[5].Text; ;
-                    Syubetsu.Text = GridView1.Rows[args].Cells[6].Text; ;
-                    Suryo.Text = GridView1.Rows[args].Cells[7].Text; ;
-                    Kingaku.Text = GridView1.Rows[args].Cells[8].Text; ;
-                    KonyuSaki.Text = GridView1.Rows[args].Cells[9].Text; ;
-                    Label_Riyuu.Text = GridView1.Rows[args].Cells[10].Text; ;
-                    Label_Bikou.Text = GridView1.Rows[args].Cells[11].Text; ;
+                        //初期選択パネル
+                        Panel1.Visible = true;
+                        //物品購入申請書パネル
+                        Panel2.Visible = true;
+                        //勤怠パネル
+                        Panel3.Visible = false;
+                        //物品購入申請書印刷フォーム
+                        Panel4.Visible = true;
+                        //勤怠届印刷フォーム
+                        Panel5.Visible = false;
+                        //立替金明細表申請パネル
+                        Panel6.Visible = false;
+                        //立替金明細表印刷フォーム
+                        Panel7.Visible = false;
+                        //印刷ボタンパネル
+                        Panel_Print.Visible = true;
+
+                    }
+
+                    if (isbn_kind == "勤怠関連申請")
+                    {
+                        lblDiligenceUser.Text = isbn_name1;
+                        lblDiligenceDate.Text = isbn_date;
+
+                        //DataTableを参照
+                        DATASET.DataSet.T_Shinsei_B_DiligenceDataTable dt = ShinseiLog.GetT_Shinsei_B_DiligenceRow(Global.GetConnection(), isbn_name, isbn_uid);
+
+                        //入力フォームに代入
+                        DropDownList_DetailsOfNotification.Text = dt[0].B_DiligenceClassification.Trim();
+                        lblSelectedDateA1.Text = dt[0].B_DiligenceDateA1.Trim();
+                        lblSelectedDateA2.Text = dt[0].B_DiligenceDateA2.Trim();
+                        lblSelectedDateB1.Text = dt[0].B_DiligenceDateB1.Trim();
+                        lblSelectedDateB2.Text = dt[0].B_DiligenceDateB2.Trim();
+                        TextBox_Notification_Purpose.Text = dt[0].B_Diligence_Because;
+                        TextBox_Notification_ps.Text = dt[0].B_Diligence_ps;
+
+                        //印刷ビューに代入
+                        lblDiligenceClassification1.Text = dt[0].B_DiligenceClassification.Trim();
+                        lblDiligenceClassification2.Text = dt[0].B_DiligenceClassification.Trim();
+                        lblDiligenceDateA1.Text = dt[0].B_DiligenceDateA1.Trim();
+                        lblDiligenceDateA2.Text = dt[0].B_DiligenceDateA2.Trim();
+                        lblDiligenceDateB1.Text = dt[0].B_DiligenceDateB1.Trim();
+                        lblDiligenceDateB2.Text = dt[0].B_DiligenceDateB2.Trim();
+                        Label_Diligence_because.Text = dt[0].B_Diligence_Because;
+                        Label_Diligence_ps.Text = dt[0].B_Diligence_ps;
+
+                        //初期選択パネル
+                        Panel1.Visible = true;
+                        //物品購入申請書パネル
+                        Panel2.Visible = false;
+                        //勤怠パネル
+                        Panel3.Visible = true;
+                        //物品購入申請書印刷フォーム
+                        Panel4.Visible = false;
+                        //勤怠届印刷フォーム
+                        Panel5.Visible = true;
+                        //立替金明細表申請パネル
+                        Panel6.Visible = false;
+                        //立替金明細表印刷フォーム
+                        Panel7.Visible = false;
+                        //印刷ボタンパネル
+                        Panel_Print.Visible = true;
+
+                    }
+                    else if (isbn_kind == "立替金明細表申請")
+                    {
+                        lblTatekaeName.Text = isbn_name1;
+                        lblTatekaeDate.Text = isbn_date;
+
+                        //DataTableを参照
+                        DATASET.DataSet.T_Shinsei_C_TatekaeDataTable dt = ShinseiLog.GetT_Shinsei_C_TatekaeRow(Global.GetConnection(), isbn_name, isbn_uid);
+
+                        //入力フォーム
+                        TextBox_Tatekae_TWaste.Text = dt[0].C_Tatekae_Result2;
+
+                        //印刷フォーム
+                        lblTatekaeResult.Text = dt[0].C_Tatekae_Result_Main.Trim();
+                        lblTatekae_Koutuuhi.Text = dt[0].C_Tatekae_TWaste.Trim();
+                        lblTatekae_Shukuhakuhi.Text = dt[0].C_Tatekae_PWaste.Trim();
+                        lblTatekae_Result1.Text = dt[0].C_Tatekae_Result1.Trim();
+                        lblTatekae_Result2.Text = dt[0].C_Tatekae_Result2.Trim();
+                        lblTatekae_Result3.Text = dt[0].C_Tatekae_Result3.Trim();
+
+                        //初期選択パネル
+                        Panel1.Visible = true;
+                        //物品購入申請書パネル
+                        Panel2.Visible = false;
+                        //勤怠パネル
+                        Panel3.Visible = false;
+                        //物品購入申請書印刷フォーム
+                        Panel4.Visible = false;
+                        //勤怠届印刷フォーム
+                        Panel5.Visible = false;
+                        //立替金明細表申請パネル
+                        Panel6.Visible = true;
+                        //立替金明細表印刷フォーム
+                        Panel7.Visible = true;
+                        //印刷ボタンパネル
+                        Panel_Print.Visible = true;
+
+                    }
+
                 }
-                else if(isbn_kind == "勤怠関連申請")
-                {
-                    // クリックされた[args]行の左から13番目の列[0-nで数える]のセルにある「テキスト」を取得
-                    //申請内容を１つずつロードしていく……
-                    lblDiligenceUser.Text = isbn_name;                  
-                    lblDiligenceDate.Text = isbn_date;
-                    lblDiligenceClassification1.Text = GridView1.Rows[args].Cells[12].Text; ;
-                    lblDiligenceClassification2.Text = GridView1.Rows[args].Cells[13].Text; ;
-                    lblDiligenceDateA1.Text = GridView1.Rows[args].Cells[14].Text; ;
-                    lblDiligenceDateA2.Text = GridView1.Rows[args].Cells[15].Text; ;
-                    lblDiligenceDateB1.Text = GridView1.Rows[args].Cells[16].Text; ;
-                    lblDiligenceDateB2.Text = GridView1.Rows[args].Cells[17].Text; ;
-                }
-                else if (isbn_kind == "立替金明細表申請")
-                {
-                    // クリックされた[args]行の左から19番目の列[0-nで数える]のセルにある「テキスト」を取得
-                    //申請内容を１つずつロードしていく……
-                    lblTatekaeName.Text = isbn_name;
-                    lblTatekaeDate.Text = isbn_date;
-                    lblTatekaeResult.Text = GridView1.Rows[args].Cells[18].Text; ;
-                    lblTatekae_Koutuuhi.Text = GridView1.Rows[args].Cells[19].Text; ;
-                    lblTatekae_Shukuhakuhi.Text = GridView1.Rows[args].Cells[20].Text; ;
-                    lblTatekae_Result1.Text = GridView1.Rows[args].Cells[21].Text; ;
-                    lblTatekae_Result2.Text = GridView1.Rows[args].Cells[22].Text; ;
-                    lblTatekae_Result3.Text = GridView1.Rows[args].Cells[23].Text; ;
-                }
-
-            }
-
             return; //grid_RowCommand
         }
 
         protected void SaveButton_Click_1(object sender, EventArgs e)
+        {
+            //Set 物品購入申請
+            //印刷フォームのテキストをT_ShinseiDBに代入
+
+            Set_Konyu_Data();
+
+
+            //UUID生成
+            string uid = Guid.NewGuid().ToString();
+            //ダブりなしまで無限ループ
+            for (; ; )
+            {
+                if (ShinseiLog.GetT_Shinsei_Main_isuid(Global.GetConnection(), uid))
+                {
+                    //true ダブりあり
+                    //強制終了
+                    return;
+
+                }
+                else
+                {
+                    //false ダブりなし
+                    break;
+                }
+
+            }
+
+            //Insert
+            ShinseiLog.SetT_Shinsei_A_BuyInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, Konyu.Text, Syubetsu.Text, Suryo.Text, Kingaku.Text, KonyuSaki.Text, Label_Riyuu.Text, Label_Bikou.Text);
+            ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, SessionManager.User.M_User.name1.Trim(), "物品購入申請");
+            lbluid.Text = uid;
+
+        }
+
+        protected void SaveButton_Click_2(object sender, EventArgs e)
+        {
+            //Set 勤怠関連申請
+            //印刷フォームのテキストをT_ShinseiDBに代入
+
+            Set_Kintai_Data();
+
+
+            //UUID生成
+            string uid = Guid.NewGuid().ToString();
+            //ダブりなしまで無限ループ
+            for (; ; )
+            {
+                if (ShinseiLog.GetT_Shinsei_Main_isuid(Global.GetConnection(), uid))
+                {
+                    //true ダブりあり
+                    //UUID再生成
+                    uid = Guid.NewGuid().ToString();
+
+                }
+                else
+                {
+                    //false ダブりなし
+                    break;
+                }
+
+            }
+
+            //Insert
+            ShinseiLog.SetT_Shinsei_B_DiligenceInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, lblDiligenceClassification1.Text, lblDiligenceDateA1.Text, lblDiligenceDateA2.Text, lblDiligenceDateB1.Text, lblDiligenceDateB2.Text, Label_Diligence_because.Text, Label_Diligence_ps.Text);
+            ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, SessionManager.User.M_User.name1.Trim(), "勤怠関連申請");
+            lbluid.Text = uid;
+        }
+
+        protected void SaveButton_Click_3(object sender, EventArgs e)
+        {
+            //Set 立替金明細表申請
+
+            //初期化
+            //resetTatekaeTable();
+
+            //印刷フォームのテキストをT_ShinseiDBに代入
+
+            //SetTatekaeString();
+
+            //UUID生成
+            string uid = Guid.NewGuid().ToString();
+            //ダブりなしまで無限ループ
+            for (; ; )
+            {
+                if (ShinseiLog.GetT_Shinsei_Main_isuid(Global.GetConnection(), uid))
+                {
+                    //true ダブりあり
+                    //強制終了
+                    return;
+
+                }
+                else
+                {
+                    //false ダブりなし
+                    break;
+                }
+
+            }
+
+            //Insert
+            ShinseiLog.SetT_Shinsei_C_TatekaeInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, lblTatekaeResult.Text, lblTatekae_Koutuuhi.Text, lblTatekae_Shukuhakuhi.Text, lblTatekae_Result1.Text, lblTatekae_Result2.Text, lblTatekae_Result3.Text);
+            ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, SessionManager.User.M_User.name1.Trim(), "立替金明細表申請");
+            lbluid.Text = uid;
+        }
+
+        protected void SaveAsButton_Click_1(object sender, EventArgs e)
         {
             //Set 物品購入申請
             //印刷フォームのテキストをT_ShinseiDBに代入
@@ -981,10 +1218,57 @@ namespace WhereEver
             */
             Set_Konyu_Data();
 
-            ShinseiLog.SetT_ShinseiLogInsert(Global.GetConnection(), SessionManager.User.M_User.id, SessionManager.User.M_User.name1, "物品購入申請", Konyu.Text, Syubetsu.Text, Suryo.Text, Kingaku.Text, KonyuSaki.Text, Label_Riyuu.Text, Label_Bikou.Text, "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし");
+            if (lbluid.Text == "null")
+            {
+                //UUID生成
+                string uid = Guid.NewGuid().ToString();
+                //ダブりなしまで無限ループ
+                for (; ; )
+                {
+                    if (ShinseiLog.GetT_Shinsei_Main_isuid(Global.GetConnection(), uid))
+                    {
+                        //true ダブりあり
+                        //強制終了
+                        return;
+
+                    }
+                    else
+                    {
+                        //false ダブりなし
+                        break;
+                    }
+
+                }
+
+                //Insert
+                ShinseiLog.SetT_Shinsei_A_BuyInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, Konyu.Text, Syubetsu.Text, Suryo.Text, Kingaku.Text, KonyuSaki.Text, Label_Riyuu.Text, Label_Bikou.Text);
+                ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, SessionManager.User.M_User.name1.Trim(), "物品購入申請");
+                lbluid.Text = uid;
+            } else {
+
+                //UUID取得
+                string uid = lbluid.Text;
+
+                DATASET.DataSet.T_Shinsei_A_BuyDataTable dt = ShinseiLog.GetT_Shinsei_A_BuyRow(Global.GetConnection(), SessionManager.User.M_User.id, uid);
+                if (dt != null)
+                {
+                    //Update
+                    ShinseiLog.SetT_Shinsei_A_BuyUpdate(Global.GetConnection(), SessionManager.User.M_User.id, uid.Trim(), Konyu.Text, Syubetsu.Text, Suryo.Text, Kingaku.Text, KonyuSaki.Text, Label_Riyuu.Text, Label_Bikou.Text);
+                    ShinseiLog.SetT_Shinsei_MainUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid);
+                }
+                else
+                {
+                    //UUIDエラー
+                    lbluid.Text = "null";
+                }
+
+
+
+            }
+
         }
 
-        protected void SaveButton_Click_2(object sender, EventArgs e)
+        protected void SaveAsButton_Click_2(object sender, EventArgs e)
         {
             //Set 勤怠関連申請
             //印刷フォームのテキストをT_ShinseiDBに代入
@@ -1004,15 +1288,63 @@ namespace WhereEver
             */
             Set_Kintai_Data();
 
-            ShinseiLog.SetT_ShinseiLogInsert(Global.GetConnection(), SessionManager.User.M_User.id, SessionManager.User.M_User.name1, "勤怠関連申請", "なし", "なし", "なし", "なし", "なし", lblDiligenceClassification1.Text, lblDiligenceClassification2.Text, lblDiligenceDateA1.Text, lblDiligenceDateA2.Text, lblDiligenceDateB1.Text, lblDiligenceDateB2.Text, "なし", "なし", "なし", "なし", "なし", "なし");
+
+            if (lbluid.Text == "null")
+            {
+                //UUID生成
+                string uid = Guid.NewGuid().ToString();
+                //ダブりなしまで無限ループ
+                for (; ; )
+                {
+                    if (ShinseiLog.GetT_Shinsei_Main_isuid(Global.GetConnection(), uid))
+                    {
+                        //true ダブりあり
+                        //強制終了
+                        return;
+
+                    }
+                    else
+                    {
+                        //false ダブりなし
+                        break;
+                    }
+
+                }
+
+                //Insert
+                ShinseiLog.SetT_Shinsei_B_DiligenceInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, lblDiligenceClassification1.Text, lblDiligenceDateA1.Text, lblDiligenceDateA2.Text, lblDiligenceDateB1.Text, lblDiligenceDateB2.Text, Label_Diligence_because.Text, Label_Diligence_ps.Text);
+                ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, SessionManager.User.M_User.name1.Trim(), "勤怠関連申請");
+                lbluid.Text = uid;
+
+            } else {
+
+                //UUID取得
+                string uid = lbluid.Text;
+
+                DATASET.DataSet.T_Shinsei_B_DiligenceDataTable dt = ShinseiLog.GetT_Shinsei_B_DiligenceRow(Global.GetConnection(), SessionManager.User.M_User.id, uid);
+                if (dt != null)
+                {
+                    //Update
+                    ShinseiLog.SetT_Shinsei_B_DiligenceUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, lblDiligenceClassification1.Text, lblDiligenceDateA1.Text, lblDiligenceDateA2.Text, lblDiligenceDateB1.Text, lblDiligenceDateB2.Text, Label_Diligence_because.Text, Label_Diligence_ps.Text);
+                    ShinseiLog.SetT_Shinsei_MainUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid);
+                }
+                else
+                {
+                    //UUIDエラー
+                    lbluid.Text = "null";
+                }
+
+
+            }
+
         }
 
-        protected void SaveButton_Click_3(object sender, EventArgs e)
+        protected void SaveAsButton_Click_3(object sender, EventArgs e)
         {
             //Set 立替金明細表申請
 
             //初期化
-            resetTatekaeTable();
+            //resetTatekaeTable();
 
             //印刷フォームのテキストをT_ShinseiDBに代入
             /*
@@ -1028,9 +1360,58 @@ namespace WhereEver
             lblTatekae_Result3.Text
             */
 
-            SetTatekaeString();
+            //SetTatekaeString();
 
-            ShinseiLog.SetT_ShinseiLogInsert(Global.GetConnection(), SessionManager.User.M_User.id, SessionManager.User.M_User.name1, "立替金明細表申請", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", "なし", lblTatekaeResult.Text, lblTatekae_Koutuuhi.Text, lblTatekae_Shukuhakuhi.Text, lblTatekae_Result1.Text, lblTatekae_Result2.Text, lblTatekae_Result3.Text);
+            if (lbluid.Text == "null")
+            {
+
+                //UUID生成
+                string uid = Guid.NewGuid().ToString();
+                //ダブりなしまで無限ループ
+                for (; ; )
+                {
+                    if (ShinseiLog.GetT_Shinsei_Main_isuid(Global.GetConnection(), uid))
+                    {
+                        //true ダブりあり
+                        //強制終了
+                        return;
+
+                    }
+                    else
+                    {
+                        //false ダブりなし
+                        break;
+                    }
+
+                }
+
+                //Insert
+                ShinseiLog.SetT_Shinsei_C_TatekaeInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, lblTatekaeResult.Text, lblTatekae_Koutuuhi.Text, lblTatekae_Shukuhakuhi.Text, lblTatekae_Result1.Text, lblTatekae_Result2.Text, lblTatekae_Result3.Text);
+                ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id, uid.Trim(), SessionManager.User.M_User.name1.Trim(), "立替金明細表申請");
+                lbluid.Text = uid;
+
+            } else {
+
+                //UUID取得
+                string uid = lbluid.Text;
+
+
+                DATASET.DataSet.T_Shinsei_C_TatekaeDataTable dt = ShinseiLog.GetT_Shinsei_C_TatekaeRow(Global.GetConnection(), SessionManager.User.M_User.id, uid);
+                if (dt != null) {
+
+                    //Update
+                    ShinseiLog.SetT_Shinsei_C_TatekaeUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, lblTatekaeResult.Text, lblTatekae_Koutuuhi.Text, lblTatekae_Shukuhakuhi.Text, lblTatekae_Result1.Text, lblTatekae_Result2.Text, lblTatekae_Result3.Text);
+                    ShinseiLog.SetT_Shinsei_MainUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid);
+
+                } else {
+
+                    //UUIDエラー
+                    lbluid.Text = "null";
+
+                }
+
+
+            }
 
         }
 
