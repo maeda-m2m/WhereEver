@@ -28,16 +28,24 @@
         </div>
 
         <div id="Wrap" class="noprint">
+
+         <asp:Panel ID="Panel00" runat="server" CssClass="noprint">
+          <p><asp:Button ID="Button_list_open" CssClass="btn-flat-border" runat="server" Text="リストを開く" OnClick="Button_Datalist_Open_Click" CausesValidation="False" /></p>
+         </asp:Panel>
+
           <asp:Panel ID="Panel0" runat="server" CssClass="noprint">
+
+                       <p><asp:Button ID="Button_list_close" CssClass="btn-flat-border" runat="server" Text="リストを閉じる" OnClick="Button_Datalist_Close_Click" CausesValidation="False" />
+                       <asp:Button ID="Button_reload" CssClass="btn-flat-border" runat="server" Text="リスト更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
+
                        <p>各種申請情報を管理できます。</p>
                        <p>※リストを更新または削除すると、編集中のデータは破棄されます！</p>
-                       <p><asp:Button ID="Button_reload" CssClass="btn-flat-border" runat="server" Text="リスト更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
 
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
                     <asp:BoundField DataField="uid" HeaderText="uid" ReadOnly="True" SortExpression="uid" />
-                    <asp:BoundField DataField="name1" HeaderText="お名前" SortExpression="name1" />
+                    <asp:BoundField DataField="name1" HeaderText="お名前" SortExpression="name1" Visible="False" />
                     <asp:BoundField DataField="ShinseiSyubetsu" HeaderText="申請種別" SortExpression="ShinseiSyubetsu" />
                     <asp:BoundField DataField="DateTime" HeaderText="発行日" SortExpression="DateTime" />
                     <asp:BoundField DataField="LastUpdate" HeaderText="最終更新日" ReadOnly="True" SortExpression="LastUpdate" />
@@ -46,7 +54,7 @@
                     <ControlStyle CssClass="btn-flat-border" />
                     </asp:ButtonField>
 
-                    <asp:ButtonField ButtonType="Button" Text="修正" ControlStyle-CssClass="btn-flat-border"  HeaderText="修正" CommandName="Reform" CausesValidation="False" >
+                    <asp:ButtonField ButtonType="Button" Text="編集/閲覧" ControlStyle-CssClass="btn-flat-border"  HeaderText="編集/閲覧" CommandName="Reform" CausesValidation="False" >
                     <ControlStyle CssClass="btn-flat-border" />
                     </asp:ButtonField>
 
@@ -87,10 +95,10 @@
                 <table id="sinsei">
                     <tr>
                             <td class="title">
-                                <a name="Shinsei_DropDown">申請書類</a>                              
+                                申請書類                             
                             </td>
                             <td class="text">
-                                <asp:DropDownList ID="DropDownList1" runat="server" OnTextChanged="DropDownList_Master_SelectionChanged" AutoPostBack="True" PostBackUrl="#Shinsei_DropDown" CausesValidation="False" >
+                                <asp:DropDownList ID="DropDownList1" runat="server" OnTextChanged="DropDownList_Master_SelectionChanged" AutoPostBack="True" CausesValidation="False" >
                                     <asp:ListItem>【申請書類を選択】</asp:ListItem>
                                     <asp:ListItem>物品購入申請</asp:ListItem>
                                     <asp:ListItem>勤怠関連申請</asp:ListItem>
@@ -104,14 +112,14 @@
                 </table>
             </asp:Panel>
 
-            <asp:Panel ID="Panel2" runat="server" CssClass="noprint">
+            <asp:Panel ID="Panel2" runat="server" CssClass="noprint"><a name="Buppin_Button"></a>
                 <table id="buppintouroku">
                     <tr>
                         <td class="title">
                             <p>購入品名*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_purchaseName" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：『やさしいm2mの本』"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_purchaseName" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_purchaseName"></asp:RequiredFieldValidator>
@@ -122,7 +130,7 @@
                             <p>種別*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_classification" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：本"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_classification" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_classification"></asp:RequiredFieldValidator>
@@ -134,7 +142,7 @@
                             <p>購入点数*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角49文字以内"></asp:TextBox>点
+                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角49文字以内" placeholder="例：１"></asp:TextBox>点
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMany" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMany"></asp:RequiredFieldValidator>
@@ -142,10 +150,10 @@
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>合計金額*</p>
+                            <p>合計金額（税込）*</p>
                         </td>
                         <td class="text">
-                            \<asp:TextBox ID="TextBox_howMach" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角49文字以内"></asp:TextBox>-
+                            \<asp:TextBox ID="TextBox_howMach" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角49文字以内" placeholder="例：1200"></asp:TextBox>-
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMach" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMach"></asp:RequiredFieldValidator>
@@ -156,7 +164,7 @@
                             <p>購入元*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_marketPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：m2m書店"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_marketPlace" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_marketPlace"></asp:RequiredFieldValidator>
@@ -167,7 +175,7 @@
                             <p>購入目的*</p>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox_buy_purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_buy_purpose" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内" placeholder="例：テキストとして使用するため。"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_buy_purpose" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_buy_purpose"></asp:RequiredFieldValidator>
@@ -182,17 +190,19 @@
                             </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><a name=" Buppin_Button"></a>
-                            <asp:Button ID="Button1" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Button1_Click" PostBackUrl="#Buppin_Button" />
+                        <td colspan="2">
+                            <asp:Button ID="Button1" CssClass="btn-flat-border" runat="server" Text="印刷ビュー" OnClick="Button1_Click" PostBackUrl="#Buppin_Button" />
+                            <asp:Button ID="Button_Buppin_Reset" CssClass="btn-flat-border" runat="server" Text="初期化" OnClick="Button_Buppin_Reset_Click" CausesValidation="False" PostBackUrl="#Buppin_Button" />
                             <asp:Button ID="Button_Save1" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_1" PostBackUrl="#Buppin_Button" />
                             <asp:Button ID="Button_SaveAs1" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_1" PostBackUrl="#Buppin_Button" />
                             <asp:Button ID="BtnBackA1" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" PostBackUrl="#Buppin_Button" />
+                            <asp:Label ID="lbl_SaveResult1" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                 </table>
             </asp:Panel>
 
-            <asp:Panel ID="Panel3" runat="server" CssClass="noprint">
+            <asp:Panel ID="Panel3" runat="server" CssClass="noprint"><a name="Diligence_Button"></a>
                 <table runat="server" id="kyuka">
                     <tr>
                         <td class="title">
@@ -300,11 +310,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><a name="#Diligence_Button"></a>
-                            <asp:Button ID="Button2" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Button2_Click" PostBackUrl="#Diligence_Button" />
+                        <td colspan="2">
+                            <asp:Button ID="Button2" CssClass="btn-flat-border" runat="server" Text="印刷ビュー" OnClick="Button2_Click" PostBackUrl="#Diligence_Button" />
+                            <asp:Button ID="Button_Deligence_Reset" CssClass="btn-flat-border" runat="server" Text="初期化" OnClick="Button_Deligence_Reset_Click" CausesValidation="False" PostBackUrl="#Diligence_Button" />
                             <asp:Button ID="Button_Save2" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_2" PostBackUrl="#Diligence_Button" />
                             <asp:Button ID="Button_SaveAs2" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_2" PostBackUrl="#Diligence_Button" />
                             <asp:Button ID="btnBack_A2" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" PostBackUrl="#Diligence_Button" />
+                            <asp:Label ID="lbl_SaveResult2" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                 </table>
@@ -376,7 +388,7 @@
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>交通費*</p>
+                            <p>交通費（税込）*</p>
                         </td>
                         <td class="text">
                             \<asp:TextBox ID="TextBox_Tatekae_TWaste" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>-
@@ -399,7 +411,7 @@
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>宿泊金額*</p>
+                            <p>宿泊金額（税込）*</p>
                         </td>
                         <td class="text">
                             \<asp:TextBox ID="TextBox_Tatekae_PWaste" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角49文字以内" Text="0"></asp:TextBox>-
@@ -435,11 +447,11 @@
 
                     <tr>
                         <td class="title">
-                            <p>定期券代*</p>
+                            <p>定期券代（税込）*</p>
                         </td>
                         <td class="text">
                             \<asp:TextBox ID="TextBox_Tatekae_Teiki" runat="server" CssClass="textbox" Width="128px" ValidateRequestMode="Disabled" ToolTip="全角49文字以内" Text="0"></asp:TextBox>-
-                            <asp:Button ID="Button5" CssClass="btn-flat-border" runat="server" Text="反映" OnClick="Change_Text_T_Teiki" CausesValidation="False" />
+                            <asp:Button ID="Button5" CssClass="btn-flat-border" runat="server" Text="反映" OnClick="Change_Text_T_Teiki" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
                         </td>
 
                         <td>
@@ -455,9 +467,10 @@
                             <asp:Button ID="Button6" CssClass="btn-flat-border" runat="server" Text="初期化" OnClick="Button4_Click" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
                             <asp:Button ID="Button8" CssClass="btn-flat-border" runat="server" Text="UNDO" OnClick="Button_Undo" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
                             <asp:Button ID="Button7" CssClass="btn-flat-border" runat="server" Text="印刷ビュー" OnClick="Button5_Click" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
-                            <asp:Button ID="Button_Save3" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_3" PostBackUrl="#Tatekae_Button" />
-                            <asp:Button ID="Button_SaveAs3" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_3" PostBackUrl="#Tatekae_Button" />
+                            <asp:Button ID="Button_Save3" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_3" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
+                            <asp:Button ID="Button_SaveAs3" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_3" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
                             <asp:Button ID="Button4" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
+                            <asp:Label ID="lbl_SaveResult3" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                 </table>
@@ -509,27 +522,17 @@
                         </td>
                     </tr>
                     <tr>
-                                <td class="aa">
+                             <td class="aa">
                                     <p>申請日</p>
-                                </td>
-                                <td>
+                             </td>
+                             <td colspan="3" class="sd">
                                   <asp:Label ID="date" runat="server" Text="Select Date"></asp:Label>
-                                </td>
-                                <td>
-                                </td>
-                                <td>
-                                </td>
+                             </td>
                     </tr>
                     <tr>
-                        <td id="name">
+                        <td id="name" colspan="4">
                             <asp:Label ID="name1" runat="server" Text="No Name"></asp:Label>
                         </td>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                            </td>
                     </tr>
 
                     <tr>
@@ -539,8 +542,8 @@
                         </td>
                         <td>
                         </td>
-                        <td id="Syacho">
-                           <p style="width: 71px">社長</p>
+                        <td class="Syacho">
+                           <p class="SyachoText">社長</p>
                         </td>
                     </tr>
                     <tr>
@@ -621,8 +624,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
-                            <p>上記の通り申請致します。</p>
+                        <td colspan="4">
+                            <p>上記の通り、申請致します。</p>
                         </td>
                     </tr>
                 </table>
@@ -649,21 +652,15 @@
                         </td>
                     </tr>
                     <tr class="takasa">
-                        <td colspan="2" id="name2">
-                            <asp:Label ID="lblDiligenceUser" runat="server" Text=""></asp:Label><asp:Label ID="Label13" runat="server" Text="（印）"></asp:Label>
-                        </td>
-                        <td colspan="2">
+                        <td colspan="4" id="name2">
+                            <asp:Label ID="lblDiligenceUser" runat="server" Text="No Name"></asp:Label><asp:Label ID="Label13" runat="server" Text="（印）"></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="3">
                         </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td id="Syacho2">
-                                  <p>社長</p>
+                        <td class="Syacho">
+                                  <p class="SyachoText">社長</p>
                         </td>
                     </tr>
                     <tr>
@@ -683,7 +680,7 @@
                         <td class="naiyou">
                             <p>届出内容</p>
                         </td>
-                        <td colspan="3" runat="server" class="nakami">
+                        <td colspan="3" runat="server" class="zone">
                             <asp:Label ID="lblDiligenceClassification2" runat="server" Text="項目を選択してください"></asp:Label>
                         </td>
                     </tr>
@@ -692,17 +689,19 @@
                             <p>日時</p>
                         </td>
                         <td colspan="3" class="nakami">
+                            <div class ="sd"">
                             <asp:Label ID="lblDiligenceDateA1" runat="server" Text=""></asp:Label>
                             <asp:Label ID="lblDiligenceDateA2" runat="server" Text=""></asp:Label>から<br />
                             <asp:Label ID="lblDiligenceDateB1" runat="server" Text=""></asp:Label>
                             <asp:Label ID="lblDiligenceDateB2" runat="server" Text=""></asp:Label>まで
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td class="naiyou">
                             <p>理由</p>
                         </td>
-                        <td colspan="3" class="nakami">
+                        <td colspan="3" class="zone">
                            <asp:Label ID="Label_Diligence_because" runat="server" Text="" ValidateRequestMode="Disabled" Height="100px" Width="415px"></asp:Label>
                         </td>
                     </tr>
@@ -710,12 +709,12 @@
                         <td class="naiyou">
                             <p>備考</p>
                         </td>
-                        <td colspan="3" class="nakami">
+                        <td colspan="3" class="zone">
                            <asp:Label ID="Label_Diligence_ps" runat="server" Text="" ValidateRequestMode="Disabled" Height="100px" Width="415px"></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td id="foot" colspan="2">
+                        <td id="foot" colspan="4">
                             <p>
                                 上記の通り、申請いたします。
                             </p>
@@ -742,7 +741,7 @@
                         <td id="date3">
                             <p>提出日：</p>
                         </td>
-                        <td>
+                        <td class="sd">
                             <asp:Label ID="lblTatekaeDate" runat="server" Text="TatekaeDate"></asp:Label>
                         </td>
                         <td id="name3">

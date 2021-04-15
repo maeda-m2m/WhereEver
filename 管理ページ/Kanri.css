@@ -1,4 +1,9 @@
 ﻿body {
+    background-image: url(../ログイン/white.jpg);
+    background-repeat: no-repeat; /* 画像重複しない */
+    background-size: cover;
+    font-weight: bold; /*太字にする*/
+
     font-family: Meiryo;
 }
 
@@ -13,6 +18,26 @@
     width: 230px;
     height: 30px;
     color: white;
+}
+
+#Wrap {
+    background-color: #fff;
+    width: 1280px; /*1280px か 100%*/
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-bottom: 100px;
+}
+
+.DGTable {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    width: 1260px;
+    padding: 0.3em 1em;
+    border: solid 2px #16ba00;
+    border-radius: 3px;
+    font-family: Meiryo;
+    border-radius: 3px;
 }
 
 .form-flat-border {
