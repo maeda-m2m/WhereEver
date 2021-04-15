@@ -46,7 +46,7 @@ namespace WhereEver
 
                 No.Text = dr.No.ToString();
 
-                Name.Text = "<font color=#16ba00>" + dr.Name + "</font>";
+                Name.Text = dr.Name;
 
                 Date.Text = "<font size=1px>" + dr.Date.ToShortTimeString() + "</font>";
 
@@ -88,9 +88,8 @@ namespace WhereEver
             Label Cno = (Label)e.Item.Cells[0].FindControl("No");
             Label Cname = (Label)e.Item.Cells[1].FindControl("ID");
             string Cid = Cno.Text;
-            string CnameNow = Cname.Text;
-            string nameNow = "<font color=#16ba00>"+ SessionManager.User.M_User.name1 + "        </font>";
-
+            string CnameNow = Cname.Text.Trim();
+            string nameNow = SessionManager.User.M_User.name1;
             if (CnameNow == nameNow) { 
                 switch (((LinkButton)e.CommandSource).CommandName)
                 {
