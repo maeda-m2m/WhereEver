@@ -27,7 +27,7 @@
                     <a href="~/Project System/PIchiran.aspx" class="btn" runat="server">プロジェクト</a>
                </td>
                <td>
-                    <a href="~/管理ページ/Kanri.aspx" class="btn" runat="server">ユーザー管理</a>
+                    <a href="~/管理ページ/Kanri.aspx" class="btn" runat="server">ユーザー情報変更</a>
                </td>
                <td>
                     <asp:Label ID="Label1" CssClass="label" runat="server" Text="Label"></asp:Label>
