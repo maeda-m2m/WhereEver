@@ -78,6 +78,16 @@ namespace WhereEver
 
         }
 
+        //public static void UpdateT_ScheduleRow(SqlConnection sqlconnection)//テスト用
+        //{
+        //    var da = new SqlCommand("", sqlconnection);
+        //    da.CommandText =
+        //        "UPDATE T_Schedule SET date=@date WHERE SdlNo=43";
+        //    var dt = new DATASET.DataSet.T_ScheduleRow();
+        //    da.Parameters.AddWithValue("@date", dt.date);
+
+        //}
+
         public static bool DeleteT_Schedule(int time, SqlConnection sqlconnection)
         {
             SqlCommand cmdDelSave = new SqlCommand("", sqlconnection);
