@@ -39,7 +39,6 @@
                        <asp:Button ID="Button_reload" CssClass="btn-flat-border" runat="server" Text="リスト更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
 
                        <p>各種申請情報を管理できます。</p>
-                       <p>※リストを更新または削除すると、編集中のデータは破棄されます！</p>
 
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
                 <Columns>

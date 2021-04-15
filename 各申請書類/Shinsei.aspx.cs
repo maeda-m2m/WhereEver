@@ -267,6 +267,9 @@ namespace WhereEver
             Panel4.Visible = false;
             //印刷ボタンパネル
             Panel_Print.Visible = false;
+
+            //選択中uidを初期化
+            lbluid.Text = "null";
         }
 
         /// <summary>
@@ -293,6 +296,9 @@ namespace WhereEver
             Panel5.Visible = false;
             //印刷ボタンパネル
             Panel_Print.Visible = false;
+
+            //選択中uidを初期化
+            lbluid.Text = "null";
         }
 
 
@@ -382,6 +388,9 @@ namespace WhereEver
             Session.Add("wasteR1", wasteR1);
             Session.Add("wasteR2", wasteR2);
             Session.Add("wasteR3", wasteR3);
+
+            //選択中uidを初期化
+            lbluid.Text = "null";
 
         }
 
@@ -1080,8 +1089,11 @@ namespace WhereEver
                 ShinseiLog.DeleteT_Shinsei_MainRow(Global.GetConnection(), isbn_name, isbn_uid);
                 lbluid.Text = "null";
 
+                //データバインド
+                BindData();
+
                 //レスポンスリダイレクト
-                Response.Redirect("Shinsei.aspx");
+                //Response.Redirect("Shinsei.aspx");
 
                 // コマンド名が“Reform”の場合にのみ処理（修正ボタン）
             }
@@ -1189,9 +1201,11 @@ namespace WhereEver
                         //印刷ボタンパネル
                         Panel_Print.Visible = true;
 
-                    }
+                        //SaveMessageを消去
+                        lbl_SaveResult1.Text = "";
 
-                    if (isbn_kind == "勤怠関連申請")
+                    }
+                    else if (isbn_kind == "勤怠関連申請")
                     {
                         lblDiligenceUser.Text = isbn_name1;
                         lblDiligenceDate.Text = isbn_date;
@@ -1234,6 +1248,9 @@ namespace WhereEver
                         Panel7.Visible = false;
                         //印刷ボタンパネル
                         Panel_Print.Visible = true;
+
+                        //SaveMessageを消去
+                        lbl_SaveResult2.Text = "";
 
                     }
                     else if (isbn_kind == "立替金明細表申請")
@@ -1279,6 +1296,9 @@ namespace WhereEver
                         //印刷ボタンパネル
                         Panel_Print.Visible = true;
 
+                        //SaveMessageを消去
+                        lbl_SaveResult3.Text = "";
+
                     }
 
                 }
@@ -1319,6 +1339,10 @@ namespace WhereEver
             ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, SessionManager.User.M_User.name1.Trim(), "物品購入申請");
             lbluid.Text = uid;
             lbl_SaveResult1.Text = "New Save: " + DateTime.Now;
+
+            //データバインド
+            BindData();
+
         }
 
         protected void SaveButton_Click_2(object sender, EventArgs e)
@@ -1355,6 +1379,10 @@ namespace WhereEver
             ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, SessionManager.User.M_User.name1.Trim(), "勤怠関連申請");
             lbluid.Text = uid;
             lbl_SaveResult2.Text = "New Save: " + DateTime.Now;
+
+            //データバインド
+            BindData();
+
         }
 
         protected void SaveButton_Click_3(object sender, EventArgs e)
@@ -1394,6 +1422,10 @@ namespace WhereEver
             ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, SessionManager.User.M_User.name1.Trim(), "立替金明細表申請");
             lbluid.Text = uid;
             lbl_SaveResult3.Text = "New Save: " + DateTime.Now;
+
+            //データバインド
+            BindData();
+
         }
 
         protected void SaveAsButton_Click_1(object sender, EventArgs e)
@@ -1442,7 +1474,12 @@ namespace WhereEver
                 ShinseiLog.SetT_Shinsei_A_BuyInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, Konyu.Text, Syubetsu.Text, Suryo.Text, Kingaku.Text, KonyuSaki.Text, Label_Riyuu.Text, Label_Bikou.Text);
                 ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, SessionManager.User.M_User.name1.Trim(), "物品購入申請");
                 lbluid.Text = uid;
-            } else {
+
+                //データバインド
+                BindData();
+
+            }
+            else {
 
                 //UUID取得
                 string uid = lbluid.Text;
@@ -1454,6 +1491,10 @@ namespace WhereEver
                     ShinseiLog.SetT_Shinsei_A_BuyUpdate(Global.GetConnection(), SessionManager.User.M_User.id, uid.Trim(), Konyu.Text, Syubetsu.Text, Suryo.Text, Kingaku.Text, KonyuSaki.Text, Label_Riyuu.Text, Label_Bikou.Text);
                     ShinseiLog.SetT_Shinsei_MainUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid);
                     lbl_SaveResult1.Text = "Save As: " + DateTime.Now;
+
+                    //データバインド
+                    BindData();
+
                 }
                 else
                 {
@@ -1518,7 +1559,11 @@ namespace WhereEver
                 ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, SessionManager.User.M_User.name1.Trim(), "勤怠関連申請");
                 lbluid.Text = uid;
 
-            } else {
+                //データバインド
+                BindData();
+
+            }
+            else {
 
                 //UUID取得
                 string uid = lbluid.Text;
@@ -1530,6 +1575,10 @@ namespace WhereEver
                     ShinseiLog.SetT_Shinsei_B_DiligenceUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, lblDiligenceClassification1.Text, lblDiligenceDateA1.Text, lblDiligenceDateA2.Text, lblDiligenceDateB1.Text, lblDiligenceDateB2.Text, Label_Diligence_because.Text, Label_Diligence_ps.Text);
                     ShinseiLog.SetT_Shinsei_MainUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid);
                     lbl_SaveResult2.Text = "Save As: " + DateTime.Now;
+
+                    //データバインド
+                    BindData();
+
                 }
                 else
                 {
@@ -1596,7 +1645,11 @@ namespace WhereEver
                 ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id, uid.Trim(), SessionManager.User.M_User.name1.Trim(), "立替金明細表申請");
                 lbluid.Text = uid;
 
-            } else {
+                //データバインド
+                BindData();
+
+            }
+            else {
 
                 //UUID取得
                 string uid = lbluid.Text;
@@ -1610,7 +1663,11 @@ namespace WhereEver
                     ShinseiLog.SetT_Shinsei_MainUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid);
                     lbl_SaveResult3.Text = "Save As: " + DateTime.Now;
 
-                } else {
+                    //データバインド
+                    BindData();
+
+                }
+                else {
 
                     //UUIDエラー
                     lbl_SaveResult3.Text = "Save Failed E2: " + DateTime.Now;
@@ -1624,14 +1681,58 @@ namespace WhereEver
         }
 
         /// <summary>
+        /// データバインドを実行します。
+        /// </summary>
+        protected void BindData()
+        {
+            //データソースを手動で入れる場合
+            //例：GridView1.DataSource = Session["TaskTable"];
+
+            //データバインド
+            GridView1.DataBind();
+
+
+            int args = int.Parse(Session["args"].ToString());
+
+            //データバインド後に再度色付けしようとすると新規行の追加でずれる。
+            //データバインド前に行うと色が初期化されるため何の意味もない。
+            //  ↓
+            //★ShinseiClassからGet参照してuidが一致する列番号を取得し、int argsに代入すればできそう。
+
+            //SQLで連番を作成し、Rowをロードできるようにする。
+
+            //ROW_NUMBER() OVER(ORDER BY {並びかえる列} ASC/DESC)
+            //{並びかえる列}を昇順・降順に並び替え、連番（順位）をふる。
+
+            //ROW_NUMBER() OVER(PARTITION BY {グループ化する列} ORDER BY {並びかえる列} ASC/DESC)
+            //{並びかえる列}を昇順・降順に並び替え、グループごとに連番（順位）をふる。
+
+
+            //★もしくは、uidが一致するまで上から順番にfor文で検索する。
+            //　項目が増えたときに重くなりそうだけれども、SQLなしでも簡単に実装できる。
+            //　項目が増えることを前提にするなら実装しないほうが安定する。
+
+            /*
+            if (Session["args"].ToString() != "null")
+            {
+                //GridView1の色を変えた色を再度色付けする
+                int resetargs = int.Parse(Session["args"].ToString());
+                GridView1.Rows[resetargs].BackColor = System.Drawing.Color.AliceBlue;
+            }
+            */
+
+            return;
+        }
+
+        /// <summary>
         /// リスト更新ボタンが押されたときの処理です。
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void Button_reload_Click(object sender, EventArgs e)
         {
-            //レスポンスリダイレクト
-            Response.Redirect("Shinsei.aspx");
+            //データバインド
+            BindData();
         }
 
         protected void Button_Datalist_Open_Click(object sender, EventArgs e)
