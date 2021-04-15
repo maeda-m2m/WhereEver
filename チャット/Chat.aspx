@@ -34,7 +34,6 @@
                 <Columns>
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
                         <HeaderStyle Wrap="true"/>
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="50px" CssClass="scdl" />
                         <ItemTemplate>
                             <asp:Label ID="No" runat="server" Text=""></asp:Label>
                         </ItemTemplate>
@@ -42,15 +41,13 @@
 
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="50px" CssClass="scdl" />
                         <ItemTemplate>
-                            <asp:Label ID="ID" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="ID" runat="server" Text="" ForeColor="#00ff00"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="200px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="500px" CssClass="scdl" />
                         <ItemTemplate>
                             <asp:Label ID="Naiyou" runat="server" Text=""></asp:Label>
                         </ItemTemplate>
@@ -58,12 +55,9 @@
 
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="50px" CssClass="scdl" />
                         <ItemTemplate>
                             <asp:Label ID="Date" runat="server" Text=""></asp:Label>
                         </ItemTemplate>
-                            
-                        
                     </asp:TemplateColumn>
                     <asp:ButtonColumn 
                          ButtonType="LinkButton" Text="削除"  CommandName="Delete" />
@@ -79,6 +73,7 @@
                  <asp:TextBox ID="TextBox1" runat="server" Width="180px"></asp:TextBox>
                  &nbsp;&nbsp;
                  <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
+                    <asp:Label ID="Label2" runat="server" Text="" ></asp:Label>
                 </p>
                 <p>
                     <asp:Button ID="Update" runat="server" Text="更新" CssClass="Button-style" OnClick="Update_Click"/>

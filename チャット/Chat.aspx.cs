@@ -46,7 +46,7 @@ namespace WhereEver
 
                 No.Text = dr.No.ToString();
 
-                Name.Text = "<font color=#16ba00>" + dr.Name + "</font>";
+                Name.Text = dr.Name;
 
                 Date.Text = "<font size=1px>" + dr.Date.ToShortTimeString() + "</font>";
 
@@ -86,21 +86,30 @@ namespace WhereEver
         protected void ChatArea_ItemCommand(object source, DataGridCommandEventArgs e)
         {
             Label Cno = (Label)e.Item.Cells[0].FindControl("No");
+            Label Cname = (Label)e.Item.Cells[1].FindControl("ID");
             string Cid = Cno.Text;
-            switch (((LinkButton)e.CommandSource).CommandName)
+            string CnameNow = Cname.Text.Trim();
+            string nameNow = SessionManager.User.M_User.name1;
+            if (CnameNow == nameNow) { 
+                switch (((LinkButton)e.CommandSource).CommandName)
+                {
+
+                    case "Delete":
+                        Class.Chat.DeleteChat(Cid);
+                        break;
+
+                    // Add other cases here, if there are multiple ButtonColumns in 
+                    // the DataGrid control.
+
+                    default:
+                        // Do nothing.
+                        break;
+
+                }
+            }
+            else
             {
-
-                case "Delete":
-                    Class.Chat.DeleteChat(Cid);
-                    break;
-
-                // Add other cases here, if there are multiple ButtonColumns in 
-                // the DataGrid control.
-
-                default:
-                    // Do nothing.
-                    break;
-
+                Label2.Text = "他の人のコメントは削除できません！";
             }
             Create();
         }
