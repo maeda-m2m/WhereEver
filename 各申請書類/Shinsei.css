@@ -23,9 +23,31 @@
 
 #Wrap {
     background-color: #fff;
-    width: 1280px;
-    margin-left: 300px;
+    width: 1280px; /*1280px か 100%*/
+    margin-left: 300px; /*ここは余白をつけてもよい*/
     margin-right: 300px;
+    margin-bottom: 100px; /*印刷ビューとの間の余白（PrintWrap側のmargin-topで設定すると印刷プレビューがずれる）*/
+}
+
+#PrintWrap1 {
+    background-color: #fff;
+    width: 680px;
+    margin-left: 0px; /*左辺に大きな余白をつけると印刷プレビューが崩れてしまう*/
+    margin-right: 0px;
+}
+
+#PrintWrap2 {
+    background-color: #fff;
+    width: 680px;
+    margin-left: 0px; /*左辺に大きな余白をつけると印刷プレビューが崩れてしまう*/
+    margin-right: 0px;
+}
+
+#PrintWrap3 {
+    background-color: #fff;
+    width: 1380px;
+    margin-left: 0px; /*左辺に大きな余白をつけると印刷プレビューが崩れてしまう*/
+    margin-right: 0px;
 }
 
 
@@ -52,7 +74,7 @@ h1 {
     font-family: 'MS Mincho';
     width: 500px;
     height: 800px;
-    margin-left: 80px;
+    margin-left: 100px;
 }
 
 #name1 {
@@ -78,7 +100,7 @@ h1 {
 .hanko2 {
     border: 1px solid #000000;
     width: 50px;
-    height: 70px;
+    height: 45px;
 }
 
 
@@ -133,7 +155,7 @@ h1 {
     font-family: 'MS Mincho';
     width: 500px;
     height: 800px;
-    margin-left: 80px;
+    margin-left: 100px;
 }
 
 #Tatekaetop {
@@ -154,7 +176,8 @@ h1 {
     font-family: 'MS Mincho';
     width: 1280px;
     height: auto;
-    margin-left: 80px;
+    margin-left: 40px;
+    margin-right: 40px;
     border: 1px solid #000000;
     border-collapse: collapse;
 }
@@ -300,6 +323,9 @@ h1 {
 
 #fotter {
     margin-left: 80px;
+    margin-top: 20px;
+    width: 700px;
+    background-color: #fff;
 }
 
 .btn-flat-border {

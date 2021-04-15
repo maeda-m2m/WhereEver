@@ -27,11 +27,11 @@
             </table>
         </div>
 
-        <div id="Wrap">
+        <div id="Wrap" class="noprint">
           <asp:Panel ID="Panel0" runat="server" CssClass="noprint">
                        <p>各種申請情報を管理できます。</p>
-                       <p>※リストを更新すると編集中のデータは破棄されます！</p>
-                       <p><asp:Button ID="Button_reload" CssClass="btn-flat-border" runat="server" Text="リスト更新" OnClick="Button_reload_Click" /></p>
+                       <p>※リストを更新または削除すると、編集中のデータは破棄されます！</p>
+                       <p><asp:Button ID="Button_reload" CssClass="btn-flat-border" runat="server" Text="リスト更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
 
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
                 <Columns>
@@ -42,11 +42,11 @@
                     <asp:BoundField DataField="DateTime" HeaderText="発行日" SortExpression="DateTime" />
                     <asp:BoundField DataField="LastUpdate" HeaderText="最終更新日" ReadOnly="True" SortExpression="LastUpdate" />
 
-                    <asp:ButtonField ButtonType="Button" Text="削除" ControlStyle-CssClass="btn-flat-border"  HeaderText="削除" CommandName="Remove" >
+                    <asp:ButtonField ButtonType="Button" Text="削除" ControlStyle-CssClass="btn-flat-border"  HeaderText="削除" CommandName="Remove" CausesValidation="False" >
                     <ControlStyle CssClass="btn-flat-border" />
                     </asp:ButtonField>
 
-                    <asp:ButtonField ButtonType="Button" Text="修正" ControlStyle-CssClass="btn-flat-border"  HeaderText="修正" CommandName="Reform" >
+                    <asp:ButtonField ButtonType="Button" Text="修正" ControlStyle-CssClass="btn-flat-border"  HeaderText="修正" CommandName="Reform" CausesValidation="False" >
                     <ControlStyle CssClass="btn-flat-border" />
                     </asp:ButtonField>
 
@@ -86,9 +86,11 @@
             <asp:Panel ID="Panel1" runat="server" CssClass="noprint">
                 <table id="sinsei">
                     <tr>
-                            <td class="title">申請書類</td>
+                            <td class="title">
+                                <a name="Shinsei_DropDown">申請書類</a>                              
+                            </td>
                             <td class="text">
-                                <asp:DropDownList ID="DropDownList1" runat="server" OnTextChanged="DropDownList_Master_SelectionChanged" AutoPostBack="True">
+                                <asp:DropDownList ID="DropDownList1" runat="server" OnTextChanged="DropDownList_Master_SelectionChanged" AutoPostBack="True" PostBackUrl="#Shinsei_DropDown" CausesValidation="False" >
                                     <asp:ListItem>【申請書類を選択】</asp:ListItem>
                                     <asp:ListItem>物品購入申請</asp:ListItem>
                                     <asp:ListItem>勤怠関連申請</asp:ListItem>
@@ -180,11 +182,11 @@
                             </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
-                            <asp:Button ID="Button1" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Button1_Click" />
-                            <asp:Button ID="Button_Save1" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_1" />
-                            <asp:Button ID="Button_SaveAs1" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_1" />
-                            <asp:Button ID="BtnBackA1" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" />
+                        <td colspan="2"><a name=" Buppin_Button"></a>
+                            <asp:Button ID="Button1" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Button1_Click" PostBackUrl="#Buppin_Button" />
+                            <asp:Button ID="Button_Save1" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_1" PostBackUrl="#Buppin_Button" />
+                            <asp:Button ID="Button_SaveAs1" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_1" PostBackUrl="#Buppin_Button" />
+                            <asp:Button ID="BtnBackA1" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" PostBackUrl="#Buppin_Button" />
                         </td>
                     </tr>
                 </table>
@@ -298,11 +300,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
-                            <asp:Button ID="Button2" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Button2_Click" />
-                            <asp:Button ID="Button_Save2" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_2" />
-                            <asp:Button ID="Button_SaveAs2" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_2" />
-                            <asp:Button ID="btnBack_A2" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" />
+                        <td colspan="2"><a name="#Diligence_Button"></a>
+                            <asp:Button ID="Button2" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Button2_Click" PostBackUrl="#Diligence_Button" />
+                            <asp:Button ID="Button_Save2" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_2" PostBackUrl="#Diligence_Button" />
+                            <asp:Button ID="Button_SaveAs2" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_2" PostBackUrl="#Diligence_Button" />
+                            <asp:Button ID="btnBack_A2" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" PostBackUrl="#Diligence_Button" />
                         </td>
                     </tr>
                 </table>
@@ -448,19 +450,20 @@
 
                     
                     <tr>
-                        <td colspan="3">
-                            <asp:Button ID="Button3" CssClass="btn-flat-border" runat="server" Text="挿入" OnClick="Button3_Click" />
-                            <asp:Button ID="Button6" CssClass="btn-flat-border" runat="server" Text="初期化" OnClick="Button4_Click" CausesValidation="False" />
-                            <asp:Button ID="Button8" CssClass="btn-flat-border" runat="server" Text="UNDO" OnClick="Button_Undo" CausesValidation="False" />
-                            <asp:Button ID="Button7" CssClass="btn-flat-border" runat="server" Text="印刷ビュー" OnClick="Button5_Click" CausesValidation="False" />
-                            <asp:Button ID="Button_Save3" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_3" />
-                            <asp:Button ID="Button_SaveAs3" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_3" />
-                            <asp:Button ID="Button4" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" />
+                        <td colspan="3"><a name ="Tatekae_Button"></a>
+                            <asp:Button ID="Button3" CssClass="btn-flat-border" runat="server" Text="挿入" OnClick="Button3_Click" PostBackUrl="#Tatekae_Button" />
+                            <asp:Button ID="Button6" CssClass="btn-flat-border" runat="server" Text="初期化" OnClick="Button4_Click" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
+                            <asp:Button ID="Button8" CssClass="btn-flat-border" runat="server" Text="UNDO" OnClick="Button_Undo" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
+                            <asp:Button ID="Button7" CssClass="btn-flat-border" runat="server" Text="印刷ビュー" OnClick="Button5_Click" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
+                            <asp:Button ID="Button_Save3" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="SaveButton_Click_3" PostBackUrl="#Tatekae_Button" />
+                            <asp:Button ID="Button_SaveAs3" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="SaveAsButton_Click_3" PostBackUrl="#Tatekae_Button" />
+                            <asp:Button ID="Button4" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
                         </td>
                     </tr>
                 </table>
             </asp:Panel>
 
+            </div><%-- Wrap ここまでプリントしない --%>
 
 
 
@@ -496,7 +499,7 @@
 
 
 
-
+            <div id ="PrintWrap1"><%-- PrintWrap ここからプリントする --%>
 
             <asp:Panel ID="Panel4" runat="server">
                 <table id="buppin">
@@ -624,7 +627,12 @@
                     </tr>
                 </table>
             </asp:Panel>
+          </div>
+
             <%-- lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll --%>
+
+
+          <div id ="PrintWrap2">
             <asp:Panel ID="Panel5" runat="server">
                 <table id="Todoke">
                     <tr>
@@ -716,16 +724,13 @@
                 </table>
 
             </asp:Panel>
+         </div>
 
 
+                          <%-- lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll --%>
 
 
-
-
-
-
-
-
+          <div id ="PrintWrap3">
                <asp:Panel ID="Panel7" runat="server">
                 <table id="TatekaeTodoke">
                     <tr>
@@ -790,19 +795,27 @@
                 </table>
             </asp:Panel>--%>
 
-            <asp:Panel ID="Panel_Print" runat="server" CssClass="noprint">
+                     </div><%-- PrintWrap ここまでプリントする（ボタンは個別にプリントしない） --%>
 
-                <div id="fotter">
+                                          <%-- lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll --%>
+
+<a name="Print_Button"></a>
+       <asp:Panel ID="Panel_Print" runat="server" CssClass="noprint">
+             <div id="fotter">
                 <p class="noprint">
                     <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
-                    <asp:Button ID="Btn_BackMaster" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="BackButton_Click" CausesValidation="False" />
-                    　※印刷プレビューには申請書のデータが反映されます。
+                    <asp:Button ID="Btn_BackMaster" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="BackButton_Click" CausesValidation="False" PostBackUrl="#Print_Button" />
+                    ※印刷ビューに表示されているものが印刷されます。
                 </p>
-                </div>
+             </div>
+       </asp:Panel>
 
-            </asp:Panel>
 
-        </div>
+
+
+
+                                          <%-- lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll --%>
+
     </form>
 </body>
 </html>
