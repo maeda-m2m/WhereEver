@@ -45,7 +45,7 @@
     <form id="form1" runat="server">
         <table>
             <tr>
-                <td>
+                <td id="menu">
                     <Menu:c_menu ID="m" runat="server"></Menu:c_menu>
                 </td>
             </tr>

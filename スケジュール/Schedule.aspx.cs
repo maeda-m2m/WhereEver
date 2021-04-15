@@ -638,26 +638,26 @@ namespace WhereEver
             var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
             var dl = dd.Rows[0] as DATASET.DataSet.T_ScheduleRow;
             dl[0] = Pid;
-            UpdateProject(dl,connection);
+            //UpdateProject(dl);
             ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataBind();
         }
 
-        internal static void UpdateProject(DATASET.DataSet.T_ScheduleRow dt, SqlConnection connection)
+        internal static void UpdateProject(DATASET.DataSet.T_ScheduleRow dl, SqlConnection connection)
         {
             //    string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
             using (connection)
             {
                 string sql = "UPDATE T_Schedule SET date=@date WHERE date = '2021-04-12 10:00:00.00'";
 
-                var da = new SqlDataAdapter(sql, connection); 
+                var dt = new SqlDataAdapter(sql, connection); 
 
-                da.SelectCommand.Parameters.AddWithValue("@date", dt.date);
+                dt.SelectCommand.Parameters.AddWithValue("@date", dl.date);
 
                 try
                 {
                     connection.Open();
-                    da.SelectCommand.ExecuteNonQuery();
+                    dt.SelectCommand.ExecuteNonQuery();
                 }
                 catch
                 {
