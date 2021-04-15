@@ -42,7 +42,6 @@
 
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="50px" CssClass="scdl" />
                         <ItemTemplate>
                             <asp:Label ID="ID" runat="server" Text=""></asp:Label>
                         </ItemTemplate>
@@ -79,6 +78,7 @@
                  <asp:TextBox ID="TextBox1" runat="server" Width="180px"></asp:TextBox>
                  &nbsp;&nbsp;
                  <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
+                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
                 </p>
                 <p>
                     <asp:Button ID="Update" runat="server" Text="更新" CssClass="Button-style" OnClick="Update_Click"/>
