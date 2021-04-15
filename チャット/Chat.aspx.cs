@@ -110,7 +110,7 @@ namespace WhereEver
             }
             else
             {
-                Label2.Text = "他の人のコメントをいじるな";
+                Label2.Text = "他の人のコメントをいじるな!";
             }
             Create();
         }
