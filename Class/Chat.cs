@@ -31,5 +31,26 @@ namespace WhereEver.Class
                 connection.Close();
             }
         }
+
+        internal static void UpdateChat(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText = "select * from T_Chat order by Date";
+            DATASET.DataSet.T_ChatDataTable dt = new DataSet.T_ChatDataTable();
+            da.Fill(dt);
+
+            da.UpdateCommand = (new SqlCommandBuilder(da)).GetUpdateCommand();
+            SqlTransaction sql = null;
+            sqlConnection.Open();
+            sql = sqlConnection.BeginTransaction();
+            da.SelectCommand.Transaction = da.UpdateCommand.Transaction = sql;
+            for (int i = 0; i < dt.Count; i++)
+            {
+                dt[i].No = i + 1;
+            }
+            da.Update(dt);
+            sql.Commit();
+
+        }
     }
 }

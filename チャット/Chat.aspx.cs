@@ -96,6 +96,7 @@ namespace WhereEver
 
                     case "Delete":
                         Class.Chat.DeleteChat(Cid);
+                        Class.Chat.UpdateChat(Global.GetConnection());
                         break;
 
                     // Add other cases here, if there are multiple ButtonColumns in 
