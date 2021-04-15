@@ -39,7 +39,7 @@
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
-                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
+                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
                         <ItemTemplate>
                             <asp:Label ID="ID" runat="server" Text="" ForeColor="#000080"></asp:Label>
