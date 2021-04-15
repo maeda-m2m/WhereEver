@@ -30,6 +30,9 @@
         <div id="Wrap">
           <asp:Panel ID="Panel0" runat="server" CssClass="noprint">
                        <p>各種申請情報を管理できます。</p>
+                       <p>※リストを更新すると編集中のデータは破棄されます！</p>
+                       <p><asp:Button ID="Button_reload" CssClass="btn-flat-border" runat="server" Text="リスト更新" OnClick="Button_reload_Click" /></p>
+
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
@@ -54,7 +57,7 @@
                 ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>"
                 SelectCommand="SELECT * FROM [T_Shinsei_Main]  WHERE ([id] = @id) ORDER BY ShinseiSyubetsu ASC, LastUpdate DESC"
                 UpdateCommand="UPDATE [T_Shinsei_Main] SET[LastUpdate] = @LastUpdate WHERE([id] = @id, [uid] = @uid)"
-                DeleteCommand="DELETE * FROM [T_Shinsei_Main]  WHERE ([id] = @id, [uid] = @uid)">
+                DeleteCommand="DELETE FROM [T_Shinsei_Main]  WHERE ([id] = @id, [uid] = @uid)">
                 <UpdateParameters>
                        <asp:ControlParameter Name="id" ControlId="lblResult" PropertyName="Text"/>
                 </UpdateParameters>
