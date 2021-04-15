@@ -9,14 +9,7 @@
     <link href="PIchiran.css" type="text/css" rel="stylesheet" />
     <title></title>
     
-    <style type="text/css">
-        .auto-style1 {
-            width: 200px;
-            margin-bottom: 3px;
-        }
-    </style>
-    
-</head>
+    </head>
 <body>
     <form id="All" runat="server">
         <div class="form">
@@ -155,7 +148,7 @@
                     <TodayDayStyle BackColor="#CCCCCC" />
                         </asp:Calendar>
 
-                    </td>
+                        未定の場合はそのまま保存してください。</td>
                     <td class="cell">
 
                         &nbsp;</td>
