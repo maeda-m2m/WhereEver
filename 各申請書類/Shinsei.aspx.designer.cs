@@ -33,6 +33,24 @@ namespace WhereEver
         protected global::WhereEver.MenuControl c;
 
         /// <summary>
+        /// Panel00 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel00;
+
+        /// <summary>
+        /// Button_list_open コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_list_open;
+
+        /// <summary>
         /// Panel0 コントロール。
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel0;
+
+        /// <summary>
+        /// Button_list_close コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_list_close;
 
         /// <summary>
         /// Button_reload コントロール。
@@ -249,6 +276,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
+        /// Button_Buppin_Reset コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Buppin_Reset;
+
+        /// <summary>
         /// Button_Save1 コントロール。
         /// </summary>
         /// <remarks>
@@ -274,6 +310,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnBackA1;
+
+        /// <summary>
+        /// lbl_SaveResult1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_SaveResult1;
 
         /// <summary>
         /// Panel3 コントロール。
@@ -411,6 +456,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
+        /// Button_Deligence_Reset コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Deligence_Reset;
+
+        /// <summary>
         /// Button_Save2 コントロール。
         /// </summary>
         /// <remarks>
@@ -436,6 +490,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBack_A2;
+
+        /// <summary>
+        /// lbl_SaveResult2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_SaveResult2;
 
         /// <summary>
         /// Panel6 コントロール。
@@ -697,6 +760,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button4;
+
+        /// <summary>
+        /// lbl_SaveResult3 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_SaveResult3;
 
         /// <summary>
         /// Panel4 コントロール。
