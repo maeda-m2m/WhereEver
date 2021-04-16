@@ -86,7 +86,18 @@ namespace WhereEver
 
             dr.title = TextBox1.Text;
 
-            dr.name = DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString();
+
+
+            dr.name = "";
+
+            foreach (ListItem item in CheckBoxList1.Items)
+            {
+                if (item.Selected)
+                {
+                    string a = item.Value;
+                    dr.name += a + " ";
+                }
+            }
 
             DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
 
@@ -270,7 +281,7 @@ namespace WhereEver
                     {
                         string A23 = Scdl3.Items[4].Cells[3].Text;
                         A23 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
-                        Scdl3.Items[1].Cells[1].Text = A23.Replace("\r\n", "<br>");
+                        Scdl3.Items[4].Cells[3].Text = A23.Replace("\r\n", "<br>");
                     }
                     if (week == "木")
                     {

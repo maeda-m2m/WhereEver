@@ -38,6 +38,7 @@
             height: 83px;
             width: 752px;
         }
+
         .auto-style12 {
             margin-left: 115px;
         }
@@ -131,9 +132,12 @@
                     </tr>
                     <tr>
                         <td runat="server" class="Title">
+
                             <p>名前</p>
+
                             <td class="auto-style8">
-                                <asp:DropDownList ID="DropDownList2" runat="server">
+
+                                <asp:CheckBoxList ID="CheckBoxList1" runat="server">
                                     <asp:ListItem></asp:ListItem>
                                     <asp:ListItem>石岡</asp:ListItem>
                                     <asp:ListItem>木村</asp:ListItem>
@@ -150,61 +154,8 @@
                                     <asp:ListItem>坂田</asp:ListItem>
                                     <asp:ListItem>一番ケ瀬</asp:ListItem>
                                     <asp:ListItem>髙栁社長</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:DropDownList ID="DropDownList3" runat="server">
-                                    <asp:ListItem></asp:ListItem>
-                                    <asp:ListItem>石岡</asp:ListItem>
-                                    <asp:ListItem>木村</asp:ListItem>
-                                    <asp:ListItem>佐藤</asp:ListItem>
-                                    <asp:ListItem>白井</asp:ListItem>
-                                    <asp:ListItem>寺島</asp:ListItem>
-                                    <asp:ListItem>前田</asp:ListItem>
-                                    <asp:ListItem>三浦</asp:ListItem>
-                                    <asp:ListItem>三津谷</asp:ListItem>
-                                    <asp:ListItem>柳沢</asp:ListItem>
-                                    <asp:ListItem>張</asp:ListItem>
-                                    <asp:ListItem>鯉淵</asp:ListItem>
-                                    <asp:ListItem>坂口</asp:ListItem>
-                                    <asp:ListItem>坂田</asp:ListItem>
-                                    <asp:ListItem>一番ケ瀬</asp:ListItem>
-                                    <asp:ListItem>髙栁社長</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:DropDownList ID="DropDownList4" runat="server">
-                                    <asp:ListItem></asp:ListItem>
-                                    <asp:ListItem>石岡</asp:ListItem>
-                                    <asp:ListItem>木村</asp:ListItem>
-                                    <asp:ListItem>佐藤</asp:ListItem>
-                                    <asp:ListItem>白井</asp:ListItem>
-                                    <asp:ListItem>寺島</asp:ListItem>
-                                    <asp:ListItem>前田</asp:ListItem>
-                                    <asp:ListItem>三浦</asp:ListItem>
-                                    <asp:ListItem>三津谷</asp:ListItem>
-                                    <asp:ListItem>柳沢</asp:ListItem>
-                                    <asp:ListItem>張</asp:ListItem>
-                                    <asp:ListItem>鯉淵</asp:ListItem>
-                                    <asp:ListItem>坂口</asp:ListItem>
-                                    <asp:ListItem>坂田</asp:ListItem>
-                                    <asp:ListItem>一番ケ瀬</asp:ListItem>
-                                    <asp:ListItem>髙栁社長</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:DropDownList ID="DropDownList5" runat="server">
-                                    <asp:ListItem></asp:ListItem>
-                                    <asp:ListItem>石岡</asp:ListItem>
-                                    <asp:ListItem>木村</asp:ListItem>
-                                    <asp:ListItem>佐藤</asp:ListItem>
-                                    <asp:ListItem>白井</asp:ListItem>
-                                    <asp:ListItem>寺島</asp:ListItem>
-                                    <asp:ListItem>前田</asp:ListItem>
-                                    <asp:ListItem>三浦</asp:ListItem>
-                                    <asp:ListItem>三津谷</asp:ListItem>
-                                    <asp:ListItem>柳沢</asp:ListItem>
-                                    <asp:ListItem>張</asp:ListItem>
-                                    <asp:ListItem>鯉淵</asp:ListItem>
-                                    <asp:ListItem>坂口</asp:ListItem>
-                                    <asp:ListItem>坂田</asp:ListItem>
-                                    <asp:ListItem>一番ケ瀬</asp:ListItem>
-                                    <asp:ListItem>髙栁社長</asp:ListItem>
-                                </asp:DropDownList>
+                                </asp:CheckBoxList>
+
                             </td>
                         </td>
                     </tr>
