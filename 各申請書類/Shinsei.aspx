@@ -31,14 +31,15 @@
 
          <asp:Panel ID="Panel00" runat="server" CssClass="noprint">
           <p><asp:Button ID="Button_list_open" CssClass="btn-flat-border" runat="server" Text="リストを開く" OnClick="Button_Datalist_Open_Click" CausesValidation="False" /></p>
+          <p><asp:Label ID="lblTop_00" runat="server" Text="各種申請情報を作成または管理できます。"></asp:Label></p>
          </asp:Panel>
 
           <asp:Panel ID="Panel0" runat="server" CssClass="noprint">
 
                        <p><asp:Button ID="Button_list_close" CssClass="btn-flat-border" runat="server" Text="リストを閉じる" OnClick="Button_Datalist_Close_Click" CausesValidation="False" />
-                       <asp:Button ID="Button_reload" CssClass="btn-flat-border" runat="server" Text="リスト更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
+                       <asp:Button ID="Button_reload" CssClass="btn-flat-border" runat="server" Text="リスト手動更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
 
-                       <p>各種申請情報を管理できます。</p>
+                       <p><asp:Label ID="lblTop_0" runat="server" Text="各種申請情報を作成または管理できます。"></asp:Label></p>
 
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
                 <Columns>
@@ -79,15 +80,20 @@
 
 
 
+                       <p><asp:Button ID="Button_list_close_2" CssClass="btn-flat-border" runat="server" Text="リストを閉じる" OnClick="Button_Datalist_Close_Click" CausesValidation="False" />
+                       <asp:Button ID="Button_reload_2" CssClass="btn-flat-border" runat="server" Text="リスト手動更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
+
+            </asp:Panel>
+
+
+            <%-- 共通 --%>
            <p>
             <asp:Label ID="lblResult" runat="server" Text="null" Visible="False"></asp:Label>
            </p>
            <p>
             選択中uid: <asp:Label ID="lbluid" runat="server" Text="null"></asp:Label>
            </p>
-
-            </asp:Panel>
-
+            <%-- 共通 --%>
 
 
             <asp:Panel ID="Panel1" runat="server" CssClass="noprint">
