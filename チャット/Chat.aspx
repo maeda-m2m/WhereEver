@@ -62,7 +62,6 @@
                     <asp:ButtonColumn 
                          ButtonType="LinkButton" Text="削除"  CommandName="Delete" />
                 </Columns>
-
             </asp:DataGrid>
             </table>
         </div>
