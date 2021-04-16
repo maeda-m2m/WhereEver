@@ -23,19 +23,12 @@ namespace WhereEver
                 Create();
                 Panel1.Visible = false;
                 Create3();
-                //Scdl3.Columns[0].ItemStyle.Wrap = true;
-                //Scdl3.Columns[1].ItemStyle.Wrap = true;
-                //Scdl3.Columns[2].ItemStyle.Wrap = true;
-                //Scdl3.Columns[3].ItemStyle.Wrap = true;
-                //Scdl3.Columns[4].ItemStyle.Wrap = true;
+                Scdl3.Columns[0].ItemStyle.Wrap = true;
+                Scdl3.Columns[1].ItemStyle.Wrap = true;
+                Scdl3.Columns[2].ItemStyle.Wrap = true;
+                Scdl3.Columns[3].ItemStyle.Wrap = true;
+                Scdl3.Columns[4].ItemStyle.Wrap = true;
             }
-
-            //ScdlList.EditCommand += 
-            //    new DataGridCommandEventHandler(this.ScdlList_Edit);
-            ScdlList.CancelCommand +=
-                new DataGridCommandEventHandler(this.ScdlList_CancelCommand);
-            ScdlList.UpdateCommand +=
-                new DataGridCommandEventHandler(this.ScdlList_UpdateCommand);
         }
 
         //スケジュールリストにデータを格納　→　ScdlList_ItemDataBound　に移動
@@ -82,37 +75,28 @@ namespace WhereEver
             var dr = dt.NewT_ScheduleRow();
 
             string t = DropDownList1.SelectedValue;
-            //選択したリストの名前をtに入れる
 
             string f = (Label1.Text) + " " + (DropDownList1.SelectedValue);
-            //fにLabel1の何月何日何時何分を入れる
 
             DateTime dd = DateTime.Parse(f);
-            //fを日付型に変換しddに入れる
 
             dr.date = dd;
-            //ddをdate列にいれる
 
             dr.time = t;
-            //time列にtを入れる
 
             dr.title = TextBox1.Text;
 
             dr.name = DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString();
-            //選択した名前をname列に入れる
 
             DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
-            //SdlNoの最大値を持ってくるためだけのコード（MaxSdlNo）をClass.1に作る
 
             int no = dl.SdlNo;
 
             dr.SdlNo = no + 1;
-            //持ってきた最大値が10であれば＋１して11になる
 
             dt.AddT_ScheduleRow(dr);
 
             Class1.InsertList(dt, Global.GetConnection());
-            //Class1のInsertListで行を追加
 
             Create();
             Panel1.Visible = false;
@@ -538,8 +522,7 @@ namespace WhereEver
                 //Label jikan = e.Item.FindControl("jikan") as Label;
                 //Label title = e.Item.FindControl("taitoru") as Label;
                 //Label name = e.Item.FindControl("namae") as Label;
-
-                ////Label No = e.Item.FindControl("nanba") as Label;
+                //Label No = e.Item.FindControl("nanba") as Label;
 
                 //if (!dr.IsdateNull())
                 //    date.Text = dr.date.ToString();
@@ -554,14 +537,14 @@ namespace WhereEver
                 //    name.Text = dr.name;
 
                 ////No.Text = dr.SdlNo.ToString();
-                ////値を隠している
 
 
 
-                e.Item.Cells[0].Text = dr.date.ToString();
+                e.Item.Cells[0].Text = dr.date.ToString() + " " + dr.date.ToString("dddd");
                 e.Item.Cells[1].Text = dr.time.ToString();
                 e.Item.Cells[2].Text = dr.title.ToString();
                 e.Item.Cells[3].Text = dr.name.ToString();
+                e.Item.Cells[4].Text = dr.SdlNo.ToString();
             }
         }
 
@@ -585,8 +568,6 @@ namespace WhereEver
             else
             {
 
-                //SelectCommand = "SELECT [id], [pw], [name], [name1] FROM [M_User] WHERE ([id] = @id)"
-                //UpdateCommand = "UPDATE [M_User] SET [pw] = @pw, [name] = @name, [name1] = @name1 WHERE ([id] = @id)" >
             }
         }
 
@@ -618,60 +599,95 @@ namespace WhereEver
 
         }
 
-        //DgPIchiran.EditItemIndex = e.Item.ItemIndex;
-        //DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
-        //DgPIchiran.DataBind();
 
         protected void ScdlList_CancelCommand(object source, DataGridCommandEventArgs e)
         {
             ScdlList.EditItemIndex = -1;
             ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataBind();
+
+            Create();
+            Create3();
         }
 
         protected void ScdlList_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
-            TextBox a = (TextBox)e.Item.Cells[0].Controls[0];
-            string Pid = a.Text;
+            TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
+            TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
+            TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
+            TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
+            TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
+            string b1 = a1.Text.Trim();
+            string b2 = a2.Text.Trim();
+            string b3 = a3.Text.Trim();
+            string b4 = a4.Text.Trim();
+            string b5 = a5.Text.Trim();
+
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-            ScdlList.DataSource = dt;
-            var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
-            var dl = dd.Rows[0] as DATASET.DataSet.T_ScheduleRow;
-            dl[0] = Pid;
-            //UpdateProject(dl);
+            int a = e.Item.ItemIndex;
+            var dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;
+
+            dr[0] = b1.Trim();
+            dr[1] = b2.Trim();
+            dr[2] = b3.Trim();
+            dr[3] = b4.Trim();
+            dr[4] = b5.Trim();
+
+            UpdateProject(dr, Global.GetConnection());
+
+            ScdlList.EditItemIndex = -1;
             ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataBind();
+
+            Create();
+            Create3();
+
         }
 
-        internal static void UpdateProject(DATASET.DataSet.T_ScheduleRow dl, SqlConnection connection)
+        private void UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)
         {
-            //    string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
-            using (connection)
             {
-                string sql = "UPDATE T_Schedule SET date=@date WHERE date = '2021-04-12 10:00:00.00'";
+                var a = new SqlCommand("", sql);
 
-                var dt = new SqlDataAdapter(sql, connection); 
+                a.CommandText = "UPDATE T_Schedule SET [date] = @date, [time] =@time, [title] = @title, [name] = @name where [SdlNo] = @SdlNo";
 
-                dt.SelectCommand.Parameters.AddWithValue("@date", dl.date);
+                a.Parameters.AddWithValue("@date", dr.date);
+                a.Parameters.AddWithValue("@time", dr.time);
+                a.Parameters.AddWithValue("@title", dr.title);
+                a.Parameters.AddWithValue("@name", dr.name);
+                a.Parameters.AddWithValue("@SdlNo", dr.SdlNo);
+
+                SqlTransaction sqltra = null;
 
                 try
                 {
-                    connection.Open();
-                    dt.SelectCommand.ExecuteNonQuery();
+                    sql.Open();
+                    sqltra = sql.BeginTransaction();
+
+                    a.Transaction = sqltra;
+
+                    a.ExecuteNonQuery();
+
+                    sqltra.Commit();
+
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    if (sqltra != null)
+                        sqltra.Rollback();
 
                 }
-
-
                 finally
-                { 
-                    connection.Close(); 
+                {
+                    sql.Close();
                 }
+                sql.Open();
+                a.ExecuteNonQuery();
+                sql.Close();
             }
         }
+
+
         protected void ScdlList_SelectedIndexChanged(object sender, EventArgs e)
         {
 

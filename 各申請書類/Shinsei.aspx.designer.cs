@@ -51,6 +51,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button_list_open;
 
         /// <summary>
+        /// lblTop_00 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTop_00;
+
+        /// <summary>
         /// Panel0 コントロール。
         /// </summary>
         /// <remarks>
@@ -78,6 +87,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button_reload;
 
         /// <summary>
+        /// lblTop_0 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTop_0;
+
+        /// <summary>
         /// GridView1 コントロール。
         /// </summary>
         /// <remarks>
@@ -94,6 +112,24 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+
+        /// <summary>
+        /// Button_list_close_2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_list_close_2;
+
+        /// <summary>
+        /// Button_reload_2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_reload_2;
 
         /// <summary>
         /// lblResult コントロール。

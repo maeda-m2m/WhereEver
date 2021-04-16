@@ -38,6 +38,9 @@
             height: 83px;
             width: 752px;
         }
+        .auto-style12 {
+            margin-left: 115px;
+        }
     </style>
 
 </head>
@@ -184,6 +187,24 @@
                                     <asp:ListItem>一番ケ瀬</asp:ListItem>
                                     <asp:ListItem>髙栁社長</asp:ListItem>
                                 </asp:DropDownList>
+                                <asp:DropDownList ID="DropDownList5" runat="server">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>石岡</asp:ListItem>
+                                    <asp:ListItem>木村</asp:ListItem>
+                                    <asp:ListItem>佐藤</asp:ListItem>
+                                    <asp:ListItem>白井</asp:ListItem>
+                                    <asp:ListItem>寺島</asp:ListItem>
+                                    <asp:ListItem>前田</asp:ListItem>
+                                    <asp:ListItem>三浦</asp:ListItem>
+                                    <asp:ListItem>三津谷</asp:ListItem>
+                                    <asp:ListItem>柳沢</asp:ListItem>
+                                    <asp:ListItem>張</asp:ListItem>
+                                    <asp:ListItem>鯉淵</asp:ListItem>
+                                    <asp:ListItem>坂口</asp:ListItem>
+                                    <asp:ListItem>坂田</asp:ListItem>
+                                    <asp:ListItem>一番ケ瀬</asp:ListItem>
+                                    <asp:ListItem>髙栁社長</asp:ListItem>
+                                </asp:DropDownList>
                             </td>
                         </td>
                     </tr>
@@ -272,7 +293,7 @@
             </asp:DataGrid>
 
         </div>
-        <table id="btn">
+        <table id="btn" class="auto-style12">
 
 
             <td class="auto-style11">
@@ -303,177 +324,37 @@
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
-                    <asp:BoundColumn DataField="date" HeaderText="日付"></asp:BoundColumn>
-
-                    <%--                    <asp:TemplateColumn HeaderText="日付" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
+                    <asp:BoundColumn DataField="date" HeaderText="日付" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="200px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" />--%>
-                    <%--<ItemTemplate>--%>
-                    <%--           <asp:Label ID="hiduke" runat="server" Text=""></asp:Label>--%>
-                    <%-- </ItemTemplate>--%>
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" />
+                    </asp:BoundColumn>
 
-                    <%--                        <EditItemTemplate>
-
-                            <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
-                                <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                                <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                                <OtherMonthDayStyle ForeColor="#999999" />
-                                <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                                <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                                <TodayDayStyle BackColor="#CCCCCC" />
-                            </asp:Calendar>
-
-                        </EditItemTemplate>--%>
-
-                    <%-- </asp:TemplateColumn>--%>
-
-                    <asp:TemplateColumn HeaderText="時間" ItemStyle-Width="100px">
+                    <asp:BoundColumn DataField="time" HeaderText="時間" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
-                        <ItemTemplate>
-                            <asp:Label ID="jikan" runat="server" Text=""></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownList5" runat="server">
-                                <asp:ListItem>9:00</asp:ListItem>
-                                <asp:ListItem>9:15</asp:ListItem>
-                                <asp:ListItem>9:30</asp:ListItem>
-                                <asp:ListItem>9:45</asp:ListItem>
-                                <asp:ListItem>10:00</asp:ListItem>
-                                <asp:ListItem>10:15</asp:ListItem>
-                                <asp:ListItem>10:30</asp:ListItem>
-                                <asp:ListItem>10:45</asp:ListItem>
-                                <asp:ListItem>11:00</asp:ListItem>
-                                <asp:ListItem>11:15</asp:ListItem>
-                                <asp:ListItem>11:30</asp:ListItem>
-                                <asp:ListItem>11:45</asp:ListItem>
-                                <asp:ListItem>12:00</asp:ListItem>
-                                <asp:ListItem>12:15</asp:ListItem>
-                                <asp:ListItem>12:30</asp:ListItem>
-                                <asp:ListItem>12:45</asp:ListItem>
-                                <asp:ListItem>13:00</asp:ListItem>
-                                <asp:ListItem>13:15</asp:ListItem>
-                                <asp:ListItem>13:30</asp:ListItem>
-                                <asp:ListItem>13:45</asp:ListItem>
-                                <asp:ListItem>14:00</asp:ListItem>
-                                <asp:ListItem>14:15</asp:ListItem>
-                                <asp:ListItem>14:30</asp:ListItem>
-                                <asp:ListItem>14:45</asp:ListItem>
-                                <asp:ListItem>15:00</asp:ListItem>
-                                <asp:ListItem>15:15</asp:ListItem>
-                                <asp:ListItem>15:30</asp:ListItem>
-                                <asp:ListItem>15:45</asp:ListItem>
-                                <asp:ListItem>16:00</asp:ListItem>
-                                <asp:ListItem>16:15</asp:ListItem>
-                                <asp:ListItem>16:30</asp:ListItem>
-                                <asp:ListItem>16:45</asp:ListItem>
-                                <asp:ListItem>17:00</asp:ListItem>
-                                <asp:ListItem>17:15</asp:ListItem>
-                                <asp:ListItem>17:30</asp:ListItem>
-                                <asp:ListItem>17:45</asp:ListItem>
-                                <asp:ListItem>18:00</asp:ListItem>
-                            </asp:DropDownList>
-                        </EditItemTemplate>
-                    </asp:TemplateColumn>
+                    </asp:BoundColumn>
 
-                    <asp:TemplateColumn HeaderText="タイトル" ItemStyle-Width="100px">
+                    <asp:BoundColumn DataField="title" HeaderText="内容" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
-                        <ItemTemplate>
-                            <asp:Label ID="taitoru" runat="server" Text=""></asp:Label>
-                            <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
-                        </EditItemTemplate>
-                    </asp:TemplateColumn>
+                    </asp:BoundColumn>
 
-                    <asp:TemplateColumn HeaderText="名前" ItemStyle-Width="100px">
+                    <asp:BoundColumn DataField="name" HeaderText="名前" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
-                        <ItemTemplate>
-                            <asp:Label ID="namae" runat="server" Text=""></asp:Label>
-                            <asp:Label ID="Label9" runat="server" Text=""></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:DropDownList ID="DropDownList2" runat="server">
-                                <asp:ListItem></asp:ListItem>
-                                <asp:ListItem>石岡</asp:ListItem>
-                                <asp:ListItem>木村</asp:ListItem>
-                                <asp:ListItem>佐藤</asp:ListItem>
-                                <asp:ListItem>白井</asp:ListItem>
-                                <asp:ListItem>寺島</asp:ListItem>
-                                <asp:ListItem>前田</asp:ListItem>
-                                <asp:ListItem>三浦</asp:ListItem>
-                                <asp:ListItem>三津谷</asp:ListItem>
-                                <asp:ListItem>柳沢</asp:ListItem>
-                                <asp:ListItem>張</asp:ListItem>
-                                <asp:ListItem>鯉淵</asp:ListItem>
-                                <asp:ListItem>坂口</asp:ListItem>
-                                <asp:ListItem>坂田</asp:ListItem>
-                                <asp:ListItem>一番ケ瀬</asp:ListItem>
-                                <asp:ListItem>髙栁社長</asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:DropDownList ID="DropDownList3" runat="server">
-                                <asp:ListItem></asp:ListItem>
-                                <asp:ListItem>石岡</asp:ListItem>
-                                <asp:ListItem>木村</asp:ListItem>
-                                <asp:ListItem>佐藤</asp:ListItem>
-                                <asp:ListItem>白井</asp:ListItem>
-                                <asp:ListItem>寺島</asp:ListItem>
-                                <asp:ListItem>前田</asp:ListItem>
-                                <asp:ListItem>三浦</asp:ListItem>
-                                <asp:ListItem>三津谷</asp:ListItem>
-                                <asp:ListItem>柳沢</asp:ListItem>
-                                <asp:ListItem>張</asp:ListItem>
-                                <asp:ListItem>鯉淵</asp:ListItem>
-                                <asp:ListItem>坂口</asp:ListItem>
-                                <asp:ListItem>坂田</asp:ListItem>
-                                <asp:ListItem>一番ケ瀬</asp:ListItem>
-                                <asp:ListItem>髙栁社長</asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:DropDownList ID="DropDownList4" runat="server">
-                                <asp:ListItem></asp:ListItem>
-                                <asp:ListItem>石岡</asp:ListItem>
-                                <asp:ListItem>木村</asp:ListItem>
-                                <asp:ListItem>佐藤</asp:ListItem>
-                                <asp:ListItem>白井</asp:ListItem>
-                                <asp:ListItem>寺島</asp:ListItem>
-                                <asp:ListItem>前田</asp:ListItem>
-                                <asp:ListItem>三浦</asp:ListItem>
-                                <asp:ListItem>三津谷</asp:ListItem>
-                                <asp:ListItem>柳沢</asp:ListItem>
-                                <asp:ListItem>張</asp:ListItem>
-                                <asp:ListItem>鯉淵</asp:ListItem>
-                                <asp:ListItem>坂口</asp:ListItem>
-                                <asp:ListItem>坂田</asp:ListItem>
-                                <asp:ListItem>一番ケ瀬</asp:ListItem>
-                                <asp:ListItem>髙栁社長</asp:ListItem>
-                            </asp:DropDownList>
-                        </EditItemTemplate>
-                    </asp:TemplateColumn>
+                    </asp:BoundColumn>
 
-                    <asp:TemplateColumn HeaderText="No." ItemStyle-Width="100px">
+                    <asp:BoundColumn DataField="SdlNo" HeaderText="番号" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
-                        <ItemTemplate>
-                            <asp:Label ID="nanba" runat="server" Text=""></asp:Label>
-                            <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateColumn>
+                    </asp:BoundColumn>
 
-                    <asp:TemplateColumn HeaderText="削除" ItemStyle-Width="100px">
-                        <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Center" Width="100px" CssClass="scdl" />
-                        <ItemTemplate>
-                            <asp:Button
-                                runat="server"
-                                ButtonType="LinkButton"
-                                Text="削除"
-                                CommandName="Delete" />
-
-                        </ItemTemplate>
-                    </asp:TemplateColumn>
+                    <asp:ButtonColumn
+                        ItemStyle-Width="100px"
+                        HeaderText="削除"
+                        ButtonType="LinkButton"
+                        Text="削除"
+                        CommandName="Delete" />
 
                     <asp:EditCommandColumn
                         HeaderText="編集"
