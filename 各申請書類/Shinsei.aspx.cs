@@ -60,23 +60,6 @@ namespace WhereEver
                 //印刷ボタンパネル
                 Panel_Print.Visible = false;
 
-                //トップのテキストを変更
-                //この方式では複数ページが取得できない
-                int cnt = GridView1.Rows.Count;
-                if(cnt >= 1)
-                {
-                    //GridView1.Rows.Countにデータが1以上存在する
-                    lblTop_0.Text = "各種申請情報を作成または管理できます。";
-                    lblTop_00.Text = lblTop_0.Text;
-                }
-                else
-                {
-                    //GridView1.Rows.Countにデータが存在しない(0)
-                    lblTop_0.Text = "あなたが作成した各種申請情報はありません。新規作成したい申請書類を選択して下さい。";
-                    lblTop_00.Text = lblTop_0.Text;
-                }
-
-
                 //日付初期化
                 if (lblSelectedDateA1.Text == "")
                 {
@@ -87,11 +70,46 @@ namespace WhereEver
                     lblSelectedDateB1.Text = DateTime.Now.ToShortDateString();
                 }
 
-            }
 
+                //トップのテキスト表示を変更
+                //この方式では複数ページが取得できない
+                int cnt1 = GridView1.Rows.Count;
+                if (cnt1 < 1)
+                {
+                    //GridViewパネル
+                    Panel0.Visible = false;
+                    Panel00.Visible = true;
+                }
+
+
+            }//!IsPostBack
+
+
+            topchange();
 
         }
 
+        /// <summary>
+        /// トップのテキストを変更します。
+        /// </summary>
+        protected void topchange()
+        {
+            //トップのテキストを変更
+            //この方式では複数ページが取得できない
+            int cnt2 = GridView1.Rows.Count;
+            if (cnt2 >= 1)
+            {
+                //GridView1.Rows.Countにデータが1以上存在する
+                lblTop_0.Text = "各種申請書類を作成または管理できます。";
+                lblTop_00.Text = lblTop_0.Text;
+            }
+            else
+            {
+                //GridView1.Rows.Countにデータが存在しない(0)
+                lblTop_0.Text = "あなたが作成した申請書類はありません。新規作成したい申請書類を選択して下さい。";
+                lblTop_00.Text = lblTop_0.Text;
+            }
+        }
 
         /// <summary>
         /// Validationを確認します。入力に問題がある場合はイベントを停止します。
@@ -1768,6 +1786,7 @@ namespace WhereEver
 
 
             //正常に終了
+            topchange();
             return;
         }
 
