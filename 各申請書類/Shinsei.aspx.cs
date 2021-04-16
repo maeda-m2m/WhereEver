@@ -153,7 +153,7 @@ namespace WhereEver
         protected void Set_Konyu_Data()
         {
 
-            name1.Text = "氏名：" + SessionManager.User.M_User.name;
+            name1.Text = "氏名：" + SessionManager.User.M_User.name1;
             DateTime dt = DateTime.Now;
             date.Text = dt.ToShortDateString();
 
@@ -186,7 +186,18 @@ namespace WhereEver
 
             StringBuilder sb = new StringBuilder(HtmlEncode(TextBox_howMany.Text).ToString());
             sb.Replace("点", "");
+            sb.Replace("0", "０");
+            sb.Replace("1", "１");
+            sb.Replace("2", "２");
+            sb.Replace("3", "３");
+            sb.Replace("4", "４");
+            sb.Replace("5", "５");
+            sb.Replace("6", "６");
+            sb.Replace("7", "７");
+            sb.Replace("8", "８");
+            sb.Replace("9", "９");
             string str = sb.ToString();
+            //----------------------
 
             rleng = Math.Min(str.Length, maxstr - 1);
             Suryo.Text = str.Substring(0, rleng) + "点";
@@ -737,9 +748,26 @@ namespace WhereEver
             int i = 0;
             int lp = 0;
 
-
+            //建て替え日
             str = TextBox_Tatekae_Date.Text;
             str = HtmlEncode(str);
+            //----------------------
+            sb = new StringBuilder(str);
+            sb.Replace("0", "０");
+            sb.Replace("1", "１");
+            sb.Replace("2", "２");
+            sb.Replace("3", "３");
+            sb.Replace("4", "４");
+            sb.Replace("5", "５");
+            sb.Replace("6", "６");
+            sb.Replace("7", "７");
+            sb.Replace("8", "８");
+            sb.Replace("9", "９");
+            sb.Replace("/", "月");
+            sb.Append("日");
+            sb.Replace("日日", "日");
+            str = sb.ToString();
+            //----------------------
             int rleng = Math.Min(str.Length, s_maxstr);
             string cell0 = str.Substring(0, rleng);
 
