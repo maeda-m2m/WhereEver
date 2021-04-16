@@ -67,7 +67,9 @@ namespace WhereEver
             {
                 string.Format("if (!confirm('{0}')) return false;", "本文が入力されていません");
             }
-            dr.Id = Label1.Text;
+           
+            dr.Id = SessionManager.User.ID; //変更
+            dr.Name = Label1.Text;
             dr.Naiyou = TextBox1.Text;
 
             DATASET.DataSet.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());
@@ -87,7 +89,7 @@ namespace WhereEver
         protected void ChatArea_ItemCommand(object source, DataGridCommandEventArgs e)
         {
             Label Cno = (Label)e.Item.Cells[0].FindControl("No");
-            Label Cname = (Label)e.Item.Cells[1].FindControl("Name");
+            Label Cname = (Label)e.Item.Cells[1].FindControl("Id"); //変更
             string Cid = Cno.Text;
             string CnameNow = Cname.Text.Trim();
             string id = SessionManager.User.M_User.id;
