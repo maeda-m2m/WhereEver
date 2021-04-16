@@ -90,10 +90,10 @@ namespace WhereEver
             {
                 if (item.Selected)
                 {
-                    dr.name = CheckBoxList1.SelectedValue;
+                    dr.name = item.Value + " ";
                 }
             }
-
+            //dr.name = item.Text;
 
             //DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString();
 
