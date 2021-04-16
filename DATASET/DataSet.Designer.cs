@@ -36,15 +36,17 @@ namespace WhereEver.DATASET {
         
         private T_Shinsei_MainDataTable tableT_Shinsei_Main;
         
-        private T_ChatDataTable tableT_Chat;
-        
         private M_UserDataTable tableM_User;
         
         private T_LoginListDataTable tableT_LoginList;
         
         private T_LogoutListDataTable tableT_LogoutList;
         
+<<<<<<< HEAD
+        private T_ChatDataTable tableT_Chat;
+=======
         private T_ScheduleDataTable tableT_Schedule;
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -92,9 +94,6 @@ namespace WhereEver.DATASET {
                 if ((ds.Tables["T_Shinsei_Main"] != null)) {
                     base.Tables.Add(new T_Shinsei_MainDataTable(ds.Tables["T_Shinsei_Main"]));
                 }
-                if ((ds.Tables["T_Chat"] != null)) {
-                    base.Tables.Add(new T_ChatDataTable(ds.Tables["T_Chat"]));
-                }
                 if ((ds.Tables["M_User"] != null)) {
                     base.Tables.Add(new M_UserDataTable(ds.Tables["M_User"]));
                 }
@@ -104,8 +103,13 @@ namespace WhereEver.DATASET {
                 if ((ds.Tables["T_LogoutList"] != null)) {
                     base.Tables.Add(new T_LogoutListDataTable(ds.Tables["T_LogoutList"]));
                 }
+<<<<<<< HEAD
+                if ((ds.Tables["T_Chat"] != null)) {
+                    base.Tables.Add(new T_ChatDataTable(ds.Tables["T_Chat"]));
+=======
                 if ((ds.Tables["T_Schedule"] != null)) {
                     base.Tables.Add(new T_ScheduleDataTable(ds.Tables["T_Schedule"]));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -189,16 +193,6 @@ namespace WhereEver.DATASET {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public T_ChatDataTable T_Chat {
-            get {
-                return this.tableT_Chat;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public M_UserDataTable M_User {
             get {
                 return this.tableM_User;
@@ -222,6 +216,16 @@ namespace WhereEver.DATASET {
         public T_LogoutListDataTable T_LogoutList {
             get {
                 return this.tableT_LogoutList;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public T_ChatDataTable T_Chat {
+            get {
+                return this.tableT_Chat;
             }
         }
         
@@ -320,9 +324,6 @@ namespace WhereEver.DATASET {
                 if ((ds.Tables["T_Shinsei_Main"] != null)) {
                     base.Tables.Add(new T_Shinsei_MainDataTable(ds.Tables["T_Shinsei_Main"]));
                 }
-                if ((ds.Tables["T_Chat"] != null)) {
-                    base.Tables.Add(new T_ChatDataTable(ds.Tables["T_Chat"]));
-                }
                 if ((ds.Tables["M_User"] != null)) {
                     base.Tables.Add(new M_UserDataTable(ds.Tables["M_User"]));
                 }
@@ -332,8 +333,13 @@ namespace WhereEver.DATASET {
                 if ((ds.Tables["T_LogoutList"] != null)) {
                     base.Tables.Add(new T_LogoutListDataTable(ds.Tables["T_LogoutList"]));
                 }
+<<<<<<< HEAD
+                if ((ds.Tables["T_Chat"] != null)) {
+                    base.Tables.Add(new T_ChatDataTable(ds.Tables["T_Chat"]));
+=======
                 if ((ds.Tables["T_Schedule"] != null)) {
                     base.Tables.Add(new T_ScheduleDataTable(ds.Tables["T_Schedule"]));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -404,12 +410,6 @@ namespace WhereEver.DATASET {
                     this.tableT_Shinsei_Main.InitVars();
                 }
             }
-            this.tableT_Chat = ((T_ChatDataTable)(base.Tables["T_Chat"]));
-            if ((initTable == true)) {
-                if ((this.tableT_Chat != null)) {
-                    this.tableT_Chat.InitVars();
-                }
-            }
             this.tableM_User = ((M_UserDataTable)(base.Tables["M_User"]));
             if ((initTable == true)) {
                 if ((this.tableM_User != null)) {
@@ -428,10 +428,17 @@ namespace WhereEver.DATASET {
                     this.tableT_LogoutList.InitVars();
                 }
             }
+<<<<<<< HEAD
+            this.tableT_Chat = ((T_ChatDataTable)(base.Tables["T_Chat"]));
+            if ((initTable == true)) {
+                if ((this.tableT_Chat != null)) {
+                    this.tableT_Chat.InitVars();
+=======
             this.tableT_Schedule = ((T_ScheduleDataTable)(base.Tables["T_Schedule"]));
             if ((initTable == true)) {
                 if ((this.tableT_Schedule != null)) {
                     this.tableT_Schedule.InitVars();
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
             }
         }
@@ -456,16 +463,19 @@ namespace WhereEver.DATASET {
             base.Tables.Add(this.tableT_Shinsei_C_Tatekae);
             this.tableT_Shinsei_Main = new T_Shinsei_MainDataTable();
             base.Tables.Add(this.tableT_Shinsei_Main);
-            this.tableT_Chat = new T_ChatDataTable();
-            base.Tables.Add(this.tableT_Chat);
             this.tableM_User = new M_UserDataTable();
             base.Tables.Add(this.tableM_User);
             this.tableT_LoginList = new T_LoginListDataTable();
             base.Tables.Add(this.tableT_LoginList);
             this.tableT_LogoutList = new T_LogoutListDataTable();
             base.Tables.Add(this.tableT_LogoutList);
+<<<<<<< HEAD
+            this.tableT_Chat = new T_ChatDataTable();
+            base.Tables.Add(this.tableT_Chat);
+=======
             this.tableT_Schedule = new T_ScheduleDataTable();
             base.Tables.Add(this.tableT_Schedule);
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -506,12 +516,6 @@ namespace WhereEver.DATASET {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeT_Chat() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeM_User() {
             return false;
         }
@@ -525,6 +529,12 @@ namespace WhereEver.DATASET {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeT_LogoutList() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeT_Chat() {
             return false;
         }
         
@@ -608,9 +618,6 @@ namespace WhereEver.DATASET {
         public delegate void T_Shinsei_MainRowChangeEventHandler(object sender, T_Shinsei_MainRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void T_ChatRowChangeEventHandler(object sender, T_ChatRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void M_UserRowChangeEventHandler(object sender, M_UserRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -620,7 +627,11 @@ namespace WhereEver.DATASET {
         public delegate void T_LogoutListRowChangeEventHandler(object sender, T_LogoutListRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+        public delegate void T_ChatRowChangeEventHandler(object sender, T_ChatRowChangeEvent e);
+=======
         public delegate void T_ScheduleRowChangeEventHandler(object sender, T_ScheduleRowChangeEvent e);
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3930,6 +3941,11 @@ namespace WhereEver.DATASET {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+<<<<<<< HEAD
+        public partial class T_ChatDataTable : global::System.Data.TypedTableBase<T_ChatRow> {
+            
+            private global::System.Data.DataColumn columnNo;
+=======
         public partial class T_ScheduleDataTable : global::System.Data.TypedTableBase<T_ScheduleRow> {
             
             private global::System.Data.DataColumn columndate;
@@ -3937,17 +3953,27 @@ namespace WhereEver.DATASET {
             private global::System.Data.DataColumn columntime;
             
             private global::System.Data.DataColumn columntitle;
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             
-            private global::System.Data.DataColumn columnname;
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnName;
             
             private global::System.Data.DataColumn columnKanriFlag;
             
             private global::System.Data.DataColumn columnSdlNo;
             
+            private global::System.Data.DataColumn columnNaiyou;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+            public T_ChatDataTable() {
+                this.TableName = "T_Chat";
+=======
             public T_ScheduleDataTable() {
                 this.TableName = "T_Schedule";
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -3955,7 +3981,11 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+            internal T_ChatDataTable(global::System.Data.DataTable table) {
+=======
             internal T_ScheduleDataTable(global::System.Data.DataTable table) {
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -3972,13 +4002,22 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+            protected T_ChatDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+=======
             protected T_ScheduleDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+            public global::System.Data.DataColumn NoColumn {
+                get {
+                    return this.columnNo;
+=======
             public global::System.Data.DataColumn dateColumn {
                 get {
                     return this.columndate;
@@ -3998,14 +4037,23 @@ namespace WhereEver.DATASET {
             public global::System.Data.DataColumn titleColumn {
                 get {
                     return this.columntitle;
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn nameColumn {
+            public global::System.Data.DataColumn IdColumn {
                 get {
-                    return this.columnname;
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
                 }
             }
             
@@ -4027,6 +4075,14 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NaiyouColumn {
+                get {
+                    return this.columnNaiyou;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4036,13 +4092,35 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+            public T_ChatRow this[int index] {
+                get {
+                    return ((T_ChatRow)(this.Rows[index]));
+=======
             public T_ScheduleRow this[int index] {
                 get {
                     return ((T_ScheduleRow)(this.Rows[index]));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+            public event T_ChatRowChangeEventHandler T_ChatRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event T_ChatRowChangeEventHandler T_ChatRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event T_ChatRowChangeEventHandler T_ChatRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event T_ChatRowChangeEventHandler T_ChatRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddT_ChatRow(T_ChatRow row) {
+=======
             public event T_ScheduleRowChangeEventHandler T_ScheduleRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -4057,11 +4135,25 @@ namespace WhereEver.DATASET {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void AddT_ScheduleRow(T_ScheduleRow row) {
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+            public T_ChatRow AddT_ChatRow(int No, string Id, string Name, System.DateTime Date, string Naiyou) {
+                T_ChatRow rowT_ChatRow = ((T_ChatRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        No,
+                        Id,
+                        Name,
+                        Date,
+                        Naiyou};
+                rowT_ChatRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowT_ChatRow);
+                return rowT_ChatRow;
+=======
             public T_ScheduleRow AddT_ScheduleRow(System.DateTime date, string time, string title, string name, string KanriFlag, int SdlNo) {
                 T_ScheduleRow rowT_ScheduleRow = ((T_ScheduleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -4074,19 +4166,30 @@ namespace WhereEver.DATASET {
                 rowT_ScheduleRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowT_ScheduleRow);
                 return rowT_ScheduleRow;
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+            public T_ChatRow FindByNo(int No) {
+                return ((T_ChatRow)(this.Rows.Find(new object[] {
+                            No})));
+=======
             public T_ScheduleRow FindBySdlNo(int SdlNo) {
                 return ((T_ScheduleRow)(this.Rows.Find(new object[] {
                             SdlNo})));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
+<<<<<<< HEAD
+                T_ChatDataTable cln = ((T_ChatDataTable)(base.Clone()));
+=======
                 T_ScheduleDataTable cln = ((T_ScheduleDataTable)(base.Clone()));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 cln.InitVars();
                 return cln;
             }
@@ -4094,23 +4197,54 @@ namespace WhereEver.DATASET {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
+<<<<<<< HEAD
+                return new T_ChatDataTable();
+=======
                 return new T_ScheduleDataTable();
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
+<<<<<<< HEAD
+                this.columnNo = base.Columns["No"];
+                this.columnId = base.Columns["Id"];
+                this.columnName = base.Columns["Name"];
+                this.columnDate = base.Columns["Date"];
+                this.columnNaiyou = base.Columns["Naiyou"];
+=======
                 this.columndate = base.Columns["date"];
                 this.columntime = base.Columns["time"];
                 this.columntitle = base.Columns["title"];
                 this.columnname = base.Columns["name"];
                 this.columnKanriFlag = base.Columns["KanriFlag"];
                 this.columnSdlNo = base.Columns["SdlNo"];
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
+<<<<<<< HEAD
+                this.columnNo = new global::System.Data.DataColumn("No", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNo);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnNaiyou = new global::System.Data.DataColumn("Naiyou", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNaiyou);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnNo}, true));
+                this.columnNo.AllowDBNull = false;
+                this.columnNo.Unique = true;
+                this.columnId.MaxLength = 20;
+                this.columnName.MaxLength = 10;
+                this.columnNaiyou.MaxLength = 100;
+=======
                 this.columndate = new global::System.Data.DataColumn("date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndate);
                 this.columntime = new global::System.Data.DataColumn("time", typeof(string), null, global::System.Data.MappingType.Element);
@@ -4131,32 +4265,51 @@ namespace WhereEver.DATASET {
                 this.columnKanriFlag.MaxLength = 10;
                 this.columnSdlNo.AllowDBNull = false;
                 this.columnSdlNo.Unique = true;
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+            public T_ChatRow NewT_ChatRow() {
+                return ((T_ChatRow)(this.NewRow()));
+=======
             public T_ScheduleRow NewT_ScheduleRow() {
                 return ((T_ScheduleRow)(this.NewRow()));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+<<<<<<< HEAD
+                return new T_ChatRow(builder);
+=======
                 return new T_ScheduleRow(builder);
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
+<<<<<<< HEAD
+                return typeof(T_ChatRow);
+=======
                 return typeof(T_ScheduleRow);
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
+<<<<<<< HEAD
+                if ((this.T_ChatRowChanged != null)) {
+                    this.T_ChatRowChanged(this, new T_ChatRowChangeEvent(((T_ChatRow)(e.Row)), e.Action));
+=======
                 if ((this.T_ScheduleRowChanged != null)) {
                     this.T_ScheduleRowChanged(this, new T_ScheduleRowChangeEvent(((T_ScheduleRow)(e.Row)), e.Action));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
             }
             
@@ -4164,8 +4317,13 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
+<<<<<<< HEAD
+                if ((this.T_ChatRowChanging != null)) {
+                    this.T_ChatRowChanging(this, new T_ChatRowChangeEvent(((T_ChatRow)(e.Row)), e.Action));
+=======
                 if ((this.T_ScheduleRowChanging != null)) {
                     this.T_ScheduleRowChanging(this, new T_ScheduleRowChangeEvent(((T_ScheduleRow)(e.Row)), e.Action));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
             }
             
@@ -4173,8 +4331,13 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
+<<<<<<< HEAD
+                if ((this.T_ChatRowDeleted != null)) {
+                    this.T_ChatRowDeleted(this, new T_ChatRowChangeEvent(((T_ChatRow)(e.Row)), e.Action));
+=======
                 if ((this.T_ScheduleRowDeleted != null)) {
                     this.T_ScheduleRowDeleted(this, new T_ScheduleRowChangeEvent(((T_ScheduleRow)(e.Row)), e.Action));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
             }
             
@@ -4182,14 +4345,23 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
+<<<<<<< HEAD
+                if ((this.T_ChatRowDeleting != null)) {
+                    this.T_ChatRowDeleting(this, new T_ChatRowChangeEvent(((T_ChatRow)(e.Row)), e.Action));
+=======
                 if ((this.T_ScheduleRowDeleting != null)) {
                     this.T_ScheduleRowDeleting(this, new T_ScheduleRowChangeEvent(((T_ScheduleRow)(e.Row)), e.Action));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+            public void RemoveT_ChatRow(T_ChatRow row) {
+=======
             public void RemoveT_ScheduleRow(T_ScheduleRow row) {
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 this.Rows.Remove(row);
             }
             
@@ -4216,7 +4388,11 @@ namespace WhereEver.DATASET {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
+<<<<<<< HEAD
+                attribute2.FixedValue = "T_ChatDataTable";
+=======
                 attribute2.FixedValue = "T_ScheduleDataTable";
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5049,116 +5225,6 @@ namespace WhereEver.DATASET {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class T_ChatRow : global::System.Data.DataRow {
-            
-            private T_ChatDataTable tableT_Chat;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal T_ChatRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableT_Chat = ((T_ChatDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int No {
-                get {
-                    return ((int)(this[this.tableT_Chat.NoColumn]));
-                }
-                set {
-                    this[this.tableT_Chat.NoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Name {
-                get {
-                    try {
-                        return ((string)(this[this.tableT_Chat.NameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'T_Chat\' にある列 \'Name\' の値は DBNull です。", e);
-                    }
-                }
-                set {
-                    this[this.tableT_Chat.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime Date {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableT_Chat.DateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'T_Chat\' にある列 \'Date\' の値は DBNull です。", e);
-                    }
-                }
-                set {
-                    this[this.tableT_Chat.DateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Naiyou {
-                get {
-                    try {
-                        return ((string)(this[this.tableT_Chat.NaiyouColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'T_Chat\' にある列 \'Naiyou\' の値は DBNull です。", e);
-                    }
-                }
-                set {
-                    this[this.tableT_Chat.NaiyouColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsNameNull() {
-                return this.IsNull(this.tableT_Chat.NameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetNameNull() {
-                this[this.tableT_Chat.NameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDateNull() {
-                return this.IsNull(this.tableT_Chat.DateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDateNull() {
-                this[this.tableT_Chat.DateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsNaiyouNull() {
-                return this.IsNull(this.tableT_Chat.NaiyouColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetNaiyouNull() {
-                this[this.tableT_Chat.NaiyouColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class M_UserRow : global::System.Data.DataRow {
             
             private M_UserDataTable tableM_User;
@@ -5483,6 +5549,147 @@ namespace WhereEver.DATASET {
         
         /// <summary>
         ///Represents strongly named DataRow class.
+<<<<<<< HEAD
+        ///</summary>
+        public partial class T_ChatRow : global::System.Data.DataRow {
+            
+            private T_ChatDataTable tableT_Chat;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal T_ChatRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableT_Chat = ((T_ChatDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int No {
+                get {
+                    return ((int)(this[this.tableT_Chat.NoColumn]));
+                }
+                set {
+                    this[this.tableT_Chat.NoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Id {
+                get {
+                    try {
+                        return ((string)(this[this.tableT_Chat.IdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'T_Chat\' にある列 \'Id\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableT_Chat.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Name {
+                get {
+                    try {
+                        return ((string)(this[this.tableT_Chat.NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'T_Chat\' にある列 \'Name\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableT_Chat.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime Date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableT_Chat.DateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'T_Chat\' にある列 \'Date\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableT_Chat.DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Naiyou {
+                get {
+                    try {
+                        return ((string)(this[this.tableT_Chat.NaiyouColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'T_Chat\' にある列 \'Naiyou\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableT_Chat.NaiyouColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIdNull() {
+                return this.IsNull(this.tableT_Chat.IdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIdNull() {
+                this[this.tableT_Chat.IdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNameNull() {
+                return this.IsNull(this.tableT_Chat.NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNameNull() {
+                this[this.tableT_Chat.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDateNull() {
+                return this.IsNull(this.tableT_Chat.DateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDateNull() {
+                this[this.tableT_Chat.DateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNaiyouNull() {
+                return this.IsNull(this.tableT_Chat.NaiyouColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNaiyouNull() {
+                this[this.tableT_Chat.NaiyouColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+=======
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
         ///</summary>
         public partial class T_ScheduleRow : global::System.Data.DataRow {
             
@@ -5855,40 +6062,6 @@ namespace WhereEver.DATASET {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class T_ChatRowChangeEvent : global::System.EventArgs {
-            
-            private T_ChatRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_ChatRowChangeEvent(T_ChatRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_ChatRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class M_UserRowChangeEvent : global::System.EventArgs {
             
             private M_UserRow eventRow;
@@ -5973,6 +6146,40 @@ namespace WhereEver.DATASET {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public T_LogoutListRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class T_ChatRowChangeEvent : global::System.EventArgs {
+            
+            private T_ChatRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public T_ChatRowChangeEvent(T_ChatRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public T_ChatRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -9449,7 +9656,11 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+<<<<<<< HEAD
+    public partial class T_ChatTableAdapter : global::System.ComponentModel.Component {
+=======
     public partial class T_ScheduleTableAdapter : global::System.ComponentModel.Component {
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -9463,7 +9674,11 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+<<<<<<< HEAD
+        public T_ChatTableAdapter() {
+=======
         public T_ScheduleTableAdapter() {
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             this.ClearBeforeFill = true;
         }
         
@@ -9560,6 +9775,41 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
+<<<<<<< HEAD
+            tableMapping.DataSetTable = "T_Chat";
+            tableMapping.ColumnMappings.Add("No", "No");
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("Date", "Date");
+            tableMapping.ColumnMappings.Add("Naiyou", "Naiyou");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [T_Chat] WHERE (([No] = @Original_No))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_No", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "No", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [T_Chat] ([No], [Id], [Name], [Date], [Naiyou]) VALUES (@No, @Id, @Na" +
+                "me, @Date, @Naiyou)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@No", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "No", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Naiyou", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Naiyou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [T_Chat] SET [No] = @No, [Id] = @Id, [Name] = @Name, [Date] = @Date, [Naiy" +
+                "ou] = @Naiyou WHERE (([No] = @Original_No))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@No", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "No", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Naiyou", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Naiyou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_No", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "No", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+=======
             tableMapping.DataSetTable = "T_Schedule";
             tableMapping.ColumnMappings.Add("date", "date");
             tableMapping.ColumnMappings.Add("time", "time");
@@ -9597,6 +9847,7 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KanriFlag", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KanriFlag", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SdlNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SdlNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SdlNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SdlNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9612,7 +9863,11 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
+<<<<<<< HEAD
+            this._commandCollection[0].CommandText = "SELECT                      T_Chat.*\r\nFROM                         T_Chat";
+=======
             this._commandCollection[0].CommandText = "SELECT        T_Schedule.*\r\nFROM         T_Schedule";
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -9620,7 +9875,11 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+<<<<<<< HEAD
+        public virtual int Fill(DataSet.T_ChatDataTable dataTable) {
+=======
         public virtual int Fill(DataSet.T_ScheduleDataTable dataTable) {
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9633,9 +9892,15 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+<<<<<<< HEAD
+        public virtual DataSet.T_ChatDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSet.T_ChatDataTable dataTable = new DataSet.T_ChatDataTable();
+=======
         public virtual DataSet.T_ScheduleDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             DataSet.T_ScheduleDataTable dataTable = new DataSet.T_ScheduleDataTable();
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9643,7 +9908,11 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+<<<<<<< HEAD
+        public virtual int Update(DataSet.T_ChatDataTable dataTable) {
+=======
         public virtual int Update(DataSet.T_ScheduleDataTable dataTable) {
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             return this.Adapter.Update(dataTable);
         }
         
@@ -9651,7 +9920,11 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(DataSet dataSet) {
+<<<<<<< HEAD
+            return this.Adapter.Update(dataSet, "T_Chat");
+=======
             return this.Adapter.Update(dataSet, "T_Schedule");
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9673,8 +9946,13 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+<<<<<<< HEAD
+        public virtual int Delete(int Original_No) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_No));
+=======
         public virtual int Delete(int Original_SdlNo) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_SdlNo));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9695,17 +9973,45 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+<<<<<<< HEAD
+        public virtual int Insert(int No, string Id, string Name, global::System.Nullable<global::System.DateTime> Date, string Naiyou) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(No));
+            if ((Id == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+=======
         public virtual int Insert(global::System.Nullable<global::System.DateTime> date, string time, string title, string name, string KanriFlag, int SdlNo) {
             if ((date.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(date.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             }
             if ((time == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
+<<<<<<< HEAD
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Id));
+            }
+            if ((Name == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Name));
+            }
+            if ((Date.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(Date.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((Naiyou == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Naiyou));
+=======
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(time));
             }
             if ((title == null)) {
@@ -9725,6 +10031,7 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(KanriFlag));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             }
             this.Adapter.InsertCommand.Parameters[5].Value = ((int)(SdlNo));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
@@ -9747,6 +10054,35 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+<<<<<<< HEAD
+        public virtual int Update(int No, string Id, string Name, global::System.Nullable<global::System.DateTime> Date, string Naiyou, int Original_No) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(No));
+            if ((Id == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Id));
+            }
+            if ((Name == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Name));
+            }
+            if ((Date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(Date.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((Naiyou == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Naiyou));
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_No));
+=======
         public virtual int Update(global::System.Nullable<global::System.DateTime> date, string time, string title, string name, string KanriFlag, int SdlNo, int Original_SdlNo) {
             if ((date.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(date.Value));
@@ -9780,6 +10116,7 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(SdlNo));
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_SdlNo));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9800,8 +10137,13 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+<<<<<<< HEAD
+        public virtual int Update(string Id, string Name, global::System.Nullable<global::System.DateTime> Date, string Naiyou, int Original_No) {
+            return this.Update(Original_No, Id, Name, Date, Naiyou, Original_No);
+=======
         public virtual int Update(global::System.Nullable<global::System.DateTime> date, string time, string title, string name, string KanriFlag, int Original_SdlNo) {
             return this.Update(date, time, title, name, KanriFlag, Original_SdlNo, Original_SdlNo);
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
         }
     }
     
@@ -9829,15 +10171,17 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         
         private T_Shinsei_MainTableAdapter _t_Shinsei_MainTableAdapter;
         
-        private T_ChatTableAdapter _t_ChatTableAdapter;
-        
         private M_UserTableAdapter _m_UserTableAdapter;
         
         private T_LoginListTableAdapter _t_LoginListTableAdapter;
         
         private T_LogoutListTableAdapter _t_LogoutListTableAdapter;
         
+<<<<<<< HEAD
+        private T_ChatTableAdapter _t_ChatTableAdapter;
+=======
         private T_ScheduleTableAdapter _t_ScheduleTableAdapter;
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -9943,20 +10287,6 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public T_ChatTableAdapter T_ChatTableAdapter {
-            get {
-                return this._t_ChatTableAdapter;
-            }
-            set {
-                this._t_ChatTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public M_UserTableAdapter M_UserTableAdapter {
             get {
                 return this._m_UserTableAdapter;
@@ -9991,6 +10321,20 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             }
             set {
                 this._t_LogoutListTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public T_ChatTableAdapter T_ChatTableAdapter {
+            get {
+                return this._t_ChatTableAdapter;
+            }
+            set {
+                this._t_ChatTableAdapter = value;
             }
         }
         
@@ -10051,10 +10395,6 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                             && (this._t_Shinsei_MainTableAdapter.Connection != null))) {
                     return this._t_Shinsei_MainTableAdapter.Connection;
                 }
-                if (((this._t_ChatTableAdapter != null) 
-                            && (this._t_ChatTableAdapter.Connection != null))) {
-                    return this._t_ChatTableAdapter.Connection;
-                }
                 if (((this._m_UserTableAdapter != null) 
                             && (this._m_UserTableAdapter.Connection != null))) {
                     return this._m_UserTableAdapter.Connection;
@@ -10067,9 +10407,15 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                             && (this._t_LogoutListTableAdapter.Connection != null))) {
                     return this._t_LogoutListTableAdapter.Connection;
                 }
+<<<<<<< HEAD
+                if (((this._t_ChatTableAdapter != null) 
+                            && (this._t_ChatTableAdapter.Connection != null))) {
+                    return this._t_ChatTableAdapter.Connection;
+=======
                 if (((this._t_ScheduleTableAdapter != null) 
                             && (this._t_ScheduleTableAdapter.Connection != null))) {
                     return this._t_ScheduleTableAdapter.Connection;
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
                 return null;
             }
@@ -10102,9 +10448,6 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                 if ((this._t_Shinsei_MainTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._t_ChatTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._m_UserTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -10114,7 +10457,11 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                 if ((this._t_LogoutListTableAdapter != null)) {
                     count = (count + 1);
                 }
+<<<<<<< HEAD
+                if ((this._t_ChatTableAdapter != null)) {
+=======
                 if ((this._t_ScheduleTableAdapter != null)) {
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                     count = (count + 1);
                 }
                 return count;
@@ -10182,15 +10529,6 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._t_ChatTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.T_Chat.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._t_ChatTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._m_UserTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.M_User.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -10218,12 +10556,21 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+<<<<<<< HEAD
+            if ((this._t_ChatTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.T_Chat.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._t_ChatTableAdapter.Update(updatedRows));
+=======
             if ((this._t_ScheduleTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.T_Schedule.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._t_ScheduleTableAdapter.Update(updatedRows));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -10285,14 +10632,6 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._t_ChatTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.T_Chat.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._t_ChatTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._m_UserTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.M_User.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -10317,11 +10656,19 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+<<<<<<< HEAD
+            if ((this._t_ChatTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.T_Chat.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._t_ChatTableAdapter.Update(addedRows));
+=======
             if ((this._t_ScheduleTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.T_Schedule.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._t_ScheduleTableAdapter.Update(addedRows));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -10335,11 +10682,19 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+<<<<<<< HEAD
+            if ((this._t_ChatTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.T_Chat.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._t_ChatTableAdapter.Update(deletedRows));
+=======
             if ((this._t_ScheduleTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.T_Schedule.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._t_ScheduleTableAdapter.Update(deletedRows));
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -10364,14 +10719,6 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._m_UserTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._t_ChatTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.T_Chat.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._t_ChatTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -10486,10 +10833,6 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                         && (this.MatchTableAdapterConnection(this._t_Shinsei_MainTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。");
             }
-            if (((this._t_ChatTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._t_ChatTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。");
-            }
             if (((this._m_UserTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._m_UserTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。");
@@ -10502,8 +10845,13 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                         && (this.MatchTableAdapterConnection(this._t_LogoutListTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。");
             }
+<<<<<<< HEAD
+            if (((this._t_ChatTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._t_ChatTableAdapter.Connection) == false))) {
+=======
             if (((this._t_ScheduleTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._t_ScheduleTableAdapter.Connection) == false))) {
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 throw new global::System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。");
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
@@ -10591,15 +10939,6 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._t_Shinsei_MainTableAdapter.Adapter);
                     }
                 }
-                if ((this._t_ChatTableAdapter != null)) {
-                    revertConnections.Add(this._t_ChatTableAdapter, this._t_ChatTableAdapter.Connection);
-                    this._t_ChatTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._t_ChatTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._t_ChatTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._t_ChatTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._t_ChatTableAdapter.Adapter);
-                    }
-                }
                 if ((this._m_UserTableAdapter != null)) {
                     revertConnections.Add(this._m_UserTableAdapter, this._m_UserTableAdapter.Connection);
                     this._m_UserTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -10627,6 +10966,15 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._t_LogoutListTableAdapter.Adapter);
                     }
                 }
+<<<<<<< HEAD
+                if ((this._t_ChatTableAdapter != null)) {
+                    revertConnections.Add(this._t_ChatTableAdapter, this._t_ChatTableAdapter.Connection);
+                    this._t_ChatTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._t_ChatTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._t_ChatTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._t_ChatTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._t_ChatTableAdapter.Adapter);
+=======
                 if ((this._t_ScheduleTableAdapter != null)) {
                     revertConnections.Add(this._t_ScheduleTableAdapter, this._t_ScheduleTableAdapter.Connection);
                     this._t_ScheduleTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -10634,6 +10982,7 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     if (this._t_ScheduleTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._t_ScheduleTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._t_ScheduleTableAdapter.Adapter);
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                     }
                 }
                 // 
@@ -10718,10 +11067,6 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     this._t_Shinsei_MainTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._t_Shinsei_MainTableAdapter]));
                     this._t_Shinsei_MainTableAdapter.Transaction = null;
                 }
-                if ((this._t_ChatTableAdapter != null)) {
-                    this._t_ChatTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._t_ChatTableAdapter]));
-                    this._t_ChatTableAdapter.Transaction = null;
-                }
                 if ((this._m_UserTableAdapter != null)) {
                     this._m_UserTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._m_UserTableAdapter]));
                     this._m_UserTableAdapter.Transaction = null;
@@ -10734,9 +11079,15 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     this._t_LogoutListTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._t_LogoutListTableAdapter]));
                     this._t_LogoutListTableAdapter.Transaction = null;
                 }
+<<<<<<< HEAD
+                if ((this._t_ChatTableAdapter != null)) {
+                    this._t_ChatTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._t_ChatTableAdapter]));
+                    this._t_ChatTableAdapter.Transaction = null;
+=======
                 if ((this._t_ScheduleTableAdapter != null)) {
                     this._t_ScheduleTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._t_ScheduleTableAdapter]));
                     this._t_ScheduleTableAdapter.Transaction = null;
+>>>>>>> 286680b90658fbd9f59aa2df2687bdf34ff30610
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

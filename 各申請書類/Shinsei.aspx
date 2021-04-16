@@ -31,7 +31,7 @@
 
          <asp:Panel ID="Panel00" runat="server" CssClass="noprint">
           <p><asp:Button ID="Button_list_open" CssClass="btn-flat-border" runat="server" Text="リストを開く" OnClick="Button_Datalist_Open_Click" CausesValidation="False" /></p>
-          <p><asp:Label ID="lblTop_00" runat="server" Text="各種申請情報を作成または管理できます。"></asp:Label></p>
+          <p><asp:Label ID="lblTop_00" runat="server" Text="各種申請書類を作成または管理できます。"></asp:Label></p>
          </asp:Panel>
 
           <asp:Panel ID="Panel0" runat="server" CssClass="noprint">
@@ -39,7 +39,7 @@
                        <p><asp:Button ID="Button_list_close" CssClass="btn-flat-border" runat="server" Text="リストを閉じる" OnClick="Button_Datalist_Close_Click" CausesValidation="False" />
                        <asp:Button ID="Button_reload" CssClass="btn-flat-border" runat="server" Text="リスト手動更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
 
-                       <p><asp:Label ID="lblTop_0" runat="server" Text="各種申請情報を作成または管理できます。"></asp:Label></p>
+                       <p><asp:Label ID="lblTop_0" runat="server" Text="各種申請書類を作成または管理できます。"></asp:Label></p>
 
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
                 <Columns>
@@ -747,10 +747,10 @@
                             <p>提出日：</p>
                         </td>
                         <td class="sd">
-                            <asp:Label ID="lblTatekaeDate" runat="server" Text="TatekaeDate"></asp:Label>
+                            <asp:Label ID="lblTatekaeDate" runat="server" Text=""></asp:Label>
                         </td>
                         <td id="name3">
-                            氏名（<asp:Label ID="lblTatekaeName" runat="server" Text=""></asp:Label>）
+                            氏名（<asp:Label ID="lblTatekaeName" runat="server" Text="　　　　　　　　　"></asp:Label>）
                         </td>
                     </tr>
                     </table>

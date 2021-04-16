@@ -31,8 +31,8 @@
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" ReadOnly="true" />
                     <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" Visible="False" ReadOnly="true" />
-                    <asp:BoundField DataField="name1" HeaderText="お名前" SortExpression="name1" />
-                    <asp:BoundField DataField="pw" HeaderText="パスワード" SortExpression="pw" />
+                    <asp:BoundField DataField="name1" HeaderText="お名前（全角20文字まで）" SortExpression="name1" />
+                    <asp:BoundField DataField="pw" HeaderText="パスワード（半角英数10文字まで）" SortExpression="pw" />
                     <asp:CommandField ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn-flat-border" HeaderText="編集">
                     <ControlStyle CssClass="btn-flat-border"></ControlStyle>
                     </asp:CommandField>
