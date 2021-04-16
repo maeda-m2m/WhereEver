@@ -67,6 +67,15 @@ namespace WhereEver
             Create3();
         }
 
+
+        //Calendarに予定を表示するためのクラス
+        protected void CalendarA(object sender, EventArgs e)
+        {
+            Create();
+            Create3();
+        }
+
+
         //スケジュール登録ボタンを押したときの動き
         protected void Button2_Click(object sender, EventArgs e)
         {
@@ -85,8 +94,6 @@ namespace WhereEver
             dr.time = t;
 
             dr.title = TextBox1.Text;
-
-
 
             dr.name = "";
 
@@ -489,26 +496,43 @@ namespace WhereEver
                 //Label name4 = e.Item.FindControl("Label10") as Label;
                 //Label name5 = e.Item.FindControl("Label11") as Label;
 
-                time.Text = dr.時間.ToString();
+                var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
 
-                if (!dr.Is月Null())
-                    monday.Text = dr.月;
+                for (int j = 0; j < dd.Count; j++)
+                {
+                    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
 
-                if (!dr.Is火Null())
-                    tuesday.Text = dr.火;
+                    DateTime DT = DateTime.Parse(dl.date.ToString());
 
-
-                if (!dr.Is水Null())
-                    wednesday.Text = dr.水;
+                    string week = DT.ToString("MM/dd");
 
 
-                if (!dr.Is木Null())
-                    thursday.Text = dr.木;
+                    time.Text = dr.時間.ToString();
+
+                    if (!dr.Is月Null())
+                    {
+                        monday.Text = dr.月;
+                    }
 
 
-                if (!dr.Is金Null())
-                    friday.Text = dr.金;
+                    if (!dr.Is火Null())
+                    {
+                        tuesday.Text = dr.火;
+                    }
 
+
+
+                    if (!dr.Is水Null())
+                        wednesday.Text = dr.水;
+
+
+                    if (!dr.Is木Null())
+                        thursday.Text = dr.木;
+
+
+                    if (!dr.Is金Null())
+                        friday.Text = dr.金;
+                }
             }
         }
 
@@ -551,7 +575,7 @@ namespace WhereEver
 
 
 
-                e.Item.Cells[0].Text = dr.date.ToString() + " " + dr.date.ToString("dddd");
+                e.Item.Cells[0].Text = dr.date.ToString("yyyy/MM/dd") + " " + dr.date.ToString("dddd");
                 e.Item.Cells[1].Text = dr.time.ToString();
                 e.Item.Cells[2].Text = dr.title.ToString();
                 e.Item.Cells[3].Text = dr.name.ToString();
@@ -628,6 +652,7 @@ namespace WhereEver
             TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
             TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
             TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
+
             string b1 = a1.Text.Trim();
             string b2 = a2.Text.Trim();
             string b3 = a3.Text.Trim();
