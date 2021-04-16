@@ -86,18 +86,16 @@ namespace WhereEver
 
             dr.title = TextBox1.Text;
 
-
-
-            dr.name = "";
-
             foreach (ListItem item in CheckBoxList1.Items)
             {
                 if (item.Selected)
                 {
-                    string a = item.Value;
-                    dr.name += a + " ";
+                    dr.name = item.Value + " ";
                 }
             }
+            //dr.name = item.Text;
+
+            //DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString();
 
             DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
 
