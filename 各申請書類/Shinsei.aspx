@@ -747,10 +747,10 @@
                             <p>提出日：</p>
                         </td>
                         <td class="sd">
-                            <asp:Label ID="lblTatekaeDate" runat="server" Text="TatekaeDate"></asp:Label>
+                            <asp:Label ID="lblTatekaeDate" runat="server" Text=""></asp:Label>
                         </td>
                         <td id="name3">
-                            氏名（<asp:Label ID="lblTatekaeName" runat="server" Text=""></asp:Label>）
+                            氏名（<asp:Label ID="lblTatekaeName" runat="server" Text="　　　　　　　　　"></asp:Label>）
                         </td>
                     </tr>
                     </table>

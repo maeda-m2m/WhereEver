@@ -182,12 +182,30 @@ namespace WhereEver
 
             //string str = TextBox_howMany.Text;
 
+            //-------------------------------------------------------------------
+
             StringBuilder sb = new StringBuilder(HtmlEncode(TextBox_howMany.Text).ToString());
             sb.Replace("点", "");
             string str = sb.ToString();
 
             rleng = Math.Min(str.Length, maxstr - 1);
             Suryo.Text = str.Substring(0, rleng) + "点";
+
+            //-------------------------------------------------------------------
+
+            lblTatekae_Result2.Text = "\\" + wasteR2.ToString() + "-";
+
+
+            rleng = Math.Min(TextBox_marketPlace.Text.Length, s_maxstr);
+            KonyuSaki.Text = TextBox_marketPlace.Text.Substring(0, rleng);
+
+            rleng = Math.Min(TextBox_buy_purpose.Text.Length, maxstr);
+            Label_Riyuu.Text = TextBox_buy_purpose.Text.Substring(0, rleng);
+
+            rleng = Math.Min(TextBox_ps.Text.Length, maxstr);
+            Label_Bikou.Text = TextBox_ps.Text.Substring(0, rleng);
+
+            //-------------------------------------------------------------------
 
             str = TextBox_howMach.Text;
             rleng = Math.Min(str.Length, s_maxstr - 1);
@@ -197,6 +215,18 @@ namespace WhereEver
             sb.Replace("-", "");
             sb.Replace(",", "");
             sb.Replace("\\", "");
+
+            try
+            {
+                //intに変換できるか？
+                int.Parse(sb.ToString());
+            }
+            catch
+            {
+                //不正な文字を検出
+                Kingaku.Text = "Error";
+                return;
+            }
 
             //カンマ区切りを追加
             int i = 0;
@@ -215,17 +245,8 @@ namespace WhereEver
             str = sb.ToString();
             Kingaku.Text = "\\" + str.Substring(0, rleng) + "-";
 
-            lblTatekae_Result2.Text = "\\" + wasteR2.ToString() + "-";
+            //-------------------------------------------------------------------
 
-
-            rleng = Math.Min(TextBox_marketPlace.Text.Length, s_maxstr);
-            KonyuSaki.Text = TextBox_marketPlace.Text.Substring(0, rleng);
-
-            rleng = Math.Min(TextBox_buy_purpose.Text.Length, maxstr);
-            Label_Riyuu.Text = TextBox_buy_purpose.Text.Substring(0, rleng);
-
-            rleng = Math.Min(TextBox_ps.Text.Length, maxstr);
-            Label_Bikou.Text = TextBox_ps.Text.Substring(0, rleng);
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -304,6 +325,11 @@ namespace WhereEver
 
             //選択中uidを初期化
             lbluid.Text = "null";
+
+            //データバインド（強調表示を初期化）
+            BindData();
+            Session.Add("args", (string)"null");
+
         }
 
         /// <summary>
@@ -333,6 +359,10 @@ namespace WhereEver
 
             //選択中uidを初期化
             lbluid.Text = "null";
+
+            //データバインド（強調表示を初期化）
+            BindData();
+            Session.Add("args", (string)"null");
         }
 
 
@@ -356,6 +386,7 @@ namespace WhereEver
 
         protected void Set_Tatekae_Data()
         {
+
             //------------------------------------------------------------
             //Varidation用のクラスをインスタンス化します。
             ShinseiClass reg = new ShinseiClass();
@@ -425,6 +456,10 @@ namespace WhereEver
 
             //選択中uidを初期化
             lbluid.Text = "null";
+
+            //データバインド（強調表示を初期化）
+            BindData();
+            Session.Add("args", (string)"null");
 
         }
 
@@ -818,6 +853,8 @@ namespace WhereEver
         protected void Change_Text_T_Teiki(object sender, EventArgs e)
         {
 
+            SetTatekaeDate();
+
             //------------------------------------------------------------
             //Varidation用のクラスをインスタンス化します。
             ShinseiClass reg = new ShinseiClass();
@@ -1178,6 +1215,8 @@ namespace WhereEver
                 // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
                 //最終更新日をロード
                 string isbn_date = GridView1.Rows[args].Cells[5].Text.Trim();
+                DateTime datetime = DateTime.Parse(isbn_date);
+                isbn_date = datetime.ToShortDateString();
 
                     if (isbn_kind == "物品購入申請")
                     {
@@ -1422,13 +1461,7 @@ namespace WhereEver
         protected void SaveButton_Click_3(object sender, EventArgs e)
         {
             //Set 立替金明細表申請
-
-            //初期化
-            //resetTatekaeTable();
-
-            //印刷フォームのテキストをT_ShinseiDBに代入
-
-            //SetTatekaeString();
+            SetTatekaeDate();
 
             //UUID生成
             string uid = Guid.NewGuid().ToString();
@@ -1629,9 +1662,7 @@ namespace WhereEver
         protected void SaveAsButton_Click_3(object sender, EventArgs e)
         {
             //Set 立替金明細表申請
-
-            //初期化
-            //resetTatekaeTable();
+            SetTatekaeDate();
 
             //印刷フォームのテキストをT_ShinseiDBに代入
             /*
@@ -1814,6 +1845,15 @@ namespace WhereEver
             Panel0.Visible = false;
             Panel00.Visible = true;
         }
+
+
+        protected void SetTatekaeDate()
+        {
+            lblTatekaeName.Text = SessionManager.User.M_User.name1;
+            DateTime date = DateTime.Now;
+            lblTatekaeDate.Text = date.ToShortDateString();
+        }
+
 
     }
 }
