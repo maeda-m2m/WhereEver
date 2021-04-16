@@ -20,29 +20,36 @@ namespace WhereEver.管理ページ
         {
             //好きなコードを入れて下さい。
 
-            //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
 
-            /*
-            //コマンドの引数を取得
-            int args = Int32.Parse(e.CommandArgument.ToString());
-
-            //参照してみると最初からトリム不要の状態になっていることが多い
-            //String isbn_key = (String)GridView1.DataKeys[args].Value;
-            string isbn_name1 = GridView1.Rows[args].Cells[2].Text.Trim();
-            string isbn_pw = GridView1.Rows[args].Cells[3].Text.Trim();
-
-            //trimした値をもどす（意味なし）
-            GridView1.Rows[args].Cells[2].Text = isbn_name1;
-            GridView1.Rows[args].Cells[3].Text = isbn_pw;
-
-            //SessionManagerに代入
-            SessionManager.User.M_User.id = isbn_name1;
-            SessionManager.User.M_User.pw = isbn_pw;
-            */
-
-            //なにもしない
-            return;
         }
 
+        protected void grid_RowUpdatedCommand(object sender, GridViewUpdatedEventArgs e)
+        {
+
+            GridView2.DataBind();
+
+            //列
+            int args = 0;
+
+            //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+            // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
+            //【重要】ReadOnly属性がついていないと読み込みできない。
+
+            //idをロード（必要なら）
+            //string isbn_name = GridView2.Rows[args].Cells[0].Text.Trim();
+
+            //名前をロード
+            string isbn_name1 = GridView2.Rows[args].Cells[2].Text.Trim();
+
+            //passwordをロード
+            string isbn_pw = GridView2.Rows[args].Cells[3].Text.Trim();
+
+            if (isbn_name1 != null || isbn_pw != null) {
+                //SessionManagerに代入
+                SessionManager.User.M_User.name1 = isbn_name1;
+                SessionManager.User.M_User.pw = isbn_pw;
+            }
+            return;
+        }
     }
 }

@@ -1129,6 +1129,7 @@ namespace WhereEver
                 Session.Add("args", (string)"null");
 
                 //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
 
                 //idをロード
                 //String isbn_key = (String)GridView1.DataKeys[args].Value;
@@ -1174,7 +1175,7 @@ namespace WhereEver
                 int args = Int32.Parse(e.CommandArgument.ToString());
 
                 //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
-
+                //【重要】ReadOnly属性がついていないと読み込みできない。
 
 
                 if (Session["args"].ToString() != "null")

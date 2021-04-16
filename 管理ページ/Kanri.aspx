@@ -27,7 +27,7 @@
 
         <div id="Wrap">
            <p>ユーザー情報を変更できます。</p>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"  DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowCommand="grid_RowCommand">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowUpdated="grid_RowUpdatedCommand" OnRowCommand="grid_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" ReadOnly="true" />
                     <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" Visible="False" ReadOnly="true" />
@@ -41,9 +41,20 @@
 
 
 
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource1" CssClass="DGTable" Visible="False">
+                <Columns>
+                    <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" ReadOnly="true" />
+                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" Visible="False" ReadOnly="true" />
+                    <asp:BoundField DataField="name1" HeaderText="name1" SortExpression="name1"  ReadOnly="true" />
+                    <asp:BoundField DataField="pw" HeaderText="pw" SortExpression="pw"  ReadOnly="true" />
+                </Columns>
+            </asp:GridView>
+
+
+
             <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                 ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>"
-                SelectCommand="SELECT [id], [pw], [name], [name1] FROM [M_User] WHERE ([id] = @id)"
+                SelectCommand="SELECT [id], [name], [name1], [pw] FROM [M_User] WHERE ([id] = @id)"
                 UpdateCommand="UPDATE [M_User] SET [pw] = @pw, [name1] = @name1 WHERE ([id] = @id)">
                 <UpdateParameters>
                        <asp:ControlParameter Name="id" ControlId="lblResult" PropertyName="Text"/>
