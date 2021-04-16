@@ -23,6 +23,7 @@ namespace WhereEver
             {
                 Create();
             }
+            Label2.Text = "";
         }
 
         private void Create()
@@ -46,6 +47,8 @@ namespace WhereEver
                 Label Naiyou = e.Item.FindControl("Naiyou") as Label;
 
                 No.Text = dr.No.ToString();
+
+                Id.Text = dr.Id;
 
                 Name.Text = dr.Name;
 
@@ -92,7 +95,7 @@ namespace WhereEver
             Label Cname = (Label)e.Item.Cells[1].FindControl("Id"); //変更
             string Cid = Cno.Text;
             string CnameNow = Cname.Text.Trim();
-            string id = SessionManager.User.M_User.id;
+            string id = SessionManager.User.M_User.id.Trim();
             if (CnameNow == id) { 
                 switch (((LinkButton)e.CommandSource).CommandName)
                 {
