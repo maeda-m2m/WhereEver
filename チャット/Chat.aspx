@@ -32,6 +32,7 @@
                 OnItemCommand="ChatArea_ItemCommand" >
                 
                 <Columns>
+
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
                         <HeaderStyle Wrap="true"/>
                         <ItemTemplate>
@@ -39,10 +40,17 @@
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
+                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="100px">
+                        <HeaderStyle Wrap="true" />
+                        <ItemTemplate>
+                            <asp:Label ID="Id" runat="server" Text=""></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateColumn>
+
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
                         <ItemTemplate>
-                            <asp:Label ID="ID" runat="server" Text="" ForeColor="#000080"></asp:Label>
+                            <asp:Label ID="Name" runat="server" Text="" ForeColor="#000080"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
