@@ -23,6 +23,7 @@ namespace WhereEver
             {
                 Create();
             }
+            Label2.Text = "";
         }
 
         private void Create()
@@ -40,11 +41,14 @@ namespace WhereEver
                 DATASET.DataSet.T_ChatRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_ChatRow;
 
                 Label No = e.Item.FindControl("No") as Label;
-                Label Name = e.Item.FindControl("ID") as Label;
+                Label Id = e.Item.FindControl("Id") as Label;
+                Label Name = e.Item.FindControl("Name") as Label;
                 Label Date = e.Item.FindControl("Date") as Label;
                 Label Naiyou = e.Item.FindControl("Naiyou") as Label;
 
                 No.Text = dr.No.ToString();
+
+                Id.Text = dr.Id;
 
                 Name.Text = dr.Name;
 
@@ -66,6 +70,8 @@ namespace WhereEver
             {
                 string.Format("if (!confirm('{0}')) return false;", "本文が入力されていません");
             }
+           
+            dr.Id = SessionManager.User.ID; //変更
             dr.Name = Label1.Text;
             dr.Naiyou = TextBox1.Text;
 
@@ -86,11 +92,11 @@ namespace WhereEver
         protected void ChatArea_ItemCommand(object source, DataGridCommandEventArgs e)
         {
             Label Cno = (Label)e.Item.Cells[0].FindControl("No");
-            Label Cname = (Label)e.Item.Cells[1].FindControl("ID");
+            Label Cname = (Label)e.Item.Cells[1].FindControl("Id"); //変更
             string Cid = Cno.Text;
             string CnameNow = Cname.Text.Trim();
-            string nameNow = SessionManager.User.M_User.name1;
-            if (CnameNow == nameNow) { 
+            string id = SessionManager.User.M_User.id.Trim();
+            if (CnameNow == id) { 
                 switch (((LinkButton)e.CommandSource).CommandName)
                 {
 

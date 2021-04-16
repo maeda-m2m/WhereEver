@@ -408,7 +408,7 @@
                             <p>宿泊場所*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_Place" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" placeholder="例：〇〇宿　ない場合は「なし」" ></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_Place" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="なし" placeholder="例：〇〇宿　ない場合は「なし」" ></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_Place"></asp:RequiredFieldValidator>
@@ -747,10 +747,10 @@
                             <p>提出日：</p>
                         </td>
                         <td class="sd">
-                            <asp:Label ID="lblTatekaeDate" runat="server" Text="TatekaeDate"></asp:Label>
+                            <asp:Label ID="lblTatekaeDate" runat="server" Text=""></asp:Label>
                         </td>
                         <td id="name3">
-                            氏名（<asp:Label ID="lblTatekaeName" runat="server" Text=""></asp:Label>）
+                            氏名（<asp:Label ID="lblTatekaeName" runat="server" Text="　　　　　　　　　"></asp:Label>）
                         </td>
                     </tr>
                     </table>
