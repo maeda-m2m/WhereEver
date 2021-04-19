@@ -123,6 +123,7 @@
                                     <asp:ListItem>坂田</asp:ListItem>
                                     <asp:ListItem>一番ヶ瀬</asp:ListItem>
                                     <asp:ListItem>髙栁社長</asp:ListItem>
+                                    <asp:ListItem>藤川</asp:ListItem>
                                 </asp:CheckBoxList>
 
                             </td>
