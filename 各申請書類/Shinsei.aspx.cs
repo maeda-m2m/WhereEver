@@ -207,17 +207,7 @@ namespace WhereEver
             //-------------------------------------------------------------------
 
             StringBuilder sb = new StringBuilder(HtmlEncode(TextBox_howMany.Text).ToString());
-            sb.Replace("点", "");
-            sb.Replace("0", "０");
-            sb.Replace("1", "１");
-            sb.Replace("2", "２");
-            sb.Replace("3", "３");
-            sb.Replace("4", "４");
-            sb.Replace("5", "５");
-            sb.Replace("6", "６");
-            sb.Replace("7", "７");
-            sb.Replace("8", "８");
-            sb.Replace("9", "９");
+            sb = HowmanyChange(sb);
             string str = sb.ToString();
             //----------------------
 
@@ -377,9 +367,9 @@ namespace WhereEver
             DropDownList_A_Time.SelectedValue = "9:00";
             DropDownList_B_Time.SelectedValue = "9:00";
             lblSelectedDateA1.Text = DateTime.Now.ToShortDateString();
-            lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
+            //lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
             lblSelectedDateB1.Text = DateTime.Now.ToShortDateString();
-            lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
+            //lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
 
             //テキストボックス初期化
             TextBox_Notification_Purpose.Text = "";
@@ -591,15 +581,103 @@ namespace WhereEver
         protected void DropDownList_A_Time_SelectionChanged(object sender, EventArgs e)
         {
             //カレンダー１の時間の値が変更されたときに実行されます
-            //lblSelectedDateA1.Text = Calendar1.SelectedDate.ToShortDateString();
-            lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
+            //lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
         }
         protected void DropDownList_B_Time_SelectionChanged(object sender, EventArgs e)
         {
             //カレンダー２の時間の値が変更されたときに実行されます
-            //lblSelectedDateB1.Text = Calendar2.SelectedDate.ToShortDateString();
-            lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
+            //lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
         }
+        protected void DropDownList_C_SelectionChanged(object sender, EventArgs e)
+        {
+            if (DropDownList_Way.SelectedValue != "【選択補助】")
+            {
+                //立て替えの交通機関の項目の値が変更されたときに実行されます
+                TextBox_Tatekae_TUse.Text = DropDownList_Way.SelectedValue;
+            }
+        }
+
+
+        protected void Calendar3_SelectionChanged(object sender, EventArgs e)
+        {
+            //立て替えカレンダー３の値が変更されたときに実行されます
+            //〇〇年を削除
+            string sdate = Calendar3.SelectedDate.ToShortDateString();
+            int ym = sdate.IndexOf("/");
+            sdate = sdate.Substring(ym + 1);
+            if(sdate.StartsWith("0"))
+            {
+                //月頭の0を削除
+                sdate = sdate.Substring(1);
+            }
+
+            int md = sdate.IndexOf("/");
+            string sdate2 = sdate.Substring(md + 1);
+            if (sdate2.StartsWith("0"))
+            {
+                //日付頭の0を削除
+                sdate2 = sdate2.Substring(1);
+            }
+
+            //接続
+            sdate = sdate.Substring(0, md + 1);
+            //----------------------
+            StringBuilder sb = new StringBuilder(sdate);
+            sb.Append(sdate2);
+            sb = DateChange(sb);
+            sdate = sb.ToString();
+            //----------------------
+
+            TextBox_Tatekae_Date.Text = sdate;
+        }
+
+        /// <summary>
+        /// p1には変更用stringを入力。
+        /// </summary>
+        /// <param name="sb"></param>
+        /// <returns>StringBuilder sb</returns>
+        protected StringBuilder DateChange(StringBuilder sb)
+        {
+            //----------------------
+            sb.Replace("０", "0");
+            sb.Replace("１", "1");
+            sb.Replace("２", "2");
+            sb.Replace("３", "3");
+            sb.Replace("４", "4");
+            sb.Replace("５", "5");
+            sb.Replace("６", "6");
+            sb.Replace("７", "7");
+            sb.Replace("８", "8");
+            sb.Replace("９", "9");
+            sb.Replace("/", "月");
+            sb.Append("日");
+            sb.Replace("日日", "日");
+            return sb;
+            //----------------------
+        }
+
+        /// <summary>
+        /// 入力値を点数に変更します。p1には変更用stringを入力。
+        /// </summary>
+        /// <param name="sb"></param>
+        /// <returns>StringBuilder sb</returns>
+        protected StringBuilder HowmanyChange(StringBuilder sb)
+        {
+            sb.Replace("点", "");
+            sb.Replace("０", "0");
+            sb.Replace("１", "1");
+            sb.Replace("２", "2");
+            sb.Replace("３", "3");
+            sb.Replace("４", "4");
+            sb.Replace("５", "5");
+            sb.Replace("６", "6");
+            sb.Replace("７", "7");
+            sb.Replace("８", "8");
+            sb.Replace("９", "9");
+            return sb;
+            //----------------------
+        }
+
 
         protected void BackButton_Click(object sender, EventArgs e)
         {
@@ -775,19 +853,7 @@ namespace WhereEver
             str = HtmlEncode(str);
             //----------------------
             sb = new StringBuilder(str);
-            sb.Replace("0", "０");
-            sb.Replace("1", "１");
-            sb.Replace("2", "２");
-            sb.Replace("3", "３");
-            sb.Replace("4", "４");
-            sb.Replace("5", "５");
-            sb.Replace("6", "６");
-            sb.Replace("7", "７");
-            sb.Replace("8", "８");
-            sb.Replace("9", "９");
-            sb.Replace("/", "月");
-            sb.Append("日");
-            sb.Replace("日日", "日");
+            sb = DateChange(sb);
             str = sb.ToString();
             //----------------------
             int rleng = Math.Min(str.Length, s_maxstr);
@@ -1316,10 +1382,15 @@ namespace WhereEver
 
                 //入力フォームに代入
                 DropDownList_DetailsOfNotification.Text = dt[0].B_DiligenceClassification.Trim();
+
                 lblSelectedDateA1.Text = dt[0].B_DiligenceDateA1.Trim();
-                lblSelectedDateA2.Text = dt[0].B_DiligenceDateA2.Trim();
+                //lblSelectedDateA2.Text = dt[0].B_DiligenceDateA2.Trim();
+                DropDownList_A_Time.Text = dt[0].B_DiligenceDateA2.Trim();
+
                 lblSelectedDateB1.Text = dt[0].B_DiligenceDateB1.Trim();
-                lblSelectedDateB2.Text = dt[0].B_DiligenceDateB2.Trim();
+                //lblSelectedDateB2.Text = dt[0].B_DiligenceDateB2.Trim();
+                DropDownList_B_Time.Text = dt[0].B_DiligenceDateB2.Trim();
+
                 TextBox_Notification_Purpose.Text = dt[0].B_Diligence_Because;
                 TextBox_Notification_ps.Text = dt[0].B_Diligence_ps;
 
@@ -1966,5 +2037,7 @@ namespace WhereEver
             Panel_del_pop.Visible = false;
 
         }
+
+
     }
 }

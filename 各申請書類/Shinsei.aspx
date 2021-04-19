@@ -161,7 +161,7 @@
                             <p>購入点数*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角49文字以内" placeholder="例：１"></asp:TextBox>点
+                            <asp:TextBox ID="TextBox_howMany" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" ToolTip="全角49文字以内" placeholder="例：1"></asp:TextBox>点
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_howMany" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_howMany"></asp:RequiredFieldValidator>
@@ -248,7 +248,9 @@
                                     <tr>
                                       <td>
                                         <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
-                                        <asp:DropDownList ID="DropDownList_A_Time" runat="server" OnTextChanged="DropDownList_A_Time_SelectionChanged" AutoPostBack="True">
+                                        <asp:Label ID="lblSelectedDateA1" runat="server" Text=""></asp:Label>
+        
+                                          <asp:DropDownList ID="DropDownList_A_Time" runat="server" OnTextChanged="DropDownList_A_Time_SelectionChanged">
                                             <asp:ListItem>9:00</asp:ListItem>
                                             <asp:ListItem>9:30</asp:ListItem>
                                             <asp:ListItem>10:00</asp:ListItem>
@@ -268,16 +270,13 @@
                                             <asp:ListItem>17:00</asp:ListItem>
                                             <asp:ListItem>17:30</asp:ListItem>
                                             <asp:ListItem>18:00</asp:ListItem>
-                                        </asp:DropDownList>
-
-                                <br />
-
-                                <asp:Label ID="lblSelectedDateA1" runat="server" Text=""></asp:Label>
-                                <asp:Label ID="lblSelectedDateA2" runat="server" Text="9:00"></asp:Label>から
+                                        </asp:DropDownList>から
                                       </td>
                                       <td>
                                         <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
-                                        <asp:DropDownList ID="DropDownList_B_Time" runat="server" OnTextChanged="DropDownList_B_Time_SelectionChanged" AutoPostBack="True">
+                                        <asp:Label ID="lblSelectedDateB1" runat="server" Text=""></asp:Label>
+
+                                        <asp:DropDownList ID="DropDownList_B_Time" runat="server" OnTextChanged="DropDownList_B_Time_SelectionChanged">
                                             <asp:ListItem>9:00</asp:ListItem>
                                             <asp:ListItem>9:30</asp:ListItem>
                                             <asp:ListItem>10:00</asp:ListItem>
@@ -297,9 +296,7 @@
                                             <asp:ListItem>17:00</asp:ListItem>
                                             <asp:ListItem>17:30</asp:ListItem>
                                             <asp:ListItem>18:00</asp:ListItem>
-                                        </asp:DropDownList><br />
-                                    <asp:Label ID="lblSelectedDateB1" runat="server" Text=""></asp:Label>
-                                    <asp:Label ID="lblSelectedDateB2" runat="server" Text="9:00"></asp:Label>まで
+                                        </asp:DropDownList>まで
                                       </td>
                                     </tr>
                                  </table>
@@ -352,7 +349,8 @@
                             <p>日付*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_Date" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：１月１日　１/１でもOK"></asp:TextBox>
+                            <asp:Calendar ID="Calendar3" runat="server" OnSelectionChanged="Calendar3_SelectionChanged"></asp:Calendar>
+                            <asp:TextBox ID="TextBox_Tatekae_Date" runat="server" CssClass="textbox" Width="180px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：1月1日　1/1でもOK"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_Date"></asp:RequiredFieldValidator>
@@ -363,7 +361,7 @@
                             <p>出張先*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_WPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：m2m　出張していない場合は「なし」"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_WPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：m2m　出張していない場合は「なし」" Text="なし"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_WPlace"></asp:RequiredFieldValidator>
@@ -375,7 +373,18 @@
                             <p>交通機関*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_TUse" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：電車　交通機関を利用していない場合は「徒歩」"></asp:TextBox>
+                            <asp:DropDownList ID="DropDownList_Way" runat="server" AutoPostBack="true" OnTextChanged=" DropDownList_C_SelectionChanged">
+                                <asp:ListItem Value="【選択補助】"></asp:ListItem>
+                                <asp:ListItem Value="徒歩"></asp:ListItem>
+                                <asp:ListItem Value="自転車"></asp:ListItem>
+                                <asp:ListItem Value="電車"></asp:ListItem>
+                                <asp:ListItem Value="新幹線"></asp:ListItem>
+                                <asp:ListItem Value="社用車"></asp:ListItem>
+                                <asp:ListItem Value="タクシー"></asp:ListItem>
+                                <asp:ListItem Value="バス"></asp:ListItem>
+                                <asp:ListItem Value="飛行機"></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:TextBox ID="TextBox_Tatekae_TUse" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：電車　交通機関を利用していない場合は「徒歩」" Text="徒歩"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TUse"></asp:RequiredFieldValidator>
@@ -387,7 +396,7 @@
                             <p>乗車駅*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_TIn" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：西新宿駅　ない場合は「なし」" Text=""></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_TIn" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：西新宿駅　ない場合は「なし」" Text="なし"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TIn"></asp:RequiredFieldValidator>
@@ -399,7 +408,7 @@
                             <p>降車駅*</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_TOut" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：西新宿駅　ない場合は「なし」" Text=""></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_TOut" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：西新宿駅　ない場合は「なし」" Text="なし"></asp:TextBox>
                         </td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TOut"></asp:RequiredFieldValidator>

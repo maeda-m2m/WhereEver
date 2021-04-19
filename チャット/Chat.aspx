@@ -37,6 +37,8 @@
                         <HeaderStyle Wrap="true"/>
                         <ItemTemplate>
                             <asp:Label ID="No" runat="server" Text=""></asp:Label>
+                            <asp:ImageButton ImageUrl="yajirusi.png" CommandName ="Reply" AlternateText="asp:ImageButton"
+                                Width="30px" ImageAlign="Right" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateColumn>
 

@@ -121,6 +121,7 @@
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
     <Content Include="チャット\purple.jpg" />
+    <Content Include="チャット\yajirusi.png" />
     <Content Include="ログイン\LoginList.css" />
     <Content Include="ログイン\LoginList.aspx" />
     <Content Include="MenuControl.css" />
