@@ -438,15 +438,6 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
 
         /// <summary>
-        /// DropDownList_A_Time コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_A_Time;
-
-        /// <summary>
         /// lblSelectedDateA1 コントロール。
         /// </summary>
         /// <remarks>
@@ -456,13 +447,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label lblSelectedDateA1;
 
         /// <summary>
-        /// lblSelectedDateA2 コントロール。
+        /// DropDownList_A_Time コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSelectedDateA2;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_A_Time;
 
         /// <summary>
         /// Calendar2 コントロール。
@@ -474,15 +465,6 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Calendar Calendar2;
 
         /// <summary>
-        /// DropDownList_B_Time コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_B_Time;
-
-        /// <summary>
         /// lblSelectedDateB1 コントロール。
         /// </summary>
         /// <remarks>
@@ -492,13 +474,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label lblSelectedDateB1;
 
         /// <summary>
-        /// lblSelectedDateB2 コントロール。
+        /// DropDownList_B_Time コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSelectedDateB2;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_B_Time;
 
         /// <summary>
         /// TextBox_Notification_Purpose コントロール。
@@ -591,6 +573,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Panel Panel6;
 
         /// <summary>
+        /// Calendar3 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar Calendar3;
+
+        /// <summary>
         /// TextBox_Tatekae_Date コントロール。
         /// </summary>
         /// <remarks>
@@ -625,6 +616,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
+        /// DropDownList_Way コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Way;
 
         /// <summary>
         /// TextBox_Tatekae_TUse コントロール。
