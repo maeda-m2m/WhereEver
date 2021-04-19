@@ -10,11 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-
-
-
 </head>
+
 <body>
+
     <form id="form1" runat="server">
         <table>
             <tr>
@@ -24,11 +23,20 @@
             </tr>
         </table>
 
-
         <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
+        <table id="btn" class="auto-style12">
+            <td class="auto-style11">
+                <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="10px" Width="1205px">
+                    <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
+                    &nbsp;<asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" />
+                    <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
+                </asp:Panel>
+            </td>
+        </table>
+
         <div>
             <asp:Panel ID="Panel1" runat="server">
-                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnInit="CalendarA" OnLoad="CalendarA">
+                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnPreRender="CalendarA">
                     <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                     <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
                     <OtherMonthDayStyle ForeColor="#999999" />
@@ -107,7 +115,6 @@
                             <td class="auto-style8">
 
                                 <asp:CheckBoxList ID="CheckBoxList1" runat="server">
-                                    <asp:ListItem></asp:ListItem>
                                     <asp:ListItem>石岡</asp:ListItem>
                                     <asp:ListItem>木村</asp:ListItem>
                                     <asp:ListItem>佐藤</asp:ListItem>
@@ -214,19 +221,8 @@
             </asp:DataGrid>
 
         </div>
-        <table id="btn" class="auto-style12">
 
-
-            <td class="auto-style11">
-                <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="10px" Width="1205px">
-                    <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
-                    &nbsp;<asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" />
-                    <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
-                </asp:Panel>
-            </td>
-
-
-        </table>
+        <br />
 
         <div>
 
