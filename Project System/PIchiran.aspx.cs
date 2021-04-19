@@ -28,6 +28,17 @@ namespace WhereEver.Project_System
                 new DataGridCommandEventHandler(this.DgPIchiran_UpdateCommand);
             DgPIchiran.ItemCommand +=
                 new DataGridCommandEventHandler(this.DgPIchiran_ItemCommand);
+
+            DATASET.DataSet.M_UserDataTable m_User = Insert.GetM_User(Global.GetConnection());
+            DataView dtview = dtview = new DataView(m_User);
+            DataTable dt1 = dtview.ToTable(false, "name1");
+            for (int rowindex = 0; rowindex < dt1.Rows.Count; rowindex++)
+            {
+                for (int colindex = 0; colindex < dt1.Rows[rowindex].ItemArray.Length; colindex++)
+                {
+                   ddlResponsible.Items.Add(dt1.Rows[rowindex][colindex].ToString());
+                }
+            }
         }
 
         protected void DgPIchiran_ItemDataBound(object sender, DataGridItemEventArgs e)
