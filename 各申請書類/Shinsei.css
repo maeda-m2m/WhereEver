@@ -333,6 +333,27 @@ h1 {
     background-color: #fff;
 }
 
+.DGTable {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    width: 1260px;
+    padding: 0.3em 1em;
+    border: solid 2px #16ba00;
+    border-radius: 3px;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+.cautionWrap {
+    display: inline-block;
+    padding: 0.3em 1em;
+    background-color: #ffffdd;
+    border: solid 2px red;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
 .btn-flat-border {
     text-align: center;
     width: 120px;

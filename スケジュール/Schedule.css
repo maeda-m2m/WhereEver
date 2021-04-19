@@ -81,3 +81,34 @@
     margin-left: 100px;
     margin-right: 0px;
 }
+.auto-style1 {
+    background-color: #16ba00;
+    color: white;
+    text-align: center;
+    height: 52px;
+}
+
+.auto-style7 {
+    height: 52px;
+    width: 500px;
+}
+
+.auto-style8 {
+    width: 500px;
+}
+
+.auto-style9 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+
+
+.auto-style11 {
+    height: 83px;
+    width: 752px;
+}
+
+.auto-style12 {
+    margin-left: 115px;
+}
