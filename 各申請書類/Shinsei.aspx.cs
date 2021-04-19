@@ -42,6 +42,8 @@ namespace WhereEver
                 //GridViewパネル
                 Panel0.Visible = true;
                 Panel00.Visible = false;
+                //削除確認パネル
+                Panel_del_pop.Visible = false;
                 //初期選択パネル
                 Panel1.Visible = true;
                 //物品購入申請書パネル
@@ -82,8 +84,22 @@ namespace WhereEver
                 }
 
 
-            }//!IsPostBack
+                // T_Shinsei_Config
+                // デリート時の確認用ポップアップのコンフィグ設定をロードします
+                DATASET.DataSet.T_Shinsei_ConfigDataTable conf = ShinseiLog.GetT_Shinsei_ConfigRow(Global.GetConnection(), SessionManager.User.ID);
+                if (conf != null)
+                {
+                    //デリートコンフィグをロードします
+                    CheckBox_is_del_pop.Checked = conf[0].flag_del_pop;
+                }
+                else
+                {
+                    //初期設定をインサートします
+                    ShinseiLog.SetT_Shinsei_ConfigInsert(Global.GetConnection(), SessionManager.User.ID, CheckBox_is_del_pop.Checked);
+                }
 
+
+            }//!IsPostBack
 
             topchange();
 
@@ -109,6 +125,12 @@ namespace WhereEver
                 lblTop_0.Text = "あなたが作成した申請書類はありません。新規作成したい申請書類を選択して下さい。";
                 lblTop_00.Text = lblTop_0.Text;
             }
+        }
+
+        protected void SetDelPop(object sender, EventArgs e)
+        {
+            //コンフィグ設定をアップデートします
+            ShinseiLog.SetT_Shinsei_ConfigUpdate(Global.GetConnection(), SessionManager.User.ID, CheckBox_is_del_pop.Checked);
         }
 
         /// <summary>
@@ -185,17 +207,7 @@ namespace WhereEver
             //-------------------------------------------------------------------
 
             StringBuilder sb = new StringBuilder(HtmlEncode(TextBox_howMany.Text).ToString());
-            sb.Replace("点", "");
-            sb.Replace("0", "０");
-            sb.Replace("1", "１");
-            sb.Replace("2", "２");
-            sb.Replace("3", "３");
-            sb.Replace("4", "４");
-            sb.Replace("5", "５");
-            sb.Replace("6", "６");
-            sb.Replace("7", "７");
-            sb.Replace("8", "８");
-            sb.Replace("9", "９");
+            sb = HowmanyChange(sb);
             string str = sb.ToString();
             //----------------------
 
@@ -355,9 +367,9 @@ namespace WhereEver
             DropDownList_A_Time.SelectedValue = "9:00";
             DropDownList_B_Time.SelectedValue = "9:00";
             lblSelectedDateA1.Text = DateTime.Now.ToShortDateString();
-            lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
+            //lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
             lblSelectedDateB1.Text = DateTime.Now.ToShortDateString();
-            lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
+            //lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
 
             //テキストボックス初期化
             TextBox_Notification_Purpose.Text = "";
@@ -569,15 +581,103 @@ namespace WhereEver
         protected void DropDownList_A_Time_SelectionChanged(object sender, EventArgs e)
         {
             //カレンダー１の時間の値が変更されたときに実行されます
-            //lblSelectedDateA1.Text = Calendar1.SelectedDate.ToShortDateString();
-            lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
+            //lblSelectedDateA2.Text = DropDownList_A_Time.SelectedValue;
         }
         protected void DropDownList_B_Time_SelectionChanged(object sender, EventArgs e)
         {
             //カレンダー２の時間の値が変更されたときに実行されます
-            //lblSelectedDateB1.Text = Calendar2.SelectedDate.ToShortDateString();
-            lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
+            //lblSelectedDateB2.Text = DropDownList_B_Time.SelectedValue;
         }
+        protected void DropDownList_C_SelectionChanged(object sender, EventArgs e)
+        {
+            if (DropDownList_Way.SelectedValue != "【選択補助】")
+            {
+                //立て替えの交通機関の項目の値が変更されたときに実行されます
+                TextBox_Tatekae_TUse.Text = DropDownList_Way.SelectedValue;
+            }
+        }
+
+
+        protected void Calendar3_SelectionChanged(object sender, EventArgs e)
+        {
+            //立て替えカレンダー３の値が変更されたときに実行されます
+            //〇〇年を削除
+            string sdate = Calendar3.SelectedDate.ToShortDateString();
+            int ym = sdate.IndexOf("/");
+            sdate = sdate.Substring(ym + 1);
+            if(sdate.StartsWith("0"))
+            {
+                //月頭の0を削除
+                sdate = sdate.Substring(1);
+            }
+
+            int md = sdate.IndexOf("/");
+            string sdate2 = sdate.Substring(md + 1);
+            if (sdate2.StartsWith("0"))
+            {
+                //日付頭の0を削除
+                sdate2 = sdate2.Substring(1);
+            }
+
+            //接続
+            sdate = sdate.Substring(0, md + 1);
+            //----------------------
+            StringBuilder sb = new StringBuilder(sdate);
+            sb.Append(sdate2);
+            sb = DateChange(sb);
+            sdate = sb.ToString();
+            //----------------------
+
+            TextBox_Tatekae_Date.Text = sdate;
+        }
+
+        /// <summary>
+        /// p1には変更用stringを入力。
+        /// </summary>
+        /// <param name="sb"></param>
+        /// <returns>StringBuilder sb</returns>
+        protected StringBuilder DateChange(StringBuilder sb)
+        {
+            //----------------------
+            sb.Replace("０", "0");
+            sb.Replace("１", "1");
+            sb.Replace("２", "2");
+            sb.Replace("３", "3");
+            sb.Replace("４", "4");
+            sb.Replace("５", "5");
+            sb.Replace("６", "6");
+            sb.Replace("７", "7");
+            sb.Replace("８", "8");
+            sb.Replace("９", "9");
+            sb.Replace("/", "月");
+            sb.Append("日");
+            sb.Replace("日日", "日");
+            return sb;
+            //----------------------
+        }
+
+        /// <summary>
+        /// 入力値を点数に変更します。p1には変更用stringを入力。
+        /// </summary>
+        /// <param name="sb"></param>
+        /// <returns>StringBuilder sb</returns>
+        protected StringBuilder HowmanyChange(StringBuilder sb)
+        {
+            sb.Replace("点", "");
+            sb.Replace("０", "0");
+            sb.Replace("１", "1");
+            sb.Replace("２", "2");
+            sb.Replace("３", "3");
+            sb.Replace("４", "4");
+            sb.Replace("５", "5");
+            sb.Replace("６", "6");
+            sb.Replace("７", "7");
+            sb.Replace("８", "8");
+            sb.Replace("９", "9");
+            return sb;
+            //----------------------
+        }
+
 
         protected void BackButton_Click(object sender, EventArgs e)
         {
@@ -753,19 +853,7 @@ namespace WhereEver
             str = HtmlEncode(str);
             //----------------------
             sb = new StringBuilder(str);
-            sb.Replace("0", "０");
-            sb.Replace("1", "１");
-            sb.Replace("2", "２");
-            sb.Replace("3", "３");
-            sb.Replace("4", "４");
-            sb.Replace("5", "５");
-            sb.Replace("6", "６");
-            sb.Replace("7", "７");
-            sb.Replace("8", "８");
-            sb.Replace("9", "９");
-            sb.Replace("/", "月");
-            sb.Append("日");
-            sb.Replace("日日", "日");
+            sb = DateChange(sb);
             str = sb.ToString();
             //----------------------
             int rleng = Math.Min(str.Length, s_maxstr);
@@ -1141,6 +1229,251 @@ namespace WhereEver
 
         }
 
+        protected void RemoveShinseiRow(int args)
+        {
+
+            //idをロード
+            //String isbn_key = (String)GridView1.DataKeys[args].Value;
+            String isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
+
+            // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
+            //uidをロード
+            String isbn_uid = GridView1.Rows[args].Cells[1].Text.Trim();
+
+            // クリックされた[args]行の左から3番目の列[0-nで数える]のセルにある「テキスト」を取得
+            //申請種別をロード
+            String isbn_kind = GridView1.Rows[args].Cells[3].Text.Trim();
+
+            //個別テーブルから削除
+            if (isbn_kind == "物品購入申請")
+            {
+                ShinseiLog.DeleteT_Shinsei_A_BuyRow(Global.GetConnection(), isbn_name, isbn_uid);
+            }
+            else if (isbn_kind == "勤怠関連申請")
+            {
+                ShinseiLog.DeleteT_Shinsei_B_Diligence(Global.GetConnection(), isbn_name, isbn_uid);
+            }
+            else if (isbn_kind == "立替金明細表申請")
+            {
+                ShinseiLog.DeleteT_Shinsei_C_Tatekae(Global.GetConnection(), isbn_name, isbn_uid);
+            }
+
+            //一覧から削除
+            ShinseiLog.DeleteT_Shinsei_MainRow(Global.GetConnection(), isbn_name, isbn_uid);
+            lbluid.Text = "null";
+
+            //データバインド
+            BindData();
+
+            //レスポンスリダイレクト
+            //Response.Redirect("Shinsei.aspx");
+        }
+
+        protected void ReformShinseiRow(int args)
+        {
+            if (Session["args"].ToString() != "null")
+            {
+                //GridView1の色を変えた色をもとに戻す
+                int resetargs = int.Parse(Session["args"].ToString());
+                GridView1.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
+            }
+
+            //新たに色を変更する行を記憶
+            Session.Add("args", args);
+
+            //行の色変更（選択行を強調表示）
+            GridView1.Rows[args].BackColor = System.Drawing.Color.AliceBlue;
+
+            //idをロード
+            //String isbn_key = (String)GridView1.DataKeys[args].Value;
+            string isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
+
+            // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
+            //uidをロード
+            string isbn_uid = GridView1.Rows[args].Cells[1].Text.Trim();
+            lbluid.Text = isbn_uid;
+
+            // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
+            //name1をロード（いらない）
+            //string isbn_name1 = GridView1.Rows[args].Cells[2].Text.Trim();
+            string isbn_name1 = SessionManager.User.M_User.name1;
+
+            // クリックされた[args]行の左から3番目の列[0-nで数える]のセルにある「テキスト」を取得
+            //申請種別をロード
+            string isbn_kind = GridView1.Rows[args].Cells[3].Text.Trim();
+
+            // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
+            //作成日付をロード
+            //String isbn_date = GridView1.Rows[args].Cells[4].Text.Trim();
+
+            // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
+            //最終更新日をロード
+            string isbn_date = GridView1.Rows[args].Cells[5].Text.Trim();
+            DateTime datetime = DateTime.Parse(isbn_date);
+            isbn_date = datetime.ToShortDateString();
+
+            if (isbn_kind == "物品購入申請")
+            {
+                name1.Text = isbn_name1;
+                date.Text = isbn_date;
+
+                //DataTableを参照
+                DATASET.DataSet.T_Shinsei_A_BuyDataTable dt = ShinseiLog.GetT_Shinsei_A_BuyRow(Global.GetConnection(), isbn_name, isbn_uid);
+
+                //入力フォームに代入
+                TextBox_purchaseName.Text = dt[0].A_BuyItem;
+                TextBox_classification.Text = dt[0].A_BuyItem;
+                TextBox_howMany.Text = dt[0].A_BuyHowMany;
+                TextBox_howMach.Text = dt[0].A_BuyHowMach;
+                TextBox_marketPlace.Text = dt[0].A_BuyPlace;
+                TextBox_buy_purpose.Text = dt[0].A_Buy_Because;
+                TextBox_ps.Text = dt[0].A_Buy_ps;
+
+                //書き換え
+                StringBuilder str = new StringBuilder(HtmlEncode(TextBox_howMany.Text).ToString());
+                str.Replace("点", "");
+                TextBox_howMany.Text = str.ToString();
+
+                str = new StringBuilder(HtmlEncode(TextBox_howMach.Text).ToString());
+                str.Replace("-", "");
+                str.Replace(",", "");
+                str.Replace("\\", "");
+                TextBox_howMach.Text = str.ToString();
+
+
+                //印刷ビューに代入
+                Konyu.Text = dt[0].A_BuyItem;
+                Syubetsu.Text = dt[0].A_BuyItem;
+                Suryo.Text = dt[0].A_BuyHowMany;
+                Kingaku.Text = dt[0].A_BuyHowMach;
+                KonyuSaki.Text = dt[0].A_BuyPlace;
+                Label_Riyuu.Text = dt[0].A_Buy_Because;
+                Label_Bikou.Text = dt[0].A_Buy_ps;
+
+
+                //初期選択パネル
+                Panel1.Visible = true;
+                //物品購入申請書パネル
+                Panel2.Visible = true;
+                //勤怠パネル
+                Panel3.Visible = false;
+                //物品購入申請書印刷フォーム
+                Panel4.Visible = true;
+                //勤怠届印刷フォーム
+                Panel5.Visible = false;
+                //立替金明細表申請パネル
+                Panel6.Visible = false;
+                //立替金明細表印刷フォーム
+                Panel7.Visible = false;
+                //印刷ボタンパネル
+                Panel_Print.Visible = true;
+
+                //SaveMessageを消去
+                lbl_SaveResult1.Text = "";
+
+            }
+            else if (isbn_kind == "勤怠関連申請")
+            {
+                lblDiligenceUser.Text = isbn_name1;
+                lblDiligenceDate.Text = isbn_date;
+
+                //DataTableを参照
+                DATASET.DataSet.T_Shinsei_B_DiligenceDataTable dt = ShinseiLog.GetT_Shinsei_B_DiligenceRow(Global.GetConnection(), isbn_name, isbn_uid);
+
+                //入力フォームに代入
+                DropDownList_DetailsOfNotification.Text = dt[0].B_DiligenceClassification.Trim();
+
+                lblSelectedDateA1.Text = dt[0].B_DiligenceDateA1.Trim();
+                //lblSelectedDateA2.Text = dt[0].B_DiligenceDateA2.Trim();
+                DropDownList_A_Time.Text = dt[0].B_DiligenceDateA2.Trim();
+
+                lblSelectedDateB1.Text = dt[0].B_DiligenceDateB1.Trim();
+                //lblSelectedDateB2.Text = dt[0].B_DiligenceDateB2.Trim();
+                DropDownList_B_Time.Text = dt[0].B_DiligenceDateB2.Trim();
+
+                TextBox_Notification_Purpose.Text = dt[0].B_Diligence_Because;
+                TextBox_Notification_ps.Text = dt[0].B_Diligence_ps;
+
+                //印刷ビューに代入
+                lblDiligenceClassification1.Text = dt[0].B_DiligenceClassification.Trim();
+                lblDiligenceClassification2.Text = dt[0].B_DiligenceClassification.Trim();
+                lblDiligenceDateA1.Text = dt[0].B_DiligenceDateA1.Trim();
+                lblDiligenceDateA2.Text = dt[0].B_DiligenceDateA2.Trim();
+                lblDiligenceDateB1.Text = dt[0].B_DiligenceDateB1.Trim();
+                lblDiligenceDateB2.Text = dt[0].B_DiligenceDateB2.Trim();
+                Label_Diligence_because.Text = dt[0].B_Diligence_Because;
+                Label_Diligence_ps.Text = dt[0].B_Diligence_ps;
+
+                //初期選択パネル
+                Panel1.Visible = true;
+                //物品購入申請書パネル
+                Panel2.Visible = false;
+                //勤怠パネル
+                Panel3.Visible = true;
+                //物品購入申請書印刷フォーム
+                Panel4.Visible = false;
+                //勤怠届印刷フォーム
+                Panel5.Visible = true;
+                //立替金明細表申請パネル
+                Panel6.Visible = false;
+                //立替金明細表印刷フォーム
+                Panel7.Visible = false;
+                //印刷ボタンパネル
+                Panel_Print.Visible = true;
+
+                //SaveMessageを消去
+                lbl_SaveResult2.Text = "";
+
+            }
+            else if (isbn_kind == "立替金明細表申請")
+            {
+                lblTatekaeName.Text = isbn_name1;
+                lblTatekaeDate.Text = isbn_date;
+
+                //DataTableを参照
+                DATASET.DataSet.T_Shinsei_C_TatekaeDataTable dt = ShinseiLog.GetT_Shinsei_C_TatekaeRow(Global.GetConnection(), isbn_name, isbn_uid);
+
+                //入力フォーム
+                TextBox_Tatekae_Teiki.Text = dt[0].C_Tatekae_Result2;
+
+                //書き換え
+                StringBuilder str = new StringBuilder(HtmlEncode(TextBox_Tatekae_Teiki.Text).ToString());
+                str.Replace("-", "");
+                str.Replace(",", "");
+                str.Replace("\\", "");
+                TextBox_Tatekae_Teiki.Text = str.ToString();
+
+                //印刷フォーム
+                lblTatekaeResult.Text = dt[0].C_Tatekae_Result_Main.Trim();
+                lblTatekae_Koutuuhi.Text = dt[0].C_Tatekae_TWaste.Trim();
+                lblTatekae_Shukuhakuhi.Text = dt[0].C_Tatekae_PWaste.Trim();
+                lblTatekae_Result1.Text = dt[0].C_Tatekae_Result1.Trim();
+                lblTatekae_Result2.Text = dt[0].C_Tatekae_Result2.Trim();
+                lblTatekae_Result3.Text = dt[0].C_Tatekae_Result3.Trim();
+
+                //初期選択パネル
+                Panel1.Visible = true;
+                //物品購入申請書パネル
+                Panel2.Visible = false;
+                //勤怠パネル
+                Panel3.Visible = false;
+                //物品購入申請書印刷フォーム
+                Panel4.Visible = false;
+                //勤怠届印刷フォーム
+                Panel5.Visible = false;
+                //立替金明細表申請パネル
+                Panel6.Visible = true;
+                //立替金明細表印刷フォーム
+                Panel7.Visible = true;
+                //印刷ボタンパネル
+                Panel_Print.Visible = true;
+
+                //SaveMessageを消去
+                lbl_SaveResult3.Text = "";
+
+            }
+        }
+
 
         //GridViewのRowCommand属性に参照可能なメソッドを入力すると↓が自動生成されます。
         //GridViewが読み込まれたときに実行されます。
@@ -1151,49 +1484,34 @@ namespace WhereEver
             // コマンド名が“Remove”の場合にのみ処理（独自の削除ボタン）
             if (e.CommandName == "Remove")
             {
+
                 //コマンドの引数を取得
                 int args = Int32.Parse(e.CommandArgument.ToString());
-
-                Session.Add("args", (string)"null");
-
+              
                 //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
                 //【重要】ReadOnly属性がついていないと読み込みできない。
 
-                //idをロード
-                //String isbn_key = (String)GridView1.DataKeys[args].Value;
-                String isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
-
-                // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
-                //uidをロード
-                String isbn_uid = GridView1.Rows[args].Cells[1].Text.Trim();
-
-                // クリックされた[args]行の左から3番目の列[0-nで数える]のセルにある「テキスト」を取得
-                //申請種別をロード
-                String isbn_kind = GridView1.Rows[args].Cells[3].Text.Trim();
-
-                //個別テーブルから削除
-                if (isbn_kind == "物品購入申請")
+                if (CheckBox_is_del_pop.Checked)
                 {
-                    ShinseiLog.DeleteT_Shinsei_A_BuyRow(Global.GetConnection(), isbn_name, isbn_uid);
-                }
-                else if (isbn_kind == "勤怠関連申請")
-                {
-                    ShinseiLog.DeleteT_Shinsei_B_Diligence(Global.GetConnection(), isbn_name, isbn_uid);
-                }
-                else if (isbn_kind == "立替金明細表申請")
-                {
-                    ShinseiLog.DeleteT_Shinsei_C_Tatekae(Global.GetConnection(), isbn_name, isbn_uid);
+
+                    //uidをロード
+                    string isbn_uid = GridView1.Rows[args].Cells[1].Text.Trim();
+                    lbldeluid.Text = isbn_uid;
+
+                    //消去確認ポップアップ
+                    Panel0.Visible = false;
+                    Panel00.Visible = false;
+                    //削除確認パネル
+                    Panel_del_pop.Visible = true;
+
+                    Session.Add("del_args", args);
+                    return;
                 }
 
-                //一覧から削除
-                ShinseiLog.DeleteT_Shinsei_MainRow(Global.GetConnection(), isbn_name, isbn_uid);
-                lbluid.Text = "null";
+                //セッション変数argsを初期化
+                Session.Add("args", (string)"null");
 
-                //データバインド
-                BindData();
-
-                //レスポンスリダイレクト
-                //Response.Redirect("Shinsei.aspx");
+                RemoveShinseiRow(args);
 
                 // コマンド名が“Reform”の場合にのみ処理（修正ボタン）
             }
@@ -1205,205 +1523,9 @@ namespace WhereEver
                 //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
                 //【重要】ReadOnly属性がついていないと読み込みできない。
 
+                ReformShinseiRow(args);
 
-                if (Session["args"].ToString() != "null")
-                {
-                    //GridView1の色を変えた色をもとに戻す
-                    int resetargs = int.Parse(Session["args"].ToString());
-                    GridView1.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
-                }
-
-                //新たに色を変更する行を記憶
-                Session.Add("args", args);
-
-                //行の色変更（選択行を強調表示）
-                GridView1.Rows[args].BackColor = System.Drawing.Color.AliceBlue;
-
-                //idをロード
-                //String isbn_key = (String)GridView1.DataKeys[args].Value;
-                string isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
-
-                // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
-                //uidをロード
-                string isbn_uid = GridView1.Rows[args].Cells[1].Text.Trim();
-                lbluid.Text = isbn_uid;
-
-                // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
-                //name1をロード（いらない）
-                //string isbn_name1 = GridView1.Rows[args].Cells[2].Text.Trim();
-                string isbn_name1 = SessionManager.User.M_User.name1;
-
-                // クリックされた[args]行の左から3番目の列[0-nで数える]のセルにある「テキスト」を取得
-                //申請種別をロード
-                string isbn_kind = GridView1.Rows[args].Cells[3].Text.Trim();
-
-                // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
-                //作成日付をロード
-                //String isbn_date = GridView1.Rows[args].Cells[4].Text.Trim();
-
-                // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
-                //最終更新日をロード
-                string isbn_date = GridView1.Rows[args].Cells[5].Text.Trim();
-                DateTime datetime = DateTime.Parse(isbn_date);
-                isbn_date = datetime.ToShortDateString();
-
-                    if (isbn_kind == "物品購入申請")
-                    {
-                        name1.Text = isbn_name1;
-                        date.Text = isbn_date;
-
-                        //DataTableを参照
-                        DATASET.DataSet.T_Shinsei_A_BuyDataTable dt = ShinseiLog.GetT_Shinsei_A_BuyRow(Global.GetConnection(), isbn_name, isbn_uid);
-
-                        //入力フォームに代入
-                        TextBox_purchaseName.Text = dt[0].A_BuyItem;
-                        TextBox_classification.Text = dt[0].A_BuyItem;
-                        TextBox_howMany.Text = dt[0].A_BuyHowMany;
-                        TextBox_howMach.Text = dt[0].A_BuyHowMach;
-                        TextBox_marketPlace.Text = dt[0].A_BuyPlace;
-                        TextBox_buy_purpose.Text = dt[0].A_Buy_Because;
-                        TextBox_ps.Text = dt[0].A_Buy_ps;
-
-                        //書き換え
-                        StringBuilder str = new StringBuilder(HtmlEncode(TextBox_howMany.Text).ToString());
-                        str.Replace("点", "");
-                        TextBox_howMany.Text = str.ToString();
-
-                        str = new StringBuilder(HtmlEncode(TextBox_howMach.Text).ToString());
-                        str.Replace("-", "");
-                        str.Replace(",", "");
-                        str.Replace("\\", "");
-                        TextBox_howMach.Text = str.ToString();
-
-
-                        //印刷ビューに代入
-                        Konyu.Text = dt[0].A_BuyItem;
-                        Syubetsu.Text = dt[0].A_BuyItem;
-                        Suryo.Text = dt[0].A_BuyHowMany;
-                        Kingaku.Text = dt[0].A_BuyHowMach;
-                        KonyuSaki.Text = dt[0].A_BuyPlace;
-                        Label_Riyuu.Text = dt[0].A_Buy_Because;
-                        Label_Bikou.Text = dt[0].A_Buy_ps;
-
-
-                        //初期選択パネル
-                        Panel1.Visible = true;
-                        //物品購入申請書パネル
-                        Panel2.Visible = true;
-                        //勤怠パネル
-                        Panel3.Visible = false;
-                        //物品購入申請書印刷フォーム
-                        Panel4.Visible = true;
-                        //勤怠届印刷フォーム
-                        Panel5.Visible = false;
-                        //立替金明細表申請パネル
-                        Panel6.Visible = false;
-                        //立替金明細表印刷フォーム
-                        Panel7.Visible = false;
-                        //印刷ボタンパネル
-                        Panel_Print.Visible = true;
-
-                        //SaveMessageを消去
-                        lbl_SaveResult1.Text = "";
-
-                    }
-                    else if (isbn_kind == "勤怠関連申請")
-                    {
-                        lblDiligenceUser.Text = isbn_name1;
-                        lblDiligenceDate.Text = isbn_date;
-
-                        //DataTableを参照
-                        DATASET.DataSet.T_Shinsei_B_DiligenceDataTable dt = ShinseiLog.GetT_Shinsei_B_DiligenceRow(Global.GetConnection(), isbn_name, isbn_uid);
-
-                        //入力フォームに代入
-                        DropDownList_DetailsOfNotification.Text = dt[0].B_DiligenceClassification.Trim();
-                        lblSelectedDateA1.Text = dt[0].B_DiligenceDateA1.Trim();
-                        lblSelectedDateA2.Text = dt[0].B_DiligenceDateA2.Trim();
-                        lblSelectedDateB1.Text = dt[0].B_DiligenceDateB1.Trim();
-                        lblSelectedDateB2.Text = dt[0].B_DiligenceDateB2.Trim();
-                        TextBox_Notification_Purpose.Text = dt[0].B_Diligence_Because;
-                        TextBox_Notification_ps.Text = dt[0].B_Diligence_ps;
-
-                        //印刷ビューに代入
-                        lblDiligenceClassification1.Text = dt[0].B_DiligenceClassification.Trim();
-                        lblDiligenceClassification2.Text = dt[0].B_DiligenceClassification.Trim();
-                        lblDiligenceDateA1.Text = dt[0].B_DiligenceDateA1.Trim();
-                        lblDiligenceDateA2.Text = dt[0].B_DiligenceDateA2.Trim();
-                        lblDiligenceDateB1.Text = dt[0].B_DiligenceDateB1.Trim();
-                        lblDiligenceDateB2.Text = dt[0].B_DiligenceDateB2.Trim();
-                        Label_Diligence_because.Text = dt[0].B_Diligence_Because;
-                        Label_Diligence_ps.Text = dt[0].B_Diligence_ps;
-
-                        //初期選択パネル
-                        Panel1.Visible = true;
-                        //物品購入申請書パネル
-                        Panel2.Visible = false;
-                        //勤怠パネル
-                        Panel3.Visible = true;
-                        //物品購入申請書印刷フォーム
-                        Panel4.Visible = false;
-                        //勤怠届印刷フォーム
-                        Panel5.Visible = true;
-                        //立替金明細表申請パネル
-                        Panel6.Visible = false;
-                        //立替金明細表印刷フォーム
-                        Panel7.Visible = false;
-                        //印刷ボタンパネル
-                        Panel_Print.Visible = true;
-
-                        //SaveMessageを消去
-                        lbl_SaveResult2.Text = "";
-
-                    }
-                    else if (isbn_kind == "立替金明細表申請")
-                    {
-                        lblTatekaeName.Text = isbn_name1;
-                        lblTatekaeDate.Text = isbn_date;
-
-                        //DataTableを参照
-                        DATASET.DataSet.T_Shinsei_C_TatekaeDataTable dt = ShinseiLog.GetT_Shinsei_C_TatekaeRow(Global.GetConnection(), isbn_name, isbn_uid);
-
-                         //入力フォーム
-                        TextBox_Tatekae_Teiki.Text = dt[0].C_Tatekae_Result2;
-
-                        //書き換え
-                        StringBuilder str = new StringBuilder(HtmlEncode(TextBox_Tatekae_Teiki.Text).ToString());
-                        str.Replace("-", "");
-                        str.Replace(",", "");
-                        str.Replace("\\", "");
-                        TextBox_Tatekae_Teiki.Text = str.ToString();
-
-                        //印刷フォーム
-                        lblTatekaeResult.Text = dt[0].C_Tatekae_Result_Main.Trim();
-                        lblTatekae_Koutuuhi.Text = dt[0].C_Tatekae_TWaste.Trim();
-                        lblTatekae_Shukuhakuhi.Text = dt[0].C_Tatekae_PWaste.Trim();
-                        lblTatekae_Result1.Text = dt[0].C_Tatekae_Result1.Trim();
-                        lblTatekae_Result2.Text = dt[0].C_Tatekae_Result2.Trim();
-                        lblTatekae_Result3.Text = dt[0].C_Tatekae_Result3.Trim();
-
-                        //初期選択パネル
-                        Panel1.Visible = true;
-                        //物品購入申請書パネル
-                        Panel2.Visible = false;
-                        //勤怠パネル
-                        Panel3.Visible = false;
-                        //物品購入申請書印刷フォーム
-                        Panel4.Visible = false;
-                        //勤怠届印刷フォーム
-                        Panel5.Visible = false;
-                        //立替金明細表申請パネル
-                        Panel6.Visible = true;
-                        //立替金明細表印刷フォーム
-                        Panel7.Visible = true;
-                        //印刷ボタンパネル
-                        Panel_Print.Visible = true;
-
-                        //SaveMessageを消去
-                        lbl_SaveResult3.Text = "";
-
-                    }
-
-                }
+            }
             return; //grid_RowCommand
         }
 
@@ -1834,6 +1956,12 @@ namespace WhereEver
                     }
                     //----------------------------------------------
 
+                    //消去確認ポップアップを解除
+                    Panel0.Visible = true;
+                    Panel00.Visible = false;    //追加や更新ができるということは必ず1つ以上のShinseiデータが存在する
+                    //削除確認パネルを閉じる
+                    Panel_del_pop.Visible = false;
+
                 }
                 catch
                 {
@@ -1881,6 +2009,33 @@ namespace WhereEver
             lblTatekaeName.Text = SessionManager.User.M_User.name1;
             DateTime date = DateTime.Now;
             lblTatekaeDate.Text = date.ToShortDateString();
+        }
+
+        protected void Button_del_pop_delete(object sender, EventArgs e)
+        {
+            //削除を許可
+
+            //消去確認ポップアップを解除
+            Panel0.Visible = true;
+            Panel00.Visible = false;    //削除できるということは必ず1つ以上のShinseiデータが存在する
+            //削除確認パネル
+            Panel_del_pop.Visible = false;
+
+            int del_args = int.Parse(Session["del_args"].ToString());
+            RemoveShinseiRow(del_args);
+
+        }
+
+        protected void Button_del_pop_cancel(object sender, EventArgs e)
+        {
+            //削除を不許可
+
+            //消去確認ポップアップを解除
+            Panel0.Visible = true;
+            Panel00.Visible = false;    //削除できるということは必ず1つ以上のShinseiデータが存在する
+            //削除確認パネル
+            Panel_del_pop.Visible = false;
+
         }
 
 

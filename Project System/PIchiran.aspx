@@ -101,11 +101,6 @@
 
                         <asp:DropDownList ID="ddlResponsible" CssClass="txt" runat="server">
                             <asp:ListItem></asp:ListItem>
-                            <asp:ListItem>張</asp:ListItem>
-                            <asp:ListItem>柳沢</asp:ListItem>
-                            <asp:ListItem>坂口</asp:ListItem>
-                            <asp:ListItem>鯉淵</asp:ListItem>
-                            <asp:ListItem>前田</asp:ListItem>
                         </asp:DropDownList>
 
                     </td>

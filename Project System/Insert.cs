@@ -43,5 +43,14 @@ namespace WhereEver.Project_System
                 sqlConnection.Close();
             }
         }
+        internal static DATASET.DataSet.M_UserDataTable GetM_User(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "select * from M_User";
+            DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
+            da.Fill(dt);
+            return dt;
+        }
     }
 }
