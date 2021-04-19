@@ -41,7 +41,7 @@
 
                        <p><asp:Label ID="lblTop_0" runat="server" Text="各種申請書類を作成または管理できます。"></asp:Label></p>
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="form-flat-border" OnRowCommand="grid_RowCommand">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowCommand="grid_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
                     <asp:BoundField DataField="uid" HeaderText="uid" ReadOnly="True" SortExpression="uid" />
@@ -59,6 +59,7 @@
                     </asp:ButtonField>
 
                 </Columns>
+                <HeaderStyle BackColor="#66FF66" />
             </asp:GridView>
 
              <asp:SqlDataSource ID="SqlDataSource1" runat="server"
@@ -83,8 +84,21 @@
                        <p><asp:Button ID="Button_list_close_2" CssClass="btn-flat-border" runat="server" Text="リストを閉じる" OnClick="Button_Datalist_Close_Click" CausesValidation="False" />
                        <asp:Button ID="Button_reload_2" CssClass="btn-flat-border" runat="server" Text="リスト手動更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
 
+                       <p><asp:CheckBox ID="CheckBox_is_del_pop" runat="server" Text="削除時に確認する" Checked="True" OnCheckedChanged="SetDelPop" AutoPostBack="True" /></p>
+
             </asp:Panel>
 
+
+            <%-- 疑似モーダルポップアップ --%>
+<asp:Panel ID="Panel_del_pop" runat="server" CssClass="noprint">
+    <div class="cautionWrap">
+        <p>※最終確認※</p>
+        <p>削除uid: <asp:Label ID="lbldeluid" runat="server" Text="null"></asp:Label></p>
+        <p>本当に削除しますか？（一度消すと元に戻せません！）</p>
+        <asp:Button id="btnDelete" CssClass="btn-flat-border" runat="server" text="Delete" OnClick="Button_del_pop_delete" />
+        <asp:Button id="btnCancel" CssClass="btn-flat-border" runat="server" text="Cancel" OnClick="Button_del_pop_cancel" />
+    </div>
+</asp:Panel>
 
             <%-- 共通 --%>
            <p>
