@@ -15,6 +15,8 @@ namespace WhereEver
 {
     public partial class Schedule : System.Web.UI.Page
     {
+        public DataGridCommandEventHandler scdl_CancelCommand { get; private set; }
+
         //ページがロードするとき
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,6 +31,14 @@ namespace WhereEver
                 Scdl3.Columns[3].ItemStyle.Wrap = true;
                 Scdl3.Columns[4].ItemStyle.Wrap = true;
             }
+            ScdlList.EditCommand +=
+            new DataGridCommandEventHandler(this.ScdlList_EditCommand);
+            ScdlList.CancelCommand +=
+                new DataGridCommandEventHandler(this.ScdlList_CancelCommand);
+            ScdlList.UpdateCommand +=
+                new DataGridCommandEventHandler(this.ScdlList_UpdateCommand);
+            ScdlList.ItemCommand +=
+                new DataGridCommandEventHandler(this.ScdlList_ItemCommand);
         }
 
         //スケジュールリストにデータを格納　→　ScdlList_ItemDataBound　に移動
@@ -67,6 +77,15 @@ namespace WhereEver
             Create3();
         }
 
+
+        //Calendarに予定を表示するためのクラス
+        protected void CalendarA(object sender, EventArgs e)
+        {
+            Create();
+            Create3();
+        }
+
+
         //スケジュール登録ボタンを押したときの動き
         protected void Button2_Click(object sender, EventArgs e)
         {
@@ -86,16 +105,16 @@ namespace WhereEver
 
             dr.title = TextBox1.Text;
 
+            dr.name = "";
+
             foreach (ListItem item in CheckBoxList1.Items)
             {
                 if (item.Selected)
                 {
-                    dr.name = item.Value + " ";
+                    dr.name += item.Value + " ";
                 }
             }
-            //dr.name = item.Text;
 
-            //DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString();
 
             DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
 
@@ -487,6 +506,17 @@ namespace WhereEver
                 //Label name4 = e.Item.FindControl("Label10") as Label;
                 //Label name5 = e.Item.FindControl("Label11") as Label;
 
+                var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
+
+                //for (int j = 0; j < dd.Count; j++)
+                //{
+                //    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+
+                //    DateTime DT = DateTime.Parse(dl.date.ToString());
+
+                //    string week = DT.ToString("MM/dd");
+
+
                 time.Text = dr.時間.ToString();
 
                 if (!dr.Is月Null())
@@ -495,18 +525,15 @@ namespace WhereEver
                 if (!dr.Is火Null())
                     tuesday.Text = dr.火;
 
-
                 if (!dr.Is水Null())
                     wednesday.Text = dr.水;
-
 
                 if (!dr.Is木Null())
                     thursday.Text = dr.木;
 
-
                 if (!dr.Is金Null())
                     friday.Text = dr.金;
-
+                //}
             }
         }
 
@@ -545,11 +572,11 @@ namespace WhereEver
                 //if (!dr.IsnameNull())
                 //    name.Text = dr.name;
 
-                ////No.Text = dr.SdlNo.ToString();
+                //No.Text = dr.SdlNo.ToString();
 
 
 
-                e.Item.Cells[0].Text = dr.date.ToString() + " " + dr.date.ToString("dddd");
+                e.Item.Cells[0].Text = dr.date.ToString("yyyy/MM/dd") + " " + dr.date.ToString("dddd");
                 e.Item.Cells[1].Text = dr.time.ToString();
                 e.Item.Cells[2].Text = dr.title.ToString();
                 e.Item.Cells[3].Text = dr.name.ToString();
@@ -602,9 +629,9 @@ namespace WhereEver
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataSource = dt;
             ScdlList.DataBind();
-            Create();
-            Create3();
 
+            //Create();
+            //Create3();
 
         }
 
@@ -615,8 +642,8 @@ namespace WhereEver
             ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataBind();
 
-            Create();
-            Create3();
+            //Create();
+            //Create3();
         }
 
         protected void ScdlList_UpdateCommand(object source, DataGridCommandEventArgs e)
@@ -626,6 +653,7 @@ namespace WhereEver
             TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
             TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
             TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
+
             string b1 = a1.Text.Trim();
             string b2 = a2.Text.Trim();
             string b3 = a3.Text.Trim();
@@ -684,7 +712,6 @@ namespace WhereEver
                 {
                     if (sqltra != null)
                         sqltra.Rollback();
-
                 }
                 finally
                 {

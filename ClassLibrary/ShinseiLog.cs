@@ -64,6 +64,185 @@ namespace WhereEver.ClassLibrary
 
         }
 
+
+        //------------------------------------------------------------------------------------------------------------
+        //T_Shinsei_Config
+        //------------------------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// T_Shinsei_ConfigのDataTableを返します。
+        /// 引数はDATASET.DataSet.T_Shinsei_ConfigDataTable型で参照して下さい。
+        /// 中身がない場合や入力値が不正な場合はnullを返します。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="id"></param>
+        /// <returns>DATASET.DataSet.T_Shinsei_ConfigDataTable</returns>
+        public static DATASET.DataSet.T_Shinsei_ConfigDataTable GetT_Shinsei_ConfigRow(SqlConnection sqlConnection, string id)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            //idとuidからNULL以外の列数を取得します。
+            da.SelectCommand.CommandText =
+                "SELECT * FROM T_Shinsei_Config WHERE id = LTRIM(RTRIM(@id))";
+
+            //パラメータを取得（必要のないパラメータを設定するとコンパイルエラーする）
+            da.SelectCommand.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 100, "id")).Value = id;
+
+            //特定のDataTableをインスタンス化
+            DATASET.DataSet.T_Shinsei_ConfigDataTable dt = new DATASET.DataSet.T_Shinsei_ConfigDataTable();
+
+
+            try
+            {
+                //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
+                da.Fill(dt);
+
+                if (dt.Count >= 1)
+                {
+                    //中身あり
+                    return dt;  //dt[0]の中にflag_del_popなどが入っています。
+
+                }
+                else
+                {
+                    //中身なし
+                    return null;
+                }
+
+            }
+            catch
+            {
+                //不正な値が入力された場合はnullを返します。
+                return null;
+            }
+
+        }
+
+        /// <summary>
+        /// 申請コンフィグテーブルのフラグをアップデートします。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="id"></param>
+        /// <param name="flag_del_pop"></param>
+        public static void SetT_Shinsei_ConfigUpdate(SqlConnection sqlConnection, string id, bool flag_del_pop)
+        {
+            sqlConnection.Open();
+
+            //Create the Update Command.
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //Sql Commandを作成します。
+            SqlCommand command = sqlConnection.CreateCommand();
+
+            //ファイルを書き込み可能なようにオープンしてSqlのデータをアップデートします。
+            //Start a local transaction. usingブロックを抜けると自動でcloseされます。
+            using (SqlTransaction transaction = sqlConnection.BeginTransaction())
+            {
+
+                //Must assign both transaction object and connection
+                //to Command object for apending local transaction
+                command.Connection = sqlConnection;
+                command.Transaction = transaction;
+
+                try
+                {
+                    //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
+                    //-------------------------------------------------------------------------------------------------------------------
+                    command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 100, "id")).Value = id;
+                    command.Parameters.Add(new SqlParameter("@flag_del_pop", System.Data.SqlDbType.Bit, 20, "flag_del_pop")).Value = flag_del_pop;
+
+
+                    //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
+                    command.CommandText = "UPDATE [T_Shinsei_Config] SET[flag_del_pop] = @flag_del_pop WHERE([id] = LTRIM(RTRIM(@id)))";
+
+                    //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
+                    //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。
+                    command.ExecuteNonQuery();
+
+
+                    //Attempt to commit the transaction.
+                    da.UpdateCommand = command;
+                    transaction.Commit();
+
+                    //Console.WriteLine("Update Completed");
+
+                }
+                catch
+                {
+                    //catch文
+                    //Console.WriteLine("Update Failed");
+                    transaction.Rollback();
+                }
+
+            } //sqlConnection.Close();
+
+            return;
+
+        }
+
+
+        /// <summary>
+        /// 申請コンフィグテーブルにインサートします。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="id"></param>
+        /// <param name="flag_del_pop">消去時にポップアップするかの判定です</param>
+        public static void SetT_Shinsei_ConfigInsert(SqlConnection sqlConnection, string id, bool flag_del_pop)
+        {
+            sqlConnection.Open();
+
+            //Create the Update Command.
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //Sql Commandを作成します。
+            SqlCommand command = sqlConnection.CreateCommand();
+
+            //ファイルを書き込み可能なようにオープンしてSqlのデータをアップデートします。
+            //Start a local transaction. usingブロックを抜けると自動でcloseされます。
+            using (SqlTransaction transaction = sqlConnection.BeginTransaction())
+            {
+
+                //Must assign both transaction object and connection
+                //to Command object for apending local transaction
+                command.Connection = sqlConnection;
+                command.Transaction = transaction;
+
+                try
+                {
+                    //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
+                    //-------------------------------------------------------------------------------------------------------------------
+                    command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 100, "id")).Value = id;
+                    command.Parameters.Add(new SqlParameter("@flag_del_pop", System.Data.SqlDbType.Bit, 20, "flag_del_pop")).Value = flag_del_pop;
+
+                    //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
+                    command.CommandText = "INSERT INTO T_Shinsei_Config(id, flag_del_pop) VALUES(LTRIM(RTRIM(@id)), @flag_del_pop)";
+
+
+                    //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
+                    //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。
+                    command.ExecuteNonQuery();
+
+
+                    //Attempt to commit the transaction.
+                    da.UpdateCommand = command;
+                    transaction.Commit();
+
+                    //Console.WriteLine("Update Completed");
+
+                }
+                catch
+                {
+                    //catch文
+                    //Console.WriteLine("Update Failed");
+                    transaction.Rollback();
+                }
+
+            } //sqlConnection.Close();
+
+            return;
+
+        }
+
+
         //------------------------------------------------------------------------------------------------------------
         //T_Shinsei   DELETE
         //------------------------------------------------------------------------------------------------------------
