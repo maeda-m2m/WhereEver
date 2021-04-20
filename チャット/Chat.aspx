@@ -10,11 +10,6 @@
     <link href="Chat.css" type="text/css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Mちゃんねる</title>
-    <style type="text/css">
-        .auto-style1 {
-            height: 13px;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -42,6 +37,8 @@
                         <HeaderStyle Wrap="true"/>
                         <ItemTemplate>
                             <asp:Label ID="No" runat="server" Text=""></asp:Label>
+                            <asp:ImageButton ImageUrl="yajirusi.png" CommandName ="Reply" AlternateText="asp:ImageButton"
+                                Width="30px" ImageAlign="Right" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
@@ -76,14 +73,10 @@
                          ButtonType="LinkButton" Text="削除"  CommandName="Delete" />
                 </Columns>
             </asp:DataGrid>
-            <tr>
-                <td class="auto-style1">
-                    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-                 </td>
-            </tr>
             </table>
         </div>
         <div>
+
             <div id ="chatbox">
                 <p>
                  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>

@@ -19,15 +19,26 @@ namespace WhereEver.Project_System
 
                 DgPIchiran.DataSource = dt;
                 DgPIchiran.DataBind();
+                DgPIchiran.EditCommand +=
+                    new DataGridCommandEventHandler(this.DgPIchiran_EditCommand);
+                DgPIchiran.CancelCommand +=
+                    new DataGridCommandEventHandler(this.DgPIchiran_CancelCommand);
+                DgPIchiran.UpdateCommand +=
+                    new DataGridCommandEventHandler(this.DgPIchiran_UpdateCommand);
+                DgPIchiran.ItemCommand +=
+                    new DataGridCommandEventHandler(this.DgPIchiran_ItemCommand);
+
+                DATASET.DataSet.M_UserDataTable m_User = Insert.GetM_User(Global.GetConnection());
+                DataView dtview = dtview = new DataView(m_User);
+                DataTable dt1 = dtview.ToTable(false, "name1");
+                for (int rowindex = 0; rowindex < dt1.Rows.Count; rowindex++)
+                {
+                    for (int colindex = 0; colindex < dt1.Rows[rowindex].ItemArray.Length; colindex++)
+                    {
+                        ddlResponsible.Items.Add(dt1.Rows[rowindex][colindex].ToString());
+                    }
+                }
             }
-            DgPIchiran.EditCommand +=
-             new DataGridCommandEventHandler(this.DgPIchiran_EditCommand);
-            DgPIchiran.CancelCommand +=
-                new DataGridCommandEventHandler(this.DgPIchiran_CancelCommand);
-            DgPIchiran.UpdateCommand +=
-                new DataGridCommandEventHandler(this.DgPIchiran_UpdateCommand);
-            DgPIchiran.ItemCommand +=
-                new DataGridCommandEventHandler(this.DgPIchiran_ItemCommand);
         }
 
         protected void DgPIchiran_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -137,39 +148,32 @@ namespace WhereEver.Project_System
 
         protected void btnNewP_Click(object sender, EventArgs e)
         {
-            if (Calendar1.SelectedDate < Calendar2.SelectedDate) {
-                DATASET.DataSet.T_PdbDataTable t_Pdbs = new DATASET.DataSet.T_PdbDataTable();
-                DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
+            DATASET.DataSet.T_PdbDataTable t_Pdbs = new DATASET.DataSet.T_PdbDataTable();
+            DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
 
-                DATASET.DataSet.T_PdbRow dl = Insert.GetMaxPidRow(Global.GetConnection());
-                int sl = dl.Pid;
-                dr.Pid = sl + 1;
-                dr.Pname = txtNewPName.Text.Trim();
-                dr.Pcustomer = txtNewCustomer.Text.Trim();
-                dr.Presponsible = ddlResponsible.SelectedItem.Text.Trim();
-                dr.Pcategory = txtNewCategory.Text.Trim();
-                dr.Pstarttime = Calendar1.SelectedDate;
-                dr.Povertime = Calendar2.SelectedDate;
+            DATASET.DataSet.T_PdbRow dl = Insert.GetMaxPidRow(Global.GetConnection());
+            int sl = dl.Pid;
+            dr.Pid = sl + 1;
+            dr.Pname = txtNewPName.Text.Trim();
+            dr.Pcustomer = txtNewCustomer.Text.Trim();
+            dr.Presponsible = ddlResponsible.SelectedItem.Text.Trim();
+            dr.Pcategory = txtNewCategory.Text.Trim();
+            dr.Pstarttime = Calendar1.SelectedDate;
+            dr.Povertime = Calendar2.SelectedDate;
 
-                t_Pdbs.Rows.Add(dr);
+            t_Pdbs.Rows.Add(dr);
 
-                Insert.InsertProject(t_Pdbs, Global.GetConnection());
+            Insert.InsertProject(t_Pdbs, Global.GetConnection());
 
-                DATASET.DataSet.T_PdbDataTable dt = GetPdbDataTable(Global.GetConnection());
+            DATASET.DataSet.T_PdbDataTable dt = GetPdbDataTable(Global.GetConnection());
 
-                DgPIchiran.DataSource = dt;
-                DgPIchiran.DataBind();
+            DgPIchiran.DataSource = dt;
+            DgPIchiran.DataBind();
 
-                txtNewPName.Text = "";
-                txtNewCustomer.Text = "";
-                txtNewCategory.Text = "";
-                ddlResponsible.Text = "";
-                lblAisatu.Text = "新規作成完了";
-            }
-            else
-            {
-                lblAisatu.Text = "カレンダーの日にち選択に誤りがあります。";
-            }
+            txtNewPName.Text = "";
+            txtNewCustomer.Text = "";
+            txtNewCategory.Text = "";
+            ddlResponsible.Text = "";
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
@@ -182,7 +186,6 @@ namespace WhereEver.Project_System
             Calendar2.SelectedDates.Clear();
             BulletedList1.Items.Clear();
             BulletedList2.Items.Clear();
-            lblAisatu.Text = "";
         }
 
         protected void Calendar2_SelectionChanged(object sender, EventArgs e)

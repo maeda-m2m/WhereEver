@@ -42,15 +42,6 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.DataGrid ChatArea;
 
         /// <summary>
-        /// Label3 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-
-        /// <summary>
         /// Label1 コントロール。
         /// </summary>
         /// <remarks>

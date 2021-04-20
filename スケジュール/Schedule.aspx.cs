@@ -17,7 +17,7 @@ namespace WhereEver
     {
         public DataGridCommandEventHandler scdl_CancelCommand { get; private set; }
 
-        //ページがロードすると
+        //ページがロードするとき
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
