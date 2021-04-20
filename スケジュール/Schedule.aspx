@@ -26,11 +26,16 @@
         <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
         <table id="btn" class="auto-style12">
             <td class="auto-style11">
-                <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="10px" Width="1205px">
+
+                <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="20px" Width="1200px" HorizontalAlign="Left">
                     <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
-                    &nbsp;<asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" />
+                    <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" />
                     <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
+                    <asp:Button ID="Button4" runat="server" Text="先週" class="btn-flat-border" OnClick="Button4_Click" />
+                    <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
+                    <asp:Button ID="Button5" runat="server" Text="来週" class="btn-flat-border" OnClick="Button5_Click" />
                 </asp:Panel>
+
             </td>
         </table>
 
@@ -136,11 +141,17 @@
                             </td>
                         </td>
                     </tr>
+
                     <tr>
+
                         <td colspan="2">
+
                             <asp:Button ID="Button2" runat="server" Text="登録" class="btn-flat-border" OnClick="Button2_Click" />
+
                         </td>
+
                     </tr>
+
                 </table>
             </asp:Panel>
         </div>
@@ -238,7 +249,7 @@
                 HeaderStyle-Width="200px"
                 OnItemCommand="ScdlList_ItemCommand"
                 Style="margin-left: 0px"
-                HorizontalAlign="Left" Width="1200px" OnSelectedIndexChanged="ScdlList_SelectedIndexChanged">
+                HorizontalAlign="Left" Width="1200px">
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
