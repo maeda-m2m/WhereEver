@@ -9,22 +9,25 @@
             <td>
                 <h1>WhereEver</h1>
                 <td>
-                    <a href="ログイン/LoginList.aspx" class="btn" runat="server">ログインリスト</a>
+                    <a href="~/ログイン/LoginList.aspx" class="btn" runat="server">ログインリスト</a>
                 </td>
                 <td>
-                    <a href="スケジュール/Schedule.aspx" class="btn" runat="server">スケジュール</a>
+                    <a href="~/スケジュール/Schedule.aspx" class="btn" runat="server">スケジュール</a>
                 </td>
                <td>
                     <a href="~/各申請書類/Shinsei.aspx" class="btn" runat="server">各申請書類</a>
                </td>
                <td>
-                    <a href="チャット/Chat.aspx" class="btn" runat="server">チャット</a>
+                    <a href="~/チャット/Chat.aspx" class="btn" runat="server">チャット</a>
                </td>
                <td>
-                    <a href="ファイル共有/FileShare.aspx" class="btn" runat="server">ファイル共有</a>
+                    <a href="~/ファイル共有/FileShare.aspx" class="btn" runat="server">ファイル共有</a>
                </td>
                <td>
-                    <a href="Project System/PIchiran.aspx" class="btn" runat="server">プロジェクト</a>
+                    <a href="~/Project System/PIchiran.aspx" class="btn" runat="server">プロジェクト</a>
+               </td>
+               <td>
+                    <a href="~/管理ページ/Kanri.aspx" class="btn" runat="server">ユーザー情報変更</a>
                </td>
                <td>
                     <asp:Label ID="Label1" CssClass="label" runat="server" Text="Label"></asp:Label>

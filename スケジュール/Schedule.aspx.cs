@@ -15,6 +15,8 @@ namespace WhereEver
 {
     public partial class Schedule : System.Web.UI.Page
     {
+        public DataGridCommandEventHandler scdl_CancelCommand { get; private set; }
+
         //ページがロードするとき
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,10 +31,14 @@ namespace WhereEver
                 Scdl3.Columns[3].ItemStyle.Wrap = true;
                 Scdl3.Columns[4].ItemStyle.Wrap = true;
             }
-
-            ScdlList.EditCommand += new DataGridCommandEventHandler(this.ScdlList_EditCommand);
-            ScdlList.CancelCommand += new DataGridCommandEventHandler(this.ScdlList_CancelCommand);
-            ScdlList.UpdateCommand += new DataGridCommandEventHandler(this.ScdlList_UpdateCommand);
+            ScdlList.EditCommand +=
+            new DataGridCommandEventHandler(this.ScdlList_EditCommand);
+            ScdlList.CancelCommand +=
+                new DataGridCommandEventHandler(this.ScdlList_CancelCommand);
+            ScdlList.UpdateCommand +=
+                new DataGridCommandEventHandler(this.ScdlList_UpdateCommand);
+            ScdlList.ItemCommand +=
+                new DataGridCommandEventHandler(this.ScdlList_ItemCommand);
         }
 
         //スケジュールリストにデータを格納　→　ScdlList_ItemDataBound　に移動
@@ -71,6 +77,15 @@ namespace WhereEver
             Create3();
         }
 
+
+        //Calendarに予定を表示するためのクラス
+        protected void CalendarA(object sender, EventArgs e)
+        {
+            Create();
+            Create3();
+        }
+
+
         //スケジュール登録ボタンを押したときの動き
         protected void Button2_Click(object sender, EventArgs e)
         {
@@ -79,37 +94,37 @@ namespace WhereEver
             var dr = dt.NewT_ScheduleRow();
 
             string t = DropDownList1.SelectedValue;
-            //選択したリストの名前をtに入れる
 
             string f = (Label1.Text) + " " + (DropDownList1.SelectedValue);
-            //fにLabel1の何月何日何時何分を入れる
 
             DateTime dd = DateTime.Parse(f);
-            //fを日付型に変換しddに入れる
 
             dr.date = dd;
-            //ddをdate列にいれる
 
             dr.time = t;
-            //time列にtを入れる
 
             dr.title = TextBox1.Text;
 
-            dr.name = DropDownList2.SelectedValue.ToString() + " " + DropDownList3.SelectedValue.ToString() + " " + DropDownList4.SelectedValue.ToString();
-            //選択した名前をname列に入れる
+            dr.name = "";
+
+            foreach (ListItem item in CheckBoxList1.Items)
+            {
+                if (item.Selected)
+                {
+                    dr.name += item.Value + " ";
+                }
+            }
+
 
             DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
-            //SdlNoの最大値を持ってくるためだけのコード（MaxSdlNo）をClass.1に作る
 
             int no = dl.SdlNo;
 
             dr.SdlNo = no + 1;
-            //持ってきた最大値が10であれば＋１して11になる
 
             dt.AddT_ScheduleRow(dr);
 
             Class1.InsertList(dt, Global.GetConnection());
-            //Class1のInsertListで行を追加
 
             Create();
             Panel1.Visible = false;
@@ -166,7 +181,7 @@ namespace WhereEver
                         Scdl3.Items[0].Cells[5].Text = A5.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "10:00" || tm == "10:30")
+                else if (tm == "10:00" || tm == "10:15" || tm == "10:30" || tm == "10:45")
                 {
                     if (week == "月")
                     {
@@ -199,7 +214,7 @@ namespace WhereEver
                         Scdl3.Items[1].Cells[5].Text = A10.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "11:00" || tm == "11:30")
+                else if (tm == "11:00" || tm == "11:15" || tm == "11:30" || tm == "11:45")
                 {
                     if (week == "月")
                     {
@@ -232,7 +247,7 @@ namespace WhereEver
                         Scdl3.Items[2].Cells[5].Text = A15.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "12:00" || tm == "12:30")
+                else if (tm == "12:00" || tm == "12:15" || tm == "12:30" || tm == "12:45")
                 {
                     if (week == "月")
                     {
@@ -265,7 +280,7 @@ namespace WhereEver
                         Scdl3.Items[3].Cells[5].Text = A20.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "13:00" || tm == "13:30")
+                else if (tm == "13:00" || tm == "13:15" || tm == "13:30" || tm == "13:45")
                 {
                     if (week == "月")
                     {
@@ -283,7 +298,7 @@ namespace WhereEver
                     {
                         string A23 = Scdl3.Items[4].Cells[3].Text;
                         A23 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
-                        Scdl3.Items[1].Cells[1].Text = A23.Replace("\r\n", "<br>");
+                        Scdl3.Items[4].Cells[3].Text = A23.Replace("\r\n", "<br>");
                     }
                     if (week == "木")
                     {
@@ -298,7 +313,7 @@ namespace WhereEver
                         Scdl3.Items[4].Cells[5].Text = A25.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "14:00" || tm == "14:30")
+                else if (tm == "14:00" || tm == "14:15" || tm == "14:30" || tm == "14:45")
                 {
                     if (week == "月")
                     {
@@ -331,7 +346,7 @@ namespace WhereEver
                         Scdl3.Items[5].Cells[5].Text = A30.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "15:00" || tm == "15:30")
+                else if (tm == "15:00" || tm == "15:15" || tm == "15:30" || tm == "15:45")
                 {
                     if (week == "月")
                     {
@@ -364,7 +379,7 @@ namespace WhereEver
                         Scdl3.Items[6].Cells[5].Text = A35.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "16:00" || tm == "16:30")
+                else if (tm == "16:00" || tm == "16:15" || tm == "16:30" || tm == "16:45")
                 {
                     if (week == "月")
                     {
@@ -397,7 +412,7 @@ namespace WhereEver
                         Scdl3.Items[7].Cells[5].Text = A40.Replace("\r\n", "<br>");
                     }
                 }
-                else if (tm == "17:00" || tm == "17:30")
+                else if (tm == "17:00" || tm == "17:15" || tm == "17:30" || tm == "17:45")
                 {
                     if (week == "月")
                     {
@@ -483,12 +498,24 @@ namespace WhereEver
                 Label thursday = e.Item.FindControl("ThursdayTitle") as Label;
                 Label friday = e.Item.FindControl("FridayTitle") as Label;
 
+
                 //必要なら使う
                 //Label name1 = e.Item.FindControl("Label7") as Label;
                 //Label name2 = e.Item.FindControl("Label8") as Label;
                 //Label name3 = e.Item.FindControl("Label9") as Label;
                 //Label name4 = e.Item.FindControl("Label10") as Label;
                 //Label name5 = e.Item.FindControl("Label11") as Label;
+
+                var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
+
+                //for (int j = 0; j < dd.Count; j++)
+                //{
+                //    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+
+                //    DateTime DT = DateTime.Parse(dl.date.ToString());
+
+                //    string week = DT.ToString("MM/dd");
+
 
                 time.Text = dr.時間.ToString();
 
@@ -498,18 +525,15 @@ namespace WhereEver
                 if (!dr.Is火Null())
                     tuesday.Text = dr.火;
 
-
                 if (!dr.Is水Null())
                     wednesday.Text = dr.水;
-
 
                 if (!dr.Is木Null())
                     thursday.Text = dr.木;
 
-
                 if (!dr.Is金Null())
                     friday.Text = dr.金;
-
+                //}
             }
         }
 
@@ -530,28 +554,33 @@ namespace WhereEver
 
                 var dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_ScheduleRow;
 
-                Label date = e.Item.FindControl("hiduke") as Label;
-                Label jikan = e.Item.FindControl("jikan") as Label;
-                Label title = e.Item.FindControl("taitoru") as Label;
-                Label name = e.Item.FindControl("namae") as Label;
-
+                //Label date = e.Item.FindControl("hiduke") as Label;
+                //Label jikan = e.Item.FindControl("jikan") as Label;
+                //Label title = e.Item.FindControl("taitoru") as Label;
+                //Label name = e.Item.FindControl("namae") as Label;
                 //Label No = e.Item.FindControl("nanba") as Label;
 
-                if (!dr.IsdateNull())
-                    date.Text = dr.date.ToString();
+                //if (!dr.IsdateNull())
+                //    date.Text = dr.date.ToString();
 
-                if (!dr.IstimeNull())
-                    jikan.Text = dr.time.ToString();
+                //if (!dr.IstimeNull())
+                //    jikan.Text = dr.time.ToString();
 
-                if (!dr.IstitleNull())
-                    title.Text = dr.title;
+                //if (!dr.IstitleNull())
+                //    title.Text = dr.title;
 
-                if (!dr.IsnameNull())
-                    name.Text = dr.name;
+                //if (!dr.IsnameNull())
+                //    name.Text = dr.name;
 
                 //No.Text = dr.SdlNo.ToString();
-                //値を隠している
 
+
+
+                e.Item.Cells[0].Text = dr.date.ToString("yyyy/MM/dd") + " " + dr.date.ToString("dddd");
+                e.Item.Cells[1].Text = dr.time.ToString();
+                e.Item.Cells[2].Text = dr.title.ToString();
+                e.Item.Cells[3].Text = dr.name.ToString();
+                e.Item.Cells[4].Text = dr.SdlNo.ToString();
             }
         }
 
@@ -575,8 +604,6 @@ namespace WhereEver
             else
             {
 
-                //SelectCommand = "SELECT [id], [pw], [name], [name1] FROM [M_User] WHERE ([id] = @id)"
-                //UpdateCommand = "UPDATE [M_User] SET [pw] = @pw, [name] = @name, [name1] = @name1 WHERE ([id] = @id)" >
             }
         }
 
@@ -602,24 +629,105 @@ namespace WhereEver
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataSource = dt;
             ScdlList.DataBind();
+
+            //Create();
+            //Create3();
+
         }
 
-        //DgPIchiran.EditItemIndex = e.Item.ItemIndex;
-        //DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
-        //DgPIchiran.DataBind();
 
         protected void ScdlList_CancelCommand(object source, DataGridCommandEventArgs e)
         {
             ScdlList.EditItemIndex = -1;
             ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataBind();
+
+            //Create();
+            //Create3();
         }
 
         protected void ScdlList_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
+            TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
+            TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
+            TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
+            TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
+            TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
+
+            string b1 = a1.Text.Trim();
+            string b2 = a2.Text.Trim();
+            string b3 = a3.Text.Trim();
+            string b4 = a4.Text.Trim();
+            string b5 = a5.Text.Trim();
+
+            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+            int a = e.Item.ItemIndex;
+            var dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;
+
+            dr[0] = b1.Trim();
+            dr[1] = b2.Trim();
+            dr[2] = b3.Trim();
+            dr[3] = b4.Trim();
+            dr[4] = b5.Trim();
+
+            UpdateProject(dr, Global.GetConnection());
+
+            ScdlList.EditItemIndex = -1;
+            ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+            ScdlList.DataBind();
+
+            Create();
+            Create3();
 
         }
 
+        private void UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)
+        {
+            {
+                var a = new SqlCommand("", sql);
+
+                a.CommandText = "UPDATE T_Schedule SET [date] = @date, [time] =@time, [title] = @title, [name] = @name where [SdlNo] = @SdlNo";
+
+                a.Parameters.AddWithValue("@date", dr.date);
+                a.Parameters.AddWithValue("@time", dr.time);
+                a.Parameters.AddWithValue("@title", dr.title);
+                a.Parameters.AddWithValue("@name", dr.name);
+                a.Parameters.AddWithValue("@SdlNo", dr.SdlNo);
+
+                SqlTransaction sqltra = null;
+
+                try
+                {
+                    sql.Open();
+                    sqltra = sql.BeginTransaction();
+
+                    a.Transaction = sqltra;
+
+                    a.ExecuteNonQuery();
+
+                    sqltra.Commit();
+
+                }
+                catch (Exception ex)
+                {
+                    if (sqltra != null)
+                        sqltra.Rollback();
+                }
+                finally
+                {
+                    sql.Close();
+                }
+                sql.Open();
+                a.ExecuteNonQuery();
+                sql.Close();
+            }
+        }
+
+
+        protected void ScdlList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

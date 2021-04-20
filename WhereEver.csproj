@@ -121,6 +121,7 @@
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
     <Content Include="チャット\purple.jpg" />
+    <Content Include="チャット\yajirusi.png" />
     <Content Include="ログイン\LoginList.css" />
     <Content Include="ログイン\LoginList.aspx" />
     <Content Include="MenuControl.css" />
@@ -235,6 +236,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DATASET\DataSet.cs">
+      <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DATASET\DataSet.Designer.cs">
       <AutoGen>True</AutoGen>

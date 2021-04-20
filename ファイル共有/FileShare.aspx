@@ -27,19 +27,6 @@
 
 
        <div id="Wrap">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1">
-                <Columns>
-                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
-                    <asp:BoundField DataField="uid" HeaderText="uid" ReadOnly="True" SortExpression="uid" />
-                    <asp:BoundField DataField="name1" HeaderText="name1" SortExpression="name1" />
-                    <asp:BoundField DataField="ShinseiSyubetsu" HeaderText="ShinseiSyubetsu" SortExpression="ShinseiSyubetsu" />
-                    <asp:BoundField DataField="DateTime" HeaderText="DateTime" SortExpression="DateTime" />
-                    <asp:BoundField DataField="LastUpdate" HeaderText="LastUpdate" SortExpression="LastUpdate" />
-                    <asp:CommandField ShowEditButton="True" />
-                </Columns>
-            </asp:GridView>
-
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT * FROM [T_Shinsei_Main]"></asp:SqlDataSource>
 
            <p class ="form-flat-border">
             [アップロードするファイル(.zip)]　<asp:FileUpload ID="FileUpload_userfile" runat="server" Width="685px"  CssClass="form-flat-border" />

@@ -23,6 +23,7 @@ namespace WhereEver
             {
                 Create();
             }
+            Label2.Text = "";
         }
 
         private void Create()
@@ -40,13 +41,16 @@ namespace WhereEver
                 DATASET.DataSet.T_ChatRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_ChatRow;
 
                 Label No = e.Item.FindControl("No") as Label;
-                Label Name = e.Item.FindControl("ID") as Label;
+                Label Id = e.Item.FindControl("Id") as Label;
+                Label Name = e.Item.FindControl("Name") as Label;
                 Label Date = e.Item.FindControl("Date") as Label;
                 Label Naiyou = e.Item.FindControl("Naiyou") as Label;
 
                 No.Text = dr.No.ToString();
 
-                Name.Text = "<font color=#16ba00>" + dr.Name + "</font>";
+                Id.Text = dr.Id;
+
+                Name.Text = dr.Name;
 
                 Date.Text = "<font size=1px>" + dr.Date.ToShortTimeString() + "</font>";
 
@@ -66,6 +70,8 @@ namespace WhereEver
             {
                 string.Format("if (!confirm('{0}')) return false;", "本文が入力されていません");
             }
+           
+            dr.Id = SessionManager.User.ID; //変更
             dr.Name = Label1.Text;
             dr.Naiyou = TextBox1.Text;
 
@@ -86,22 +92,38 @@ namespace WhereEver
         protected void ChatArea_ItemCommand(object source, DataGridCommandEventArgs e)
         {
             Label Cno = (Label)e.Item.Cells[0].FindControl("No");
+            Label Cname = (Label)e.Item.Cells[1].FindControl("Id"); //変更
             string Cid = Cno.Text;
+            string CnameNow = Cname.Text.Trim();
+            string id = SessionManager.User.M_User.id.Trim();
             switch (((LinkButton)e.CommandSource).CommandName)
-            {
 
-                case "Delete":
-                    Class.Chat.DeleteChat(Cid);
-                    break;
+            case "Delete":
 
-                // Add other cases here, if there are multiple ButtonColumns in 
-                // the DataGrid control.
+                if (CnameNow == id)
+                {
+                
+                }
 
-                default:
-                    // Do nothing.
-                    break;
+                Class.Chat.DeleteChat(Cid);
+                Class.Chat.UpdateChat(Global.GetConnection());
+                break;
 
-            }
+                else
+                {
+                    Label2.Text = "他の人のコメントは削除できません！";
+                }
+                            
+                                // Add other cases here, if there are multiple ButtonColumns in 
+                                // the DataGrid control.
+
+             case "Reply":
+                { 
+
+                        // Do nothing.
+                        break;
+                }
+                }
             Create();
         }
     }

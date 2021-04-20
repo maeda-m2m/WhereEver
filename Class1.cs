@@ -78,6 +78,7 @@ namespace WhereEver
 
         }
 
+
         public static bool DeleteT_Schedule(int time, SqlConnection sqlconnection)
         {
             SqlCommand cmdDelSave = new SqlCommand("", sqlconnection);

@@ -10,6 +10,11 @@
     <link href="Chat.css" type="text/css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Mちゃんねる</title>
+    <style type="text/css">
+        .auto-style1 {
+            height: 13px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -32,53 +37,62 @@
                 OnItemCommand="ChatArea_ItemCommand" >
                 
                 <Columns>
+
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
                         <HeaderStyle Wrap="true"/>
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="50px" CssClass="scdl" />
                         <ItemTemplate>
                             <asp:Label ID="No" runat="server" Text=""></asp:Label>
+                            <asp:ImageButton  id="Imagebutton1" ImageUrl="yajirusi.png" CommandName ="Reply" AlternateText="asp:ImageButton"
+                                Width="30px" ImageAlign="Right" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
-                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
+                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="50px" CssClass="scdl" />
                         <ItemTemplate>
-                            <asp:Label ID="ID" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="Id" runat="server" Text=""></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateColumn>
+
+                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="100px">
+                        <HeaderStyle Wrap="true" />
+                        <ItemTemplate>
+                            <asp:Label ID="Name" runat="server" Text="" ForeColor="#000080"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="200px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="500px" CssClass="scdl" />
                         <ItemTemplate>
                             <asp:Label ID="Naiyou" runat="server" Text=""></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
-                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
+                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px" >
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="50px" CssClass="scdl" />
                         <ItemTemplate>
                             <asp:Label ID="Date" runat="server" Text=""></asp:Label>
                         </ItemTemplate>
-                            
-                        
                     </asp:TemplateColumn>
                     <asp:ButtonColumn 
                          ButtonType="LinkButton" Text="削除"  CommandName="Delete" />
                 </Columns>
             </asp:DataGrid>
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                 </td>
+            </tr>
             </table>
         </div>
         <div>
-
             <div id ="chatbox">
                 <p>
                  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                  <asp:TextBox ID="TextBox1" runat="server" Width="180px"></asp:TextBox>
                  &nbsp;&nbsp;
                  <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
+                    <asp:Label ID="Label2" runat="server" Text="" ForeColor="Red" ></asp:Label>
                 </p>
                 <p>
                     <asp:Button ID="Update" runat="server" Text="更新" CssClass="Button-style" OnClick="Update_Click"/>

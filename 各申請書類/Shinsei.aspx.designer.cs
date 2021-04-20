@@ -33,6 +33,33 @@ namespace WhereEver
         protected global::WhereEver.MenuControl c;
 
         /// <summary>
+        /// Panel00 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel00;
+
+        /// <summary>
+        /// Button_list_open コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_list_open;
+
+        /// <summary>
+        /// lblTop_00 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTop_00;
+
+        /// <summary>
         /// Panel0 コントロール。
         /// </summary>
         /// <remarks>
@@ -42,6 +69,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Panel Panel0;
 
         /// <summary>
+        /// Button_list_close コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_list_close;
+
+        /// <summary>
         /// Button_reload コントロール。
         /// </summary>
         /// <remarks>
@@ -49,6 +85,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_reload;
+
+        /// <summary>
+        /// lblTop_0 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTop_0;
 
         /// <summary>
         /// GridView1 コントロール。
@@ -67,6 +112,69 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+
+        /// <summary>
+        /// Button_list_close_2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_list_close_2;
+
+        /// <summary>
+        /// Button_reload_2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_reload_2;
+
+        /// <summary>
+        /// CheckBox_is_del_pop コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_is_del_pop;
+
+        /// <summary>
+        /// Panel_del_pop コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_del_pop;
+
+        /// <summary>
+        /// lbldeluid コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbldeluid;
+
+        /// <summary>
+        /// btnDelete コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDelete;
+
+        /// <summary>
+        /// btnCancel コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
 
         /// <summary>
         /// lblResult コントロール。
@@ -249,6 +357,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
+        /// Button_Buppin_Reset コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Buppin_Reset;
+
+        /// <summary>
         /// Button_Save1 コントロール。
         /// </summary>
         /// <remarks>
@@ -274,6 +391,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnBackA1;
+
+        /// <summary>
+        /// lbl_SaveResult1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_SaveResult1;
 
         /// <summary>
         /// Panel3 コントロール。
@@ -312,15 +438,6 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
 
         /// <summary>
-        /// DropDownList_A_Time コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_A_Time;
-
-        /// <summary>
         /// lblSelectedDateA1 コントロール。
         /// </summary>
         /// <remarks>
@@ -330,13 +447,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label lblSelectedDateA1;
 
         /// <summary>
-        /// lblSelectedDateA2 コントロール。
+        /// DropDownList_A_Time コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSelectedDateA2;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_A_Time;
 
         /// <summary>
         /// Calendar2 コントロール。
@@ -348,15 +465,6 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Calendar Calendar2;
 
         /// <summary>
-        /// DropDownList_B_Time コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_B_Time;
-
-        /// <summary>
         /// lblSelectedDateB1 コントロール。
         /// </summary>
         /// <remarks>
@@ -366,13 +474,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label lblSelectedDateB1;
 
         /// <summary>
-        /// lblSelectedDateB2 コントロール。
+        /// DropDownList_B_Time コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSelectedDateB2;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_B_Time;
 
         /// <summary>
         /// TextBox_Notification_Purpose コントロール。
@@ -411,6 +519,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
+        /// Button_Deligence_Reset コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Deligence_Reset;
+
+        /// <summary>
         /// Button_Save2 コントロール。
         /// </summary>
         /// <remarks>
@@ -438,6 +555,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button btnBack_A2;
 
         /// <summary>
+        /// lbl_SaveResult2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_SaveResult2;
+
+        /// <summary>
         /// Panel6 コントロール。
         /// </summary>
         /// <remarks>
@@ -445,6 +571,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel6;
+
+        /// <summary>
+        /// Calendar3 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar Calendar3;
 
         /// <summary>
         /// TextBox_Tatekae_Date コントロール。
@@ -481,6 +616,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
+        /// DropDownList_Way コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Way;
 
         /// <summary>
         /// TextBox_Tatekae_TUse コントロール。
@@ -697,6 +841,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button4;
+
+        /// <summary>
+        /// lbl_SaveResult3 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_SaveResult3;
 
         /// <summary>
         /// Panel4 コントロール。
