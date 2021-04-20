@@ -3,9 +3,7 @@
     background-repeat: no-repeat; /* 画像重複しない */
     background-size: cover;
     font-weight: bold; /*太字にする*/
-
     font-family: Meiryo;
-}
 }
 
 #Wrap {
@@ -15,15 +13,27 @@
     margin-right: 300px;
 }
 
-.form-flat-border {
+.DGTable {
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
+    width: 1260px;
+    padding: 0.3em 1em;
+    border: solid 2px #16ba00;
+    border-radius: 3px;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
 
+.form-flat-border {
+    background-color: #ccffcc;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
     display: inline-block;
     padding: 0.3em 1em;
     text-decoration: none;
-    color: #16ba00;
+    color: black;
     border: solid 2px #16ba00;
     border-radius: 3px;
     transition: .4s;
@@ -34,6 +44,7 @@
 .btn-flat-border {
     text-align: center;
     width: 120px;
+    height: 32px;
     display: inline-block;
     padding: 0.15em 1em;
     text-decoration: none;
@@ -50,24 +61,3 @@
         color: white;
     }
 
-
-
-.btn {
-    width: 200px;
-    height: 40px;
-    position: relative;
-    display: inline-block;
-    font-weight: bold;
-    padding: 0.3em 0.5em;
-    text-decoration: none;
-    color: #000000;
-    background: #ECECEC;
-    transition: .4s;
-    font-size: 1em;
-    text-align: center;
-}
-
-    .btn:hover {
-        background: #000000;
-        color: white;
-    }
