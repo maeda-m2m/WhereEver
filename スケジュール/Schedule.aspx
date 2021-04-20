@@ -10,38 +10,6 @@
     <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-
-    <style type="text/css">
-        .auto-style1 {
-            background-color: #16ba00;
-            color: white;
-            text-align: center;
-            height: 52px;
-        }
-
-        .auto-style7 {
-            height: 52px;
-            width: 500px;
-        }
-
-        .auto-style8 {
-            width: 500px;
-        }
-
-        .auto-style9 {
-            margin-bottom: 0px;
-        }
-
-        .auto-style10 {
-            height: 83px;
-        }
-
-        .auto-style11 {
-            height: 83px;
-            width: 875px;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -68,7 +36,7 @@
 
         <div>
             <asp:Panel ID="Panel1" runat="server">
-                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnPreRender="CalendarA">
                     <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                     <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
                     <OtherMonthDayStyle ForeColor="#999999" />
@@ -145,8 +113,8 @@
                             <p>担当者名</p>
 
                             <td class="auto-style8">
-                                <asp:DropDownList ID="DropDownList2" runat="server">
-                                    <asp:ListItem></asp:ListItem>
+
+                                <asp:CheckBoxList ID="CheckBoxList1" runat="server">
                                     <asp:ListItem>石岡</asp:ListItem>
                                     <asp:ListItem>木村</asp:ListItem>
                                     <asp:ListItem>佐藤</asp:ListItem>
@@ -253,18 +221,8 @@
             </asp:DataGrid>
 
         </div>
-        <table id="btn">
-            <tr>
-                <td class="auto-style10">
-                    <td class="auto-style11">
-                        <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="10px" Width="1300px">
-                            <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
-                            &nbsp;<asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷" />
-                        </asp:Panel>
-                    </td>
-                </td>
-            </tr>
-        </table>
+
+        <br />
 
         <div>
 
