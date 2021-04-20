@@ -1265,8 +1265,6 @@ namespace WhereEver
             //データバインド
             BindData();
 
-            //レスポンスリダイレクト
-            //Response.Redirect("Shinsei.aspx");
         }
 
         protected void ReformShinseiRow(int args)
@@ -1285,7 +1283,7 @@ namespace WhereEver
             GridView1.Rows[args].BackColor = System.Drawing.Color.AliceBlue;
 
             //idをロード
-            //String isbn_key = (String)GridView1.DataKeys[args].Value;
+            //string isbn_key = (String)GridView1.DataKeys[args].Value;
             string isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
 
             // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
@@ -1304,7 +1302,7 @@ namespace WhereEver
 
             // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
             //作成日付をロード
-            //String isbn_date = GridView1.Rows[args].Cells[4].Text.Trim();
+            //string isbn_date = GridView1.Rows[args].Cells[4].Text.Trim();
 
             // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
             //最終更新日をロード
