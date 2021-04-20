@@ -148,32 +148,39 @@ namespace WhereEver.Project_System
 
         protected void btnNewP_Click(object sender, EventArgs e)
         {
-            DATASET.DataSet.T_PdbDataTable t_Pdbs = new DATASET.DataSet.T_PdbDataTable();
-            DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
+            if (Calendar1.SelectedDate < Calendar2.SelectedDate) {
+                DATASET.DataSet.T_PdbDataTable t_Pdbs = new DATASET.DataSet.T_PdbDataTable();
+                DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
 
-            DATASET.DataSet.T_PdbRow dl = Insert.GetMaxPidRow(Global.GetConnection());
-            int sl = dl.Pid;
-            dr.Pid = sl + 1;
-            dr.Pname = txtNewPName.Text.Trim();
-            dr.Pcustomer = txtNewCustomer.Text.Trim();
-            dr.Presponsible = ddlResponsible.SelectedItem.Text.Trim();
-            dr.Pcategory = txtNewCategory.Text.Trim();
-            dr.Pstarttime = Calendar1.SelectedDate;
-            dr.Povertime = Calendar2.SelectedDate;
+                DATASET.DataSet.T_PdbRow dl = Insert.GetMaxPidRow(Global.GetConnection());
+                int sl = dl.Pid;
+                dr.Pid = sl + 1;
+                dr.Pname = txtNewPName.Text.Trim();
+                dr.Pcustomer = txtNewCustomer.Text.Trim();
+                dr.Presponsible = ddlResponsible.SelectedItem.Text.Trim();
+                dr.Pcategory = txtNewCategory.Text.Trim();
+                dr.Pstarttime = Calendar1.SelectedDate;
+                dr.Povertime = Calendar2.SelectedDate;
 
-            t_Pdbs.Rows.Add(dr);
+                t_Pdbs.Rows.Add(dr);
 
-            Insert.InsertProject(t_Pdbs, Global.GetConnection());
+                Insert.InsertProject(t_Pdbs, Global.GetConnection());
 
-            DATASET.DataSet.T_PdbDataTable dt = GetPdbDataTable(Global.GetConnection());
+                DATASET.DataSet.T_PdbDataTable dt = GetPdbDataTable(Global.GetConnection());
 
-            DgPIchiran.DataSource = dt;
-            DgPIchiran.DataBind();
+                DgPIchiran.DataSource = dt;
+                DgPIchiran.DataBind();
 
-            txtNewPName.Text = "";
-            txtNewCustomer.Text = "";
-            txtNewCategory.Text = "";
-            ddlResponsible.Text = "";
+                txtNewPName.Text = "";
+                txtNewCustomer.Text = "";
+                txtNewCategory.Text = "";
+                ddlResponsible.Text = "";
+                lblAisatu.Text = "新規作成完了";
+            }
+            else
+            {
+                lblAisatu.Text = "カレンダーの日にち選択に誤りがあります。";
+            }
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
@@ -186,6 +193,7 @@ namespace WhereEver.Project_System
             Calendar2.SelectedDates.Clear();
             BulletedList1.Items.Clear();
             BulletedList2.Items.Clear();
+            lblAisatu.Text = "";
         }
 
         protected void Calendar2_SelectionChanged(object sender, EventArgs e)
