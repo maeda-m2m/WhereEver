@@ -166,9 +166,14 @@
 
                         <asp:Button ID="btnNewP" CssClass="btn" runat="server" Text="新規として保存" OnClick="btnNewP_Click"/>
 
-                        <asp:Label ID="lblAisatu" CssClass="label" runat="server"></asp:Label>
-
                         <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" OnClick="btnClear_Click" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cell" colspan="4">
+
+                        <asp:Label ID="lblAisatu" CssClass="label" runat="server"></asp:Label>
 
                     </td>
                 </tr>
