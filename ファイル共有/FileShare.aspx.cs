@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Net;
 using System.Text;
+using WhereEver.ClassLibrary;
 
 namespace WhereEver
 {
@@ -18,30 +19,14 @@ namespace WhereEver
         {
 
 
-            //[注意！]まだテストしていません！
+            //[注意！]まだ十分なテストが完了していません！
 
 
         }
 
         protected void Button_UpLoad(object sender, EventArgs e)
         {
-            //SqlConnection objDb = new SqlConnection();
-            //SqlCommand objCom = new SqlCommand("INSERT INTO image_data(title,type,datum) VALUES(@title,@type,@datum)", objDb);            
-            //// title、typeフィールドには、それぞれアップロード・ファイルの
-            //// ファイル名、コンテンツ・タイプをセットする
-            //objCom.Parameters.Add("@title", Path.GetFileName(datum.PostedFile.FileName));
-            //objCom.Parameters.Add("@type", datum.PostedFile.ContentType);
-            //// アップロード・ファイルを入力ストリーム経由でbyte配列に読み込む
-            //Byte[] aryData = new Byte[datum.PostedFile.ContentLength];
-            //datum.PostedFile.InputStream.Read(aryData, 0, datum.PostedFile.ContentLength);
-            //objCom.Parameters.Add("@datum", aryData);
-
-            //objDb.Open();
-            //// データの登録
-            //objCom.ExecuteNonQuery();
-            //objDb.Close();
-
-
+            //ラベル初期化
             lblResult.Text = "";
 
             //inputの場合はnameで参照する
@@ -65,12 +50,15 @@ namespace WhereEver
                 //拡張子を取得
                 string extension = Path.GetExtension(FileUpload_userfile.FileName);
 
+
+                /*
                 //MimeTypeの設定に合っているかどうか？
                 if (extension != ".zip")
                 {
                     lblResult.Text = "zipファイルのみアップロードできます。";
                     return;
                 }
+                */
 
 
                 if (fileName != null && fileName != "")
@@ -90,9 +78,21 @@ namespace WhereEver
                         newPath = $"{path} ({i++})";
                     }
 
-                    //アップロードファイルを指定したパスに保存します。
-                    FileUpload_userfile.SaveAs(newPath);
-                   
+                    try
+                    {
+
+                        //アップロードファイルを指定したパスに保存します。
+                        FileUpload_userfile.SaveAs(newPath);
+
+                        //データベースにファイル履歴を保存します。
+                        FileShareClass.SetT_FileShareInsert(Global.GetConnection(), SessionManager.User.M_User.id, fileName, newPath);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        lblResult.Text = ex + "により、アップロードに失敗しました。";
+                        return;
+                    }
 
                     lblResult.Text = "アップロードファイルを以下のディレクトリに保存しました： " + newPath;
                     return;
@@ -108,24 +108,6 @@ namespace WhereEver
                 lblResult.Text = "ローカルからファイルを選択して下さい。";
                 return;
             }
-
-            /*
-            //アップロード専用URLを指定
-            string url = "http://localhost/upload.aspx";
-            //アップロードするファイル名を設定（@"C\:temp"だけなどは危険なためデバッグ時以外使用禁止）
-            string file = "c:\\test.jpg";
-
-            //WebClientをインスタンス化
-            WebClient wc = new WebClient();
-            byte[] ret = wc.UploadFile(url, file);
-            string result = Encoding.ASCII.GetString(ret);
-            wc.Dispose();
-
-            Console.WriteLine(result);
-
-            // コンパイル方法：csc uploader.cs
-            */
-
 
         }
 
@@ -173,9 +155,9 @@ namespace WhereEver
                     Response.Buffer = true;
 
                     //HTTPヘッダー情報・MIMEタイプ設定
-                    Response.AddHeader("Content-Disposition", String.Format("attachment;filename={0}", lblDLResult.Text + ".zip"));
+                    Response.AddHeader("Content-Disposition", String.Format("attachment;filename={0}", lblDLResult.Text));
                     //好きなMIMEタイプを設定
-                      Response.ContentType = "application/zip";
+                      Response.ContentType = DropDownList1.SelectedValue;
 
                     //ファイルを書き出し
                     Response.WriteFile(filePath);
@@ -183,10 +165,12 @@ namespace WhereEver
                     Response.End();
 
                     lblDLResult.Text = "ダウンロードに成功しました。";
+                    return;
                 }
                 catch (Exception ex)
                 {
                     lblDLResult.Text = ex + "によりダウンロードに失敗しました。";
+                    return;
                 }
 
             }
@@ -195,24 +179,6 @@ namespace WhereEver
                 lblDLResult.Text = "ダウンロードファイルを選択して下さい。";
                 return;
             }
-
-            /*
-            //アップロード専用URLを指定
-            string url = "http://localhost/upload.aspx";
-            //アップロードするファイル名を設定（@"C\:temp"だけなどは危険なためデバッグ時以外使用禁止）
-            string file = "c:\\test.jpg";
-
-            //WebClientをインスタンス化
-            WebClient wc = new WebClient();
-            byte[] ret = wc.UploadFile(url, file);
-            string result = Encoding.ASCII.GetString(ret);
-            wc.Dispose();
-
-            Console.WriteLine(result);
-
-            // コンパイル方法：csc uploader.cs
-            */
-
 
         }
 
