@@ -27,19 +27,7 @@
        </div>
 
        <div id="Wrap">
-            <asp:GridView ID="GridView_a" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource_a">
-                <Columns>
-                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
-                    <asp:BoundField DataField="uid" HeaderText="uid" ReadOnly="True" SortExpression="uid" />
-                    <asp:BoundField DataField="name1" HeaderText="name1" SortExpression="name1" />
-                    <asp:BoundField DataField="ShinseiSyubetsu" HeaderText="ShinseiSyubetsu" SortExpression="ShinseiSyubetsu" />
-                    <asp:BoundField DataField="DateTime" HeaderText="DateTime" SortExpression="DateTime" />
-                    <asp:BoundField DataField="LastUpdate" HeaderText="LastUpdate" SortExpression="LastUpdate" />
-                    <asp:CommandField ShowEditButton="True" />
-                </Columns>
-            </asp:GridView>
-
-            <asp:SqlDataSource ID="SqlDataSource_a" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT * FROM [T_Shinsei_Main]"></asp:SqlDataSource>
+      
 
            <p>
             <asp:Label ID="lblResult" runat="server" Text="ファイルをアップロードできます。ファイル名はUUIDに自動変換されます。"></asp:Label>

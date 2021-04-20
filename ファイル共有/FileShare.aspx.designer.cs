@@ -33,24 +33,6 @@ namespace WhereEver
         protected global::WhereEver.MenuControl m;
 
         /// <summary>
-        /// GridView_a コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView_a;
-
-        /// <summary>
-        /// SqlDataSource_a コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_a;
-
-        /// <summary>
         /// lblResult コントロール。
         /// </summary>
         /// <remarks>

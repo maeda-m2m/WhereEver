@@ -445,7 +445,8 @@ namespace WhereEver
             resetTatekaeTable();
         }
 
-        protected void resetTatekaeTable() {
+        protected void resetTatekaeTable()
+        {
             //初期化
             lblTatekaeResult.Text = "";
             waste1 = 0;
@@ -605,7 +606,7 @@ namespace WhereEver
             string sdate = Calendar3.SelectedDate.ToShortDateString();
             int ym = sdate.IndexOf("/");
             sdate = sdate.Substring(ym + 1);
-            if(sdate.StartsWith("0"))
+            if (sdate.StartsWith("0"))
             {
                 //月頭の0を削除
                 sdate = sdate.Substring(1);
@@ -884,9 +885,9 @@ namespace WhereEver
             //--------------------------
             //区切り記号の追加
             sb = new StringBuilder(str);
-            sb.Replace(",","");
-            sb.Replace("-","");
-            sb.Replace("\\","");
+            sb.Replace(",", "");
+            sb.Replace("-", "");
+            sb.Replace("\\", "");
             lp = 0;
             for (i = 3; i < sb.Length; i += 3)
             {
@@ -923,7 +924,7 @@ namespace WhereEver
                     break;
                 }
                 sb.Insert(sb.Length - (i + lp), ",");
-                    lp += 1;
+                lp += 1;
             }
             //--------------------------
             sb.Append("-");
@@ -1084,7 +1085,8 @@ namespace WhereEver
             int iwe2 = lines.LastIndexOf("</a><a name = \"endw2\"></a>");
 
 
-            if (iws1 >= 0 && iws2 >= 0 && iwe1 >= 0 && iwe2 >= 0) {
+            if (iws1 >= 0 && iws2 >= 0 && iwe1 >= 0 && iwe2 >= 0)
+            {
 
                 //行った先から手前を引く
                 string rw1 = lines.Substring(iws1, iwe1 - iws1);
@@ -1127,7 +1129,8 @@ namespace WhereEver
 
             //最後にある<trから末尾まで切り出し
             int lasttr = lines.LastIndexOf("<tr");
-            if (lasttr >= 0) {
+            if (lasttr >= 0)
+            {
                 lines = lblTatekaeResult.Text.Remove(lasttr);
                 lblTatekaeResult.Text = lines;
 
@@ -1265,8 +1268,6 @@ namespace WhereEver
             //データバインド
             BindData();
 
-            //レスポンスリダイレクト
-            //Response.Redirect("Shinsei.aspx");
         }
 
         protected void ReformShinseiRow(int args)
@@ -1285,7 +1286,7 @@ namespace WhereEver
             GridView1.Rows[args].BackColor = System.Drawing.Color.AliceBlue;
 
             //idをロード
-            //String isbn_key = (String)GridView1.DataKeys[args].Value;
+            //string isbn_key = (String)GridView1.DataKeys[args].Value;
             string isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
 
             // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
@@ -1304,7 +1305,7 @@ namespace WhereEver
 
             // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
             //作成日付をロード
-            //String isbn_date = GridView1.Rows[args].Cells[4].Text.Trim();
+            //string isbn_date = GridView1.Rows[args].Cells[4].Text.Trim();
 
             // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
             //最終更新日をロード
@@ -1487,7 +1488,7 @@ namespace WhereEver
 
                 //コマンドの引数を取得
                 int args = Int32.Parse(e.CommandArgument.ToString());
-              
+
                 //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
                 //【重要】ReadOnly属性がついていないと読み込みできない。
 
@@ -1515,7 +1516,7 @@ namespace WhereEver
 
                 // コマンド名が“Reform”の場合にのみ処理（修正ボタン）
             }
-            else if(e.CommandName == "Reform")
+            else if (e.CommandName == "Reform")
             {
                 //コマンドの引数を取得
                 int args = Int32.Parse(e.CommandArgument.ToString());
@@ -1697,7 +1698,8 @@ namespace WhereEver
                 BindData();
 
             }
-            else {
+            else
+            {
 
                 //UUID取得
                 string uid = lbluid.Text;
@@ -1781,7 +1783,8 @@ namespace WhereEver
                 BindData();
 
             }
-            else {
+            else
+            {
 
                 //UUID取得
                 string uid = lbluid.Text;
@@ -1865,14 +1868,16 @@ namespace WhereEver
                 BindData();
 
             }
-            else {
+            else
+            {
 
                 //UUID取得
                 string uid = lbluid.Text;
 
 
                 DATASET.DataSet.T_Shinsei_C_TatekaeDataTable dt = ShinseiLog.GetT_Shinsei_C_TatekaeRow(Global.GetConnection(), SessionManager.User.M_User.id, uid);
-                if (dt != null) {
+                if (dt != null)
+                {
 
                     //Update
                     ShinseiLog.SetT_Shinsei_C_TatekaeUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid, lblTatekaeResult.Text, lblTatekae_Koutuuhi.Text, lblTatekae_Shukuhakuhi.Text, lblTatekae_Result1.Text, lblTatekae_Result2.Text, lblTatekae_Result3.Text);
@@ -1883,7 +1888,8 @@ namespace WhereEver
                     BindData();
 
                 }
-                else {
+                else
+                {
 
                     //UUIDエラー
                     lbl_SaveResult3.Text = "Save Failed E2: " + DateTime.Now;
@@ -1927,7 +1933,8 @@ namespace WhereEver
             //　項目が増えたときに重くなりそうだけれども、SQLなしでも簡単に実装できる。
             //　項目が増えることを前提にするなら実装しないほうが安定する。
 
-            if (lbluid.Text != "null"){
+            if (lbluid.Text != "null")
+            {
 
                 //この方式では複数ページが取得できない
                 int cnt = GridView1.Rows.Count;
@@ -1936,7 +1943,8 @@ namespace WhereEver
                 //int page = GridView1.PageCount;
                 //cnt *= page;
 
-                try {
+                try
+                {
 
                     //----------------------------------------------
                     for (int i = 0; i < cnt; i++)
