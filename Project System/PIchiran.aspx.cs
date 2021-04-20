@@ -28,17 +28,6 @@ namespace WhereEver.Project_System
                 new DataGridCommandEventHandler(this.DgPIchiran_UpdateCommand);
             DgPIchiran.ItemCommand +=
                 new DataGridCommandEventHandler(this.DgPIchiran_ItemCommand);
-
-            DATASET.DataSet.M_UserDataTable m_User = Insert.GetM_User(Global.GetConnection());
-            DataView dtview = dtview = new DataView(m_User);
-            DataTable dt1 = dtview.ToTable(false, "name1");
-            for (int rowindex = 0; rowindex < dt1.Rows.Count; rowindex++)
-            {
-                for (int colindex = 0; colindex < dt1.Rows[rowindex].ItemArray.Length; colindex++)
-                {
-                   ddlResponsible.Items.Add(dt1.Rows[rowindex][colindex].ToString());
-                }
-            }
         }
 
         protected void DgPIchiran_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -53,7 +42,7 @@ namespace WhereEver.Project_System
                 e.Item.Cells[3].Text = dr.Presponsible.ToString();
                 e.Item.Cells[4].Text = dr.Pcategory.ToString();
                 e.Item.Cells[5].Text = dr.Pstarttime.ToShortDateString();
-                if(dr.Povertime.ToString() == "0001/01/01 0:00:00")
+                if (dr.Povertime.ToString() == "0001/01/01 0:00:00")
                 {
                     e.Item.Cells[6].Text = "未定";
                 }
@@ -72,7 +61,7 @@ namespace WhereEver.Project_System
             da.Fill(dt);
             return dt;
         }
-        
+
         public void DgPIchiran_EditCommand(object source, DataGridCommandEventArgs e)
         {
             DgPIchiran.EditItemIndex = e.Item.ItemIndex;
@@ -90,7 +79,7 @@ namespace WhereEver.Project_System
         protected void DgPIchiran_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
             TextBox txtPid = (TextBox)e.Item.Cells[0].Controls[0];
-            TextBox txtPname =(TextBox)e.Item.Cells[1].Controls[0];
+            TextBox txtPname = (TextBox)e.Item.Cells[1].Controls[0];
             TextBox txtPcustomer = (TextBox)e.Item.Cells[2].Controls[0];
             TextBox txtPresponsible = (TextBox)e.Item.Cells[3].Controls[0];
             TextBox txtPcategory = (TextBox)e.Item.Cells[4].Controls[0];
@@ -120,10 +109,10 @@ namespace WhereEver.Project_System
             DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
             DgPIchiran.DataBind();
         }
-        
+
         protected void DgPIchiran_ItemCommand(object source, DataGridCommandEventArgs e)
         {
-            string id = e.Item.Cells[0].Text; 
+            string id = e.Item.Cells[0].Text;
             switch (((LinkButton)e.CommandSource).CommandName)
             {
 
@@ -144,36 +133,43 @@ namespace WhereEver.Project_System
             DgPIchiran.DataBind();
         }
 
-        
+
 
         protected void btnNewP_Click(object sender, EventArgs e)
         {
-            DATASET.DataSet.T_PdbDataTable t_Pdbs = new DATASET.DataSet.T_PdbDataTable();
-            DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
+            if (Calendar1.SelectedDate < Calendar2.SelectedDate) {
+                DATASET.DataSet.T_PdbDataTable t_Pdbs = new DATASET.DataSet.T_PdbDataTable();
+                DATASET.DataSet.T_PdbRow dr = t_Pdbs.NewT_PdbRow();
 
-            DATASET.DataSet.T_PdbRow dl =Insert.GetMaxPidRow(Global.GetConnection());
-            int sl = dl.Pid;
-            dr.Pid = sl + 1;
-            dr.Pname = txtNewPName.Text.Trim();
-            dr.Pcustomer = txtNewCustomer.Text.Trim();
-            dr.Presponsible = ddlResponsible.SelectedItem.Text.Trim();
-            dr.Pcategory = txtNewCategory.Text.Trim();
-            dr.Pstarttime = Calendar1.SelectedDate;
-            dr.Povertime = Calendar2.SelectedDate;
+                DATASET.DataSet.T_PdbRow dl = Insert.GetMaxPidRow(Global.GetConnection());
+                int sl = dl.Pid;
+                dr.Pid = sl + 1;
+                dr.Pname = txtNewPName.Text.Trim();
+                dr.Pcustomer = txtNewCustomer.Text.Trim();
+                dr.Presponsible = ddlResponsible.SelectedItem.Text.Trim();
+                dr.Pcategory = txtNewCategory.Text.Trim();
+                dr.Pstarttime = Calendar1.SelectedDate;
+                dr.Povertime = Calendar2.SelectedDate;
 
-            t_Pdbs.Rows.Add(dr);
+                t_Pdbs.Rows.Add(dr);
 
-            Insert.InsertProject(t_Pdbs, Global.GetConnection());
+                Insert.InsertProject(t_Pdbs, Global.GetConnection());
 
-            DATASET.DataSet.T_PdbDataTable dt = GetPdbDataTable(Global.GetConnection());
+                DATASET.DataSet.T_PdbDataTable dt = GetPdbDataTable(Global.GetConnection());
 
-            DgPIchiran.DataSource = dt;
-            DgPIchiran.DataBind();
+                DgPIchiran.DataSource = dt;
+                DgPIchiran.DataBind();
 
-            txtNewPName.Text = "";
-            txtNewCustomer.Text = "";
-            txtNewCategory.Text = "";
-            ddlResponsible.Text = "";
+                txtNewPName.Text = "";
+                txtNewCustomer.Text = "";
+                txtNewCategory.Text = "";
+                ddlResponsible.Text = "";
+                lblAisatu.Text = "新規作成完了";
+            }
+            else
+            {
+                lblAisatu.Text = "カレンダーの日にち選択に誤りがあります。";
+            }
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
@@ -182,6 +178,77 @@ namespace WhereEver.Project_System
             txtNewCustomer.Text = "";
             txtNewCategory.Text = "";
             ddlResponsible.Text = "";
+            Calendar1.SelectedDates.Clear();
+            Calendar2.SelectedDates.Clear();
+            BulletedList1.Items.Clear();
+            BulletedList2.Items.Clear();
+            lblAisatu.Text = "";
+        }
+
+        protected void Calendar2_SelectionChanged(object sender, EventArgs e)
+        {
+            ListItem li = new ListItem();
+            li.Text = Calendar2.SelectedDate.ToShortDateString();
+
+            int counter = 0;
+            foreach (ListItem litem in BulletedList2.Items)
+            {
+                if (litem.Text == li.Text)
+                {
+                    counter += 1;
+                }
+            }
+
+            if (counter > 0)
+            {
+                BulletedList2.Items.Remove(li);
+            }
+            else
+            {
+                BulletedList2.Items.Add(li);
+            }
+
+            Calendar2.SelectedDates.Clear();
+            SelectedDatesCollection dates = Calendar2.SelectedDates;
+
+            foreach (ListItem litem in BulletedList2.Items)
+            {
+                DateTime date = Convert.ToDateTime(litem.Text);
+                dates.Add(date);
+            }
+        }
+
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            ListItem li = new ListItem();
+            li.Text = Calendar1.SelectedDate.ToShortDateString();
+
+            int counter = 0;
+            foreach (ListItem litem in BulletedList1.Items)
+            {
+                if (litem.Text == li.Text)
+                {
+                    counter += 1;
+                }
+            }
+
+            if (counter > 0)
+            {
+                BulletedList1.Items.Remove(li);
+            }
+            else
+            {
+                BulletedList1.Items.Add(li);
+            }
+
+            Calendar1.SelectedDates.Clear();
+            SelectedDatesCollection dates = Calendar1.SelectedDates;
+
+            foreach (ListItem litem in BulletedList1.Items)
+            {
+                DateTime date = Convert.ToDateTime(litem.Text);
+                dates.Add(date);
+            }
         }
     }
 }

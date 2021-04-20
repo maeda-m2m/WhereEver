@@ -119,12 +119,17 @@
                     <td class="cell" colspan="2">
 
                         <asp:Label ID="lblNewStartTime" runat="server" Text="開始日"></asp:Label>
-
-                <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" >
+                        <asp:BulletedList
+             ID="BulletedList2"
+             runat="server"
+             Visible="false"
+             >
+        </asp:BulletedList>
+                <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnSelectionChanged="Calendar1_SelectionChanged" >
                     <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                     <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
                     <OtherMonthDayStyle ForeColor="#999999" />
-                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                    <SelectedDayStyle BackColor="Red" ForeColor="White" />
                     <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
                     <TodayDayStyle BackColor="#CCCCCC" />
                         </asp:Calendar>
@@ -133,19 +138,23 @@
                     <td class="cell" colspan="2">
 
                         <asp:Label ID="lblNewOverTime" runat="server" Text="終了日"></asp:Label>
+                <asp:BulletedList
+             ID="BulletedList1"
+             runat="server"
+             Visible="false"
+             >
+        </asp:BulletedList>
 
-                <asp:Calendar ID="Calendar2" runat="server" 
-                    BackColor="White" BorderColor="White" BorderWidth="1px" 
-                    Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                <asp:Calendar ID="Calendar2" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
                     <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                     <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
                     <OtherMonthDayStyle ForeColor="#999999" />
-                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                    <SelectedDayStyle BackColor="Red" ForeColor="White" />
                     <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
                     <TodayDayStyle BackColor="#CCCCCC" />
                         </asp:Calendar>
 
-                        未定の場合はそのまま保存してください。</td>
+                        終了日未定の場合はそのまま保存してください。</td>
                     <td class="cell">
 
                         &nbsp;</td>
@@ -155,9 +164,14 @@
 
                         <asp:Button ID="btnNewP" CssClass="btn" runat="server" Text="新規として保存" OnClick="btnNewP_Click"/>
 
-                        <asp:Label ID="lblAisatu" CssClass="label" runat="server"></asp:Label>
-
                         <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" OnClick="btnClear_Click" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cell" colspan="4">
+
+                        <asp:Label ID="lblAisatu" CssClass="label" runat="server"></asp:Label>
 
                     </td>
                 </tr>

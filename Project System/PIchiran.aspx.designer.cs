@@ -123,6 +123,15 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Label lblNewStartTime;
 
         /// <summary>
+        /// BulletedList2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.BulletedList BulletedList2;
+
+        /// <summary>
         /// Calendar1 コントロール。
         /// </summary>
         /// <remarks>
@@ -139,6 +148,15 @@ namespace WhereEver.Project_System
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNewOverTime;
+
+        /// <summary>
+        /// BulletedList1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.BulletedList BulletedList1;
 
         /// <summary>
         /// Calendar2 コントロール。
@@ -159,15 +177,6 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Button btnNewP;
 
         /// <summary>
-        /// lblAisatu コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAisatu;
-
-        /// <summary>
         /// btnClear コントロール。
         /// </summary>
         /// <remarks>
@@ -175,5 +184,14 @@ namespace WhereEver.Project_System
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClear;
+
+        /// <summary>
+        /// lblAisatu コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAisatu;
     }
 }
