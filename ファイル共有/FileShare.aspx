@@ -8,6 +8,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Style-Type" content="text/css" />
+    <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
     <link rel="stylesheet" type="text/css" href="FileShare.css" />
 
     <title>ファイル共有</title>
@@ -24,7 +25,6 @@
                 </tr>
             </table>
        </div>
-
 
        <div id="Wrap">
       
@@ -86,6 +86,39 @@
              参照先：c:\\UploadedFiles\\[UUID].(拡張子)
            </p>
 
+              <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,FileName" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowCommand="grid_RowCommand">
+                <Columns>
+                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
+                    <asp:BoundField DataField="FileName" HeaderText="ファイル名" ReadOnly="True" SortExpression="FileName" />
+                    <asp:BoundField DataField="FilePath" HeaderText="ファイルパス" ReadOnly="True" SortExpression="FilePath" Visible="false" />
+                    <asp:BoundField DataField="DateTime" HeaderText="アップロード日" ReadOnly="True" SortExpression="DateTime" />
+
+                    <asp:ButtonField ButtonType="Button" Text="削除" ControlStyle-CssClass="btn-flat-border"  HeaderText="削除" CommandName="Remove" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border" />
+                    </asp:ButtonField>
+
+                    <asp:ButtonField ButtonType="Button" Text="編集/閲覧" ControlStyle-CssClass="btn-flat-border"  HeaderText="編集/閲覧" CommandName="Reform" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border" />
+                    </asp:ButtonField>
+
+                </Columns>
+                <HeaderStyle BackColor="#66FF66" />
+            </asp:GridView>
+
+             <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+                ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>"
+                SelectCommand="SELECT * FROM [T_FileShare]  WHERE ([id] = @id) ORDER BY DateTime DESC">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="lblid" DefaultValue="null" Name="id" PropertyName="Text" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+
+           <p>
+            <asp:Label ID="lblid" runat="server" Text="null" Visible="False"></asp:Label>
+           </p>
+           <p>
+            <asp:Label ID="lbluid" runat="server" Text="null" Visible="False"></asp:Label>
+           </p>
 
         </div>
     </form>
