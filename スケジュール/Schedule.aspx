@@ -10,38 +10,6 @@
     <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-
-    <style type="text/css">
-        .auto-style1 {
-            background-color: #16ba00;
-            color: white;
-            text-align: center;
-            height: 52px;
-        }
-
-        .auto-style7 {
-            height: 52px;
-            width: 500px;
-        }
-
-        .auto-style8 {
-            width: 500px;
-        }
-
-        .auto-style9 {
-            margin-bottom: 0px;
-        }
-
-        .auto-style10 {
-            height: 83px;
-        }
-
-        .auto-style11 {
-            height: 83px;
-            width: 875px;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -58,22 +26,17 @@
         <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
         <table id="btn" class="auto-style12">
             <td class="auto-style11">
-
-                <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="20px" Width="1200px" HorizontalAlign="Left">
+                <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="10px" Width="1205px">
                     <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
-                    <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" />
+                    &nbsp;<asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" />
                     <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
-                    <asp:Button ID="Button4" runat="server" Text="先週" class="btn-flat-border" OnClick="Button4_Click" />
-                    <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
-                    <asp:Button ID="Button5" runat="server" Text="来週" class="btn-flat-border" OnClick="Button5_Click" />
                 </asp:Panel>
-
             </td>
         </table>
 
         <div>
             <asp:Panel ID="Panel1" runat="server">
-                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnPreRender="CalendarA">
                     <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                     <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
                     <OtherMonthDayStyle ForeColor="#999999" />
@@ -150,8 +113,8 @@
                             <p>担当者名</p>
 
                             <td class="auto-style8">
-                                <asp:DropDownList ID="DropDownList2" runat="server">
-                                    <asp:ListItem></asp:ListItem>
+
+                                <asp:CheckBoxList ID="CheckBoxList1" runat="server">
                                     <asp:ListItem>石岡</asp:ListItem>
                                     <asp:ListItem>木村</asp:ListItem>
                                     <asp:ListItem>佐藤</asp:ListItem>
@@ -173,17 +136,11 @@
                             </td>
                         </td>
                     </tr>
-
                     <tr>
-
                         <td colspan="2">
-
                             <asp:Button ID="Button2" runat="server" Text="登録" class="btn-flat-border" OnClick="Button2_Click" />
-
                         </td>
-
                     </tr>
-
                 </table>
             </asp:Panel>
         </div>
@@ -264,18 +221,8 @@
             </asp:DataGrid>
 
         </div>
-        <table id="btn">
-            <tr>
-                <td class="auto-style10">
-                    <td class="auto-style11">
-                        <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="10px" Width="1300px">
-                            <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
-                            &nbsp;<asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷" />
-                        </asp:Panel>
-                    </td>
-                </td>
-            </tr>
-        </table>
+
+        <br />
 
         <div>
 
@@ -291,7 +238,7 @@
                 HeaderStyle-Width="200px"
                 OnItemCommand="ScdlList_ItemCommand"
                 Style="margin-left: 0px"
-                HorizontalAlign="Left" Width="1200px">
+                HorizontalAlign="Left" Width="1200px" OnSelectedIndexChanged="ScdlList_SelectedIndexChanged">
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>

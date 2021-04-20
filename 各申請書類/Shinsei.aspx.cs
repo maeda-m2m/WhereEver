@@ -1262,15 +1262,21 @@ namespace WhereEver
             ShinseiLog.DeleteT_Shinsei_MainRow(Global.GetConnection(), isbn_name, isbn_uid);
             lbluid.Text = "null";
 
-                //レスポンスリダイレクト
-                Response.Redirect("Shinsei.aspx");
+            //データバインド
+            BindData();
 
-                // コマンド名が“Reform”の場合にのみ処理（修正ボタン）
-            }
-            else if(e.CommandName == "Reform")
+            //レスポンスリダイレクト
+            //Response.Redirect("Shinsei.aspx");
+        }
+
+        protected void ReformShinseiRow(int args)
+        {
+            if (Session["args"].ToString() != "null")
             {
-                //コマンドの引数を取得
-                int args = Int32.Parse(e.CommandArgument.ToString());
+                //GridView1の色を変えた色をもとに戻す
+                int resetargs = int.Parse(Session["args"].ToString());
+                GridView1.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
+            }
 
             //新たに色を変更する行を記憶
             Session.Add("args", args);
@@ -1278,8 +1284,9 @@ namespace WhereEver
             //行の色変更（選択行を強調表示）
             GridView1.Rows[args].BackColor = System.Drawing.Color.AliceBlue;
 
-                //String isbn_key = (String)GridView1.DataKeys[args].Value;
-                string isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
+            //idをロード
+            //String isbn_key = (String)GridView1.DataKeys[args].Value;
+            string isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
 
             // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
             //uidをロード
@@ -1295,9 +1302,9 @@ namespace WhereEver
             //申請種別をロード
             string isbn_kind = GridView1.Rows[args].Cells[3].Text.Trim();
 
-                // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
-                //作成日付をロード
-                //String isbn_date = GridView1.Rows[args].Cells[4].Text.Trim();
+            // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
+            //作成日付をロード
+            //String isbn_date = GridView1.Rows[args].Cells[4].Text.Trim();
 
             // クリックされた[args]行の左から4番目の列[0-nで数える]のセルにある「テキスト」を取得
             //最終更新日をロード
