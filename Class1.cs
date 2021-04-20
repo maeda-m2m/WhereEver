@@ -176,7 +176,16 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "SELECT DATEADD(week,-1,date)FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
+                "select * from T_Schedule where DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()-7) order by date asc";
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+            da.Fill(dt);
+            return dt;
+        }
+        public static DATASET.DataSet.T_ScheduleDataTable SwitchNext2Scdl3DataTable(SqlConnection Sqlco)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+            da.SelectCommand.CommandText =
+                "select * from T_Schedule where DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()+7) order by date asc";
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             return dt;
