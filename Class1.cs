@@ -140,7 +140,6 @@ namespace WhereEver
         }
 
 
-
         public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTable(SqlConnection Sqlco)
         {
             var da = new SqlDataAdapter("", Sqlco);
@@ -166,7 +165,7 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
+                "select * from T_Schedule where DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()) order by date asc";
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             return dt;
@@ -176,11 +175,22 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "SELECT DATEADD(week,-1,date)FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
+                "select * from T_Schedule where DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()-7) order by date asc";
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             return dt;
         }
+        public static DATASET.DataSet.T_ScheduleDataTable SwitchNext2Scdl3DataTable(SqlConnection Sqlco)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+            da.SelectCommand.CommandText =
+                "select * from T_Schedule where DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()+7) order by date asc";
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
+
 
         //SdlNoがある列を持ってくる
         public static DATASET.DataSet.T_ScheduleRow SwitchScdl3Row(SqlConnection schedule)

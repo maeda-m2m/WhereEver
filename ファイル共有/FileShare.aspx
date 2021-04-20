@@ -27,7 +27,7 @@
        </div>
 
        <div id="Wrap">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1">
+            <asp:GridView ID="GridView_a" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource_a">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
                     <asp:BoundField DataField="uid" HeaderText="uid" ReadOnly="True" SortExpression="uid" />
@@ -39,7 +39,7 @@
                 </Columns>
             </asp:GridView>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT * FROM [T_Shinsei_Main]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource_a" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT * FROM [T_Shinsei_Main]"></asp:SqlDataSource>
 
            <p>
             <asp:Label ID="lblResult" runat="server" Text="ファイルをアップロードできます。ファイル名はUUIDに自動変換されます。"></asp:Label>
