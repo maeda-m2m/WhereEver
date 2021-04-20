@@ -53,12 +53,8 @@ namespace WhereEver
                 //書き込み先ディレクトリがない場合はエラーになります。
                 string path = @"c:\\UploadedFiles\\";
 
-                if (Directory.Exists(path))
-                {
-                    //ディレクトリが存在します。
-                }
-                else
-                {
+                if (!Directory.Exists(path))
+                {                
                     //ディレクトリが存在しません。このままだとエラーになるため、ディレクトリを生成します。
                     Directory.CreateDirectory(path);
                 }
@@ -69,6 +65,7 @@ namespace WhereEver
                 //拡張子を取得
                 string extension = Path.GetExtension(FileUpload_userfile.FileName);
 
+                //MimeTypeの設定に合っているかどうか？
                 if (extension != ".zip")
                 {
                     lblResult.Text = "zipファイルのみアップロードできます。";
@@ -76,7 +73,7 @@ namespace WhereEver
                 }
 
 
-                if (fileName != null)
+                if (fileName != null && fileName != "")
                 {
 
                     //不正なファイル名にならないようuuidに置き換え
@@ -138,7 +135,7 @@ namespace WhereEver
         {
             lblDLResult.Text = "";
 
-            if (TextBox_dl.Text != "")
+            if (TextBox_dl.Text != null && TextBox_dl.Text != "")
             {
                 //アップロードするファイル名を設定（@"C\:temp"だけなどは危険なためデバッグ時以外使用禁止）
                 //書き込み先ディレクトリがない場合はエラーになります。
@@ -158,34 +155,39 @@ namespace WhereEver
                 //保存先パスを設定
                 string filePath = Path.Combine(path, TextBox_dl.Text + ".zip");
 
-                if (Directory.Exists(filePath))
-                {
-                    //ファイルが存在します。
-                }
-                else
+                if (!Directory.Exists(filePath))
                 {
                     //ファイルが存在しません。
                     lblDLResult.Text = "指定したファイルが存在しません。";
                     return;
                 }
 
-                //Response情報クリア
-                Response.ClearContent();
+                try
+                {
 
-                //バッファリング
-                Response.Buffer = true;
 
-                //HTTPヘッダー情報・MIMEタイプ設定
-                Response.AddHeader("Content-Disposition", String.Format("attachment;filename={0}", lblDLResult.Text + ".zip"));
-                //好きなMIMEタイプを設定
-                Response.ContentType = "application/zip";
+                    //Response情報クリア
+                    Response.ClearContent();
 
-                //ファイルを書き出し
-                Response.WriteFile(filePath);
-                Response.Flush();
-                Response.End();
+                    //バッファリング
+                    Response.Buffer = true;
 
-                lblDLResult.Text = "ダウンロードに成功しました。";
+                    //HTTPヘッダー情報・MIMEタイプ設定
+                    Response.AddHeader("Content-Disposition", String.Format("attachment;filename={0}", lblDLResult.Text + ".zip"));
+                    //好きなMIMEタイプを設定
+                      Response.ContentType = "application/zip";
+
+                    //ファイルを書き出し
+                    Response.WriteFile(filePath);
+                    Response.Flush();
+                    Response.End();
+
+                    lblDLResult.Text = "ダウンロードに成功しました。";
+                }
+                catch (Exception ex)
+                {
+                    lblDLResult.Text = ex + "によりダウンロードに失敗しました。";
+                }
 
             }
             else
