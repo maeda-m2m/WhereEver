@@ -31,14 +31,10 @@ namespace WhereEver
                 Scdl3.Columns[3].ItemStyle.Wrap = true;
                 Scdl3.Columns[4].ItemStyle.Wrap = true;
             }
-            //ScdlList.EditCommand +=
-            //new DataGridCommandEventHandler(this.ScdlList_EditCommand);
-            //ScdlList.CancelCommand +=
-            //    new DataGridCommandEventHandler(this.ScdlList_CancelCommand);
-            //ScdlList.UpdateCommand +=
-            //    new DataGridCommandEventHandler(this.ScdlList_UpdateCommand);
-            //ScdlList.ItemCommand +=
-            //    new DataGridCommandEventHandler(this.ScdlList_ItemCommand);
+
+            ScdlList.EditCommand += new DataGridCommandEventHandler(this.ScdlList_EditCommand);
+            ScdlList.CancelCommand += new DataGridCommandEventHandler(this.ScdlList_CancelCommand);
+            ScdlList.UpdateCommand += new DataGridCommandEventHandler(this.ScdlList_UpdateCommand);
         }
 
         //スケジュールリストにデータを格納　→　ScdlList_ItemDataBound　に移動
@@ -506,18 +502,6 @@ namespace WhereEver
                 //Label name4 = e.Item.FindControl("Label10") as Label;
                 //Label name5 = e.Item.FindControl("Label11") as Label;
 
-                var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
-
-                //for (int j = 0; j < dd.Count; j++)
-                //{
-                //    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
-
-                //    DateTime DT = DateTime.Parse(dl.date.ToString());
-
-                //    string week = DT.ToString("MM/dd");
-                //}
-
-
                 time.Text = dr.時間.ToString();
 
                 if (!dr.Is月Null())
@@ -534,7 +518,7 @@ namespace WhereEver
 
                 if (!dr.Is金Null())
                     friday.Text = dr.金;
-
+                //}
             }
         }
 
@@ -574,14 +558,8 @@ namespace WhereEver
                 //    name.Text = dr.name;
 
                 //No.Text = dr.SdlNo.ToString();
+                //値を隠している
 
-
-
-                e.Item.Cells[0].Text = dr.date.ToString("yyyy/MM/dd") + " " + dr.date.ToString("dddd");
-                e.Item.Cells[1].Text = dr.time.ToString();
-                e.Item.Cells[2].Text = dr.title.ToString();
-                e.Item.Cells[3].Text = dr.name.ToString();
-                e.Item.Cells[4].Text = dr.SdlNo.ToString();
             }
         }
 
@@ -976,24 +954,87 @@ namespace WhereEver
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataSource = dt;
             ScdlList.DataBind();
-
-            Create();
-            Create3();
-
         }
 
+        //DgPIchiran.EditItemIndex = e.Item.ItemIndex;
+        //DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
+        //DgPIchiran.DataBind();
 
-        protected void ScdlList_CancelCommand(object sender, DataGridCommandEventArgs e)
+        protected void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)
         {
+            TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
+            TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
+            TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
+            TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
+            TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
+
+            string b1 = a1.Text.Trim();
+            string b2 = a2.Text.Trim();
+            string b3 = a3.Text.Trim();
+            string b4 = a4.Text.Trim();
+            string b5 = a5.Text.Trim();
+
+            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+            int a = e.Item.ItemIndex;
+            var dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;
+
+            dr[0] = b1.Trim();
+            dr[1] = b2.Trim();
+            dr[2] = b3.Trim();
+            dr[3] = b4.Trim();
+            dr[4] = b5.Trim();
+
+            UpdateProject(dr, Global.GetConnection());
+
             ScdlList.EditItemIndex = -1;
             ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataBind();
-
-            Create();
-            Create3();
         }
 
-        protected void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)
+        private void UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)
+        {
+            {
+                var a = new SqlCommand("", sql);
+
+                a.CommandText = "UPDATE T_Schedule SET [date] = @date, [time] =@time, [title] = @title, [name] = @name where [SdlNo] = @SdlNo";
+
+                a.Parameters.AddWithValue("@date", dr.date);
+                a.Parameters.AddWithValue("@time", dr.time);
+                a.Parameters.AddWithValue("@title", dr.title);
+                a.Parameters.AddWithValue("@name", dr.name);
+                a.Parameters.AddWithValue("@SdlNo", dr.SdlNo);
+
+                SqlTransaction sqltra = null;
+
+                try
+                {
+                    sql.Open();
+                    sqltra = sql.BeginTransaction();
+
+                    a.Transaction = sqltra;
+
+                    a.ExecuteNonQuery();
+
+                    sqltra.Commit();
+
+                }
+                catch (Exception ex)
+                {
+                    if (sqltra != null)
+                        sqltra.Rollback();
+                }
+                finally
+                {
+                    sql.Close();
+                }
+                sql.Open();
+                a.ExecuteNonQuery();
+                sql.Close();
+            }
+        }
+
+
+        protected void ScdlList_SelectedIndexChanged(object sender, EventArgs e)
         {
             TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
             TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
@@ -1075,7 +1116,6 @@ namespace WhereEver
         {
 
         }
-
     }
 }
 
