@@ -114,16 +114,16 @@ namespace WhereEver
                 // Add other cases here, if there are multiple ButtonColumns in 
                 // the DataGrid control.
 
-                case "Reply":
-                    if ()
-                    {
+                //case "Reply":
+                    //if ()
+                    //{
 
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
 
-                    }
-                    break;
+                    //}
+                    //break;
             }
             Create();
         }

@@ -72,9 +72,8 @@
                 <tr>
                     <td colspan="3">
                         <asp:DataGrid ID="DgPKanri" runat="server" 
-                            AutoGenerateColumns="false" 
-                            OnItemDataBound="DgPKanri_ItemDataBound"
-                            OnItemCommand="DgPKanri_ItemCommand" >
+                            AutoGenerateColumns="False" 
+                            OnItemDataBound="DgPKanri_ItemDataBound">
                             <Columns>
                                 <asp:BoundColumn DataField="Pbig" HeaderText="大項目" />
                                 <asp:BoundColumn DataField="Pmiddle" HeaderText="中項目" />
@@ -82,7 +81,6 @@
                                 <asp:BoundColumn DataField="PoverTime" HeaderText="終了" />
                                 <asp:BoundColumn DataField="Ptoroku" HeaderText="登録日付" />
                                 <asp:BoundColumn DataField="Ptorukusya" HeaderText="登録者" />
-                                <asp:BoundColumn DataField="Pstatus" HeaderText="ステータス" />
                             </Columns>
                             <HeaderStyle Height="50px" HorizontalAlign="Center" VerticalAlign="Middle" Width="200px" />
                             <ItemStyle Height="30px" HorizontalAlign="Center" VerticalAlign="Middle" Width="200px" />
