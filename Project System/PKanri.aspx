@@ -75,12 +75,12 @@
                             AutoGenerateColumns="False" 
                             OnItemDataBound="DgPKanri_ItemDataBound">
                             <Columns>
-                                <asp:BoundColumn DataField="Pbig" HeaderText="大項目" />
-                                <asp:BoundColumn DataField="Pmiddle" HeaderText="中項目" />
-                                <asp:BoundColumn DataField="PstartTime" HeaderText="開始" />
-                                <asp:BoundColumn DataField="PoverTime" HeaderText="終了" />
-                                <asp:BoundColumn DataField="Ptoroku" HeaderText="登録日付" />
-                                <asp:BoundColumn DataField="Ptorukusya" HeaderText="登録者" />
+                                <asp:BoundColumn DataField="PBigname" HeaderText="大項目" />
+                                <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目" />
+                                <asp:BoundColumn DataField="PMiddlestart" HeaderText="開始" />
+                                <asp:BoundColumn DataField="PMiddleover" HeaderText="終了" />
+                                <asp:BoundColumn DataField="PTorokutime" HeaderText="登録日付" />
+                                <asp:BoundColumn DataField="PTorokusya" HeaderText="登録者" />
                             </Columns>
                             <HeaderStyle Height="50px" HorizontalAlign="Center" VerticalAlign="Middle" Width="200px" />
                             <ItemStyle Height="30px" HorizontalAlign="Center" VerticalAlign="Middle" Width="200px" />

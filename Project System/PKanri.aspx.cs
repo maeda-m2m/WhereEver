@@ -24,8 +24,8 @@ namespace WhereEver.Project_System
         {
             DATASET.DataSet.T_PdbKanriDataTable dt = GetT_PdbKanriDataTable(Global.GetConnection());
 
-            ddlPBigList.DataSource = dt;
-            ddlPBigList.DataBind();
+            DgPKanri.DataSource = dt;
+            DgPKanri.DataBind();
         }
         public static DATASET.DataSet.T_PdbKanriDataTable GetT_PdbKanriDataTable(SqlConnection sqlConnection)
         {
