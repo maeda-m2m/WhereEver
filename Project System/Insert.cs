@@ -40,10 +40,6 @@ namespace WhereEver.Project_System
                 "select MAX(PBigid) as PBigid from T_PdbKanri";
             DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
             da.Fill(dt);
-            if(dt[0] == null)
-            {
-                dt[0].PBigid = 0;
-            }
             return dt[0];
         }
         internal static DATASET.DataSet.T_PdbRow GetMaxPidRow(SqlConnection sqlConnection)
@@ -87,6 +83,15 @@ namespace WhereEver.Project_System
             da.SelectCommand.CommandText =
                 "select * from M_User";
             DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
+            da.Fill(dt);
+            return dt;
+        }
+        internal static DATASET.DataSet.T_PdbKanriDataTable GetT_PdbKanri(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "select DISTINCT PBigname from T_PdbKanri";
+            DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
             da.Fill(dt);
             return dt;
         }
