@@ -15,8 +15,9 @@ namespace WhereEver.Project_System
         {
             if (!IsPostBack)
             {
-                CreateDataGrid();
                 CreateDropDownList();
+                CreateDataGrid();
+                
             }
         }
         private void CreateDataGrid()
@@ -52,7 +53,6 @@ namespace WhereEver.Project_System
         {
             if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
             {
-
                 DATASET.DataSet.T_PdbKanriRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbKanriRow;
                 e.Item.Cells[0].Text = dr.PBigname.ToString();
                 e.Item.Cells[1].Text = dr.PMiddlename.ToString();
@@ -75,6 +75,11 @@ namespace WhereEver.Project_System
 
             t_PdbKanris.Rows.Add(t_PdbKanriRow);
             Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
+        }
+
+        protected void DgPKanri_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+
         }
     }
 }

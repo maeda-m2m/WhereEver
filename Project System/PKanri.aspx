@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PKanri.aspx.cs" Inherits="WhereEver.Project_System.PKanri" %>
 
+<%@ Register Src="~/MenuControl.ascx" TagName="c_menu" TagPrefix="Menu" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,6 +26,7 @@
                     <td>
                         <asp:Label ID="lblPBigList" runat="server" Text="大項目リスト"></asp:Label>
                         <asp:DropDownList ID="ddlPBigList" runat="server">
+                            <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
                     </td>
                     <td colspan="2">
@@ -69,7 +71,10 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <asp:DataGrid ID="DgPKanri" runat="server" AutoGenerateColumns="False" OnItemDataBound="DgPKanri_ItemDataBound">
+                        <asp:DataGrid ID="DgPKanri" runat="server" 
+                            AutoGenerateColumns="false" 
+                            OnItemDataBound="DgPKanri_ItemDataBound"
+                            OnItemCommand="DgPKanri_ItemCommand" >
                             <Columns>
                                 <asp:BoundColumn DataField="Pbig" HeaderText="大項目" />
                                 <asp:BoundColumn DataField="Pmiddle" HeaderText="中項目" />
