@@ -159,6 +159,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
+        /// Button7 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button7;
+
+        /// <summary>
         /// Scdl3 コントロール。
         /// </summary>
         /// <remarks>
