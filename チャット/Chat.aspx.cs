@@ -96,27 +96,34 @@ namespace WhereEver
             string Cid = Cno.Text;
             string CnameNow = Cname.Text.Trim();
             string id = SessionManager.User.M_User.id.Trim();
-            if (CnameNow == id) { 
-                switch (((LinkButton)e.CommandSource).CommandName)
-                {
 
-                    case "Delete":
+            switch (((LinkButton)e.CommandSource).CommandName)
+            {
+                case "Delete":
+
+                    if (CnameNow == id)
+                    {
                         Class.Chat.DeleteChat(Cid);
                         Class.Chat.UpdateChat(Global.GetConnection());
-                        break;
+                    }
+                    else
+                    {
+                        Label2.Text = "他の人のコメントは削除できません！";
+                    }
+                    break;
+                // Add other cases here, if there are multiple ButtonColumns in 
+                // the DataGrid control.
 
-                    // Add other cases here, if there are multiple ButtonColumns in 
-                    // the DataGrid control.
+                case "Reply":
+                    if ()
+                    {
 
-                    default:
-                        // Do nothing.
-                        break;
+                    }
+                    else
+                    {
 
-                }
-            }
-            else
-            {
-                Label2.Text = "他の人のコメントは削除できません！";
+                    }
+                    break;
             }
             Create();
         }
