@@ -81,8 +81,6 @@ namespace WhereEver
             dt.AddT_ChatRow(dr);
             Class2.InsertList(dt, Global.GetConnection());
             Create();
-
-         
         }
         protected void Update_Click(object sender, EventArgs e)
         {
@@ -115,14 +113,18 @@ namespace WhereEver
                 // the DataGrid control.
 
                 case "Reply":
-                    if ()
-                    {
+                    //①Cnoにリプボタンを押した行の、T_Chatの主キーである「No」が入っているので
+                    //　それを使ってデータベースを検索、取得する
+                    //②取得したデータにはリプしたい内容が入っているのでそれをLabel3(とか？)に書き込む。これで準備完了！
 
-                    }
-                    else
-                    {
+                    //if ()
+                    //{
 
-                    }
+                    //}
+                    //else
+                    //{
+
+                    //}
                     break;
             }
             Create();

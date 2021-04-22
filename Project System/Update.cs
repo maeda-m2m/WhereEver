@@ -33,5 +33,28 @@ namespace WhereEver.Project_System
             }
         }
 
+        internal static void UpdateMiddle(DATASET.DataSet.T_PdbKanriRow dt,string name)
+        {
+            string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "update T_PdbKanri set " +
+                    "PMiddleid = @PMiddleid , PMiddlename = @PMiddlename , PMiddlestart = @PMiddlestart ,PMiddleover = @PMiddleover ,PTorokutime = @PTorokutime ,PTorokusya = @PTorokusya " +
+                    "where PBigname = @PBigname ";
+
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                da.SelectCommand.Parameters.AddWithValue("@PMiddleid", dt.PMiddleid);
+                da.SelectCommand.Parameters.AddWithValue("@PMiddlename", dt.PMiddlename);
+                da.SelectCommand.Parameters.AddWithValue("@PMiddlestart", dt.PMiddlestart);
+                da.SelectCommand.Parameters.AddWithValue("@PMiddleover", dt.PMiddleover);
+                da.SelectCommand.Parameters.AddWithValue("@PTorokutime", dt.PTorokutime);
+                da.SelectCommand.Parameters.AddWithValue("@PTorokusya", dt.PTorokusya);
+                da.SelectCommand.Parameters.AddWithValue("@PBigname", name);
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }
