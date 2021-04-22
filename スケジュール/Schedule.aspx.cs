@@ -592,7 +592,7 @@ namespace WhereEver
             int a = e.Item.ItemIndex;
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             var dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;
-            string.Format("if (!confirm('{0}')) return false;", "削除しますか。");
+            //string.Format("if (!confirm('{0}')) return false;", "削除しますか。");
             int sdl = dr.SdlNo;
 
             if (e.CommandName == "Delete")
@@ -1441,6 +1441,11 @@ namespace WhereEver
         {
             Create3();
             Create2();
+        }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Schedule.aspx");
         }
     }
 }

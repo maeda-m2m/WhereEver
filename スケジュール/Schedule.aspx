@@ -29,7 +29,7 @@
 
                 <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="20px" Width="1200px" HorizontalAlign="Left">
                     <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
-                    <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" />
+                    <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" OnClientClick="A()" />
                     <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
                     <asp:Button ID="Button4" runat="server" Text="先週" class="btn-flat-border" OnClick="Button4_Click" />
                     <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
@@ -147,6 +147,8 @@
                         <td colspan="2">
 
                             <asp:Button ID="Button2" runat="server" Text="登録" class="btn-flat-border" OnClick="Button2_Click" />
+
+                            <asp:Button ID="Button7" runat="server" Text="戻る" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="A()" />
 
                         </td>
 
@@ -273,10 +275,11 @@
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
                     </asp:BoundColumn>
 
-                    <asp:BoundColumn DataField="SdlNo" HeaderText="管理番号" ItemStyle-Width="100px">
+                    <asp:BoundColumn DataField="SdlNo" HeaderText="管理番号" ItemStyle-Width="100px" ReadOnly="True">
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
                     </asp:BoundColumn>
+
 
                     <asp:ButtonColumn
                         ItemStyle-Width="100px"
@@ -290,7 +293,7 @@
                         ItemStyle-Width="100px"
                         EditText="編集"
                         CancelText="キャンセル"
-                        UpdateText="保存"></asp:EditCommandColumn>
+                        UpdateText="保存" ButtonType="LinkButton"></asp:EditCommandColumn>
 
                 </Columns>
 
@@ -301,5 +304,15 @@
 
         <br />
     </form>
+
+    <script
+        type="text/javascript">
+
+        function A() {
+            return confirm('実行しても良いですか？');
+        }
+
+    </script>
+
 </body>
 </html>

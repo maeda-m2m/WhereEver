@@ -29,14 +29,14 @@
                             </tr>
                         </table>
                         <asp:Label ID="lblID" runat="server" Text="社員ID" Width="200px"></asp:Label>
-                        <asp:TextBox ID="TbxID" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TbxID" runat="server" CssClass="txt"></asp:TextBox>
 
                         </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Label ID="lblPassword" runat="server" Text="パスワード" Width="200px"></asp:Label>
-                        <asp:TextBox ID="TbxPW" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="TbxPW" runat="server" CssClass="txt" TextMode="Password"></asp:TextBox>
 
                     </td>
                 </tr>

@@ -1,17 +1,28 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PKanri.aspx.cs" Inherits="WhereEver.Project_System.PKanri" %>
 
+<%@ Register Src="~/MenuControl.ascx" TagName="c_menu" TagPrefix="Menu" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="PKanri.css" type="text/css" rel="stylesheet" />
     <title></title>
     
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+         <div>
             <table>
+                <tr class="All">
+                    <td>
+                        <Menu:c_menu ID="m" runat="server"></Menu:c_menu>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table class="table">
                 <tr>
                     <td>
                         <asp:Label ID="lblPBig" runat="server" Text="大項目登録"></asp:Label>
@@ -25,6 +36,7 @@
                     <td>
                         <asp:Label ID="lblPBigList" runat="server" Text="大項目リスト"></asp:Label>
                         <asp:DropDownList ID="ddlPBigList" runat="server">
+                            <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
                     </td>
                     <td colspan="2">
@@ -69,15 +81,16 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <asp:DataGrid ID="DgPKanri" runat="server" AutoGenerateColumns="False" OnItemDataBound="DgPKanri_ItemDataBound">
+                        <asp:DataGrid ID="DgPKanri" runat="server" 
+                            AutoGenerateColumns="False" 
+                            OnItemDataBound="DgPKanri_ItemDataBound" Width="100%">
                             <Columns>
-                                <asp:BoundColumn DataField="Pbig" HeaderText="大項目" />
-                                <asp:BoundColumn DataField="Pmiddle" HeaderText="中項目" />
-                                <asp:BoundColumn DataField="PstartTime" HeaderText="開始" />
-                                <asp:BoundColumn DataField="PoverTime" HeaderText="終了" />
-                                <asp:BoundColumn DataField="Ptoroku" HeaderText="登録日付" />
-                                <asp:BoundColumn DataField="Ptorukusya" HeaderText="登録者" />
-                                <asp:BoundColumn DataField="Pstatus" HeaderText="ステータス" />
+                                <asp:BoundColumn DataField="PBigname" HeaderText="大項目" />
+                                <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目" />
+                                <asp:BoundColumn DataField="PMiddlestart" HeaderText="開始" />
+                                <asp:BoundColumn DataField="PMiddleover" HeaderText="終了" />
+                                <asp:BoundColumn DataField="PTorokutime" HeaderText="登録日付" />
+                                <asp:BoundColumn DataField="PTorokusya" HeaderText="登録者" />
                             </Columns>
                             <HeaderStyle Height="50px" HorizontalAlign="Center" VerticalAlign="Middle" Width="200px" />
                             <ItemStyle Height="30px" HorizontalAlign="Center" VerticalAlign="Middle" Width="200px" />
