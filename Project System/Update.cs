@@ -51,6 +51,9 @@ namespace WhereEver.Project_System
                 da.SelectCommand.Parameters.AddWithValue("@PTorokutime", dt.PTorokutime);
                 da.SelectCommand.Parameters.AddWithValue("@PTorokusya", dt.PTorokusya);
                 da.SelectCommand.Parameters.AddWithValue("@PBigname", name);
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
             }
         }
     }
