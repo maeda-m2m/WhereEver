@@ -118,6 +118,7 @@
     <Content Include="Project System\PIchiran.aspx" />
     <Content Include="Project System\PIchiran.css" />
     <Content Include="Project System\PKanri.aspx" />
+    <Content Include="Project System\PKanri.css" />
     <Content Include="ShinseiMenu.css" />
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
