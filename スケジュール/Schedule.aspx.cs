@@ -1445,7 +1445,12 @@ namespace WhereEver
 
         protected void Button7_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Schedule.aspx");
+            Create();
+            Panel1.Visible = true;
+            Create3();
+            Panel2.Visible = false;
+            Create2();
+            //Response.Redirect("Schedule.aspx");
         }
     }
 }

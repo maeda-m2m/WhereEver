@@ -275,7 +275,7 @@
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
                     </asp:BoundColumn>
 
-                    <asp:BoundColumn DataField="SdlNo" HeaderText="管理番号" ItemStyle-Width="100px" ReadOnly="True">
+                    <asp:BoundColumn DataField="SdlNo" HeaderText="管理番号" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
                     </asp:BoundColumn>
@@ -305,11 +305,12 @@
         <br />
     </form>
 
-    <script
-        type="text/javascript">
+    <script>
 
         function A() {
-            return confirm('実行しても良いですか？');
+
+            return confirm('本当に実行しますか？');
+
         }
 
     </script>
