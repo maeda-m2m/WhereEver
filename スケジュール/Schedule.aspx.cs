@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Drawing.Printing;
+using System.Web.Services;
 
 namespace WhereEver
 {
@@ -1445,12 +1446,17 @@ namespace WhereEver
 
         protected void Button7_Click(object sender, EventArgs e)
         {
-            Create();
-            Panel1.Visible = true;
-            Create3();
-            Panel2.Visible = false;
-            Create2();
-            //Response.Redirect("Schedule.aspx");
+            //Create();
+            //Panel1.Visible = true;
+            //Create3();
+            //Panel2.Visible = false;
+            //Create2();
+            //((Button)sender).Enabled = false;
+            Response.Redirect("Schedule.aspx");
+        }
+        public static bool sayHello(int count)
+        {
+            return count == 0 ? true : false;
         }
     }
 }

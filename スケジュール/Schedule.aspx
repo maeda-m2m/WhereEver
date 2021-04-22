@@ -148,7 +148,7 @@
 
                             <asp:Button ID="Button2" runat="server" Text="登録" class="btn-flat-border" OnClick="Button2_Click" />
 
-                            <asp:Button ID="Button7" runat="server" Text="戻る" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="A()" />
+                            <asp:Button ID="Button7" runat="server" Text="戻る" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="sayHello();" />
 
                         </td>
 
@@ -303,15 +303,31 @@
         </div>
 
         <br />
+         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
     </form>
 
+   
+
     <script>
-
-        function A() {
-
-            return confirm('本当に実行しますか？');
-
+        function sayHello() {
+            PageMethods.sayHello(0, onSuccess, onError);
         }
+
+        function onSuccess(result, userContext, methodName) {
+            if (result === true) {
+                return confirm('本当に実行しますか？');
+            }
+        }
+
+        function onError(result, userContext, methodName) {
+            // エラー時の処理
+        }
+
+        //function A() {
+
+        //    return confirm('本当に実行しますか？');
+
+        //}
 
     </script>
 
