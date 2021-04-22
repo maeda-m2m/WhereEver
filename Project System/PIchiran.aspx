@@ -12,7 +12,7 @@
     </head>
 <body>
     <form id="All" runat="server">
-        <div class="form">
+        <div>
             <table>
                 <tr class="All">
                     <td>
@@ -169,6 +169,8 @@
                         <asp:Label ID="lblAisatu" CssClass="label" runat="server"></asp:Label>
 
                         <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" OnClick="btnClear_Click" />
+
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
 
                     </td>
                 </tr>

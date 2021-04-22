@@ -54,12 +54,15 @@ namespace WhereEver.Project_System
             if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
             {
                 DATASET.DataSet.T_PdbKanriRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbKanriRow;
-                e.Item.Cells[0].Text = dr.PBigname.ToString();
-                e.Item.Cells[1].Text = dr.PMiddlename.ToString();
-                e.Item.Cells[2].Text = dr.PMiddlestart.ToString();
-                e.Item.Cells[3].Text = dr.PMiddleover.ToString();
-                e.Item.Cells[4].Text = dr.PTorokutime.ToString();
-                e.Item.Cells[5].Text = dr.PTorokusya.ToString();
+                if (dr.PMiddleid != 0)
+                {
+                    e.Item.Cells[0].Text = dr.PBigname.ToString();
+                    e.Item.Cells[1].Text = dr.PMiddlename.ToString();
+                    e.Item.Cells[2].Text = dr.PMiddlestart.ToShortDateString();
+                    e.Item.Cells[3].Text = dr.PMiddleover.ToShortDateString();
+                    e.Item.Cells[4].Text = dr.PTorokutime.ToShortDateString();
+                    e.Item.Cells[5].Text = dr.PTorokusya.ToString();
+                }
             }
         }
 
@@ -72,14 +75,20 @@ namespace WhereEver.Project_System
 
             t_PdbKanriRow.PBigid = t_PdbKanriRow1.PBigid + 1;
             t_PdbKanriRow.PBigname = txtPBig.Text;
+            t_PdbKanriRow.PMiddleid = 0;
+            t_PdbKanriRow.PMiddlename = "";
+            t_PdbKanriRow.PMiddlestart = DateTime.Today;
+            t_PdbKanriRow.PMiddleover = DateTime.Today;
+            t_PdbKanriRow.PTorokutime = DateTime.Today;
+            t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
 
             t_PdbKanris.Rows.Add(t_PdbKanriRow);
             Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
-        }
 
-        protected void DgPKanri_ItemCommand(object source, DataGridCommandEventArgs e)
-        {
+            ddlPBigList.Items.Clear();
+            CreateDropDownList();
 
+            txtPBig.Text = "";
         }
     }
 }

@@ -63,7 +63,7 @@
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
-                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px" >
+                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="100px" >
                         <HeaderStyle Wrap="true" />
                         <ItemTemplate>
                             <asp:Label ID="Date" runat="server" Text=""></asp:Label>
@@ -83,6 +83,7 @@
                  <asp:TextBox ID="TextBox1" runat="server" Width="180px"></asp:TextBox>
                  &nbsp;&nbsp;
                  <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
+                    <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
                     <asp:Label ID="Label2" runat="server" Text="" ForeColor="Red" ></asp:Label>
                 </p>
                 <p>
