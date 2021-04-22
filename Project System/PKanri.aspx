@@ -9,6 +9,12 @@
     <link href="PKanri.css" type="text/css" rel="stylesheet" />
     <title></title>
     
+    <style type="text/css">
+        .auto-style1 {
+            width: 700px;
+        }
+    </style>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,45 +30,46 @@
         <div>
             <table class="table">
                 <tr>
-                    <td>
-                        <asp:Label ID="lblPBig" runat="server" Text="大項目登録"></asp:Label>
-                        <asp:TextBox ID="txtPBig" runat="server"></asp:TextBox>
+                    <td class="auto-style1">
+                        <asp:Label ID="lblPBig" CssClass="txt" runat="server" Text="大項目登録"></asp:Label>
+                        <asp:TextBox ID="txtPBig" CssClass="txt" runat="server"></asp:TextBox>
+                        <asp:Button ID="btnToroku" CssClass="btn" runat="server" Text="大項目登録" OnClick="btnToroku_Click" />
                     </td>
                     <td colspan="2">
-                        <asp:Button ID="btnToroku" runat="server" Text="大項目登録" OnClick="btnToroku_Click" />
-                    </td>
+                        &nbsp;</td>
                 </tr>
                 <tr>
-                    <td>
-                        <asp:Label ID="lblPBigList" runat="server" Text="大項目リスト"></asp:Label>
-                        <asp:DropDownList ID="ddlPBigList" runat="server">
+                    <td class="auto-style1">
+                        <asp:Label ID="lblPBigList" CssClass="txt" runat="server" Text="大項目リスト"></asp:Label>
+                        <asp:DropDownList ID="ddlPBigList" CssClass="txt" runat="server">
                             <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
+                        <asp:Label ID="lblAisatu1" CssClass="txt" runat="server" Text="を選択してから、中項目入力をお願い致します。"></asp:Label>
                     </td>
                     <td colspan="2">
-                        <asp:Label ID="lblPMiddle" runat="server" Text="中項目"></asp:Label>
-                        <asp:TextBox ID="txtPMiddle" runat="server"></asp:TextBox>
+                        <asp:Label ID="lblPMiddle" CssClass="txt" runat="server" Text="中項目"></asp:Label>
+                        <asp:TextBox ID="txtPMiddle" CssClass="txt" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="auto-style1">
                         &nbsp;</td>
                     <td colspan="2">
-                        <asp:Label ID="lblTime" runat="server" Text="日付選択"></asp:Label>
+                        <asp:Label ID="lblTime" CssClass="txt" runat="server" Text="日付選択"></asp:Label>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="auto-style1">
                         &nbsp;</td>
                     <td>
-                        <asp:Label ID="lblStart" runat="server" Text="開始"></asp:Label>
+                        <asp:Label ID="lblStart" CssClass="txt" runat="server" Text="開始"></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="lblOver" runat="server" Text="終了"></asp:Label>
+                        <asp:Label ID="lblOver" CssClass="txt" runat="server" Text="終了"></asp:Label>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="auto-style1">
                         &nbsp;</td>
                     <td>
                         <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
@@ -72,11 +79,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="auto-style1">
                         &nbsp;</td>
                     <td colspan="2">
-                        <asp:Button ID="btnPMiddle" runat="server" Text="中項目登録" />
-                        <asp:Button ID="btnClear" runat="server" Text="クリア" />
+                        <asp:Button ID="btnPMiddle" CssClass="btn" runat="server" Text="中項目登録" OnClick="btnPMiddle_Click" />
+                        <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" />
                     </td>
                 </tr>
                 <tr>

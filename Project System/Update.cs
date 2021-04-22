@@ -33,5 +33,26 @@ namespace WhereEver.Project_System
             }
         }
 
+        internal static void UpdateMiddle(DATASET.DataSet.T_PdbKanriRow dt)
+        {
+            //string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+            //using (SqlConnection connection = new SqlConnection(cstr))
+            //{
+            //    string sql = "update T_PdbKanri set " +
+            //        "Pname = @Pname , Pcustomer = @Pcustomer , Presponsible = @Presponsible ,Pcategory = @Pcategory ,Pstarttime = @Pstarttime ,Povertime = @Povertime " +
+            //        "where Pid = @id ";
+
+            //    SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+            //    da.SelectCommand.Parameters.AddWithValue("@Pname", dt.Pname);
+            //    da.SelectCommand.Parameters.AddWithValue("@Pcustomer", dt.Pcustomer);
+            //    da.SelectCommand.Parameters.AddWithValue("@Presponsible", dt.Presponsible);
+            //    da.SelectCommand.Parameters.AddWithValue("@Pcategory", dt.Pcategory);
+            //    da.SelectCommand.Parameters.AddWithValue("@Pstarttime", dt.Pstarttime);
+            //    da.SelectCommand.Parameters.AddWithValue("@Povertime", dt.Povertime);
+            //    da.SelectCommand.Parameters.AddWithValue("@id", dt.Pid);
+
+            //}
+        }
     }
 }

@@ -78,6 +78,15 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.DropDownList ddlPBigList;
 
         /// <summary>
+        /// lblAisatu1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAisatu1;
+
+        /// <summary>
         /// lblPMiddle コントロール。
         /// </summary>
         /// <remarks>

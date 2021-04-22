@@ -42,6 +42,16 @@ namespace WhereEver.Project_System
             da.Fill(dt);
             return dt[0];
         }
+        internal static DATASET.DataSet.T_PdbKanriRow GetMaxPMiddleidRow(SqlConnection sqlConnection,string name)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "select MAX(PMiddleid) as PMiddleid from T_PdbKanri where PBigname like @name";
+            da.SelectCommand.Parameters.AddWithValue("@name", name);
+            DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
+            da.Fill(dt);
+            return dt[0];
+        }
         internal static DATASET.DataSet.T_PdbRow GetMaxPidRow(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
