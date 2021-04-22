@@ -98,8 +98,13 @@ namespace WhereEver.Project_System
 
             if (t_PdbKanriRow1.PMiddleid==0)
             {
-                //t_PdbKanriRow.
-                //Update.UpdateMiddle();
+                t_PdbKanriRow.PMiddleid = 1;
+                t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
+                t_PdbKanriRow.PMiddlestart = Calendar1.SelectedDate;
+                t_PdbKanriRow.PMiddleover = Calendar2.SelectedDate;
+                t_PdbKanriRow.PTorokutime = DateTime.Now;
+                t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                Update.UpdateMiddle(t_PdbKanriRow, ddlPBigList.SelectedItem.Selected.ToString());
             }
         }
     }
