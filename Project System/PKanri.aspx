@@ -9,12 +9,6 @@
     <link href="PKanri.css" type="text/css" rel="stylesheet" />
     <title></title>
     
-    <style type="text/css">
-        .auto-style1 {
-            width: 700px;
-        }
-    </style>
-    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -30,13 +24,11 @@
         <div>
             <table class="table">
                 <tr>
-                    <td class="auto-style1">
+                    <td colspan="3">
                         <asp:Label ID="lblPBig" CssClass="txt" runat="server" Text="大項目登録"></asp:Label>
                         <asp:TextBox ID="txtPBig" CssClass="txt" runat="server"></asp:TextBox>
                         <asp:Button ID="btnToroku" CssClass="btn" runat="server" Text="大項目登録" OnClick="btnToroku_Click" />
                     </td>
-                    <td colspan="2">
-                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style1">
@@ -44,7 +36,6 @@
                         <asp:DropDownList ID="ddlPBigList" CssClass="txt" runat="server">
                             <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
-                        <asp:Label ID="lblAisatu1" CssClass="txt" runat="server" Text="を選択してから、中項目入力をお願い致します。"></asp:Label>
                     </td>
                     <td colspan="2">
                         <asp:Label ID="lblPMiddle" CssClass="txt" runat="server" Text="中項目"></asp:Label>
@@ -53,7 +44,8 @@
                 </tr>
                 <tr>
                     <td class="auto-style1">
-                        &nbsp;</td>
+                        <asp:Label ID="lblAisatu1" CssClass="txt" runat="server" Text="を選択してから、中項目入力をお願い致します。"></asp:Label>
+                    </td>
                     <td colspan="2">
                         <asp:Label ID="lblTime" CssClass="txt" runat="server" Text="日付選択"></asp:Label>
                     </td>
@@ -90,14 +82,22 @@
                     <td colspan="3">
                         <asp:DataGrid ID="DgPKanri" runat="server" 
                             AutoGenerateColumns="False" 
-                            OnItemDataBound="DgPKanri_ItemDataBound" Width="100%">
+                            OnItemDataBound="DgPKanri_ItemDataBound" 
+                            OnEditCommand="DgPKanri_EditCommand"
+                            OnCancelCommand="DgPKanri_CancelCommand"
+                            OnUpdateCommand="DgPKanri_UpdateCommand"
+                            OnItemCommand="DgPKanri_ItemCommand"
+                            Width="100%">
                             <Columns>
                                 <asp:BoundColumn DataField="PBigname" HeaderText="大項目" />
                                 <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目" />
                                 <asp:BoundColumn DataField="PMiddlestart" HeaderText="開始" />
                                 <asp:BoundColumn DataField="PMiddleover" HeaderText="終了" />
+                                <asp:BoundColumn HeaderText="ステータス" />
                                 <asp:BoundColumn DataField="PTorokutime" HeaderText="登録日付" />
                                 <asp:BoundColumn DataField="PTorokusya" HeaderText="登録者" />
+                                <asp:EditCommandColumn EditText="変更" CancelText="キャンセル" UpdateText="保存"  ></asp:EditCommandColumn>
+                                <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
                             </Columns>
                             <HeaderStyle Height="50px" HorizontalAlign="Center" VerticalAlign="Middle" Width="200px" />
                             <ItemStyle Height="30px" HorizontalAlign="Center" VerticalAlign="Middle" Width="200px" />
