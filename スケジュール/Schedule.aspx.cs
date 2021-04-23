@@ -10,7 +10,6 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Drawing.Printing;
-using System.Web.Services;
 
 namespace WhereEver
 {
@@ -59,11 +58,6 @@ namespace WhereEver
 
             Scdl3.DataSource = dt;
             Scdl3.DataBind();
-        }
-
-        public void A()
-        {
-
         }
 
         //Calender1で日付をクリックしたらLabel1に表示される
@@ -1447,17 +1441,70 @@ namespace WhereEver
 
         protected void Button7_Click(object sender, EventArgs e)
         {
-            //Create();
-            //Panel1.Visible = true;
-            //Create3();
-            //Panel2.Visible = false;
-            //Create2();
-            //((Button)sender).Enabled = false;
             Response.Redirect("Schedule.aspx");
         }
-        public static bool sayHello(int count)
+
+        protected void B()
         {
-            return count == 0 ? true : false;
+            DATASET.DataSet.T_EmptyTableDataTable dt = Class1.GetSchedule3DataTable(Global.GetConnection());
+
+            Scdl3.DataSource = dt;
+
+            Scdl3.DataBind();
+
+            Create3();
+
+            var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
+
+            for (int j = 0; j < dd.Count; j++)
+            {
+                var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+
+                DateTime DT = DateTime.Parse(dl.date.ToString());
+
+                string week = DT.ToString("ddd");
+
+                string tm = dl.time.Trim();
+
+                if (tm == "9:00" || tm == "9:15" || tm == "9:30" || tm == "9:45")
+                {
+                    if (week == "月")
+                    {
+                        string A1 = Scdl3.Items[0].Cells[1].Text;
+                        A1 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
+                        Scdl3.Items[0].Cells[1].Text = A1.Replace("\r\n", "<br>");
+                    }
+                    if (week == "火")
+                    {
+                        string A2 = Scdl3.Items[0].Cells[2].Text;
+                        A2 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
+                        Scdl3.Items[0].Cells[2].Text = A2.Replace("\r\n", "<br>");
+                    }
+                    if (week == "水")
+                    {
+                        string A3 = Scdl3.Items[0].Cells[3].Text;
+                        A3 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
+                        Scdl3.Items[0].Cells[3].Text = A3.Replace("\r\n", "<br>");
+                    }
+                    if (week == "木")
+                    {
+                        string A4 = Scdl3.Items[0].Cells[4].Text;
+                        A4 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
+                        Scdl3.Items[0].Cells[4].Text = A4.Replace("\r\n", "<br>");
+                    }
+                    if (week == "金")
+                    {
+                        string A5 = Scdl3.Items[0].Cells[5].Text;
+                        A5 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
+                        Scdl3.Items[0].Cells[5].Text = A5.Replace("\r\n", "<br>");
+                    }
+                }
+            }
+        }
+
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            B();
         }
     }
 }
