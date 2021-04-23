@@ -22,8 +22,13 @@ namespace WhereEver
             if (!IsPostBack)
             {
                 Create();
+                txtHenshin.Visible = false;
+                lblHenshin.Visible = false;
+                btnHenshin.Visible = false;
+                txtHozon.Visible = false;
             }
             Label2.Text = "";
+
         }
 
         private void Create()
@@ -39,14 +44,20 @@ namespace WhereEver
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
                 DATASET.DataSet.T_ChatRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_ChatRow;
-
+                
                 Label No = e.Item.FindControl("No") as Label;
                 Label Id = e.Item.FindControl("Id") as Label;
                 Label Name = e.Item.FindControl("Name") as Label;
                 Label Date = e.Item.FindControl("Date") as Label;
                 Label Naiyou = e.Item.FindControl("Naiyou") as Label;
-
-                No.Text = dr.No.ToString();
+                if (dr.HentouNo == 0)
+                {
+                    No.Text = dr.No.ToString();
+                }
+                else
+                {
+                    No.Text = "";
+                }
 
                 Id.Text = dr.Id;
 
@@ -74,6 +85,7 @@ namespace WhereEver
             dr.Id = SessionManager.User.ID; //変更
             dr.Name = Label1.Text;
             dr.Naiyou = TextBox1.Text;
+            dr.HentouNo = 0;
 
             DATASET.DataSet.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());
             int sl = dl.No;
@@ -98,7 +110,6 @@ namespace WhereEver
             switch (((LinkButton)e.CommandSource).CommandName)
             {
                 case "Delete":
-
                     if (CnameNow == id)
                     {
                         Class.Chat.DeleteChat(Cid);
@@ -108,25 +119,42 @@ namespace WhereEver
                     {
                         Label2.Text = "他の人のコメントは削除できません！";
                     }
-                    break;
-                // Add other cases here, if there are multiple ButtonColumns in 
-                // the DataGrid control.
-
+                break;
                 case "Reply":
-                    //①Cnoにリプボタンを押した行の、T_Chatの主キーである「No」が入っているので
-                    //　それを使ってデータベースを検索、取得する
-                    //②取得したデータにはリプしたい内容が入っているのでそれをLabel3(とか？)に書き込む。これで準備完了！
-
-                    //if ()
-                    //{
-
-                    //}
-                    //else
-                    //{
-
-                    //}
+                    btnHenshin.Visible = true;
+                    txtHenshin.Visible = true;
+                    lblHenshin.Visible = true;
+                    TextBox1.Visible = false;
+                    txtHozon.Text = Cid;
+                    Send.Visible = false;
                     break;
             }
+            Create();
+        }
+
+        protected void btnHenshin_Click(object sender, EventArgs e)
+        {
+            DATASET.DataSet.T_ChatDataTable dt = new DATASET.DataSet.T_ChatDataTable();
+            DATASET.DataSet.T_ChatRow dr = dt.NewT_ChatRow();
+
+            DATASET.DataSet.T_ChatRow dr1 = Class.Chat.GetMaxHentouNoRow(Global.GetConnection(), txtHozon.Text);
+            if (dr1.HentouNo == 0)
+            {
+                dr.HentouNo = 1;
+                
+            }
+            else
+            {
+                dr.HentouNo += 1;
+            }
+            dr.No = Int32.Parse(txtHozon.Text);
+            dr.Date = DateTime.Now;
+            dr.Id = SessionManager.User.ID; //変更
+            dr.Name = Label1.Text;
+            dr.Naiyou = txtHenshin.Text;
+
+            dt.AddT_ChatRow(dr);
+            Class2.InsertList(dt, Global.GetConnection());
             Create();
         }
     }

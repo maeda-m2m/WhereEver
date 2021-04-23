@@ -60,6 +60,24 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
+        /// lblHenshin コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHenshin;
+
+        /// <summary>
+        /// txtHenshin コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHenshin;
+
+        /// <summary>
         /// Send コントロール。
         /// </summary>
         /// <remarks>
@@ -69,13 +87,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Send;
 
         /// <summary>
-        /// Label3 コントロール。
+        /// btnHenshin コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Button btnHenshin;
 
         /// <summary>
         /// Label2 コントロール。
@@ -85,6 +103,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
+
+        /// <summary>
+        /// txtHozon コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHozon;
 
         /// <summary>
         /// Update コントロール。
