@@ -25,6 +25,7 @@
             <table class="table">
                 <tr>
                     <td colspan="3">
+                        
                         <asp:Label ID="lblPBig" CssClass="txt" runat="server" Text="大項目登録"></asp:Label>
                         <asp:TextBox ID="txtPBig" CssClass="txt" runat="server"></asp:TextBox>
                         <asp:Button ID="btnToroku" CssClass="btn" runat="server" Text="大項目登録" OnClick="btnToroku_Click" />
@@ -64,11 +65,9 @@
                     <td class="auto-style1">
                         &nbsp;</td>
                     <td>
-                        <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
-                    </td>
+                        <input id="date1" runat="server" type="date" min="2018-01-01"/></td>
                     <td>
-                        <asp:Calendar ID="Calendar2" runat="server"></asp:Calendar>
-                    </td>
+                        <input id="date2" runat="server" type="date" min="2018-01-01"/></td>
                 </tr>
                 <tr>
                     <td class="auto-style1">
