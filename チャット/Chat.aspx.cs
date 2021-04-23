@@ -145,7 +145,7 @@ namespace WhereEver
             }
             else
             {
-                dr.HentouNo += 1;
+                dr.HentouNo = dr1.HentouNo + 1;
             }
             dr.No = Int32.Parse(txtHozon.Text);
             dr.Date = DateTime.Now;
