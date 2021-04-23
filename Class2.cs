@@ -55,11 +55,6 @@ namespace WhereEver
                 da.Update(dt);
                 sqltra.Commit();
             }
-            catch (Exception ex)
-            {
-                if (sqltra != null)
-                    sqltra.Rollback();
-            }
             finally
             {
                 sql.Close();
