@@ -78,15 +78,6 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.DropDownList ddlPBigList;
 
         /// <summary>
-        /// lblAisatu1 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAisatu1;
-
-        /// <summary>
         /// lblPMiddle コントロール。
         /// </summary>
         /// <remarks>
@@ -103,6 +94,15 @@ namespace WhereEver.Project_System
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPMiddle;
+
+        /// <summary>
+        /// lblAisatu1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAisatu1;
 
         /// <summary>
         /// lblTime コントロール。
@@ -132,22 +132,22 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Label lblOver;
 
         /// <summary>
-        /// Calendar1 コントロール。
+        /// date1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl date1;
 
         /// <summary>
-        /// Calendar2 コントロール。
+        /// date2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl date2;
 
         /// <summary>
         /// btnPMiddle コントロール。

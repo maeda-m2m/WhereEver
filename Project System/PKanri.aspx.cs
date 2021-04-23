@@ -58,8 +58,13 @@ namespace WhereEver.Project_System
                 e.Item.Cells[1].Text = dr.PMiddlename.ToString();
                 e.Item.Cells[2].Text = dr.PMiddlestart.ToShortDateString();
                 e.Item.Cells[3].Text = dr.PMiddleover.ToShortDateString();
-                e.Item.Cells[4].Text = dr.PTorokutime.ToShortDateString();
-                e.Item.Cells[5].Text = dr.PTorokusya.ToString();
+                if (dr.PMiddleover < DateTime.Now)
+                {
+                    e.Item.Cells[4].Text = "完了";
+                }
+                e.Item.Cells[5].Text = dr.PTorokutime.ToShortDateString();
+                e.Item.Cells[6].Text = dr.PTorokusya.ToString();
+                
             }
         }
 
@@ -70,7 +75,16 @@ namespace WhereEver.Project_System
 
             DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow1 = Insert.GetMaxPBigidRow(Global.GetConnection());
 
-            t_PdbKanriRow.PBigid = t_PdbKanriRow1.PBigid + 1;
+            
+            if(t_PdbKanriRow1.IsNull("PBigid"))
+            {
+                t_PdbKanriRow.PBigid = 1;
+            }
+            else
+            {
+                t_PdbKanriRow.PBigid = t_PdbKanriRow1.PBigid + 1;
+                
+            }
             t_PdbKanriRow.PBigname = txtPBig.Text;
             t_PdbKanriRow.PMiddleid = 0;
             t_PdbKanriRow.PTorokutime = DateTime.Today;
@@ -106,8 +120,8 @@ namespace WhereEver.Project_System
             {
                 t_PdbKanriRow.PMiddleid = 1;
                 t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
-                t_PdbKanriRow.PMiddlestart = Calendar1.SelectedDate;
-                t_PdbKanriRow.PMiddleover = Calendar2.SelectedDate;
+                //t_PdbKanriRow.PMiddlestart = date1.;
+                //t_PdbKanriRow.PMiddleover = Calendar2.SelectedDate;
                 t_PdbKanriRow.PTorokutime = DateTime.Now;
                 t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
                 Update.UpdateMiddle(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
@@ -118,8 +132,8 @@ namespace WhereEver.Project_System
                 t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(),ddlPBigList.SelectedItem.Text);
                 t_PdbKanriRow.PMiddleid = t_PdbKanriRow1.PMiddleid +1;
                 t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
-                t_PdbKanriRow.PMiddlestart = Calendar1.SelectedDate;
-                t_PdbKanriRow.PMiddleover = Calendar2.SelectedDate;
+                //t_PdbKanriRow.PMiddlestart = Calendar1.SelectedDate;
+                //t_PdbKanriRow.PMiddleover = Calendar2.SelectedDate;
                 t_PdbKanriRow.PTorokutime = DateTime.Now;
                 t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
                 t_PdbKanris.Rows.Add(t_PdbKanriRow);
@@ -127,9 +141,30 @@ namespace WhereEver.Project_System
             }
             ddlPBigList.Text = "";
             txtPMiddle.Text = "";
-            Calendar1.SelectedDates.Clear();
-            Calendar2.SelectedDates.Clear();
+            
             CreateDataGrid();
+        }
+
+        protected void DgPKanri_EditCommand(object source, DataGridCommandEventArgs e)
+        {
+            DgPKanri.EditItemIndex = e.Item.ItemIndex;
+            CreateDataGrid();
+        }
+
+        protected void DgPKanri_CancelCommand(object source, DataGridCommandEventArgs e)
+        {
+            DgPKanri.EditItemIndex = -1;
+            CreateDataGrid();
+        }
+
+        protected void DgPKanri_UpdateCommand(object source, DataGridCommandEventArgs e)
+        {
+
+        }
+
+        protected void DgPKanri_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+
         }
     }
 }

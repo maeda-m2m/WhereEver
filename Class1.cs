@@ -97,13 +97,6 @@ namespace WhereEver
                 sql.Commit();
                 return true;
             }
-            catch (Exception e)
-            {
-                if (sql != null)
-                    sql.Rollback();
-                return false;
-
-            }
             finally { sqlconnection.Close(); }
 
         }
@@ -127,11 +120,6 @@ namespace WhereEver
                 da.Update(dt);
 
                 sql.Commit();
-            }
-            catch (Exception ex)
-            {
-                if (sql != null)
-                    sql.Rollback();
             }
             finally
             {
@@ -250,11 +238,6 @@ namespace WhereEver
                 da.Update(dt);
                 sqltra.Commit();
             }
-            catch (Exception ex)
-            {
-                if (sqltra != null)
-                    sqltra.Rollback();
-            }
             finally
             {
                 sql.Close();
@@ -283,12 +266,6 @@ namespace WhereEver
                 da.ExecuteNonQuery();
 
                 sqltra.Commit();
-
-            }
-            catch (Exception et)
-            {
-                if (sqltra != null)
-                    sqltra.Rollback();
 
             }
             finally

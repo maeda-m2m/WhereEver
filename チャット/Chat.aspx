@@ -37,8 +37,6 @@
                         <HeaderStyle Wrap="true"/>
                         <ItemTemplate>
                             <asp:Label ID="No" runat="server" Text=""></asp:Label>
-                            <asp:ImageButton ImageUrl="yajirusi.png" CommandName ="Reply" AlternateText="asp:ImageButton"
-                                Width="30px" ImageAlign="Right" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
@@ -71,6 +69,9 @@
                     </asp:TemplateColumn>
                     <asp:ButtonColumn 
                          ButtonType="LinkButton" Text="削除"  CommandName="Delete" />
+                    <asp:ButtonColumn 
+                         ButtonType="LinkButton" Text="返信"  CommandName="Reply" />
+                    
                 </Columns>
             </asp:DataGrid>
             </table>
@@ -81,10 +82,14 @@
                 <p>
                  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                  <asp:TextBox ID="TextBox1" runat="server" Width="180px"></asp:TextBox>
-                 &nbsp;&nbsp;
+                 &nbsp;&nbsp;<asp:Label ID="lblHenshin" runat="server" Text="返信モード"></asp:Label>
+                    &nbsp;<asp:TextBox ID="txtHenshin" runat="server"></asp:TextBox>
                  <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
-                    <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+                 <asp:Button ID="btnHenshin" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="btnHenshin_Click" />
                     <asp:Label ID="Label2" runat="server" Text="" ForeColor="Red" ></asp:Label>
+                </p>
+                <p>
+                    <asp:TextBox ID="txtHozon" runat="server"></asp:TextBox>
                 </p>
                 <p>
                     <asp:Button ID="Update" runat="server" Text="更新" CssClass="Button-style" OnClick="Update_Click"/>

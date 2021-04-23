@@ -38,7 +38,6 @@ namespace WhereEver
             switch (dow)
             {
                 case DayOfWeek.Sunday:
-                    int sun = 0;
                     DateTime monday1 = today.AddDays(-6);
 
                     for (int n = 0; n <= 13; n++)
@@ -130,7 +129,6 @@ namespace WhereEver
                     break;
 
                 case DayOfWeek.Monday:
-                    int mon = 1;
                     DateTime monday2 = today.AddDays(-7);
                     for (int n = 0; n <= 13; n++)
                     {

@@ -52,5 +52,15 @@ namespace WhereEver.Class
             sql.Commit();
 
         }
+        internal static DATASET.DataSet.T_ChatRow GetMaxHentouNoRow(SqlConnection sqlConnection, string No)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "select MAX(HentouNo) as HentouNo from T_Chat where No like @No";
+            da.SelectCommand.Parameters.AddWithValue("@No", No);
+            DATASET.DataSet.T_ChatDataTable dt = new DATASET.DataSet.T_ChatDataTable();
+            da.Fill(dt);
+            return dt[0];
+        }
     }
 }
