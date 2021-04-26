@@ -21,14 +21,16 @@
                 </tr>
             </table>
         </div>
-        <div>
+        <div class="wbs">
             <table class="table">
                 <tr>
-                    <td colspan="3">
+                    <td colspan="3" class="auto-style1">
                         
                         <asp:Label ID="lblPBig" CssClass="txt" runat="server" Text="大項目登録"></asp:Label>
                         <asp:TextBox ID="txtPBig" CssClass="txt" runat="server"></asp:TextBox>
-                        <asp:Button ID="btnToroku" CssClass="btn" runat="server" Text="大項目登録" OnClick="btnToroku_Click" />
+                        <asp:Button ID="btnToroku" CssClass="btn" runat="server" Text="大項目登録" OnClick="btnToroku_Click" ValidationGroup="Group01"/>
+                        <asp:RequiredFieldValidator ID="rfvBig" runat="server" ControlToValidate="txtPBig" Display="Dynamic" ErrorMessage="大項目名を入力してください" ForeColor="Red" ValidationGroup="Group01"></asp:RequiredFieldValidator>
+                        <%--                        <asp:CustomValidator ID="cvBig" runat="server" ControlToValidate="txtPBig" Display="None" ErrorMessage="すでに登録済みの大項目名です" ForeColor="Red"></asp:CustomValidator>--%>
                     </td>
                 </tr>
                 <tr>
@@ -42,6 +44,8 @@
                     <td colspan="2">
                         <asp:Label ID="lblPMiddle" CssClass="txt" runat="server" Text="中項目"></asp:Label>
                         <asp:TextBox ID="txtPMiddle" CssClass="txt" runat="server"></asp:TextBox>
+                        <%--<asp:CustomValidator ID="cvMiddle" runat="server" ControlToValidate="txtPMiddle" Display="None" ErrorMessage="すでに登録済みの中項目名です" ForeColor="Red"></asp:CustomValidator>--%>
+                        <asp:RequiredFieldValidator ID="rfvMiddle" runat="server" ControlToValidate="txtPMiddle" ErrorMessage="中項目名を入力してください" ForeColor="Red" ValidationGroup="Group02"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -53,30 +57,34 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td rowspan="2">
                         </td>
                     <td>
                         <asp:Label ID="lblStart" CssClass="txt" runat="server" Text="開始"></asp:Label>
-                        (*)</td>
+                    </td>
                     <td>
                         <asp:Label ID="lblOver" CssClass="txt" runat="server" Text="終了"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        &nbsp;</td>
-                    <td>
-                        <input id="date1" runat="server" type="date" min="2018-01-01"/><strong style="line-height: 17.6px; color: rgb(42, 42, 42); font-family: メイリオ, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(239, 239, 239); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><br />
-                        </strong></td>
+                        <input id="date1" runat="server" type="date" min="2018-01-01"/></td>
                     <td>
                         <input id="date2" runat="server" type="date" min="2018-01-01"/></td>
                 </tr>
                 <tr>
+                    <td class="auto-style2">
+                        </td>
+                    <td colspan="2" class="auto-style2">
+                        <asp:Button ID="btnPMiddle" CssClass="btn" runat="server" Text="中項目登録" OnClick="btnPMiddle_Click" ValidationGroup="Group02"/>
+                        <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" CausesValidation="False" />
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         &nbsp;</td>
-                    <td colspan="2">
-                        <asp:Button ID="btnPMiddle" CssClass="btn" runat="server" Text="中項目登録" OnClick="btnPMiddle_Click" />
-                        <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" />
+                    <td colspan="2" class="btn-wbs">
+                        <asp:Button ID="btnWBS" CssClass="btn" runat="server" Text="WBS表一覧⇒" OnClick="btnWBS_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -108,28 +116,25 @@
                         </asp:DataGrid>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="3">
-                        <table>
-                            <tr>
-                                <td>大項目</td>
-                                <td>中項目</td>
-                                <td>日付</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
             </table>
+        </div>
+        <div class="wbs">
+
+                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
+                        <asp:DataGrid ID="wbs" runat="server" 
+                            AutoGenerateColumns="False" 
+                            Width="100%">
+                            <Columns>
+                                <asp:BoundColumn DataField="No" HeaderText="No."/>
+                                <asp:BoundColumn DataField="Bigname" HeaderText="大項目"/>
+                                <asp:BoundColumn DataField="Middlename" HeaderText="中項目"/>
+                                
+                            </Columns>
+                            <HeaderStyle />
+                            <ItemStyle/>
+                        </asp:DataGrid>
+
         </div>
     </form>
 </body>
