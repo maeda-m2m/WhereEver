@@ -34,6 +34,8 @@
                     <asp:Button ID="Button4" runat="server" Text="先週" class="btn-flat-border" OnClick="Button4_Click" />
                     <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
                     <asp:Button ID="Button5" runat="server" Text="来週" class="btn-flat-border" OnClick="Button5_Click" />
+                    <asp:Button ID="Button8" runat="server" Text="Test" class="btn-flat-border" OnClick="Button8_Click" />
+                    <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
                 </asp:Panel>
 
             </td>
@@ -49,15 +51,25 @@
                     <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
                     <TodayDayStyle BackColor="#CCCCCC" />
                 </asp:Calendar>
+
                 <table id="tourokuform">
+
                     <tr>
+
                         <td runat="server" class="auto-style1">
+
                             <p>日付</p>
+
                             <td class="auto-style7">
+
                                 <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+
                             </td>
+
                         </td>
+
                     </tr>
+
                     <tr>
                         <td runat="server" class="auto-style1">
                             <p>時間</p>
@@ -148,7 +160,9 @@
 
                             <asp:Button ID="Button2" runat="server" Text="登録" class="btn-flat-border" OnClick="Button2_Click" />
 
-                            <asp:Button ID="Button7" runat="server" Text="戻る" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="sayHello();" />
+                            <asp:Button ID="Button7" runat="server" Text="戻る" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" />
+
+
 
                         </td>
 
@@ -280,7 +294,6 @@
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
                     </asp:BoundColumn>
 
-
                     <asp:ButtonColumn
                         ItemStyle-Width="100px"
                         HeaderText="削除"
@@ -303,31 +316,18 @@
         </div>
 
         <br />
-         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
+
     </form>
 
-   
+
 
     <script>
-        function sayHello() {
-            PageMethods.sayHello(0, onSuccess, onError);
+
+        function A() {
+
+            return confirm('本当に実行しますか？');
+
         }
-
-        function onSuccess(result, userContext, methodName) {
-            if (result === true) {
-                return confirm('本当に実行しますか？');
-            }
-        }
-
-        function onError(result, userContext, methodName) {
-            // エラー時の処理
-        }
-
-        //function A() {
-
-        //    return confirm('本当に実行しますか？');
-
-        //}
 
     </script>
 
