@@ -17,6 +17,7 @@ namespace WhereEver
     {
         public DataGridCommandEventHandler Scdl_CancelCommand { get; private set; }
 
+
         //ページがロードするとき
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -578,6 +579,8 @@ namespace WhereEver
                 e.Item.Cells[2].Text = dr.title.ToString();
                 e.Item.Cells[3].Text = dr.name.ToString();
                 e.Item.Cells[4].Text = dr.SdlNo.ToString();
+
+
             }
         }
 
@@ -587,7 +590,6 @@ namespace WhereEver
             int a = e.Item.ItemIndex;
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             var dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;
-            //string.Format("if (!confirm('{0}')) return false;", "削除しますか。");
             int sdl = dr.SdlNo;
 
             if (e.CommandName == "Delete")
@@ -608,12 +610,6 @@ namespace WhereEver
         protected void Button1_Click1(object sender, EventArgs e)
         {
             Response.Redirect("PrintSchedule.aspx");
-        }
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Panel1.Visible = false;
-            Panel2.Visible = false;
-            Create2();
         }
 
         protected void Scdl3_SelectedIndexChanged(object sender, EventArgs e)
@@ -1440,70 +1436,57 @@ namespace WhereEver
             Response.Redirect("Schedule.aspx");
         }
 
-        protected void B()
+        protected void Button8_Click(object sender, EventArgs e)
         {
-            DATASET.DataSet.T_EmptyTableDataTable dt = Class1.GetSchedule3DataTable(Global.GetConnection());
 
-            Scdl3.DataSource = dt;
+            string a = TextBox2.Text;
 
-            Scdl3.DataBind();
+            var dd = A(a, Global.GetConnection());
 
-            Create3();
+            ScdlList.DataSource = dd;
 
-            var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
+            ScdlList.DataBind();
+
+
 
             for (int j = 0; j < dd.Count; j++)
             {
+
                 var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
 
-                DateTime DT = DateTime.Parse(dl.date.ToString());
-
-                string week = DT.ToString("ddd");
-
-                string tm = dl.time.Trim();
-
-                if (tm == "9:00" || tm == "9:15" || tm == "9:30" || tm == "9:45")
-                {
-                    if (week == "月")
-                    {
-                        string A1 = Scdl3.Items[0].Cells[1].Text;
-                        A1 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
-                        Scdl3.Items[0].Cells[1].Text = A1.Replace("\r\n", "<br>");
-                    }
-                    if (week == "火")
-                    {
-                        string A2 = Scdl3.Items[0].Cells[2].Text;
-                        A2 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
-                        Scdl3.Items[0].Cells[2].Text = A2.Replace("\r\n", "<br>");
-                    }
-                    if (week == "水")
-                    {
-                        string A3 = Scdl3.Items[0].Cells[3].Text;
-                        A3 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
-                        Scdl3.Items[0].Cells[3].Text = A3.Replace("\r\n", "<br>");
-                    }
-                    if (week == "木")
-                    {
-                        string A4 = Scdl3.Items[0].Cells[4].Text;
-                        A4 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
-                        Scdl3.Items[0].Cells[4].Text = A4.Replace("\r\n", "<br>");
-                    }
-                    if (week == "金")
-                    {
-                        string A5 = Scdl3.Items[0].Cells[5].Text;
-                        A5 += dl.time + dl.title + "<font color=#17a404>" + dl.name + "</font color>" + "\r\n";
-                        Scdl3.Items[0].Cells[5].Text = A5.Replace("\r\n", "<br>");
-                    }
-                }
+                ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
+                ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
+                ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
+                ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
+                ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
             }
+
+            Create3();
+            Create2();
         }
 
-        protected void Button8_Click(object sender, EventArgs e)
+        public static DATASET.DataSet.T_ScheduleDataTable A(string a, SqlConnection Sqlco)
         {
-            B();
+            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+
+            da.SelectCommand.CommandText =
+              "SELECT * FROM T_Schedule WHERE title LIKE @a order by date asc";
+
+
+            da.SelectCommand.Parameters.AddWithValue("@a", "%" + a + "%");
+
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
-
 
 

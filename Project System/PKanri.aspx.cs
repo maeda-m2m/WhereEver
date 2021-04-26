@@ -17,7 +17,15 @@ namespace WhereEver.Project_System
             {
                 CreateDropDownList();
                 CreateDataGrid();
-                
+                DgPKanri.EditCommand +=
+                    new DataGridCommandEventHandler(this.DgPKanri_EditCommand);
+                DgPKanri.CancelCommand +=
+                    new DataGridCommandEventHandler(this.DgPKanri_CancelCommand);
+                DgPKanri.UpdateCommand +=
+                    new DataGridCommandEventHandler(this.DgPKanri_UpdateCommand);
+                DgPKanri.ItemCommand +=
+                    new DataGridCommandEventHandler(this.DgPKanri_ItemCommand);
+
             }
         }
         private void CreateDataGrid()
@@ -55,15 +63,16 @@ namespace WhereEver.Project_System
             {
                 DATASET.DataSet.T_PdbKanriRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbKanriRow;
                 e.Item.Cells[0].Text = dr.PBigname.ToString();
-                e.Item.Cells[1].Text = dr.PMiddlename.ToString();
-                e.Item.Cells[2].Text = dr.PMiddlestart.ToShortDateString();
-                e.Item.Cells[3].Text = dr.PMiddleover.ToShortDateString();
+                e.Item.Cells[1].Text = dr.PMiddleid.ToString();
+                e.Item.Cells[2].Text = dr.PMiddlename.ToString();
+                e.Item.Cells[3].Text = dr.PMiddlestart.ToShortDateString();
+                e.Item.Cells[4].Text = dr.PMiddleover.ToShortDateString();
                 if (dr.PMiddleover < DateTime.Now)
                 {
-                    e.Item.Cells[4].Text = "完了";
+                    e.Item.Cells[5].Text = "完了";
                 }
-                e.Item.Cells[5].Text = dr.PTorokutime.ToShortDateString();
-                e.Item.Cells[6].Text = dr.PTorokusya.ToString();
+                e.Item.Cells[6].Text = dr.PTorokutime.ToShortDateString();
+                e.Item.Cells[7].Text = dr.PTorokusya.ToString();
                 
             }
         }
@@ -120,11 +129,11 @@ namespace WhereEver.Project_System
             {
                 t_PdbKanriRow.PMiddleid = 1;
                 t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
-                //t_PdbKanriRow.PMiddlestart = date1.;
-                //t_PdbKanriRow.PMiddleover = Calendar2.SelectedDate;
+                t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
+                t_PdbKanriRow.PMiddleover = DateTime.Parse(date2.Value);
                 t_PdbKanriRow.PTorokutime = DateTime.Now;
                 t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
-                Update.UpdateMiddle(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
+                Update.UpdateMiddleNew(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
             }
             else
             {
@@ -132,8 +141,8 @@ namespace WhereEver.Project_System
                 t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(),ddlPBigList.SelectedItem.Text);
                 t_PdbKanriRow.PMiddleid = t_PdbKanriRow1.PMiddleid +1;
                 t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
-                //t_PdbKanriRow.PMiddlestart = Calendar1.SelectedDate;
-                //t_PdbKanriRow.PMiddleover = Calendar2.SelectedDate;
+                t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
+                t_PdbKanriRow.PMiddleover = DateTime.Parse(date2.Value);
                 t_PdbKanriRow.PTorokutime = DateTime.Now;
                 t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
                 t_PdbKanris.Rows.Add(t_PdbKanriRow);
@@ -153,18 +162,60 @@ namespace WhereEver.Project_System
 
         protected void DgPKanri_CancelCommand(object source, DataGridCommandEventArgs e)
         {
+
             DgPKanri.EditItemIndex = -1;
             CreateDataGrid();
         }
 
         protected void DgPKanri_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
+            TextBox txtPMiddlename = (TextBox)e.Item.Cells[2].Controls[0];
+            TextBox txtPMiddlestart = (TextBox)e.Item.Cells[3].Controls[0];
+            TextBox txtPMiddleover = (TextBox)e.Item.Cells[4].Controls[0];
+            DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = new DATASET.DataSet.T_PdbKanriDataTable();
+            DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
 
+            t_PdbKanriRow[3] = txtPMiddlename.Text;
+            t_PdbKanriRow[4] = txtPMiddlestart.Text;
+            t_PdbKanriRow[5] = txtPMiddleover.Text;
+            t_PdbKanriRow[6] = SessionManager.User.M_User.id.Trim();
+            t_PdbKanriRow[7] = DateTime.Now;
+            Update.UpdateMiddle(t_PdbKanriRow, e.Item.Cells[0].Text, e.Item.Cells[1].Text);
+            DgPKanri.EditItemIndex = -1;
+            CreateDataGrid();
         }
 
         protected void DgPKanri_ItemCommand(object source, DataGridCommandEventArgs e)
         {
+            string bigname = e.Item.Cells[0].Text;
+            string Middleid = e.Item.Cells[1].Text;
+            switch (((LinkButton)e.CommandSource).CommandName)
+            {
 
+                case "Delete":
+                    Delete.DeleteMiddle(bigname, Middleid);
+                    break;
+
+                // Add other cases here, if there are multiple ButtonColumns in 
+                // the DataGrid control.
+
+                default:
+                    // Do nothing.
+                    break;
+
+            }
+            DgPKanri.EditItemIndex = -1;
+            CreateDataGrid();
+        }
+
+        protected void btnDeleteBig_Click(object sender, EventArgs e)
+        {
+            Delete.DeleteBig(ddlPBigList.Text);
+            CreateDataGrid();
+            ddlPBigList.Items.Clear();
+            ddlPBigList.Items.Add("");
+            CreateDropDownList();
+            ddlPBigList.Text = "";
         }
     }
 }
