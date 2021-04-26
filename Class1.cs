@@ -150,17 +150,17 @@ namespace WhereEver
             return dt;
         }
 
-        public static DATASET.DataSet.T_ScheduleDataTable SwitchScdl3DataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable SwitchScdl3DataTable(SqlConnection Sqlco)//今週
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
+                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()) order by date asc";
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             return dt;
         }
 
-        public static DATASET.DataSet.T_ScheduleDataTable SwitchNextScdl3DataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable SwitchNextScdl3DataTable(SqlConnection Sqlco)//先週
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
@@ -169,7 +169,7 @@ namespace WhereEver
             da.Fill(dt);
             return dt;
         }
-        public static DATASET.DataSet.T_ScheduleDataTable SwitchNext2Scdl3DataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable SwitchNext2Scdl3DataTable(SqlConnection Sqlco)//来週
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =

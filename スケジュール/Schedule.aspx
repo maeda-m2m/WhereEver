@@ -34,7 +34,7 @@
                     <asp:Button ID="Button4" runat="server" Text="先週" class="btn-flat-border" OnClick="Button4_Click" />
                     <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
                     <asp:Button ID="Button5" runat="server" Text="来週" class="btn-flat-border" OnClick="Button5_Click" />
-                    <asp:Button ID="Button8" runat="server" Text="Test" class="btn-flat-border" OnClick="Button8_Click" />
+                    <asp:Button ID="Button8" runat="server" Text="検索" class="btn-flat-border" OnClick="Button8_Click" />
                     <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
                 </asp:Panel>
 
