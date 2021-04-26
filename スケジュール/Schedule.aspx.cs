@@ -48,7 +48,9 @@ namespace WhereEver
         private void Create()
         {
             DATASET.DataSet.T_ScheduleDataTable dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+
             ScdlList.DataSource = dt;
+
             ScdlList.DataBind();
         }
 
@@ -58,6 +60,7 @@ namespace WhereEver
             DATASET.DataSet.T_EmptyTableDataTable dt = Class1.GetSchedule3DataTable(Global.GetConnection());
 
             Scdl3.DataSource = dt;
+
             Scdl3.DataBind();
         }
 
@@ -124,10 +127,11 @@ namespace WhereEver
             Class1.InsertList(dt, Global.GetConnection());
 
             Create();
-            Panel1.Visible = false;
-            Create3();
-            Panel2.Visible = true;
             Create2();
+            Create3();
+            Panel1.Visible = false;
+            Panel2.Visible = true;
+            Panel3.Visible = false;
 
         }
 
@@ -538,6 +542,7 @@ namespace WhereEver
         {
             Panel1.Visible = true;
             Panel2.Visible = false;
+            Panel3.Visible = false;
             Calendar1.DataBind();
 
             Create();
@@ -1439,38 +1444,111 @@ namespace WhereEver
         protected void Button8_Click(object sender, EventArgs e)
         {
 
-            string a = TextBox2.Text;
+            var a = TextBox2.Text;
 
-            var dd = A(a, Global.GetConnection());
+            string a0 = "0";
+            string a1 = "1";
+            string a2 = "2";
+            string a3 = "3";
+            string a4 = "4";
+            string a5 = "5";
+            string a6 = "6";
+            string a7 = "7";
+            string a8 = "8";
+            string a9 = "9";
 
-            ScdlList.DataSource = dd;
+            //string b09 = "09:00"
+            //if () { }
 
-            ScdlList.DataBind();
-
-
-
-            for (int j = 0; j < dd.Count; j++)
+            if (a.Contains(a0) || a.Contains(a1) || a.Contains(a2) || a.Contains(a3) || a.Contains(a4) || a.Contains(a5) || a.Contains(a6) || a.Contains(a7) || a.Contains(a8) || a.Contains(a9))
             {
+                var dd = A1(a, Global.GetConnection());
 
-                var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+                ScdlList.DataSource = dd;
 
-                ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
-                ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
-                ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
-                ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
-                ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
+                ScdlList.DataBind();
+
+                for (int j = 0; j < dd.Count; j++)
+                {
+
+                    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+
+                    ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
+                    ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
+                    ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
+                    ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
+                    ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
+                }
+
+                Create3();
+                Create2();
+
             }
+            else
+            {
+                var dd = B(a, Global.GetConnection());
 
-            Create3();
-            Create2();
+                ScdlList.DataSource = dd;
+
+                ScdlList.DataBind();
+
+                for (int j = 0; j < dd.Count; j++)
+                {
+
+                    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+
+                    ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
+                    ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
+                    ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
+                    ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
+                    ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
+                }
+
+                Create3();
+                Create2();
+            }
         }
 
-        public static DATASET.DataSet.T_ScheduleDataTable A(string a, SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable A1(string a, SqlConnection Sqlco)//int date
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 
             da.SelectCommand.CommandText =
-              "SELECT * FROM T_Schedule WHERE title LIKE @a order by date asc";
+              "SELECT * FROM T_Schedule WHERE date + time LIKE @a order by date asc";
+
+
+            da.SelectCommand.Parameters.AddWithValue("@a", "%" + a + "%");
+
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        public static DATASET.DataSet.T_ScheduleDataTable A2(string a, SqlConnection Sqlco)//int time
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+
+            da.SelectCommand.CommandText =
+              "SELECT * FROM T_Schedule WHERE time LIKE @a order by date asc";
+
+
+            da.SelectCommand.Parameters.AddWithValue("@a", "%" + a + "%");
+
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        public static DATASET.DataSet.T_ScheduleDataTable B(string a, SqlConnection Sqlco)//string
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+
+            da.SelectCommand.CommandText =
+              "SELECT * FROM T_Schedule WHERE title + name LIKE @a order by date asc";
 
 
             da.SelectCommand.Parameters.AddWithValue("@a", "%" + a + "%");
