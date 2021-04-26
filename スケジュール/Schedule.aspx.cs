@@ -611,7 +611,8 @@ namespace WhereEver
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Panel1.Visible = true;
+            Panel1.Visible = false;
+            Panel2.Visible = false;
             Create2();
         }
 
