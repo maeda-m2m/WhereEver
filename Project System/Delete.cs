@@ -23,5 +23,36 @@ namespace WhereEver.Project_System
                 connection.Close();
             }
         }
+        internal static void DeleteBig(string Bigname)
+        {
+            string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "DELETE FROM T_PdbKanri WHERE PBigname = @i";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                da.SelectCommand.Parameters.AddWithValue("@i", Bigname);
+
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        internal static void DeleteMiddle(string Bigname, string Middleid)
+        {
+            string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "DELETE FROM T_PdbKanri WHERE PBigname = @i and PMiddleid = @m";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                da.SelectCommand.Parameters.AddWithValue("@i", Bigname);
+                da.SelectCommand.Parameters.AddWithValue("@m", Middleid);
+
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }
