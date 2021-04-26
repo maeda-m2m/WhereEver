@@ -25,8 +25,8 @@
 
         <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
         <table id="btn" class="auto-style12">
-            <td class="auto-style11">
 
+            <td class="auto-style11">
                 <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="20px" Width="1200px" HorizontalAlign="Left">
                     <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
                     <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" OnClientClick="A()" />
@@ -36,7 +36,6 @@
                     <asp:Button ID="Button5" runat="server" Text="来週" class="btn-flat-border" OnClick="Button5_Click" />
 
                 </asp:Panel>
-
             </td>
         </table>
 
@@ -59,19 +58,20 @@
 
                             <p>日付</p>
 
+                        </td>
+
                             <td class="auto-style7">
 
                                 <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
 
-                            </td>
-
-                        </td>
+                         </td>
 
                     </tr>
 
                     <tr>
                         <td runat="server" class="auto-style1">
                             <p>時間</p>
+                        </td>
                             <td class="auto-style7">
                                 <asp:DropDownList ID="DropDownList1" runat="server">
                                     <asp:ListItem>9:00</asp:ListItem>
@@ -113,23 +113,20 @@
                                     <asp:ListItem>18:00</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
-                        </td>
                     </tr>
                     <tr>
                         <td runat="server" class="Title">
                             <p>内容</p>
+                        </td>
                             <td class="auto-style8">
                                 <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
                             </td>
-                        </td>
                     </tr>
                     <tr>
                         <td runat="server" class="Title">
-
                             <p>担当者名</p>
-
+                        </td>
                             <td class="auto-style8">
-
                                 <asp:CheckBoxList ID="CheckBoxList1" runat="server">
                                     <asp:ListItem>石岡</asp:ListItem>
                                     <asp:ListItem>木村</asp:ListItem>
@@ -148,9 +145,7 @@
                                     <asp:ListItem>髙栁社長</asp:ListItem>
                                     <asp:ListItem>藤川</asp:ListItem>
                                 </asp:CheckBoxList>
-
                             </td>
-                        </td>
                     </tr>
 
                     <tr>

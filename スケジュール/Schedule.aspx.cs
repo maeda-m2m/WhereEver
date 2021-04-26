@@ -616,6 +616,12 @@ namespace WhereEver
         {
             Response.Redirect("PrintSchedule.aspx");
         }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Panel1.Visible = false;
+            Panel2.Visible = false;
+            Create2();
+        }
 
         protected void Scdl3_SelectedIndexChanged(object sender, EventArgs e)
         {

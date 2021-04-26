@@ -99,7 +99,6 @@
 
         #t {
             position: absolute;
-
             text-align: center;
             width: 152px;
             border: 1px solid #bababa;
@@ -113,13 +112,13 @@
         .Heijitsu {
             text-align: center;
             font-size: 10px;
-            height:62px;
-            border-bottom:3px double #bababa;
+            height: 62px;
+            border-bottom: 3px double #bababa;
         }
 
         .Holiday {
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
             background-color: #bababa;
             height: 55px;
             font-size: 10px;
@@ -305,27 +304,28 @@
 
         .bb {
             text-align: center;
-            background-color:#272727;
-            color:white;
+            background-color: #272727;
+            color: white;
         }
 
-        .aa{
-            background-color:#272727;
-            color:white;
-            text-align:center;
+        .aa {
+            background-color: #272727;
+            color: white;
+            text-align: center;
         }
 
-        #text{
-            margin:0;
-            padding:0;
-        }
-        .under{
-            border-bottom:3px double #bababa;
+        #text {
+            margin: 0;
+            padding: 0;
         }
 
-        .cc{
-            margin:0;
-            padding:0;
+        .under {
+            border-bottom: 3px double #bababa;
+        }
+
+        .cc {
+            margin: 0;
+            padding: 0;
         }
 
         @media print {
@@ -344,576 +344,564 @@
             <tr>
                 <td class="bb">
                     <p>日付</p>
-                    <td class="bb">
-                        <p>曜日</p>
-                        <td class="aa">
-                            <p>時間</p>
-                            <td class="aa">
-                                <p>内容</p>
-                                <td class="aa">
-                                    <p>備考</p>
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td class="bb">
+                    <p>曜日</p>
+                </td>
+                <td class="aa">
+                    <p>時間</p>
+                </td>
+                <td class="aa">
+                    <p>内容</p>
+                </td>
+                <td class="aa">
+                    <p>備考</p>
                 </td>
             </tr>
             <tr>
                 <td rowspan="4" class="Heijitsu">
                     <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-                    <td rowspan="4" class="Heijitsu">
-                        <asp:Label ID="Label2" runat="server" Text="月"></asp:Label>
-                        <td class="pri">
-                            <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
-                            <td class="prin">
-                                <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
-                                <td class="pri">
-                                    <asp:Label ID="Label5" runat="server" Text=""></asp:Label>
-
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td rowspan="4" class="Heijitsu">
+                    <asp:Label ID="Label2" runat="server" Text="月"></asp:Label>
+                </td>
+                <td class="pri">
+                    <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="prin">
+                    <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="pri">
+                    <asp:Label ID="Label5" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label9" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label11" runat="server" Text=""></asp:Label>
-
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label11" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="under">
                     <asp:Label ID="Label12" runat="server" Text=""></asp:Label>
-                    <td class="under">
-                        <asp:Label ID="Label13" runat="server" Text=""></asp:Label>
-                        <td class="under">
-                            <asp:Label ID="Label14" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label13" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label14" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td rowspan="4" class="Heijitsu">
                     <asp:Label ID="Label15" runat="server" Text=""></asp:Label>
-                    <td rowspan="4" class="Heijitsu">
-                        <asp:Label ID="Label16" runat="server" Text="火"></asp:Label>
-                        <td>
-                            <asp:Label ID="Label17" runat="server" Text=""></asp:Label>
-                            <td>
-                                <asp:Label ID="Label18" runat="server" Text=""></asp:Label>
-                                <td>
-                                    <asp:Label ID="Label19" runat="server" Text=""></asp:Label>
-
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td rowspan="4" class="Heijitsu">
+                    <asp:Label ID="Label16" runat="server" Text="火"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label17" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label18" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label19" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label20" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label21" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label22" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label21" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label22" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label23" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label24" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label25" runat="server" Text=""></asp:Label>
-
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label24" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label25" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="under">
                     <asp:Label ID="Label26" runat="server" Text=""></asp:Label>
-                    <td class="under">
-                        <asp:Label ID="Label27" runat="server" Text=""></asp:Label>
-                        <td class="under">
-                            <asp:Label ID="Label28" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label27" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label28" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td rowspan="4" class="Heijitsu">
                     <asp:Label ID="Label29" runat="server" Text=""></asp:Label>
-                    <td rowspan="4" class="Heijitsu">
-                        <asp:Label ID="Label30" runat="server" Text="水"></asp:Label>
-                        <td>
-                            <asp:Label ID="Label31" runat="server" Text=""></asp:Label>
-                            <td>
-                                <asp:Label ID="Label32" runat="server" Text=""></asp:Label>
-                                <td>
-                                    <asp:Label ID="Label33" runat="server" Text=""></asp:Label>
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td rowspan="4" class="Heijitsu">
+                    <asp:Label ID="Label30" runat="server" Text="水"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label31" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label32" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label33" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label34" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label35" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label36" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label35" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label36" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label37" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label38" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label39" runat="server" Text=""></asp:Label>
-
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label38" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label39" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="under">
                     <asp:Label ID="Label40" runat="server" Text=""></asp:Label>
-                    <td class="under">
-                        <asp:Label ID="Label41" runat="server" Text=""></asp:Label>
-                        <td class="under">
-                            <asp:Label ID="Label42" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label41" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label42" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td rowspan="4" class="Heijitsu">
                     <asp:Label ID="Label43" runat="server" Text=""></asp:Label>
-                    <td rowspan="4" class="Heijitsu">
-                        <asp:Label ID="Label44" runat="server" Text="木"></asp:Label>
-                        <td>
-                            <asp:Label ID="Label45" runat="server" Text=""></asp:Label>
-                            <td>
-                                <asp:Label ID="Label46" runat="server" Text=""></asp:Label>
-                                <td>
-                                    <asp:Label ID="Label47" runat="server" Text=""></asp:Label>
-
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td rowspan="4" class="Heijitsu">
+                    <asp:Label ID="Label44" runat="server" Text="木"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label45" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label46" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label47" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label48" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label49" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label50" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label49" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label50" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label51" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label52" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label53" runat="server" Text=""></asp:Label>
-
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label52" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label53" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="under">
                     <asp:Label ID="Label54" runat="server" Text=""></asp:Label>
-                    <td class="under">
-                        <asp:Label ID="Label55" runat="server" Text=""></asp:Label>
-                        <td class="under">
-                            <asp:Label ID="Label56" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label55" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label56" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td rowspan="4" class="Heijitsu">
                     <asp:Label ID="Label57" runat="server" Text=""></asp:Label>
-                    <td rowspan="4" class="Heijitsu">
-                        <asp:Label ID="Label58" runat="server" Text="金"></asp:Label>
-                        <td>
-                            <asp:Label ID="Label59" runat="server" Text=""></asp:Label>
-                            <td>
-                                <asp:Label ID="Label60" runat="server" Text=""></asp:Label>
-                                <td>
-                                    <asp:Label ID="Label61" runat="server" Text=""></asp:Label>
-
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td rowspan="4" class="Heijitsu">
+                    <asp:Label ID="Label58" runat="server" Text="金"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label59" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label60" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label61" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label62" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label63" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label64" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label63" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label64" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label65" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label66" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label67" runat="server" Text=""></asp:Label>
-
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label66" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label67" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="under">
                     <asp:Label ID="Label68" runat="server" Text=""></asp:Label>
-                    <td class="under">
-                        <asp:Label ID="Label69" runat="server" Text=""></asp:Label>
-                        <td class="under">
-                            <asp:Label ID="Label70" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label69" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label70" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr class="dd">
                 <td class="Holiday">
-                    <asp:Label ID="Label71" runat="server" Text="" ></asp:Label>
-                    <td class="Holiday">
-                        <asp:Label ID="Label72" runat="server" Text="土" ></asp:Label>
-                        <td colspan="3" class="cc">
-                            <textarea id="text" cols="75" style="height: 51px"></textarea>
-                        </td>
-                    </td>
+                    <asp:Label ID="Label71" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="Holiday">
+                    <asp:Label ID="Label72" runat="server" Text="土"></asp:Label>
+                </td>
+                <td colspan="3" class="cc">
+                    <textarea id="text" cols="75" style="height: 51px"></textarea>
                 </td>
             </tr>
-           
+
             <tr class="dd">
                 <td class="Holiday">
                     <asp:Label ID="Label73" runat="server" Text=""></asp:Label>
-                    <td class="Holiday">
-                        <asp:Label ID="Label74" runat="server" Text="日"></asp:Label>
-                        <td colspan="3" class="cc">
-                            <textarea id="text" cols="75" style="height: 51px"></textarea>
-                        </td>
-                    </td>
+                </td>
+                <td class="Holiday">
+                    <asp:Label ID="Label74" runat="server" Text="日"></asp:Label>
+                </td>
+                <td colspan="3" class="cc">
+                    <textarea id="text" cols="75" style="height: 51px"></textarea>
                 </td>
             </tr>
-           
+
             <tr>
                 <td rowspan="4" class="Heijitsu">
                     <asp:Label ID="Label99" runat="server" Text=""></asp:Label>
-                    <td rowspan="4" class="Heijitsu">
-                        <asp:Label ID="Label100" runat="server" Text="月"></asp:Label>
-                        <td>
-                            <asp:Label ID="Label101" runat="server" Text=""></asp:Label>
-                            <td>
-                                <asp:Label ID="Label102" runat="server" Text=""></asp:Label>
-                                <td>
-                                    <asp:Label ID="Label103" runat="server" Text=""></asp:Label>
-
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td rowspan="4" class="Heijitsu">
+                    <asp:Label ID="Label100" runat="server" Text="月"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label101" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label102" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label103" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label104" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label105" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label106" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label105" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label106" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label107" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label108" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label109" runat="server" Text=""></asp:Label>
-
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label108" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label109" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="under">
                     <asp:Label ID="Label110" runat="server" Text=""></asp:Label>
-                    <td class="under">
-                        <asp:Label ID="Label111" runat="server" Text=""></asp:Label>
-                        <td class="under">
-                            <asp:Label ID="Label112" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label111" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label112" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td rowspan="4" class="Heijitsu">
                     <asp:Label ID="Label113" runat="server" Text=""></asp:Label>
-                    <td rowspan="4" class="Heijitsu">
-                        <asp:Label ID="Label114" runat="server" Text="火"></asp:Label>
-                        <td>
-                            <asp:Label ID="Label115" runat="server" Text=""></asp:Label>
-                            <td>
-                                <asp:Label ID="Label116" runat="server" Text=""></asp:Label>
-                                <td>
-                                    <asp:Label ID="Label117" runat="server" Text=""></asp:Label>
-
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td rowspan="4" class="Heijitsu">
+                    <asp:Label ID="Label114" runat="server" Text="火"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label115" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label116" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label117" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label118" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label119" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label120" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label119" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label120" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label121" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label122" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label123" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label122" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label123" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="under">
                     <asp:Label ID="Label124" runat="server" Text=""></asp:Label>
-                    <td class="under">
-                        <asp:Label ID="Label125" runat="server" Text=""></asp:Label>
-                        <td class="under">
-                            <asp:Label ID="Label126" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label125" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label126" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td rowspan="4" class="Heijitsu">
                     <asp:Label ID="Label127" runat="server" Text=""></asp:Label>
-                    <td rowspan="4" class="Heijitsu">
-                        <asp:Label ID="Label128" runat="server" Text="水"></asp:Label>
-                        <td>
-                            <asp:Label ID="Label129" runat="server" Text=""></asp:Label>
-                            <td>
-                                <asp:Label ID="Label130" runat="server" Text=""></asp:Label>
-                                <td>
-                                    <asp:Label ID="Label131" runat="server" Text=""></asp:Label>
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td rowspan="4" class="Heijitsu">
+                    <asp:Label ID="Label128" runat="server" Text="水"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label129" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label130" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label131" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label132" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label133" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label134" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label133" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label134" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label135" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label136" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label137" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label136" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label137" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="under">
                     <asp:Label ID="Label138" runat="server" Text=""></asp:Label>
-                    <td class="under">
-                        <asp:Label ID="Label139" runat="server" Text=""></asp:Label>
-                        <td class="under">
-                            <asp:Label ID="Label140" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label139" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label140" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td rowspan="4" class="Heijitsu">
                     <asp:Label ID="Label141" runat="server" Text=""></asp:Label>
-                    <td rowspan="4" class="Heijitsu">
-                        <asp:Label ID="Label142" runat="server" Text="木"></asp:Label>
-                        <td>
-                            <asp:Label ID="Label143" runat="server" Text=""></asp:Label>
-                            <td>
-                                <asp:Label ID="Label144" runat="server" Text=""></asp:Label>
-                                <td>
-                                    <asp:Label ID="Label145" runat="server" Text=""></asp:Label>
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td rowspan="4" class="Heijitsu">
+                    <asp:Label ID="Label142" runat="server" Text="木"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label143" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label144" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label145" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label146" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label147" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label148" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label147" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label148" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label149" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label150" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label151" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label150" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label151" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="under">
                     <asp:Label ID="Label152" runat="server" Text=""></asp:Label>
-                    <td class="under">
-                        <asp:Label ID="Label153" runat="server" Text=""></asp:Label>
-                        <td class="under">
-                            <asp:Label ID="Label154" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label153" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label154" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td rowspan="4" class="Heijitsu">
                     <asp:Label ID="Label155" runat="server" Text=""></asp:Label>
-                    <td rowspan="4" class="Heijitsu">
-                        <asp:Label ID="Label156" runat="server" Text="金"></asp:Label>
-                        <td>
-                            <asp:Label ID="Label157" runat="server" Text=""></asp:Label>
-                            <td>
-                                <asp:Label ID="Label158" runat="server" Text=""></asp:Label>
-                                <td>
-                                    <asp:Label ID="Label159" runat="server" Text=""></asp:Label>
-                                </td>
-                            </td>
-                        </td>
-                    </td>
+                </td>
+                <td rowspan="4" class="Heijitsu">
+                    <asp:Label ID="Label156" runat="server" Text="金"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label157" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label158" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label159" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label160" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label161" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label162" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label161" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label162" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="Label163" runat="server" Text=""></asp:Label>
-                    <td>
-                        <asp:Label ID="Label164" runat="server" Text=""></asp:Label>
-                        <td>
-                            <asp:Label ID="Label165" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td>
+                    <asp:Label ID="Label164" runat="server" Text=""></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label165" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="under">
                     <asp:Label ID="Label166" runat="server" Text=""></asp:Label>
-                    <td class="under">
-                        <asp:Label ID="Label167" runat="server" Text=""></asp:Label>
-                        <td class="under">
-                            <asp:Label ID="Label168" runat="server" Text=""></asp:Label>
-                        </td>
-                    </td>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label167" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="under">
+                    <asp:Label ID="Label168" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="Holiday">
                     <asp:Label ID="Label75" runat="server" Text=""></asp:Label>
-                    <td class="Holiday">
-                        <asp:Label ID="Label76" runat="server" Text="土"></asp:Label>
-                        <td colspan="3" class="cc">
-                            <textarea id="text" cols="75" style="height: 51px"></textarea>
-                        </td>
-                    </td>
+                </td>
+                <td class="Holiday">
+                    <asp:Label ID="Label76" runat="server" Text="土"></asp:Label>
+                </td>
+                <td colspan="3" class="cc">
+                    <textarea id="text" cols="75" style="height: 51px"></textarea>
                 </td>
             </tr>
             <tr>
                 <td class="Holiday">
                     <asp:Label ID="Label77" runat="server" Text=""></asp:Label>
-                    <td class="Holiday">
-                        <asp:Label ID="Label78" runat="server" Text="日"></asp:Label>
-                        <td colspan="3" class="cc">
-                            <textarea id="text" cols="75" style="height: 51px"></textarea>
-                        </td>
-                    </td>
+                </td>
+                <td class="Holiday">
+                    <asp:Label ID="Label78" runat="server" Text="日"></asp:Label>
+                </td>
+                <td colspan="3" class="cc">
+                    <textarea id="text" cols="75" style="height: 51px"></textarea>
                 </td>
             </tr>
             <tr>
