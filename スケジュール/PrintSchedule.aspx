@@ -170,7 +170,6 @@
 
         #pr1 {
             position: absolute;
-            margin-top: px;
             margin-left: 151px;
             font-size: 9px;
             border: 1px solid #bababa;
@@ -339,7 +338,6 @@
 <body>
     <form id="form1" runat="server">
 
-        </div>
         <input type="button" id="Btn" value="印刷" onclick="window.print();" class="noprint" />
 
         <table id="newsdl">
