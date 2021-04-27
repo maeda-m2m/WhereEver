@@ -62,11 +62,11 @@
 
                         </td>
 
-                            <td class="auto-style7">
+                        <td class="auto-style7">
 
-                                <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
 
-                         </td>
+                        </td>
 
                     </tr>
 
@@ -74,80 +74,80 @@
                         <td runat="server" class="auto-style1">
                             <p>時間</p>
                         </td>
-                            <td class="auto-style7">
-                                <asp:DropDownList ID="DropDownList1" runat="server">
-                                    <asp:ListItem>9:00</asp:ListItem>
-                                    <asp:ListItem>9:15</asp:ListItem>
-                                    <asp:ListItem>9:30</asp:ListItem>
-                                    <asp:ListItem>9:45</asp:ListItem>
-                                    <asp:ListItem>10:00</asp:ListItem>
-                                    <asp:ListItem>10:15</asp:ListItem>
-                                    <asp:ListItem>10:30</asp:ListItem>
-                                    <asp:ListItem>10:45</asp:ListItem>
-                                    <asp:ListItem>11:00</asp:ListItem>
-                                    <asp:ListItem>11:15</asp:ListItem>
-                                    <asp:ListItem>11:30</asp:ListItem>
-                                    <asp:ListItem>11:45</asp:ListItem>
-                                    <asp:ListItem>12:00</asp:ListItem>
-                                    <asp:ListItem>12:15</asp:ListItem>
-                                    <asp:ListItem>12:30</asp:ListItem>
-                                    <asp:ListItem>12:45</asp:ListItem>
-                                    <asp:ListItem>13:00</asp:ListItem>
-                                    <asp:ListItem>13:15</asp:ListItem>
-                                    <asp:ListItem>13:30</asp:ListItem>
-                                    <asp:ListItem>13:45</asp:ListItem>
-                                    <asp:ListItem>14:00</asp:ListItem>
-                                    <asp:ListItem>14:15</asp:ListItem>
-                                    <asp:ListItem>14:30</asp:ListItem>
-                                    <asp:ListItem>14:45</asp:ListItem>
-                                    <asp:ListItem>15:00</asp:ListItem>
-                                    <asp:ListItem>15:15</asp:ListItem>
-                                    <asp:ListItem>15:30</asp:ListItem>
-                                    <asp:ListItem>15:45</asp:ListItem>
-                                    <asp:ListItem>16:00</asp:ListItem>
-                                    <asp:ListItem>16:15</asp:ListItem>
-                                    <asp:ListItem>16:30</asp:ListItem>
-                                    <asp:ListItem>16:45</asp:ListItem>
-                                    <asp:ListItem>17:00</asp:ListItem>
-                                    <asp:ListItem>17:15</asp:ListItem>
-                                    <asp:ListItem>17:30</asp:ListItem>
-                                    <asp:ListItem>17:45</asp:ListItem>
-                                    <asp:ListItem>18:00</asp:ListItem>
-                                </asp:DropDownList>
-                            </td>
+                        <td class="auto-style7">
+                            <asp:DropDownList ID="DropDownList1" runat="server">
+                                <asp:ListItem>9:00</asp:ListItem>
+                                <asp:ListItem>9:15</asp:ListItem>
+                                <asp:ListItem>9:30</asp:ListItem>
+                                <asp:ListItem>9:45</asp:ListItem>
+                                <asp:ListItem>10:00</asp:ListItem>
+                                <asp:ListItem>10:15</asp:ListItem>
+                                <asp:ListItem>10:30</asp:ListItem>
+                                <asp:ListItem>10:45</asp:ListItem>
+                                <asp:ListItem>11:00</asp:ListItem>
+                                <asp:ListItem>11:15</asp:ListItem>
+                                <asp:ListItem>11:30</asp:ListItem>
+                                <asp:ListItem>11:45</asp:ListItem>
+                                <asp:ListItem>12:00</asp:ListItem>
+                                <asp:ListItem>12:15</asp:ListItem>
+                                <asp:ListItem>12:30</asp:ListItem>
+                                <asp:ListItem>12:45</asp:ListItem>
+                                <asp:ListItem>13:00</asp:ListItem>
+                                <asp:ListItem>13:15</asp:ListItem>
+                                <asp:ListItem>13:30</asp:ListItem>
+                                <asp:ListItem>13:45</asp:ListItem>
+                                <asp:ListItem>14:00</asp:ListItem>
+                                <asp:ListItem>14:15</asp:ListItem>
+                                <asp:ListItem>14:30</asp:ListItem>
+                                <asp:ListItem>14:45</asp:ListItem>
+                                <asp:ListItem>15:00</asp:ListItem>
+                                <asp:ListItem>15:15</asp:ListItem>
+                                <asp:ListItem>15:30</asp:ListItem>
+                                <asp:ListItem>15:45</asp:ListItem>
+                                <asp:ListItem>16:00</asp:ListItem>
+                                <asp:ListItem>16:15</asp:ListItem>
+                                <asp:ListItem>16:30</asp:ListItem>
+                                <asp:ListItem>16:45</asp:ListItem>
+                                <asp:ListItem>17:00</asp:ListItem>
+                                <asp:ListItem>17:15</asp:ListItem>
+                                <asp:ListItem>17:30</asp:ListItem>
+                                <asp:ListItem>17:45</asp:ListItem>
+                                <asp:ListItem>18:00</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
                     </tr>
                     <tr>
                         <td runat="server" class="Title">
                             <p>内容</p>
                         </td>
-                            <td class="auto-style8">
-                                <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
-                            </td>
+                        <td class="auto-style8">
+                            <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+                        </td>
                     </tr>
                     <tr>
                         <td runat="server" class="Title">
                             <p>担当者名</p>
                         </td>
-                            <td class="auto-style8">
-                                <asp:CheckBoxList ID="CheckBoxList1" runat="server">
-                                    <asp:ListItem>石岡</asp:ListItem>
-                                    <asp:ListItem>木村</asp:ListItem>
-                                    <asp:ListItem>佐藤</asp:ListItem>
-                                    <asp:ListItem>白井</asp:ListItem>
-                                    <asp:ListItem>寺島</asp:ListItem>
-                                    <asp:ListItem>前田</asp:ListItem>
-                                    <asp:ListItem>三浦</asp:ListItem>
-                                    <asp:ListItem>三津谷</asp:ListItem>
-                                    <asp:ListItem>柳沢</asp:ListItem>
-                                    <asp:ListItem>張</asp:ListItem>
-                                    <asp:ListItem>鯉淵</asp:ListItem>
-                                    <asp:ListItem>坂口</asp:ListItem>
-                                    <asp:ListItem>坂田</asp:ListItem>
-                                    <asp:ListItem>一番ヶ瀬</asp:ListItem>
-                                    <asp:ListItem>髙栁社長</asp:ListItem>
-                                    <asp:ListItem>藤川</asp:ListItem>
-                                </asp:CheckBoxList>
-                            </td>
+                        <td class="auto-style8">
+                            <asp:CheckBoxList ID="CheckBoxList1" runat="server">
+                                <asp:ListItem>石岡</asp:ListItem>
+                                <asp:ListItem>木村</asp:ListItem>
+                                <asp:ListItem>佐藤</asp:ListItem>
+                                <asp:ListItem>白井</asp:ListItem>
+                                <asp:ListItem>寺島</asp:ListItem>
+                                <asp:ListItem>前田</asp:ListItem>
+                                <asp:ListItem>三浦</asp:ListItem>
+                                <asp:ListItem>三津谷</asp:ListItem>
+                                <asp:ListItem>柳沢</asp:ListItem>
+                                <asp:ListItem>張</asp:ListItem>
+                                <asp:ListItem>鯉淵</asp:ListItem>
+                                <asp:ListItem>坂口</asp:ListItem>
+                                <asp:ListItem>坂田</asp:ListItem>
+                                <asp:ListItem>一番ヶ瀬</asp:ListItem>
+                                <asp:ListItem>髙栁社長</asp:ListItem>
+                                <asp:ListItem>藤川</asp:ListItem>
+                            </asp:CheckBoxList>
+                        </td>
                     </tr>
 
                     <tr>

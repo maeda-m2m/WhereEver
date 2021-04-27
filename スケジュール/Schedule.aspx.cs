@@ -1451,7 +1451,6 @@ namespace WhereEver
 
         protected void Button8_Click(object sender, EventArgs e)
         {
-
             var a = TextBox2.Text;
 
             string a0 = "0";
@@ -1465,32 +1464,95 @@ namespace WhereEver
             string a8 = "8";
             string a9 = "9";
 
-            //string b09 = "09:00"
-            //if () { }
+            string b9 = "9:00";
+            string b0015 = ":15";
+            string b0030 = ":30";
+            string b0045 = ":45";
+            string b10 = "10:00";
+            string b11 = "11:00";
+            string b12 = "12:00";
+            string b13 = "13:00";
+            string b14 = "14:00";
+            string b15 = "15:00";
+            string b16 = "16:00";
+            string b17 = "17:00";
+            string b18 = "18:00";
 
-            if (a.Contains(a0) || a.Contains(a1) || a.Contains(a2) || a.Contains(a3) || a.Contains(a4) || a.Contains(a5) || a.Contains(a6) || a.Contains(a7) || a.Contains(a8) || a.Contains(a9))
+            string c01 = "01";
+            string c02 = "02";
+            string c03 = "03";
+            string c04 = "04";
+            string c05 = "05";
+            string c06 = "06";
+            string c07 = "07";
+            string c08 = "08";
+            string c09 = "09";
+            string c010 = "10";
+            string c011 = "11";
+            string c012 = "12";
+
+            DateTime dt = new DateTime(04);
+
+            dt.ToString();
+
+            string x = dt.ToString();
+
+            //SELECT* FROM T_Schedule WHERE time LIKE '%9:00%' or name LIKE '%三浦%'  order by date asc
+
+            //DateTime.Now.ToString();
+
+            //|| a.Contains(c04) || a.Contains(c05) || a.Contains(c0401) || a.Contains(c010) || a.Contains(c011) || a.Contains(c012) || a.Contains(c07) || a.Contains(c08) || a.Contains(c09)
+
+            if (a.Contains(c03))
             {
-                var dd = A1(a, Global.GetConnection());
+
+
+                var dd = A1(a, Global.GetConnection());//date
 
                 ScdlList.DataSource = dd;
 
                 ScdlList.DataBind();
 
-                for (int j = 0; j < dd.Count; j++)
-                {
+                //for (int j = 0; j < dd.Count; j++)
+                //{
 
-                    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+                //    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
 
-                    ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
-                    ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
-                    ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
-                    ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
-                    ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
-                }
+                //    ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
+                //    ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
+                //    ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
+                //    ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
+                //    ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
+                //}
+
+
 
                 Create3();
                 Create2();
 
+            }
+            if (a.Contains(b9) || a.Contains(b0015) || a.Contains(b0030) || a.Contains(b0045) || a.Contains(b10) || a.Contains(b11) || a.Contains(b12) || a.Contains(b13) || a.Contains(b14) || a.Contains(b15) || a.Contains(b16) || a.Contains(b17) || a.Contains(b18))
+            {
+                var dd = A2(a, Global.GetConnection());//time
+
+                ScdlList.DataSource = dd;
+
+                ScdlList.DataBind();
+
+                //for (int j = 0; j < dd.Count; j++)
+                //{
+
+                //    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+
+                //    ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
+                //    ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
+                //    ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
+                //    ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
+                //    ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
+                //}
+
+                Create3();
+                Create2();
             }
             else
             {
@@ -1500,17 +1562,17 @@ namespace WhereEver
 
                 ScdlList.DataBind();
 
-                for (int j = 0; j < dd.Count; j++)
-                {
+                //for (int j = 0; j < dd.Count; j++)
+                //{
 
-                    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+                //    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
 
-                    ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
-                    ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
-                    ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
-                    ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
-                    ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
-                }
+                //    ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
+                //    ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
+                //    ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
+                //    ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
+                //    ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
+                //}
 
                 Create3();
                 Create2();
