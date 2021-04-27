@@ -17,15 +17,5 @@ namespace WhereEver.Project_System
             da.Fill(dt);
             return dt[0];
         }
-
-        internal static DATASET.DataSet.T_PdbKanriRow GetPMiddleCnt(SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "select count(*) as PMiddleid from T_PdbKanri";
-            DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
-            da.Fill(dt);
-            return dt[0];
-        }
     }
 }

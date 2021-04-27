@@ -123,16 +123,13 @@
                         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
                         <asp:DataGrid ID="wbs" runat="server" 
-                            AutoGenerateColumns="False" 
+                            AutoGenerateColumns="False"
+                            OnItemDataBound="wbs_ItemDataBound" 
                             Width="100%">
                             <Columns>
-                                <asp:BoundColumn DataField="No" HeaderText="No."/>
-                                <asp:BoundColumn DataField="Bigname" HeaderText="大項目"/>
-                                <asp:BoundColumn DataField="Middlename" HeaderText="中項目"/>
-                                
+                                <asp:BoundColumn DataField="PBigname" HeaderText="大項目"/>
+                                <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目"/>
                             </Columns>
-                            <HeaderStyle />
-                            <ItemStyle/>
                         </asp:DataGrid>
 
         </div>
