@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -243,14 +244,75 @@ namespace WhereEver.Project_System
             DateTime Time1 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddlestart;
             DateTime Time2 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddleover;
 
-            int b = WBS.GetPMiddleCnt(Global.GetConnection()).PMiddleid;
             int interval = (int)(Time2 - Time1).TotalDays;
-
-            for (int i = 0 ; i < 3 ; i++)
+            int month1 = Time1.Month;
+            int month2 = Time2.Month;
+            int day1 = Time1.Day;
+            int day2 = Time2.Day;
+            ar = new int[interval];
+            for (int i = 0; i < interval; i++)
             {
-                for (int f = 0; f < b; f++)
+                if (month1 <= month2 || day1 <= day2)
                 {
+                    ar[i] = day1;
+                    day1++;
+                    if (day1 >= 30)
+                    {
+                        day1 = 1;
+                    }
+                }
 
+            }
+            DATASET.DataSet.T_PdbKanriDataTable dt = Get(Global.GetConnection());
+            for (int i = 0; i < interval; ++i)
+            {
+                dt.Columns.Add(ar[i].ToString()+i);
+            }
+
+            wbs.DataSource = dt;
+            wbs.DataBind();
+        }
+        public int[] ar;
+        public static DATASET.DataSet.T_PdbKanriDataTable Get(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "SELECT * FROM T_PdbKanri where PMiddleid != 0 order by PBigid ";
+            DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
+            da.Fill(dt);
+            return dt;
+        }
+        protected void wbs_ItemDataBound(object sender, DataGridItemEventArgs e)
+        {
+            for (int i = 0; i<ar.Length;i++)
+            {
+                if (e.Item.ItemType == ListItemType.Header)
+                {
+                    // ヘッダ行に列（セル）を追加。セルの中にリテラルを配置。
+                    TableCell cell = new TableCell();
+                    cell.Controls.Add(new LiteralControl(ar[i].ToString()));
+                    e.Item.Cells.Add(cell);
+                }
+            }
+            
+            if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
+            {
+                DATASET.DataSet.T_PdbKanriRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbKanriRow;
+                e.Item.Cells[0].Text = dr.PBigname.ToString();
+                e.Item.Cells[1].Text = dr.PMiddlename.ToString();
+                for (int i = 0; i < ar.Length; i++)
+                {
+                    if (dr.PMiddlestart.Day<=ar[i] && dr.PMiddleover.Day >= ar[i])
+                    {
+                        TableCell cell = new TableCell();
+                        cell.BackColor = Color.Black;
+                        e.Item.Cells.Add(cell);
+                    }
+                    else
+                    {
+                        TableCell cell = new TableCell();
+                        e.Item.Cells.Add(cell);
+                    }
                 }
             }
         }

@@ -27,7 +27,6 @@
 
         <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
         <table id="btn" class="auto-style12">
-
             <td class="auto-style11">
                 <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="20px" Width="1200px" HorizontalAlign="Left">
                     <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
