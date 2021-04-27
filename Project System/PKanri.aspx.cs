@@ -305,7 +305,7 @@ namespace WhereEver.Project_System
                     if (dr.PMiddlestart.Day<=ar[i] && dr.PMiddleover.Day >= ar[i])
                     {
                         TableCell cell = new TableCell();
-                        cell.BackColor = Color.Yellow;
+                        cell.BackColor = Color.Black;
                         e.Item.Cells.Add(cell);
                     }
                     else
