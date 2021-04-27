@@ -18,6 +18,7 @@ namespace WhereEver
         public DataGridCommandEventHandler Scdl_CancelCommand { get; private set; }
 
 
+
         //ページがロードするとき
         protected void Page_Load(object sender, EventArgs e)
         {
