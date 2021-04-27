@@ -272,6 +272,7 @@
       <DependentUpon>PKanri.aspx</DependentUpon>
     </Compile>
     <Compile Include="Project System\Update.cs" />
+    <Compile Include="Project System\WBS.cs" />
     <Compile Include="Tatekae.ascx.cs">
       <DependentUpon>Tatekae.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
