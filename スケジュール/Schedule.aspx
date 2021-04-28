@@ -9,7 +9,22 @@
     <link href="Schedule.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>Schedule</title>
+    <style type="text/css">
+        .auto-style14 {
+            background-color: #16ba00;
+            color: white;
+            text-align: center;
+            height: 52px;
+            width: 64px;
+        }
+        .auto-style15 {
+            background-color: #16ba00;
+            color: white;
+            text-align: center;
+            width: 64px;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,6 +45,7 @@
             <td class="auto-style11">
                 <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="20px" Width="1200px" HorizontalAlign="Left">
                     <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
+                    <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
                     <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" OnClientClick="A()" />
                     <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
                     <asp:Button ID="Button4" runat="server" Text="先週" class="btn-flat-border" OnClick="Button4_Click" />
@@ -244,14 +260,136 @@
 
         </div>
 
-        <br />
-        <br />
-        <asp:Panel ID="Panel3" runat="server" CssClass="auto-style9" Height="20px" Width="1200px" HorizontalAlign="Left">
-            <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
-            <asp:Button ID="Button8" runat="server" Text="検索" class="btn-flat-border" OnClick="Button8_Click" />
-        </asp:Panel>
-        <br />
-        <br />
+        <div>
+            <asp:Panel ID="Panel3" runat="server">
+
+                <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                    <OtherMonthDayStyle ForeColor="#999999" />
+                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                    <TodayDayStyle BackColor="#CCCCCC" />
+                </asp:Calendar>
+
+                <table id="Test">
+
+                    <tr>
+
+                        <td runat="server" class="auto-style14">
+
+                            <p>日付</p>
+
+                        </td>
+
+                        <td class="auto-style7">
+
+                              <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td runat="server" class="auto-style14">
+                            <p>時間</p>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:DropDownList ID="DropDownList2" runat="server">
+                                <asp:ListItem></asp:ListItem>
+                                <asp:ListItem>9:00</asp:ListItem>
+                                <asp:ListItem>9:15</asp:ListItem>
+                                <asp:ListItem>9:30</asp:ListItem>
+                                <asp:ListItem>9:45</asp:ListItem>
+                                <asp:ListItem>10:00</asp:ListItem>
+                                <asp:ListItem>10:15</asp:ListItem>
+                                <asp:ListItem>10:30</asp:ListItem>
+                                <asp:ListItem>10:45</asp:ListItem>
+                                <asp:ListItem>11:00</asp:ListItem>
+                                <asp:ListItem>11:15</asp:ListItem>
+                                <asp:ListItem>11:30</asp:ListItem>
+                                <asp:ListItem>11:45</asp:ListItem>
+                                <asp:ListItem>12:00</asp:ListItem>
+                                <asp:ListItem>12:15</asp:ListItem>
+                                <asp:ListItem>12:30</asp:ListItem>
+                                <asp:ListItem>12:45</asp:ListItem>
+                                <asp:ListItem>13:00</asp:ListItem>
+                                <asp:ListItem>13:15</asp:ListItem>
+                                <asp:ListItem>13:30</asp:ListItem>
+                                <asp:ListItem>13:45</asp:ListItem>
+                                <asp:ListItem>14:00</asp:ListItem>
+                                <asp:ListItem>14:15</asp:ListItem>
+                                <asp:ListItem>14:30</asp:ListItem>
+                                <asp:ListItem>14:45</asp:ListItem>
+                                <asp:ListItem>15:00</asp:ListItem>
+                                <asp:ListItem>15:15</asp:ListItem>
+                                <asp:ListItem>15:30</asp:ListItem>
+                                <asp:ListItem>15:45</asp:ListItem>
+                                <asp:ListItem>16:00</asp:ListItem>
+                                <asp:ListItem>16:15</asp:ListItem>
+                                <asp:ListItem>16:30</asp:ListItem>
+                                <asp:ListItem>16:45</asp:ListItem>
+                                <asp:ListItem>17:00</asp:ListItem>
+                                <asp:ListItem>17:15</asp:ListItem>
+                                <asp:ListItem>17:30</asp:ListItem>
+                                <asp:ListItem>17:45</asp:ListItem>
+                                <asp:ListItem>18:00</asp:ListItem>
+                            </asp:DropDownList>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td runat="server" class="auto-style15">
+                            <p>内容</p>
+                        </td>
+
+                        <td class="auto-style8">
+
+                            <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td runat="server" class="auto-style15">
+                            <p>
+                                担当者名
+                            </p>
+                        </td>
+                        <td class="auto-style8">
+                            <asp:CheckBoxList ID="CheckBoxList2" runat="server">
+                                <asp:ListItem>石岡</asp:ListItem>
+                                <asp:ListItem>木村</asp:ListItem>
+                                <asp:ListItem>佐藤</asp:ListItem>
+                                <asp:ListItem>白井</asp:ListItem>
+                                <asp:ListItem>寺島</asp:ListItem>
+                                <asp:ListItem>前田</asp:ListItem>
+                                <asp:ListItem>三浦</asp:ListItem>
+                                <asp:ListItem>三津谷</asp:ListItem>
+                                <asp:ListItem>柳沢</asp:ListItem>
+                                <asp:ListItem>張</asp:ListItem>
+                                <asp:ListItem>鯉淵</asp:ListItem>
+                                <asp:ListItem>坂口</asp:ListItem>
+                                <asp:ListItem>坂田</asp:ListItem>
+                                <asp:ListItem>一番ヶ瀬</asp:ListItem>
+                                <asp:ListItem>髙栁社長</asp:ListItem>
+                                <asp:ListItem>藤川</asp:ListItem>
+                            </asp:CheckBoxList>
+                        </td>
+                        <tr>
+                            <td colspan="2">
+                                <asp:Button ID="Button8" runat="server" class="btn-flat-border" OnClick="Button8_Click" Text="検索" />
+                                <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" Text="戻る" />
+                            </td>
+                        </tr>
+                </table>
+            </asp:Panel>
+        </div>
 
         <div>
 
