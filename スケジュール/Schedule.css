@@ -1,13 +1,16 @@
 ﻿body {
+    margin-left: 0px;
     font-family: Meiryo;
 }
 
 #title {
+    margin-left: 0px;
     width: 300px;
     text-align: center;
 }
 
 .btn-flat-border {
+    margin-left: 0px;
     text-align: center;
     width: 120px;
     display: inline-block;
@@ -23,65 +26,82 @@
 }
 
     .btn-flat-border:hover {
+        margin-left: 0px;
         background: #16ba00;
         color: white;
     }
 
 .Title {
+    margin-left: 0px;
     background-color: #16ba00;
     color: white;
     text-align: center;
 }
 
 #Button2 {
-    margin-left: 50px;
+    margin-left: 0px;
+    /*margin-left: 50px;*/
 }
 
 
 #ImgDiv {
+    margin-left: 0px;
     width: 515px;
 }
 
 #Scd {
+    margin-left: 0px;
     width: 474px;
     height: 553px;
 }
 
 #Label2 {
+    margin-left: 0px;
     position: absolute;
     font-size: 5px;
 }
 
 .Label {
+    margin-left: 0px;
     font-size: 8px;
 }
 
 #SCDL {
+    margin-left: 0px;
     margin-left: 100px;
 }
 
 #Scdl3 {
+    margin-left: 0px;
     margin-left: 100px;
 }
 
 #ScdlList {
+    margin-left: 0px;
     margin-left: 100px;
     margin-right: auto;
 }
 
 #btn {
-    margin-left: 100px;
+    margin-left: 0px;
+    /* margin-left: 100px;*/
 }
 
 #tourokuform {
-    margin-left: 100px;
+    margin-left: 0px;
+    /*  margin-left: 100px;*/
 }
 
 #Calendar1 {
-    margin-left: 100px;
-    margin-right: 0px;
+    margin-left: 0px;
+    width: 100%;
+    height: auto;
+    /* margin-left: 100px;
+    margin-right: 0px;*/
 }
+
 .auto-style1 {
+    margin-left: 0px;
     background-color: #16ba00;
     color: white;
     text-align: center;
@@ -89,26 +109,31 @@
 }
 
 .auto-style7 {
+    margin-left: 0px;
     height: 52px;
     width: 500px;
 }
 
 .auto-style8 {
+    margin-left: 0px;
     width: 500px;
 }
 
 .auto-style9 {
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin-left: 0px;
+    /*   margin-bottom: 0px;
+    margin-top: 0px;*/
 }
 
 
 
 .auto-style11 {
-    height: 83px;
-    width: 752px;
+    margin-left: 0px;
+    /*height: 83px;
+    width: 752px;*/
 }
 
 .auto-style12 {
-    margin-left: 115px;
+    margin-left: 0px;
+    /*  margin-left: 115px;*/
 }
