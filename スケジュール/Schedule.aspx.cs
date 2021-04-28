@@ -18,17 +18,16 @@ namespace WhereEver
         public DataGridCommandEventHandler Scdl_CancelCommand { get; private set; }
 
 
-
-
         //ページがロードするとき
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 Create();
-                Panel1.Visible = false;
                 Create3();
                 Create2();
+                Panel1.Visible = false;
+                Panel3.Visible = false;
 
                 Scdl3.Columns[0].ItemStyle.Wrap = true;
                 Scdl3.Columns[1].ItemStyle.Wrap = true;
@@ -1449,9 +1448,36 @@ namespace WhereEver
             Response.Redirect("Schedule.aspx");
         }
 
+        protected void Calendar2_SelectionChanged(object sender, EventArgs e)
+        {
+            Label3.Text = Calendar2.SelectedDate.ToString("yyyy/MM/dd");
+            Panel3.Visible = true;
+            Create();
+            Create3();
+            Create2();
+        }
+
         protected void Button8_Click(object sender, EventArgs e)
         {
-            var a = TextBox2.Text;
+            var a = (Label3.Text) + "" + (DropDownList2.SelectedValue);//date
+
+            DateTime aDT = DateTime.Parse(a);
+
+            var b = DropDownList2.SelectedValue;//time
+
+            var c = TextBox2.Text;//title
+
+            string d;//name
+
+            d = "";
+
+            foreach (ListItem item in CheckBoxList2.Items)
+            {
+                if (item.Selected)
+                {
+                    d += item.Value + " ";
+                }
+            }
 
             string a0 = "0";
             string a1 = "1";
@@ -1491,92 +1517,74 @@ namespace WhereEver
             string c011 = "11";
             string c012 = "12";
 
-            DateTime dt = new DateTime(04);
+            var dd = A(aDT, b, c, d, Global.GetConnection());
 
-            dt.ToString();
+            ScdlList.DataSource = dd;
 
-            string x = dt.ToString();
+            ScdlList.DataBind();
 
-            //SELECT* FROM T_Schedule WHERE time LIKE '%9:00%' or name LIKE '%三浦%'  order by date asc
 
-            //DateTime.Now.ToString();
+            Create3();
+            Create2();
 
             //|| a.Contains(c04) || a.Contains(c05) || a.Contains(c0401) || a.Contains(c010) || a.Contains(c011) || a.Contains(c012) || a.Contains(c07) || a.Contains(c08) || a.Contains(c09)
 
-            if (a.Contains(c03))
-            {
+            //if (a.Contains(c03))
+            //{
 
 
-                var dd = A1(a, Global.GetConnection());//date
+            //    var dd = A(a, b, c, Global.GetConnection());//date
 
-                ScdlList.DataSource = dd;
+            //    ScdlList.DataSource = dd;
 
-                ScdlList.DataBind();
-
-                //for (int j = 0; j < dd.Count; j++)
-                //{
-
-                //    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
-
-                //    ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
-                //    ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
-                //    ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
-                //    ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
-                //    ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
-                //}
+            //    ScdlList.DataBind();
 
 
+            //    Create3();
+            //    Create2();
 
-                Create3();
-                Create2();
+            //}
+            //if (a.Contains(b9) || a.Contains(b0015) || a.Contains(b0030) || a.Contains(b0045) || a.Contains(b10) || a.Contains(b11) || a.Contains(b12) || a.Contains(b13) || a.Contains(b14) || a.Contains(b15) || a.Contains(b16) || a.Contains(b17) || a.Contains(b18))
+            //{
+            //    var dd = A(a, b, c, Global.GetConnection());//time
 
-            }
-            if (a.Contains(b9) || a.Contains(b0015) || a.Contains(b0030) || a.Contains(b0045) || a.Contains(b10) || a.Contains(b11) || a.Contains(b12) || a.Contains(b13) || a.Contains(b14) || a.Contains(b15) || a.Contains(b16) || a.Contains(b17) || a.Contains(b18))
-            {
-                var dd = A2(a, Global.GetConnection());//time
+            //    ScdlList.DataSource = dd;
 
-                ScdlList.DataSource = dd;
+            //    ScdlList.DataBind();
 
-                ScdlList.DataBind();
+            //    Create3();
+            //    Create2();
+            //}
+            //else
+            //{
+            //    var dd = A(a, b, c, Global.GetConnection());
 
-                //for (int j = 0; j < dd.Count; j++)
-                //{
+            //    ScdlList.DataSource = dd;
 
-                //    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+            //    ScdlList.DataBind();
 
-                //    ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
-                //    ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
-                //    ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
-                //    ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
-                //    ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
-                //}
+            //    Create3();
+            //    Create2();
+            //}
+        }
+        public static DATASET.DataSet.T_ScheduleDataTable A(DateTime aDT, string b, string c, string d, SqlConnection Sqlco)//int date
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 
-                Create3();
-                Create2();
-            }
-            else
-            {
-                var dd = B(a, Global.GetConnection());
+            da.SelectCommand.CommandText =
+              "SELECT * FROM T_Schedule WHERE date LIKE @a AND time LIKE @b AND title LIKE @c AND name LIKE @d order by date asc";
 
-                ScdlList.DataSource = dd;
 
-                ScdlList.DataBind();
+            da.SelectCommand.Parameters.AddWithValue("@a", "%" + aDT + "%");
+            da.SelectCommand.Parameters.AddWithValue("@b", "%" + b + "%");
+            da.SelectCommand.Parameters.AddWithValue("@c", "%" + c + "%");
+            da.SelectCommand.Parameters.AddWithValue("@d", "%" + d + "%");
 
-                //for (int j = 0; j < dd.Count; j++)
-                //{
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
 
-                //    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+            da.Fill(dt);
 
-                //    ScdlList.Items[j].Cells[0].Text = dl.date.ToString("yyyy/MM/dd") + " " + dl.date.ToString("dddd");
-                //    ScdlList.Items[j].Cells[1].Text = dl.time.ToString();
-                //    ScdlList.Items[j].Cells[2].Text = dl.title.ToString();
-                //    ScdlList.Items[j].Cells[3].Text = dl.name.ToString();
-                //    ScdlList.Items[j].Cells[4].Text = dl.SdlNo.ToString();
-                //}
-
-                Create3();
-                Create2();
-            }
+            return dt;
         }
 
         public static DATASET.DataSet.T_ScheduleDataTable A1(string a, SqlConnection Sqlco)//int date
@@ -1584,7 +1592,7 @@ namespace WhereEver
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 
             da.SelectCommand.CommandText =
-              "SELECT * FROM T_Schedule WHERE date + time LIKE @a order by date asc";
+              "SELECT * FROM T_Schedule WHERE date　LIKE @a order by date asc";
 
 
             da.SelectCommand.Parameters.AddWithValue("@a", "%" + a + "%");
@@ -1633,6 +1641,13 @@ namespace WhereEver
         protected void TextBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+
+        protected void Button10_Click(object sender, EventArgs e)
+        {
+            Panel3.Visible = true;
         }
     }
 }
