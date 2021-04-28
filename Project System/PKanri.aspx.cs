@@ -312,7 +312,7 @@ namespace WhereEver.Project_System
                     TableCell cell = new TableCell();
                     if (ar[i] < 10) 
                     {
-                        cell.Controls.Add(new LiteralControl(ar[i].ToString().PadRight(10)));//ヘッダー
+                        cell.Controls.Add(new LiteralControl("."+ar[i].ToString()+"."));//ヘッダー
                     }
                     else
                     {

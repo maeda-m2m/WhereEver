@@ -90,6 +90,7 @@
                 </p>
                 <p>
                     <asp:TextBox ID="txtHozon" runat="server"></asp:TextBox>
+                    <asp:Label ID="lbl" runat="server" Text="Label" Visible="False"></asp:Label>
                 </p>
                 <p>
                     <asp:Button ID="Update" runat="server" Text="更新" CssClass="Button-style" OnClick="Update_Click"/>
