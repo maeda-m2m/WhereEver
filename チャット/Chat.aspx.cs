@@ -63,7 +63,7 @@ namespace WhereEver
 
                 Name.Text = dr.Name;
 
-                Date.Text = "<font size=1px>" + dr.Date.ToShortTimeString() + "</font>";
+                Date.Text = "<font size=1px>" + dr.Date.ToString() + "</font>";
 
                 Naiyou.Text = dr.Naiyou;
 
@@ -93,6 +93,7 @@ namespace WhereEver
             dt.AddT_ChatRow(dr);
             Class2.InsertList(dt, Global.GetConnection());
             Create();
+
         }
         protected void Update_Click(object sender, EventArgs e)
         {
@@ -103,17 +104,26 @@ namespace WhereEver
         {
             Label Cno = (Label)e.Item.Cells[0].FindControl("No");
             Label Cname = (Label)e.Item.Cells[1].FindControl("Id"); //変更
+            Label Cnaiyou = (Label)e.Item.Cells[3].FindControl("Naiyou");
             string Cid = Cno.Text;
             string CnameNow = Cname.Text.Trim();
             string id = SessionManager.User.M_User.id.Trim();
-
+            string cnaiyou = Cnaiyou.Text;
             switch (((LinkButton)e.CommandSource).CommandName)
             {
                 case "Delete":
                     if (CnameNow == id)
                     {
-                        Class.Chat.DeleteChat(Cid);
-                        Class.Chat.UpdateChat(Global.GetConnection());
+                        if (Cid == "")
+                        {
+                            Class.Chat.DeleteHenshin(cnaiyou,id);
+                        }
+                        else
+                        {
+                            Class.Chat.DeleteChat(Cid);
+                        }
+                        
+                        //Class.Chat.UpdateChat(Global.GetConnection());
                     }
                     else
                     {
@@ -126,6 +136,7 @@ namespace WhereEver
                     lblHenshin.Visible = true;
                     TextBox1.Visible = false;
                     txtHozon.Text = Cid;
+                    lbl.Text = cnaiyou;
                     Send.Visible = false;
                     break;
             }
@@ -136,18 +147,37 @@ namespace WhereEver
         {
             DATASET.DataSet.T_ChatDataTable dt = new DATASET.DataSet.T_ChatDataTable();
             DATASET.DataSet.T_ChatRow dr = dt.NewT_ChatRow();
-
-            DATASET.DataSet.T_ChatRow dr1 = Class.Chat.GetMaxHentouNoRow(Global.GetConnection(), txtHozon.Text);
-            if (dr1.HentouNo == 0)
+            if (txtHozon.Text=="")
             {
-                dr.HentouNo = 1;
-                
+                DATASET.DataSet.T_ChatRow dr1 = Class.Chat.GetMaxHentouRow(Global.GetConnection(), lbl.Text);
+                if (dr1.HentouNo == 0)
+                {
+                    dr.HentouNo = 1;
+
+                }
+                else
+                {
+                    dr.HentouNo = dr1.HentouNo + 1;
+                }
+                dr.No = dr1.No;
             }
             else
             {
-                dr.HentouNo = dr1.HentouNo + 1;
+                DATASET.DataSet.T_ChatRow dr2 = Class.Chat.GetMaxHentouNoRow(Global.GetConnection(), txtHozon.Text);
+                if (dr2.HentouNo == 0)
+                {
+                    dr.HentouNo = 1;
+
+                }
+                else
+                {
+                    dr.HentouNo = dr2.HentouNo + 1;
+                }
+                dr.No = Int32.Parse(txtHozon.Text);
+
             }
-            dr.No = Int32.Parse(txtHozon.Text);
+            
+            
             dr.Date = DateTime.Now;
             dr.Id = SessionManager.User.ID; //変更
             dr.Name = Label1.Text;
@@ -155,6 +185,7 @@ namespace WhereEver
 
             dt.AddT_ChatRow(dr);
             Class2.InsertList(dt, Global.GetConnection());
+
             Create();
         }
     }

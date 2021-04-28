@@ -32,6 +32,21 @@ namespace WhereEver.Class
             }
         }
 
+        internal static void DeleteHenshin(string naiyou,string id)
+        {
+            string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "DELETE FROM T_Chat WHERE Naiyou = @i and Id = @d";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                da.SelectCommand.Parameters.AddWithValue("@i",naiyou);
+                da.SelectCommand.Parameters.AddWithValue("@d",id);
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
         internal static void UpdateChat(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
@@ -58,6 +73,16 @@ namespace WhereEver.Class
             da.SelectCommand.CommandText =
                 "select MAX(HentouNo) as HentouNo from T_Chat where No like @No";
             da.SelectCommand.Parameters.AddWithValue("@No", No);
+            DATASET.DataSet.T_ChatDataTable dt = new DATASET.DataSet.T_ChatDataTable();
+            da.Fill(dt);
+            return dt[0];
+        }
+        internal static DATASET.DataSet.T_ChatRow GetMaxHentouRow(SqlConnection sqlConnection, string naiyou)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "select * from T_Chat where Naiyou like @No";
+            da.SelectCommand.Parameters.AddWithValue("@No", naiyou);
             DATASET.DataSet.T_ChatDataTable dt = new DATASET.DataSet.T_ChatDataTable();
             da.Fill(dt);
             return dt[0];
