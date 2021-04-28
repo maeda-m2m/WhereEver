@@ -72,6 +72,13 @@ namespace WhereEver.Project_System
                 {
                     e.Item.Cells[5].Text = "完了";
                 }
+                else
+                {
+                    if (dr.PMiddleover == DateTime.Parse("2100/01/01 00:00:00"))
+                    {
+                        e.Item.Cells[4].Text = "";
+                    }
+                }
                 e.Item.Cells[6].Text = dr.PTorokutime.ToShortDateString();
                 e.Item.Cells[7].Text = dr.PTorokusya.ToString();
                 
@@ -121,57 +128,71 @@ namespace WhereEver.Project_System
         }
         protected void btnPMiddle_Click(object sender, EventArgs e)
         {
-            if (date1.Value!="") {
-                DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = new DATASET.DataSet.T_PdbKanriDataTable();
-                DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
-
-                DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow1 = Insert.GetMaxPMiddleidRow(Global.GetConnection(), ddlPBigList.SelectedItem.ToString());
-
-                if (t_PdbKanriRow1.PMiddleid == 0)
+            if (date1.Value!="") 
+            {
+                lblStart.Text = "開始";
+                if (DateTime.Parse(date2.Value) >= DateTime.Parse(date1.Value))
                 {
-                    t_PdbKanriRow.PMiddleid = 1;
-                    t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
-                    t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
-                    if (date2.Value=="")
+                    lblCalendarError.Text = "";
+                    lblStart.Text = "開始";
+                    
+                    DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = new DATASET.DataSet.T_PdbKanriDataTable();
+                    DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
+
+                    DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow1 = Insert.GetMaxPMiddleidRow(Global.GetConnection(), ddlPBigList.SelectedItem.ToString());
+
+                    if (t_PdbKanriRow1.PMiddleid == 0)
                     {
-                        t_PdbKanriRow.PMiddleover = DateTime.Parse("2018/05/01 12:34:56");
+                        t_PdbKanriRow.PMiddleid = 1;
+                        t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
+                        t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
+                        if (date2.Value == "")
+                        {
+                            t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01 00:00:00");
+                        }
+                        else
+                        {
+                            t_PdbKanriRow.PMiddleover = DateTime.Parse(date2.Value);
+                        }
+                        t_PdbKanriRow.PTorokutime = DateTime.Now;
+                        t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                        Update.UpdateMiddleNew(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
                     }
                     else
                     {
-                        t_PdbKanriRow.PMiddleover = DateTime.Parse(date2.Value);
+                        t_PdbKanriRow.PBigname = ddlPBigList.SelectedItem.Text;
+                        t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(), ddlPBigList.SelectedItem.Text);
+                        t_PdbKanriRow.PMiddleid = t_PdbKanriRow1.PMiddleid + 1;
+                        t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
+                        t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
+                        if (date2.Value == "")
+                        {
+                            t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01 00:00:00");
+                        }
+                        else
+                        {
+                            t_PdbKanriRow.PMiddleover = DateTime.Parse(date2.Value);
+                        }
+                        t_PdbKanriRow.PTorokutime = DateTime.Now;
+                        t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                        t_PdbKanris.Rows.Add(t_PdbKanriRow);
+                        Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
                     }
-                    t_PdbKanriRow.PTorokutime = DateTime.Now;
-                    t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
-                    Update.UpdateMiddleNew(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
+                    ddlPBigList.Text = "";
+                    txtPMiddle.Text = "";
+                    date1.Value = null;
+                    date2.Value = null;
+
+                    CreateDataGrid();
                 }
                 else
                 {
-                    t_PdbKanriRow.PBigname = ddlPBigList.SelectedItem.Text;
-                    t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(), ddlPBigList.SelectedItem.Text);
-                    t_PdbKanriRow.PMiddleid = t_PdbKanriRow1.PMiddleid + 1;
-                    t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
-                    t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value); 
-                    if (date2.Value == "")
-                    {
-                        t_PdbKanriRow.PMiddleover = DateTime.Parse("2018/05/01 12:34:56");
-                    }
-                    else
-                    {
-                        t_PdbKanriRow.PMiddleover = DateTime.Parse(date2.Value);
-                    }
-                    t_PdbKanriRow.PTorokutime = DateTime.Now;
-                    t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
-                    t_PdbKanris.Rows.Add(t_PdbKanriRow);
-                    Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
-                }
-                ddlPBigList.Text = "";
-                txtPMiddle.Text = "";
-
-                CreateDataGrid();
+                    lblCalendarError.Text = "<font color=red>カレンダーに誤りがあります。<font>"; 
+                }        
             }
             else
             {
-                lblStart.Text += "<font color=red>(必須)<font>";
+                lblStart.Text = "開始<font color=red>(必須)<font>";
             }
         }
 
@@ -288,9 +309,15 @@ namespace WhereEver.Project_System
             {
                 if (e.Item.ItemType == ListItemType.Header)
                 {
-                    // ヘッダ行に列（セル）を追加。セルの中にリテラルを配置。
                     TableCell cell = new TableCell();
-                    cell.Controls.Add(new LiteralControl(ar[i].ToString()));
+                    if (ar[i] < 10) 
+                    {
+                        cell.Controls.Add(new LiteralControl(ar[i].ToString().PadRight(10)));//ヘッダー
+                    }
+                    else
+                    {
+                        cell.Controls.Add(new LiteralControl(ar[i].ToString()));//ヘッダー
+                    }
                     e.Item.Cells.Add(cell);
                 }
             }
