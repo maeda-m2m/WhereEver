@@ -74,6 +74,13 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
+                        &nbsp;</td>
+                    <td colspan="2" class="auto-style2">
+                        <asp:Label ID="lblCalendarError" runat="server" ForeColor="Red"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
                         </td>
                     <td colspan="2" class="auto-style2">
                         <asp:Button ID="btnPMiddle" CssClass="btn" runat="server" Text="中項目登録" OnClick="btnPMiddle_Click" ValidationGroup="Group02"/>
@@ -108,11 +115,11 @@
                                 <asp:BoundColumn DataField="PTorokutime" HeaderText="最新編集日付" ReadOnly="True"/>
                                 <asp:BoundColumn DataField="PTorokusya" HeaderText="最新編集者" ReadOnly="True"/>
                                 
-                                <asp:EditCommandColumn EditText="変更" CancelText="キャンセル" UpdateText="保存" ></asp:EditCommandColumn>
+                                <asp:EditCommandColumn EditText="変更" CancelText="cancel" UpdateText="update" ItemStyle-Width="10%" ></asp:EditCommandColumn>
                                 <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
                             </Columns>
                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10%"/>
-                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Height="30px"/>
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"/>
                         </asp:DataGrid>
                     </td>
                 </tr>
@@ -120,17 +127,19 @@
         </div>
         <div class="wbs">
 
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
-                        <asp:DataGrid ID="wbs" runat="server" 
-                            AutoGenerateColumns="False"
-                            OnItemDataBound="wbs_ItemDataBound" 
-                            Width="100%">
-                            <Columns>
-                                <asp:BoundColumn DataField="PBigname" HeaderText="大項目"/>
-                                <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目"/>
-                            </Columns>
-                        </asp:DataGrid>
+            <asp:DataGrid ID="wbs" runat="server" 
+                AutoGenerateColumns="False"
+                OnItemDataBound="wbs_ItemDataBound" 
+                Width="100%">
+                <Columns>
+                    <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ItemStyle-Width="8%"/>
+                    <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目" ItemStyle-Width="15%"/>
+                </Columns>
+                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10%"/>
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"/>
+            </asp:DataGrid>
 
         </div>
     </form>

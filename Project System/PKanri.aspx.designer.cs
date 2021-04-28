@@ -177,6 +177,15 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl date2;
 
         /// <summary>
+        /// lblCalendarError コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCalendarError;
+
+        /// <summary>
         /// btnPMiddle コントロール。
         /// </summary>
         /// <remarks>
