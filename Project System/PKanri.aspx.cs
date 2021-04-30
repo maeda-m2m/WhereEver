@@ -128,72 +128,102 @@ namespace WhereEver.Project_System
         }
         protected void btnPMiddle_Click(object sender, EventArgs e)
         {
-            if (date1.Value!="") 
+            DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = new DATASET.DataSet.T_PdbKanriDataTable();
+            DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
+
+            DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow1 = Insert.GetMaxPMiddleidRow(Global.GetConnection(), ddlPBigList.SelectedItem.ToString());
+            if (ddlPBigList.Text!="")
             {
-                lblStart.Text = "開始";
-                if (DateTime.Parse(date2.Value) >= DateTime.Parse(date1.Value))
+                if (date1.Value != "")
                 {
-                    lblCalendarError.Text = "";
                     lblStart.Text = "開始";
-                    
-                    DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = new DATASET.DataSet.T_PdbKanriDataTable();
-                    DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
-
-                    DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow1 = Insert.GetMaxPMiddleidRow(Global.GetConnection(), ddlPBigList.SelectedItem.ToString());
-
-                    if (t_PdbKanriRow1.PMiddleid == 0)
+                    if (date2.Value !="")
                     {
-                        t_PdbKanriRow.PMiddleid = 1;
-                        t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
-                        t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
-                        if (date2.Value == "")
+                        if (DateTime.Parse(date2.Value) >= DateTime.Parse(date1.Value))
                         {
-                            t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01 00:00:00");
+                            lblCalendarError.Text = "";
+                            lblStart.Text = "開始";
+                            if (t_PdbKanriRow1.PMiddleid == 0)
+                            {
+                                t_PdbKanriRow.PMiddleid = 1;
+                                t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
+                                t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
+                                t_PdbKanriRow.PMiddleover = DateTime.Parse(date2.Value);
+                                t_PdbKanriRow.PTorokutime = DateTime.Now;
+                                t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                                Update.UpdateMiddleNew(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
+                            }
+                            else
+                            {
+                                t_PdbKanriRow.PBigname = ddlPBigList.SelectedItem.Text;
+                                t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(), ddlPBigList.SelectedItem.Text);
+                                t_PdbKanriRow.PMiddleid = t_PdbKanriRow1.PMiddleid + 1;
+                                t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
+                                t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
+                                
+                                t_PdbKanriRow.PTorokutime = DateTime.Now;
+                                t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                                t_PdbKanris.Rows.Add(t_PdbKanriRow);
+                                Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
+                            }
+                            ddlPBigList.Text = "";
+                            txtPMiddle.Text = "";
+                            date1.Value = null;
+                            date2.Value = null;
+                            lblAisatu1.Text = "を選択してから、中項目入力をお願い致します。";
+                            CreateDataGrid();
                         }
                         else
                         {
-                            t_PdbKanriRow.PMiddleover = DateTime.Parse(date2.Value);
+                            lblCalendarError.Text = "<font color=red>カレンダーに誤りがあります。<font>";
                         }
-                        t_PdbKanriRow.PTorokutime = DateTime.Now;
-                        t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
-                        Update.UpdateMiddleNew(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
                     }
                     else
                     {
-                        t_PdbKanriRow.PBigname = ddlPBigList.SelectedItem.Text;
-                        t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(), ddlPBigList.SelectedItem.Text);
-                        t_PdbKanriRow.PMiddleid = t_PdbKanriRow1.PMiddleid + 1;
-                        t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
-                        t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
-                        if (date2.Value == "")
+                        lblCalendarError.Text = "";
+                        lblStart.Text = "開始";
+                        if (t_PdbKanriRow1.PMiddleid == 0)
                         {
+                            t_PdbKanriRow.PMiddleid = 1;
+                            t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
+                            t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
                             t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01 00:00:00");
+                            t_PdbKanriRow.PTorokutime = DateTime.Now;
+                            t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                            Update.UpdateMiddleNew(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
                         }
                         else
                         {
-                            t_PdbKanriRow.PMiddleover = DateTime.Parse(date2.Value);
+                            t_PdbKanriRow.PBigname = ddlPBigList.SelectedItem.Text;
+                            t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(), ddlPBigList.SelectedItem.Text);
+                            t_PdbKanriRow.PMiddleid = t_PdbKanriRow1.PMiddleid + 1;
+                            t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
+                            t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
+                            t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01 00:00:00");
+                            t_PdbKanriRow.PTorokutime = DateTime.Now;
+                            t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                            t_PdbKanris.Rows.Add(t_PdbKanriRow);
+                            Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
                         }
-                        t_PdbKanriRow.PTorokutime = DateTime.Now;
-                        t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
-                        t_PdbKanris.Rows.Add(t_PdbKanriRow);
-                        Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
+                        ddlPBigList.Text = "";
+                        txtPMiddle.Text = "";
+                        date1.Value = null;
+                        date2.Value = null;
+                        lblAisatu1.Text = "を選択してから、中項目入力をお願い致します。";
+                        CreateDataGrid();
                     }
-                    ddlPBigList.Text = "";
-                    txtPMiddle.Text = "";
-                    date1.Value = null;
-                    date2.Value = null;
-
-                    CreateDataGrid();
+                    
                 }
                 else
                 {
-                    lblCalendarError.Text = "<font color=red>カレンダーに誤りがあります。<font>"; 
-                }        
+                    lblStart.Text = "開始<font color=red>(必須)<font>";
+                    lblAisatu1.Text = "を選択してから、中項目入力をお願い致します。";
+                }
             }
             else
             {
-                lblStart.Text = "開始<font color=red>(必須)<font>";
-            }
+                lblAisatu1.Text = "<font color=red>を選択してから、中項目入力をお願い致します。<font>";
+            } 
         }
 
         protected void DgPKanri_EditCommand(object source, DataGridCommandEventArgs e)
@@ -265,12 +295,13 @@ namespace WhereEver.Project_System
             DateTime Time1 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddlestart;
             DateTime Time2 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddleover;
 
-            int interval = (int)(Time2 - Time1).TotalDays;
+            int interval = (int)(Time2 - Time1).TotalDays+1;
             int month1 = Time1.Month;
             int month2 = Time2.Month;
             int day1 = Time1.Day;
             int day2 = Time2.Day;
             ar = new int[interval];
+
             for (int i = 0; i < interval; i++)
             {
                 if (month1 <= month2 || day1 <= day2)
@@ -282,9 +313,8 @@ namespace WhereEver.Project_System
                         day1 = 1;
                     }
                 }
-
             }
-            DATASET.DataSet.T_PdbKanriDataTable dt = Get(Global.GetConnection());
+            DATASET.DataSet.T_PdbKanriDataTable dt = GetT_PdbKanriDataTable(Global.GetConnection());
             for (int i = 0; i < interval; ++i)
             {
                 dt.Columns.Add(ar[i].ToString()+i);
@@ -294,15 +324,6 @@ namespace WhereEver.Project_System
             wbs.DataBind();
         }
         public int[] ar;
-        public static DATASET.DataSet.T_PdbKanriDataTable Get(SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_PdbKanri where PMiddleid != 0 order by PBigid ";
-            DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
-            da.Fill(dt);
-            return dt;
-        }
         protected void wbs_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
             for (int i = 0; i<ar.Length;i++)
@@ -312,7 +333,7 @@ namespace WhereEver.Project_System
                     TableCell cell = new TableCell();
                     if (ar[i] < 10) 
                     {
-                        cell.Controls.Add(new LiteralControl("."+ar[i].ToString()+"."));//ヘッダー
+                        cell.Controls.Add(new LiteralControl(ar[i].ToString()));//ヘッダー
                     }
                     else
                     {
@@ -321,7 +342,7 @@ namespace WhereEver.Project_System
                     e.Item.Cells.Add(cell);
                 }
             }
-            
+
             if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
             {
                 DATASET.DataSet.T_PdbKanriRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbKanriRow;
@@ -329,19 +350,45 @@ namespace WhereEver.Project_System
                 e.Item.Cells[1].Text = dr.PMiddlename.ToString();
                 for (int i = 0; i < ar.Length; i++)
                 {
-                    if (dr.PMiddlestart.Day<=ar[i] && dr.PMiddleover.Day >= ar[i])
+                    TableCell cell = new TableCell();
+                    if (dr.PMiddlestart.Day <= ar[i] && dr.PMiddleover.Day >= ar[i])
                     {
-                        TableCell cell = new TableCell();
                         cell.BackColor = Color.Black;
-                        e.Item.Cells.Add(cell);
+                        cell.BorderColor = Color.White;
                     }
-                    else
+                    DateTime dt = DateTime.Parse("2021/04/"+ar[i]+" 00:00:00");
+                    DayOfWeek dow = dt.DayOfWeek;
+
+                    switch (dow)
                     {
-                        TableCell cell = new TableCell();
-                        e.Item.Cells.Add(cell);
+                        case DayOfWeek.Saturday:
+                            cell.BackColor = Color.Gray;
+                            cell.BorderColor= Color.White;
+                            break;
+                        case DayOfWeek.Sunday:
+                            cell.BackColor = Color.Gray;
+                            cell.BorderColor = Color.White;
+                            break;
                     }
+                    cell.Width = 20;
+                    e.Item.Cells.Add(cell);
                 }
+                
             }
         }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            txtPBig.Text = "";
+            ddlPBigList.Text = "";
+            txtPMiddle.Text = "";
+            lblStart.Text = "開始";
+            date1.Value = "";
+            date2.Value = "";
+            lblCalendarError.Text = "";
+            lblAisatu1.Text = "を選択してから、中項目入力をお願い致します。";
+            wbs.DataSource = null;
+        }
+        
     }
 }
