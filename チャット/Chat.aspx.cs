@@ -93,6 +93,7 @@ namespace WhereEver
             dr.No = sl + 1;
             dt.AddT_ChatRow(dr);
             Class2.InsertList(dt, Global.GetConnection());
+            TextBox1.Text = "";
             Create();
 
         }
@@ -187,7 +188,6 @@ namespace WhereEver
 
             dt.AddT_ChatRow(dr);
             Class2.InsertList(dt, Global.GetConnection());
-
             Create();
         }
 
