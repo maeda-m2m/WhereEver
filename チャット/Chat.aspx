@@ -94,6 +94,8 @@
                 </p>
                 <p>
                     <asp:Button ID="Update" runat="server" Text="更新" CssClass="Button-style" OnClick="Update_Click"/>
+                &nbsp;&nbsp;
+                    <asp:Button ID="Return" runat="server" Text="戻る" CssClass="Button-style" OnClick="Return_Click"/>
                 </p>
            </div>
         </div>
