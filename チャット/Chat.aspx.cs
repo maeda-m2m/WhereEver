@@ -26,6 +26,7 @@ namespace WhereEver
                 lblHenshin.Visible = false;
                 btnHenshin.Visible = false;
                 txtHozon.Visible = false;
+                Return.Visible = false;
             }
             Label2.Text = "";
 
@@ -138,6 +139,7 @@ namespace WhereEver
                     txtHozon.Text = Cid;
                     lbl.Text = cnaiyou;
                     Send.Visible = false;
+                    Return.Visible = true;
                     break;
             }
             Create();
@@ -187,6 +189,11 @@ namespace WhereEver
             Class2.InsertList(dt, Global.GetConnection());
 
             Create();
+        }
+
+        protected void Return_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Chat.aspx");
         }
     }
 }
