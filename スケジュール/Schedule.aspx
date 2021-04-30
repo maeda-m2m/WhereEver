@@ -213,10 +213,22 @@
                 ID="Scdl3"
                 AutoGenerateColumns="False"
                 OnItemDataBound="Scdl3_ItemDataBound"
-                CssClass="scdl" HeaderStyle-Width="200px" OnSelectedIndexChanged="Scdl3_SelectedIndexChanged" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" Width="1200px" Style="margin-left: 0px">
+                CssClass="scdl"
+                HeaderStyle-Width="200px"
+                OnSelectedIndexChanged="Scdl3_SelectedIndexChanged"
+                BackColor="White"
+                BorderColor="#999999"
+                BorderStyle="Solid"
+                BorderWidth="1px"
+                CellPadding="3"
+                ForeColor="Black"
+                GridLines="Vertical"
+                Width="1200px"
+                Style="margin-left: 0px">
+
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
-                    <asp:TemplateColumn HeaderText="時間" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
+                    <asp:TemplateColumn HeaderText="曜日" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" />
                         <ItemTemplate>
@@ -366,7 +378,7 @@
 
                         <td class="auto-style8">
 
-                            <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
+                            <asp:TextBox ID="TextBox2" runat="server" Text="test1"></asp:TextBox>
 
                         </td>
 

@@ -21,7 +21,7 @@ namespace WhereEver
         //ページがロードするとき
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!Page.IsPostBack)
             {
                 Create();
                 Create3();
@@ -35,14 +35,6 @@ namespace WhereEver
                 Scdl3.Columns[3].ItemStyle.Wrap = true;
                 Scdl3.Columns[4].ItemStyle.Wrap = true;
             }
-            //ScdlList.EditCommand +=
-            //new DataGridCommandEventHandler(this.ScdlList_EditCommand);
-            //ScdlList.CancelCommand +=
-            //    new DataGridCommandEventHandler(this.ScdlList_CancelCommand);
-            //ScdlList.UpdateCommand +=
-            //    new DataGridCommandEventHandler(this.ScdlList_UpdateCommand);
-            //ScdlList.ItemCommand +=
-            //    new DataGridCommandEventHandler(this.ScdlList_ItemCommand);
         }
 
         //スケジュールリストにデータを格納　→　ScdlList_ItemDataBound　に移動
@@ -126,7 +118,7 @@ namespace WhereEver
             Class1.InsertList(dt, Global.GetConnection());
 
             Create();
-           
+
             Create3();
             Panel1.Visible = false;
             Panel2.Visible = true;
@@ -148,6 +140,13 @@ namespace WhereEver
                 string week = DT.ToString("ddd");
 
                 string tm = dl.time.Trim();
+
+                Scdl3.Items[0].Cells[0].Text = "日付";
+                Scdl3.Items[0].Cells[1].Text = "";
+                Scdl3.Items[0].Cells[2].Text = "";
+                Scdl3.Items[0].Cells[3].Text = "";
+                Scdl3.Items[0].Cells[4].Text = "";
+                Scdl3.Items[0].Cells[5].Text = "";
 
                 if (tm == "9:00" || tm == "9:15" || tm == "9:30" || tm == "9:45")
                 {
@@ -484,12 +483,13 @@ namespace WhereEver
         }
 
 
-        protected void Scdl3_ItemDataBound(object sender, DataGridItemEventArgs e)
-        //scdl3の表示の枠を作っている
+        protected void Scdl3_ItemDataBound(object sender, DataGridItemEventArgs e)//scdl3の表示の枠を作っている
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
+
                 var dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_EmptyTableRow;
+
 
                 Label time = e.Item.FindControl("Jikan") as Label;
                 Label monday = e.Item.FindControl("MondayTitle") as Label;
@@ -506,22 +506,11 @@ namespace WhereEver
                 //Label name4 = e.Item.FindControl("Label10") as Label;
                 //Label name5 = e.Item.FindControl("Label11") as Label;
 
-                //var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
 
-                //for (int j = 0; j < dd.Count; j++)
-                //{
-                //    var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
-
-                //    DateTime DT = DateTime.Parse(dl.date.ToString());
-
-                //    string week = DT.ToString("MM/dd");
-                //}
-
-
-                time.Text = dr.時間.ToString();
+                time.Text = dr.曜日.ToString();
 
                 if (!dr.Is月Null())
-                    monday.Text = dr.月;
+                    monday.Text = dr.月; ;
 
                 if (!dr.Is火Null())
                     tuesday.Text = dr.火;
@@ -534,9 +523,11 @@ namespace WhereEver
 
                 if (!dr.Is金Null())
                     friday.Text = dr.金;
-
             }
         }
+
+
+
 
         protected void Button3_Click(object sender, EventArgs e)
         {
