@@ -144,7 +144,7 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_EmptyTable order by 時間 asc";
+                "SELECT * FROM T_EmptyTable order by 曜日 asc";
             var dt = new DATASET.DataSet.T_EmptyTableDataTable();
             da.Fill(dt);
             return dt;

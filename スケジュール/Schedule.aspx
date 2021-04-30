@@ -18,11 +18,26 @@
             height: 52px;
             width: 64px;
         }
+
         .auto-style15 {
             background-color: #16ba00;
             color: white;
             text-align: center;
             width: 64px;
+        }
+
+        .auto-style16 {
+            margin-left: 0px;
+            background-color: #16ba00;
+            color: white;
+            text-align: center;
+            height: 454px;
+        }
+
+        .auto-style17 {
+            margin-left: 0px;
+            width: 500px;
+            height: 454px;
         }
     </style>
 </head>
@@ -39,10 +54,15 @@
             </tr>
         </table>
 
+        <br />
+
 
         <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
+
         <table id="btn" class="auto-style12">
+
             <td class="auto-style11">
+
                 <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="20px" Width="1200px" HorizontalAlign="Left">
                     <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
                     <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
@@ -52,13 +72,18 @@
                     <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
                     <asp:Button ID="Button5" runat="server" Text="来週" class="btn-flat-border" OnClick="Button5_Click" />
 
+
+
                 </asp:Panel>
             </td>
         </table>
 
+        <br />
+
+
         <div>
             <asp:Panel ID="Panel1" runat="server">
-                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnPreRender="CalendarA">
+                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="20%" NextPrevFormat="FullMonth" Width="20%" OnPreRender="CalendarA" CssClass="auto-style9">
                     <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                     <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
                     <OtherMonthDayStyle ForeColor="#999999" />
@@ -140,10 +165,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td runat="server" class="Title">
+                        <td runat="server" class="auto-style16">
                             <p>担当者名</p>
                         </td>
-                        <td class="auto-style8">
+                        <td class="auto-style17">
                             <asp:CheckBoxList ID="CheckBoxList1" runat="server">
                                 <asp:ListItem>石岡</asp:ListItem>
                                 <asp:ListItem>木村</asp:ListItem>
@@ -188,10 +213,22 @@
                 ID="Scdl3"
                 AutoGenerateColumns="False"
                 OnItemDataBound="Scdl3_ItemDataBound"
-                CssClass="scdl" HeaderStyle-Width="200px" OnSelectedIndexChanged="Scdl3_SelectedIndexChanged" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" Width="1200px" Style="margin-left: 0px">
+                CssClass="scdl"
+                HeaderStyle-Width="200px"
+                OnSelectedIndexChanged="Scdl3_SelectedIndexChanged"
+                BackColor="White"
+                BorderColor="#999999"
+                BorderStyle="Solid"
+                BorderWidth="1px"
+                CellPadding="3"
+                ForeColor="Black"
+                GridLines="Vertical"
+                Width="1200px"
+                Style="margin-left: 0px">
+
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
-                    <asp:TemplateColumn HeaderText="時間" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
+                    <asp:TemplateColumn HeaderText="曜日" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" />
                         <ItemTemplate>
@@ -263,14 +300,6 @@
         <div>
             <asp:Panel ID="Panel3" runat="server">
 
-                <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
-                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                    <OtherMonthDayStyle ForeColor="#999999" />
-                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                    <TodayDayStyle BackColor="#CCCCCC" />
-                </asp:Calendar>
 
                 <table id="Test">
 
@@ -284,7 +313,7 @@
 
                         <td class="auto-style7">
 
-                              <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+                            <asp:TextBox ID="TextBox3" runat="server" Text=""></asp:TextBox>
 
 
                         </td>
@@ -349,7 +378,7 @@
 
                         <td class="auto-style8">
 
-                            <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
+                            <asp:TextBox ID="TextBox2" runat="server" Text="test1"></asp:TextBox>
 
                         </td>
 
