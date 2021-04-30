@@ -378,7 +378,7 @@
 
                         <td class="auto-style8">
 
-                            <asp:TextBox ID="TextBox2" runat="server" Text="test1"></asp:TextBox>
+                            <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
 
                         </td>
 
