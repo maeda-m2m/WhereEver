@@ -58,6 +58,7 @@ namespace WhereEver
                 else
                 {
                     No.Text = "";
+                    Naiyou.Text = Color.Navy.ToString();
                 }
 
                 Id.Text = dr.Id;
@@ -177,7 +178,6 @@ namespace WhereEver
                     dr.HentouNo = dr2.HentouNo + 1;
                 }
                 dr.No = Int32.Parse(txtHozon.Text);
-
             }
             
             
@@ -186,6 +186,7 @@ namespace WhereEver
             dr.Name = Label1.Text;
             dr.Naiyou = txtHenshin.Text;
 
+            txtHenshin.Text = "";
             dt.AddT_ChatRow(dr);
             Class2.InsertList(dt, Global.GetConnection());
             Create();
