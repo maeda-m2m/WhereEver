@@ -58,6 +58,7 @@ namespace WhereEver
                 else
                 {
                     No.Text = "";
+                    Naiyou.Text = Color.Navy.ToString();
                 }
 
                 Id.Text = dr.Id;
@@ -185,6 +186,7 @@ namespace WhereEver
             dr.Name = Label1.Text;
             dr.Naiyou = txtHenshin.Text;
 
+            txtHenshin.Text = "";
             dt.AddT_ChatRow(dr);
             Class2.InsertList(dt, Global.GetConnection());
             Create();
