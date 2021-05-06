@@ -177,7 +177,6 @@ namespace WhereEver
                     dr.HentouNo = dr2.HentouNo + 1;
                 }
                 dr.No = Int32.Parse(txtHozon.Text);
-
             }
             
             
