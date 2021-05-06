@@ -88,11 +88,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        &nbsp;</td>
-                    <td colspan="2" class="btn-wbs">
-                        <asp:Button ID="btnWBS" CssClass="btn" runat="server" Text="WBS表一覧⇒" OnClick="btnWBS_Click" />
+                    <td class="btn-wbs">
+                        <asp:Button ID="btnWBS" CssClass="btn" runat="server" Text="WBS表一覧↓" OnClick="btnWBS_Click" />
                     </td>
+                    <td colspan="2" >
+                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td colspan="3">
@@ -125,21 +125,35 @@
                 </tr>
             </table>
         </div>
+
+        <div>
+
+            <table class="table">
+                <tr>
+                    <td>
+                        <asp:Label ID="lblWBSMonth" runat="server" Text="日付" Width="300px"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
         <div class="wbs">
 
             <asp:DataGrid ID="wbs" runat="server" 
                 AutoGenerateColumns="False"
                 OnItemDataBound="wbs_ItemDataBound" 
-                Width="100%">
+                >
                 <Columns>
-                    <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ItemStyle-Width="8%"/>
-                    <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目" ItemStyle-Width="15%"/>
+                    <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ItemStyle-Width="100px"/>
+                    <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目" ItemStyle-Width="150px"/>
                 </Columns>
                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10%"/>
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"/>
             </asp:DataGrid>
 
         </div>
+        
     </form>
 </body>
 </html>
