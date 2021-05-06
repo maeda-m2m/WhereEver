@@ -84,7 +84,7 @@
                         </td>
                     <td colspan="2" class="auto-style2">
                         <asp:Button ID="btnPMiddle" CssClass="btn" runat="server" Text="中項目登録" OnClick="btnPMiddle_Click" ValidationGroup="Group02"/>
-                        <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" CausesValidation="False" />
+                        <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" CausesValidation="False" OnClick="btnClear_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -126,8 +126,6 @@
             </table>
         </div>
         <div class="wbs">
-
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
             <asp:DataGrid ID="wbs" runat="server" 
                 AutoGenerateColumns="False"
