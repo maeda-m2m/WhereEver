@@ -801,7 +801,7 @@ namespace WhereEver
 
         }
 
-        private void UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)
+        public static void UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)
         {
             {
                 var a = new SqlCommand("", sql);
@@ -837,6 +837,8 @@ namespace WhereEver
                 sql.Close();
             }
         }
+
+
 
 
         protected void ScdlList_SelectedIndexChanged(object sender, EventArgs e)
@@ -1798,7 +1800,7 @@ namespace WhereEver
             Response.Redirect("Schedule.aspx");
         }
 
-        protected void Button8_Click(object sender, EventArgs e)
+        protected void Button8_Click(object sender, EventArgs e)//検索用
         {
             var a = TextBox3.Text;//date
 
@@ -1829,7 +1831,7 @@ namespace WhereEver
             Create2();
 
         }
-        public static DATASET.DataSet.T_ScheduleDataTable A(string a, string b, string c, string d, SqlConnection Sqlco)//int date
+        public static DATASET.DataSet.T_ScheduleDataTable A(string a, string b, string c, string d, SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 
