@@ -60,22 +60,12 @@
 
             <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center">
 
-                <asp:Calendar ID="Calendar1" runat="server" CssClass="Center" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="300px" NextPrevFormat="FullMonth" Width="500px" OnPreRender="CalendarA">
-                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                    <OtherMonthDayStyle ForeColor="#999999" />
-                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                    <TodayDayStyle BackColor="#CCCCCC" />
-                </asp:Calendar>
-
-
                 <table class="Center">
 
                     <tr>
                         <th class="Center_Color">日付</th>
                         <td>
-                            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                            <input type="date" runat="server" name="Calendar10" id="Calendar10"/>
                         </td>
                     </tr>
 

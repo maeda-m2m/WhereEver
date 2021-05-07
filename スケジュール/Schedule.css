@@ -21,8 +21,6 @@
 }
 
     .btn-flat-border:hover {
-        margin: auto;
-        text-align: center;
         background: #16ba00;
         color: white;
     }
@@ -35,17 +33,6 @@
 }
 
 
-
-#btn {
-    margin: auto;
-    text-align: center;
-    /* margin-left: 100px;*/
-}
-
-#calendar1 {
-    margin: auto;
-    text-align: center;
-}
 
 .Center {
     margin: auto;
