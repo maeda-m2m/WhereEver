@@ -34,6 +34,10 @@ namespace WhereEver
                 Scdl3.Columns[2].ItemStyle.Wrap = true;
                 Scdl3.Columns[3].ItemStyle.Wrap = true;
                 Scdl3.Columns[4].ItemStyle.Wrap = true;
+
+                //Panel1、登録
+                //Panel2、メインメニュー
+                //Panel3、検索
             }
         }
 
@@ -45,67 +49,6 @@ namespace WhereEver
             ScdlList.DataSource = dt;
 
             ScdlList.DataBind();
-        }
-
-        //スケジュール表にデータを格納　→　Scdl3_ItemDataBound に移動　→　Create2 に移動
-        public void Create3()
-        {
-            DATASET.DataSet.T_EmptyTableDataTable dt = Class1.GetSchedule3DataTable(Global.GetConnection());
-
-            Scdl3.DataSource = dt;
-
-            Scdl3.DataBind();
-        }
-
-
-        //スケジュール登録ボタンを押したときの動き
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-
-            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-
-            var dr = dt.NewT_ScheduleRow();
-
-            string t = DropDownList1.SelectedValue;
-
-            string f = (Calendar10.Value) + " " + (DropDownList1.SelectedValue);
-
-            DateTime dd = DateTime.Parse(f);
-
-            dr.date = dd;
-
-            dr.time = t;
-
-            dr.title = TextBox1.Text;
-
-            dr.name = "";
-
-            foreach (ListItem item in CheckBoxList1.Items)
-            {
-                if (item.Selected)
-                {
-                    dr.name += item.Value + " ";
-                }
-            }
-
-            DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
-
-            int no = dl.SdlNo;
-
-            dr.SdlNo = no + 1;
-
-            dt.AddT_ScheduleRow(dr);
-
-            Class1.InsertList(dt, Global.GetConnection());
-
-            Create();
-
-            Create3();
-            Panel1.Visible = false;
-            Panel2.Visible = true;
-            Panel3.Visible = false;
-            Create2();
-
         }
 
         private void Create2()//scdl3にスケジュールに登録した値を登録している（今週分）
@@ -579,6 +522,90 @@ namespace WhereEver
             }
         }
 
+        //スケジュール表にデータを格納　→　Scdl3_ItemDataBound に移動　→　Create2 に移動
+        public void Create3()
+        {
+            DATASET.DataSet.T_EmptyTableDataTable dt = Class1.GetSchedule3DataTable(Global.GetConnection());
+
+            Scdl3.DataSource = dt;
+
+            Scdl3.DataBind();
+        }
+
+
+
+        //スケジュール登録ボタンを押したときの動き
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+
+            var dr = dt.NewT_ScheduleRow();
+
+            string t = DropDownList1.SelectedValue;
+
+            string f = (Calendar10.Value) + " " + (DropDownList1.SelectedValue);
+
+            DateTime dd = DateTime.Parse(f);
+
+            dr.date = dd;
+
+            dr.time = t;
+
+            dr.title = TextBox1.Text;
+
+            dr.name = "";
+
+            foreach (ListItem item in CheckBoxList1.Items)
+            {
+                if (item.Selected)
+                {
+                    dr.name += item.Value + " ";
+                }
+            }
+
+            DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
+
+            int no = dl.SdlNo;
+
+            dr.SdlNo = no + 1;
+
+            dt.AddT_ScheduleRow(dr);
+
+            Class1.InsertList(dt, Global.GetConnection());
+
+            Create();
+
+            Create3();
+            Panel1.Visible = false;
+            Panel2.Visible = true;
+            Panel3.Visible = false;
+            Create2();
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)//登録
+        {
+            Panel1.Visible = true;
+            Panel2.Visible = true;
+            Panel3.Visible = false;
+
+            Create();
+            Create3();
+            Create2();
+        }
+
+        protected void Button10_Click(object sender, EventArgs e)//検索
+        {
+            Panel1.Visible = false;
+            Panel2.Visible = true;
+            Panel3.Visible = true;
+
+            Create();
+            Create3();
+            Create2();
+        }
+
 
         protected void Scdl3_ItemDataBound(object sender, DataGridItemEventArgs e)//scdl3の表示の枠を作っている
         {
@@ -623,19 +650,6 @@ namespace WhereEver
             }
         }
 
-
-
-
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            Panel1.Visible = true;
-            Panel2.Visible = false;
-            Panel3.Visible = false;
-
-            Create();
-            Create3();
-            Create2();
-        }
 
         protected void ScdlList_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
@@ -1837,12 +1851,7 @@ namespace WhereEver
 
 
 
-        protected void Button10_Click(object sender, EventArgs e)
-        {
-            Panel3.Visible = true;
-            Create3();
-            Create2();
-        }
+
     }
 }
 
