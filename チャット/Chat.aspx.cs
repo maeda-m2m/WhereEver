@@ -58,7 +58,7 @@ namespace WhereEver
                 else
                 {
                     No.Text = "";
-                    Naiyou.Text = Color.Navy.ToString();
+                    Naiyou.ForeColor = Color.Green;
                 }
 
                 Id.Text = dr.Id;
