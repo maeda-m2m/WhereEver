@@ -27,13 +27,6 @@
 
 
 
-.scdl {
-    margin: auto;
-    text-align: center;
-}
-
-
-
 .Center {
     margin: auto;
     text-align: center;
@@ -42,4 +35,8 @@
 .Center_Color {
     background-color: #16ba00;
     color: white;
+}
+
+.CheckBoxList_Left {
+   text-align:left;
 }

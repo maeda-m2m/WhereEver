@@ -65,7 +65,7 @@
                     <tr>
                         <th class="Center_Color">日付</th>
                         <td>
-                            <input type="date" runat="server" name="Calendar10" id="Calendar10"/>
+                            <input type="date" runat="server" name="Calendar10" id="Calendar10" />
                         </td>
                     </tr>
 
@@ -124,7 +124,7 @@
                     <tr>
                         <th class="Center_Color">担当者</th>
                         <td>
-                            <asp:CheckBoxList ID="CheckBoxList1" runat="server">
+                            <asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="CheckBoxList_Left">
                                 <asp:ListItem>石岡</asp:ListItem>
                                 <asp:ListItem>木村</asp:ListItem>
                                 <asp:ListItem>佐藤</asp:ListItem>
@@ -166,9 +166,9 @@
         <div>
             <asp:DataGrid runat="server"
                 ID="Scdl3"
+                CssClass="Center"
                 AutoGenerateColumns="False"
                 OnItemDataBound="Scdl3_ItemDataBound"
-                CssClass="scdl"
                 HeaderStyle-Width="200px"
                 OnSelectedIndexChanged="Scdl3_SelectedIndexChanged"
                 BackColor="White"
@@ -178,8 +178,8 @@
                 CellPadding="3"
                 ForeColor="Black"
                 GridLines="Vertical"
-                Width="1200px"
-                Style="margin: auto;">
+                Width="1200px">
+
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
@@ -322,7 +322,7 @@
                     <tr>
                         <th class="Center_Color">担当者</th>
                         <td>
-                            <asp:CheckBoxList ID="CheckBoxList2" runat="server">
+                            <asp:CheckBoxList ID="CheckBoxList2" runat="server" CssClass="CheckBoxList_Left">
                                 <asp:ListItem>石岡</asp:ListItem>
                                 <asp:ListItem>木村</asp:ListItem>
                                 <asp:ListItem>佐藤</asp:ListItem>
@@ -359,14 +359,13 @@
             <asp:DataGrid
                 runat="server"
                 ID="ScdlList"
+                CssClass="Center"
                 AutoGenerateColumns="false"
                 OnEditCommand="ScdlList_EditCommand"
                 OnCancelCommand="ScdlList_CancelCommand"
                 OnUpdateCommand="ScdlList_UpdateCommand"
                 OnItemDataBound="ScdlList_ItemDataBound" OnItemCommand="ScdlList_ItemCommand"
-                CssClass="scdl"
                 HeaderStyle-Width="200px"
-                Style="margin: auto;"
                 HorizontalAlign="center" Width="1200px">
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
