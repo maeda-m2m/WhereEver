@@ -33,13 +33,9 @@
     width: 200px;
     height: 25px;
 }
-.item{
-    width:auto;
-}
 .btn-wbs {
     text-align: right;
 }
 .wbs {
-    float: left;
-    width: 50%
+    width: 100%
 }

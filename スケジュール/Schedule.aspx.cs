@@ -57,25 +57,6 @@ namespace WhereEver
             Scdl3.DataBind();
         }
 
-        //Calender1で日付をクリックしたらLabel1に表示される
-        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-        {
-            Label1.Text = Calendar1.SelectedDate.ToString("yyyy/MM/dd");
-
-            Create();
-            Create3();
-            Create2();
-        }
-
-
-        //Calendarに予定を表示するためのクラス
-        protected void CalendarA(object sender, EventArgs e)
-        {
-            Create();
-            Create3();
-            Create2();
-        }
-
 
         //スケジュール登録ボタンを押したときの動き
         protected void Button2_Click(object sender, EventArgs e)
@@ -87,7 +68,7 @@ namespace WhereEver
 
             string t = DropDownList1.SelectedValue;
 
-            string f = (Label1.Text) + " " + (DropDownList1.SelectedValue);
+            string f = (Calendar10.Value) + " " + (DropDownList1.SelectedValue);
 
             DateTime dd = DateTime.Parse(f);
 
@@ -651,8 +632,6 @@ namespace WhereEver
             Panel2.Visible = false;
             Panel3.Visible = false;
 
-            Calendar1.DataBind();
-
             Create();
             Create3();
             Create2();
@@ -801,7 +780,7 @@ namespace WhereEver
 
         }
 
-        private void UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)
+        public static void UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)
         {
             {
                 var a = new SqlCommand("", sql);
@@ -837,6 +816,8 @@ namespace WhereEver
                 sql.Close();
             }
         }
+
+
 
 
         protected void ScdlList_SelectedIndexChanged(object sender, EventArgs e)
@@ -1798,7 +1779,7 @@ namespace WhereEver
             Response.Redirect("Schedule.aspx");
         }
 
-        protected void Button8_Click(object sender, EventArgs e)
+        protected void Button8_Click(object sender, EventArgs e)//検索用
         {
             var a = TextBox3.Text;//date
 
@@ -1829,7 +1810,7 @@ namespace WhereEver
             Create2();
 
         }
-        public static DATASET.DataSet.T_ScheduleDataTable A(string a, string b, string c, string d, SqlConnection Sqlco)//int date
+        public static DATASET.DataSet.T_ScheduleDataTable A(string a, string b, string c, string d, SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 

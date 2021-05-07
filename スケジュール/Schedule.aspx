@@ -10,41 +10,14 @@
     <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Schedule</title>
-    <style type="text/css">
-        .auto-style14 {
-            background-color: #16ba00;
-            color: white;
-            text-align: center;
-            height: 52px;
-            width: 64px;
-        }
 
-        .auto-style15 {
-            background-color: #16ba00;
-            color: white;
-            text-align: center;
-            width: 64px;
-        }
-
-        .auto-style16 {
-            margin-left: 0px;
-            background-color: #16ba00;
-            color: white;
-            text-align: center;
-            height: 454px;
-        }
-
-        .auto-style17 {
-            margin-left: 0px;
-            width: 500px;
-            height: 454px;
-        }
-    </style>
 </head>
 
 <body>
+    <form runat="server">
 
-    <form id="form1" runat="server">
+
+
         <table>
 
             <tr>
@@ -57,13 +30,13 @@
         <br />
 
 
-        <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
 
-        <table id="btn" class="auto-style12">
 
-            <td class="auto-style11">
+        <table class="Center">
 
-                <asp:Panel ID="Panel2" runat="server" CssClass="auto-style9" Height="20px" Width="1200px" HorizontalAlign="Left">
+            <td>
+
+                <asp:Panel ID="Panel2" runat="server" HorizontalAlign="center">
                     <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
                     <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
                     <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（未完成）" OnClientClick="A()" />
@@ -75,46 +48,30 @@
 
 
                 </asp:Panel>
+
             </td>
+
         </table>
 
         <br />
 
 
         <div>
-            <asp:Panel ID="Panel1" runat="server">
-                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="20%" NextPrevFormat="FullMonth" Width="20%" OnPreRender="CalendarA" CssClass="auto-style9">
-                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                    <OtherMonthDayStyle ForeColor="#999999" />
-                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                    <TodayDayStyle BackColor="#CCCCCC" />
-                </asp:Calendar>
 
-                <table id="tourokuform">
+            <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center">
+
+                <table class="Center">
 
                     <tr>
-
-                        <td runat="server" class="auto-style1">
-
-                            <p>日付</p>
-
+                        <th class="Center_Color">日付</th>
+                        <td>
+                            <input type="date" runat="server" name="Calendar10" id="Calendar10" />
                         </td>
-
-                        <td class="auto-style7">
-
-                            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-
-                        </td>
-
                     </tr>
 
                     <tr>
-                        <td runat="server" class="auto-style1">
-                            <p>時間</p>
-                        </td>
-                        <td class="auto-style7">
+                        <th class="Center_Color">時間</th>
+                        <td>
                             <asp:DropDownList ID="DropDownList1" runat="server">
                                 <asp:ListItem>9:00</asp:ListItem>
                                 <asp:ListItem>9:15</asp:ListItem>
@@ -156,20 +113,18 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
+
                     <tr>
-                        <td runat="server" class="Title">
-                            <p>内容</p>
-                        </td>
-                        <td class="auto-style8">
+                        <th class="Center_Color">内容</th>
+                        <td>
                             <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
                         </td>
                     </tr>
+
                     <tr>
-                        <td runat="server" class="auto-style16">
-                            <p>担当者名</p>
-                        </td>
-                        <td class="auto-style17">
-                            <asp:CheckBoxList ID="CheckBoxList1" runat="server">
+                        <th class="Center_Color">担当者</th>
+                        <td>
+                            <asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="CheckBoxList_Left">
                                 <asp:ListItem>石岡</asp:ListItem>
                                 <asp:ListItem>木村</asp:ListItem>
                                 <asp:ListItem>佐藤</asp:ListItem>
@@ -198,22 +153,22 @@
 
                             <asp:Button ID="Button7" runat="server" Text="戻る" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" />
 
-
-
                         </td>
 
                     </tr>
 
                 </table>
+
             </asp:Panel>
+
         </div>
 
         <div>
             <asp:DataGrid runat="server"
                 ID="Scdl3"
+                CssClass="Center"
                 AutoGenerateColumns="False"
                 OnItemDataBound="Scdl3_ItemDataBound"
-                CssClass="scdl"
                 HeaderStyle-Width="200px"
                 OnSelectedIndexChanged="Scdl3_SelectedIndexChanged"
                 BackColor="White"
@@ -223,8 +178,8 @@
                 CellPadding="3"
                 ForeColor="Black"
                 GridLines="Vertical"
-                Width="1200px"
-                Style="margin-left: 0px">
+                Width="1200px">
+
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
@@ -301,30 +256,19 @@
             <asp:Panel ID="Panel3" runat="server">
 
 
-                <table id="Test">
+                <table class="Center">
 
                     <tr>
-
-                        <td runat="server" class="auto-style14">
-
-                            <p>日付</p>
-
-                        </td>
-
-                        <td class="auto-style7">
-
+                        <th class="Center_Color">日付</th>
+                        <td>
                             <asp:TextBox ID="TextBox3" runat="server" Text=""></asp:TextBox>
 
-
                         </td>
-
                     </tr>
 
                     <tr>
-                        <td runat="server" class="auto-style14">
-                            <p>時間</p>
-                        </td>
-                        <td class="auto-style7">
+                        <th class="Center_Color">時間</th>
+                        <td>
                             <asp:DropDownList ID="DropDownList2" runat="server">
                                 <asp:ListItem></asp:ListItem>
                                 <asp:ListItem>9:00</asp:ListItem>
@@ -365,33 +309,20 @@
                                 <asp:ListItem>17:45</asp:ListItem>
                                 <asp:ListItem>18:00</asp:ListItem>
                             </asp:DropDownList>
-
                         </td>
-
                     </tr>
 
                     <tr>
-
-                        <td runat="server" class="auto-style15">
-                            <p>内容</p>
-                        </td>
-
-                        <td class="auto-style8">
-
+                        <th class="Center_Color">内容</th>
+                        <td>
                             <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
-
                         </td>
-
                     </tr>
 
                     <tr>
-                        <td runat="server" class="auto-style15">
-                            <p>
-                                担当者名
-                            </p>
-                        </td>
-                        <td class="auto-style8">
-                            <asp:CheckBoxList ID="CheckBoxList2" runat="server">
+                        <th class="Center_Color">担当者</th>
+                        <td>
+                            <asp:CheckBoxList ID="CheckBoxList2" runat="server" CssClass="CheckBoxList_Left">
                                 <asp:ListItem>石岡</asp:ListItem>
                                 <asp:ListItem>木村</asp:ListItem>
                                 <asp:ListItem>佐藤</asp:ListItem>
@@ -410,12 +341,14 @@
                                 <asp:ListItem>藤川</asp:ListItem>
                             </asp:CheckBoxList>
                         </td>
-                        <tr>
-                            <td colspan="2">
-                                <asp:Button ID="Button8" runat="server" class="btn-flat-border" OnClick="Button8_Click" Text="検索" />
-                                <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" Text="戻る" />
-                            </td>
-                        </tr>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <asp:Button ID="Button8" runat="server" class="btn-flat-border" OnClick="Button8_Click" Text="検索" />
+                            <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" Text="戻る" />
+                        </td>
+                    </tr>
                 </table>
             </asp:Panel>
         </div>
@@ -426,16 +359,14 @@
             <asp:DataGrid
                 runat="server"
                 ID="ScdlList"
+                CssClass="Center"
                 AutoGenerateColumns="false"
                 OnEditCommand="ScdlList_EditCommand"
                 OnCancelCommand="ScdlList_CancelCommand"
                 OnUpdateCommand="ScdlList_UpdateCommand"
-                OnItemDataBound="ScdlList_ItemDataBound"
-                CssClass="scdl"
+                OnItemDataBound="ScdlList_ItemDataBound" OnItemCommand="ScdlList_ItemCommand"
                 HeaderStyle-Width="200px"
-                OnItemCommand="ScdlList_ItemCommand"
-                Style="margin-left: 0px"
-                HorizontalAlign="Left" Width="1200px">
+                HorizontalAlign="center" Width="1200px">
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
@@ -487,19 +418,18 @@
 
         <br />
 
+
+
+
+        <script>
+
+            function A() {
+
+                return confirm('本当に実行しますか？');
+
+            }
+
+        </script>
     </form>
-
-
-
-    <script>
-
-        function A() {
-
-            return confirm('本当に実行しますか？');
-
-        }
-
-    </script>
-
 </body>
 </html>

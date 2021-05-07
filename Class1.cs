@@ -11,121 +11,121 @@ namespace WhereEver
     public class Class1
     {
 
-        internal static DATASET.DataSet.M_UserRow LogoutM_UserRow(SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM M_User WHERE LogoutTime IS NULL";
-            DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count == 1)
-                return dt[0] as DATASET.DataSet.M_UserRow;
-            else
-                return null;
+        //internal static DATASET.DataSet.M_UserRow LogoutM_UserRow(SqlConnection sqlConnection)
+        //{
+        //    SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+        //    da.SelectCommand.CommandText =
+        //        "SELECT * FROM M_User WHERE LogoutTime IS NULL";
+        //    DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
+        //    da.Fill(dt);
+        //    if (dt.Rows.Count == 1)
+        //        return dt[0] as DATASET.DataSet.M_UserRow;
+        //    else
+        //        return null;
 
-        }
+        //}
 
-        internal static DATASET.DataSet.M_UserRow InsertLogoutTime(SqlConnection Sql)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", Sql);
-            da.InsertCommand.CommandText =
-                "SELECT * FROM M_User WHERE LogoutTime IS NULL";
-            DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count == 1)
-                return dt[0] as DATASET.DataSet.M_UserRow;
-            else
-                return null;
+        //internal static DATASET.DataSet.M_UserRow InsertLogoutTime(SqlConnection Sql)
+        //{
+        //    SqlDataAdapter da = new SqlDataAdapter("", Sql);
+        //    da.InsertCommand.CommandText =
+        //        "SELECT * FROM M_User WHERE LogoutTime IS NULL";
+        //    DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
+        //    da.Fill(dt);
+        //    if (dt.Rows.Count == 1)
+        //        return dt[0] as DATASET.DataSet.M_UserRow;
+        //    else
+        //        return null;
 
-        }
+        //}
 
-        public static DATASET.DataSet.T_ScheduleDataTable GetTDataTable(SqlConnection Sqlco)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule";
-            var df = new DATASET.DataSet.T_ScheduleDataTable();
-            da.Fill(df);
-            return df;
-        }
+        //public static DATASET.DataSet.T_ScheduleDataTable GetTDataTable(SqlConnection Sqlco)
+        //{
+        //    SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+        //    da.SelectCommand.CommandText =
+        //        "SELECT * FROM T_Schedule";
+        //    var df = new DATASET.DataSet.T_ScheduleDataTable();
+        //    da.Fill(df);
+        //    return df;
+        //}
 
-        public static DATASET.DataSet.T_ScheduleRow GetT_ScheduleRow(SqlConnection schedule)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", schedule);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule";
-            DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count == 1)
-                return dt[0] as DATASET.DataSet.T_ScheduleRow;
-            else
-                return null;
+        //public static DATASET.DataSet.T_ScheduleRow GetT_ScheduleRow(SqlConnection schedule)
+        //{
+        //    SqlDataAdapter da = new SqlDataAdapter("", schedule);
+        //    da.SelectCommand.CommandText =
+        //        "SELECT * FROM T_Schedule";
+        //    DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
+        //    da.Fill(dt);
+        //    if (dt.Rows.Count == 1)
+        //        return dt[0] as DATASET.DataSet.T_ScheduleRow;
+        //    else
+        //        return null;
 
-        }
+        //}
 
-        public static DATASET.DataSet.T_ScheduleRow UpdateT_ScheduleRow(SqlConnection update)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", update);
-            da.SelectCommand.CommandText =
-                "UPDATE FROM T_schedule ";
-            DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count == 1)
-                return dt[0] as DATASET.DataSet.T_ScheduleRow;
-            else
-                return null;
-
-
-        }
+        //public static DATASET.DataSet.T_ScheduleRow UpdateT_ScheduleRow(SqlConnection update)
+        //{
+        //    SqlDataAdapter da = new SqlDataAdapter("", update);
+        //    da.SelectCommand.CommandText =
+        //        "UPDATE FROM T_schedule ";
+        //    DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
+        //    da.Fill(dt);
+        //    if (dt.Rows.Count == 1)
+        //        return dt[0] as DATASET.DataSet.T_ScheduleRow;
+        //    else
+        //        return null;
 
 
-        public static bool DeleteT_Schedule(int time, SqlConnection sqlconnection)
-        {
-            SqlCommand cmdDelSave = new SqlCommand("", sqlconnection);
-            cmdDelSave.CommandText =
-                "DELETE FROM T_schedule WHERE time=@c";
-            cmdDelSave.Parameters.AddWithValue("@c", time);
-            SqlTransaction sql = null;
-            try
-            {
-                sqlconnection.Open();
-                sql = sqlconnection.BeginTransaction();
-                cmdDelSave.Transaction = sql;
+        //}
 
-                cmdDelSave.ExecuteNonQuery();
 
-                sql.Commit();
-                return true;
-            }
-            finally { sqlconnection.Close(); }
+        //public static bool DeleteT_Schedule(int time, SqlConnection sqlconnection)
+        //{
+        //    SqlCommand cmdDelSave = new SqlCommand("", sqlconnection);
+        //    cmdDelSave.CommandText =
+        //        "DELETE FROM T_schedule WHERE time=@c";
+        //    cmdDelSave.Parameters.AddWithValue("@c", time);
+        //    SqlTransaction sql = null;
+        //    try
+        //    {
+        //        sqlconnection.Open();
+        //        sql = sqlconnection.BeginTransaction();
+        //        cmdDelSave.Transaction = sql;
 
-        }
+        //        cmdDelSave.ExecuteNonQuery();
 
-        public static void InsertSchedule(DATASET.DataSet.T_ScheduleDataTable dt, SqlConnection sqlConnection)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule";
-            da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
+        //        sql.Commit();
+        //        return true;
+        //    }
+        //    finally { sqlconnection.Close(); }
 
-            SqlTransaction sql = null;
+        //}
 
-            try
-            {
-                sqlConnection.Open();
-                sql = sqlConnection.BeginTransaction();
+        //public static void InsertSchedule(DATASET.DataSet.T_ScheduleDataTable dt, SqlConnection sqlConnection)
+        //{
+        //    SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+        //    da.SelectCommand.CommandText =
+        //        "SELECT * FROM T_Schedule";
+        //    da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
 
-                da.SelectCommand.Transaction = da.InsertCommand.Transaction = sql;
+        //    SqlTransaction sql = null;
 
-                da.Update(dt);
+        //    try
+        //    {
+        //        sqlConnection.Open();
+        //        sql = sqlConnection.BeginTransaction();
 
-                sql.Commit();
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-        }
+        //        da.SelectCommand.Transaction = da.InsertCommand.Transaction = sql;
+
+        //        da.Update(dt);
+
+        //        sql.Commit();
+        //    }
+        //    finally
+        //    {
+        //        sqlConnection.Close();
+        //    }
+        //}
 
 
 
@@ -273,5 +273,7 @@ namespace WhereEver
                 sql.Close();
             }
         }
+
+       
     }
 }

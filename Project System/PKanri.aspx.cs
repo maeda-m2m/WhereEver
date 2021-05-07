@@ -296,34 +296,17 @@ namespace WhereEver.Project_System
             DateTime Time2 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddleover;
 
             int interval = (int)(Time2 - Time1).TotalDays+1;
-            int month1 = Time1.Month;
-            int month2 = Time2.Month;
-            int day1 = Time1.Day;
-            int day2 = Time2.Day;
-            ar = new int[interval];
+            ar = new DateTime[interval];
 
             for (int i = 0; i < interval; i++)
             {
-                if (month1 <= month2 || day1 <= day2)
-                {
-                    ar[i] = day1;
-                    day1++;
-                    if (day1 >= 30)
-                    {
-                        day1 = 1;
-                    }
-                }
+                ar[i] = Time1.AddDays(i);
             }
             DATASET.DataSet.T_PdbKanriDataTable dt = GetT_PdbKanriDataTable(Global.GetConnection());
-            for (int i = 0; i < interval; ++i)
-            {
-                dt.Columns.Add(ar[i].ToString()+i);
-            }
-
             wbs.DataSource = dt;
             wbs.DataBind();
         }
-        public int[] ar;
+        public DateTime[] ar;
         protected void wbs_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
             for (int i = 0; i<ar.Length;i++)
@@ -331,14 +314,7 @@ namespace WhereEver.Project_System
                 if (e.Item.ItemType == ListItemType.Header)
                 {
                     TableCell cell = new TableCell();
-                    if (ar[i] < 10) 
-                    {
-                        cell.Controls.Add(new LiteralControl(ar[i].ToString()));//ヘッダー
-                    }
-                    else
-                    {
-                        cell.Controls.Add(new LiteralControl(ar[i].ToString()));//ヘッダー
-                    }
+                    cell.Controls.Add(new LiteralControl(ar[i].Day.ToString()));//ヘッダー
                     e.Item.Cells.Add(cell);
                 }
             }
@@ -351,29 +327,27 @@ namespace WhereEver.Project_System
                 for (int i = 0; i < ar.Length; i++)
                 {
                     TableCell cell = new TableCell();
-                    if (dr.PMiddlestart.Day <= ar[i] && dr.PMiddleover.Day >= ar[i])
+                    if (dr.PMiddlestart <= ar[i] && dr.PMiddleover >= ar[i])
                     {
                         cell.BackColor = Color.Black;
                         cell.BorderColor = Color.White;
                     }
-                    DateTime dt = DateTime.Parse("2021/04/"+ar[i]+" 00:00:00");
-                    DayOfWeek dow = dt.DayOfWeek;
+                    DayOfWeek dow = ar[i].DayOfWeek;
 
                     switch (dow)
                     {
                         case DayOfWeek.Saturday:
                             cell.BackColor = Color.Gray;
-                            cell.BorderColor= Color.White;
+                            cell.BorderColor = Color.White;
                             break;
                         case DayOfWeek.Sunday:
                             cell.BackColor = Color.Gray;
                             cell.BorderColor = Color.White;
                             break;
                     }
-                    cell.Width = 20;
+                    cell.Width = 1620/ar.Length;
                     e.Item.Cells.Add(cell);
                 }
-                
             }
         }
 
