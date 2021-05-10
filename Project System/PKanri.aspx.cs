@@ -40,7 +40,7 @@ namespace WhereEver.Project_System
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_PdbKanri where PMiddleid != 0 order by PBigid ";
+                "SELECT * FROM T_PdbKanri where PMiddleid != 0 order by PBigid , PMiddleid";
             DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
             da.Fill(dt);
             return dt;
