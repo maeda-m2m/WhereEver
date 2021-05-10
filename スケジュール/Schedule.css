@@ -40,3 +40,9 @@
 .CheckBoxList_Left {
    text-align:left;
 }
+
+.Test {
+    display: flex;
+    justify-content:center;
+}
+}
