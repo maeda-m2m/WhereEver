@@ -677,7 +677,7 @@ namespace WhereEver
             for (int j = 0; j < dd.Count; j++)
 
             {
-                DataSet.T_Schedule dr = dd.Rows[j] as DataSet.T_Schedule;
+               DATASET. DataSet.T_ScheduleRow dr = dd.Rows[j] as DATASET. DataSet.T_ScheduleRow;
 
                 DateTime DT = DateTime.Parse(dr.date.ToString());
                 string week = DT.ToString("ddd");
@@ -865,7 +865,7 @@ namespace WhereEver
             for (int j = 0; j < dp.Count; j++)
 
             {
-                DataSet.T_ScheduleRow dr = dp.Rows[j] as DataSet.T_ScheduleRow;
+                DATASET.DataSet.T_ScheduleRow dr = dp.Rows[j] as DATASET.DataSet.T_ScheduleRow;
 
                 DateTime DT = DateTime.Parse(dr.date.ToString());
                 string week = DT.ToString("ddd");
