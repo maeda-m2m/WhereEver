@@ -222,13 +222,13 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.DataGrid DgPKanri;
 
         /// <summary>
-        /// lblMonth コントロール。
+        /// lblWBSMonth コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMonth;
+        protected global::System.Web.UI.WebControls.Label lblWBSMonth;
 
         /// <summary>
         /// wbs コントロール。
