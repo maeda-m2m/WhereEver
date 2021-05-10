@@ -26,8 +26,8 @@
         background: #000000;
         color: white;
     }
-.table{
-    width:100%;
+.table {
+    width: 100%;
 }
 .txt {
     width: 200px;
@@ -38,4 +38,7 @@
 }
 .wbs {
     width: 100%
+}
+.lblMonth {
+    white-space: nowrap;
 }
