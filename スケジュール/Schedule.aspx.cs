@@ -15,6 +15,8 @@ namespace WhereEver
 {
     public partial class Schedule : System.Web.UI.Page
     {
+
+
         public DataGridCommandEventHandler Scdl_CancelCommand { get; private set; }
 
 
@@ -26,23 +28,28 @@ namespace WhereEver
                 Create();
                 Create3();
                 Create2();
+
                 Panel1.Visible = false;
                 Panel3.Visible = false;
 
-                Scdl3.Columns[0].ItemStyle.Wrap = true;
-                Scdl3.Columns[1].ItemStyle.Wrap = true;
-                Scdl3.Columns[2].ItemStyle.Wrap = true;
-                Scdl3.Columns[3].ItemStyle.Wrap = true;
-                Scdl3.Columns[4].ItemStyle.Wrap = true;
+                ViewState["count"] = 0;
+
+                //Scdl3.Columns[0].ItemStyle.Wrap = true;
+                //Scdl3.Columns[1].ItemStyle.Wrap = true;
+                //Scdl3.Columns[2].ItemStyle.Wrap = true;
+                //Scdl3.Columns[3].ItemStyle.Wrap = true;
+                //Scdl3.Columns[4].ItemStyle.Wrap = true;
 
                 //Panel1、登録
                 //Panel2、メインメニュー
                 //Panel3、検索
+
+
             }
         }
 
         //スケジュールリストにデータを格納　→　ScdlList_ItemDataBound　に移動
-        private void Create()
+        private void Create()//スケジュールリストにデータを格納
         {
             DATASET.DataSet.T_ScheduleDataTable dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
 
@@ -53,6 +60,8 @@ namespace WhereEver
 
         private void Create2()//scdl3にスケジュールに登録した値を登録している（今週分）
         {
+            ViewState["count"] = 0;
+
             var dd = Class1.SwitchScdl3DataTable(Global.GetConnection());
 
             for (int j = 0; j < dd.Count; j++)
@@ -523,7 +532,7 @@ namespace WhereEver
         }
 
         //スケジュール表にデータを格納　→　Scdl3_ItemDataBound に移動　→　Create2 に移動
-        public void Create3()
+        public void Create3()//スケジュール帳にデータを格納
         {
             DATASET.DataSet.T_EmptyTableDataTable dt = Class1.GetSchedule3DataTable(Global.GetConnection());
 
@@ -717,12 +726,12 @@ namespace WhereEver
         {
             Response.Redirect("PrintSchedule.aspx");
         }
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Panel1.Visible = false;
-            Panel2.Visible = false;
-            Create2();
-        }
+        //protected void Button1_Click(object sender, EventArgs e)
+        //{
+        //    Panel1.Visible = false;
+        //    Panel2.Visible = false;
+        //    Create2();
+        //}
 
         protected void Scdl3_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -841,11 +850,23 @@ namespace WhereEver
 
         protected void Button4_Click(object sender, EventArgs e)
         {
+            int Count_Week = 0;
+            Count_Week = int.Parse(ViewState["count"].ToString()) - 7;
+
+            ViewState["count"] =
+            int.Parse(ViewState["count"].ToString()) - 7;
+
+            var Count = ViewState["count"];
+
             Create3();
-            var dd = Class1.SwitchNextScdl3DataTable(Global.GetConnection());//先週
+
+            var dd = Class1.SwitchNextScdl3DataTable(Count, Global.GetConnection());//前の週
 
             for (int j = 0; j < dd.Count; j++)
             {
+
+
+
                 var dl = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
 
                 DateTime DT = DateTime.Parse(dl.date.ToString());
@@ -879,11 +900,11 @@ namespace WhereEver
                     string b2;
                     string b3;
                     string b4;
-                    b0 = a.AddDays(-7).ToShortDateString();
-                    b1 = a.AddDays(-6).ToShortDateString();
-                    b2 = a.AddDays(-5).ToShortDateString();
-                    b3 = a.AddDays(-4).ToShortDateString();
-                    b4 = a.AddDays(-3).ToShortDateString();
+                    b0 = a.AddDays(Count_Week).ToShortDateString();
+                    b1 = a.AddDays(Count_Week + 1).ToShortDateString();
+                    b2 = a.AddDays(Count_Week + 2).ToShortDateString();
+                    b3 = a.AddDays(Count_Week + 3).ToShortDateString();
+                    b4 = a.AddDays(Count_Week + 4).ToShortDateString();
                     Scdl3.Items[0].Cells[0].Text = "日付";
                     Scdl3.Items[0].Cells[1].Text = b0;//mon
                     Scdl3.Items[0].Cells[2].Text = b1;//tue
@@ -899,11 +920,11 @@ namespace WhereEver
                     string b2;
                     string b3;
                     string b4;
-                    b0 = a.AddDays(-8).ToShortDateString();
-                    b1 = a.AddDays(-7).ToShortDateString();
-                    b2 = a.AddDays(-6).ToShortDateString();
-                    b3 = a.AddDays(-5).ToShortDateString();
-                    b4 = a.AddDays(-4).ToShortDateString();
+                    b0 = a.AddDays(Count_Week - 1).ToShortDateString();
+                    b1 = a.AddDays(Count_Week).ToShortDateString();
+                    b2 = a.AddDays(Count_Week + 1).ToShortDateString();
+                    b3 = a.AddDays(Count_Week + 2).ToShortDateString();
+                    b4 = a.AddDays(Count_Week + 3).ToShortDateString();
                     Scdl3.Items[0].Cells[0].Text = "日付";
                     Scdl3.Items[0].Cells[1].Text = b0;//mon
                     Scdl3.Items[0].Cells[2].Text = b1;//tue
@@ -919,11 +940,11 @@ namespace WhereEver
                     string b2;
                     string b3;
                     string b4;
-                    b0 = a.AddDays(-9).ToShortDateString();
-                    b1 = a.AddDays(-8).ToShortDateString();
-                    b2 = a.AddDays(-7).ToShortDateString();
-                    b3 = a.AddDays(-6).ToShortDateString();
-                    b4 = a.AddDays(-5).ToShortDateString();
+                    b0 = a.AddDays(Count_Week - 2).ToShortDateString();
+                    b1 = a.AddDays(Count_Week - 1).ToShortDateString();
+                    b2 = a.AddDays(Count_Week).ToShortDateString();
+                    b3 = a.AddDays(Count_Week + 1).ToShortDateString();
+                    b4 = a.AddDays(Count_Week + 2).ToShortDateString();
                     Scdl3.Items[0].Cells[0].Text = "日付";
                     Scdl3.Items[0].Cells[1].Text = b0;//mon
                     Scdl3.Items[0].Cells[2].Text = b1;//tue
@@ -939,11 +960,11 @@ namespace WhereEver
                     string b2;
                     string b3;
                     string b4;
-                    b0 = a.AddDays(-10).ToShortDateString();
-                    b1 = a.AddDays(-9).ToShortDateString();
-                    b2 = a.AddDays(-8).ToShortDateString();
-                    b3 = a.AddDays(-7).ToShortDateString();
-                    b4 = a.AddDays(-6).ToShortDateString();
+                    b0 = a.AddDays(Count_Week - 3).ToShortDateString();
+                    b1 = a.AddDays(Count_Week - 2).ToShortDateString();
+                    b2 = a.AddDays(Count_Week - 1).ToShortDateString();
+                    b3 = a.AddDays(Count_Week).ToShortDateString();
+                    b4 = a.AddDays(Count_Week + 1).ToShortDateString();
                     Scdl3.Items[0].Cells[0].Text = "日付";
                     Scdl3.Items[0].Cells[1].Text = b0;//mon
                     Scdl3.Items[0].Cells[2].Text = b1;//tue
@@ -959,11 +980,11 @@ namespace WhereEver
                     string b2;
                     string b3;
                     string b4;
-                    b0 = a.AddDays(-11).ToShortDateString();
-                    b1 = a.AddDays(-10).ToShortDateString();
-                    b2 = a.AddDays(-9).ToShortDateString();
-                    b3 = a.AddDays(-8).ToShortDateString();
-                    b4 = a.AddDays(-7).ToShortDateString();
+                    b0 = a.AddDays(Count_Week - 4).ToShortDateString();
+                    b1 = a.AddDays(Count_Week - 3).ToShortDateString();
+                    b2 = a.AddDays(Count_Week - 2).ToShortDateString();
+                    b3 = a.AddDays(Count_Week - 1).ToShortDateString();
+                    b4 = a.AddDays(Count_Week).ToShortDateString();
                     Scdl3.Items[0].Cells[0].Text = "日付";
                     Scdl3.Items[0].Cells[1].Text = b0;//mon
                     Scdl3.Items[0].Cells[2].Text = b1;//tue
@@ -1313,8 +1334,16 @@ namespace WhereEver
 
         protected void Button5_Click(object sender, EventArgs e)
         {
+            int Count_Week = 0;
+            Count_Week = int.Parse(ViewState["count"].ToString()) + 7;
+
+            ViewState["count"] =
+           int.Parse(ViewState["count"].ToString()) + 7;
+
+            var Count = ViewState["count"];
+
             Create3();
-            var dd = Class1.SwitchNext2Scdl3DataTable(Global.GetConnection());//来週
+            var dd = Class1.SwitchNext2Scdl3DataTable(Count, Global.GetConnection());//次の週
 
             for (int j = 0; j < dd.Count; j++)
             {
@@ -1351,11 +1380,11 @@ namespace WhereEver
                     string b2;
                     string b3;
                     string b4;
-                    b0 = a.AddDays(+7).ToShortDateString();
-                    b1 = a.AddDays(+8).ToShortDateString();
-                    b2 = a.AddDays(+9).ToShortDateString();
-                    b3 = a.AddDays(+10).ToShortDateString();
-                    b4 = a.AddDays(+11).ToShortDateString();
+                    b0 = a.AddDays(Count_Week).ToShortDateString();
+                    b1 = a.AddDays(Count_Week + 1).ToShortDateString();
+                    b2 = a.AddDays(Count_Week + 2).ToShortDateString();
+                    b3 = a.AddDays(Count_Week + 3).ToShortDateString();
+                    b4 = a.AddDays(Count_Week + 4).ToShortDateString();
                     Scdl3.Items[0].Cells[0].Text = "日付";
                     Scdl3.Items[0].Cells[1].Text = b0;//mon
                     Scdl3.Items[0].Cells[2].Text = b1;//tue
@@ -1371,11 +1400,11 @@ namespace WhereEver
                     string b2;
                     string b3;
                     string b4;
-                    b0 = a.AddDays(+6).ToShortDateString();
-                    b1 = a.AddDays(+7).ToShortDateString();
-                    b2 = a.AddDays(+8).ToShortDateString();
-                    b3 = a.AddDays(+9).ToShortDateString();
-                    b4 = a.AddDays(+10).ToShortDateString();
+                    b0 = a.AddDays(Count_Week - 1).ToShortDateString();
+                    b1 = a.AddDays(Count_Week).ToShortDateString();
+                    b2 = a.AddDays(Count_Week + 1).ToShortDateString();
+                    b3 = a.AddDays(Count_Week + 2).ToShortDateString();
+                    b4 = a.AddDays(Count_Week + 3).ToShortDateString();
                     Scdl3.Items[0].Cells[0].Text = "日付";
                     Scdl3.Items[0].Cells[1].Text = b0;//mon
                     Scdl3.Items[0].Cells[2].Text = b1;//tue
@@ -1391,11 +1420,11 @@ namespace WhereEver
                     string b2;
                     string b3;
                     string b4;
-                    b0 = a.AddDays(+5).ToShortDateString();
-                    b1 = a.AddDays(+6).ToShortDateString();
-                    b2 = a.AddDays(+7).ToShortDateString();
-                    b3 = a.AddDays(+8).ToShortDateString();
-                    b4 = a.AddDays(+9).ToShortDateString();
+                    b0 = a.AddDays(Count_Week - 2).ToShortDateString();
+                    b1 = a.AddDays(Count_Week - 1).ToShortDateString();
+                    b2 = a.AddDays(Count_Week).ToShortDateString();
+                    b3 = a.AddDays(Count_Week + 1).ToShortDateString();
+                    b4 = a.AddDays(Count_Week + 2).ToShortDateString();
                     Scdl3.Items[0].Cells[0].Text = "日付";
                     Scdl3.Items[0].Cells[1].Text = b0;//mon
                     Scdl3.Items[0].Cells[2].Text = b1;//tue
@@ -1411,11 +1440,11 @@ namespace WhereEver
                     string b2;
                     string b3;
                     string b4;
-                    b0 = a.AddDays(+4).ToShortDateString();
-                    b1 = a.AddDays(+5).ToShortDateString();
-                    b2 = a.AddDays(+6).ToShortDateString();
-                    b3 = a.AddDays(+7).ToShortDateString();
-                    b4 = a.AddDays(+8).ToShortDateString();
+                    b0 = a.AddDays(Count_Week - 3).ToShortDateString();
+                    b1 = a.AddDays(Count_Week - 2).ToShortDateString();
+                    b2 = a.AddDays(Count_Week - 1).ToShortDateString();
+                    b3 = a.AddDays(Count_Week).ToShortDateString();
+                    b4 = a.AddDays(Count_Week + 1).ToShortDateString();
                     Scdl3.Items[0].Cells[0].Text = "日付";
                     Scdl3.Items[0].Cells[1].Text = b0;//mon
                     Scdl3.Items[0].Cells[2].Text = b1;//tue
@@ -1431,11 +1460,11 @@ namespace WhereEver
                     string b2;
                     string b3;
                     string b4;
-                    b0 = a.AddDays(+3).ToShortDateString();
-                    b1 = a.AddDays(+4).ToShortDateString();
-                    b2 = a.AddDays(+5).ToShortDateString();
-                    b3 = a.AddDays(+6).ToShortDateString();
-                    b4 = a.AddDays(+7).ToShortDateString();
+                    b0 = a.AddDays(Count_Week - 4).ToShortDateString();
+                    b1 = a.AddDays(Count_Week - 3).ToShortDateString();
+                    b2 = a.AddDays(Count_Week - 2).ToShortDateString();
+                    b3 = a.AddDays(Count_Week - 1).ToShortDateString();
+                    b4 = a.AddDays(Count_Week).ToShortDateString();
                     Scdl3.Items[0].Cells[0].Text = "日付";
                     Scdl3.Items[0].Cells[1].Text = b0;//mon
                     Scdl3.Items[0].Cells[2].Text = b1;//tue

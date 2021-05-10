@@ -126,7 +126,7 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE())-1 order by time";
+                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK, date) = DATEPART(WEEK, GETDATE())-1 order by date";
             DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             return (dt);

@@ -674,6 +674,7 @@ namespace WhereEver
             DATASET.DataSet.T_ScheduleDataTable dd = Class2.Insatsu1(Global.GetConnection());
 
 
+<<<<<<< HEAD
             //for (int j = 0; j < dd.Count; j++)
 
             //{
@@ -1047,6 +1048,381 @@ namespace WhereEver
 
 
             //}
+=======
+            for (int j = 0; j < dd.Count; j++)
+
+            {
+               DATASET. DataSet.T_ScheduleRow dr = dd.Rows[j] as DATASET. DataSet.T_ScheduleRow;
+
+                DateTime DT = DateTime.Parse(dr.date.ToString());
+                string week = DT.ToString("ddd");
+               // string.Format("HH:mm", dr.time);
+                string tm = dr.time.ToString();
+                string tm1 = tm.Substring(0, 5);
+
+                while (week == "月")
+                {
+
+                    if (Label3.Text == "")
+                    {
+                        Label3.Text = tm1;
+                        Label4.Text = dr.title;
+                        Label5.Text = dr.name;
+                        break;
+                    }
+                    if (Label6.Text == "")
+                    {
+                        Label6.Text = tm1;
+                        Label7.Text = dr.title;
+                        Label8.Text = dr.name;
+                        break;
+                    }
+                    if (Label9.Text == "")
+                    {
+                        Label9.Text = tm1;
+                        Label10.Text = dr.title;
+                        Label11.Text = dr.name;
+                        break;
+                    }
+                    if (Label12.Text == "")
+                    {
+                        Label12.Text = tm1;
+                        Label13.Text = dr.title;
+                        Label14.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+
+                while (week == "火")
+                {
+
+                    if (Label17.Text == "")
+                    {
+                        Label17.Text = tm1;
+                        Label18.Text = dr.title;
+                        Label19.Text = dr.name;
+                        break;
+                    }
+                    if (Label20.Text == "")
+                    {
+                        Label20.Text = tm1;
+                        Label21.Text = dr.title;
+                        Label22.Text = dr.name;
+                        break;
+                    }
+                    if (Label23.Text == "")
+                    {
+                        Label23.Text = tm1;
+                        Label24.Text = dr.title;
+                        Label25.Text = dr.name;
+                        break;
+                    }
+                    if (Label26.Text == "")
+                    {
+                        Label26.Text = tm1;
+                        Label27.Text = dr.title;
+                        Label28.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+
+                while (week == "水")
+                {
+
+                    if (Label31.Text == "")
+                    {
+                        Label31.Text = tm1;
+                        Label32.Text = dr.title;
+                        Label33.Text = dr.name;
+                        break;
+                    }
+                    if (Label34.Text == "")
+                    {
+                        Label34.Text = tm1;
+                        Label35.Text = dr.title;
+                        Label36.Text = dr.name;
+                        break;
+                    }
+                    if (Label37.Text == "")
+                    {
+                        Label37.Text = tm1;
+                        Label38.Text = dr.title;
+                        Label39.Text = dr.name;
+                        break;
+                    }
+                    if (Label40.Text == "")
+                    {
+                        Label40.Text = tm1;
+                        Label41.Text = dr.title;
+                        Label42.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+
+                while (week == "木")
+                {
+
+                    if (Label45.Text == "")
+                    {
+                        Label45.Text = tm1;
+                        Label46.Text = dr.title;
+                        Label47.Text = dr.name;
+                        break;
+                    }
+                    if (Label48.Text == "")
+                    {
+                        Label48.Text = tm1;
+                        Label49.Text = dr.title;
+                        Label50.Text = dr.name;
+                        break;
+                    }
+                    if (Label51.Text == "")
+                    {
+                        Label51.Text = tm1;
+                        Label52.Text = dr.title;
+                        Label53.Text = dr.name;
+                        break;
+                    }
+                    if (Label54.Text == "")
+                    {
+                        Label54.Text = tm1;
+                        Label55.Text = dr.title;
+                        Label56.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+
+                while (week == "金")
+                {
+
+                    if (Label59.Text == "")
+                    {
+                        Label59.Text = tm1;
+                        Label60.Text = dr.title;
+                        Label61.Text = dr.name;
+                        break;
+                    }
+                    if (Label62.Text == "")
+                    {
+                        Label62.Text = tm1;
+                        Label63.Text = dr.title;
+                        Label64.Text = dr.name;
+                        break;
+                    }
+                    if (Label65.Text == "")
+                    {
+                        Label65.Text = tm1;
+                        Label66.Text = dr.title;
+                        Label67.Text = dr.name;
+                        break;
+                    }
+                    if (Label68.Text == "")
+                    {
+                        Label68.Text = tm1;
+                        Label69.Text = dr.title;
+                        Label70.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+
+
+
+            }
+
+            DATASET.DataSet.T_ScheduleDataTable dp = Class2.Insatsu2(Global.GetConnection());
+
+
+            for (int j = 0; j < dp.Count; j++)
+
+            {
+                DATASET.DataSet.T_ScheduleRow dr = dp.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+
+                DateTime DT = DateTime.Parse(dr.date.ToString());
+                string week = DT.ToString("ddd");
+               // string.Format("HH:mm", dr.time);
+               
+                string tm = dr.time.ToString();
+                string tm1 = tm.Substring(0, 5);
+
+                while (week == "月")
+                {
+
+                    if (Label101.Text == "")
+                    {
+                        Label101.Text = tm1;
+                        Label102.Text = dr.title;
+                        Label103.Text = dr.name;
+                        break;
+                    }
+                    if (Label104.Text == "")
+                    {
+                        Label104.Text = tm1;
+                        Label105.Text = dr.title;
+                        Label106.Text = dr.name;
+                        break;
+                    }
+                    if (Label107.Text == "")
+                    {
+                        Label107.Text = tm1;
+                        Label108.Text = dr.title;
+                        Label109.Text = dr.name;
+                        break;
+                    }
+                    if (Label110.Text == "")
+                    {
+                        Label110.Text = tm1;
+                        Label111.Text = dr.title;
+                        Label112.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+
+                while (week == "火")
+                {
+
+                    if (Label115.Text == "")
+                    {
+                        Label115.Text = tm1;
+                        Label116.Text = dr.title;
+                        Label117.Text = dr.name;
+                        break;
+                    }
+                    if (Label118.Text == "")
+                    {
+                        Label118.Text = tm1;
+                        Label119.Text = dr.title;
+                        Label120.Text = dr.name;
+                        break;
+                    }
+                    if (Label121.Text == "")
+                    {
+                        Label121.Text = tm1;
+                        Label122.Text = dr.title;
+                        Label123.Text = dr.name;
+                        break;
+                    }
+                    if (Label124.Text == "")
+                    {
+                        Label124.Text = tm1;
+                        Label125.Text = dr.title;
+                        Label126.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+
+                while (week == "水")
+                {
+
+                    if (Label129.Text == "")
+                    {
+                        Label129.Text = tm1;
+                        Label130.Text = dr.title;
+                        Label131.Text = dr.name;
+                        break;
+                    }
+                    if (Label132.Text == "")
+                    {
+                        Label132.Text = tm1;
+                        Label133.Text = dr.title;
+                        Label134.Text = dr.name;
+                        break;
+                    }
+                    if (Label135.Text == "")
+                    {
+                        Label135.Text = tm1;
+                        Label136.Text = dr.title;
+                        Label137.Text = dr.name;
+                        break;
+                    }
+                    if (Label138.Text == "")
+                    {
+                        Label138.Text = tm1;
+                        Label139.Text = dr.title;
+                        Label140.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+
+                while (week == "木")
+                {
+
+                    if (Label143.Text == "")
+                    {
+                        Label143.Text = tm1;
+                        Label144.Text = dr.title;
+                        Label145.Text = dr.name;
+                        break;
+                    }
+                    if (Label146.Text == "")
+                    {
+                        Label146.Text = tm1;
+                        Label147.Text = dr.title;
+                        Label148.Text = dr.name;
+                        break;
+                    }
+                    if (Label149.Text == "")
+                    {
+                        Label149.Text = tm1;
+                        Label150.Text = dr.title;
+                        Label151.Text = dr.name;
+                        break;
+                    }
+                    if (Label152.Text == "")
+                    { 
+                        Label152.Text = tm1;
+                        Label153.Text = dr.title;
+                        Label154.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+
+                while (week == "金")
+                {
+
+                    if (Label157.Text == "")
+                    {
+                        Label157.Text = tm1;
+                        Label158.Text = dr.title;
+                        Label159.Text = dr.name;
+                        break;
+                    }
+                    if (Label160.Text == "")
+                    {
+                        Label160.Text = tm1;
+                        Label161.Text = dr.title;
+                        Label162.Text = dr.name;
+                        break;
+                    }
+                    if (Label163.Text == "")
+                    { 
+                        Label163.Text = tm1;
+                        Label164.Text = dr.title;
+                        Label165.Text = dr.name;
+                        break;
+                    }
+                    if (Label166.Text == "")
+                    {
+                        Label166.Text = tm1;
+                        Label167.Text = dr.title;
+                        Label168.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+
+
+
+            }
+>>>>>>> 668c9645970e8861149031e0e399d17acbbea6d0
 
         }
 
