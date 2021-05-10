@@ -227,7 +227,7 @@ namespace WhereEver
             SqlDataAdapter da = new SqlDataAdapter("", sql);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule";
-            da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
+            da.InsertCommand = new SqlCommandBuilder(da).GetInsertCommand();
 
             SqlTransaction sqltra = null;
 

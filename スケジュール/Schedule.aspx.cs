@@ -34,31 +34,25 @@ namespace WhereEver
 
                 ViewState["count"] = 0;
 
-                //Scdl3.Columns[0].ItemStyle.Wrap = true;
-                //Scdl3.Columns[1].ItemStyle.Wrap = true;
-                //Scdl3.Columns[2].ItemStyle.Wrap = true;
-                //Scdl3.Columns[3].ItemStyle.Wrap = true;
-                //Scdl3.Columns[4].ItemStyle.Wrap = true;
-
                 //Panel1、登録
                 //Panel2、メインメニュー
                 //Panel3、検索
 
-
+                Create4();
             }
         }
 
-        //スケジュールリストにデータを格納　→　ScdlList_ItemDataBound　に移動
+
         private void Create()//スケジュールリストにデータを格納
         {
-            DATASET.DataSet.T_ScheduleDataTable dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
 
             ScdlList.DataSource = dt;
 
             ScdlList.DataBind();
         }
 
-        private void Create2()//scdl3にスケジュールに登録した値を登録している（今週分）
+        private void Create2()//今週
         {
             ViewState["count"] = 0;
 
@@ -531,20 +525,32 @@ namespace WhereEver
             }
         }
 
-        //スケジュール表にデータを格納　→　Scdl3_ItemDataBound に移動　→　Create2 に移動
+
         public void Create3()//スケジュール帳にデータを格納
         {
-            DATASET.DataSet.T_EmptyTableDataTable dt = Class1.GetSchedule3DataTable(Global.GetConnection());
+            var dt = Class1.GetSchedule3DataTable(Global.GetConnection());
 
             Scdl3.DataSource = dt;
 
             Scdl3.DataBind();
         }
 
+        public void Create4()//Test
+        {
+            //var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+            //TestGV.DataSource
+            //    = dt;
+            //TestGV.DataBind();
 
 
-        //スケジュール登録ボタンを押したときの動き
-        protected void Button2_Click(object sender, EventArgs e)
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)//印刷
+        {
+            Response.Redirect("PrintSchedule.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)//スケジュールを登録
         {
 
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
@@ -573,7 +579,7 @@ namespace WhereEver
                 }
             }
 
-            DATASET.DataSet.T_ScheduleRow dl = Class1.MaxSdlNo(Global.GetConnection());
+            var dl = Class1.MaxSdlNo(Global.GetConnection());
 
             int no = dl.SdlNo;
 
@@ -584,16 +590,15 @@ namespace WhereEver
             Class1.InsertList(dt, Global.GetConnection());
 
             Create();
-
             Create3();
+            Create2();
+
             Panel1.Visible = false;
             Panel2.Visible = true;
             Panel3.Visible = false;
-            Create2();
-
         }
 
-        protected void Button3_Click(object sender, EventArgs e)//登録
+        protected void Button3_Click(object sender, EventArgs e)//登録パネル
         {
             Panel1.Visible = true;
             Panel2.Visible = true;
@@ -604,7 +609,7 @@ namespace WhereEver
             Create2();
         }
 
-        protected void Button10_Click(object sender, EventArgs e)//検索
+        protected void Button10_Click(object sender, EventArgs e)//検索パネル
         {
             Panel1.Visible = false;
             Panel2.Visible = true;
@@ -722,16 +727,8 @@ namespace WhereEver
             }
         }
 
-        protected void Button1_Click1(object sender, EventArgs e)
-        {
-            Response.Redirect("PrintSchedule.aspx");
-        }
-        //protected void Button1_Click(object sender, EventArgs e)
-        //{
-        //    Panel1.Visible = false;
-        //    Panel2.Visible = false;
-        //    Create2();
-        //}
+
+
 
         protected void Scdl3_SelectedIndexChanged(object sender, EventArgs e)
         {

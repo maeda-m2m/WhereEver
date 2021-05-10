@@ -36,7 +36,7 @@
             <asp:Panel ID="Panel2" runat="server" HorizontalAlign="center">
                 <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
                 <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
-                <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click1" Text="印刷（作成中）" />
+                <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click" Text="印刷（作成中）" />
                 <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
                 <asp:Button ID="Button4" runat="server" Text="前の週" class="btn-flat-border" OnClick="Button4_Click" />
                 <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
@@ -424,7 +424,11 @@
 
         <br />
 
+        <div>
+            <asp:GridView runat="server" ID="TestGV" CssClass="Center">
+            </asp:GridView>
 
+        </div>
 
 
         <script>
