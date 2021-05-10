@@ -127,17 +127,19 @@
         </div>
 
         <div>
+
             <table class="table">
-            <tr>
-                <td <%--rowspan="2"--%>>
+                <tr>
+                    <td <%--rowspan="2"--%>>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Label ID="lblMonth" runat="server" Text="日付" CssClass="lblMonth"></asp:Label>
                 </td>
-            </tr>
-        </table>
+                </tr>
+            </table>
+
         </div>
 
-        <div>
+        <div class="wbs">
 
             <asp:DataGrid ID="wbs" runat="server" 
                 AutoGenerateColumns="False"
@@ -145,12 +147,14 @@
                 >
                 <Columns>
                     <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ItemStyle-Width="100px"/>
-                    <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目" ItemStyle-Width="200px"/>
+                    <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目" ItemStyle-Width="150px"/>
                 </Columns>
                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10%"/>
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10%"/>
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"/>
             </asp:DataGrid>
+
         </div>
+        
     </form>
 </body>
 </html>

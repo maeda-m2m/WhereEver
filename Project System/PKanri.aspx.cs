@@ -81,7 +81,7 @@ namespace WhereEver.Project_System
                 }
                 e.Item.Cells[6].Text = dr.PTorokutime.ToShortDateString();
                 e.Item.Cells[7].Text = dr.PTorokusya.ToString();
-                
+
             }
         }
 
@@ -92,15 +92,15 @@ namespace WhereEver.Project_System
 
             DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow1 = Insert.GetMaxPBigidRow(Global.GetConnection());
 
-            
-            if(t_PdbKanriRow1.IsNull("PBigid"))
+
+            if (t_PdbKanriRow1.IsNull("PBigid"))
             {
                 t_PdbKanriRow.PBigid = 1;
             }
             else
             {
                 t_PdbKanriRow.PBigid = t_PdbKanriRow1.PBigid + 1;
-                
+
             }
             t_PdbKanriRow.PBigname = txtPBig.Text;
             t_PdbKanriRow.PMiddleid = 0;
@@ -116,7 +116,7 @@ namespace WhereEver.Project_System
             ddlPBigList.Text = txtPBig.Text;
             txtPBig.Text = "";
         }
-        internal static int GetPBigidNow(SqlConnection sqlConnection,string name)
+        internal static int GetPBigidNow(SqlConnection sqlConnection, string name)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
@@ -132,7 +132,7 @@ namespace WhereEver.Project_System
             DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
 
             DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow1 = Insert.GetMaxPMiddleidRow(Global.GetConnection(), ddlPBigList.SelectedItem.ToString());
-            if (ddlPBigList.Text!="")
+            if (ddlPBigList.Text != "")
             {
                 if (date1.Value != "" && date2.Value != "")
                 {
@@ -179,7 +179,7 @@ namespace WhereEver.Project_System
                 }
                 else
                 {
-                    if(date1.Value == "")
+                    if (date1.Value == "")
                     {
                         lblStart.Text = "開始<font color=red>(必須)<font>";
                         lblOver.Text = "終了";
@@ -189,14 +189,14 @@ namespace WhereEver.Project_System
                         lblStart.Text = "開始";
                         lblOver.Text = "終了<font color=red>(必須)<font>";
                     }
-                    
+
                     lblAisatu1.Text = "を選択してから、中項目入力をお願い致します。";
                 }
             }
             else
             {
                 lblAisatu1.Text = "<font color=red>を選択してから、中項目入力をお願い致します。<font>";
-            } 
+            }
         }
 
         protected void DgPKanri_EditCommand(object source, DataGridCommandEventArgs e)
@@ -269,7 +269,7 @@ namespace WhereEver.Project_System
             DateTime Time1 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddlestart;
             DateTime Time2 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddleover;
 
-            int interval = (int)(Time2 - Time1).TotalDays+1;
+            int interval = (int)(Time2 - Time1).TotalDays + 1;
             ar = new DateTime[interval];
 
             for (int i = 0; i < interval; i++)
@@ -282,21 +282,21 @@ namespace WhereEver.Project_System
 
             for (int i = 0; i < ar.Length; i++)
             {
-                if (ar[0].AddDays(i).Month<ar[0].AddDays(i+1).Month)
+                if (ar[0].AddDays(i).Month < ar[0].AddDays(i + 1).Month)
                 {
-                    lblMonth.Text += ar[i].Month+ "月&nbsp;&nbsp;&nbsp;";
+                    lblMonth.Text += ar[i].Month + "月&nbsp;&nbsp;&nbsp;";
                 }
                 else
                 {
                     lblMonth.Text += "&nbsp;&nbsp;&nbsp;&nbsp;";
                 }
             }
-            lblMonth.Text += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + ar[interval-1].Month + "月";
+            lblMonth.Text += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + ar[interval - 1].Month + "月";
         }
         public DateTime[] ar;
         protected void wbs_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
-            for (int i = 0; i<ar.Length;i++)
+            for (int i = 0; i < ar.Length; i++)
             {
                 if (e.Item.ItemType == ListItemType.Header)
                 {
@@ -333,7 +333,7 @@ namespace WhereEver.Project_System
                             cell.BorderColor = Color.White;
                             break;
                     }
-                    cell.Width = 1570/ar.Length;
+                    cell.Width = 1570 / ar.Length;
                     e.Item.Cells.Add(cell);
 
                 }
