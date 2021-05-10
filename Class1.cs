@@ -160,20 +160,23 @@ namespace WhereEver
             return dt;
         }
 
-        public static DATASET.DataSet.T_ScheduleDataTable SwitchNextScdl3DataTable(SqlConnection Sqlco)//先週
+        public static DATASET.DataSet.T_ScheduleDataTable SwitchNextScdl3DataTable(object Count, SqlConnection Sqlco)//先週
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "select * from T_Schedule where DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()-7) order by date asc";
+                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE() + @Count) order by date asc";
+            da.SelectCommand.Parameters.AddWithValue("@Count", Count);
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             return dt;
         }
-        public static DATASET.DataSet.T_ScheduleDataTable SwitchNext2Scdl3DataTable(SqlConnection Sqlco)//来週
+
+        public static DATASET.DataSet.T_ScheduleDataTable SwitchNext2Scdl3DataTable(object Count, SqlConnection Sqlco)//来週
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "select * from T_Schedule where DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()+7) order by date asc";
+                "select * from T_Schedule where DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()+@Count) order by date asc";
+            da.SelectCommand.Parameters.AddWithValue("@Count", Count);
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
             da.Fill(dt);
             return dt;
@@ -274,6 +277,6 @@ namespace WhereEver
             }
         }
 
-       
+
     }
 }
