@@ -302,6 +302,7 @@ namespace WhereEver.Project_System
 
         protected void btnWBS_Click(object sender, EventArgs e)
         {
+            lblMonth.Text = "日付";
             DateTime Time1 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddlestart;
             DateTime Time2 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddleover;
 
@@ -327,7 +328,7 @@ namespace WhereEver.Project_System
                     lblMonth.Text += "&nbsp;&nbsp;&nbsp;&nbsp;";
                 }
             }
-            lblMonth.Text += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + ar[interval - 1].Month + "月";
+            lblMonth.Text += ar[interval - 1].Month + "月";
         }
         public DateTime[] ar;
         protected void wbs_ItemDataBound(object sender, DataGridItemEventArgs e)
