@@ -130,9 +130,10 @@
 
             <table class="table">
                 <tr>
-                    <td>
-                        <asp:Label ID="lblWBSMonth" runat="server" Text="日付" Width="300px"></asp:Label>
-                    </td>
+                    <td <%--rowspan="2"--%>>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="lblMonth" runat="server" Text="日付" CssClass="lblMonth"></asp:Label>
+                </td>
                 </tr>
             </table>
 

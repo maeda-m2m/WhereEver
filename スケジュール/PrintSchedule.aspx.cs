@@ -677,11 +677,11 @@ namespace WhereEver
             for (int j = 0; j < dd.Count; j++)
 
             {
-                DataSet.T_Schedule dr = dd.Rows[j] as DataSet.T_Schedule;
+                DATASET.DataSet.T_ScheduleRow dr = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
 
                 DateTime DT = DateTime.Parse(dr.date.ToString());
                 string week = DT.ToString("ddd");
-               // string.Format("HH:mm", dr.time);
+                // string.Format("HH:mm", dr.time);
                 string tm = dr.time.ToString();
                 string tm1 = tm.Substring(0, 5);
 
@@ -865,12 +865,12 @@ namespace WhereEver
             for (int j = 0; j < dp.Count; j++)
 
             {
-                DataSet.T_ScheduleRow dr = dp.Rows[j] as DataSet.T_ScheduleRow;
+                DATASET.DataSet.T_ScheduleRow dr = dp.Rows[j] as DATASET.DataSet.T_ScheduleRow;
 
                 DateTime DT = DateTime.Parse(dr.date.ToString());
                 string week = DT.ToString("ddd");
-               // string.Format("HH:mm", dr.time);
-               
+                // string.Format("HH:mm", dr.time);
+
                 string tm = dr.time.ToString();
                 string tm1 = tm.Substring(0, 5);
 
@@ -1001,7 +1001,7 @@ namespace WhereEver
                         break;
                     }
                     if (Label152.Text == "")
-                    { 
+                    {
                         Label152.Text = tm1;
                         Label153.Text = dr.title;
                         Label154.Text = dr.name;
@@ -1028,7 +1028,7 @@ namespace WhereEver
                         break;
                     }
                     if (Label163.Text == "")
-                    { 
+                    {
                         Label163.Text = tm1;
                         Label164.Text = dr.title;
                         Label165.Text = dr.name;
