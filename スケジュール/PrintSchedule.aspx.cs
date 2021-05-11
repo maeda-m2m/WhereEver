@@ -1116,14 +1116,6 @@ namespace WhereEver
             return img;
 
         }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-            pd.Print();
-        }
-
         private void pd_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(memoryImage, new PointF(0, 0));
