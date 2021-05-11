@@ -11,142 +11,33 @@ namespace WhereEver
     public class Class1
     {
 
-        //internal static DATASET.DataSet.M_UserRow LogoutM_UserRow(SqlConnection sqlConnection)
-        //{
-        //    SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-        //    da.SelectCommand.CommandText =
-        //        "SELECT * FROM M_User WHERE LogoutTime IS NULL";
-        //    DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
-        //    da.Fill(dt);
-        //    if (dt.Rows.Count == 1)
-        //        return dt[0] as DATASET.DataSet.M_UserRow;
-        //    else
-        //        return null;
-
-        //}
-
-        //internal static DATASET.DataSet.M_UserRow InsertLogoutTime(SqlConnection Sql)
-        //{
-        //    SqlDataAdapter da = new SqlDataAdapter("", Sql);
-        //    da.InsertCommand.CommandText =
-        //        "SELECT * FROM M_User WHERE LogoutTime IS NULL";
-        //    DATASET.DataSet.M_UserDataTable dt = new DATASET.DataSet.M_UserDataTable();
-        //    da.Fill(dt);
-        //    if (dt.Rows.Count == 1)
-        //        return dt[0] as DATASET.DataSet.M_UserRow;
-        //    else
-        //        return null;
-
-        //}
-
-        //public static DATASET.DataSet.T_ScheduleDataTable GetTDataTable(SqlConnection Sqlco)
-        //{
-        //    SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
-        //    da.SelectCommand.CommandText =
-        //        "SELECT * FROM T_Schedule";
-        //    var df = new DATASET.DataSet.T_ScheduleDataTable();
-        //    da.Fill(df);
-        //    return df;
-        //}
-
-        //public static DATASET.DataSet.T_ScheduleRow GetT_ScheduleRow(SqlConnection schedule)
-        //{
-        //    SqlDataAdapter da = new SqlDataAdapter("", schedule);
-        //    da.SelectCommand.CommandText =
-        //        "SELECT * FROM T_Schedule";
-        //    DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
-        //    da.Fill(dt);
-        //    if (dt.Rows.Count == 1)
-        //        return dt[0] as DATASET.DataSet.T_ScheduleRow;
-        //    else
-        //        return null;
-
-        //}
-
-        //public static DATASET.DataSet.T_ScheduleRow UpdateT_ScheduleRow(SqlConnection update)
-        //{
-        //    SqlDataAdapter da = new SqlDataAdapter("", update);
-        //    da.SelectCommand.CommandText =
-        //        "UPDATE FROM T_schedule ";
-        //    DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
-        //    da.Fill(dt);
-        //    if (dt.Rows.Count == 1)
-        //        return dt[0] as DATASET.DataSet.T_ScheduleRow;
-        //    else
-        //        return null;
-
-
-        //}
-
-
-        //public static bool DeleteT_Schedule(int time, SqlConnection sqlconnection)
-        //{
-        //    SqlCommand cmdDelSave = new SqlCommand("", sqlconnection);
-        //    cmdDelSave.CommandText =
-        //        "DELETE FROM T_schedule WHERE time=@c";
-        //    cmdDelSave.Parameters.AddWithValue("@c", time);
-        //    SqlTransaction sql = null;
-        //    try
-        //    {
-        //        sqlconnection.Open();
-        //        sql = sqlconnection.BeginTransaction();
-        //        cmdDelSave.Transaction = sql;
-
-        //        cmdDelSave.ExecuteNonQuery();
-
-        //        sql.Commit();
-        //        return true;
-        //    }
-        //    finally { sqlconnection.Close(); }
-
-        //}
-
-        //public static void InsertSchedule(DATASET.DataSet.T_ScheduleDataTable dt, SqlConnection sqlConnection)
-        //{
-        //    SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-        //    da.SelectCommand.CommandText =
-        //        "SELECT * FROM T_Schedule";
-        //    da.InsertCommand = (new SqlCommandBuilder(da)).GetInsertCommand();
-
-        //    SqlTransaction sql = null;
-
-        //    try
-        //    {
-        //        sqlConnection.Open();
-        //        sql = sqlConnection.BeginTransaction();
-
-        //        da.SelectCommand.Transaction = da.InsertCommand.Transaction = sql;
-
-        //        da.Update(dt);
-
-        //        sql.Commit();
-        //    }
-        //    finally
-        //    {
-        //        sqlConnection.Close();
-        //    }
-        //}
-
-
-
-        public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTable(SqlConnection Sqlco)//スケジュールリスト用
         {
             var da = new SqlDataAdapter("", Sqlco);
+
             da.SelectCommand.CommandText =
                "SELECT * FROM T_Schedule order by date asc";
+
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
+
             da.Fill(dt);
+
             return dt;
+
         }
 
 
-        public static DATASET.DataSet.T_EmptyTableDataTable GetSchedule3DataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_EmptyTableDataTable GetSchedule3DataTable(SqlConnection Sqlco)//スケジュール表用
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_EmptyTable order by 曜日 asc";
+
             var dt = new DATASET.DataSet.T_EmptyTableDataTable();
+
             da.Fill(dt);
+
             return dt;
         }
 
@@ -182,31 +73,6 @@ namespace WhereEver
             return dt;
         }
 
-        //SdlNoがある列を持ってくる
-        public static DATASET.DataSet.T_ScheduleRow SwitchScdl3Row(SqlConnection schedule)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", schedule);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule WHERE DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE())";
-            DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count == 1)
-                return dt[0] as DATASET.DataSet.T_ScheduleRow;
-            else
-                return null;
-
-        }
-
-        //SdlNoの最大値を持ってくる
-        public static DATASET.DataSet.T_ScheduleDataTable MaxSdlDataTable(SqlConnection Sqlco)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
-            da.SelectCommand.CommandText =
-                "SELECT MAX(SdlNo) AS SdlNo FROM T_Schedule";
-            DATASET.DataSet.T_ScheduleDataTable df = new DATASET.DataSet.T_ScheduleDataTable();
-            da.Fill(df);
-            return df;
-        }
 
         //SdlNoの最大値を持ってくる
         public static DATASET.DataSet.T_ScheduleRow MaxSdlNo(SqlConnection schedule)
@@ -225,20 +91,22 @@ namespace WhereEver
         public static void InsertList(DATASET.DataSet.T_ScheduleDataTable dt, SqlConnection sql)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
+
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Schedule";
-            da.InsertCommand = new SqlCommandBuilder(da).GetInsertCommand();
 
-            SqlTransaction sqltra = null;
+            da.InsertCommand = new SqlCommandBuilder(da).GetInsertCommand();
 
             try
             {
                 sql.Open();
-                sqltra = sql.BeginTransaction();
+
+                SqlTransaction sqltra = sql.BeginTransaction();
 
                 da.SelectCommand.Transaction = da.InsertCommand.Transaction = sqltra;
 
                 da.Update(dt);
+
                 sqltra.Commit();
             }
             finally
@@ -255,7 +123,7 @@ namespace WhereEver
             da.CommandText =
                 "DELETE FROM T_Schedule where [SdlNo] = @k ";
             da.Parameters.AddWithValue("@k", sdl);
-            // Class1.DeleteList(sdl, Global.GetConnection()); のsdl
+
             SqlTransaction sqltra = null;
 
 
@@ -275,6 +143,60 @@ namespace WhereEver
             {
                 sql.Close();
             }
+        }
+
+        public static DATASET.DataSet.T_ScheduleRow UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)
+        {
+            {
+                var a = new SqlCommand("", sql);
+
+                a.CommandText = "UPDATE T_Schedule SET [date] = @date, [time] =@time, [title] = @title, [name] = @name where [SdlNo] = @SdlNo";
+
+                a.Parameters.AddWithValue("@date", dr.date);
+                a.Parameters.AddWithValue("@time", dr.time);
+                a.Parameters.AddWithValue("@title", dr.title);
+                a.Parameters.AddWithValue("@name", dr.name);
+                a.Parameters.AddWithValue("@SdlNo", dr.SdlNo);
+
+                try
+                {
+                    sql.Open();
+                    SqlTransaction sqltra = sql.BeginTransaction();
+                    a.Transaction = sqltra;
+
+                    a.ExecuteNonQuery();
+
+                    sqltra.Commit();
+
+                }
+                finally
+                {
+                    sql.Close();
+                }
+
+                return dr;
+
+            }
+        }
+
+        public static DATASET.DataSet.T_ScheduleDataTable A(string a, string b, string c, string d, SqlConnection Sqlco)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+
+            da.SelectCommand.CommandText =
+              "SELECT * FROM T_Schedule WHERE date LIKE @a AND time LIKE @b AND title LIKE @c AND name LIKE @d order by date asc";
+
+
+            da.SelectCommand.Parameters.AddWithValue("@a", "%" + a + "%");
+            da.SelectCommand.Parameters.AddWithValue("@b", "%" + b + "%");
+            da.SelectCommand.Parameters.AddWithValue("@c", "%" + c + "%");
+            da.SelectCommand.Parameters.AddWithValue("@d", "%" + d + "%");
+
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+
+            da.Fill(dt);
+
+            return dt;
         }
 
 

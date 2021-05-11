@@ -17,10 +17,7 @@ namespace WhereEver
     {
 
 
-        public DataGridCommandEventHandler Scdl_CancelCommand { get; private set; }
 
-
-        //ページがロードするとき
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -636,15 +633,6 @@ namespace WhereEver
                 Label thursday = e.Item.FindControl("ThursdayTitle") as Label;
                 Label friday = e.Item.FindControl("FridayTitle") as Label;
 
-
-                //必要なら使う
-                //Label name1 = e.Item.FindControl("Label7") as Label;
-                //Label name2 = e.Item.FindControl("Label8") as Label;
-                //Label name3 = e.Item.FindControl("Label9") as Label;
-                //Label name4 = e.Item.FindControl("Label10") as Label;
-                //Label name5 = e.Item.FindControl("Label11") as Label;
-
-
                 time.Text = dr.曜日.ToString();
 
                 if (!dr.Is月Null())
@@ -671,28 +659,6 @@ namespace WhereEver
             {
 
                 var dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_ScheduleRow;
-
-                //Label date = e.Item.FindControl("hiduke") as Label;
-                //Label jikan = e.Item.FindControl("jikan") as Label;
-                //Label title = e.Item.FindControl("taitoru") as Label;
-                //Label name = e.Item.FindControl("namae") as Label;
-                //Label No = e.Item.FindControl("nanba") as Label;
-
-                //if (!dr.IsdateNull())
-                //    date.Text = dr.date.ToString();
-
-                //if (!dr.IstimeNull())
-                //    jikan.Text = dr.time.ToString();
-
-                //if (!dr.IstitleNull())
-                //    title.Text = dr.title;
-
-                //if (!dr.IsnameNull())
-                //    name.Text = dr.name;
-
-                //No.Text = dr.SdlNo.ToString();
-
-
 
                 e.Item.Cells[0].Text = dr.date.ToString("yyyy/MM/dd") + " " + dr.date.ToString("dddd");
                 e.Item.Cells[1].Text = dr.time.ToString();
@@ -727,18 +693,6 @@ namespace WhereEver
             }
         }
 
-
-
-
-        protected void Scdl3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         protected void ScdlList_EditCommand(object sender, DataGridCommandEventArgs e)
         {
 
@@ -764,7 +718,7 @@ namespace WhereEver
             Create2();
         }
 
-        protected void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)
+        public void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)
         {
             TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
             TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
@@ -788,7 +742,7 @@ namespace WhereEver
             dr[3] = b4.Trim();
             dr[4] = b5.Trim();
 
-            UpdateProject(dr, Global.GetConnection());
+            Class1.UpdateProject(dr, Global.GetConnection());
 
             ScdlList.EditItemIndex = -1;
             ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
@@ -800,50 +754,7 @@ namespace WhereEver
 
         }
 
-        public static void UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)
-        {
-            {
-                var a = new SqlCommand("", sql);
 
-                a.CommandText = "UPDATE T_Schedule SET [date] = @date, [time] =@time, [title] = @title, [name] = @name where [SdlNo] = @SdlNo";
-
-                a.Parameters.AddWithValue("@date", dr.date);
-                a.Parameters.AddWithValue("@time", dr.time);
-                a.Parameters.AddWithValue("@title", dr.title);
-                a.Parameters.AddWithValue("@name", dr.name);
-                a.Parameters.AddWithValue("@SdlNo", dr.SdlNo);
-
-                SqlTransaction sqltra = null;
-
-                try
-                {
-                    sql.Open();
-                    sqltra = sql.BeginTransaction();
-
-                    a.Transaction = sqltra;
-
-                    a.ExecuteNonQuery();
-
-                    sqltra.Commit();
-
-                }
-                finally
-                {
-                    sql.Close();
-                }
-                sql.Open();
-                a.ExecuteNonQuery();
-                sql.Close();
-            }
-        }
-
-
-
-
-        protected void ScdlList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         protected void Button4_Click(object sender, EventArgs e)
         {
@@ -1825,7 +1736,7 @@ namespace WhereEver
 
             var b = DropDownList2.SelectedValue;//time
 
-            var c = TextBox2.Text;//title
+            var c = TextBox1.Text;//title
 
             string d;//name
 
@@ -1840,7 +1751,7 @@ namespace WhereEver
             }
 
 
-            var dd = A(a, b, c, d, Global.GetConnection());
+            var dd = Class1.A(a, b, c, d, Global.GetConnection());
 
             ScdlList.DataSource = dd;
 
@@ -1850,27 +1761,21 @@ namespace WhereEver
             Create2();
 
         }
-        public static DATASET.DataSet.T_ScheduleDataTable A(string a, string b, string c, string d, SqlConnection Sqlco)
+
+        protected void Scdl3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 
-            da.SelectCommand.CommandText =
-              "SELECT * FROM T_Schedule WHERE date LIKE @a AND time LIKE @b AND title LIKE @c AND name LIKE @d order by date asc";
-
-
-            da.SelectCommand.Parameters.AddWithValue("@a", "%" + a + "%");
-            da.SelectCommand.Parameters.AddWithValue("@b", "%" + b + "%");
-            da.SelectCommand.Parameters.AddWithValue("@c", "%" + c + "%");
-            da.SelectCommand.Parameters.AddWithValue("@d", "%" + d + "%");
-
-            var dt = new DATASET.DataSet.T_ScheduleDataTable();
-
-            da.Fill(dt);
-
-            return dt;
         }
 
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void ScdlList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
