@@ -179,7 +179,7 @@ namespace WhereEver
             }
         }
 
-        public static DATASET.DataSet.T_ScheduleDataTable A(string a, string b, string c, string d, SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable ScheduleSearch(string a, string b, string c, string d, SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 

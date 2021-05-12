@@ -45,4 +45,16 @@
     display: flex;
     justify-content: center;
 }
+
+.Schedule_1 {
+   
+    background-color: #000000;
+    
+}
+
+.Center_cs {
+    background-color: #16ba00;
+    color: white;
+    margin: auto;
+    text-align: center;
 }
