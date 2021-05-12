@@ -114,6 +114,8 @@
             font-size: 10px;
             height: 62px;
             border-bottom: 3px double #bababa;
+            border-right: 1px solid black;
+            border-left: 1px solid black;
         }
 
         .Holiday {
@@ -124,6 +126,9 @@
             font-size: 10px;
             width: 72px;
             text-align: center;
+            border-right: 1px solid black;
+            border-left: 1px solid black;
+            border-bottom: 3px double #bababa;
         }
 
         .Head {
@@ -341,14 +346,21 @@
         }
         .auto-style3 {
             width: 380px;
+            border-right: 1px dotted black;
+            border-left: 1px dotted black;
         }
         .auto-style4 {
             border-bottom: 3px double #bababa;
             width: 380px;
+            border-right: 1px dotted black;
+            border-left: 1px dotted black;
         }
         .auto-style5 {
             width: 380px;
             height: 13px;
+            border-right: 1px dotted black;
+            border-left: 1px dotted black;
+
         }
         .auto-style6 {
             background-color: #272727;
@@ -379,6 +391,7 @@
             height: 62px;
             border-bottom: 3px double #bababa;
             width: 50px;
+            border-right: 1px solid black;
         }
         .auto-style12 {
             margin: 0;
@@ -388,7 +401,11 @@
             font-size: 10px;
             width: 50px;
             text-align: center;
+            border-right: 1px solid black;
+            border-bottom: 3px double #bababa;
         }
+
+
     </style>
 </head>
 <body>
@@ -665,26 +682,103 @@
                 </td>
             </tr>
             <tr class="dd">
-                <td class="Holiday">
-                    <asp:Label ID="Label71" runat="server" Text=""></asp:Label>
+                <td rowspan="4" class="Holiday">
+                    <asp:Label ID="Labelsat1" runat="server" Text=""></asp:Label>
                 </td>
-                <td class="auto-style12">
-                    <asp:Label ID="Label72" runat="server" Text="土"></asp:Label>
+                <td rowspan="4" class="auto-style12">
+                    <asp:Label ID="Labelsat2" runat="server" Text="土"></asp:Label>
                 </td>
-                <td colspan="3" class="cc">
-                    <textarea id="text" cols="75" style="height: 51px"></textarea>
+                <td>
+                    <asp:Label ID="Labelsat3" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsat4" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsat5" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
-
+            <tr>
+                <td>
+                    <asp:Label ID="Labelsat6" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsat7" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsat8" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Labelsat9" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsat10" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsat11" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="under">
+                    <asp:Label ID="Labelsat12" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style4">
+                    <asp:Label ID="Labelsat13" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style9">
+                    <asp:Label ID="Labelsat14" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
             <tr class="dd">
-                <td class="Holiday">
-                    <asp:Label ID="Label73" runat="server" Text=""></asp:Label>
+                <td rowspan="4" class="Holiday">
+                    <asp:Label ID="Labelsun1" runat="server" Text=""></asp:Label>
                 </td>
-                <td class="auto-style12">
-                    <asp:Label ID="Label74" runat="server" Text="日"></asp:Label>
+                <td rowspan="4" class="auto-style12">
+                    <asp:Label ID="Labelsun2" runat="server" Text="日"></asp:Label>
                 </td>
-                <td colspan="3" class="cc">
-                    <textarea id="text" cols="75" style="height: 51px"></textarea>
+                <td>
+                    <asp:Label ID="Labelsun3" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsun4" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsun5" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Labelsun6" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsun7" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsun8" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Labelsun9" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsun10" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsun11" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="under">
+                    <asp:Label ID="Labelsun12" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style4">
+                    <asp:Label ID="Labelsun13" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style9">
+                    <asp:Label ID="Labelsun14" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
 
@@ -939,25 +1033,103 @@
                 </td>
             </tr>
             <tr>
-                <td class="Holiday">
-                    <asp:Label ID="Label75" runat="server" Text=""></asp:Label>
+                <td rowspan="4" class="Holiday">
+                    <asp:Label ID="Labelsat15" runat="server" Text=""></asp:Label>
                 </td>
-                <td class="auto-style12">
-                    <asp:Label ID="Label76" runat="server" Text="土"></asp:Label>
+                <td rowspan="4" class="auto-style12">
+                    <asp:Label ID="Labelsat16" runat="server" Text="土"></asp:Label>
                 </td>
-                <td colspan="3" class="cc">
-                    <textarea id="text" cols="75" style="height: 51px"></textarea>
+                <td>
+                    <asp:Label ID="Labelsat17" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsat18" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsat19" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td class="Holiday">
-                    <asp:Label ID="Label77" runat="server" Text=""></asp:Label>
+                <td>
+                    <asp:Label ID="Labelsat20" runat="server" Text=""></asp:Label>
                 </td>
-                <td class="auto-style12">
-                    <asp:Label ID="Label78" runat="server" Text="日"></asp:Label>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsat21" runat="server" Text=""></asp:Label>
                 </td>
-                <td colspan="3" class="cc">
-                    <textarea id="text" cols="75" style="height: 51px"></textarea>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsat22" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Labelsat23" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsat24" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsat25" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="under">
+                    <asp:Label ID="Labelsat26" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style4">
+                    <asp:Label ID="Labelsat27" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style9">
+                    <asp:Label ID="Labelsat28" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="4" class="Holiday">
+                    <asp:Label ID="Labelsun15" runat="server" Text=""></asp:Label>
+                </td>
+                <td rowspan="4" class="auto-style12">
+                    <asp:Label ID="Labelsun16" runat="server" Text="日"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Labelsun17" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsun18" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsun19" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Labelsun20" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsun21" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsun22" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Labelsun23" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:Label ID="Labelsun24" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style8">
+                    <asp:Label ID="Labelsun25" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="under">
+                    <asp:Label ID="Labelsun26" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style4">
+                    <asp:Label ID="Labelsun27" runat="server" Text=""></asp:Label>
+                </td>
+                <td class="auto-style9">
+                    <asp:Label ID="Labelsun28" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
             <tr>

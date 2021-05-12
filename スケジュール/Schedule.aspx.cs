@@ -670,14 +670,14 @@ namespace WhereEver
         }
 
 
-        protected void ScdlList_ItemDataBound(object sender, DataGridItemEventArgs e)
+        protected void ScdlList_ItemDataBound(object sender, DataGridItemEventArgs e)//スケジュールリストを表示している
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
 
                 var dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_ScheduleRow;
 
-                e.Item.Cells[0].Text = dr.date.ToString("yyyy/MM/dd") + " " + dr.date.ToString("dddd");
+                e.Item.Cells[0].Text = dr.date.ToString("yyyy年MMMMd日") + " " + dr.date.ToString("dddd");
                 e.Item.Cells[1].Text = dr.time.ToString();
                 e.Item.Cells[2].Text = dr.title.ToString();
                 e.Item.Cells[3].Text = dr.name.ToString();
@@ -775,7 +775,7 @@ namespace WhereEver
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            int Count_Week = 0;
+            int Count_Week; 
             Count_Week = int.Parse(ViewState["count"].ToString()) - 7;
 
             ViewState["count"] =
@@ -1278,7 +1278,7 @@ namespace WhereEver
 
         protected void Button5_Click(object sender, EventArgs e)
         {
-            int Count_Week = 0;
+            int Count_Week;
             Count_Week = int.Parse(ViewState["count"].ToString()) + 7;
 
             ViewState["count"] =

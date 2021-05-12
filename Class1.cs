@@ -16,7 +16,7 @@ namespace WhereEver
             var da = new SqlDataAdapter("", Sqlco);
 
             da.SelectCommand.CommandText =
-               "SELECT * FROM T_Schedule order by date asc";
+              "SELECT * FROM T_Schedule WHERE date BETWEEN GETDATE() AND DATEADD(YYYY,10,GETDATE()) ORDER BY date ASC";
 
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
 
@@ -32,7 +32,7 @@ namespace WhereEver
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_EmptyTable order by 曜日 asc";
+            "SELECT * FROM T_EmptyTable ORDER BY 曜日 ASC ";
 
             var dt = new DATASET.DataSet.T_EmptyTableDataTable();
 
