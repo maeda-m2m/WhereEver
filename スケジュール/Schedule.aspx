@@ -55,7 +55,7 @@
 
             <div>
 
-                <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center">
+                <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center"><%--登録--%>
 
                     <table class="Center">
 
@@ -164,7 +164,7 @@
 
 
             <div>
-                <asp:Panel ID="Panel3" runat="server">
+                <asp:Panel ID="Panel3" runat="server"><%--検索--%>
 
 
                     <table class="Center">
