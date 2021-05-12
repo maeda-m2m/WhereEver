@@ -9,6 +9,33 @@ namespace WhereEver.Class
 {
     public class Chat
     {
+        internal static DATASET.DataSet.T_ChatDataTable GetmyComment(SqlConnection sqlConnection, string name)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText = "select No from T_Chat where id = @Name";
+            da.SelectCommand.Parameters.AddWithValue("@Name", name);
+            DATASET.DataSet.T_ChatDataTable dt = new DataSet.T_ChatDataTable();
+            da.Fill(dt);
+            return dt;
+        }
+        internal static DATASET.DataSet.T_LogoutListDataTable GetLastLogoutTime(SqlConnection sqlConnection, string name)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText = "select MAX(date) as date from T_LogoutList where name = @Name";
+            da.SelectCommand.Parameters.AddWithValue("@Name", name);
+            DATASET.DataSet.T_LogoutListDataTable dt = new DataSet.T_LogoutListDataTable();
+            da.Fill(dt);
+            return dt;
+        }
+        internal static DATASET.DataSet.T_ChatDataTable NewHensin(SqlConnection sqlConnection,string time)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText = "select * from T_Chat where Date > @DateTime";
+            da.SelectCommand.Parameters.AddWithValue("@DateTime", time);
+            DATASET.DataSet.T_ChatDataTable dt = new DataSet.T_ChatDataTable();
+            da.Fill(dt);
+            return dt;
+        }
         internal static DATASET.DataSet.T_ChatDataTable GetChatDataTable(SqlConnection sqlConnection)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
