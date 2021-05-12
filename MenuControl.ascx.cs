@@ -12,6 +12,18 @@ namespace WhereEver
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = SessionManager.User.M_User.name1;
+
+            DATASET.DataSet.T_LogoutListDataTable dt = Class.Chat.GetLastLogoutTime(Global.GetConnection(), SessionManager.User.M_User.name1);
+            DATASET.DataSet.T_LogoutListRow dr = dt.NewT_LogoutListRow();
+            string time = dr[0].ToString();
+
+            DATASET.DataSet.T_ChatDataTable cdt = Class.Chat.NewHensin(Global.GetConnection(), time);
+
+            if (cdt != null)
+            {
+                lblHensin.Text = Environment.NewLine+"<font color = red>*";
+                lblHensin.Visible = true;
+            }
         }
     }
 }

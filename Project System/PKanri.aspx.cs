@@ -372,7 +372,6 @@ namespace WhereEver.Project_System
                             cell.BorderColor = Color.White;
                             break;
                     }
-                    cell.Width = 1570 / ar.Length;
                     e.Item.Cells.Add(cell);
                 }
             }

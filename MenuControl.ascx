@@ -2,6 +2,24 @@
 
 <link href="MenuControl.css" type="text/css" rel="stylesheet" />
 
+<style type="text/css">
+    .auto-style1 {
+        width: 150px;
+        height: 40px;
+        position: relative;
+        display: inline-block;
+        font-weight: bold;
+        padding: 0.3em 0.5em;
+        text-decoration: none;
+        color: #000000;
+        background: #ECECEC;
+        transition: .4s;
+        font-size: 1em;
+        text-align: center;
+        margin-top: 0px;
+    }
+</style>
+
 <table>
     <tr>
         <td class="All">
@@ -18,8 +36,9 @@
                     <a href="~/各申請書類/Shinsei.aspx" class="btn" runat="server">各申請書類</a>
                </td>
                <td>
-                    <a href="~/チャット/Chat.aspx" class="btn" runat="server">チャット</a>
-               </td>
+                    <a href="~/チャット/Chat.aspx" class="btn" runat="server">チャット<asp:Label ID="lblHensin" runat="server" Visible="False"></asp:Label>
+                    </a>
+               &nbsp;</td>
                <td>
                     <a href="~/ファイル共有/FileShare.aspx" class="btn" runat="server">ファイル共有</a>
                </td>
