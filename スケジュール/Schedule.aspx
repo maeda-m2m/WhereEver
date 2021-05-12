@@ -47,7 +47,7 @@
         <br />
 
 
-        
+
 
 
 
@@ -55,7 +55,8 @@
 
             <div>
 
-                <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center"><%--登録--%>
+                <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center">
+                    <%--登録--%>
 
                     <table class="Center">
 
@@ -114,7 +115,7 @@
                         <tr>
                             <th class="Center_Color">内容</th>
                             <td>
-                                <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" Columns="40"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" Columns="40" placeholder="例:LIXIL　Web会議"></asp:TextBox>
                             </td>
                         </tr>
 
@@ -164,7 +165,8 @@
 
 
             <div>
-                <asp:Panel ID="Panel3" runat="server"><%--検索--%>
+                <asp:Panel ID="Panel3" runat="server">
+                    <%--検索--%>
 
 
                     <table class="Center">
@@ -172,7 +174,7 @@
                         <tr>
                             <th class="Center_Color">日付</th>
                             <td>
-                                <asp:TextBox ID="TextBox3" runat="server" Text=""></asp:TextBox>
+                                <asp:TextBox ID="TextBox3" runat="server" Text="" placeholder="例:一か月単位「04」特定の日にち「04　01」など" Columns="40"></asp:TextBox>
 
                             </td>
                         </tr>
@@ -226,7 +228,7 @@
                         <tr>
                             <th class="Center_Color">内容</th>
                             <td>
-                                <asp:TextBox ID="TextBox5" runat="server" Text="" Columns="40"></asp:TextBox>
+                                <asp:TextBox ID="TextBox5" runat="server" Text="" Columns="40" placeholder="例:LIXIL"></asp:TextBox>
                             </td>
                         </tr>
 
@@ -291,10 +293,15 @@
 
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
+
                 <Columns>
-                    <asp:TemplateColumn HeaderText="曜日" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
+
+                    <asp:TemplateColumn HeaderText="曜日" ItemStyle-Height="50px"
+                        ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" />
+
+                        <ItemStyle Wrap="true" />
+
                         <ItemTemplate>
                             <asp:Label ID="Jikan" runat="server" Text=""></asp:Label>
                             <input type="hidden" id="Jikan1" runat="server" />
@@ -456,7 +463,7 @@
                     <asp:TemplateField HeaderText="日付" SortExpression="date">
 
                         <EditItemTemplate>
-                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("date") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBoxA" runat="server" Text='<%# Bind("date") %>'></asp:TextBox>
                         </EditItemTemplate>
 
                         <ItemTemplate>
@@ -480,7 +487,7 @@
                     <asp:TemplateField HeaderText="内容" SortExpression="title">
 
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("title") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBoxB" runat="server" Text='<%# Bind("title") %>'></asp:TextBox>
                         </EditItemTemplate>
 
                         <ItemTemplate>
@@ -492,7 +499,7 @@
                     <asp:TemplateField HeaderText="担当者" SortExpression="name">
 
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBoxC" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
                         </EditItemTemplate>
 
                         <ItemTemplate>
@@ -551,6 +558,10 @@
             </asp:SqlDataSource>
 
         </div>
+
+        <asp:Label runat="server" ID="test1" CssClass="Center1">
+
+        </asp:Label>
 
 
 
