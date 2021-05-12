@@ -302,7 +302,6 @@ namespace WhereEver.Project_System
 
         protected void btnWBS_Click(object sender, EventArgs e)
         {
-            lblMonth.Text = "日付";
             DateTime Time1 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddlestart;
             DateTime Time2 = WBS.GetPMiddleTimeRow(Global.GetConnection()).PMiddleover;
 
@@ -316,19 +315,6 @@ namespace WhereEver.Project_System
             DATASET.DataSet.T_PdbKanriDataTable dt = GetT_PdbKanriDataTable(Global.GetConnection());
             wbs.DataSource = dt;
             wbs.DataBind();
-
-            for (int i = 0; i < ar.Length; i++)
-            {
-                if (ar[0].AddDays(i).Month < ar[0].AddDays(i + 1).Month)
-                {
-                    lblMonth.Text += ar[i].Month + "月&nbsp;&nbsp;&nbsp;";
-                }
-                else
-                {
-                    lblMonth.Text += "&nbsp;&nbsp;&nbsp;&nbsp;";
-                }
-            }
-            lblMonth.Text += ar[interval - 1].Month + "月";
         }
         public DateTime[] ar;
         protected void wbs_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -338,7 +324,24 @@ namespace WhereEver.Project_System
                 if (e.Item.ItemType == ListItemType.Header)
                 {
                     TableCell cell = new TableCell();
-                    cell.Controls.Add(new LiteralControl(ar[i].Day.ToString()));//ヘッダー
+                    if (ar[i].Day<10)
+                    {
+                        if (ar[i].Day==1)
+                        {
+                            cell.Height = 50;
+                            cell.BorderWidth = 3;
+                            cell.BorderColor = Color.Black;
+                            cell.Controls.Add(new LiteralControl(ar[i].Month+ "月"+ Environment.NewLine + "0" + ar[i].Day));
+                        }
+                        else
+                        {
+                            cell.Controls.Add(new LiteralControl("0" + ar[i].Day.ToString()));
+                        }
+                    }
+                    else
+                    {
+                        cell.Controls.Add(new LiteralControl(ar[i].Day.ToString()));//ヘッダー
+                    }
                     e.Item.Cells.Add(cell);
                 }
             }

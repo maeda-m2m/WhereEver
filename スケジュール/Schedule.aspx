@@ -38,19 +38,25 @@
                 <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
                 <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click" Text="印刷（作成中）" />
                 <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
-                <asp:Button ID="Button4" runat="server" Text="前の週" class="btn-flat-border" OnClick="Button4_Click" />
+                <asp:Button ID="Button4" runat="server" Text="先週" class="btn-flat-border" OnClick="Button4_Click" />
                 <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
-                <asp:Button ID="Button5" runat="server" Text="次の週" class="btn-flat-border" OnClick="Button5_Click" />
+                <asp:Button ID="Button5" runat="server" Text="来週" class="btn-flat-border" OnClick="Button5_Click" />
             </asp:Panel>
         </div>
 
         <br />
 
-        <div class="Test">
+
+
+
+
+
+        <div class="Center_1">
 
             <div>
 
                 <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center">
+                    <%--登録--%>
 
                     <table class="Center">
 
@@ -109,7 +115,7 @@
                         <tr>
                             <th class="Center_Color">内容</th>
                             <td>
-                                <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" Columns="40" placeholder="例:LIXIL　Web会議"></asp:TextBox>
                             </td>
                         </tr>
 
@@ -160,6 +166,7 @@
 
             <div>
                 <asp:Panel ID="Panel3" runat="server">
+                    <%--検索--%>
 
 
                     <table class="Center">
@@ -167,7 +174,7 @@
                         <tr>
                             <th class="Center_Color">日付</th>
                             <td>
-                                <asp:TextBox ID="TextBox3" runat="server" Text=""></asp:TextBox>
+                                <asp:TextBox ID="TextBox3" runat="server" Text="" placeholder="例:一か月単位「04」特定の日にち「04　01」など" Columns="40"></asp:TextBox>
 
                             </td>
                         </tr>
@@ -221,7 +228,7 @@
                         <tr>
                             <th class="Center_Color">内容</th>
                             <td>
-                                <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
+                                <asp:TextBox ID="TextBox5" runat="server" Text="" Columns="40" placeholder="例:LIXIL"></asp:TextBox>
                             </td>
                         </tr>
 
@@ -241,7 +248,6 @@
                                     <asp:ListItem>張</asp:ListItem>
                                     <asp:ListItem>鯉淵</asp:ListItem>
                                     <asp:ListItem>坂口</asp:ListItem>
-
                                     <asp:ListItem>坂田</asp:ListItem>
                                     <asp:ListItem>一番ヶ瀬</asp:ListItem>
                                     <asp:ListItem>髙栁社長</asp:ListItem>
@@ -287,10 +293,15 @@
 
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
+
                 <Columns>
-                    <asp:TemplateColumn HeaderText="曜日" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100px">
+
+                    <asp:TemplateColumn HeaderText="曜日" ItemStyle-Height="50px"
+                        ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" />
+
+                        <ItemStyle Wrap="true" />
+
                         <ItemTemplate>
                             <asp:Label ID="Jikan" runat="server" Text=""></asp:Label>
                             <input type="hidden" id="Jikan1" runat="server" />
@@ -366,16 +377,18 @@
                 runat="server"
                 ID="ScdlList"
                 CssClass="Center"
-                AutoGenerateColumns="false"
+                AutoGenerateColumns="False"
                 OnEditCommand="ScdlList_EditCommand"
                 OnCancelCommand="ScdlList_CancelCommand"
                 OnUpdateCommand="ScdlList_UpdateCommand"
                 OnItemDataBound="ScdlList_ItemDataBound" OnItemCommand="ScdlList_ItemCommand"
                 HeaderStyle-Width="200px"
-                HorizontalAlign="center" Width="1200px">
+                HorizontalAlign="Center" Width="1200px">
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
                 <Columns>
+
+
                     <asp:BoundColumn DataField="date" HeaderText="日付" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="200px">
                         <HeaderStyle Wrap="true" />
                         <ItemStyle Wrap="true" HorizontalAlign="Left" />
@@ -401,19 +414,25 @@
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
                     </asp:BoundColumn>
 
+
                     <asp:ButtonColumn
                         ItemStyle-Width="100px"
                         HeaderText="削除"
-                        ButtonType="LinkButton"
+                        ButtonType="PushButton"
                         Text="削除"
-                        CommandName="Delete" />
+                        CommandName="Delete">
+
+                        <ItemStyle Width="100px"></ItemStyle>
+                    </asp:ButtonColumn>
 
                     <asp:EditCommandColumn
                         HeaderText="編集"
                         ItemStyle-Width="100px"
                         EditText="編集"
                         CancelText="キャンセル"
-                        UpdateText="保存" ButtonType="LinkButton"></asp:EditCommandColumn>
+                        UpdateText="保存" ButtonType="PushButton">
+                        <ItemStyle Width="100px"></ItemStyle>
+                    </asp:EditCommandColumn>
 
                 </Columns>
 
@@ -425,10 +444,125 @@
         <br />
 
         <div>
-            <asp:GridView runat="server" ID="TestGV" CssClass="Center">
+            <asp:GridView runat="server" ID="TestGV" CssClass="Center" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="SdlNo" DataSourceID="Sql1">
+
+                <Columns>
+
+                    <asp:TemplateField HeaderText="管理番号" SortExpression="SdlNo">
+
+                        <EditItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("SdlNo") %>'></asp:Label>
+                        </EditItemTemplate>
+
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("SdlNo") %>'></asp:Label>
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="日付" SortExpression="date">
+
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBoxA" runat="server" Text='<%# Bind("date") %>'></asp:TextBox>
+                        </EditItemTemplate>
+
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("date", "{0:yyyy年MM月dd日dddd}") %>'></asp:Label>
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="時間" SortExpression="time">
+
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="Test1" runat="server" Text='<%# Bind("time") %>' SelectedValue='<%# Bind("time", "{0:HH時MM分}") %>' DataSourceID="Sql1" DataTextField="time" DataValueField="time"></asp:DropDownList>
+                        </EditItemTemplate>
+
+                        <ItemTemplate>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("time", "{0:HH時MM分}") %>'></asp:Label>
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="内容" SortExpression="title">
+
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBoxB" runat="server" Text='<%# Bind("title") %>'></asp:TextBox>
+                        </EditItemTemplate>
+
+                        <ItemTemplate>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("title") %>'></asp:Label>
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="担当者" SortExpression="name">
+
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBoxC" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
+                        </EditItemTemplate>
+
+                        <ItemTemplate>
+                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("name") %>'></asp:Label>
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="選択">
+                        <EditItemTemplate>
+                            <asp:CheckBox ID="CheckBox1" runat="server" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:CheckBox ID="CheckBox1" runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="編集/削除" ShowHeader="False">
+
+                        <EditItemTemplate>
+                            <asp:Button ID="Button1" runat="server" CausesValidation="True" CommandName="Update" Text="更新" />
+                            &nbsp;<asp:Button ID="Button2" runat="server" CausesValidation="False" CommandName="Cancel" Text="キャンセル" />
+                        </EditItemTemplate>
+
+                        <ItemTemplate>
+                            <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Edit" Text="編集" />
+                            &nbsp;<asp:Button ID="Button2" runat="server" CausesValidation="False" CommandName="Delete" Text="削除" OnClientClick="return confirm('本当に削除しますか？')" />
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+
+                </Columns>
+
             </asp:GridView>
 
+            <asp:SqlDataSource ID="Sql1" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" DeleteCommand="DELETE FROM [T_Schedule] WHERE [SdlNo] = @SdlNo" InsertCommand="INSERT INTO [T_Schedule] ([date], [time], [title], [name], [KanriFlag], [SdlNo]) VALUES (@date, @time, @title, @name, @KanriFlag, @SdlNo)" SelectCommand="SELECT * FROM [T_Schedule]" UpdateCommand="UPDATE [T_Schedule] SET [date] = @date, [time] = @time, [title] = @title, [name] = @name, [KanriFlag] = @KanriFlag WHERE [SdlNo] = @SdlNo">
+                <DeleteParameters>
+                    <asp:Parameter Name="SdlNo" Type="Int32" />
+                </DeleteParameters>
+                <InsertParameters>
+                    <asp:Parameter Name="date" Type="DateTime" />
+                    <asp:Parameter Name="time" Type="String" />
+                    <asp:Parameter Name="title" Type="String" />
+                    <asp:Parameter Name="name" Type="String" />
+                    <asp:Parameter Name="KanriFlag" Type="String" />
+                    <asp:Parameter Name="SdlNo" Type="Int32" />
+                </InsertParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="date" Type="DateTime" />
+                    <asp:Parameter Name="time" Type="String" />
+                    <asp:Parameter Name="title" Type="String" />
+                    <asp:Parameter Name="name" Type="String" />
+                    <asp:Parameter Name="KanriFlag" Type="String" />
+                    <asp:Parameter Name="SdlNo" Type="Int32" />
+                </UpdateParameters>
+            </asp:SqlDataSource>
+
         </div>
+
+        <asp:Label runat="server" ID="test1" CssClass="Center1">
+
+        </asp:Label>
+
 
 
         <script>

@@ -126,31 +126,19 @@
             </table>
         </div>
 
-        <div>
-
-            <table class="table">
-                <tr>
-                    <td <%--rowspan="2"--%>>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="lblMonth" runat="server" Text="日付" CssClass="lblMonth"></asp:Label>
-                </td>
-                </tr>
-            </table>
-
-        </div>
-
         <div class="wbs">
 
             <asp:DataGrid ID="wbs" runat="server" 
                 AutoGenerateColumns="False"
-                OnItemDataBound="wbs_ItemDataBound" 
+                OnItemDataBound="wbs_ItemDataBound" Width="100%" 
                 >
                 <Columns>
-                    <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ItemStyle-Width="100px"/>
-                    <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目" ItemStyle-Width="150px"/>
+                    <asp:BoundColumn DataField="PBigname" HeaderText="大項目"/>
+                    <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目"/>
                 </Columns>
-                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10%"/>
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"/>
+
+                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Bottom" CssClass="lblMonth"/>
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="lblMonth"/>
             </asp:DataGrid>
 
         </div>
