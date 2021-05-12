@@ -38,11 +38,11 @@
 }
 
 .CheckBoxList_Left {
-   text-align:left;
+    text-align: left;
 }
 
-.Test {
+.Center_1 {
     display: flex;
-    justify-content:center;
+    justify-content: center;
 }
 }
