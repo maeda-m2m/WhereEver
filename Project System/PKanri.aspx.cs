@@ -328,8 +328,10 @@ namespace WhereEver.Project_System
                     {
                         if (ar[i].Day==1)
                         {
+                            cell.Height = 50;
                             cell.BorderWidth = 3;
-                            cell.Controls.Add(new LiteralControl(ar[i].Month + "月" + ar[i].Day));
+                            cell.BorderColor = Color.Black;
+                            cell.Controls.Add(new LiteralControl(ar[i].Month+ "月"+ Environment.NewLine + "0" + ar[i].Day));
                         }
                         else
                         {

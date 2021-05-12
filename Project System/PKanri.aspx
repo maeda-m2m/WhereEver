@@ -130,14 +130,14 @@
 
             <asp:DataGrid ID="wbs" runat="server" 
                 AutoGenerateColumns="False"
-                OnItemDataBound="wbs_ItemDataBound" 
+                OnItemDataBound="wbs_ItemDataBound" Width="100%" 
                 >
                 <Columns>
                     <asp:BoundColumn DataField="PBigname" HeaderText="大項目"/>
                     <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目"/>
                 </Columns>
 
-                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="lblMonth"/>
+                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Bottom" CssClass="lblMonth"/>
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="lblMonth"/>
             </asp:DataGrid>
 
