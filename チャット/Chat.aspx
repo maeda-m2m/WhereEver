@@ -54,7 +54,7 @@
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
-                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="200px">
+                    <asp:TemplateColumn HeaderText="" ItemStyle-Width="500px">
                         <HeaderStyle Wrap="true" />
                         <ItemTemplate>
                             <asp:Label ID="Naiyou" runat="server" Text=""></asp:Label>

@@ -75,13 +75,13 @@ namespace WhereEver
                         if (n == 5)
                         {
                             DateTime a = monday1.AddDays(n);
-                            Label71.Text = a.ToShortDateString();
+                            Labelsat1.Text = a.ToShortDateString();
                         }
 
                         if (n == 6)
                         {
                             DateTime a = monday1.AddDays(n);
-                            Label73.Text = a.ToShortDateString();
+                            Labelsun1.Text = a.ToShortDateString();
                         }
 
                         if (n == 7)
@@ -117,13 +117,13 @@ namespace WhereEver
                         if (n == 12)
                         {
                             DateTime a = monday1.AddDays(n);
-                            Label75.Text = a.ToShortDateString();
+                            Labelsat15.Text = a.ToShortDateString();
                         }
 
                         if (n == 13)
                         {
                             DateTime a = monday1.AddDays(n);
-                            Label77.Text = a.ToShortDateString();
+                            Labelsun15.Text = a.ToShortDateString();
                         }
                     }
                     break;
@@ -165,13 +165,13 @@ namespace WhereEver
                         if (n == 5)
                         {
                             DateTime a = monday2.AddDays(n);
-                            Label71.Text = a.ToShortDateString();
+                            Labelsat1.Text = a.ToShortDateString();
                         }
 
                         if (n == 6)
                         {
                             DateTime a = monday2.AddDays(n);
-                            Label73.Text = a.ToShortDateString();
+                            Labelsun1.Text = a.ToShortDateString();
                         }
 
                         if (n == 7)
@@ -207,13 +207,13 @@ namespace WhereEver
                         if (n == 12)
                         {
                             DateTime a = monday2.AddDays(n);
-                            Label75.Text = a.ToShortDateString();
+                            Labelsat15.Text = a.ToShortDateString();
                         }
 
                         if (n == 13)
                         {
                             DateTime a = monday2.AddDays(n);
-                            Label77.Text = a.ToShortDateString();
+                            Labelsun15.Text = a.ToShortDateString();
                         }
                     }
                     break;
@@ -255,13 +255,13 @@ namespace WhereEver
                         if (n == 5)
                         {
                             DateTime a = monday3.AddDays(n);
-                            Label71.Text = a.ToShortDateString();
+                            Labelsat1.Text = a.ToShortDateString();
                         }
 
                         if (n == 6)
                         {
                             DateTime a = monday3.AddDays(n);
-                            Label73.Text = a.ToShortDateString();
+                            Labelsun1.Text = a.ToShortDateString();
                         }
 
                         if (n == 7)
@@ -297,13 +297,13 @@ namespace WhereEver
                         if (n == 12)
                         {
                             DateTime a = monday3.AddDays(n);
-                            Label75.Text = a.ToShortDateString();
+                            Labelsat15.Text = a.ToShortDateString();
                         }
 
                         if (n == 13)
                         {
                             DateTime a = monday3.AddDays(n);
-                            Label77.Text = a.ToShortDateString();
+                            Labelsun15.Text = a.ToShortDateString();
                         }
                     }
                     break;
@@ -345,13 +345,13 @@ namespace WhereEver
                         if (n == 5)
                         {
                             DateTime a = monday4.AddDays(n);
-                            Label71.Text = a.ToShortDateString();
+                            Labelsat1.Text = a.ToShortDateString();
                         }
 
                         if (n == 6)
                         {
                             DateTime a = monday4.AddDays(n);
-                            Label73.Text = a.ToShortDateString();
+                            Labelsun1.Text = a.ToShortDateString();
                         }
 
                         if (n == 7)
@@ -387,13 +387,13 @@ namespace WhereEver
                         if (n == 12)
                         {
                             DateTime a = monday4.AddDays(n);
-                            Label75.Text = a.ToShortDateString();
+                            Labelsat15.Text = a.ToShortDateString();
                         }
 
                         if (n == 13)
                         {
                             DateTime a = monday4.AddDays(n);
-                            Label77.Text = a.ToShortDateString();
+                            Labelsat15.Text = a.ToShortDateString();
                         }
                     }
                     break;
@@ -435,13 +435,13 @@ namespace WhereEver
                         if (n == 5)
                         {
                             DateTime a = monday5.AddDays(n);
-                            Label71.Text = a.ToShortDateString();
+                            Labelsat1.Text = a.ToShortDateString();
                         }
 
                         if (n == 6)
                         {
                             DateTime a = monday5.AddDays(n);
-                            Label73.Text = a.ToShortDateString();
+                            Labelsun1.Text = a.ToShortDateString();
                         }
 
                         if (n == 7)
@@ -477,13 +477,13 @@ namespace WhereEver
                         if (n == 12)
                         {
                             DateTime a = monday5.AddDays(n);
-                            Label75.Text = a.ToShortDateString();
+                            Labelsat15.Text = a.ToShortDateString();
                         }
 
                         if (n == 13)
                         {
                             DateTime a = monday5.AddDays(n);
-                            Label77.Text = a.ToShortDateString();
+                            Labelsun15.Text = a.ToShortDateString();
                         }
                     }
                     break;
@@ -526,13 +526,13 @@ namespace WhereEver
                         if (n == 5)
                         {
                             DateTime a = monday6.AddDays(n);
-                            Label71.Text = a.ToShortDateString();
+                            Labelsat1.Text = a.ToShortDateString();
                         }
 
                         if (n == 6)
                         {
                             DateTime a = monday6.AddDays(n);
-                            Label73.Text = a.ToShortDateString();
+                            Labelsun1.Text = a.ToShortDateString();
                         }
 
                         if (n == 7)
@@ -568,13 +568,13 @@ namespace WhereEver
                         if (n == 12)
                         {
                             DateTime a = monday6.AddDays(n);
-                            Label75.Text = a.ToShortDateString();
+                            Labelsat15.Text = a.ToShortDateString();
                         }
 
                         if (n == 13)
                         {
                             DateTime a = monday6.AddDays(n);
-                            Label77.Text = a.ToShortDateString();
+                            Labelsun15.Text = a.ToShortDateString();
                         }
                     }
 
@@ -617,13 +617,13 @@ namespace WhereEver
                         if (n == 5)
                         {
                             DateTime a = monday7.AddDays(n);
-                            Label71.Text = a.ToShortDateString();
+                            Labelsat1.Text = a.ToShortDateString();
                         }
 
                         if (n == 6)
                         {
                             DateTime a = monday7.AddDays(n);
-                            Label73.Text = a.ToShortDateString();
+                            Labelsun1.Text = a.ToShortDateString();
                         }
 
                         if (n == 7)
@@ -659,13 +659,13 @@ namespace WhereEver
                         if (n == 12)
                         {
                             DateTime a = monday7.AddDays(n);
-                            Label75.Text = a.ToShortDateString();
+                            Labelsat15.Text = a.ToShortDateString();
                         }
 
                         if (n == 13)
                         {
                             DateTime a = monday7.AddDays(n);
-                            Label77.Text = a.ToShortDateString();
+                            Labelsun15.Text = a.ToShortDateString();
                         }
                     }
                     break;
@@ -854,9 +854,72 @@ namespace WhereEver
                     }
                     break;
                 }
+                while (week == "土")
+                {
 
+                    if (Labelsat3.Text == "")
+                    {
+                        Labelsat3.Text = tm1;
+                        Labelsat4.Text = dr.title;
+                        Labelsat5.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsat6.Text == "")
+                    {
+                        Labelsat6.Text = tm1;
+                        Labelsat7.Text = dr.title;
+                        Labelsat8.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsat9.Text == "")
+                    {
+                        Labelsat9.Text = tm1;
+                        Labelsat10.Text = dr.title;
+                        Labelsat11.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsat12.Text == "")
+                    {
+                        Labelsat12.Text = tm1;
+                        Labelsat13.Text = dr.title;
+                        Labelsat14.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+                while (week == "日")
+                {
 
-
+                    if (Labelsun3.Text == "")
+                    {
+                        Labelsun3.Text = tm1;
+                        Labelsun4.Text = dr.title;
+                        Labelsun5.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsun6.Text == "")
+                    {
+                        Labelsun6.Text = tm1;
+                        Labelsun7.Text = dr.title;
+                        Labelsun8.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsun9.Text == "")
+                    {
+                        Labelsun9.Text = tm1;
+                        Labelsun10.Text = dr.title;
+                        Labelsun11.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsun12.Text == "")
+                    {
+                        Labelsun12.Text = tm1;
+                        Labelsun13.Text = dr.title;
+                        Labelsun14.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
             }
 
             DATASET.DataSet.T_ScheduleDataTable dp = Class2.Insatsu2(Global.GetConnection());
@@ -1043,11 +1106,74 @@ namespace WhereEver
                     }
                     break;
                 }
+                while (week == "土")
+                {
 
+                    if (Labelsat17.Text == "")
+                    {
+                        Labelsat17.Text = tm1;
+                        Labelsat18.Text = dr.title;
+                        Labelsat19.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsat20.Text == "")
+                    {
+                        Labelsat20.Text = tm1;
+                        Labelsat21.Text = dr.title;
+                        Labelsat22.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsat23.Text == "")
+                    {
+                        Labelsat23.Text = tm1;
+                        Labelsat24.Text = dr.title;
+                        Labelsat25.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsat26.Text == "")
+                    {
+                        Labelsat26.Text = tm1;
+                        Labelsat27.Text = dr.title;
+                        Labelsat28.Text = dr.name;
+                        break;
+                    }
+                    break;
+                }
+                while (week == "日")
+                {
 
+                    if (Labelsun17.Text == "")
+                    {
+                        Labelsun17.Text = tm1;
+                        Labelsun18.Text = dr.title;
+                        Labelsun19.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsun20.Text == "")
+                    {
+                        Labelsun20.Text = tm1;
+                        Labelsun21.Text = dr.title;
+                        Labelsun22.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsun23.Text == "")
+                    {
+                        Labelsun23.Text = tm1;
+                        Labelsun24.Text = dr.title;
+                        Labelsun25.Text = dr.name;
+                        break;
+                    }
+                    if (Labelsun26.Text == "")
+                    {
+                        Labelsun26.Text = tm1;
+                        Labelsun27.Text = dr.title;
+                        Labelsun28.Text = dr.name;
+                        break;
+                    }
+                    break;
 
+                }
             }
-
         }
 
 
@@ -1101,6 +1227,7 @@ namespace WhereEver
                  new System.Drawing.Printing.PrintPageEventHandler(
                  PrintDocument1_PrintPage);
             PrintDocument1.Print();
+            
 
             memoryImage.Dispose();
         }
