@@ -393,7 +393,7 @@ namespace WhereEver
                         if (n == 13)
                         {
                             DateTime a = monday4.AddDays(n);
-                            Labelsat15.Text = a.ToShortDateString();
+                            Labelsun15.Text = a.ToShortDateString();
                         }
                     }
                     break;
