@@ -331,7 +331,7 @@ namespace WhereEver.Project_System
                             cell.Height = 50;
                             cell.BorderWidth = 3;
                             cell.BorderColor = Color.Black;
-                            cell.Controls.Add(new LiteralControl(ar[i].Month+ "月"+ Environment.NewLine + ar[i].Day + "日"));
+                            cell.Controls.Add(new LiteralControl(ar[i].Month+ "月"+ Environment.NewLine + "0" + ar[i].Day));
                         }
                         else
                         {
