@@ -40,5 +40,5 @@
     width: 100%
 }
 .lblMonth {
-    white-space: nowrap;
+    white-space: pre;
 }
