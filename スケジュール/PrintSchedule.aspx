@@ -1138,7 +1138,9 @@
                 </td>
             </tr>
         </table>
-        <asp:Button ID="Button1" runat="server" Text="戻る" OnClick="Button1_Click1" />
+        <input type="button" id="Back" value="戻る" onclick="history.back();" class="noprint" />
+        <br />
     </form>
+
 </body>
 </html>

@@ -1227,7 +1227,7 @@ namespace WhereEver
                  new System.Drawing.Printing.PrintPageEventHandler(
                  PrintDocument1_PrintPage);
             PrintDocument1.Print();
-            
+
 
             memoryImage.Dispose();
         }
@@ -1246,11 +1246,6 @@ namespace WhereEver
         private void pd_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(memoryImage, new PointF(0, 0));
-        }
-
-        protected void Button1_Click1(object sender, EventArgs e)
-        {
-            Response.Redirect("Schedule.aspx");
         }
     }
 }
