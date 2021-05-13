@@ -24,7 +24,7 @@
         <div class="wbs">
             <table class="table">
                 <tr>
-                    <td colspan="3" class="auto-style1">
+                    <td colspan="3">
                         
                         <asp:Label ID="lblPBig" CssClass="txt" runat="server" Text="大項目登録"></asp:Label>
                         <asp:TextBox ID="txtPBig" CssClass="txt" runat="server"></asp:TextBox>
