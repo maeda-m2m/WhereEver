@@ -133,7 +133,9 @@ namespace WhereEver.Project_System
 
                 // Add other cases here, if there are multiple ButtonColumns in 
                 // the DataGrid control.
-
+                case "wbs":
+                    Response.Redirect("PKanri.aspx");
+                    break;
                 default:
                     // Do nothing.
                     break;
@@ -252,11 +254,6 @@ namespace WhereEver.Project_System
                 DateTime date = Convert.ToDateTime(litem.Text);
                 dates.Add(date);
             }
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("PKanri.aspx");
         }
     }
 }

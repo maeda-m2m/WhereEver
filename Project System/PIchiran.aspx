@@ -35,6 +35,7 @@
                 
            AutoGenerateColumns="False">
                 <Columns>
+                    
                     <asp:BoundColumn HeaderText="プロジェクトID(変更✖)" 
                         DataField="Pid"/>
                     <asp:BoundColumn HeaderText="プロジェクト名"
@@ -60,7 +61,11 @@
                          ButtonType="LinkButton" 
                  Text="削除" 
                  CommandName="Delete"/>
-                    
+                    <asp:ButtonColumn 
+                         HeaderText="詳細"
+                         ButtonType="LinkButton" 
+                 Text="編集(WBS図)" 
+                 CommandName="wbs"/>
                 </Columns>
 
                 <HeaderStyle Width="200px" Height="50px" HorizontalAlign="Center" VerticalAlign="Middle"></HeaderStyle>
@@ -169,8 +174,6 @@
                         <asp:Label ID="lblAisatu" CssClass="label" runat="server"></asp:Label>
 
                         <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" OnClick="btnClear_Click" />
-
-                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
 
                     </td>
                 </tr>
