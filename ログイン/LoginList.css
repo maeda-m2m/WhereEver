@@ -24,10 +24,6 @@
         color: white;
     }
 
-.All {
-    text-align: center;
-    font-weight: bold;
-}
 .bg_test-text {
     display: inline-block; /* インラインブロックにする */
     padding: 10px 20px; /* 余白指定 */

@@ -6,16 +6,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
     <link href="LoginList.css" type="text/css" rel="stylesheet" />
-    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>ログインリスト</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="All">
-            <table class="table">
+        <div>
+            <table>
                 <tr>
-                    <td>
+                    <td id="menu">
                         <Menu:c_menu ID="m" runat="server"></Menu:c_menu>
                     </td>
                 </tr>

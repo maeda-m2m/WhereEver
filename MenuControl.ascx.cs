@@ -13,9 +13,8 @@ namespace WhereEver
         {
             Label1.Text = SessionManager.User.M_User.name1;
 
-            DATASET.DataSet.T_LogoutListDataTable dt = Class.Chat.GetLastLogoutTime(Global.GetConnection(), SessionManager.User.M_User.name1);
-            DATASET.DataSet.T_LogoutListRow dr = dt.NewT_LogoutListRow();
-            string time = dr[0].ToString();
+            DATASET.DataSet.T_LogoutListDataTable dt = Class.Chat.GetLastLogoutTime(Global.GetConnection(), SessionManager.User.M_User.name);
+            string time = dt[0][2].ToString();
 
             DATASET.DataSet.T_ChatDataTable cdt = Class.Chat.NewHensin(Global.GetConnection(), time);
 
