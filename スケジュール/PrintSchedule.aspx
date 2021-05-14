@@ -1134,6 +1134,7 @@
             </tr>
             <tr>
                 <td colspan="5">
+                    <asp:Label ID="lblbikou" runat="server" Text="[備考欄]"></asp:Label>
                     <textarea id="" rows="3" style="width: 685px"></textarea>
                 </td>
             </tr>
