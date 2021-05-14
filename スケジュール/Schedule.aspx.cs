@@ -654,15 +654,17 @@ namespace WhereEver
 
             if (a == "日付の新しい順")
             {
-                Create();
-                Create3();
-                Create2();
-            }
-            else if (b == "日付の古い順")
-            {
                 Create_A();
                 Create3();
                 Create2();
+                
+            }
+            else if (b == "日付の古い順")
+            {
+                Create();
+                Create3();
+                Create2();
+
             }
         }
 
