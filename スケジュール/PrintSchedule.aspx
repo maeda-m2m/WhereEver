@@ -1134,11 +1134,14 @@
             </tr>
             <tr>
                 <td colspan="5">
+                    <asp:Label ID="lblbikou" runat="server" Text="[備考欄]"></asp:Label>
                     <textarea id="" rows="3" style="width: 685px"></textarea>
                 </td>
             </tr>
         </table>
-        <asp:Button ID="Button1" runat="server" Text="戻る" OnClick="Button1_Click1" />
+        <input type="button" id="Back" value="戻る" onclick="history.back();" class="noprint" />
+        <br />
     </form>
+
 </body>
 </html>

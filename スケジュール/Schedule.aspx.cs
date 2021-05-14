@@ -32,8 +32,9 @@ namespace WhereEver
                 ViewState["count"] = 0;
 
                 //Panel1、登録
-                //Panel2、メインメニュー
+                //Panel2、登録メニュー
                 //Panel3、検索
+                //panel4、検索メニュー
 
                 //TextBox1,3,5 used
 
@@ -42,9 +43,18 @@ namespace WhereEver
         }
 
 
-        private void Create()//スケジュールリストにデータを格納
+        private void Create()//スケジュールリストにデータを格納(日付が古い順)
         {
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+
+            ScdlList.DataSource = dt;
+
+            ScdlList.DataBind();
+        }
+
+        private void Create_A()//スケジュールリストにデータを格納(日付が新しい順)
+        {
+            var dt = Class1.GetT_Schedule3DataTable_A(Global.GetConnection());
 
             ScdlList.DataSource = dt;
 
@@ -617,6 +627,7 @@ namespace WhereEver
             Panel1.Visible = true;
             Panel2.Visible = true;
             Panel3.Visible = false;
+            Panel4.Visible = true;
 
             Create();
             Create3();
@@ -628,10 +639,33 @@ namespace WhereEver
             Panel1.Visible = false;
             Panel2.Visible = true;
             Panel3.Visible = true;
+            Panel4.Visible = false;
 
             Create();
             Create3();
             Create2();
+        }
+
+        protected void Btn_Click(object sender, EventArgs e)
+        {
+            var a = Ddl.SelectedValue;
+
+            var b = Ddl.SelectedValue;
+
+            if (a == "日付の新しい順")
+            {
+                Create_A();
+                Create3();
+                Create2();
+                
+            }
+            else if (b == "日付の古い順")
+            {
+                Create();
+                Create3();
+                Create2();
+
+            }
         }
 
 
@@ -775,7 +809,7 @@ namespace WhereEver
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            int Count_Week; 
+            int Count_Week;
             Count_Week = int.Parse(ViewState["count"].ToString()) - 7;
 
             ViewState["count"] =
@@ -1815,6 +1849,21 @@ namespace WhereEver
             Create3();
             Create2();
 
+        }
+
+        protected void TestGV_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Footer)
+            {
+                var ltr = new Literal();
+
+                ltr.Text = $"総ページ数:{TestGV.PageCount}";
+
+                e.Row.Cells[e.Row.Cells.Count - 1].Wrap = false;
+                e.Row.Cells[e.Row.Cells.Count - 1].Controls.Add(ltr);
+
+
+            }
         }
 
         protected void Scdl3_SelectedIndexChanged(object sender, EventArgs e)
