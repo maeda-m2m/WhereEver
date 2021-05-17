@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Text;
 
 namespace WhereEver
 {
@@ -22,6 +23,42 @@ namespace WhereEver
                 DgTimeDetail.DataBind();
 
             }
+
+            //WhatNowをロード
+            Label_WhatNow.Text = "";
+            DATASET.DataSet.T_ScheduleDataTable dts = Class.Schedule.GetT_ScheduleDataTable(Global.GetConnection(), DateTime.Now.ToString());
+            if(dts != null)
+            {
+                for(int i = 0;  i < dts.Count; i++)
+                {                  
+                    StringBuilder@sb = new StringBuilder();
+
+                    if (!dts[i].IsNull("title"))
+                    {
+                        @sb.Append(dts[i].title);
+                    }
+                    if (!dts[i].IsNull("time"))
+                    {
+                        @sb.Append("　");
+                        @sb.Append(dts[i].time);
+                        @sb.Append("～");
+                    }
+                    if (!dts[i].IsNull("name"))
+                    {
+                        @sb.Append("　担当：");
+                        @sb.Append(dts[i].name);
+                    }
+
+                    @sb.Append("<br />");
+                    Label_WhatNow.Text += @sb.ToString();
+                }
+            }
+            else
+            {
+                Label_WhatNow.Text = @"本日の予定はありません。";
+            }
+
+
         }
 
         protected void DgTimeDetail_ItemDataBound(object sender, DataGridItemEventArgs e)

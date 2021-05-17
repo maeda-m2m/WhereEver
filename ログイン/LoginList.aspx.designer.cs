@@ -33,13 +33,13 @@ namespace WhereEver
         protected global::WhereEver.MenuControl m;
 
         /// <summary>
-        /// DgTimeDetail コントロール。
+        /// Label_WhatNow コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataGrid DgTimeDetail;
+        protected global::System.Web.UI.WebControls.Label Label_WhatNow;
 
         /// <summary>
         /// btnOut コントロール。
@@ -58,5 +58,14 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnKanri;
+
+        /// <summary>
+        /// DgTimeDetail コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid DgTimeDetail;
     }
 }
