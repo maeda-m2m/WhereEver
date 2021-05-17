@@ -7,6 +7,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="PIchiran.css" type="text/css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>プロジェクト一覧</title>
     
     </head>
