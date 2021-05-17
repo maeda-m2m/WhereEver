@@ -23,6 +23,10 @@ namespace WhereEver
                 lblHensin.Text = Environment.NewLine+"<font color = red>*";
                 lblHensin.Visible = true;
             }
+            else
+            {
+                lblHensin.Visible = false;
+            }
         }
     }
 }

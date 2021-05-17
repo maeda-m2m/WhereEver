@@ -26,6 +26,21 @@ namespace WhereEver
 
         }
 
+        public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTable_A(SqlConnection Sqlco)//スケジュールリスト用
+        {
+            var da = new SqlDataAdapter("", Sqlco);
+
+            da.SelectCommand.CommandText =
+              "SELECT * FROM T_Schedule WHERE date BETWEEN GETDATE() AND DATEADD(YYYY,10,GETDATE()) ORDER BY date desc";
+
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
 
         public static DATASET.DataSet.T_EmptyTableDataTable GetSchedule3DataTable(SqlConnection Sqlco)//スケジュール表用
         {
