@@ -410,11 +410,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Label ID="Label71" runat="server" Text="スケジュール表"></asp:Label>
 
         <input type="button" id="Btn" value="印刷" onclick="window.print();" class="noprint" />
 
         <table id="newsdl">
+            <asp:Label ID="lbltitle" runat="server" Text="スケジュール表"></asp:Label>
             <tr>
                 <td class="bb">
                     <p>日付</p>
