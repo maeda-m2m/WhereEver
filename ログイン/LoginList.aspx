@@ -9,6 +9,7 @@
     <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
     <link href="LoginList.css" type="text/css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>ログインリスト</title>
 </head>
 <body>
