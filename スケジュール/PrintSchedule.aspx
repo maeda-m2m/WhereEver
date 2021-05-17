@@ -407,12 +407,15 @@
             border-bottom: 3px double #bababa;
         }
 
+        .DgBikou{
+            float: left;
+        }
 
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-
+        <div class="DgBikou">
         <input type="button" id="Btn" value="印刷" onclick="window.print();" class="noprint" />
 
         <table id="newsdl">
@@ -1144,6 +1147,22 @@
         </table>
         <input type="button" id="Back" value="戻る" onclick="history.back();" class="noprint" />
         <br />
+ </div>
+        <div class="DgBikou">
+            <asp:DataGrid ID="DgBikou" runat="server" 
+                            AutoGenerateColumns="False" OnItemDataBound="DgBikou_ItemDataBound"
+                OnEditCommand="DgBikou_EditCommand"
+                            OnCancelCommand="DgBikou_CancelCommand"
+                            OnUpdateCommand="DgBikou_UpdateCommand">
+                <Columns>
+                    <asp:BoundColumn DataField="BikouID" HeaderText="備考ID" ReadOnly="True"/>
+                    <asp:BoundColumn DataField="Bikou" HeaderText="備考内容"/>
+                    <asp:EditCommandColumn EditText="変更" CancelText="cancel" UpdateText="update" ItemStyle-Width="10%" ></asp:EditCommandColumn>
+                                <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
+                </Columns>
+
+            </asp:DataGrid>
+        </div>
     </form>
 
 </body>
