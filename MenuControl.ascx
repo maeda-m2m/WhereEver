@@ -27,7 +27,7 @@
             <td>
                 <h1>WhereEver</h1>
                 <td>
-                    <a href="~/ログイン/LoginList.aspx" class="btn" runat="server">ログインリスト</a>
+                    <a href="~/ログイン/LoginList.aspx" class="btn" runat="server">トップページ</a>
                 </td>
                 <td>
                     <a href="~/スケジュール/Schedule.aspx" class="btn" runat="server">スケジュール</a>

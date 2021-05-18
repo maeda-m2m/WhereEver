@@ -1153,15 +1153,17 @@
                             AutoGenerateColumns="False" OnItemDataBound="DgBikou_ItemDataBound"
                 OnEditCommand="DgBikou_EditCommand"
                             OnCancelCommand="DgBikou_CancelCommand"
-                            OnUpdateCommand="DgBikou_UpdateCommand">
+                            OnUpdateCommand="DgBikou_UpdateCommand" class="noprint">
                 <Columns>
                     <asp:BoundColumn DataField="BikouID" HeaderText="備考ID" ReadOnly="True"/>
                     <asp:BoundColumn DataField="Bikou" HeaderText="備考内容"/>
                     <asp:EditCommandColumn EditText="変更" CancelText="cancel" UpdateText="update" ItemStyle-Width="10%" ></asp:EditCommandColumn>
                                 <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
                 </Columns>
-
             </asp:DataGrid>
+            <asp:Label ID="lblNyuryoku" runat="server" Text="備考入力"></asp:Label>
+            <asp:TextBox ID="txtNyuryoku" runat="server"></asp:TextBox>
+            <asp:Button ID="btnNyuryoku" runat="server" Text="入力" OnClick ="btnNyuryoku_Click" />
         </div>
     </form>
 
