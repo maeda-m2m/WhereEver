@@ -7,7 +7,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Print Schedule</title>
     <style type="text/css">
         body {
             margin: 0;
@@ -405,15 +407,19 @@
             border-bottom: 3px double #bababa;
         }
 
+        .DgBikou{
+            float: left;
+        }
 
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-
+        <div class="DgBikou">
         <input type="button" id="Btn" value="印刷" onclick="window.print();" class="noprint" />
 
         <table id="newsdl">
+            <asp:Label ID="lbltitle" runat="server" Text="スケジュール表"></asp:Label>
             <tr>
                 <td class="bb">
                     <p>日付</p>
@@ -1141,6 +1147,22 @@
         </table>
         <input type="button" id="Back" value="戻る" onclick="history.back();" class="noprint" />
         <br />
+ </div>
+        <div class="DgBikou">
+            <asp:DataGrid ID="DgBikou" runat="server" 
+                            AutoGenerateColumns="False" OnItemDataBound="DgBikou_ItemDataBound"
+                OnEditCommand="DgBikou_EditCommand"
+                            OnCancelCommand="DgBikou_CancelCommand"
+                            OnUpdateCommand="DgBikou_UpdateCommand">
+                <Columns>
+                    <asp:BoundColumn DataField="BikouID" HeaderText="備考ID" ReadOnly="True"/>
+                    <asp:BoundColumn DataField="Bikou" HeaderText="備考内容"/>
+                    <asp:EditCommandColumn EditText="変更" CancelText="cancel" UpdateText="update" ItemStyle-Width="10%" ></asp:EditCommandColumn>
+                                <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
+                </Columns>
+
+            </asp:DataGrid>
+        </div>
     </form>
 
 </body>

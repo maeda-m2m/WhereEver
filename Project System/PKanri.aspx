@@ -6,8 +6,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
     <link href="PKanri.css" type="text/css" rel="stylesheet" />
-    <title></title>
+    <title>プロジェクト管理(WBS)</title>
     
 </head>
 <body>
@@ -58,7 +59,7 @@
                 </tr>
                 <tr>
                     <td rowspan="2">
-                        </td>
+                        &nbsp;</td>
                     <td>
                         <asp:Label ID="lblStart" CssClass="txt" runat="server" Text="開始"></asp:Label>
                     </td>
