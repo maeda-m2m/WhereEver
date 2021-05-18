@@ -27,10 +27,6 @@
     text-align: center;
     height:50px;
 }
-.All {
-    text-align: center;
-    font-weight: bold;
-}
 .datagrid {
     width: 100%
 }
@@ -40,4 +36,8 @@
 }
 .lbl{
     width:150px;
+}
+#Wrap {
+    width: 1880px;
+    overflow: hidden;
 }

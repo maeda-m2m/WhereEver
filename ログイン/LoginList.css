@@ -5,6 +5,14 @@
     font-weight: bold; /*太字にする*/
 }
 
+.hr {
+    display: block;
+    height: 0;
+    width: auto;
+    margin: 0.5em 0;
+    border: 1px inset;
+    border-color: red;
+}
 
 #Wrap {
     width: 1880px;
@@ -13,9 +21,12 @@
 
 #Main {
     width: 1230px;
+    height: 30em;
     margin-right: 50px;
-    margin-top: 1em;
+    margin-top: 1.85em;
     float: right;
+    background-color: #1e1e1e;
+    color: white;
 }
 
 #Sub {
@@ -38,11 +49,20 @@
     top: 150px; /*疑似フレームの上からの座標（デフォルトでは左上）*/
 }
 
+.logo {
+    margin-top: 10em;
+}
+
 .index1 {
     font-size: large;
     font-weight: bold;
     margin-top: 2em;
     margin-bottom: 2em;
+    margin-left: 1em;
+}
+
+.article {
+    margin-left: 2em;
 }
 
 .btn_loginlist {
@@ -59,16 +79,23 @@
     font-size: 1em;
 }
 
-    .btn:hover {
-        background: #000000;
-        color: white;
+    .btn_loginlist:hover {
+        background: #808080;
+        cursor: pointer;
     }
 
 .bg_test-text {
     display: inline-block; /* インラインブロックにする */
     padding: 10px 20px; /* 余白指定 */
     padding-bottom: 200px;
-    margin: 30px;
+    margin: 1em;
+    width: auto;
+}
+
+.DgTD {
+    background-color: #1e1e1e;
+    color: white;
+    width: 100%;
 }
 
 .bg_test {
