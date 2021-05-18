@@ -13,7 +13,7 @@
     </head>
 <body>
     <form id="All" runat="server">
-        <div>
+        <div id ="Wrap">
             <table>
                 <tr class="All">
                     <td>

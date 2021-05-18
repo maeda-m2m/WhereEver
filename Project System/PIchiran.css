@@ -41,3 +41,7 @@
 .lbl{
     width:150px;
 }
+#Wrap {
+    width: 1880px;
+    overflow: hidden;
+}
