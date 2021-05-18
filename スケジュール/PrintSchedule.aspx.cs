@@ -935,7 +935,7 @@ namespace WhereEver
                 // string.Format("HH:mm", dr.time);
 
                 string tm = dr.time.ToString();
-                string tm1 = tm.Substring(0, 5);
+                string tm1 = tm;
 
                 while (week == "月")
                 {
