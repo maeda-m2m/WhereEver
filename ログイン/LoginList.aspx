@@ -10,7 +10,7 @@
     <link href="LoginList.css" type="text/css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>ログインリスト</title>
+    <title>トップページ</title>
 </head>
 <body>
     <form id="form1" runat="server">
