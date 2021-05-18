@@ -26,21 +26,20 @@
             </table>
 
             <div id="Navigation">
-                <p class="index1">--What Now--</p>
+                <div class="logo"><img src="../IMG/m2mlogo_r.png" alt="m2m_logo" /></div>
             </div>
 
 
             <div id="Main">
 
-                <hr />
+                <span class="hr"></span>
 
                 <p class="index1">◆Welcome to m2m</p>
-                <div>
+                <div class="article">
                     <p>--本日の予定--</p>
                     <asp:Label ID="Label_WhatNow" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label>
                 </div>
 
-                <hr />
            </div><%-- Main --%>
 
 
@@ -54,7 +53,8 @@
                     </tr>
 
                     <tr>
-                        <td colspan="2"><asp:DataGrid ID="DgTimeDetail" runat="server" AllowSorting="True" AutoGenerateColumns="false" HorizontalAlign="Left" OnItemDataBound="DgTimeDetail_ItemDataBound">
+                        <td colspan="2">
+                            <asp:DataGrid ID="DgTimeDetail" runat="server" AllowSorting="True" AutoGenerateColumns="false" HorizontalAlign="Left" OnItemDataBound="DgTimeDetail_ItemDataBound" CssClass="DgTD">
                             <Columns>
                                 <asp:TemplateColumn>
                                     <HeaderTemplate>

@@ -6,122 +6,103 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
     <link href="PIchiran.css" type="text/css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>プロジェクト一覧</title>
     
     </head>
 <body>
-    <form id="All" runat="server">
-        <div>
+    <form id="form1" runat="server">
+        <div id ="Wrap">
+
+
             <table>
-                <tr class="All">
-                    <td>
+                <tr>
+                    <td id="menu">
                         <Menu:c_menu ID="m" runat="server"></Menu:c_menu>
                     </td>
                 </tr>
             </table>
-        </div>
-        <div>
-            <table>
-                <tr>
-                    <td class="datagrid" colspan="4">
 
-            <asp:DataGrid runat="server" ID="DgPIchiran" Width="100%"
-                OnItemDataBound="DgPIchiran_ItemDataBound"
-                OnEditCommand="DgPIchiran_EditCommand"
-           OnCancelCommand="DgPIchiran_CancelCommand"
-           OnUpdateCommand="DgPIchiran_UpdateCommand"
-           OnItemCommand="DgPIchiran_ItemCommand"
-                
-           AutoGenerateColumns="False">
-                <Columns>
+            <div>
+                <table>
+                    <tr>
+                        <td class="datagrid" colspan="4">
+
+                            <asp:DataGrid runat="server" ID="DgPIchiran" 
+                                OnItemDataBound="DgPIchiran_ItemDataBound"
+                                OnEditCommand="DgPIchiran_EditCommand"
+                                OnCancelCommand="DgPIchiran_CancelCommand"
+                                OnUpdateCommand="DgPIchiran_UpdateCommand"
+                                OnItemCommand="DgPIchiran_ItemCommand"
+                                AutoGenerateColumns="False" Width="100%">
+                                    <Columns>
                     
-                    <asp:BoundColumn HeaderText="プロジェクトID(変更✖)" 
-                        DataField="Pid"/>
-                    <asp:BoundColumn HeaderText="プロジェクト名"
-                        DataField="Pname"/>
-                    <asp:BoundColumn HeaderText="取引先" 
-                        DataField="Pcustomer"/>
-                    <asp:BoundColumn HeaderText="担当者" 
-                        DataField="Presponsible"/>
-                    <asp:BoundColumn HeaderText="カテゴリー" 
-                        DataField="Pcategory"/>
-                    <asp:BoundColumn HeaderText="開始日" 
-                        DataField="PstartTime"/>
-                    <asp:BoundColumn HeaderText="終了日" 
-                        DataField="PoverTime"/>
-                    <asp:EditCommandColumn
-                         EditText="変更"
-                         CancelText="キャンセル"
-                        UpdateText="保存" >
-                      
-                    
-                    </asp:EditCommandColumn>
-                    <asp:ButtonColumn 
-                         ButtonType="LinkButton" 
-                 Text="削除" 
-                 CommandName="Delete"/>
-                    <asp:ButtonColumn 
-                         HeaderText="詳細"
-                         ButtonType="LinkButton" 
-                 Text="編集(WBS図)" 
-                 CommandName="wbs"/>
-                </Columns>
+                                        <asp:BoundColumn HeaderText="プロジェクトID(変更✖)" DataField="Pid"/>
+                                        <asp:BoundColumn HeaderText="プロジェクト名" DataField="Pname"/>
+                                        <asp:BoundColumn HeaderText="取引先" DataField="Pcustomer"/>
+                                        <asp:BoundColumn HeaderText="担当者" DataField="Presponsible"/>
+                                        <asp:BoundColumn HeaderText="カテゴリー" DataField="Pcategory"/>
+                                        <asp:BoundColumn HeaderText="開始日" DataField="PstartTime"/>
+                                        <asp:BoundColumn HeaderText="終了日" DataField="PoverTime"/>
+                                        <asp:EditCommandColumn EditText="変更" CancelText="キャンセル" UpdateText="保存" ></asp:EditCommandColumn>
+                                        <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
+                                        <asp:ButtonColumn HeaderText="詳細" ButtonType="LinkButton" Text="編集(WBS図)" CommandName="wbs"/>
 
-                <HeaderStyle Width="200px" Height="50px" HorizontalAlign="Center" VerticalAlign="Middle"></HeaderStyle>
-                <ItemStyle Width="200px" Height="30px" HorizontalAlign="Center" VerticalAlign="Middle" />
-            </asp:DataGrid>
+                                    </Columns>
+                                <HeaderStyle Width="200px" Height="50px" HorizontalAlign="Center" VerticalAlign="Middle"></HeaderStyle>
+                                <ItemStyle Width="200px" Height="30px" HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:DataGrid>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cell">
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="cell">
+                            <asp:Label ID="lblNewPName" CssClass="lbl" runat ="server" Text="プロジェクト名"></asp:Label>
 
-                        <asp:Label ID="lblNewPName" CssClass="lbl" runat ="server" Text="プロジェクト名"></asp:Label>
+                        </td>
+                        <td class="cell">
 
-                    </td>
-                    <td class="cell">
+                            <asp:TextBox ID="txtNewPName" CssClass="txt" runat="server"></asp:TextBox>
 
-                        <asp:TextBox ID="txtNewPName" CssClass="txt" runat="server"></asp:TextBox>
+                        </td>
+                        <td class="cell">
 
-                    </td>
-                    <td class="cell">
+                            <asp:Label ID="lblNewCustomer" CssClass="lbl" runat="server" Text="顧客名"></asp:Label>
 
-                        <asp:Label ID="lblNewCustomer" CssClass="lbl" runat="server" Text="顧客名"></asp:Label>
+                        </td>
+                        <td class="cell">
 
-                    </td>
-                    <td class="cell">
+                            <asp:TextBox ID="txtNewCustomer" CssClass="txt" runat="server"></asp:TextBox>
 
-                        <asp:TextBox ID="txtNewCustomer" CssClass="txt" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cell">
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="cell">
+                            <asp:Label ID="lblNewResponsible" CssClass="lbl" runat="server" Text="担当者"></asp:Label>
 
-                        <asp:Label ID="lblNewResponsible" CssClass="lbl" runat="server" Text="担当者"></asp:Label>
+                        </td>
+                        <td class="cell">
 
-                    </td>
-                    <td class="cell">
+                            <asp:DropDownList ID="ddlResponsible" CssClass="txt" runat="server">
+                                <asp:ListItem></asp:ListItem>
+                            </asp:DropDownList>
 
-                        <asp:DropDownList ID="ddlResponsible" CssClass="txt" runat="server">
-                            <asp:ListItem></asp:ListItem>
-                        </asp:DropDownList>
+                        </td>
+                        <td class="cell">
 
-                    </td>
-                    <td class="cell">
+                            <asp:Label ID="lblNewCategory" CssClass="lbl" runat="server" Text="カテゴリー(△)"></asp:Label>
 
-                        <asp:Label ID="lblNewCategory" CssClass="lbl" runat="server" Text="カテゴリー(△)"></asp:Label>
+                        </td>
+                        <td class="cell">
 
-                    </td>
-                    <td class="cell">
+                            <asp:TextBox ID="txtNewCategory" CssClass="txt" runat="server"></asp:TextBox>
 
-                        <asp:TextBox ID="txtNewCategory" CssClass="txt" runat="server"></asp:TextBox>
-
-                    </td>
-                </tr>
-                <tr>
+                        </td>
+                    </tr>
+                    <tr>
                     <td class="cell" colspan="2">
 
                         <asp:Label ID="lblNewStartTime" runat="server" Text="開始日"></asp:Label>
@@ -180,6 +161,7 @@
                 </tr>
                 </table>
         </div>
+            </div>
     </form>
 </body>
 </html>

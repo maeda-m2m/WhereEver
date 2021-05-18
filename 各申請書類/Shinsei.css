@@ -371,5 +371,6 @@ h1 {
     .btn-flat-border:hover {
         background: #16ba00;
         color: white;
+        cursor: pointer;
     }
 
