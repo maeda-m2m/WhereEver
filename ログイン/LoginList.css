@@ -81,6 +81,7 @@
 
     .btn_loginlist:hover {
         background: #808080;
+        cursor: pointer;
     }
 
 .bg_test-text {
