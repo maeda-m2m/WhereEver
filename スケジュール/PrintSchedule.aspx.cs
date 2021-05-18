@@ -1301,6 +1301,11 @@ namespace WhereEver
             //TextBox txtPMiddlename = (TextBox)e.Item.Cells[0].Controls[0];
             //TextBox txtPMiddlestart = (TextBox)e.Item.Cells[1].Controls[0];
         }
+
+        protected void btnNyuryoku_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
