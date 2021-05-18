@@ -5,7 +5,47 @@
     font-weight: bold; /*太字にする*/
 }
 
-.btn {
+
+#Wrap {
+    width: 1880px;
+    overflow: hidden;
+}
+
+#Main {
+    width: 1230px;
+    margin-right: 50px;
+    margin-top: 1em;
+    float: right;
+}
+
+#Sub {
+    width: 550px;
+    margin-left: 50px;
+    margin-top: 0em;
+    float: left;
+}
+
+
+#Navigation {
+    color: white;
+    background-color: #1e1e1e;
+    text-align: center;
+    width: 100%;
+    float: left;
+    font-size: 12px;
+    margin: 0px;
+    height: 25em;   /*縦長なら85em*/
+    top: 150px; /*疑似フレームの上からの座標（デフォルトでは左上）*/
+}
+
+.index1 {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.btn_loginlist {
     width: 200px;
     height: 40px;
     position: relative;
@@ -13,8 +53,8 @@
     font-weight: bold;
     padding: 0.3em 0.5em;
     text-decoration: none;
-    color: #000000;
-    background: #ECECEC;
+    color: white;
+    background: #1e1e1e;
     transition: .4s;
     font-size: 1em;
 }

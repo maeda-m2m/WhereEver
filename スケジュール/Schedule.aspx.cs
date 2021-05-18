@@ -38,7 +38,7 @@ namespace WhereEver
 
                 //TextBox1,3,5 used
 
-                Create4();
+
             }
         }
 
@@ -559,15 +559,33 @@ namespace WhereEver
             Scdl3.DataBind();
         }
 
-        public void Create4()//Test
-        {
-            //var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-            //TestGV.DataSource
-            //    = dt;
-            //TestGV.DataBind();
+
+        //public void Create4()//Test
+        //{
+        //    var A1 = TextBox3.Text;//date
+
+        //    var b = DropDownList2.SelectedValue;//time
+
+        //    var c = TextBox5.Text;//title
+
+        //    string d;//name
+
+        //    d = "";
+
+        //    foreach (ListItem item in CheckBoxList2.Items)
+        //    {
+        //        if (item.Selected)
+        //        {
+        //            d += item.Value + " ";
+        //        }
+        //    }
 
 
-        }
+        //    var dt = Class1.ScheduleSearch(A1, b, c, d, Global.GetConnection());
+        //    ScdlList.DataSource = dt;
+        //    ScdlList.DataBind();
+
+        //}
 
         protected void Button1_Click(object sender, EventArgs e)//印刷
         {
@@ -748,6 +766,7 @@ namespace WhereEver
         {
 
             ScdlList.EditItemIndex = e.Item.ItemIndex;
+
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
             ScdlList.DataSource = dt;
             ScdlList.DataBind();
@@ -771,6 +790,25 @@ namespace WhereEver
 
         public void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)
         {
+
+            //var A1 = TextBox3.Text;//date
+
+            //var b = DropDownList2.SelectedValue;//time
+
+            //var c = TextBox5.Text;//title
+
+            //string d;//name
+
+            //d = "";
+
+            //foreach (ListItem item in CheckBoxList2.Items)
+            //{
+            //    if (item.Selected)
+            //    {
+            //        d += item.Value + " ";
+            //    }
+            //}
+
             TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
             TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
             TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];

@@ -23,6 +23,15 @@ namespace WhereEver
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CreateDataGrid();
+            DgBikou.EditCommand +=
+                    new DataGridCommandEventHandler(this.DgBikou_EditCommand);
+            DgBikou.CancelCommand +=
+                new DataGridCommandEventHandler(this.DgBikou_CancelCommand);
+            DgBikou.UpdateCommand +=
+                new DataGridCommandEventHandler(this.DgBikou_UpdateCommand);
+            DgBikou.ItemCommand +=
+                    new DataGridCommandEventHandler(this.DgBikou_UpdateCommand);
             ////今週の週番号と来週の週番号を取得する
             //DateTime date = DateTime.Now;
 
@@ -1246,6 +1255,51 @@ namespace WhereEver
         private void pd_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(memoryImage, new PointF(0, 0));
+        }
+
+        protected void DgBikou_ItemDataBound(object sender, DataGridItemEventArgs e)
+        {
+            if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
+            {
+                DATASET.DataSet.T_PrintScheduleRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PrintScheduleRow;
+                e.Item.Cells[0].Text = dr.bikouid.ToString();
+                e.Item.Cells[1].Text = dr.bikou.ToString();
+
+            }
+        }
+        private void CreateDataGrid()
+        {
+            DATASET.DataSet.T_PrintScheduleDataTable dt = GetT_PrintScheduleDataTable(Global.GetConnection());
+
+            DgBikou.DataSource = dt;
+            DgBikou.DataBind();
+        }
+        public static DATASET.DataSet.T_PrintScheduleDataTable GetT_PrintScheduleDataTable(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "SELECT * FROM T_PrintSchedule";
+            DATASET.DataSet.T_PrintScheduleDataTable dt = new DATASET.DataSet.T_PrintScheduleDataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
+        protected void DgBikou_EditCommand(object source, DataGridCommandEventArgs e)
+        {
+            DgBikou.EditItemIndex = e.Item.ItemIndex;
+            CreateDataGrid();
+        }
+
+        protected void DgBikou_CancelCommand(object source, DataGridCommandEventArgs e)
+        {
+            DgBikou.EditItemIndex = -1;
+            CreateDataGrid();
+        }
+
+        protected void DgBikou_UpdateCommand(object source, DataGridCommandEventArgs e)
+        {
+            //TextBox txtPMiddlename = (TextBox)e.Item.Cells[0].Controls[0];
+            //TextBox txtPMiddlestart = (TextBox)e.Item.Cells[1].Controls[0];
         }
     }
 }

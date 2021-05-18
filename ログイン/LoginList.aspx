@@ -9,11 +9,14 @@
     <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
     <link href="LoginList.css" type="text/css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>ログインリスト</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div id ="Wrap">
+
+
             <table>
                 <tr>
                     <td id="menu">
@@ -21,9 +24,35 @@
                     </td>
                 </tr>
             </table>
-        </div>
+
+            <div id="Navigation">
+                <p class="index1">--What Now--</p>
+            </div>
+
+
+            <div id="Main">
+
+                <hr />
+
+                <p class="index1">◆Welcome to m2m</p>
+                <div>
+                    <p>--本日の予定--</p>
+                    <asp:Label ID="Label_WhatNow" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label>
+                </div>
+
+                <hr />
+           </div><%-- Main --%>
+
+
+            <div id="Sub">
+
         <div class ="bg_test">
             <table class="bg_test-text">
+                    <tr>
+                        <td><asp:Button ID="btnOut" runat="server" CssClass="btn_loginlist" Text="ログアウト" OnClick="btnOut_Click" /></td>
+                        <td><asp:Button ID="btnKanri" runat="server" CssClass="btn_loginlist" Text="ユーザー情報変更" OnClick="btnKanri_Click" /></td>
+                    </tr>
+
                     <tr>
                         <td colspan="2"><asp:DataGrid ID="DgTimeDetail" runat="server" AllowSorting="True" AutoGenerateColumns="false" HorizontalAlign="Left" OnItemDataBound="DgTimeDetail_ItemDataBound">
                             <Columns>
@@ -57,12 +86,12 @@
                         </asp:DataGrid>
                         </td>
                     </tr>
-                    <tr>
-                        <td><asp:Button ID="btnOut" runat="server" CssClass="btn" Text="ログアウト" OnClick="btnOut_Click" /></td>
-                        <td><asp:Button ID="btnKanri" runat="server" CssClass="btn" Text="ユーザー情報変更" OnClick="btnKanri_Click" /></td>
-                    </tr>
-                </table>
-        </div>
+                </table>           
+              </div>
+
+            </div><%-- Sub --%>
+
+        </div><%-- Warp --%>
     </form>
 </body>
 </html>

@@ -5354,6 +5354,8 @@ namespace WhereEver.DATASET {
             
             private global::System.Data.DataColumn columnbikou;
             
+            private global::System.Data.DataColumn columnbikouid;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public T_PrintScheduleDataTable() {
@@ -5397,6 +5399,14 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn bikouidColumn {
+                get {
+                    return this.columnbikouid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5432,10 +5442,11 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_PrintScheduleRow AddT_PrintScheduleRow(string bikou) {
+            public T_PrintScheduleRow AddT_PrintScheduleRow(string bikou, int bikouid) {
                 T_PrintScheduleRow rowT_PrintScheduleRow = ((T_PrintScheduleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        bikou};
+                        bikou,
+                        bikouid};
                 rowT_PrintScheduleRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowT_PrintScheduleRow);
                 return rowT_PrintScheduleRow;
@@ -5459,6 +5470,7 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnbikou = base.Columns["bikou"];
+                this.columnbikouid = base.Columns["bikouid"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5466,6 +5478,8 @@ namespace WhereEver.DATASET {
             private void InitClass() {
                 this.columnbikou = new global::System.Data.DataColumn("bikou", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbikou);
+                this.columnbikouid = new global::System.Data.DataColumn("bikouid", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbikouid);
                 this.columnbikou.AllowDBNull = false;
                 this.columnbikou.MaxLength = 2147483647;
             }
@@ -7460,6 +7474,34 @@ namespace WhereEver.DATASET {
                 set {
                     this[this.tableT_PrintSchedule.bikouColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int bikouid {
+                get {
+                    try {
+                        return ((int)(this[this.tableT_PrintSchedule.bikouidColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'T_PrintSchedule\' にある列 \'bikouid\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableT_PrintSchedule.bikouidColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsbikouidNull() {
+                return this.IsNull(this.tableT_PrintSchedule.bikouidColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetbikouidNull() {
+                this[this.tableT_PrintSchedule.bikouidColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -12683,12 +12725,14 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "T_PrintSchedule";
             tableMapping.ColumnMappings.Add("bikou", "bikou");
+            tableMapping.ColumnMappings.Add("bikouid", "bikouid");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [T_PrintSchedule] ([bikou]) VALUES (@bikou)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [T_PrintSchedule] ([bikou], [bikouid]) VALUES (@bikou, @bikouid)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bikou", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bikou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bikouid", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bikouid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12766,12 +12810,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string bikou) {
+        public virtual int Insert(string bikou, global::System.Nullable<int> bikouid) {
             if ((bikou == null)) {
                 throw new global::System.ArgumentNullException("bikou");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(bikou));
+            }
+            if ((bikouid.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(bikouid.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
