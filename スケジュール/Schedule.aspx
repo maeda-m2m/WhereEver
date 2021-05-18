@@ -568,7 +568,8 @@
 
             function A() {
 
-                return confirm('本当に実行しますか？');
+                return window.confirm('本当に実行しますか？');
+
 
             }
 
