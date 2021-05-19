@@ -71,20 +71,20 @@ namespace WhereEver
 
             var b = Ddl.SelectedValue;
 
-            if (a == "日付の新しい順")
+            if (a == "降順")
             {
                 Create_Desc();
                 Create3();
                 Create2();
-                TestGV.Focus();
+               
 
             }
-            else if (b == "日付の古い順")
+            else if (b == "昇順")
             {
                 Create();
                 Create3();
                 Create2();
-                TestGV.Focus();
+               
             }
         }
 
@@ -2063,17 +2063,17 @@ namespace WhereEver
 
         protected void TestGV_RowCreated(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.Footer)
-            {
-                var ltr = new Literal();
+            //if (e.Row.RowType == DataControlRowType.Footer)
+            //{
+            //    var ltr = new Literal();
 
-                ltr.Text = $"総ページ数:{TestGV.PageCount}";
+            //    ltr.Text = $"総ページ数:{TestGV.PageCount}";
 
-                e.Row.Cells[e.Row.Cells.Count - 1].Wrap = false;
-                e.Row.Cells[e.Row.Cells.Count - 1].Controls.Add(ltr);
+            //    e.Row.Cells[e.Row.Cells.Count - 1].Wrap = false;
+            //    e.Row.Cells[e.Row.Cells.Count - 1].Controls.Add(ltr);
 
 
-            }
+            //}
         }
 
         protected void Scdl3_SelectedIndexChanged(object sender, EventArgs e)

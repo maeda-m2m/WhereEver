@@ -50,14 +50,6 @@ namespace WhereEver.Class
                     //中身なし
                     return null;
                 }
-            try
-            {
-            }
-            catch
-            {
-                //不正な値が入力された場合はnullを返します。
-                return null;
-            }
 
         }
 

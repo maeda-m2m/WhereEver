@@ -254,9 +254,8 @@
                 <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
 
                 <asp:DropDownList runat="server" ID="Ddl" AutoPostBack="True" OnTextChanged="Create4">
-                    <asp:ListItem>日付の古い順</asp:ListItem>
-                    <asp:ListItem>日付の新しい順</asp:ListItem>
-
+                     <asp:ListItem>昇順</asp:ListItem>
+                    <asp:ListItem>降順</asp:ListItem>
 
                 </asp:DropDownList>
 
@@ -441,7 +440,7 @@
 
         <br />
 
-        <div>
+        <%--<div>
             <asp:GridView runat="server" ID="TestGV" CssClass="Center" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="SdlNo" DataSourceID="Sql1" OnRowCreated="TestGV_RowCreated" ShowFooter="True">
 
                 <Columns>
@@ -555,14 +554,9 @@
                 </UpdateParameters>
             </asp:SqlDataSource>
 
-        </div>
+        </div>--%>
 
-        <asp:Label runat="server" ID="test1" CssClass="Center1">
-
-        </asp:Label>
-
-
-
+      
         <script>
 
             function A() {
