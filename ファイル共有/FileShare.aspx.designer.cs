@@ -69,6 +69,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button_Upload;
 
         /// <summary>
+        /// TextBox_Upload_Comment コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Upload_Comment;
+
+        /// <summary>
         /// lblDLResult コントロール。
         /// </summary>
         /// <remarks>

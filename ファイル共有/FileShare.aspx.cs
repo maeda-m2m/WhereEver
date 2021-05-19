@@ -88,10 +88,16 @@ namespace WhereEver
                         //アップロードされたファイル内容を指定したパスに保存します。（いらない）
                         //posted.SaveAs(newPath);
 
-                        //仮
-                        string title = HtmlEncode(@"無題");
+                        string title = HtmlEncode(@TextBox_Upload_Comment.Text);
+                        if (title == "")
+                        {
+                            title = "無題";
+                        }
                         string pass = @TextBox_UploadPass.Text;
-                        pass = pass.GetHashCode().ToString();
+                        if (pass != "")
+                        {
+                            pass = pass.GetHashCode().ToString();
+                        }
 
                         //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
                         //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
@@ -113,6 +119,10 @@ namespace WhereEver
                     }
 
                     lblResult.Text = "アップロードファイルを保存しました！";
+
+                    //データバインド
+                    GridView1.DataBind();
+
                     return;
                 }
                 else
@@ -139,7 +149,10 @@ namespace WhereEver
 
             //仮Password
             string pass = TextBox_DownloadPass.Text;
-            pass = pass.GetHashCode().ToString();
+            if (pass != "")
+            {
+                pass = pass.GetHashCode().ToString();
+            }
 
             if (TextBox_dl.Text != null && TextBox_dl.Text != "")
             {
@@ -202,6 +215,13 @@ namespace WhereEver
 
                         // MIME Typeを取得
                         Response.ContentType = (string)@dr.type;
+
+
+                        if((string)@dr.type == "image/png")
+                        {
+                            byte[] responseImage = GenerateImage();
+                        }
+
 
                         // ダウンロード実行 binary HTMLページと一緒にロードされる
                         Response.BinaryWrite((Byte[])dr.datum);
@@ -319,7 +339,7 @@ namespace WhereEver
             Session.Add("args", args);
 
             //行の色変更（選択行を強調表示）
-            GridView1.Rows[args].BackColor = System.Drawing.Color.AliceBlue;
+            GridView1.Rows[args].BackColor = System.Drawing.Color.Red;
 
             //idをロード
             //string isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
@@ -342,12 +362,21 @@ namespace WhereEver
 
             // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
             //FileNameをロード
-            //String isbn_filename = GridView1.Rows[args].Cells[1].Text.Trim();
+            String isbn_filename = GridView1.Rows[args].Cells[1].Text.Trim();
 
             //個別テーブルからSQL文を用いて削除（未実装）
 
-            //一覧から削除
-            lbluid.Text = "null";
+            if(FileShareClass.DeleteT_FileShareRow(Global.GetConnection(), SessionManager.User.M_User.id, isbn_filename))
+            {
+                //一覧から削除
+                lbluid.Text = "null";
+                lblDLResult.Text = "ファイルを１件削除しました！";
+            }
+            else
+            {
+                lblDLResult.Text = "他人のファイルは削除できません！";
+            }
+
 
             //データバインド
             BindData();
