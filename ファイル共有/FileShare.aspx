@@ -35,7 +35,8 @@
            </p>
 
            <p class ="form-flat-border">
-            [アップロードするファイル]　<asp:FileUpload ID="FileUpload_userfile" runat="server" Width="685px"  CssClass="form-flat-border" />
+            <span class="f-notice">[アップロードするファイル]</span>　<asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
+            <span class="f-notice">[パスワード]</span>　<asp:TextBox ID="TextBox_UploadPass" runat="server" CssClass="form-flat-border-inner" Width="100px" MaxLength="20"></asp:TextBox>
             <asp:Button ID="Button_Upload" runat="server" Text="アップロード" OnClick="Button_UpLoad" CssClass="btn-flat-border" />
            </p>
            <p>
@@ -48,7 +49,7 @@
            <%-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// --%>
 
            <p>
-            <asp:Label ID="lblDLResult" runat="server" Text="ファイルをダウンロードできます。拡張子を忘れずにつけて下さい。"></asp:Label>
+            <asp:Label ID="lblDLResult" runat="server" Text="ファイルをダウンロードできます。拡張子を忘れずにつけて下さい。4MBまでアップロードできます。"></asp:Label>
            </p>
 
            <%--
@@ -84,7 +85,9 @@
 
            <asp:Panel ID="Panel1" runat="server" DefaultButton="Button_Download">
             <p class ="form-flat-border">
-            [ダウンロードするファイル]　c:\\UploadedFiles\\<asp:TextBox ID="TextBox_dl" runat="server" Width="600px" CssClass="form-flat-border" ></asp:TextBox>　<asp:Button ID="Button_Download" runat="server" Text="ダウンロード" OnClick="Button_DownLoad" CssClass="btn-flat-border" />
+            <span class="f-notice">[ダウンロードするファイル]</span>　<asp:TextBox ID="TextBox_dl" runat="server" Width="485px" CssClass="form-flat-border-inner" ></asp:TextBox>
+            <span class="f-notice">[パスワード]</span>　<asp:TextBox ID="TextBox_DownloadPass" runat="server" CssClass="form-flat-border-inner" Width="100px" MaxLength="20"></asp:TextBox>
+                <asp:Button ID="Button_Download" runat="server" Text="ダウンロード" OnClick="Button_DownLoad" CssClass="btn-flat-border" />
             </p>
            </asp:Panel>
 
@@ -102,19 +105,20 @@
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="false" />
                     <asp:BoundField DataField="FileName" HeaderText="ファイル名" ReadOnly="True" SortExpression="FileName" />
-                    <asp:BoundField DataField="Title" HeaderText="コメント" ReadOnly="True" SortExpression="Title" Visible="false" />
+                    <asp:BoundField DataField="Title" HeaderText="コメント" ReadOnly="True" SortExpression="Title" />
                     <asp:BoundField DataField="DateTime" HeaderText="アップロード日" ReadOnly="True" SortExpression="DateTime" />
 
                     <asp:ButtonField ButtonType="Button" Text="削除" ControlStyle-CssClass="btn-flat-border"  HeaderText="削除" CommandName="Remove" CausesValidation="False" >
                     <ControlStyle CssClass="btn-flat-border" />
                     </asp:ButtonField>
 
-                    <asp:ButtonField ButtonType="Button" Text="DL" ControlStyle-CssClass="btn-flat-border"  HeaderText="ダウンロード" CommandName="DownLoad" CausesValidation="False" >
+                    <asp:ButtonField ButtonType="Button" Text="参照" ControlStyle-CssClass="btn-flat-border"  HeaderText="ダウンロード" CommandName="DownLoad" CausesValidation="False" >
                     <ControlStyle CssClass="btn-flat-border" />
                     </asp:ButtonField>
 
                 </Columns>
-                <HeaderStyle BackColor="#66FF66" />
+                <HeaderStyle BackColor="#1E1E1E" ForeColor="White" />
+                  <RowStyle BackColor="Gray" ForeColor="White" />
             </asp:GridView>
 
              <asp:SqlDataSource ID="SqlDataSource1" runat="server"

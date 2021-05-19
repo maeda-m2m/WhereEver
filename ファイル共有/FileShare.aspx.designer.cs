@@ -51,6 +51,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.FileUpload FileUpload_userfile;
 
         /// <summary>
+        /// TextBox_UploadPass コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_UploadPass;
+
+        /// <summary>
         /// Button_Upload コントロール。
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_dl;
+
+        /// <summary>
+        /// TextBox_DownloadPass コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_DownloadPass;
 
         /// <summary>
         /// Button_Download コントロール。
