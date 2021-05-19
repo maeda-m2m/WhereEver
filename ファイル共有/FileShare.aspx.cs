@@ -349,5 +349,9 @@ namespace WhereEver
             return;
         }
 
+        protected void Push_DataBind(object sender, EventArgs e)
+        {
+            GridView1.DataBind();
+        }
     }
 }

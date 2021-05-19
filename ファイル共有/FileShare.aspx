@@ -80,16 +80,25 @@
                <asp:ListItem Value="video/mpeg">MPEG</asp:ListItem>
            </asp:DropDownList></p>
 
+           <asp:Panel ID="Panel1" runat="server" DefaultButton="Button_Download">
             <p class ="form-flat-border">
             [ダウンロードするファイル]　c:\\UploadedFiles\\<asp:TextBox ID="TextBox_dl" runat="server" Width="600px" CssClass="form-flat-border" ></asp:TextBox>　<asp:Button ID="Button_Download" runat="server" Text="ダウンロード" OnClick="Button_DownLoad" CssClass="btn-flat-border" />
             </p>
+           </asp:Panel>
+
            <p>
              参照先：c:\\UploadedFiles\\[UUID].(拡張子)
            </p>
 
+           <hr />
+
+           <p>～共有ファイル一覧～</p>
+           <p><asp:Button ID="Button_DataBind" runat="server" Text="一覧更新" OnClick="Push_DataBind" CssClass="btn-flat-border" /></p>
+
+           <div>
               <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,FileName" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowCommand="grid_RowCommand">
                 <Columns>
-                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
+                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="false" />
                     <asp:BoundField DataField="FileName" HeaderText="ファイル名" ReadOnly="True" SortExpression="FileName" />
                     <asp:BoundField DataField="FilePath" HeaderText="ファイルパス" ReadOnly="True" SortExpression="FilePath" Visible="false" />
                     <asp:BoundField DataField="DateTime" HeaderText="アップロード日" ReadOnly="True" SortExpression="DateTime" />
@@ -98,7 +107,7 @@
                     <ControlStyle CssClass="btn-flat-border" />
                     </asp:ButtonField>
 
-                    <asp:ButtonField ButtonType="Button" Text="編集/閲覧" ControlStyle-CssClass="btn-flat-border"  HeaderText="編集/閲覧" CommandName="Reform" CausesValidation="False" >
+                    <asp:ButtonField ButtonType="Button" Text="DL" ControlStyle-CssClass="btn-flat-border"  HeaderText="ダウンロード" CommandName="DownLoad" CausesValidation="False" >
                     <ControlStyle CssClass="btn-flat-border" />
                     </asp:ButtonField>
 
@@ -108,11 +117,12 @@
 
              <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                 ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>"
-                SelectCommand="SELECT * FROM [T_FileShare]  WHERE ([id] = @id) ORDER BY DateTime DESC">
+                SelectCommand="SELECT * FROM [T_FileShare] ORDER BY DateTime DESC">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="lblid" DefaultValue="null" Name="id" PropertyName="Text" Type="String" />
                 </SelectParameters>
             </asp:SqlDataSource>
+           </div>
 
            <p>
             <asp:Label ID="lblid" runat="server" Text="null" Visible="False"></asp:Label>

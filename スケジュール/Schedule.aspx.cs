@@ -72,7 +72,7 @@ namespace WhereEver
                 Create_A();
                 Create3();
                 Create2();
-                Ddl.Focus();
+                TestGV.Focus();
 
             }
             else if (b == "日付の古い順")
@@ -80,7 +80,7 @@ namespace WhereEver
                 Create();
                 Create3();
                 Create2();
-                Ddl.Focus();
+                TestGV.Focus();
             }
         }
 
@@ -660,7 +660,7 @@ namespace WhereEver
             Create3();
             Create2();
 
-            Panel3.Focus();
+            Button8.Focus();
         }
 
        
