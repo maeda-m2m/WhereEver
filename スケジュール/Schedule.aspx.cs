@@ -29,7 +29,8 @@ namespace WhereEver
                 Panel1.Visible = false;
                 Panel3.Visible = false;
 
-                ViewState["count"] = 0;
+                ViewState["Count"] = 0;
+                ViewState["Serch"] = 0;
 
                 //Panel1、登録
                 //Panel2、登録メニュー
@@ -661,9 +662,11 @@ namespace WhereEver
             Create2();
 
             Button8.Focus();
+
+
         }
 
-       
+
 
 
         protected void Scdl3_ItemDataBound(object sender, DataGridItemEventArgs e)//scdl3の表示の枠を作っている
@@ -718,107 +721,230 @@ namespace WhereEver
             }
         }
 
-        //削除ボタンの処理
-        protected void ScdlList_ItemCommand(object sender, DataGridCommandEventArgs e)
+        
+        protected void ScdlList_ItemCommand(object sender, DataGridCommandEventArgs e)//削除ボタンの処理
         {
-            int a = e.Item.ItemIndex;
-            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-            var dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;
-            int sdl = dr.SdlNo;
+            int Count = 1;
+            int Serch = int.Parse(ViewState["Serch"].ToString());
 
-            if (e.CommandName == "Delete")
+            var a = TextBox3.Text;//date
+
+            var b = DropDownList2.SelectedValue;//time
+
+            var c = TextBox5.Text;//title
+
+            string d;//name
+
+            d = "";
+
+            foreach (ListItem item in CheckBoxList2.Items)
             {
-                if (sdl > 0)
-                    Class1.DeleteList(sdl, Global.GetConnection());
-                ScdlList.Items[a].FindControl("No");
-                Create();
+                if (item.Selected)
+                {
+                    d += item.Value + " ";
+                }
+            }
+
+            if (Count >= Serch)
+            {
+                int Delete = e.Item.ItemIndex;
+                var dt = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
+                var dr = dt.Rows[Delete] as DATASET.DataSet.T_ScheduleRow;
+                int sdl = dr.SdlNo;
+
+                if (e.CommandName == "Delete")
+                {
+                    if (sdl > 0)
+                        Class1.DeleteList(sdl, Global.GetConnection());
+                    ScdlList.Items[Delete].FindControl("No");
+
+                    var dd = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
+                    ScdlList.DataSource = dd;
+                    ScdlList.DataBind();
+
+                    Create3();
+                    Create2();
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                int Delete = e.Item.ItemIndex;
+                var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+                var dr = dt.Rows[Delete] as DATASET.DataSet.T_ScheduleRow;
+                int sdl = dr.SdlNo;
+
+                if (e.CommandName == "Delete")
+                {
+                    if (sdl > 0)
+                        Class1.DeleteList(sdl, Global.GetConnection());
+                    ScdlList.Items[Delete].FindControl("No");
+
+                    Create();
+                    Create3();
+                    Create2();
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+
+        protected void ScdlList_EditCommand(object sender, DataGridCommandEventArgs e)//編集ボタンの処理
+        {
+            int Count = 1;
+            int Serch = int.Parse(ViewState["Serch"].ToString());
+
+            var a = TextBox3.Text;//date
+
+            var b = DropDownList2.SelectedValue;//time
+
+            var c = TextBox5.Text;//title
+
+            string d;//name
+
+            d = "";
+
+            foreach (ListItem item in CheckBoxList2.Items)
+            {
+                if (item.Selected)
+                {
+                    d += item.Value + " ";
+                }
+            }
+
+            if (Count >= Serch)
+            {
+                ScdlList.EditItemIndex = e.Item.ItemIndex;
+
+                var dt = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
+                ScdlList.DataSource = dt;
+                ScdlList.DataBind();
+
                 Create3();
                 Create2();
             }
             else
             {
+                ScdlList.EditItemIndex = e.Item.ItemIndex;
+
+                Create();
+                Create3();
+                Create2();
+            }
+
+
+        }
+
+
+        protected void ScdlList_CancelCommand(object sender, DataGridCommandEventArgs e)//編集ボタンをキャンセルした時の処理
+        {
+            ScdlList.EditItemIndex = -1;
+            ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+            ScdlList.DataBind();
+
+            Create();
+            Create3();
+            Create2();
+        }
+
+        public void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)//編集ボタンを押して編集を保存した時の処理
+        {
+
+            int Count = 1;
+            int Serch = int.Parse(ViewState["Serch"].ToString());
+
+            var a = TextBox3.Text;//date
+
+            var b = DropDownList2.SelectedValue;//time
+
+            var c = TextBox5.Text;//title
+
+            string d;//name
+
+            d = "";
+
+            foreach (ListItem item in CheckBoxList2.Items)
+            {
+                if (item.Selected)
+                {
+                    d += item.Value + " ";
+                }
+            }
+
+            if (Count >= Serch)
+            {
+                TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
+                TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
+                TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
+                TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
+                TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
+
+                string b1 = a1.Text.Trim();
+                string b2 = a2.Text.Trim();
+                string b3 = a3.Text.Trim();
+                string b4 = a4.Text.Trim();
+                string b5 = a5.Text.Trim();
+
+                var dt = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
+                int A1 = e.Item.ItemIndex;
+                var dr = dt.Rows[A1] as DATASET.DataSet.T_ScheduleRow;
+
+                dr[0] = b1.Trim();
+                dr[1] = b2.Trim();
+                dr[2] = b3.Trim();
+                dr[3] = b4.Trim();
+                dr[4] = b5.Trim();
+
+                Class1.UpdateProject(dr, Global.GetConnection());
+
+                ScdlList.EditItemIndex = -1;
+
+                ScdlList.DataSource = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
+                ScdlList.DataBind();
+
+
+                Create3();
+                Create2();
 
             }
-        }
+            else
+            {
+                TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
+                TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
+                TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
+                TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
+                TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
 
-        protected void ScdlList_EditCommand(object sender, DataGridCommandEventArgs e)
-        {
+                string b1 = a1.Text.Trim();
+                string b2 = a2.Text.Trim();
+                string b3 = a3.Text.Trim();
+                string b4 = a4.Text.Trim();
+                string b5 = a5.Text.Trim();
 
-            ScdlList.EditItemIndex = e.Item.ItemIndex;
+                var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+                int A1 = e.Item.ItemIndex;
+                var dr = dt.Rows[A1] as DATASET.DataSet.T_ScheduleRow;
 
-            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-            ScdlList.DataSource = dt;
-            ScdlList.DataBind();
+                dr[0] = b1.Trim();
+                dr[1] = b2.Trim();
+                dr[2] = b3.Trim();
+                dr[3] = b4.Trim();
+                dr[4] = b5.Trim();
 
-            Create();
-            Create3();
-            Create2();
-        }
+                Class1.UpdateProject(dr, Global.GetConnection());
 
+                ScdlList.EditItemIndex = -1;
 
-        protected void ScdlList_CancelCommand(object sender, DataGridCommandEventArgs e)
-        {
-            ScdlList.EditItemIndex = -1;
-            ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-            ScdlList.DataBind();
-
-            Create();
-            Create3();
-            Create2();
-        }
-
-        public void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)
-        {
-
-            //var A1 = TextBox3.Text;//date
-
-            //var b = DropDownList2.SelectedValue;//time
-
-            //var c = TextBox5.Text;//title
-
-            //string d;//name
-
-            //d = "";
-
-            //foreach (ListItem item in CheckBoxList2.Items)
-            //{
-            //    if (item.Selected)
-            //    {
-            //        d += item.Value + " ";
-            //    }
-            //}
-
-            TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
-            TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
-            TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
-            TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
-            TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
-
-            string b1 = a1.Text.Trim();
-            string b2 = a2.Text.Trim();
-            string b3 = a3.Text.Trim();
-            string b4 = a4.Text.Trim();
-            string b5 = a5.Text.Trim();
-
-            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-            int a = e.Item.ItemIndex;
-            var dr = dt.Rows[a] as DATASET.DataSet.T_ScheduleRow;
-
-            dr[0] = b1.Trim();
-            dr[1] = b2.Trim();
-            dr[2] = b3.Trim();
-            dr[3] = b4.Trim();
-            dr[4] = b5.Trim();
-
-            Class1.UpdateProject(dr, Global.GetConnection());
-
-            ScdlList.EditItemIndex = -1;
-            ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-            ScdlList.DataBind();
-
-            Create();
-            Create3();
-            Create2();
+                Create();
+                Create3();
+                Create2();
+            }
 
         }
 
@@ -1838,6 +1964,8 @@ namespace WhereEver
 
         protected void Button8_Click(object sender, EventArgs e)//検索用
         {
+            ViewState["Serch"] = int.Parse(ViewState["Serch"].ToString()) + 1;
+
             var a = TextBox3.Text;//date
 
             var b = DropDownList2.SelectedValue;//time
