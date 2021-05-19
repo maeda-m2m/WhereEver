@@ -51,6 +51,7 @@
             <asp:Label ID="lblDLResult" runat="server" Text="ファイルをダウンロードできます。拡張子を忘れずにつけて下さい。"></asp:Label>
            </p>
 
+           <%--
            <p>ダウンロードするMIMEタイプを選択して下さい：
            <asp:DropDownList ID="DropDownList1" runat="server">
                <asp:ListItem Value="text/plain" Text="テキストファイル"></asp:ListItem>
@@ -79,6 +80,7 @@
                <asp:ListItem Value="video/mp4">MP4</asp:ListItem>
                <asp:ListItem Value="video/mpeg">MPEG</asp:ListItem>
            </asp:DropDownList></p>
+            --%>
 
            <asp:Panel ID="Panel1" runat="server" DefaultButton="Button_Download">
             <p class ="form-flat-border">
@@ -100,7 +102,7 @@
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="false" />
                     <asp:BoundField DataField="FileName" HeaderText="ファイル名" ReadOnly="True" SortExpression="FileName" />
-                    <asp:BoundField DataField="FilePath" HeaderText="ファイルパス" ReadOnly="True" SortExpression="FilePath" Visible="false" />
+                    <asp:BoundField DataField="Title" HeaderText="コメント" ReadOnly="True" SortExpression="Title" Visible="false" />
                     <asp:BoundField DataField="DateTime" HeaderText="アップロード日" ReadOnly="True" SortExpression="DateTime" />
 
                     <asp:ButtonField ButtonType="Button" Text="削除" ControlStyle-CssClass="btn-flat-border"  HeaderText="削除" CommandName="Remove" CausesValidation="False" >

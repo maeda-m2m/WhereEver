@@ -10,6 +10,51 @@ namespace WhereEver.ClassLibrary
     {
 
 
+        public static DATASET.DataSet.T_FileShareRow GetT_FileShareRow(SqlConnection sqlConnection, string FileName, string pass)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //パラメータを取得
+            da.SelectCommand.Parameters.AddWithValue("@FileName", FileName);
+            da.SelectCommand.Parameters.AddWithValue("@pass", pass);
+
+            da.SelectCommand.CommandText =
+                "SELECT [type], [datum] FROM T_FileShare WHERE [FileName] = LTRIM(RTRIM(@FileName), [Password] = LTRIM(RTRIM(@pass))";
+
+            //特定のDataTableをインスタンス化
+            DATASET.DataSet.T_FileShareDataTable dt = new DATASET.DataSet.T_FileShareDataTable();
+
+
+            try
+            {
+                //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
+                da.Fill(dt);
+
+                if (dt.Count >= 1)
+                {
+                    //ファイルあり
+                    return dt[0];
+
+                }
+                else
+                {
+                    //ファイルなし
+                    return null;
+                }
+
+            }
+            catch
+            {
+                //不正な処理
+                return null;
+            }
+
+        }
+
+
+        //------------------------------------------------------------------------------------------------------------
+
+
         /// <summary>
         /// FileShareテーブルにインサートします。
         /// </summary>
@@ -17,7 +62,7 @@ namespace WhereEver.ClassLibrary
         /// <param name="id">主キー１：Session変数に保存されているUserIDです。</param>
         /// <param name="filename">主キー２：uuidによって構成されたファイルネームです。拡張子まで含まれています。</param>
         /// <param name="filepath">ファイルパスです。</param>
-        public static void SetT_FileShareInsert(SqlConnection sqlConnection, string id, string filename, string filepath)
+        public static void SetT_FileShareInsert(SqlConnection sqlConnection, string id, string filename, string title, string pass, string type, byte[] datum)
         {
             sqlConnection.Open();
 
@@ -46,11 +91,14 @@ namespace WhereEver.ClassLibrary
                     //-------------------------------------------------------------------------------------------------------------------
                     command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 100, "id")).Value = id;
                     command.Parameters.Add(new SqlParameter("@FileName", System.Data.SqlDbType.NVarChar, 100, "FileName")).Value = filename;
-                    command.Parameters.Add(new SqlParameter("@FilePath", System.Data.SqlDbType.NVarChar, 100, "FilePath")).Value = filepath;
+                    command.Parameters.Add(new SqlParameter("@Title", System.Data.SqlDbType.NVarChar, 100, "Title")).Value = title;
+                    command.Parameters.Add(new SqlParameter("@Password", System.Data.SqlDbType.NVarChar, 100, "Password")).Value = pass;
+                    command.Parameters.Add(new SqlParameter("@type", System.Data.SqlDbType.NVarChar, 50, "type")).Value = type;
+                    command.Parameters.Add(new SqlParameter("@datum", System.Data.SqlDbType.Binary, 200, "datum")).Value = datum;
                     command.Parameters.Add(new SqlParameter("@DateTime", System.Data.SqlDbType.DateTime, 8, "DateTime")).Value = date;
 
                     //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
-                    command.CommandText = "INSERT INTO T_FileShare(id, filename) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@FilePath)), LTRIM(RTRIM(@DateTime)))";
+                    command.CommandText = "INSERT INTO T_FileShare(id, filename) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), LTRIM(RTRIM(@datum)), LTRIM(RTRIM(@DateTime)))";
 
 
                     //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
