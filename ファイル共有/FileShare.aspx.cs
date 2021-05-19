@@ -199,7 +199,7 @@ namespace WhereEver
                 {
 
 
-                    DATASET.DataSet.T_FileShareRow dr = ClassLibrary.FileShareClass.GetT_FileShareRow(Global.GetConnection(), TextBox_dl.Text, pass);
+                    DATASET.DataSet.T_FileShareRow dr = FileShareClass.GetT_FileShareRow(Global.GetConnection(), TextBox_dl.Text, pass);
                     if(dr != null)
                     {
 
