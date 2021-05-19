@@ -36,7 +36,7 @@ namespace WhereEver
 
         }
 
-        public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTable_A(SqlConnection Sqlco)//スケジュールリスト用
+        public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTableDesc(SqlConnection Sqlco)//スケジュールリスト用
         {
             var da = new SqlDataAdapter("", Sqlco);
 
@@ -99,8 +99,8 @@ namespace WhereEver
         }
 
 
-        //SdlNoの最大値を持ってくる
-        public static DATASET.DataSet.T_ScheduleRow MaxSdlNo(SqlConnection schedule)
+        
+        public static DATASET.DataSet.T_ScheduleRow MaxSdlNo(SqlConnection schedule)//SdlNoの最大値を持ってくる
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
@@ -112,8 +112,8 @@ namespace WhereEver
 
 
 
-        //スケジュールを追加する
-        public static void InsertList(DATASET.DataSet.T_ScheduleDataTable dt, SqlConnection sql)
+       
+        public static void InsertList(DATASET.DataSet.T_ScheduleDataTable dt, SqlConnection sql) //スケジュールを追加する
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
 
@@ -141,8 +141,8 @@ namespace WhereEver
 
         }
 
-        //削除ボタン
-        internal static void DeleteList(int sdl, SqlConnection sql)
+       
+        internal static void DeleteList(int sdl, SqlConnection sql) //削除ボタン
         {
             var da = new SqlCommand("", sql);
             da.CommandText =
@@ -170,7 +170,7 @@ namespace WhereEver
             }
         }
 
-        public static DATASET.DataSet.T_ScheduleRow UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)
+        public static DATASET.DataSet.T_ScheduleRow UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)//編集コマンドの値を変更する用
         {
             {
                 var a = new SqlCommand("", sql);
@@ -204,7 +204,7 @@ namespace WhereEver
             }
         }
 
-        public static DATASET.DataSet.T_ScheduleDataTable ScheduleSearch(string a, string b, string c, string d, SqlConnection Sqlco)
+        public static DATASET.DataSet.T_ScheduleDataTable ScheduleSearch(string a, string b, string c, string d, SqlConnection Sqlco)//検索用
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 

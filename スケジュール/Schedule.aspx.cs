@@ -31,6 +31,7 @@ namespace WhereEver
 
                 ViewState["Count"] = 0;
                 ViewState["Serch"] = 0;
+                ViewState["Count2"] = 0;
 
                 //Panel1、登録
                 //Panel2、登録メニュー
@@ -53,24 +54,26 @@ namespace WhereEver
             ScdlList.DataBind();
         }
 
-        public void Create_A()//スケジュールリストにデータを格納(日付が新しい順)
+        public void Create_Desc()//スケジュールリストにデータを格納(日付が新しい順)
         {
-            var dt = Class1.GetT_Schedule3DataTable_A(Global.GetConnection());
+            var dt = Class1.GetT_Schedule3DataTableDesc(Global.GetConnection());
 
             ScdlList.DataSource = dt;
 
             ScdlList.DataBind();
         }
 
-        protected void Create4(object sender, EventArgs e)
+        protected void Create4(object sender, EventArgs e)//リストを並び変える用
         {
+
+            ViewState["Count2"] = int.Parse(ViewState["Count2"].ToString()) + 1;
             var a = Ddl.SelectedValue;
 
             var b = Ddl.SelectedValue;
 
             if (a == "日付の新しい順")
             {
-                Create_A();
+                Create_Desc();
                 Create3();
                 Create2();
                 TestGV.Focus();
@@ -721,11 +724,12 @@ namespace WhereEver
             }
         }
 
-        
+
         protected void ScdlList_ItemCommand(object sender, DataGridCommandEventArgs e)//削除ボタンの処理
         {
             int Count = 1;
             int Serch = int.Parse(ViewState["Serch"].ToString());
+            int Count2 = int.Parse(ViewState["Count2"].ToString());
 
             var a = TextBox3.Text;//date
 
@@ -745,7 +749,25 @@ namespace WhereEver
                 }
             }
 
-            if (Count <= Serch)
+            if (Serch == 0 & Count2 >= 1)
+            {
+                int Delete = e.Item.ItemIndex;
+                var dt = Class1.GetT_Schedule3DataTableDesc(Global.GetConnection());
+                var dr = dt.Rows[Delete] as DATASET.DataSet.T_ScheduleRow;
+                int sdl = dr.SdlNo;
+
+                if (e.CommandName == "Delete")
+                {
+                    if (sdl > 0)
+                        Class1.DeleteList(sdl, Global.GetConnection());
+                    ScdlList.Items[Delete].FindControl("No");
+
+                    Create_Desc();
+                    Create3();
+                    Create2();
+                }
+            }
+            else if (Count <= Serch)
             {
                 int Delete = e.Item.ItemIndex;
                 var dt = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
@@ -765,10 +787,7 @@ namespace WhereEver
                     Create3();
                     Create2();
                 }
-                else
-                {
 
-                }
             }
             else
             {
@@ -787,10 +806,7 @@ namespace WhereEver
                     Create3();
                     Create2();
                 }
-                else
-                {
 
-                }
             }
 
         }
@@ -799,6 +815,7 @@ namespace WhereEver
         {
             int Count = 1;
             int Serch = int.Parse(ViewState["Serch"].ToString());
+            int Count2 = int.Parse(ViewState["Count2"].ToString());
 
             var a = TextBox3.Text;//date
 
@@ -818,7 +835,20 @@ namespace WhereEver
                 }
             }
 
-            if (Count <= Serch)
+            if (Serch == 0 & Count2 >= 1)
+            {
+                ScdlList.EditItemIndex = e.Item.ItemIndex;
+
+                var dt = Class1.GetT_Schedule3DataTableDesc(Global.GetConnection());
+                ScdlList.DataSource = dt;
+                ScdlList.DataBind();
+
+                Create_Desc();
+                Create3();
+                Create2();
+            }
+
+            else if (Count <= Serch)
             {
                 ScdlList.EditItemIndex = e.Item.ItemIndex;
 
@@ -858,6 +888,7 @@ namespace WhereEver
 
             int Count = 1;
             int Serch = int.Parse(ViewState["Serch"].ToString());
+            int Count2 = int.Parse(ViewState["Count2"].ToString());
 
             var a = TextBox3.Text;//date
 
@@ -876,8 +907,40 @@ namespace WhereEver
                     d += item.Value + " ";
                 }
             }
+            if (Serch == 0 & Count2 >= 1)
+            {
+                TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
+                TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
+                TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
+                TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
+                TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
 
-            if (Count <= Serch)
+                string b1 = a1.Text.Trim();
+                string b2 = a2.Text.Trim();
+                string b3 = a3.Text.Trim();
+                string b4 = a4.Text.Trim();
+                string b5 = a5.Text.Trim();
+
+                var dt = Class1.GetT_Schedule3DataTableDesc(Global.GetConnection());
+                int ItemRow = e.Item.ItemIndex;
+                var dr = dt.Rows[ItemRow] as DATASET.DataSet.T_ScheduleRow;
+
+                dr[0] = b1.Trim();
+                dr[1] = b2.Trim();
+                dr[2] = b3.Trim();
+                dr[3] = b4.Trim();
+                dr[4] = b5.Trim();
+
+                Class1.UpdateProject(dr, Global.GetConnection());
+
+                ScdlList.EditItemIndex = -1;
+
+
+                Create_Desc();
+                Create3();
+                Create2();
+            }
+                else if (Count <= Serch)
             {
                 TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
                 TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
@@ -1965,6 +2028,8 @@ namespace WhereEver
         protected void Button8_Click(object sender, EventArgs e)//検索用
         {
             ViewState["Serch"] = int.Parse(ViewState["Serch"].ToString()) + 1;
+
+            ViewState["Count2"] = 0;
 
             var a = TextBox3.Text;//date
 
