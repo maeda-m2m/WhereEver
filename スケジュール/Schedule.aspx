@@ -33,8 +33,7 @@
             <asp:Panel ID="Panel2" runat="server" HorizontalAlign="center">
                 <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
 
-                <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click" Text="印刷（作成中）" />
-                <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
+                <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click" Text="印刷" />
                 <asp:Button ID="Button4" runat="server" Text="前へ" class="btn-flat-border" OnClick="Button4_Click" />
                 <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
                 <asp:Button ID="Button5" runat="server" Text="次へ" class="btn-flat-border" OnClick="Button5_Click" />
@@ -254,14 +253,14 @@
 
                 <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
 
-                <asp:DropDownList runat="server" ID="Ddl" >
+                <asp:DropDownList runat="server" ID="Ddl" AutoPostBack="True" OnTextChanged="Create_A2">
                     <asp:ListItem>日付の古い順</asp:ListItem>
                     <asp:ListItem>日付の新しい順</asp:ListItem>
-                    
-                    
+
+
                 </asp:DropDownList>
-             
-                <asp:Button runat="server" ID="Btn" Text="並べ替え" CssClass="btn-flat-border" OnClick="Btn_Click" />
+
+              
 
             </asp:Panel>
 
@@ -563,12 +562,13 @@
         </asp:Label>
 
 
-
+      
         <script>
 
             function A() {
 
-                return confirm('本当に実行しますか？');
+                return window.confirm('本当に実行しますか？');
+
 
             }
 

@@ -43,7 +43,7 @@ namespace WhereEver
         }
 
 
-        private void Create()//スケジュールリストにデータを格納(日付が古い順)
+        public void Create()//スケジュールリストにデータを格納(日付が古い順)
         {
             var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
 
@@ -52,7 +52,7 @@ namespace WhereEver
             ScdlList.DataBind();
         }
 
-        private void Create_A()//スケジュールリストにデータを格納(日付が新しい順)
+        public void Create_A()//スケジュールリストにデータを格納(日付が新しい順)
         {
             var dt = Class1.GetT_Schedule3DataTable_A(Global.GetConnection());
 
@@ -61,7 +61,30 @@ namespace WhereEver
             ScdlList.DataBind();
         }
 
-        private void Create2()//今週
+        protected void Create_A2(object sender, EventArgs e)
+        {
+            var a = Ddl.SelectedValue;
+
+            var b = Ddl.SelectedValue;
+
+            if (a == "日付の新しい順")
+            {
+                Create_A();
+                Create3();
+                Create2();
+                TestGV.Focus();
+
+            }
+            else if (b == "日付の古い順")
+            {
+                Create();
+                Create3();
+                Create2();
+                TestGV.Focus();
+            }
+        }
+
+        public void Create2()//今週
         {
             ViewState["count"] = 0;
 
@@ -560,32 +583,6 @@ namespace WhereEver
         }
 
 
-        //public void Create4()//Test
-        //{
-        //    var A1 = TextBox3.Text;//date
-
-        //    var b = DropDownList2.SelectedValue;//time
-
-        //    var c = TextBox5.Text;//title
-
-        //    string d;//name
-
-        //    d = "";
-
-        //    foreach (ListItem item in CheckBoxList2.Items)
-        //    {
-        //        if (item.Selected)
-        //        {
-        //            d += item.Value + " ";
-        //        }
-        //    }
-
-
-        //    var dt = Class1.ScheduleSearch(A1, b, c, d, Global.GetConnection());
-        //    ScdlList.DataSource = dt;
-        //    ScdlList.DataBind();
-
-        //}
 
         protected void Button1_Click(object sender, EventArgs e)//印刷
         {
@@ -662,29 +659,11 @@ namespace WhereEver
             Create();
             Create3();
             Create2();
+
+            Button8.Focus();
         }
 
-        protected void Btn_Click(object sender, EventArgs e)
-        {
-            var a = Ddl.SelectedValue;
-
-            var b = Ddl.SelectedValue;
-
-            if (a == "日付の新しい順")
-            {
-                Create_A();
-                Create3();
-                Create2();
-
-            }
-            else if (b == "日付の古い順")
-            {
-                Create();
-                Create3();
-                Create2();
-
-            }
-        }
+       
 
 
         protected void Scdl3_ItemDataBound(object sender, DataGridItemEventArgs e)//scdl3の表示の枠を作っている
