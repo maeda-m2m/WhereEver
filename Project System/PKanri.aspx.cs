@@ -15,17 +15,23 @@ namespace WhereEver.Project_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int spId = SessionManager.project.PdbRow.Pid;
-
-            int dt = WBS.GetT_PdbKanriDataTable(Global.GetConnection(), spId);
-            if (dt==0)
-            {
-                DgPKanri.Visible = false;
-                wbs.Visible = false;
-                btnWBS.Visible = false;
-            }
             if (!IsPostBack)
             {
+                int spId = SessionManager.project.PdbRow.Pid;
+
+                int dt = WBS.GetT_PdbKanriDataTable(Global.GetConnection(), spId);
+                if (dt == 0)
+                {
+                    DgPKanri.Visible = false;
+                    wbs.Visible = false;
+                    btnWBS.Visible = false;
+                }
+                else
+                {
+                    DgPKanri.Visible = true;
+                    wbs.Visible = true;
+                    btnWBS.Visible = true;
+                }
                 CreateDropDownList(spId);
                 CreateDataGrid(spId);
                 DgPKanri.EditCommand +=
@@ -250,6 +256,9 @@ namespace WhereEver.Project_System
             {
                 lblAisatu1.Text = "<font color=red>を選択してから、中項目入力をお願い致します。<font>";
             }
+            DgPKanri.Visible = true;
+            wbs.Visible = true;
+            btnWBS.Visible = true;
         }
 
         protected void DgPKanri_EditCommand(object source, DataGridCommandEventArgs e)
@@ -260,7 +269,6 @@ namespace WhereEver.Project_System
 
         protected void DgPKanri_CancelCommand(object source, DataGridCommandEventArgs e)
         {
-
             DgPKanri.EditItemIndex = -1;
             CreateDataGrid(SessionManager.project.PdbRow.Pid);
         }
@@ -404,7 +412,9 @@ namespace WhereEver.Project_System
             lblCalendarError.Text = "";
             lblAisatu1.Text = "を選択してから、中項目入力をお願い致します。";
             wbs.DataSource = null;
+            DgPKanri.Visible = false;
+            wbs.Visible = false;
+            btnWBS.Visible = false;
         }
-        
     }
 }
