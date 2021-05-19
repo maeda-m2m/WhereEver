@@ -260,7 +260,7 @@
 
                 </asp:DropDownList>
 
-              
+
 
             </asp:Panel>
 
@@ -361,7 +361,7 @@
                     <tr>
                         <td colspan="2">
                             <asp:Button ID="Button8" runat="server" class="btn-flat-border" OnClick="Button8_Click" Text="検索" />
-                            <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" Text="戻る" />
+                            <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="A()" Text="戻る" />
                         </td>
                     </tr>
                 </table>
@@ -562,13 +562,18 @@
         </asp:Label>
 
 
-      
+
         <script>
 
             function A() {
-
-                return window.confirm('本当に実行しますか？');
-
+                var a1 = window.confirm('本当に実行しますか？');
+                if (a1 === true) {
+                    return (true)
+                }
+                else if (a1 === false) {
+                    return (false
+                    )
+                }
 
             }
 
