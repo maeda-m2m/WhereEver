@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Text;
 using WhereEver.ClassLibrary;
+using static System.Web.HttpUtility;
 
 
 namespace WhereEver
@@ -42,6 +43,8 @@ namespace WhereEver
 
             if (FileUpload_userfile.HasFile)
             {
+
+                /*
                 //アップロードするファイル名を設定（@"C\:temp"だけなどは危険なためデバッグ時以外使用禁止）
                 //書き込み先ディレクトリがない場合はエラーになります。
                 string path = @"c:\\UploadedFiles\\";
@@ -51,7 +54,7 @@ namespace WhereEver
                     //ディレクトリが存在しません。このままだとエラーになるため、ディレクトリを生成します。
                     Directory.CreateDirectory(path);
                 }
-
+                */
 
                 //パスを排除したファイル名を取得
                 string fileName = Path.GetFileName(FileUpload_userfile.FileName);
@@ -60,22 +63,13 @@ namespace WhereEver
                 //ファイル内容を取得
                 HttpPostedFile posted = FileUpload_userfile.PostedFile;
 
-                /*
-                //MimeTypeの設定に合っているかどうか？
-                if (extension != ".zip")
-                {
-                    lblResult.Text = "zipファイルのみアップロードできます。";
-                    return;
-                }
-                */
-
-
                 if (fileName != null && fileName != "")
                 {
 
                     //不正なファイル名にならないようuuidに置き換え
                     fileName = Guid.NewGuid().ToString() + extension;
 
+                    /*
                     //保存先パスを設定
                     string filePath = Path.Combine(path, fileName);
 
@@ -86,6 +80,7 @@ namespace WhereEver
                     {
                         newPath = $"{path} ({i++})";
                     }
+                    */
 
                     try
                     {
@@ -94,8 +89,9 @@ namespace WhereEver
                         //posted.SaveAs(newPath);
 
                         //仮
-                        string title = "無題";
-                        string pass = "0000";
+                        string title = HtmlEncode(@"無題");
+                        string pass = @"0000";
+                        pass = pass.GetHashCode().ToString();
 
                         //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
                         //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
@@ -116,7 +112,7 @@ namespace WhereEver
                         return;
                     }
 
-                    lblResult.Text = "アップロードファイルを以下のディレクトリに保存しました： " + newPath;
+                    lblResult.Text = "アップロードファイルを保存しました！";
                     return;
                 }
                 else
@@ -139,9 +135,15 @@ namespace WhereEver
         protected void Button_DownLoad(object sender, EventArgs e)
         {
             lblDLResult.Text = "";
+            TextBox_dl.Text = HtmlEncode(TextBox_dl.Text);
+
+            //仮Password
+            string pass = @"0000";
+            pass = pass.GetHashCode().ToString();
 
             if (TextBox_dl.Text != null && TextBox_dl.Text != "")
             {
+                /*
                 //ダウンロードするファイル名を設定（@"C\:temp"だけなどは危険なためデバッグ時以外使用禁止）
                 //書き込み先ディレクトリがない場合はエラーになります。
                 string path = @"c:\\UploadedFiles\\";
@@ -159,6 +161,7 @@ namespace WhereEver
 
                 //保存先パスを設定
                 string filePath = Path.Combine(path, TextBox_dl.Text);
+
                 //拡張子を取得
                 string extension = Path.GetExtension(filePath);
 
@@ -177,12 +180,32 @@ namespace WhereEver
                     lblDLResult.Text = "指定したファイルが存在しません。";
                     return;
                 }
-
+                */
 
                 try
                 {
 
 
+                    DATASET.DataSet.T_FileShareRow dr = ClassLibrary.FileShareClass.GetT_FileShareRow(Global.GetConnection(), TextBox_dl.Text, pass);
+                    if(dr != null)
+                    {
+                        //拡張子を取得
+                        string extension = Path.GetExtension(TextBox_dl.Text);
+                        // MIME Typeを取得
+                        Response.ContentType = (string)@dr.type;
+                        // ダウンロード用ファイルのデフォルトの名前を指定
+                        Response.AppendHeader("Content-Disposition", "attachment; filename=download." + extension);
+                        // ダウンロード
+                        Response.BinaryWrite((Byte[])dr.datum);
+                    } 
+                    else
+                    {
+                        //ファイルが存在しません。
+                        lblDLResult.Text = "指定したファイルが存在しません。あるいは、パスワードが誤っています。";
+                        return;
+                    }
+
+                    /*
                     //Response情報クリア
                     Response.ClearContent();
 
@@ -198,6 +221,7 @@ namespace WhereEver
                     Response.WriteFile(filePath);
                     Response.Flush();
                     Response.End();
+                    */
 
                     lblDLResult.Text = "ダウンロードに成功しました。";
                     return;
@@ -211,7 +235,7 @@ namespace WhereEver
             }
             else
             {
-                lblDLResult.Text = "MIMEタイプを選択し、ダウンロードしたいファイル名を入力して下さい。";
+                lblDLResult.Text = "ダウンロードしたいファイル名を入力して下さい。";
                 return;
             }
 

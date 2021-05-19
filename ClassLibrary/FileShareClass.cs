@@ -10,6 +10,51 @@ namespace WhereEver.ClassLibrary
     {
 
 
+        public static DATASET.DataSet.T_FileShareRow GetT_FileShareRow(SqlConnection sqlConnection, string FileName, string pass)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //パラメータを取得
+            da.SelectCommand.Parameters.AddWithValue("@FileName", FileName);
+            da.SelectCommand.Parameters.AddWithValue("@pass", pass);
+
+            da.SelectCommand.CommandText =
+                "SELECT [type], [datum] FROM T_FileShare WHERE [FileName] = LTRIM(RTRIM(@FileName), [Password] = LTRIM(RTRIM(@pass))";
+
+            //特定のDataTableをインスタンス化
+            DATASET.DataSet.T_FileShareDataTable dt = new DATASET.DataSet.T_FileShareDataTable();
+
+
+            try
+            {
+                //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
+                da.Fill(dt);
+
+                if (dt.Count >= 1)
+                {
+                    //ファイルあり
+                    return dt[0];
+
+                }
+                else
+                {
+                    //ファイルなし
+                    return null;
+                }
+
+            }
+            catch
+            {
+                //不正な処理
+                return null;
+            }
+
+        }
+
+
+        //------------------------------------------------------------------------------------------------------------
+
+
         /// <summary>
         /// FileShareテーブルにインサートします。
         /// </summary>
