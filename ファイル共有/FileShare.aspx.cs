@@ -11,6 +11,7 @@ using System.Net;
 using System.Text;
 using WhereEver.ClassLibrary;
 
+
 namespace WhereEver
 {
     public partial class FileShare : System.Web.UI.Page
@@ -56,7 +57,8 @@ namespace WhereEver
                 string fileName = Path.GetFileName(FileUpload_userfile.FileName);
                 //拡張子を取得
                 string extension = Path.GetExtension(FileUpload_userfile.FileName);
-
+                //ファイル内容を取得
+                HttpPostedFile posted = FileUpload_userfile.PostedFile;
 
                 /*
                 //MimeTypeの設定に合っているかどうか？
@@ -88,11 +90,24 @@ namespace WhereEver
                     try
                     {
 
-                        //アップロードファイルを指定したパスに保存します。
-                        FileUpload_userfile.SaveAs(newPath);
+                        //アップロードされたファイル内容を指定したパスに保存します。（いらない）
+                        //posted.SaveAs(newPath);
 
-                        //データベースにファイル履歴を保存します。
-                        FileShareClass.SetT_FileShareInsert(Global.GetConnection(), SessionManager.User.M_User.id, fileName, newPath);
+                        //仮
+                        string title = "無題";
+                        string pass = "0000";
+
+                        //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
+                        //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
+
+                        //バイトを取得します。
+                        Byte[] aryData = new Byte[FileUpload_userfile.PostedFile.ContentLength];
+                        FileUpload_userfile.PostedFile.InputStream.Read(aryData, 0, FileUpload_userfile.PostedFile.ContentLength);
+                        //MIMEタイプを取得します。
+                        string type = FileUpload_userfile.PostedFile.ContentType;
+
+                        //データベースにファイルを保存します。
+                        FileShareClass.SetT_FileShareInsert(Global.GetConnection(), SessionManager.User.M_User.id, fileName, title, pass, type, aryData);
 
                     }
                     catch (Exception ex)
@@ -127,7 +142,7 @@ namespace WhereEver
 
             if (TextBox_dl.Text != null && TextBox_dl.Text != "")
             {
-                //アップロードするファイル名を設定（@"C\:temp"だけなどは危険なためデバッグ時以外使用禁止）
+                //ダウンロードするファイル名を設定（@"C\:temp"だけなどは危険なためデバッグ時以外使用禁止）
                 //書き込み先ディレクトリがない場合はエラーになります。
                 string path = @"c:\\UploadedFiles\\";
 
@@ -154,6 +169,8 @@ namespace WhereEver
                     return;
                 }
 
+
+                //↓がローカルを参照してしまっているためおかしな挙動になっている
                 if (!Directory.Exists(filePath))
                 {
                     //ファイルが存在しません。
