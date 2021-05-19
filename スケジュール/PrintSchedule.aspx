@@ -1161,9 +1161,9 @@
                                 <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
                 </Columns>
             </asp:DataGrid>
-            <asp:Label ID="lblNyuryoku" runat="server" Text="備考入力"></asp:Label>
-            <asp:TextBox ID="txtNyuryoku" runat="server"></asp:TextBox>
-            <asp:Button ID="btnNyuryoku" runat="server" Text="入力" OnClick ="btnNyuryoku_Click" />
+            <asp:Label ID="lblNyuryoku" runat="server" Text="備考入力" class="noprint"></asp:Label>
+            <asp:TextBox ID="txtNyuryoku" runat="server" class="noprint"></asp:TextBox>
+            <asp:Button ID="btnNyuryoku" runat="server" Text="入力" OnClick ="btnNyuryoku_Click" class="noprint" />
         </div>
     </form>
 

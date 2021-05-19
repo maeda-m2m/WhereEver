@@ -1304,7 +1304,22 @@ namespace WhereEver
 
         protected void btnNyuryoku_Click(object sender, EventArgs e)
         {
+            DATASET.DataSet.T_PrintScheduleDataTable dt = new DATASET.DataSet.T_PrintScheduleDataTable();
+            DATASET.DataSet.T_PrintScheduleRow dr = dt.NewT_PrintScheduleRow();
 
+            if (txtNyuryoku.Text == "")
+            {
+                string.Format("if (!confirm('{0}')) return false;", "本文が入力されていません");
+            }
+            dr.bikou = txtNyuryoku.Text;
+
+            DATASET.DataSet.T_PrintScheduleRow dl = Class2.MaxNoRow(Global.GetConnection());
+            int sl = dl.bikouid;
+            dr.bikouid = sl + 1;
+            dt.AddT_PrintScheduleRow(dr);
+            Class2.InsertList(dt, Global.GetConnection());
+            txtNyuryoku.Text = "";
+            Create();
         }
     }
 }
