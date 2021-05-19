@@ -100,7 +100,7 @@
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="false" />
                     <asp:BoundField DataField="FileName" HeaderText="ファイル名" ReadOnly="True" SortExpression="FileName" />
-                    <asp:BoundField DataField="FilePath" HeaderText="ファイルパス" ReadOnly="True" SortExpression="FilePath" Visible="false" />
+                    <asp:BoundField DataField="Title" HeaderText="コメント" ReadOnly="True" SortExpression="Title" Visible="false" />
                     <asp:BoundField DataField="DateTime" HeaderText="アップロード日" ReadOnly="True" SortExpression="DateTime" />
 
                     <asp:ButtonField ButtonType="Button" Text="削除" ControlStyle-CssClass="btn-flat-border"  HeaderText="削除" CommandName="Remove" CausesValidation="False" >
