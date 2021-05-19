@@ -19,11 +19,10 @@ namespace WhereEver.ClassLibrary
             da.SelectCommand.Parameters.AddWithValue("@pass", pass);
 
             da.SelectCommand.CommandText =
-                "SELECT [type], [datum] FROM T_FileShare WHERE [FileName] = LTRIM(RTRIM(@FileName), [Password] = LTRIM(RTRIM(@pass))";
+                "SELECT * FROM T_FileShare WHERE [FileName] = LTRIM(RTRIM(@FileName)) AND [Password] = LTRIM(RTRIM(@pass))";
 
             //特定のDataTableをインスタンス化
             DATASET.DataSet.T_FileShareDataTable dt = new DATASET.DataSet.T_FileShareDataTable();
-
 
             try
             {
@@ -87,6 +86,7 @@ namespace WhereEver.ClassLibrary
 
                 try
                 {
+
                     //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
                     //-------------------------------------------------------------------------------------------------------------------
                     command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 100, "id")).Value = id;
@@ -98,7 +98,7 @@ namespace WhereEver.ClassLibrary
                     command.Parameters.Add(new SqlParameter("@DateTime", System.Data.SqlDbType.DateTime, 8, "DateTime")).Value = date;
 
                     //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
-                    command.CommandText = "INSERT INTO T_FileShare(id, filename) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), LTRIM(RTRIM(@datum)), LTRIM(RTRIM(@DateTime)))";
+                    command.CommandText = "INSERT INTO T_FileShare([id], [filename], [title], [Password], [type], [datum], [DateTime]) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), CONVERT(binary, LTRIM(RTRIM(@datum))), LTRIM(RTRIM(@DateTime)))";
 
 
                     //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
@@ -110,7 +110,7 @@ namespace WhereEver.ClassLibrary
                     da.UpdateCommand = command;
                     transaction.Commit();
 
-                    //Console.WriteLine("Insert Completed");
+                //Console.WriteLine("Insert Completed");
 
                 }
                 catch

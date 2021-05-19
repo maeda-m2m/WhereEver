@@ -90,7 +90,7 @@ namespace WhereEver
 
                         //仮
                         string title = HtmlEncode(@"無題");
-                        string pass = @"0000";
+                        string pass = @TextBox_UploadPass.Text;
                         pass = pass.GetHashCode().ToString();
 
                         //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
@@ -138,7 +138,7 @@ namespace WhereEver
             TextBox_dl.Text = HtmlEncode(TextBox_dl.Text);
 
             //仮Password
-            string pass = @"0000";
+            string pass = TextBox_DownloadPass.Text;
             pass = pass.GetHashCode().ToString();
 
             if (TextBox_dl.Text != null && TextBox_dl.Text != "")
@@ -189,15 +189,37 @@ namespace WhereEver
                     DATASET.DataSet.T_FileShareRow dr = ClassLibrary.FileShareClass.GetT_FileShareRow(Global.GetConnection(), TextBox_dl.Text, pass);
                     if(dr != null)
                     {
-                        //拡張子を取得
-                        string extension = Path.GetExtension(TextBox_dl.Text);
+
+                        // HTTPレスポンスのヘッダ＆エンティティのクリア（初期化）
+                        Response.Clear();
+
+                        // 拡張子を取得 ".txt"など
+                        //string extension = Path.GetExtension(TextBox_dl.Text);
+
+                        // ダウンロード用ファイルの種別とデフォルトの名前を指定
+                        this.Response.ContentType = @"application/octet-stream"; //デフォルト設定: @"application/octet-stream"
+                        Response.AppendHeader("Content-Disposition", "attachment; filename=" + TextBox_dl.Text);
+
                         // MIME Typeを取得
                         Response.ContentType = (string)@dr.type;
-                        // ダウンロード用ファイルのデフォルトの名前を指定
-                        Response.AppendHeader("Content-Disposition", "attachment; filename=download." + extension);
-                        // ダウンロード
+
+                        // ダウンロード実行 binary HTMLページと一緒にロードされる
                         Response.BinaryWrite((Byte[])dr.datum);
-                    } 
+
+                        // ダウンロード実行　その2　ストリームに書き出し　やることは同じ
+                        //this.Response.OutputStream.Write((Byte[])dr.datum, 0, ((Byte[])dr.datum).Length);
+
+                        // 書き出しテスト　やることは同じ
+                        //string data = "abcd";
+                        //byte[] databytes = System.Text.Encoding.GetEncoding("shift-JIS").GetBytes(data);
+                        //this.Response.OutputStream.Write(databytes, 0, databytes.Length);
+
+                        // HTTPレスポンス エンティティ設定の終了
+                        //※ これを行わないと、当該画面のHTML出力がファイル出力の後に続いてしまったりします。
+                        //※ Response.Flash()は最終的にはFlashされるため必須ではありません。
+                        Response.End();
+
+                    }
                     else
                     {
                         //ファイルが存在しません。
