@@ -12,9 +12,6 @@ using System.Text;
 using System.Linq;
 using System.Web.UI.WebControls.Expressions;
 using Microsoft.Ajax.Utilities;
-using System.Windows;
-using System.Windows.Forms;
-using System.Windows.Controls;
 using System.Globalization;
 
 namespace WhereEver
@@ -23,1166 +20,1171 @@ namespace WhereEver
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CreateDataGrid();
-            DgBikou.EditCommand +=
-                    new DataGridCommandEventHandler(this.DgBikou_EditCommand);
-            DgBikou.CancelCommand +=
-                new DataGridCommandEventHandler(this.DgBikou_CancelCommand);
-            DgBikou.UpdateCommand +=
-                new DataGridCommandEventHandler(this.DgBikou_UpdateCommand);
-            DgBikou.ItemCommand +=
+            if (!IsPostBack)
+            {
+                CreateDataGrid();
+                DgBikou.EditCommand +=
+                        new DataGridCommandEventHandler(this.DgBikou_EditCommand);
+                DgBikou.CancelCommand +=
+                    new DataGridCommandEventHandler(this.DgBikou_CancelCommand);
+                DgBikou.UpdateCommand +=
                     new DataGridCommandEventHandler(this.DgBikou_UpdateCommand);
-            ////今週の週番号と来週の週番号を取得する
-            //DateTime date = DateTime.Now;
+                DgBikou.ItemCommand +=
+                        new DataGridCommandEventHandler(this.DgBikou_UpdateCommand);
 
-            //int konsyu = cal.GetWeekOfYear(date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
-            //int raisyu = konsyu + 1;
+                ////今週の週番号と来週の週番号を取得する
+                //DateTime date = DateTime.Now;
+
+                //int konsyu = cal.GetWeekOfYear(date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+                //int raisyu = konsyu + 1;
 
 
-            ////週番号から日付を取得する
-            //int kongetsu = cal.GetDayOfMonth(date);
-            //int monday1 = cal.
-            DateTime today = DateTime.Now;
-            DayOfWeek dow = today.DayOfWeek;
-            switch (dow)
-            {
-                case DayOfWeek.Sunday:
-                    DateTime monday1 = today.AddDays(-6);
+                ////週番号から日付を取得する
+                //int kongetsu = cal.GetDayOfMonth(date);
+                //int monday1 = cal.
+                DateTime today = DateTime.Now;
+                DayOfWeek dow = today.DayOfWeek;
+                switch (dow)
+                {
+                    case DayOfWeek.Sunday:
+                        DateTime monday1 = today.AddDays(-6);
 
-                    for (int n = 0; n <= 13; n++)
+                        for (int n = 0; n <= 13; n++)
+                        {
+                            if (n == 0)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Label1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 1)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Label15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 2)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Label29.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 3)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Label43.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 4)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Label57.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 5)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Labelsat1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 6)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Labelsun1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 7)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Label99.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 8)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Label113.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 9)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Label127.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 10)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Label141.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 11)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Label155.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 12)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Labelsat15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 13)
+                            {
+                                DateTime a = monday1.AddDays(n);
+                                Labelsun15.Text = a.ToShortDateString();
+                            }
+                        }
+                        break;
+
+                    case DayOfWeek.Monday:
+                        DateTime monday2 = today.AddDays(-7);
+                        for (int n = 0; n <= 13; n++)
+                        {
+                            if (n == 0)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Label1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 1)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Label15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 2)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Label29.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 3)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Label43.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 4)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Label57.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 5)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Labelsat1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 6)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Labelsun1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 7)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Label99.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 8)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Label113.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 9)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Label127.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 10)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Label141.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 11)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Label155.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 12)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Labelsat15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 13)
+                            {
+                                DateTime a = monday2.AddDays(n);
+                                Labelsun15.Text = a.ToShortDateString();
+                            }
+                        }
+                        break;
+
+                    case DayOfWeek.Tuesday:
+                        DateTime monday3 = today.AddDays(-8);
+                        for (int n = 0; n <= 13; n++)
+                        {
+                            if (n == 0)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Label1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 1)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Label15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 2)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Label29.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 3)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Label43.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 4)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Label57.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 5)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Labelsat1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 6)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Labelsun1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 7)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Label99.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 8)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Label113.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 9)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Label127.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 10)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Label141.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 11)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Label155.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 12)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Labelsat15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 13)
+                            {
+                                DateTime a = monday3.AddDays(n);
+                                Labelsun15.Text = a.ToShortDateString();
+                            }
+                        }
+                        break;
+
+                    case DayOfWeek.Wednesday:
+                        DateTime monday4 = today.AddDays(-9);
+                        for (int n = 0; n <= 13; n++)
+                        {
+                            if (n == 0)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Label1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 1)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Label15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 2)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Label29.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 3)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Label43.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 4)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Label57.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 5)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Labelsat1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 6)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Labelsun1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 7)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Label99.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 8)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Label113.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 9)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Label127.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 10)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Label141.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 11)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Label155.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 12)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Labelsat15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 13)
+                            {
+                                DateTime a = monday4.AddDays(n);
+                                Labelsun15.Text = a.ToShortDateString();
+                            }
+                        }
+                        break;
+
+                    case DayOfWeek.Thursday:
+                        DateTime monday5 = today.AddDays(-10);
+                        for (int n = 0; n <= 13; n++)
+                        {
+                            if (n == 0)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Label1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 1)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Label15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 2)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Label29.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 3)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Label43.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 4)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Label57.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 5)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Labelsat1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 6)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Labelsun1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 7)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Label99.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 8)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Label113.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 9)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Label127.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 10)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Label141.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 11)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Label155.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 12)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Labelsat15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 13)
+                            {
+                                DateTime a = monday5.AddDays(n);
+                                Labelsun15.Text = a.ToShortDateString();
+                            }
+                        }
+                        break;
+
+                    case DayOfWeek.Friday:
+                        DateTime monday6 = today.AddDays(-11);
+
+                        for (int n = 0; n <= 13; n++)
+                        {
+                            if (n == 0)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Label1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 1)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Label15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 2)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Label29.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 3)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Label43.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 4)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Label57.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 5)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Labelsat1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 6)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Labelsun1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 7)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Label99.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 8)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Label113.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 9)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Label127.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 10)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Label141.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 11)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Label155.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 12)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Labelsat15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 13)
+                            {
+                                DateTime a = monday6.AddDays(n);
+                                Labelsun15.Text = a.ToShortDateString();
+                            }
+                        }
+
+                        break;
+
+                    case DayOfWeek.Saturday:
+                        DateTime monday7 = today.AddDays(-12);
+                        for (int n = 0; n <= 13; n++)
+                        {
+                            if (n == 0)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Label1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 1)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Label15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 2)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Label29.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 3)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Label43.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 4)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Label57.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 5)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Labelsat1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 6)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Labelsun1.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 7)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Label99.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 8)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Label113.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 9)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Label127.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 10)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Label141.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 11)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Label155.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 12)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Labelsat15.Text = a.ToShortDateString();
+                            }
+
+                            if (n == 13)
+                            {
+                                DateTime a = monday7.AddDays(n);
+                                Labelsun15.Text = a.ToShortDateString();
+                            }
+                        }
+                        break;
+                }
+
+                DATASET.DataSet.T_ScheduleDataTable dd = Class2.Insatsu1(Global.GetConnection());
+
+
+                for (int j = 0; j < dd.Count; j++)
+
+                {
+                    DATASET.DataSet.T_ScheduleRow dr = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+
+                    DateTime DT = DateTime.Parse(dr.date.ToString());
+                    string week = DT.ToString("ddd");
+                    // string.Format("HH:mm", dr.time);
+                    string tm = dr.time.ToString();
+                    string tm1 = tm.Substring(0, 5);
+
+                    while (week == "月")
                     {
-                        if (n == 0)
-                        {
-                            DateTime a = monday1.AddDays(n);
-                            Label1.Text = a.ToShortDateString();
-                        }
 
-                        if (n == 1)
+                        if (Label3.Text == "")
                         {
-                            DateTime a = monday1.AddDays(n);
-                            Label15.Text = a.ToShortDateString();
+                            Label3.Text = tm1;
+                            Label4.Text = dr.title;
+                            Label5.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 2)
+                        if (Label6.Text == "")
                         {
-                            DateTime a = monday1.AddDays(n);
-                            Label29.Text = a.ToShortDateString();
+                            Label6.Text = tm1;
+                            Label7.Text = dr.title;
+                            Label8.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 3)
+                        if (Label9.Text == "")
                         {
-                            DateTime a = monday1.AddDays(n);
-                            Label43.Text = a.ToShortDateString();
+                            Label9.Text = tm1;
+                            Label10.Text = dr.title;
+                            Label11.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 4)
+                        if (Label12.Text == "")
                         {
-                            DateTime a = monday1.AddDays(n);
-                            Label57.Text = a.ToShortDateString();
+                            Label12.Text = tm1;
+                            Label13.Text = dr.title;
+                            Label14.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 5)
-                        {
-                            DateTime a = monday1.AddDays(n);
-                            Labelsat1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 6)
-                        {
-                            DateTime a = monday1.AddDays(n);
-                            Labelsun1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 7)
-                        {
-                            DateTime a = monday1.AddDays(n);
-                            Label99.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 8)
-                        {
-                            DateTime a = monday1.AddDays(n);
-                            Label113.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 9)
-                        {
-                            DateTime a = monday1.AddDays(n);
-                            Label127.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 10)
-                        {
-                            DateTime a = monday1.AddDays(n);
-                            Label141.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 11)
-                        {
-                            DateTime a = monday1.AddDays(n);
-                            Label155.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 12)
-                        {
-                            DateTime a = monday1.AddDays(n);
-                            Labelsat15.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 13)
-                        {
-                            DateTime a = monday1.AddDays(n);
-                            Labelsun15.Text = a.ToShortDateString();
-                        }
+                        break;
                     }
-                    break;
 
-                case DayOfWeek.Monday:
-                    DateTime monday2 = today.AddDays(-7);
-                    for (int n = 0; n <= 13; n++)
+                    while (week == "火")
                     {
-                        if (n == 0)
-                        {
-                            DateTime a = monday2.AddDays(n);
-                            Label1.Text = a.ToShortDateString();
-                        }
 
-                        if (n == 1)
+                        if (Label17.Text == "")
                         {
-                            DateTime a = monday2.AddDays(n);
-                            Label15.Text = a.ToShortDateString();
+                            Label17.Text = tm1;
+                            Label18.Text = dr.title;
+                            Label19.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 2)
+                        if (Label20.Text == "")
                         {
-                            DateTime a = monday2.AddDays(n);
-                            Label29.Text = a.ToShortDateString();
+                            Label20.Text = tm1;
+                            Label21.Text = dr.title;
+                            Label22.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 3)
+                        if (Label23.Text == "")
                         {
-                            DateTime a = monday2.AddDays(n);
-                            Label43.Text = a.ToShortDateString();
+                            Label23.Text = tm1;
+                            Label24.Text = dr.title;
+                            Label25.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 4)
+                        if (Label26.Text == "")
                         {
-                            DateTime a = monday2.AddDays(n);
-                            Label57.Text = a.ToShortDateString();
+                            Label26.Text = tm1;
+                            Label27.Text = dr.title;
+                            Label28.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 5)
-                        {
-                            DateTime a = monday2.AddDays(n);
-                            Labelsat1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 6)
-                        {
-                            DateTime a = monday2.AddDays(n);
-                            Labelsun1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 7)
-                        {
-                            DateTime a = monday2.AddDays(n);
-                            Label99.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 8)
-                        {
-                            DateTime a = monday2.AddDays(n);
-                            Label113.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 9)
-                        {
-                            DateTime a = monday2.AddDays(n);
-                            Label127.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 10)
-                        {
-                            DateTime a = monday2.AddDays(n);
-                            Label141.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 11)
-                        {
-                            DateTime a = monday2.AddDays(n);
-                            Label155.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 12)
-                        {
-                            DateTime a = monday2.AddDays(n);
-                            Labelsat15.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 13)
-                        {
-                            DateTime a = monday2.AddDays(n);
-                            Labelsun15.Text = a.ToShortDateString();
-                        }
+                        break;
                     }
-                    break;
 
-                case DayOfWeek.Tuesday:
-                    DateTime monday3 = today.AddDays(-8);
-                    for (int n = 0; n <= 13; n++)
+                    while (week == "水")
                     {
-                        if (n == 0)
-                        {
-                            DateTime a = monday3.AddDays(n);
-                            Label1.Text = a.ToShortDateString();
-                        }
 
-                        if (n == 1)
+                        if (Label31.Text == "")
                         {
-                            DateTime a = monday3.AddDays(n);
-                            Label15.Text = a.ToShortDateString();
+                            Label31.Text = tm1;
+                            Label32.Text = dr.title;
+                            Label33.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 2)
+                        if (Label34.Text == "")
                         {
-                            DateTime a = monday3.AddDays(n);
-                            Label29.Text = a.ToShortDateString();
+                            Label34.Text = tm1;
+                            Label35.Text = dr.title;
+                            Label36.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 3)
+                        if (Label37.Text == "")
                         {
-                            DateTime a = monday3.AddDays(n);
-                            Label43.Text = a.ToShortDateString();
+                            Label37.Text = tm1;
+                            Label38.Text = dr.title;
+                            Label39.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 4)
+                        if (Label40.Text == "")
                         {
-                            DateTime a = monday3.AddDays(n);
-                            Label57.Text = a.ToShortDateString();
+                            Label40.Text = tm1;
+                            Label41.Text = dr.title;
+                            Label42.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 5)
-                        {
-                            DateTime a = monday3.AddDays(n);
-                            Labelsat1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 6)
-                        {
-                            DateTime a = monday3.AddDays(n);
-                            Labelsun1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 7)
-                        {
-                            DateTime a = monday3.AddDays(n);
-                            Label99.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 8)
-                        {
-                            DateTime a = monday3.AddDays(n);
-                            Label113.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 9)
-                        {
-                            DateTime a = monday3.AddDays(n);
-                            Label127.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 10)
-                        {
-                            DateTime a = monday3.AddDays(n);
-                            Label141.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 11)
-                        {
-                            DateTime a = monday3.AddDays(n);
-                            Label155.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 12)
-                        {
-                            DateTime a = monday3.AddDays(n);
-                            Labelsat15.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 13)
-                        {
-                            DateTime a = monday3.AddDays(n);
-                            Labelsun15.Text = a.ToShortDateString();
-                        }
+                        break;
                     }
-                    break;
 
-                case DayOfWeek.Wednesday:
-                    DateTime monday4 = today.AddDays(-9);
-                    for (int n = 0; n <= 13; n++)
+                    while (week == "木")
                     {
-                        if (n == 0)
-                        {
-                            DateTime a = monday4.AddDays(n);
-                            Label1.Text = a.ToShortDateString();
-                        }
 
-                        if (n == 1)
+                        if (Label45.Text == "")
                         {
-                            DateTime a = monday4.AddDays(n);
-                            Label15.Text = a.ToShortDateString();
+                            Label45.Text = tm1;
+                            Label46.Text = dr.title;
+                            Label47.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 2)
+                        if (Label48.Text == "")
                         {
-                            DateTime a = monday4.AddDays(n);
-                            Label29.Text = a.ToShortDateString();
+                            Label48.Text = tm1;
+                            Label49.Text = dr.title;
+                            Label50.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 3)
+                        if (Label51.Text == "")
                         {
-                            DateTime a = monday4.AddDays(n);
-                            Label43.Text = a.ToShortDateString();
+                            Label51.Text = tm1;
+                            Label52.Text = dr.title;
+                            Label53.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 4)
+                        if (Label54.Text == "")
                         {
-                            DateTime a = monday4.AddDays(n);
-                            Label57.Text = a.ToShortDateString();
+                            Label54.Text = tm1;
+                            Label55.Text = dr.title;
+                            Label56.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 5)
-                        {
-                            DateTime a = monday4.AddDays(n);
-                            Labelsat1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 6)
-                        {
-                            DateTime a = monday4.AddDays(n);
-                            Labelsun1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 7)
-                        {
-                            DateTime a = monday4.AddDays(n);
-                            Label99.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 8)
-                        {
-                            DateTime a = monday4.AddDays(n);
-                            Label113.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 9)
-                        {
-                            DateTime a = monday4.AddDays(n);
-                            Label127.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 10)
-                        {
-                            DateTime a = monday4.AddDays(n);
-                            Label141.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 11)
-                        {
-                            DateTime a = monday4.AddDays(n);
-                            Label155.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 12)
-                        {
-                            DateTime a = monday4.AddDays(n);
-                            Labelsat15.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 13)
-                        {
-                            DateTime a = monday4.AddDays(n);
-                            Labelsun15.Text = a.ToShortDateString();
-                        }
+                        break;
                     }
-                    break;
 
-                case DayOfWeek.Thursday:
-                    DateTime monday5 = today.AddDays(-10);
-                    for (int n = 0; n <= 13; n++)
+                    while (week == "金")
                     {
-                        if (n == 0)
-                        {
-                            DateTime a = monday5.AddDays(n);
-                            Label1.Text = a.ToShortDateString();
-                        }
 
-                        if (n == 1)
+                        if (Label59.Text == "")
                         {
-                            DateTime a = monday5.AddDays(n);
-                            Label15.Text = a.ToShortDateString();
+                            Label59.Text = tm1;
+                            Label60.Text = dr.title;
+                            Label61.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 2)
+                        if (Label62.Text == "")
                         {
-                            DateTime a = monday5.AddDays(n);
-                            Label29.Text = a.ToShortDateString();
+                            Label62.Text = tm1;
+                            Label63.Text = dr.title;
+                            Label64.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 3)
+                        if (Label65.Text == "")
                         {
-                            DateTime a = monday5.AddDays(n);
-                            Label43.Text = a.ToShortDateString();
+                            Label65.Text = tm1;
+                            Label66.Text = dr.title;
+                            Label67.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 4)
+                        if (Label68.Text == "")
                         {
-                            DateTime a = monday5.AddDays(n);
-                            Label57.Text = a.ToShortDateString();
+                            Label68.Text = tm1;
+                            Label69.Text = dr.title;
+                            Label70.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 5)
-                        {
-                            DateTime a = monday5.AddDays(n);
-                            Labelsat1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 6)
-                        {
-                            DateTime a = monday5.AddDays(n);
-                            Labelsun1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 7)
-                        {
-                            DateTime a = monday5.AddDays(n);
-                            Label99.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 8)
-                        {
-                            DateTime a = monday5.AddDays(n);
-                            Label113.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 9)
-                        {
-                            DateTime a = monday5.AddDays(n);
-                            Label127.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 10)
-                        {
-                            DateTime a = monday5.AddDays(n);
-                            Label141.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 11)
-                        {
-                            DateTime a = monday5.AddDays(n);
-                            Label155.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 12)
-                        {
-                            DateTime a = monday5.AddDays(n);
-                            Labelsat15.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 13)
-                        {
-                            DateTime a = monday5.AddDays(n);
-                            Labelsun15.Text = a.ToShortDateString();
-                        }
+                        break;
                     }
-                    break;
-
-                case DayOfWeek.Friday:
-                    DateTime monday6 = today.AddDays(-11);
-
-                    for (int n = 0; n <= 13; n++)
+                    while (week == "土")
                     {
-                        if (n == 0)
-                        {
-                            DateTime a = monday6.AddDays(n);
-                            Label1.Text = a.ToShortDateString();
-                        }
 
-                        if (n == 1)
+                        if (Labelsat3.Text == "")
                         {
-                            DateTime a = monday6.AddDays(n);
-                            Label15.Text = a.ToShortDateString();
+                            Labelsat3.Text = tm1;
+                            Labelsat4.Text = dr.title;
+                            Labelsat5.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 2)
+                        if (Labelsat6.Text == "")
                         {
-                            DateTime a = monday6.AddDays(n);
-                            Label29.Text = a.ToShortDateString();
+                            Labelsat6.Text = tm1;
+                            Labelsat7.Text = dr.title;
+                            Labelsat8.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 3)
+                        if (Labelsat9.Text == "")
                         {
-                            DateTime a = monday6.AddDays(n);
-                            Label43.Text = a.ToShortDateString();
+                            Labelsat9.Text = tm1;
+                            Labelsat10.Text = dr.title;
+                            Labelsat11.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 4)
+                        if (Labelsat12.Text == "")
                         {
-                            DateTime a = monday6.AddDays(n);
-                            Label57.Text = a.ToShortDateString();
+                            Labelsat12.Text = tm1;
+                            Labelsat13.Text = dr.title;
+                            Labelsat14.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 5)
-                        {
-                            DateTime a = monday6.AddDays(n);
-                            Labelsat1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 6)
-                        {
-                            DateTime a = monday6.AddDays(n);
-                            Labelsun1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 7)
-                        {
-                            DateTime a = monday6.AddDays(n);
-                            Label99.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 8)
-                        {
-                            DateTime a = monday6.AddDays(n);
-                            Label113.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 9)
-                        {
-                            DateTime a = monday6.AddDays(n);
-                            Label127.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 10)
-                        {
-                            DateTime a = monday6.AddDays(n);
-                            Label141.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 11)
-                        {
-                            DateTime a = monday6.AddDays(n);
-                            Label155.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 12)
-                        {
-                            DateTime a = monday6.AddDays(n);
-                            Labelsat15.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 13)
-                        {
-                            DateTime a = monday6.AddDays(n);
-                            Labelsun15.Text = a.ToShortDateString();
-                        }
+                        break;
                     }
-
-                    break;
-
-                case DayOfWeek.Saturday:
-                    DateTime monday7 = today.AddDays(-12);
-                    for (int n = 0; n <= 13; n++)
+                    while (week == "日")
                     {
-                        if (n == 0)
-                        {
-                            DateTime a = monday7.AddDays(n);
-                            Label1.Text = a.ToShortDateString();
-                        }
 
-                        if (n == 1)
+                        if (Labelsun3.Text == "")
                         {
-                            DateTime a = monday7.AddDays(n);
-                            Label15.Text = a.ToShortDateString();
+                            Labelsun3.Text = tm1;
+                            Labelsun4.Text = dr.title;
+                            Labelsun5.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 2)
+                        if (Labelsun6.Text == "")
                         {
-                            DateTime a = monday7.AddDays(n);
-                            Label29.Text = a.ToShortDateString();
+                            Labelsun6.Text = tm1;
+                            Labelsun7.Text = dr.title;
+                            Labelsun8.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 3)
+                        if (Labelsun9.Text == "")
                         {
-                            DateTime a = monday7.AddDays(n);
-                            Label43.Text = a.ToShortDateString();
+                            Labelsun9.Text = tm1;
+                            Labelsun10.Text = dr.title;
+                            Labelsun11.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 4)
+                        if (Labelsun12.Text == "")
                         {
-                            DateTime a = monday7.AddDays(n);
-                            Label57.Text = a.ToShortDateString();
+                            Labelsun12.Text = tm1;
+                            Labelsun13.Text = dr.title;
+                            Labelsun14.Text = dr.name;
+                            break;
                         }
-
-                        if (n == 5)
-                        {
-                            DateTime a = monday7.AddDays(n);
-                            Labelsat1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 6)
-                        {
-                            DateTime a = monday7.AddDays(n);
-                            Labelsun1.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 7)
-                        {
-                            DateTime a = monday7.AddDays(n);
-                            Label99.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 8)
-                        {
-                            DateTime a = monday7.AddDays(n);
-                            Label113.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 9)
-                        {
-                            DateTime a = monday7.AddDays(n);
-                            Label127.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 10)
-                        {
-                            DateTime a = monday7.AddDays(n);
-                            Label141.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 11)
-                        {
-                            DateTime a = monday7.AddDays(n);
-                            Label155.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 12)
-                        {
-                            DateTime a = monday7.AddDays(n);
-                            Labelsat15.Text = a.ToShortDateString();
-                        }
-
-                        if (n == 13)
-                        {
-                            DateTime a = monday7.AddDays(n);
-                            Labelsun15.Text = a.ToShortDateString();
-                        }
+                        break;
                     }
-                    break;
+                }
+
+                DATASET.DataSet.T_ScheduleDataTable dp = Class2.Insatsu2(Global.GetConnection());
+
+
+                for (int j = 0; j < dp.Count; j++)
+
+                {
+                    DATASET.DataSet.T_ScheduleRow dr = dp.Rows[j] as DATASET.DataSet.T_ScheduleRow;
+
+                    DateTime DT = DateTime.Parse(dr.date.ToString());
+                    string week = DT.ToString("ddd");
+                    // string.Format("HH:mm", dr.time);
+
+                    string tm = dr.time.ToString();
+                    string tm1 = tm;
+
+                    while (week == "月")
+                    {
+
+                        if (Label101.Text == "")
+                        {
+                            Label101.Text = tm1;
+                            Label102.Text = dr.title;
+                            Label103.Text = dr.name;
+                            break;
+                        }
+                        if (Label104.Text == "")
+                        {
+                            Label104.Text = tm1;
+                            Label105.Text = dr.title;
+                            Label106.Text = dr.name;
+                            break;
+                        }
+                        if (Label107.Text == "")
+                        {
+                            Label107.Text = tm1;
+                            Label108.Text = dr.title;
+                            Label109.Text = dr.name;
+                            break;
+                        }
+                        if (Label110.Text == "")
+                        {
+                            Label110.Text = tm1;
+                            Label111.Text = dr.title;
+                            Label112.Text = dr.name;
+                            break;
+                        }
+                        break;
+                    }
+
+                    while (week == "火")
+                    {
+
+                        if (Label115.Text == "")
+                        {
+                            Label115.Text = tm1;
+                            Label116.Text = dr.title;
+                            Label117.Text = dr.name;
+                            break;
+                        }
+                        if (Label118.Text == "")
+                        {
+                            Label118.Text = tm1;
+                            Label119.Text = dr.title;
+                            Label120.Text = dr.name;
+                            break;
+                        }
+                        if (Label121.Text == "")
+                        {
+                            Label121.Text = tm1;
+                            Label122.Text = dr.title;
+                            Label123.Text = dr.name;
+                            break;
+                        }
+                        if (Label124.Text == "")
+                        {
+                            Label124.Text = tm1;
+                            Label125.Text = dr.title;
+                            Label126.Text = dr.name;
+                            break;
+                        }
+                        break;
+                    }
+
+                    while (week == "水")
+                    {
+
+                        if (Label129.Text == "")
+                        {
+                            Label129.Text = tm1;
+                            Label130.Text = dr.title;
+                            Label131.Text = dr.name;
+                            break;
+                        }
+                        if (Label132.Text == "")
+                        {
+                            Label132.Text = tm1;
+                            Label133.Text = dr.title;
+                            Label134.Text = dr.name;
+                            break;
+                        }
+                        if (Label135.Text == "")
+                        {
+                            Label135.Text = tm1;
+                            Label136.Text = dr.title;
+                            Label137.Text = dr.name;
+                            break;
+                        }
+                        if (Label138.Text == "")
+                        {
+                            Label138.Text = tm1;
+                            Label139.Text = dr.title;
+                            Label140.Text = dr.name;
+                            break;
+                        }
+                        break;
+                    }
+
+                    while (week == "木")
+                    {
+
+                        if (Label143.Text == "")
+                        {
+                            Label143.Text = tm1;
+                            Label144.Text = dr.title;
+                            Label145.Text = dr.name;
+                            break;
+                        }
+                        if (Label146.Text == "")
+                        {
+                            Label146.Text = tm1;
+                            Label147.Text = dr.title;
+                            Label148.Text = dr.name;
+                            break;
+                        }
+                        if (Label149.Text == "")
+                        {
+                            Label149.Text = tm1;
+                            Label150.Text = dr.title;
+                            Label151.Text = dr.name;
+                            break;
+                        }
+                        if (Label152.Text == "")
+                        {
+                            Label152.Text = tm1;
+                            Label153.Text = dr.title;
+                            Label154.Text = dr.name;
+                            break;
+                        }
+                        break;
+                    }
+
+                    while (week == "金")
+                    {
+
+                        if (Label157.Text == "")
+                        {
+                            Label157.Text = tm1;
+                            Label158.Text = dr.title;
+                            Label159.Text = dr.name;
+                            break;
+                        }
+                        if (Label160.Text == "")
+                        {
+                            Label160.Text = tm1;
+                            Label161.Text = dr.title;
+                            Label162.Text = dr.name;
+                            break;
+                        }
+                        if (Label163.Text == "")
+                        {
+                            Label163.Text = tm1;
+                            Label164.Text = dr.title;
+                            Label165.Text = dr.name;
+                            break;
+                        }
+                        if (Label166.Text == "")
+                        {
+                            Label166.Text = tm1;
+                            Label167.Text = dr.title;
+                            Label168.Text = dr.name;
+                            break;
+                        }
+                        break;
+                    }
+                    while (week == "土")
+                    {
+
+                        if (Labelsat17.Text == "")
+                        {
+                            Labelsat17.Text = tm1;
+                            Labelsat18.Text = dr.title;
+                            Labelsat19.Text = dr.name;
+                            break;
+                        }
+                        if (Labelsat20.Text == "")
+                        {
+                            Labelsat20.Text = tm1;
+                            Labelsat21.Text = dr.title;
+                            Labelsat22.Text = dr.name;
+                            break;
+                        }
+                        if (Labelsat23.Text == "")
+                        {
+                            Labelsat23.Text = tm1;
+                            Labelsat24.Text = dr.title;
+                            Labelsat25.Text = dr.name;
+                            break;
+                        }
+                        if (Labelsat26.Text == "")
+                        {
+                            Labelsat26.Text = tm1;
+                            Labelsat27.Text = dr.title;
+                            Labelsat28.Text = dr.name;
+                            break;
+                        }
+                        break;
+                    }
+                    while (week == "日")
+                    {
+
+                        if (Labelsun17.Text == "")
+                        {
+                            Labelsun17.Text = tm1;
+                            Labelsun18.Text = dr.title;
+                            Labelsun19.Text = dr.name;
+                            break;
+                        }
+                        if (Labelsun20.Text == "")
+                        {
+                            Labelsun20.Text = tm1;
+                            Labelsun21.Text = dr.title;
+                            Labelsun22.Text = dr.name;
+                            break;
+                        }
+                        if (Labelsun23.Text == "")
+                        {
+                            Labelsun23.Text = tm1;
+                            Labelsun24.Text = dr.title;
+                            Labelsun25.Text = dr.name;
+                            break;
+                        }
+                        if (Labelsun26.Text == "")
+                        {
+                            Labelsun26.Text = tm1;
+                            Labelsun27.Text = dr.title;
+                            Labelsun28.Text = dr.name;
+                            break;
+                        }
+                        break;
+
+                    }
+                }
             }
-
-            DATASET.DataSet.T_ScheduleDataTable dd = Class2.Insatsu1(Global.GetConnection());
-
-
-            for (int j = 0; j < dd.Count; j++)
-
-            {
-                DATASET.DataSet.T_ScheduleRow dr = dd.Rows[j] as DATASET.DataSet.T_ScheduleRow;
-
-                DateTime DT = DateTime.Parse(dr.date.ToString());
-                string week = DT.ToString("ddd");
-                // string.Format("HH:mm", dr.time);
-                string tm = dr.time.ToString();
-                string tm1 = tm.Substring(0, 5);
-
-                while (week == "月")
-                {
-
-                    if (Label3.Text == "")
-                    {
-                        Label3.Text = tm1;
-                        Label4.Text = dr.title;
-                        Label5.Text = dr.name;
-                        break;
-                    }
-                    if (Label6.Text == "")
-                    {
-                        Label6.Text = tm1;
-                        Label7.Text = dr.title;
-                        Label8.Text = dr.name;
-                        break;
-                    }
-                    if (Label9.Text == "")
-                    {
-                        Label9.Text = tm1;
-                        Label10.Text = dr.title;
-                        Label11.Text = dr.name;
-                        break;
-                    }
-                    if (Label12.Text == "")
-                    {
-                        Label12.Text = tm1;
-                        Label13.Text = dr.title;
-                        Label14.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-
-                while (week == "火")
-                {
-
-                    if (Label17.Text == "")
-                    {
-                        Label17.Text = tm1;
-                        Label18.Text = dr.title;
-                        Label19.Text = dr.name;
-                        break;
-                    }
-                    if (Label20.Text == "")
-                    {
-                        Label20.Text = tm1;
-                        Label21.Text = dr.title;
-                        Label22.Text = dr.name;
-                        break;
-                    }
-                    if (Label23.Text == "")
-                    {
-                        Label23.Text = tm1;
-                        Label24.Text = dr.title;
-                        Label25.Text = dr.name;
-                        break;
-                    }
-                    if (Label26.Text == "")
-                    {
-                        Label26.Text = tm1;
-                        Label27.Text = dr.title;
-                        Label28.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-
-                while (week == "水")
-                {
-
-                    if (Label31.Text == "")
-                    {
-                        Label31.Text = tm1;
-                        Label32.Text = dr.title;
-                        Label33.Text = dr.name;
-                        break;
-                    }
-                    if (Label34.Text == "")
-                    {
-                        Label34.Text = tm1;
-                        Label35.Text = dr.title;
-                        Label36.Text = dr.name;
-                        break;
-                    }
-                    if (Label37.Text == "")
-                    {
-                        Label37.Text = tm1;
-                        Label38.Text = dr.title;
-                        Label39.Text = dr.name;
-                        break;
-                    }
-                    if (Label40.Text == "")
-                    {
-                        Label40.Text = tm1;
-                        Label41.Text = dr.title;
-                        Label42.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-
-                while (week == "木")
-                {
-
-                    if (Label45.Text == "")
-                    {
-                        Label45.Text = tm1;
-                        Label46.Text = dr.title;
-                        Label47.Text = dr.name;
-                        break;
-                    }
-                    if (Label48.Text == "")
-                    {
-                        Label48.Text = tm1;
-                        Label49.Text = dr.title;
-                        Label50.Text = dr.name;
-                        break;
-                    }
-                    if (Label51.Text == "")
-                    {
-                        Label51.Text = tm1;
-                        Label52.Text = dr.title;
-                        Label53.Text = dr.name;
-                        break;
-                    }
-                    if (Label54.Text == "")
-                    {
-                        Label54.Text = tm1;
-                        Label55.Text = dr.title;
-                        Label56.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-
-                while (week == "金")
-                {
-
-                    if (Label59.Text == "")
-                    {
-                        Label59.Text = tm1;
-                        Label60.Text = dr.title;
-                        Label61.Text = dr.name;
-                        break;
-                    }
-                    if (Label62.Text == "")
-                    {
-                        Label62.Text = tm1;
-                        Label63.Text = dr.title;
-                        Label64.Text = dr.name;
-                        break;
-                    }
-                    if (Label65.Text == "")
-                    {
-                        Label65.Text = tm1;
-                        Label66.Text = dr.title;
-                        Label67.Text = dr.name;
-                        break;
-                    }
-                    if (Label68.Text == "")
-                    {
-                        Label68.Text = tm1;
-                        Label69.Text = dr.title;
-                        Label70.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-                while (week == "土")
-                {
-
-                    if (Labelsat3.Text == "")
-                    {
-                        Labelsat3.Text = tm1;
-                        Labelsat4.Text = dr.title;
-                        Labelsat5.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsat6.Text == "")
-                    {
-                        Labelsat6.Text = tm1;
-                        Labelsat7.Text = dr.title;
-                        Labelsat8.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsat9.Text == "")
-                    {
-                        Labelsat9.Text = tm1;
-                        Labelsat10.Text = dr.title;
-                        Labelsat11.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsat12.Text == "")
-                    {
-                        Labelsat12.Text = tm1;
-                        Labelsat13.Text = dr.title;
-                        Labelsat14.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-                while (week == "日")
-                {
-
-                    if (Labelsun3.Text == "")
-                    {
-                        Labelsun3.Text = tm1;
-                        Labelsun4.Text = dr.title;
-                        Labelsun5.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsun6.Text == "")
-                    {
-                        Labelsun6.Text = tm1;
-                        Labelsun7.Text = dr.title;
-                        Labelsun8.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsun9.Text == "")
-                    {
-                        Labelsun9.Text = tm1;
-                        Labelsun10.Text = dr.title;
-                        Labelsun11.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsun12.Text == "")
-                    {
-                        Labelsun12.Text = tm1;
-                        Labelsun13.Text = dr.title;
-                        Labelsun14.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-            }
-
-            DATASET.DataSet.T_ScheduleDataTable dp = Class2.Insatsu2(Global.GetConnection());
-
-
-            for (int j = 0; j < dp.Count; j++)
-
-            {
-                DATASET.DataSet.T_ScheduleRow dr = dp.Rows[j] as DATASET.DataSet.T_ScheduleRow;
-
-                DateTime DT = DateTime.Parse(dr.date.ToString());
-                string week = DT.ToString("ddd");
-                // string.Format("HH:mm", dr.time);
-
-                string tm = dr.time.ToString();
-                string tm1 = tm;
-
-                while (week == "月")
-                {
-
-                    if (Label101.Text == "")
-                    {
-                        Label101.Text = tm1;
-                        Label102.Text = dr.title;
-                        Label103.Text = dr.name;
-                        break;
-                    }
-                    if (Label104.Text == "")
-                    {
-                        Label104.Text = tm1;
-                        Label105.Text = dr.title;
-                        Label106.Text = dr.name;
-                        break;
-                    }
-                    if (Label107.Text == "")
-                    {
-                        Label107.Text = tm1;
-                        Label108.Text = dr.title;
-                        Label109.Text = dr.name;
-                        break;
-                    }
-                    if (Label110.Text == "")
-                    {
-                        Label110.Text = tm1;
-                        Label111.Text = dr.title;
-                        Label112.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-
-                while (week == "火")
-                {
-
-                    if (Label115.Text == "")
-                    {
-                        Label115.Text = tm1;
-                        Label116.Text = dr.title;
-                        Label117.Text = dr.name;
-                        break;
-                    }
-                    if (Label118.Text == "")
-                    {
-                        Label118.Text = tm1;
-                        Label119.Text = dr.title;
-                        Label120.Text = dr.name;
-                        break;
-                    }
-                    if (Label121.Text == "")
-                    {
-                        Label121.Text = tm1;
-                        Label122.Text = dr.title;
-                        Label123.Text = dr.name;
-                        break;
-                    }
-                    if (Label124.Text == "")
-                    {
-                        Label124.Text = tm1;
-                        Label125.Text = dr.title;
-                        Label126.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-
-                while (week == "水")
-                {
-
-                    if (Label129.Text == "")
-                    {
-                        Label129.Text = tm1;
-                        Label130.Text = dr.title;
-                        Label131.Text = dr.name;
-                        break;
-                    }
-                    if (Label132.Text == "")
-                    {
-                        Label132.Text = tm1;
-                        Label133.Text = dr.title;
-                        Label134.Text = dr.name;
-                        break;
-                    }
-                    if (Label135.Text == "")
-                    {
-                        Label135.Text = tm1;
-                        Label136.Text = dr.title;
-                        Label137.Text = dr.name;
-                        break;
-                    }
-                    if (Label138.Text == "")
-                    {
-                        Label138.Text = tm1;
-                        Label139.Text = dr.title;
-                        Label140.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-
-                while (week == "木")
-                {
-
-                    if (Label143.Text == "")
-                    {
-                        Label143.Text = tm1;
-                        Label144.Text = dr.title;
-                        Label145.Text = dr.name;
-                        break;
-                    }
-                    if (Label146.Text == "")
-                    {
-                        Label146.Text = tm1;
-                        Label147.Text = dr.title;
-                        Label148.Text = dr.name;
-                        break;
-                    }
-                    if (Label149.Text == "")
-                    {
-                        Label149.Text = tm1;
-                        Label150.Text = dr.title;
-                        Label151.Text = dr.name;
-                        break;
-                    }
-                    if (Label152.Text == "")
-                    {
-                        Label152.Text = tm1;
-                        Label153.Text = dr.title;
-                        Label154.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-
-                while (week == "金")
-                {
-
-                    if (Label157.Text == "")
-                    {
-                        Label157.Text = tm1;
-                        Label158.Text = dr.title;
-                        Label159.Text = dr.name;
-                        break;
-                    }
-                    if (Label160.Text == "")
-                    {
-                        Label160.Text = tm1;
-                        Label161.Text = dr.title;
-                        Label162.Text = dr.name;
-                        break;
-                    }
-                    if (Label163.Text == "")
-                    {
-                        Label163.Text = tm1;
-                        Label164.Text = dr.title;
-                        Label165.Text = dr.name;
-                        break;
-                    }
-                    if (Label166.Text == "")
-                    {
-                        Label166.Text = tm1;
-                        Label167.Text = dr.title;
-                        Label168.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-                while (week == "土")
-                {
-
-                    if (Labelsat17.Text == "")
-                    {
-                        Labelsat17.Text = tm1;
-                        Labelsat18.Text = dr.title;
-                        Labelsat19.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsat20.Text == "")
-                    {
-                        Labelsat20.Text = tm1;
-                        Labelsat21.Text = dr.title;
-                        Labelsat22.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsat23.Text == "")
-                    {
-                        Labelsat23.Text = tm1;
-                        Labelsat24.Text = dr.title;
-                        Labelsat25.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsat26.Text == "")
-                    {
-                        Labelsat26.Text = tm1;
-                        Labelsat27.Text = dr.title;
-                        Labelsat28.Text = dr.name;
-                        break;
-                    }
-                    break;
-                }
-                while (week == "日")
-                {
-
-                    if (Labelsun17.Text == "")
-                    {
-                        Labelsun17.Text = tm1;
-                        Labelsun18.Text = dr.title;
-                        Labelsun19.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsun20.Text == "")
-                    {
-                        Labelsun20.Text = tm1;
-                        Labelsun21.Text = dr.title;
-                        Labelsun22.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsun23.Text == "")
-                    {
-                        Labelsun23.Text = tm1;
-                        Labelsun24.Text = dr.title;
-                        Labelsun25.Text = dr.name;
-                        break;
-                    }
-                    if (Labelsun26.Text == "")
-                    {
-                        Labelsun26.Text = tm1;
-                        Labelsun27.Text = dr.title;
-                        Labelsun28.Text = dr.name;
-                        break;
-                    }
-                    break;
-
-                }
-            }
+            
         }
 
 
@@ -1284,43 +1286,78 @@ namespace WhereEver
             return dt;
         }
 
-        protected void DgBikou_EditCommand(object source, DataGridCommandEventArgs e)
-        {
-            DgBikou.EditItemIndex = e.Item.ItemIndex;
-            CreateDataGrid();
-        }
-
         protected void DgBikou_CancelCommand(object source, DataGridCommandEventArgs e)
         {
             DgBikou.EditItemIndex = -1;
             CreateDataGrid();
         }
 
-        protected void DgBikou_UpdateCommand(object source, DataGridCommandEventArgs e)
+        internal static void Update(DATASET.DataSet.T_PrintScheduleRow dt, string id)
         {
-            //TextBox txtPMiddlename = (TextBox)e.Item.Cells[0].Controls[0];
-            //TextBox txtPMiddlestart = (TextBox)e.Item.Cells[1].Controls[0];
+            string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "update T_PrintSchedule set " +
+                    "bikou = @bikou" +
+                    "where bikouid = @bikouid";
+
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+                da.SelectCommand.Parameters.AddWithValue("@bikou", dt.bikou);
+                da.SelectCommand.Parameters.AddWithValue("@bikouid", id);
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
-        //protected void btnNyuryoku_Click(object sender, EventArgs e)
-        //{
-        //    DATASET.DataSet.T_PrintScheduleDataTable dt = new DATASET.DataSet.T_PrintScheduleDataTable();
-        //    DATASET.DataSet.T_PrintScheduleRow dr = dt.NewT_PrintScheduleRow();
+        protected void DgBikou_UpdateCommand(object source, DataGridCommandEventArgs e)
+        {
+            TextBox txtBikou = (TextBox)e.Item.Cells[0].Controls[0];
+            DATASET.DataSet.T_PrintScheduleDataTable t_PrintScheduleRows = new DATASET.DataSet.T_PrintScheduleDataTable();
+            DATASET.DataSet.T_PrintScheduleRow t_PrintScheduleRow = t_PrintScheduleRows.NewT_PrintScheduleRow();
 
-        //    if (txtNyuryoku.Text == "")
-        //    {
-        //        string.Format("if (!confirm('{0}')) return false;", "本文が入力されていません");
-        //    }
-        //    dr.bikou = txtNyuryoku.Text;
+            t_PrintScheduleRow[1] = txtBikou.Text;
+            Update(t_PrintScheduleRow, e.Item.Cells[0].Text);
+            DgBikou.EditItemIndex = -1;
+            CreateDataGrid();
+        }
 
-        //    DATASET.DataSet.T_PrintScheduleRow dl = Class2.MaxNoRow(Global.GetConnection());
-        //    int sl = dl.bikouid;
-        //    dr.bikouid = sl + 1;
-        //    dt.AddT_PrintScheduleRow(dr);
-        //    Class2.InsertList(dt, Global.GetConnection());
-        //    txtNyuryoku.Text = "";
-        //    Create();
-        //}
+        protected void DgBikou_EditCommand(object source, DataGridCommandEventArgs e)
+        {
+            DgBikou.EditItemIndex = e.Item.ItemIndex;
+        }
+
+        protected void DgBikou_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+            string id = e.Item.Cells[0].Text;
+            switch (((LinkButton)e.CommandSource).CommandName)
+            {
+
+                case "Delete":
+                    DeleteBikou(id);
+                    break;
+                default:
+                    break;
+
+            }
+            DgBikou.EditItemIndex = -1;
+            DgBikou.DataSource = GetT_PrintScheduleDataTable(Global.GetConnection());
+            DgBikou.DataBind();
+        }
+        internal static void DeleteBikou(string id)
+        {
+            string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(cstr))
+            {
+                string sql = "DELETE FROM T_PrintSchedule WHERE bikouid = @id";
+                SqlDataAdapter da = new SqlDataAdapter(sql, connection);
+
+                da.SelectCommand.Parameters.AddWithValue("@id", id);
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }
 
