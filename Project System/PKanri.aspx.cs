@@ -10,14 +10,17 @@ using System.Web.UI.WebControls;
 
 namespace WhereEver.Project_System
 {
+    
     public partial class PKanri : System.Web.UI.Page
     {
+        public int spId = SessionManager.project.PdbRow.Pid;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
-                CreateDropDownList();
-                CreateDataGrid();
+                CreateDropDownList(spId);
+                CreateDataGrid(spId);
                 DgPKanri.EditCommand +=
                     new DataGridCommandEventHandler(this.DgPKanri_EditCommand);
                 DgPKanri.CancelCommand +=
@@ -29,25 +32,26 @@ namespace WhereEver.Project_System
 
             }
         }
-        private void CreateDataGrid()
+        private void CreateDataGrid(int spId)
         {
-            DATASET.DataSet.T_PdbKanriDataTable dt = GetT_PdbKanriDataTable(Global.GetConnection());
+            DATASET.DataSet.T_PdbKanriDataTable dt = GetT_PdbKanriDataTable(Global.GetConnection(), spId);
 
             DgPKanri.DataSource = dt;
             DgPKanri.DataBind();
         }
-        public static DATASET.DataSet.T_PdbKanriDataTable GetT_PdbKanriDataTable(SqlConnection sqlConnection)
+        public static DATASET.DataSet.T_PdbKanriDataTable GetT_PdbKanriDataTable(SqlConnection sqlConnection,int spId)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_PdbKanri where PMiddleid != 0 order by PBigid , PMiddleid";
+                "SELECT * FROM T_PdbKanri where PMiddleid != 0 and Pid = @spId order by PBigid , PMiddleid";
+            da.SelectCommand.Parameters.AddWithValue("@spId", spId);
             DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
             da.Fill(dt);
             return dt;
         }
-        private void CreateDropDownList()
+        private void CreateDropDownList(int spId)
         {
-            DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = Insert.GetT_PdbKanri(Global.GetConnection());
+            DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = Insert.GetT_PdbKanri(Global.GetConnection(), spId);
             DataView dtview = dtview = new DataView(t_PdbKanris);
             DataTable dt1 = dtview.ToTable(false, "PBigname");
             for (int rowindex = 0; rowindex < dt1.Rows.Count; rowindex++)
@@ -90,7 +94,7 @@ namespace WhereEver.Project_System
             DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = new DATASET.DataSet.T_PdbKanriDataTable();
             DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
 
-            DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow1 = Insert.GetMaxPBigidRow(Global.GetConnection());
+            DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow1 = Insert.GetMaxPBigidRow(Global.GetConnection(), spId);
 
 
             if (t_PdbKanriRow1.IsNull("PBigid"))
@@ -106,13 +110,14 @@ namespace WhereEver.Project_System
             t_PdbKanriRow.PMiddleid = 0;
             t_PdbKanriRow.PTorokutime = DateTime.Today;
             t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+            t_PdbKanriRow.Pid = spId;
 
             t_PdbKanris.Rows.Add(t_PdbKanriRow);
             Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
 
             ddlPBigList.Items.Clear();
             ddlPBigList.Items.Add("");
-            CreateDropDownList();
+            CreateDropDownList(spId);
             ddlPBigList.Text = txtPBig.Text;
             txtPBig.Text = "";
         }
@@ -151,6 +156,7 @@ namespace WhereEver.Project_System
                                 t_PdbKanriRow.PMiddleover = DateTime.Parse(date2.Value);
                                 t_PdbKanriRow.PTorokutime = DateTime.Now;
                                 t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                                t_PdbKanriRow.Pid = spId;
                                 Update.UpdateMiddleNew(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
                             }
                             else
@@ -163,6 +169,7 @@ namespace WhereEver.Project_System
                                 
                                 t_PdbKanriRow.PTorokutime = DateTime.Now;
                                 t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                                t_PdbKanriRow.Pid = spId;
                                 t_PdbKanris.Rows.Add(t_PdbKanriRow);
                                 Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
                             }
@@ -171,7 +178,7 @@ namespace WhereEver.Project_System
                             date1.Value = null;
                             date2.Value = null;
                             lblAisatu1.Text = "を選択してから、中項目入力をお願い致します。";
-                            CreateDataGrid();
+                            CreateDataGrid(spId);
                         }
                         else
                         {
@@ -190,6 +197,7 @@ namespace WhereEver.Project_System
                             t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01 00:00:00");
                             t_PdbKanriRow.PTorokutime = DateTime.Now;
                             t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                            t_PdbKanriRow.Pid = spId;
                             Update.UpdateMiddleNew(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
                         }
                         else
@@ -202,6 +210,7 @@ namespace WhereEver.Project_System
                             t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01 00:00:00");
                             t_PdbKanriRow.PTorokutime = DateTime.Now;
                             t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
+                            t_PdbKanriRow.Pid = spId;
                             t_PdbKanris.Rows.Add(t_PdbKanriRow);
                             Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
                         }
@@ -210,7 +219,7 @@ namespace WhereEver.Project_System
                         date1.Value = null;
                         date2.Value = null;
                         lblAisatu1.Text = "を選択してから、中項目入力をお願い致します。";
-                        CreateDataGrid();
+                        CreateDataGrid(spId);
                     }
                     
                 }
@@ -239,14 +248,14 @@ namespace WhereEver.Project_System
         protected void DgPKanri_EditCommand(object source, DataGridCommandEventArgs e)
         {
             DgPKanri.EditItemIndex = e.Item.ItemIndex;
-            CreateDataGrid();
+            CreateDataGrid(spId);
         }
 
         protected void DgPKanri_CancelCommand(object source, DataGridCommandEventArgs e)
         {
 
             DgPKanri.EditItemIndex = -1;
-            CreateDataGrid();
+            CreateDataGrid(spId);
         }
 
         protected void DgPKanri_UpdateCommand(object source, DataGridCommandEventArgs e)
@@ -264,7 +273,7 @@ namespace WhereEver.Project_System
             t_PdbKanriRow[7] = DateTime.Now;
             Update.UpdateMiddle(t_PdbKanriRow, e.Item.Cells[0].Text, e.Item.Cells[1].Text);
             DgPKanri.EditItemIndex = -1;
-            CreateDataGrid();
+            CreateDataGrid(spId);
         }
 
         protected void DgPKanri_ItemCommand(object source, DataGridCommandEventArgs e)
@@ -287,16 +296,16 @@ namespace WhereEver.Project_System
 
             }
             DgPKanri.EditItemIndex = -1;
-            CreateDataGrid();
+            CreateDataGrid(spId);
         }
 
         protected void btnDeleteBig_Click(object sender, EventArgs e)
         {
-            Delete.DeleteBig(ddlPBigList.Text);
-            CreateDataGrid();
+            Delete.DeleteBig(ddlPBigList.Text, spId);
+            CreateDataGrid(spId);
             ddlPBigList.Items.Clear();
             ddlPBigList.Items.Add("");
-            CreateDropDownList();
+            CreateDropDownList(spId);
             ddlPBigList.Text = "";
         }
 
@@ -312,7 +321,7 @@ namespace WhereEver.Project_System
             {
                 ar[i] = Time1.AddDays(i);
             }
-            DATASET.DataSet.T_PdbKanriDataTable dt = GetT_PdbKanriDataTable(Global.GetConnection());
+            DATASET.DataSet.T_PdbKanriDataTable dt = GetT_PdbKanriDataTable(Global.GetConnection(), spId);
             wbs.DataSource = dt;
             wbs.DataBind();
         }

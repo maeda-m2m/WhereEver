@@ -23,16 +23,16 @@ namespace WhereEver.Project_System
                 connection.Close();
             }
         }
-        internal static void DeleteBig(string Bigname)
+        internal static void DeleteBig(string Bigname,int spId)
         {
             string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(cstr))
             {
-                string sql = "DELETE FROM T_PdbKanri WHERE PBigname = @i";
+                string sql = "DELETE FROM T_PdbKanri WHERE PBigname = @i and Pid = @spId";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 da.SelectCommand.Parameters.AddWithValue("@i", Bigname);
-
+                da.SelectCommand.Parameters.AddWithValue("@spId", spId);
                 connection.Open();
                 int cnt = da.SelectCommand.ExecuteNonQuery();
                 connection.Close();

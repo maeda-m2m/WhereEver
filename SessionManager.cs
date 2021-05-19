@@ -12,7 +12,7 @@ namespace WhereEver
         private const string SESSION_USER_KUBUN = "SESSION_USER_KUBUN";
 
         public const string SESSION_USER = "SESSION_LOGIN_USER";
-
+        public const string SESSION_PROJECT = "SESSION_PROJECT";
         internal static void Logout()
         {
             HttpContext.Current.Session.Abandon();
@@ -31,7 +31,41 @@ namespace WhereEver
             LoginUser u = LoginUser.New(dr.id.ToString(), dr.pw);
             System.Web.HttpContext.Current.Session[SESSION_USER] = u;
         }
+        internal static void Project(DATASET.DataSet.T_PdbRow dr)
+        {
+            System.Web.Security.FormsAuthentication.SetAuthCookie(dr.Pid.ToString(), false);
+            
+            ProjectSelected p = ProjectSelected.New(dr.Pid);
 
+            HttpContext.Current.Session[SESSION_PROJECT] = p;
+        }
+
+        public class ProjectSelected
+        {
+            private DATASET.DataSet.T_PdbRow _drProject = null;
+            internal static ProjectSelected New(int id)
+            {
+                ProjectSelected p = new ProjectSelected
+                {
+                    _drProject = Class1.GetProjectRow(id.ToString(), Global.GetConnection())
+                };
+                if (null == p._drProject) return null;
+
+                return p;
+            }
+            public DATASET.DataSet.T_PdbRow PdbRow
+            {
+                get { return this._drProject; }
+                set { this._drProject = value; }
+            }
+            public string ID
+            {
+                get
+                {
+                    return _drProject.Pid.ToString();
+                }
+            }
+        }
         public class LoginUser
         {
             private DATASET.DataSet.M_UserRow _drUser = null;
@@ -75,6 +109,23 @@ namespace WhereEver
                     object obj = System.Web.HttpContext.Current.Session[SESSION_USER];
                     if (null == obj) throw new Exception("SessionOut");
                     return obj as LoginUser;
+                }
+                catch
+                {
+                    System.Web.HttpContext.Current.Response.Redirect(Global.LoginPageURL, true);
+                    return null;
+                }
+            }
+        }
+        public static ProjectSelected project
+        {
+            get
+            {
+                try
+                {
+                    object obj = System.Web.HttpContext.Current.Session[SESSION_PROJECT];
+                    if (null == obj) throw new Exception("SessionOut");
+                    return obj as ProjectSelected;
                 }
                 catch
                 {

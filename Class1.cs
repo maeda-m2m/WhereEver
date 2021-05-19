@@ -10,6 +10,16 @@ namespace WhereEver
 {
     public class Class1
     {
+        public static DATASET.DataSet.T_PdbRow GetProjectRow(string id, SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "SELECT * FROM T_Pdb WHERE Pid = @id";
+            da.SelectCommand.Parameters.AddWithValue("@id", id);
+            DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
+            da.Fill(dt);
+            return dt[0];
+        }
 
         public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTable(SqlConnection Sqlco)//スケジュールリスト用
         {

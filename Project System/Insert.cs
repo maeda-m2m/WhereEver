@@ -33,11 +33,12 @@ namespace WhereEver.Project_System
                 sqlConnection.Close();
             }
         }
-        internal static DATASET.DataSet.T_PdbKanriRow GetMaxPBigidRow(SqlConnection sqlConnection)
+        internal static DATASET.DataSet.T_PdbKanriRow GetMaxPBigidRow(SqlConnection sqlConnection,int spId)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "select MAX(PBigid) as PBigid from T_PdbKanri";
+                "select MAX(PBigid) as PBigid from T_PdbKanri where Pid = @spId";
+            da.SelectCommand.Parameters.AddWithValue("@spId", spId);
             DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
             da.Fill(dt);
             return dt[0];
@@ -96,11 +97,12 @@ namespace WhereEver.Project_System
             da.Fill(dt);
             return dt;
         }
-        internal static DATASET.DataSet.T_PdbKanriDataTable GetT_PdbKanri(SqlConnection sqlConnection)
+        internal static DATASET.DataSet.T_PdbKanriDataTable GetT_PdbKanri(SqlConnection sqlConnection,int spId)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "select DISTINCT PBigname from T_PdbKanri";
+                "select DISTINCT PBigname from T_PdbKanri where Pid = @spId";
+            da.SelectCommand.Parameters.AddWithValue("@spId", spId);
             DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
             da.Fill(dt);
             return dt;

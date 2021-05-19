@@ -134,6 +134,8 @@ namespace WhereEver.Project_System
                 // Add other cases here, if there are multiple ButtonColumns in 
                 // the DataGrid control.
                 case "wbs":
+                    DATASET.DataSet.T_PdbRow dr = Class1.GetProjectRow(id, Global.GetConnection());
+                    SessionManager.Project(dr);
                     Response.Redirect("PKanri.aspx");
                     break;
                 default:
@@ -145,7 +147,6 @@ namespace WhereEver.Project_System
             DgPIchiran.DataSource = GetPdbDataTable(Global.GetConnection());
             DgPIchiran.DataBind();
         }
-
 
 
         protected void btnNewP_Click(object sender, EventArgs e)

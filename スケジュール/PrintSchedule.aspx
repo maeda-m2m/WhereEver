@@ -307,6 +307,7 @@
             font-size: 10px;
             font-family: Meiryo;
             border: 1px solid black;
+            margin:auto;
         }
 
         .bb {
@@ -409,6 +410,7 @@
 
         .DgBikou{
             float: left;
+            width:50%;
         }
 
     </style>
@@ -1149,16 +1151,16 @@
         <br />
  </div>
         <div class="DgBikou">
-            <asp:DataGrid ID="DgBikou" runat="server" 
+            <asp:DataGrid ID="DgBikou" runat="server" Width="100%"
                             AutoGenerateColumns="False" OnItemDataBound="DgBikou_ItemDataBound"
                 OnEditCommand="DgBikou_EditCommand"
                             OnCancelCommand="DgBikou_CancelCommand"
-                            OnUpdateCommand="DgBikou_UpdateCommand">
+                            OnUpdateCommand="DgBikou_UpdateCommand" CssClass="Datagrid">
                 <Columns>
-                    <asp:BoundColumn DataField="BikouID" HeaderText="備考ID" ReadOnly="True"/>
-                    <asp:BoundColumn DataField="Bikou" HeaderText="備考内容"/>
-                    <asp:EditCommandColumn EditText="変更" CancelText="cancel" UpdateText="update" ItemStyle-Width="10%" ></asp:EditCommandColumn>
-                                <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
+                    <asp:BoundColumn DataField="BikouID" HeaderText="備考ID" ReadOnly="True" />
+                    <asp:BoundColumn DataField="Bikou" HeaderText="備考内容" />
+                    <asp:EditCommandColumn EditText="変更" CancelText="cancel" UpdateText="update"></asp:EditCommandColumn>
+                    <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
                 </Columns>
 
             </asp:DataGrid>
