@@ -62,7 +62,7 @@ namespace WhereEver
             ScdlList.DataBind();
         }
 
-        protected void Create_A2(object sender, EventArgs e)
+        protected void Create4(object sender, EventArgs e)
         {
             var a = Ddl.SelectedValue;
 
@@ -745,7 +745,7 @@ namespace WhereEver
                 }
             }
 
-            if (Count >= Serch)
+            if (Count <= Serch)
             {
                 int Delete = e.Item.ItemIndex;
                 var dt = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
@@ -818,7 +818,7 @@ namespace WhereEver
                 }
             }
 
-            if (Count >= Serch)
+            if (Count <= Serch)
             {
                 ScdlList.EditItemIndex = e.Item.ItemIndex;
 
@@ -877,7 +877,7 @@ namespace WhereEver
                 }
             }
 
-            if (Count >= Serch)
+            if (Count <= Serch)
             {
                 TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
                 TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];

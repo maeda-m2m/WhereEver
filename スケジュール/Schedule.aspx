@@ -253,7 +253,7 @@
 
                 <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
 
-                <asp:DropDownList runat="server" ID="Ddl" AutoPostBack="True" OnTextChanged="Create_A2">
+                <asp:DropDownList runat="server" ID="Ddl" AutoPostBack="True" OnTextChanged="Create4">
                     <asp:ListItem>日付の古い順</asp:ListItem>
                     <asp:ListItem>日付の新しい順</asp:ListItem>
 
