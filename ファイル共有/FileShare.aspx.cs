@@ -216,13 +216,6 @@ namespace WhereEver
                         // MIME Typeを取得
                         Response.ContentType = (string)@dr.type;
 
-
-                        if((string)@dr.type == "image/png")
-                        {
-                            byte[] responseImage = GenerateImage();
-                        }
-
-
                         // ダウンロード実行 binary HTMLページと一緒にロードされる
                         Response.BinaryWrite((Byte[])dr.datum);
 
