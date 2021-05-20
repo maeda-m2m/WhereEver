@@ -25,8 +25,29 @@
     margin-right: 50px;
     margin-top: 1.85em;
     float: right;
+}
+
+#Innner {
+    height: 100%;
     background-color: #1e1e1e;
     color: white;
+}
+
+#Edit {
+    width: 1230px;
+    height: 20em;
+    margin-right: 50px;
+    margin-top: 1.85em;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+#Edit_btn_space {
+    width: 1230px;
+    height: auto;
+    margin-right: 50px;
+    margin-top: 1.85em;
+    text-align: center;
 }
 
 #Sub {
@@ -63,6 +84,12 @@
 
 .article {
     margin-left: 2em;
+}
+
+.center {
+    width: 1230px;
+    margin-top: 1.85em;
+    text-align: center;
 }
 
 .btn_loginlist {

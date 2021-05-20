@@ -31,16 +31,42 @@
 
 
             <div id="Main">
-
+               <div id="Innner">
                 <span class="hr"></span>
 
                 <p class="index1">◆Welcome to m2m</p>
                 <div class="article">
                     <p>--本日の予定--</p>
-                    <asp:Label ID="Label_WhatNow" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label>
+                    <asp:Label ID="Label_WhatNow" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
+                </div>
+               </div>
+
+
+                <div id="Edit_btn_space">
+                  <asp:Button ID="Button_EditTop" runat="server" CssClass="btn_loginlist" Text="お知らせ編集" OnClick="btnEditTop_Click" PostBackUrl="#edittop" />
                 </div>
 
+                  <asp:Panel ID="Panel_EditTop" runat="server" Visible="false">
+
+                    <div id="Edit">
+                      <span class="hr"></span>
+                       <a name="edittop"><p class="index1"> ◆お知らせ編集（&lt;br /&gt;タグのみ使用できます）</p></a>
+                        <div class="article">
+                           
+                    <asp:TextBox ID="TextBox_EditTop" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="300" Height="100px" Width="1160px" Style="resize: none" Text="" placeholder="トップページに書く内容　300字以内" CausesValidation="false"></asp:TextBox>
+                        </div>
+
+                    <div class="center"><asp:Button ID="Button_ReformTop" runat="server" CssClass="btn_loginlist" Text="更新" OnClick="btnReformTop_Click" /><asp:Button ID="Button_ReformTopEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformTopEnd_Click" /></div>
+
+                   </div><%-- Edit --%>
+                  </asp:Panel>
+
+
            </div><%-- Main --%>
+
+
+
+
 
 
             <div id="Sub">

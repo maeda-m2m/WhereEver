@@ -31,7 +31,7 @@
       
 
            <p>
-            <asp:Label ID="lblResult" runat="server" Text="ファイルをアップロードできます。ファイル名はUUIDに自動変換されます。"></asp:Label>
+            <asp:Label ID="lblResult" runat="server" Text="ファイルをアップロードできます。ファイル名はUUIDに自動変換されます。4MBまでアップロードできます。"></asp:Label>
            </p>
 
            <p class ="form-flat-border">
@@ -47,7 +47,7 @@
            <%-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// --%>
 
            <p>
-            <asp:Label ID="lblDLResult" runat="server" Text="ファイルをダウンロードできます。拡張子を忘れずにつけて下さい。4MBまでアップロードできます。"></asp:Label>
+            <asp:Label ID="lblDLResult" runat="server" Text="ファイルをダウンロードできます。拡張子を忘れずにつけて下さい。"></asp:Label>
            </p>
 
            <%--

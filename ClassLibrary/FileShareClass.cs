@@ -9,7 +9,17 @@ namespace WhereEver.ClassLibrary
     public class FileShareClass
     {
 
+        //------------------------------------------------------------------------------------------------------------
+        //T_FileShare   SELECT
+        //------------------------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// 共有ファイルをロードします。uuidと拡張子で構成されたFileNameとpassを入力して下さい。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="FileName"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
         public static DATASET.DataSet.T_FileShareRow GetT_FileShareRow(SqlConnection sqlConnection, string FileName, string pass)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
@@ -107,8 +117,15 @@ namespace WhereEver.ClassLibrary
         {
 
             //結果の宣言と定義
+
+            //最大サイズ　40MB
+            //41943040f = 40MB * 1024 * 1024
+            const float maxsize = 41943040f;
+
+            //判定結果
             bool result = true;
 
+            //sql接続開始
             sqlConnection.Open();
 
             //Create the Update Command.
@@ -136,6 +153,14 @@ namespace WhereEver.ClassLibrary
 
                 // ファイルサイズをバイトで取得します。
                 float size = (float)datum.Length;
+
+                
+                if(size > maxsize)
+                {
+                    //ファイルが大きすぎます！
+                    result = false;
+                    return result;
+                }
 
                 //ファイルのサイズを取得
                 string printFileSize = string.Format("{0:f2} B", size);
