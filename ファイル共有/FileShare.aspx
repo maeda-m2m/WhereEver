@@ -41,10 +41,6 @@
             <span class="f-notice">[コメント]</span>　<asp:TextBox ID="TextBox_Upload_Comment" runat="server" CssClass="form-flat-border-inner" Width="896px" MaxLength="40" placeholder="ファイルの説明　なければ「無題」"></asp:TextBox>
             <asp:CheckBox ID="CheckBox_Annonimas" runat="server" Text="[匿名]" CssClass="f-notice" />
            </p>
-           <p>
-             保存先：c:\\UploadedFiles\\[UUID].(拡張子)
-           </p>
-
 
            <%-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// --%>
            <hr />
@@ -89,13 +85,9 @@
             <p class ="form-flat-border">
             <span class="f-notice">[ダウンロードするファイル]</span>　<asp:TextBox ID="TextBox_dl" runat="server" Width="485px" CssClass="form-flat-border-inner" placeholder="テーブルの「参照」ボタンを押して下さい"></asp:TextBox>
             <span class="f-notice">[パスワード]</span>　<asp:TextBox ID="TextBox_DownloadPass" runat="server" CssClass="form-flat-border-inner" Width="100px" MaxLength="20" placeholder="未設定"></asp:TextBox>
-                <asp:Button ID="Button_Download" runat="server" Text="ダウンロード" OnClick="Button_DownLoad" CssClass="btn-flat-border" />
+                <asp:Button ID="Button_Download" runat="server" Text="ダウンロード" OnClick="Button_DownLoad" CssClass="btn-flat-border" PostBackUrl="#" />
             </p>
            </asp:Panel>
-
-           <p>
-             参照先：c:\\UploadedFiles\\[UUID].(拡張子)
-           </p>
 
            <hr />
 
@@ -110,6 +102,7 @@
                     <asp:BoundField DataField="FileName" HeaderText="ファイル名" ReadOnly="True" SortExpression="FileName" />
                     <asp:BoundField DataField="Title" HeaderText="コメント" ReadOnly="True" SortExpression="Title" />
                     <asp:BoundField DataField="DateTime" HeaderText="アップロード日" ReadOnly="True" SortExpression="DateTime" />
+                    <asp:BoundField DataField="size" HeaderText="サイズ" ReadOnly="True" SortExpression="size" />
                     <asp:BoundField DataField="isPass" HeaderText="パスワード" ReadOnly="True" SortExpression="isPass" />
 
                     <asp:ButtonField ButtonType="Button" Text="削除" ControlStyle-CssClass="btn-flat-border"  HeaderText="削除" CommandName="Remove" CausesValidation="False" >
@@ -127,7 +120,7 @@
 
              <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                 ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>"
-                SelectCommand="SELECT [id],[userName],[FileName],[Title],[DateTime],[IsPass] FROM [T_FileShare] ORDER BY DateTime DESC">
+                SelectCommand="SELECT [id],[userName],[FileName],[Title],[DateTime],[size],[IsPass] FROM [T_FileShare] ORDER BY DateTime DESC">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="lblid" DefaultValue="null" Name="id" PropertyName="Text" Type="String" />
                 </SelectParameters>

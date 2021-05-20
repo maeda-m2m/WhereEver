@@ -129,6 +129,36 @@ namespace WhereEver.ClassLibrary
                     ispass = "あり";
                 }
 
+                //宣言
+                float kiloFileSize = 0f;
+                float megaFileSize = 0f;
+                float gigaFileSize = 0f;
+
+                // ファイルサイズをバイトで取得します。
+                float size = (float)datum.Length;
+
+                //ファイルのサイズを取得
+                string printFileSize = string.Format("{0:f2} B", size);
+
+                if (size >= 1024f)
+                {
+                    kiloFileSize = size / 1024f; // バイト→キロバイトに変換
+                    printFileSize = string.Format("{0:f2} KB", kiloFileSize);
+                }
+
+                if(kiloFileSize >= 1024f)
+                {
+                    megaFileSize = kiloFileSize / 1024f; // キロバイト→メガバイトに変換
+                    printFileSize = string.Format("{0:f2} MB", megaFileSize);
+                }
+
+                if (megaFileSize >= 1024f)
+                {
+                    gigaFileSize = megaFileSize / 1024f; // メガバイト→ギガバイトに変換
+                    printFileSize = string.Format("{0:f2} GB", gigaFileSize);
+                }
+
+
                 //現在のDateTimeを取得
                 DateTime date = DateTime.Now; 
 
@@ -148,10 +178,11 @@ namespace WhereEver.ClassLibrary
                     command.Parameters.Add(new SqlParameter("@type", System.Data.SqlDbType.NVarChar, 50, "type")).Value = type;
                     command.Parameters.Add(new SqlParameter("@datum", System.Data.SqlDbType.VarBinary, -1, "datum")).Value = datum;
                     command.Parameters.Add(new SqlParameter("@DateTime", System.Data.SqlDbType.DateTime, 8, "DateTime")).Value = date;
+                    command.Parameters.Add(new SqlParameter("@size", System.Data.SqlDbType.NVarChar, 50, "size")).Value = printFileSize;
                     command.Parameters.Add(new SqlParameter("@IsPass", System.Data.SqlDbType.Char, 2, "IsPass")).Value = ispass;
 
                     //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
-                    command.CommandText = "INSERT INTO T_FileShare([id], [userName], [filename], [title], [Password], [type], [datum], [DateTime], [IsPass]) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@userName)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), CAST(@datum AS varbinary(max)), LTRIM(RTRIM(@DateTime)), LTRIM(RTRIM(@IsPass)))";
+                    command.CommandText = "INSERT INTO T_FileShare([id], [userName], [filename], [title], [Password], [type], [datum], [DateTime], [size], [IsPass]) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@userName)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), CAST(@datum AS varbinary(max)), LTRIM(RTRIM(@DateTime)), LTRIM(RTRIM(@size)), LTRIM(RTRIM(@IsPass)))";
 
                 try
                 {

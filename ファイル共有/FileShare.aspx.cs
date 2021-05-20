@@ -30,6 +30,8 @@ namespace WhereEver
                 lbluid.Text = "null";
             }
 
+            //初期化
+            Response.SuppressContent = false;
 
         }
 
@@ -58,8 +60,10 @@ namespace WhereEver
 
                 //パスを排除したファイル名を取得
                 string fileName = Path.GetFileName(FileUpload_userfile.FileName);
+
                 //拡張子を取得
                 string extension = Path.GetExtension(FileUpload_userfile.FileName);
+
                 //ファイル内容を取得
                 HttpPostedFile posted = FileUpload_userfile.PostedFile;
 
@@ -232,14 +236,12 @@ namespace WhereEver
                     // HTTPレスポンス エンティティ設定の終了　スレッドの中止　Response.End();
                     //※ これを行わないと、当該画面のHTML出力がファイル出力の後に続いてしまったりします。
                     //※ Response.End();をする場合、Response.Flash()は最終的にはFlashされるため必須ではありません。
-                    try
-                    {
-                        Response.End();// 強制throw
-                    }
-                    catch
-                    {
-                        //スレッド終了
-                    }
+
+                    //lblDLResult.Text = "ダウンロードに成功しました。";
+
+                    //Response.Endはシステムのパフォーマンスに悪影響を与えるため、Response.SuppressContent = true;かashxを使用する。
+                    Response.Flush();
+                    Response.SuppressContent = true;    //必ずResponse.Flush();の後！                   
 
                 }
                 else
@@ -266,9 +268,6 @@ namespace WhereEver
                 Response.Flush();
                 Response.End();
                 */
-
-                lblDLResult.Text = "ダウンロードに成功しました。";
-                return;
 
             }
             else

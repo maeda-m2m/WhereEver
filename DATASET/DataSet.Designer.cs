@@ -5335,6 +5335,8 @@ namespace WhereEver.DATASET {
             
             private global::System.Data.DataColumn columndatum;
             
+            private global::System.Data.DataColumn columnsize;
+            
             private global::System.Data.DataColumn columnDateTime;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5436,6 +5438,14 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn sizeColumn {
+                get {
+                    return this.columnsize;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn DateTimeColumn {
                 get {
                     return this.columnDateTime;
@@ -5479,7 +5489,7 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_FileShareRow AddT_FileShareRow(string id, string userName, string FileName, string Title, string Password, string IsPass, string type, byte[] datum, System.DateTime DateTime) {
+            public T_FileShareRow AddT_FileShareRow(string id, string userName, string FileName, string Title, string Password, string IsPass, string type, byte[] datum, string size, System.DateTime DateTime) {
                 T_FileShareRow rowT_FileShareRow = ((T_FileShareRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
@@ -5490,10 +5500,19 @@ namespace WhereEver.DATASET {
                         IsPass,
                         type,
                         datum,
+                        size,
                         DateTime};
                 rowT_FileShareRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowT_FileShareRow);
                 return rowT_FileShareRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public T_FileShareRow FindByiduserName(string id, string userName) {
+                return ((T_FileShareRow)(this.Rows.Find(new object[] {
+                            id,
+                            userName})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5521,6 +5540,7 @@ namespace WhereEver.DATASET {
                 this.columnIsPass = base.Columns["IsPass"];
                 this.columntype = base.Columns["type"];
                 this.columndatum = base.Columns["datum"];
+                this.columnsize = base.Columns["size"];
                 this.columnDateTime = base.Columns["DateTime"];
             }
             
@@ -5543,10 +5563,16 @@ namespace WhereEver.DATASET {
                 base.Columns.Add(this.columntype);
                 this.columndatum = new global::System.Data.DataColumn("datum", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndatum);
+                this.columnsize = new global::System.Data.DataColumn("size", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsize);
                 this.columnDateTime = new global::System.Data.DataColumn("DateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateTime);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid,
+                                this.columnuserName}, true));
                 this.columnid.AllowDBNull = false;
                 this.columnid.MaxLength = 100;
+                this.columnuserName.AllowDBNull = false;
                 this.columnuserName.MaxLength = 50;
                 this.columnFileName.AllowDBNull = false;
                 this.columnFileName.MaxLength = 100;
@@ -5555,6 +5581,8 @@ namespace WhereEver.DATASET {
                 this.columnIsPass.MaxLength = 2;
                 this.columntype.AllowDBNull = false;
                 this.columntype.MaxLength = 50;
+                this.columnsize.AllowDBNull = false;
+                this.columnsize.MaxLength = 50;
                 this.columnDateTime.AllowDBNull = false;
             }
             
@@ -7549,12 +7577,7 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string userName {
                 get {
-                    try {
-                        return ((string)(this[this.tableT_FileShare.userNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'T_FileShare\' にある列 \'userName\' の値は DBNull です。", e);
-                    }
+                    return ((string)(this[this.tableT_FileShare.userNameColumn]));
                 }
                 set {
                     this[this.tableT_FileShare.userNameColumn] = value;
@@ -7649,6 +7672,17 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string size {
+                get {
+                    return ((string)(this[this.tableT_FileShare.sizeColumn]));
+                }
+                set {
+                    this[this.tableT_FileShare.sizeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime DateTime {
                 get {
                     return ((global::System.DateTime)(this[this.tableT_FileShare.DateTimeColumn]));
@@ -7656,18 +7690,6 @@ namespace WhereEver.DATASET {
                 set {
                     this[this.tableT_FileShare.DateTimeColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsuserNameNull() {
-                return this.IsNull(this.tableT_FileShare.userNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetuserNameNull() {
-                this[this.tableT_FileShare.userNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12934,13 +12956,21 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("IsPass", "IsPass");
             tableMapping.ColumnMappings.Add("type", "type");
             tableMapping.ColumnMappings.Add("datum", "datum");
+            tableMapping.ColumnMappings.Add("size", "size");
             tableMapping.ColumnMappings.Add("DateTime", "DateTime");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [T_FileShare] WHERE (([id] = @Original_id) AND ([userName] = @Origina" +
+                "l_userName))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [T_FileShare] ([id], [userName], [FileName], [Title], [Password], [Is" +
-                "Pass], [type], [datum], [DateTime]) VALUES (@id, @userName, @FileName, @Title, @" +
-                "Password, @IsPass, @type, @datum, @DateTime)";
+                "Pass], [type], [datum], [size], [DateTime]) VALUES (@id, @userName, @FileName, @" +
+                "Title, @Password, @IsPass, @type, @datum, @size, @DateTime)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -12950,7 +12980,24 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsPass", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsPass", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@datum", global::System.Data.SqlDbType.VarBinary, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@size", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "size", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [T_FileShare] SET [id] = @id, [userName] = @userName, [FileName] = @FileName, [Title] = @Title, [Password] = @Password, [IsPass] = @IsPass, [type] = @type, [datum] = @datum, [size] = @size, [DateTime] = @DateTime WHERE (([id] = @Original_id) AND ([userName] = @Original_userName))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FileName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FileName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsPass", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsPass", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@datum", global::System.Data.SqlDbType.VarBinary, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@size", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "size", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13027,8 +13074,41 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(string Original_id, string Original_userName) {
+            if ((Original_id == null)) {
+                throw new global::System.ArgumentNullException("Original_id");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_id));
+            }
+            if ((Original_userName == null)) {
+                throw new global::System.ArgumentNullException("Original_userName");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_userName));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string id, string userName, string FileName, string Title, string Password, string IsPass, string type, byte[] datum, System.DateTime DateTime) {
+        public virtual int Insert(string id, string userName, string FileName, string Title, string Password, string IsPass, string type, byte[] datum, string size, System.DateTime DateTime) {
             if ((id == null)) {
                 throw new global::System.ArgumentNullException("id");
             }
@@ -13036,7 +13116,7 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(id));
             }
             if ((userName == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("userName");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(userName));
@@ -13077,7 +13157,13 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = ((byte[])(datum));
             }
-            this.Adapter.InsertCommand.Parameters[8].Value = ((System.DateTime)(DateTime));
+            if ((size == null)) {
+                throw new global::System.ArgumentNullException("size");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(size));
+            }
+            this.Adapter.InsertCommand.Parameters[9].Value = ((System.DateTime)(DateTime));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13092,6 +13178,102 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string id, string userName, string FileName, string Title, string Password, string IsPass, string type, byte[] datum, string size, System.DateTime DateTime, string Original_id, string Original_userName) {
+            if ((id == null)) {
+                throw new global::System.ArgumentNullException("id");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(id));
+            }
+            if ((userName == null)) {
+                throw new global::System.ArgumentNullException("userName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(userName));
+            }
+            if ((FileName == null)) {
+                throw new global::System.ArgumentNullException("FileName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(FileName));
+            }
+            if ((Title == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Title));
+            }
+            if ((Password == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Password));
+            }
+            if ((IsPass == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(IsPass));
+            }
+            if ((type == null)) {
+                throw new global::System.ArgumentNullException("type");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(type));
+            }
+            if ((datum == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((byte[])(datum));
+            }
+            if ((size == null)) {
+                throw new global::System.ArgumentNullException("size");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(size));
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(DateTime));
+            if ((Original_id == null)) {
+                throw new global::System.ArgumentNullException("Original_id");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_id));
+            }
+            if ((Original_userName == null)) {
+                throw new global::System.ArgumentNullException("Original_userName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_userName));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string FileName, string Title, string Password, string IsPass, string type, byte[] datum, string size, System.DateTime DateTime, string Original_id, string Original_userName) {
+            return this.Update(Original_id, Original_userName, FileName, Title, Password, IsPass, type, datum, size, DateTime, Original_id, Original_userName);
         }
     }
     
