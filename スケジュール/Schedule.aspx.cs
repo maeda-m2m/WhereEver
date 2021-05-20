@@ -2094,9 +2094,11 @@ namespace WhereEver
 
         }
 
+        protected void ButtonA_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Wiki.aspx");
 
-
-
+        }
     }
 }
 
