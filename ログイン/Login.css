@@ -15,6 +15,9 @@
     text-align: center; /* 文字中央寄せ */
     padding: 50px; /* 余白指定 */
 }
+#login_tb {
+    width: 100%;
+}
 #lblID {
     width: 200px;
     height: 30px;
