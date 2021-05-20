@@ -9,7 +9,17 @@ namespace WhereEver.ClassLibrary
     public class FileShareClass
     {
 
+        //------------------------------------------------------------------------------------------------------------
+        //T_FileShare   SELECT
+        //------------------------------------------------------------------------------------------------------------
 
+        /// <summary>
+        /// 共有ファイルをロードします。uuidと拡張子で構成されたFileNameとpassを入力して下さい。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="FileName"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
         public static DATASET.DataSet.T_FileShareRow GetT_FileShareRow(SqlConnection sqlConnection, string FileName, string pass)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);

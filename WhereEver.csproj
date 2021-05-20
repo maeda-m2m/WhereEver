@@ -230,6 +230,7 @@
     <Compile Include="ClassLibrary\ShinseiLog.cs" />
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
     <Compile Include="Class\Chat.cs" />
+    <Compile Include="Class\Toppage.cs" />
     <Compile Include="Class\Login.cs" />
     <Compile Include="Class\Logout.cs" />
     <Compile Include="Class\Schedule.cs" />

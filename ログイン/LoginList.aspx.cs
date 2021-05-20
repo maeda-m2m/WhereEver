@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Text;
+using static System.Web.HttpUtility;
 
 namespace WhereEver
 {
@@ -22,7 +23,16 @@ namespace WhereEver
                 DgTimeDetail.DataSource = dtLogin;
                 DgTimeDetail.DataBind();
 
+                Label_WhatNow.Text = "";
+
+                TextBox_EditTop.Text = "";
+                Button_EditTop.Visible = true;
+                Panel_EditTop.Visible = false;
+
             }
+
+            //宣言と初期化
+            StringBuilder @sb = new StringBuilder();
 
             //WhatNowをロード
             Label_WhatNow.Text = "";
@@ -30,22 +40,22 @@ namespace WhereEver
             if(dts != null)
             {
                 for(int i = 0;  i < dts.Count; i++)
-                {                  
-                    StringBuilder@sb = new StringBuilder();
-
-                    if (!dts[i].IsNull("title"))
+                {
+                    //初期化
+                    @sb = new StringBuilder();
+                    if (!dts[i].IsNull(@"title"))
                     {
                         @sb.Append(dts[i].title);
                     }
-                    if (!dts[i].IsNull("time"))
+                    if (!dts[i].IsNull(@"time"))
                     {
-                        @sb.Append("　");
+                        @sb.Append(@"　");
                         @sb.Append(dts[i].time);
-                        @sb.Append("～");
+                        @sb.Append(@"～");
                     }
-                    if (!dts[i].IsNull("name"))
+                    if (!dts[i].IsNull(@"name"))
                     {
-                        @sb.Append("　担当：");
+                        @sb.Append(@"　担当：");
                         @sb.Append(dts[i].name);
                     }
 
@@ -55,10 +65,34 @@ namespace WhereEver
             }
             else
             {
-                Label_WhatNow.Text = @"本日の予定はありません。";
+                Label_WhatNow.Text = @"本日の予定はありません。<br />";
             }
 
-
+            //初期化
+            @sb = new StringBuilder();
+            @sb.Append("<br /><div css= \"index1\">--お知らせ--</div><br />");
+            //ここに更新内容をAppend
+            DATASET.DataSet.T_TopPageRow dr = Class.Toppage.GetT_TopPage(Global.GetConnection());
+            if(dr != null)
+            {
+                if (dr.TopPage != "")
+                {
+                @sb.Append(dr.TopPage);
+                @sb.Append("<br />");
+                @sb.Append("最終更新：");
+                @sb.Append(dr.DateTime);
+                }
+                else
+                {
+                    @sb.Append("なし");
+                }
+            }
+            else
+            {
+                @sb.Append("警告：T_TopPageのデータベースがNULLです。");
+            }
+            @sb.Append("<br />");
+            Label_WhatNow.Text += @sb.ToString();
         }
 
         protected void DgTimeDetail_ItemDataBound(object sender, DataGridItemEventArgs e)
@@ -91,12 +125,43 @@ namespace WhereEver
         protected void btnOut_Click(object sender, EventArgs e)
         {
             Class.Logout.InsertLogoutList(Global.GetConnection());
-            this.Response.Redirect("Login.aspx");
+            this.Response.Redirect("Login.aspx", false);
         }
 
         protected void btnKanri_Click(object sender, EventArgs e)
         {
-            this.Response.Redirect("../管理ページ/Kanri.aspx");
+            this.Response.Redirect("../管理ページ/Kanri.aspx", false);
+        }
+
+        protected void btnEditTop_Click(object sender, EventArgs e)
+        {
+            DATASET.DataSet.T_TopPageRow dr = Class.Toppage.GetT_TopPage(Global.GetConnection());
+            if (dr != null)
+            {
+                TextBox_EditTop.Text = dr.TopPage;
+            }
+            Button_EditTop.Visible = false;
+            Panel_EditTop.Visible = true;
+        }
+
+        protected void btnReformTop_Click(object sender, EventArgs e)
+        {
+            //sql更新 ※全部Nullだと更新できません。DBのDateTimeには何か値を入れておいて下さい。
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(HtmlEncode(TextBox_EditTop.Text));
+            //"<br />"タグのみ許可
+            sb.Replace("&lt;br /&gt;", "<br />");
+            Class.Toppage.SetT_TopPageUpdate(Global.GetConnection(), sb.ToString());
+            //リダイレクト
+            this.Response.Redirect("LoginList.aspx", false);
+        }
+
+        protected void btnReformTopEnd_Click(object sender, EventArgs e)
+        {
+            Button_EditTop.Visible = true;
+            Panel_EditTop.Visible = false;
+            TextBox_EditTop.Text = "";
         }
     }
 }
