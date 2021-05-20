@@ -78,6 +78,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.TextBox TextBox_Upload_Comment;
 
         /// <summary>
+        /// CheckBox_Annonimas コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_Annonimas;
+
+        /// <summary>
         /// lblDLResult コントロール。
         /// </summary>
         /// <remarks>

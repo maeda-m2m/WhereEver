@@ -86,6 +86,17 @@ namespace WhereEver
                     //アップロードされたファイル内容を指定したパスに保存します。（いらない）
                     //posted.SaveAs(newPath);
 
+                    //投稿者id（変更不可）
+                    string userid = SessionManager.User.M_User.id;
+
+                    //投稿者名
+                    string username = SessionManager.User.M_User.name1;
+                    if (CheckBox_Annonimas.Checked)
+                    {
+                        username = "Annonimas";
+                    }
+
+                    //タイトル
                     string title = HtmlEncode(@TextBox_Upload_Comment.Text);
                     if (title == "")
                     {
@@ -107,7 +118,7 @@ namespace WhereEver
                     string type = FileUpload_userfile.PostedFile.ContentType;
 
                     //データベースにファイルを保存します。
-                    if (!FileShareClass.SetT_FileShareInsert(Global.GetConnection(), SessionManager.User.M_User.id, SessionManager.User.M_User.name1, fileName, title, pass, type, aryData))
+                    if (!FileShareClass.SetT_FileShareInsert(Global.GetConnection(), userid, username, fileName, title, pass, type, aryData))
                     {
                         lblResult.Text = "アップロードに失敗しました。ファイル容量等を見直して下さい。";
                         return;

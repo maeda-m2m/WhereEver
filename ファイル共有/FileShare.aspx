@@ -38,7 +38,8 @@
             <span class="f-notice">[アップロードするファイル]</span>　<asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
             <span class="f-notice">[パスワード]</span>　<asp:TextBox ID="TextBox_UploadPass" runat="server" CssClass="form-flat-border-inner" Width="100px" MaxLength="20" placeholder="未設定"></asp:TextBox>
             <asp:Button ID="Button_Upload" runat="server" Text="アップロード" OnClick="Button_UpLoad" CssClass="btn-flat-border" /><br />
-            <span class="f-notice">[コメント]</span>　<asp:TextBox ID="TextBox_Upload_Comment" runat="server" CssClass="form-flat-border-inner" Width="965px" MaxLength="16" placeholder="ファイルの説明　なければ「無題」"></asp:TextBox>
+            <span class="f-notice">[コメント]</span>　<asp:TextBox ID="TextBox_Upload_Comment" runat="server" CssClass="form-flat-border-inner" Width="896px" MaxLength="40" placeholder="ファイルの説明　なければ「無題」"></asp:TextBox>
+            <asp:CheckBox ID="CheckBox_Annonimas" runat="server" Text="[匿名]" CssClass="f-notice" />
            </p>
            <p>
              保存先：c:\\UploadedFiles\\[UUID].(拡張子)
