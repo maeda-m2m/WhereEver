@@ -118,9 +118,9 @@ namespace WhereEver.ClassLibrary
 
             //結果の宣言と定義
 
-            //最大サイズ　40MB
+            //最大サイズ　40MB = 40960KB
             //41943040f = 40MB * 1024 * 1024
-            const float maxsize = 41943040f;
+            const float maxsize = 41943040f;    //byte
 
             //判定結果
             bool result = true;
@@ -154,8 +154,8 @@ namespace WhereEver.ClassLibrary
                 // ファイルサイズをバイトで取得します。
                 float size = (float)datum.Length;
 
-                
-                if(size > maxsize)
+
+                if (size > maxsize)
                 {
                     //ファイルが大きすぎます！
                     result = false;
@@ -171,7 +171,7 @@ namespace WhereEver.ClassLibrary
                     printFileSize = string.Format("{0:f2} KB", kiloFileSize);
                 }
 
-                if(kiloFileSize >= 1024f)
+                if (kiloFileSize >= 1024f)
                 {
                     megaFileSize = kiloFileSize / 1024f; // キロバイト→メガバイトに変換
                     printFileSize = string.Format("{0:f2} MB", megaFileSize);
@@ -185,7 +185,7 @@ namespace WhereEver.ClassLibrary
 
 
                 //現在のDateTimeを取得
-                DateTime date = DateTime.Now; 
+                DateTime date = DateTime.Now;
 
                 //Must assign both transaction object and connection
                 //to Command object for apending local transaction
@@ -193,21 +193,24 @@ namespace WhereEver.ClassLibrary
                 command.Transaction = transaction;
 
 
-                    //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
-                    //-------------------------------------------------------------------------------------------------------------------
-                    command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 100, "id")).Value = id;
-                    command.Parameters.Add(new SqlParameter("@userName", System.Data.SqlDbType.NVarChar, 50, "userName")).Value = username;
-                    command.Parameters.Add(new SqlParameter("@FileName", System.Data.SqlDbType.NVarChar, 100, "FileName")).Value = filename;
-                    command.Parameters.Add(new SqlParameter("@Title", System.Data.SqlDbType.NVarChar, 100, "Title")).Value = title;
-                    command.Parameters.Add(new SqlParameter("@Password", System.Data.SqlDbType.NVarChar, 100, "Password")).Value = pass;
-                    command.Parameters.Add(new SqlParameter("@type", System.Data.SqlDbType.NVarChar, 50, "type")).Value = type;
-                    command.Parameters.Add(new SqlParameter("@datum", System.Data.SqlDbType.VarBinary, -1, "datum")).Value = datum;
-                    command.Parameters.Add(new SqlParameter("@DateTime", System.Data.SqlDbType.DateTime, 8, "DateTime")).Value = date;
-                    command.Parameters.Add(new SqlParameter("@size", System.Data.SqlDbType.NVarChar, 50, "size")).Value = printFileSize;
-                    command.Parameters.Add(new SqlParameter("@IsPass", System.Data.SqlDbType.Char, 2, "IsPass")).Value = ispass;
+                //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
+                //-------------------------------------------------------------------------------------------------------------------
+                command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 100, "id")).Value = id;
+                command.Parameters.Add(new SqlParameter("@userName", System.Data.SqlDbType.NVarChar, 50, "userName")).Value = username;
+                command.Parameters.Add(new SqlParameter("@FileName", System.Data.SqlDbType.NVarChar, 100, "FileName")).Value = filename;
+                command.Parameters.Add(new SqlParameter("@Title", System.Data.SqlDbType.NVarChar, 100, "Title")).Value = title;
+                command.Parameters.Add(new SqlParameter("@Password", System.Data.SqlDbType.NVarChar, 100, "Password")).Value = pass;
+                command.Parameters.Add(new SqlParameter("@type", System.Data.SqlDbType.NVarChar, 50, "type")).Value = type;
+                command.Parameters.Add(new SqlParameter("@datum", System.Data.SqlDbType.VarBinary, -1, "datum")).Value = datum;
+                command.Parameters.Add(new SqlParameter("@DateTime", System.Data.SqlDbType.DateTime, 8, "DateTime")).Value = date;
+                command.Parameters.Add(new SqlParameter("@size", System.Data.SqlDbType.NVarChar, 50, "size")).Value = printFileSize;
+                command.Parameters.Add(new SqlParameter("@IsPass", System.Data.SqlDbType.Char, 2, "IsPass")).Value = ispass;
 
-                    //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
-                    command.CommandText = "INSERT INTO T_FileShare([id], [userName], [filename], [title], [Password], [type], [datum], [DateTime], [size], [IsPass]) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@userName)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), CAST(@datum AS varbinary(max)), LTRIM(RTRIM(@DateTime)), LTRIM(RTRIM(@size)), LTRIM(RTRIM(@IsPass)))";
+                //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
+                command.CommandText = "INSERT INTO T_FileShare([id], [userName], [filename], [title], [Password], [type], [datum], [DateTime], [size], [IsPass]) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@userName)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), CAST(@datum AS varbinary(max)), LTRIM(RTRIM(@DateTime)), LTRIM(RTRIM(@size)), LTRIM(RTRIM(@IsPass)))";
+
+                //ストリーミング型のときは下記のようにByteを追加すると実装できそう
+                //UPDATE TOP (1) [T_FileShare] SET datum += (0x00);
 
                 try
                 {
@@ -221,7 +224,7 @@ namespace WhereEver.ClassLibrary
                     da.UpdateCommand = command;
                     transaction.Commit();
 
-                //Console.WriteLine("Insert Completed");
+                    //Console.WriteLine("Insert Completed");
 
                 }
                 catch
