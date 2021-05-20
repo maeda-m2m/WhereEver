@@ -1283,7 +1283,7 @@ namespace WhereEver
             Session.Add("args", args);
 
             //行の色変更（選択行を強調表示）
-            GridView1.Rows[args].BackColor = System.Drawing.Color.AliceBlue;
+            GridView1.Rows[args].BackColor = System.Drawing.Color.Red;    //背景白ならAliceBlue
 
             //idをロード
             //string isbn_key = (String)GridView1.DataKeys[args].Value;

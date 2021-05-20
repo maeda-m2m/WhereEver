@@ -7,13 +7,14 @@
     font-family: Meiryo;
 }
 
+
 #title {
     width: 300px;
     text-align: center;
 }
 
 .title {
-    background-color: #16ba00;
+    background-color: #1e1e1e;
     text-align: center;
     width: 230px;
     height: 30px;
@@ -70,6 +71,7 @@ h1 {
     width: 500px;
     height: 800px;
     margin-left: 100px;
+    border-collapse: collapse;
 }
 
 .Syacho {
@@ -154,6 +156,7 @@ h1 {
     height: 800px;
     margin-left: 100px;
     font-size: 22px;
+    border-collapse: collapse;
 }
 
 #Tatekaetop {
@@ -339,10 +342,15 @@ h1 {
     text-align: center;
     width: 1260px;
     padding: 0.3em 1em;
-    border: solid 2px #16ba00;
+    border: solid 2px red;
     border-radius: 3px;
     font-family: Meiryo;
     border-radius: 3px;
+}
+
+.panel {
+    background-color: black;
+    color: white;
 }
 
 .cautionWrap {
@@ -357,11 +365,13 @@ h1 {
 .btn-flat-border {
     text-align: center;
     width: 120px;
+    height: 32px;
     display: inline-block;
-    padding: 0.3em 1em;
+    padding: 0.15em 1em;
     text-decoration: none;
-    color: #16ba00;
-    border: solid 2px #16ba00;
+    color: white;
+    border: solid 2px white;
+    background: #1e1e1e;
     border-radius: 3px;
     transition: .4s;
     font-family: Meiryo;
@@ -369,8 +379,7 @@ h1 {
 }
 
     .btn-flat-border:hover {
-        background: #16ba00;
-        color: white;
+        background: #808080;
         cursor: pointer;
     }
 

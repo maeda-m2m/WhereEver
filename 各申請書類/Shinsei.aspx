@@ -31,11 +31,16 @@
         <div id="Wrap" class="noprint">
 
          <asp:Panel ID="Panel00" runat="server" CssClass="noprint">
+
+          <div class="panel">
           <p><asp:Button ID="Button_list_open" CssClass="btn-flat-border" runat="server" Text="リストを開く" OnClick="Button_Datalist_Open_Click" CausesValidation="False" /></p>
           <p><asp:Label ID="lblTop_00" runat="server" Text="各種申請書類を作成または管理できます。"></asp:Label></p>
+          </div>
+
          </asp:Panel>
 
           <asp:Panel ID="Panel0" runat="server" CssClass="noprint">
+              <div class="panel">
 
                        <p><asp:Button ID="Button_list_close" CssClass="btn-flat-border" runat="server" Text="リストを閉じる" OnClick="Button_Datalist_Close_Click" CausesValidation="False" />
                        <asp:Button ID="Button_reload" CssClass="btn-flat-border" runat="server" Text="リスト手動更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
@@ -60,7 +65,8 @@
                     </asp:ButtonField>
 
                 </Columns>
-                <HeaderStyle BackColor="#66FF66" />
+                <HeaderStyle BackColor="#1E1E1E" ForeColor="White" />
+                <RowStyle BackColor="Gray" ForeColor="White" />
             </asp:GridView>
 
              <asp:SqlDataSource ID="SqlDataSource1" runat="server"
@@ -86,7 +92,7 @@
                        <asp:Button ID="Button_reload_2" CssClass="btn-flat-border" runat="server" Text="リスト手動更新" OnClick="Button_reload_Click" CausesValidation="False" /></p>
 
                        <p><asp:CheckBox ID="CheckBox_is_del_pop" runat="server" Text="削除時に確認する" Checked="True" OnCheckedChanged="SetDelPop" AutoPostBack="True" /></p>
-
+                  </div>
             </asp:Panel>
 
 
@@ -112,6 +118,7 @@
 
 
             <asp:Panel ID="Panel1" runat="server" CssClass="noprint">
+            <div class="panel">
                 <table id="sinsei">
                     <tr>
                             <td class="title">
@@ -130,9 +137,11 @@
                             </td>
                     </tr>
                 </table>
+            </div>
             </asp:Panel>
 
             <asp:Panel ID="Panel2" runat="server" CssClass="noprint"><a name="Buppin_Button"></a>
+                <div class="panel">
                 <table id="buppintouroku">
                     <tr>
                         <td class="title">
@@ -220,9 +229,11 @@
                         </td>
                     </tr>
                 </table>
+              </div>
             </asp:Panel>
 
             <asp:Panel ID="Panel3" runat="server" CssClass="noprint"><a name="Diligence_Button"></a>
+            <div class="panel">
                 <table runat="server" id="kyuka">
                     <tr>
                         <td class="title">
@@ -248,7 +259,15 @@
                                  <table>
                                     <tr>
                                       <td>
-                                        <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
+                                        <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged">
+                                            <DayHeaderStyle BackColor="Black" />
+                                            <DayStyle BackColor="#1E1E1E" ForeColor="White" />
+                                            <OtherMonthDayStyle BackColor="Gray" />
+                                            <SelectedDayStyle BackColor="AliceBlue" ForeColor="Blue" />
+                                            <TitleStyle ForeColor="Black" />
+                                            <TodayDayStyle ForeColor="Red" />
+                                            <WeekendDayStyle BackColor="Black" />
+                                          </asp:Calendar>
                                         <asp:Label ID="lblSelectedDateA1" runat="server" Text=""></asp:Label>
         
                                           <asp:DropDownList ID="DropDownList_A_Time" runat="server" OnTextChanged="DropDownList_A_Time_SelectionChanged">
@@ -274,7 +293,15 @@
                                         </asp:DropDownList>から
                                       </td>
                                       <td>
-                                        <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
+                                        <asp:Calendar ID="Calendar2" runat="server" OnSelectionChanged="Calendar2_SelectionChanged">
+                                            <DayHeaderStyle BackColor="Black" />
+                                            <DayStyle BackColor="#1E1E1E" ForeColor="White" />
+                                            <OtherMonthDayStyle ForeColor="Gray" />
+                                            <SelectedDayStyle BackColor="AliceBlue" ForeColor="Blue" />
+                                            <TitleStyle ForeColor="Black" />
+                                            <TodayDayStyle ForeColor="Red" />
+                                            <WeekendDayStyle BackColor="Black" />
+                                          </asp:Calendar>
                                         <asp:Label ID="lblSelectedDateB1" runat="server" Text=""></asp:Label>
 
                                         <asp:DropDownList ID="DropDownList_B_Time" runat="server" OnTextChanged="DropDownList_B_Time_SelectionChanged">
@@ -337,6 +364,7 @@
                         </td>
                     </tr>
                 </table>
+            </div>
             </asp:Panel>
 
 
@@ -344,13 +372,22 @@
 
 
                 <asp:Panel ID="Panel6" runat="server" CssClass="noprint">
+                <div class="panel">
                 <table id="meisai">
                     <tr>
                         <td class="title">
                             <p>日付*</p>
                         </td>
                         <td class="text">
-                            <asp:Calendar ID="Calendar3" runat="server" OnSelectionChanged="Calendar3_SelectionChanged"></asp:Calendar>
+                            <asp:Calendar ID="Calendar3" runat="server" OnSelectionChanged="Calendar3_SelectionChanged">
+                                <DayHeaderStyle BackColor="Black" ForeColor="White" />
+                                <DayStyle BackColor="#1E1E1E" ForeColor="White" />
+                                <OtherMonthDayStyle ForeColor="Gray" />
+                                <SelectedDayStyle BackColor="AliceBlue" ForeColor="Blue" />
+                                <TitleStyle ForeColor="Black" />
+                                <TodayDayStyle ForeColor="Red" />
+                                <WeekendDayStyle BackColor="Black" />
+                            </asp:Calendar>
                             <asp:TextBox ID="TextBox_Tatekae_Date" runat="server" CssClass="textbox" Width="180px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：1月1日　1/1でもOK"></asp:TextBox>
                         </td>
                         <td>
@@ -503,6 +540,7 @@
                         </td>
                     </tr>
                 </table>
+            </div>
             </asp:Panel>
 
             </div><%-- Wrap ここまでプリントしない --%>
