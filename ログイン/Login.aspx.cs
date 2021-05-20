@@ -43,7 +43,7 @@ namespace WhereEver
             dd.AddT_LoginListRow(dl);
             Class.Login.InsertLoginList(dd, Global.GetConnection());
 
-            Response.Redirect("LoginList.aspx");
+            Response.Redirect("LoginList.aspx", false);
         }
     }
 }

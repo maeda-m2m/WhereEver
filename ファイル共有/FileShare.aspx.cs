@@ -30,6 +30,8 @@ namespace WhereEver
                 lbluid.Text = "null";
             }
 
+            //初期化
+            Response.SuppressContent = false;
 
         }
 
@@ -58,8 +60,10 @@ namespace WhereEver
 
                 //パスを排除したファイル名を取得
                 string fileName = Path.GetFileName(FileUpload_userfile.FileName);
+
                 //拡張子を取得
                 string extension = Path.GetExtension(FileUpload_userfile.FileName);
+
                 //ファイル内容を取得
                 HttpPostedFile posted = FileUpload_userfile.PostedFile;
 
@@ -201,68 +205,69 @@ namespace WhereEver
                 }
                 */
 
-                    DATASET.DataSet.T_FileShareRow dr = FileShareClass.GetT_FileShareRow(Global.GetConnection(), TextBox_dl.Text, pass);
-                    if(dr != null)
-                    {
+                DATASET.DataSet.T_FileShareRow dr = FileShareClass.GetT_FileShareRow(Global.GetConnection(), TextBox_dl.Text, pass);
+                if (dr != null)
+                {
 
-                        // HTTPレスポンスのヘッダ＆エンティティのクリア（初期化）
-                        Response.Clear();
+                    // HTTPレスポンスのヘッダ＆エンティティのクリア（初期化）
+                    Response.Clear();
 
-                        // 拡張子を取得 ".txt"など
-                        //string extension = Path.GetExtension(TextBox_dl.Text);
+                    // 拡張子を取得 ".txt"など
+                    //string extension = Path.GetExtension(TextBox_dl.Text);
 
-                        // ダウンロード用ファイルの種別とデフォルトの名前を指定
-                        this.Response.ContentType = @"application/octet-stream"; //デフォルト設定: @"application/octet-stream"
-                        Response.AppendHeader("Content-Disposition", "attachment; filename=" + TextBox_dl.Text);
+                    // ダウンロード用ファイルの種別とデフォルトの名前を指定
+                    this.Response.ContentType = @"application/octet-stream"; //デフォルト設定: @"application/octet-stream"
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + TextBox_dl.Text);
 
-                        // MIME Typeを取得
-                        Response.ContentType = (string)@dr.type;
+                    // MIME Typeを取得
+                    Response.ContentType = (string)@dr.type;
 
-                        // ダウンロード実行 binary HTMLページと一緒にロードされる
-                        Response.BinaryWrite((Byte[])dr.datum);
+                    // ダウンロード実行 binary HTMLページと一緒にロードされる
+                    Response.BinaryWrite((Byte[])dr.datum);
 
-                        // ダウンロード実行　その2　ストリームに書き出し　やることは同じ
-                        //this.Response.OutputStream.Write((Byte[])dr.datum, 0, ((Byte[])dr.datum).Length);
+                    // ダウンロード実行　その2　ストリームに書き出し　やることは同じ
+                    //this.Response.OutputStream.Write((Byte[])dr.datum, 0, ((Byte[])dr.datum).Length);
 
-                        // 書き出しテスト　やることは同じ
-                        //string data = "abcd";
-                        //byte[] databytes = System.Text.Encoding.GetEncoding("shift-JIS").GetBytes(data);
-                        //this.Response.OutputStream.Write(databytes, 0, databytes.Length);
+                    // 書き出しテスト　やることは同じ
+                    //string data = "abcd";
+                    //byte[] databytes = System.Text.Encoding.GetEncoding("shift-JIS").GetBytes(data);
+                    //this.Response.OutputStream.Write(databytes, 0, databytes.Length);
 
-                        // HTTPレスポンス エンティティ設定の終了　スレッドの中止　Response.End();
-                        //※ これを行わないと、当該画面のHTML出力がファイル出力の後に続いてしまったりします。
-                        //※ Response.End();をする場合、Response.Flash()は最終的にはFlashされるため必須ではありません。
-                        //※ Webではスレッドを中止するとエラーが出ます。そのときはResponse.Flush();にします。
-                        Response.Flush();
+                    // HTTPレスポンス エンティティ設定の終了　スレッドの中止　Response.End();
+                    //※ これを行わないと、当該画面のHTML出力がファイル出力の後に続いてしまったりします。
+                    //※ Response.End();をする場合、Response.Flash()は最終的にはFlashされるため必須ではありません。
 
-                    }
-                    else
-                    {
-                        //ファイルが存在しません。
-                        lblDLResult.Text = "指定したファイルが存在しません。あるいは、パスワードが誤っています。";
-                        return;
-                    }
+                    //lblDLResult.Text = "ダウンロードに成功しました。";
 
-                    /*
-                    //Response情報クリア
-                    Response.ClearContent();
-
-                    //バッファリング
-                    Response.Buffer = true;
-
-                    //HTTPヘッダー情報・MIMEタイプ設定
-                    Response.AddHeader("Content-Disposition", String.Format("attachment;filename={0}", lblDLResult.Text));
-                    //好きなMIMEタイプを設定
-                    Response.ContentType = DropDownList1.SelectedValue;
-
-                    //ファイルを書き出し
-                    Response.WriteFile(filePath);
+                    //Response.Endはシステムのパフォーマンスに悪影響を与えるため、Response.SuppressContent = true;かashxを使用する。
                     Response.Flush();
-                    Response.End();
-                    */
+                    Response.SuppressContent = true;    //必ずResponse.Flush();の後！                   
 
-                    lblDLResult.Text = "ダウンロードに成功しました。";
+                }
+                else
+                {
+                    //ファイルが存在しません。
+                    lblDLResult.Text = "指定したファイルが存在しません。あるいは、パスワードが誤っています。";
                     return;
+                }
+
+                /*
+                //Response情報クリア
+                Response.ClearContent();
+
+                //バッファリング
+                Response.Buffer = true;
+
+                //HTTPヘッダー情報・MIMEタイプ設定
+                Response.AddHeader("Content-Disposition", String.Format("attachment;filename={0}", lblDLResult.Text));
+                //好きなMIMEタイプを設定
+                Response.ContentType = DropDownList1.SelectedValue;
+
+                //ファイルを書き出し
+                Response.WriteFile(filePath);
+                Response.Flush();
+                Response.End();
+                */
 
             }
             else

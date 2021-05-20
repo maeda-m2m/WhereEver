@@ -38,7 +38,8 @@
                     <ControlStyle CssClass="btn-flat-border"></ControlStyle>
                     </asp:CommandField>
                 </Columns>
-                <HeaderStyle BackColor="#66FF66" />
+                <HeaderStyle BackColor="#1E1E1E" ForeColor="White" />
+                <RowStyle BackColor="Gray" ForeColor="White" />
             </asp:GridView>
 
 

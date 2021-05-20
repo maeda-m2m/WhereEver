@@ -1957,7 +1957,7 @@ namespace WhereEver
                         if (lbluid.Text == isbn_uid)
                         {
                             //GridView1におけるuidと一致する行の背景に色を付けて強調表示する
-                            GridView1.Rows[i].BackColor = System.Drawing.Color.AliceBlue;
+                            GridView1.Rows[i].BackColor = System.Drawing.Color.Red;
                             break;
                         }
 

@@ -28,6 +28,8 @@
             </tr>
         </table>
 
+        <asp:Button runat="server" ID="ButtonA" OnClick="ButtonA_Click" />
+
 
         <div class="Center">
             <asp:Panel ID="Panel2" runat="server" HorizontalAlign="center">
@@ -104,7 +106,7 @@
                     <tr>
                         <th class="Center_Color">内容</th>
                         <td>
-                            <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" Columns="40" placeholder="例:LIXIL　Web会議"></asp:TextBox>
+                            <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" Columns="40" placeholder="例:LIXIL　Web会議" TextMode="Search"></asp:TextBox>
                         </td>
                     </tr>
 
@@ -275,7 +277,7 @@
                     <tr>
                         <th class="Center_Color">日付</th>
                         <td>
-                            <asp:TextBox ID="TextBox3" runat="server" Text="" placeholder="例:一か月単位「04」特定の日にち「04　01」など" Columns="40"></asp:TextBox>
+                            <asp:TextBox ID="TextBox3" runat="server" Text="" placeholder="例:一か月単位「04」特定の日にち「04　01」など" Columns="40" TextMode="SingleLine"></asp:TextBox>
 
                         </td>
                     </tr>
@@ -329,7 +331,7 @@
                     <tr>
                         <th class="Center_Color">内容</th>
                         <td>
-                            <asp:TextBox ID="TextBox5" runat="server" Text="" Columns="40" placeholder="例:LIXIL"></asp:TextBox>
+                            <asp:TextBox ID="TextBox5" runat="server" Text="" Columns="40" placeholder="例:LIXIL" TextMode="Search"></asp:TextBox>
                         </td>
                     </tr>
 

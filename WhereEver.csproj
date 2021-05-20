@@ -123,6 +123,7 @@
     <Content Include="ShinseiMenu.css" />
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
+    <Content Include="スケジュール\Wiki.aspx" />
     <Content Include="チャット\purple.jpg" />
     <Content Include="チャット\yajirusi.png" />
     <Content Include="ログイン\LoginList.css" />
@@ -230,6 +231,7 @@
     <Compile Include="ClassLibrary\ShinseiLog.cs" />
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
     <Compile Include="Class\Chat.cs" />
+    <Compile Include="Class\Toppage.cs" />
     <Compile Include="Class\Login.cs" />
     <Compile Include="Class\Logout.cs" />
     <Compile Include="Class\Schedule.cs" />
@@ -289,6 +291,13 @@
       <DependentUpon>PrintSchedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="SessionManager.cs" />
+    <Compile Include="スケジュール\Wiki.aspx.cs">
+      <DependentUpon>Wiki.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="スケジュール\Wiki.aspx.designer.cs">
+      <DependentUpon>Wiki.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ログイン\LoginList.aspx.cs">
       <DependentUpon>LoginList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
