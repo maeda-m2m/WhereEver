@@ -80,6 +80,10 @@ namespace WhereEver.ClassLibrary
             {
                 //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
                 da.Fill(dt);
+                if (dt.Count == 0)
+                {
+                    return false;
+                }
                 return true;
 
             }
