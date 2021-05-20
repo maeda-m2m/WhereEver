@@ -99,8 +99,12 @@ namespace WhereEver.ClassLibrary
         /// <param name="id">主キー１：Session変数に保存されているUserIDです。</param>
         /// <param name="filename">主キー２：uuidによって構成されたファイルネームです。拡張子まで含まれています。</param>
         /// <param name="filepath">ファイルパスです。</param>
-        public static void SetT_FileShareInsert(SqlConnection sqlConnection, string id, string filename, string title, string pass, string type, byte[] datum)
+        public static bool SetT_FileShareInsert(SqlConnection sqlConnection, string id, string username, string filename, string title, string pass, string type, byte[] datum)
         {
+
+            //結果の宣言と定義
+            bool result = true;
+
             sqlConnection.Open();
 
             //Create the Update Command.
@@ -114,6 +118,7 @@ namespace WhereEver.ClassLibrary
             using (SqlTransaction transaction = sqlConnection.BeginTransaction())
             {
 
+                //passwordの有無
                 string ispass = "なし";
                 if (pass != "")
                 {
@@ -128,12 +133,11 @@ namespace WhereEver.ClassLibrary
                 command.Connection = sqlConnection;
                 command.Transaction = transaction;
 
-                try
-                {
 
                     //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
                     //-------------------------------------------------------------------------------------------------------------------
                     command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 100, "id")).Value = id;
+                    command.Parameters.Add(new SqlParameter("@userName", System.Data.SqlDbType.NVarChar, 50, "userName")).Value = username;
                     command.Parameters.Add(new SqlParameter("@FileName", System.Data.SqlDbType.NVarChar, 100, "FileName")).Value = filename;
                     command.Parameters.Add(new SqlParameter("@Title", System.Data.SqlDbType.NVarChar, 100, "Title")).Value = title;
                     command.Parameters.Add(new SqlParameter("@Password", System.Data.SqlDbType.NVarChar, 100, "Password")).Value = pass;
@@ -143,8 +147,10 @@ namespace WhereEver.ClassLibrary
                     command.Parameters.Add(new SqlParameter("@IsPass", System.Data.SqlDbType.Char, 2, "IsPass")).Value = ispass;
 
                     //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
-                    command.CommandText = "INSERT INTO T_FileShare([id], [filename], [title], [Password], [type], [datum], [DateTime], [IsPass]) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), CONVERT(binary, LTRIM(RTRIM(@datum))), LTRIM(RTRIM(@DateTime)), LTRIM(RTRIM(@IsPass)))";
+                    command.CommandText = "INSERT INTO T_FileShare([id], [userName], [filename], [title], [Password], [type], [datum], [DateTime], [IsPass]) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@userName)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), CAST(@datum AS varbinary(max)), LTRIM(RTRIM(@DateTime)), LTRIM(RTRIM(@IsPass)))";
 
+                try
+                {
 
                     //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
                     //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。
@@ -163,11 +169,12 @@ namespace WhereEver.ClassLibrary
                     //catch文
                     //Console.WriteLine("Insert Failed");
                     transaction.Rollback();
+                    result = false;
                 }
 
             } //sqlConnection.Close();
 
-            return;
+            return result;
 
         }
 

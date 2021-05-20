@@ -82,39 +82,34 @@ namespace WhereEver
                     }
                     */
 
-                    try
+
+                    //アップロードされたファイル内容を指定したパスに保存します。（いらない）
+                    //posted.SaveAs(newPath);
+
+                    string title = HtmlEncode(@TextBox_Upload_Comment.Text);
+                    if (title == "")
                     {
-
-                        //アップロードされたファイル内容を指定したパスに保存します。（いらない）
-                        //posted.SaveAs(newPath);
-
-                        string title = HtmlEncode(@TextBox_Upload_Comment.Text);
-                        if (title == "")
-                        {
-                            title = "無題";
-                        }
-                        string pass = @TextBox_UploadPass.Text;
-                        if (pass != "")
-                        {
-                            pass = pass.GetHashCode().ToString();
-                        }
-
-                        //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
-                        //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
-
-                        //バイトを取得します。
-                        Byte[] aryData = new Byte[FileUpload_userfile.PostedFile.ContentLength];
-                        FileUpload_userfile.PostedFile.InputStream.Read(aryData, 0, FileUpload_userfile.PostedFile.ContentLength);
-                        //MIMEタイプを取得します。
-                        string type = FileUpload_userfile.PostedFile.ContentType;
-
-                        //データベースにファイルを保存します。
-                        FileShareClass.SetT_FileShareInsert(Global.GetConnection(), SessionManager.User.M_User.id, fileName, title, pass, type, aryData);
-
+                        title = "無題";
                     }
-                    catch (Exception ex)
+                    string pass = @TextBox_UploadPass.Text;
+                    if (pass != "")
                     {
-                        lblResult.Text = ex + "により、アップロードに失敗しました。";
+                        pass = pass.GetHashCode().ToString();
+                    }
+
+                    //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
+                    //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
+
+                    //バイトを取得します。
+                    Byte[] aryData = new Byte[FileUpload_userfile.PostedFile.ContentLength];
+                    FileUpload_userfile.PostedFile.InputStream.Read(aryData, 0, FileUpload_userfile.PostedFile.ContentLength);
+                    //MIMEタイプを取得します。
+                    string type = FileUpload_userfile.PostedFile.ContentType;
+
+                    //データベースにファイルを保存します。
+                    if (!FileShareClass.SetT_FileShareInsert(Global.GetConnection(), SessionManager.User.M_User.id, SessionManager.User.M_User.name1, fileName, title, pass, type, aryData))
+                    {
+                        lblResult.Text = "アップロードに失敗しました。ファイル容量等を見直して下さい。";
                         return;
                     }
 
@@ -195,10 +190,6 @@ namespace WhereEver
                 }
                 */
 
-                try
-                {
-
-
                     DATASET.DataSet.T_FileShareRow dr = FileShareClass.GetT_FileShareRow(Global.GetConnection(), TextBox_dl.Text, pass);
                     if(dr != null)
                     {
@@ -227,10 +218,11 @@ namespace WhereEver
                         //byte[] databytes = System.Text.Encoding.GetEncoding("shift-JIS").GetBytes(data);
                         //this.Response.OutputStream.Write(databytes, 0, databytes.Length);
 
-                        // HTTPレスポンス エンティティ設定の終了
+                        // HTTPレスポンス エンティティ設定の終了　スレッドの中止　Response.End();
                         //※ これを行わないと、当該画面のHTML出力がファイル出力の後に続いてしまったりします。
-                        //※ Response.Flash()は最終的にはFlashされるため必須ではありません。
-                        Response.End();
+                        //※ Response.End();をする場合、Response.Flash()は最終的にはFlashされるため必須ではありません。
+                        //※ Webではスレッドを中止するとエラーが出ます。そのときはResponse.Flush();にします。
+                        Response.Flush();
 
                     }
                     else
@@ -260,12 +252,6 @@ namespace WhereEver
 
                     lblDLResult.Text = "ダウンロードに成功しました。";
                     return;
-                }
-                catch (Exception ex)
-                {
-                    lblDLResult.Text = ex + "によりダウンロードに失敗しました。";
-                    return;
-                }
 
             }
             else
@@ -337,8 +323,9 @@ namespace WhereEver
             //idをロード
             //string isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
 
+            // クリックされた[args]行の左から3番目の列[0-nで数える]のセルにある「テキスト」を取得
             //FileNameをロード
-            string isbn_filename = GridView1.Rows[args].Cells[1].Text.Trim();
+            string isbn_filename = GridView1.Rows[args].Cells[2].Text.Trim();
 
             lbluid.Text = isbn_filename;
             TextBox_dl.Text = isbn_filename;
@@ -353,9 +340,9 @@ namespace WhereEver
             //idをロード
             //String isbn_name = GridView1.Rows[args].Cells[0].Text.Trim();
 
-            // クリックされた[args]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
+            // クリックされた[args]行の左から3番目の列[0-nで数える]のセルにある「テキスト」を取得
             //FileNameをロード
-            String isbn_filename = GridView1.Rows[args].Cells[1].Text.Trim();
+            String isbn_filename = GridView1.Rows[args].Cells[2].Text.Trim();
 
             //個別テーブルからSQL文を用いて削除（未実装）
 
@@ -404,9 +391,9 @@ namespace WhereEver
                     //----------------------------------------------
                     for (int i = 0; i < cnt; i++)
                     {
-                        //Rows[i]行の左から2番目の列[0-nで数える]のセルにある「テキスト」を取得
+                        //Rows[i]行の左から3番目の列[0-nで数える]のセルにある「テキスト」を取得
                         //uidをロード
-                        string isbn_uid = GridView1.Rows[i].Cells[1].Text.Trim();
+                        string isbn_uid = GridView1.Rows[i].Cells[2].Text.Trim();
 
                         //uidは一致したか？
                         if (lbluid.Text == isbn_uid)

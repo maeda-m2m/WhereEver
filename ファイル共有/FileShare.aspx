@@ -105,6 +105,7 @@
               <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,FileName" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowCommand="grid_RowCommand" AllowPaging="True" AllowSorting="True">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="false" />
+                    <asp:BoundField DataField="userName" HeaderText="投稿者" ReadOnly="True" SortExpression="userName" />
                     <asp:BoundField DataField="FileName" HeaderText="ファイル名" ReadOnly="True" SortExpression="FileName" />
                     <asp:BoundField DataField="Title" HeaderText="コメント" ReadOnly="True" SortExpression="Title" />
                     <asp:BoundField DataField="DateTime" HeaderText="アップロード日" ReadOnly="True" SortExpression="DateTime" />
@@ -125,7 +126,7 @@
 
              <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                 ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>"
-                SelectCommand="SELECT [id],[FileName],[Title],[DateTime],[IsPass] FROM [T_FileShare] ORDER BY DateTime DESC">
+                SelectCommand="SELECT [id],[userName],[FileName],[Title],[DateTime],[IsPass] FROM [T_FileShare] ORDER BY DateTime DESC">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="lblid" DefaultValue="null" Name="id" PropertyName="Text" Type="String" />
                 </SelectParameters>
