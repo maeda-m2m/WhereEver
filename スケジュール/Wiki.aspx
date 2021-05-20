@@ -4,16 +4,22 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <title>Wiki</title>
 
     <style>
-        .Test1{
-            margin:auto;
-            text-align:center;
-            height:500px;
-            width:500px;
+        .Center {
+            margin: auto;
+            text-align: center;
+            background-color: aqua;
+        }
+
+        .Test1 {
+            margin: auto;
+            text-align: center;
+         
+            background-color: antiquewhite;
         }
     </style>
 
@@ -23,10 +29,22 @@
 
     <form id="form1" runat="server">
 
+        <div class="Center">
+
+            <asp:Label runat="server" ID="Label1" Text="タイトル" Font-Size="Large"></asp:Label>
+
+        </div>
+
         <div class="Test1">
 
-            <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="MultiLine" MaxLength="1000" Rows="10"></asp:TextBox>
-         
+            <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="MultiLine" MaxLength="1000" Rows="100" Height="2000" Width="1000"></asp:TextBox>
+
+        </div>
+
+        <div class="Center">
+
+            <asp:Button runat="server" ID="Button1" Text="登録" />
+
         </div>
 
     </form>
