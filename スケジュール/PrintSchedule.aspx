@@ -1151,7 +1151,7 @@
         <br />
  </div>
         <div class="DgBikou">
-            <asp:DataGrid ID="DgBikou" runat="server" Width="100%"
+            <asp:DataGrid ID="DgBikou" runat="server" Width="100%" class="noprint"
                             AutoGenerateColumns="False" 
                             OnItemDataBound="DgBikou_ItemDataBound"
                             OnEditCommand="DgBikou_EditCommand"
