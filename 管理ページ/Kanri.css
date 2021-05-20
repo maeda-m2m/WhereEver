@@ -21,7 +21,8 @@
 }
 
 #Wrap {
-    background-color: #fff;
+    background-color: #1e1e1e;
+    color: white;
     width: 1280px; /*1280px か 100%*/
     margin-left: 300px;
     margin-right: 300px;
@@ -34,7 +35,7 @@
     text-align: center;
     width: 1260px;
     padding: 0.3em 1em;
-    border: solid 2px #16ba00;
+    border: solid 2px red;
     border-radius: 3px;
     font-family: Meiryo;
     border-radius: 3px;
@@ -61,11 +62,13 @@
 .btn-flat-border {
     text-align: center;
     width: 120px;
+    height: 32px;
     display: inline-block;
-    padding: 0.3em 1em;
+    padding: 0.15em 1em;
     text-decoration: none;
-    color: #16ba00;
-    border: solid 2px #16ba00;
+    color: white;
+    border: solid 2px white;
+    background: #1e1e1e;
     border-radius: 3px;
     transition: .4s;
     font-family: Meiryo;
@@ -73,7 +76,7 @@
 }
 
     .btn-flat-border:hover {
-        background: #16ba00;
-        color: white;
+        background: #808080;
+        cursor: pointer;
     }
 
