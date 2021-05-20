@@ -47,9 +47,9 @@
 
                        <p><asp:Label ID="lblTop_0" runat="server" Text="各種申請書類を作成または管理できます。"></asp:Label></p>
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowCommand="grid_RowCommand">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowCommand="grid_RowCommand" AllowPaging="True" AllowSorting="True">
                 <Columns>
-                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
+                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="none" ItemStyle-CssClass="none" />
                     <asp:BoundField DataField="uid" HeaderText="uid" ReadOnly="True" SortExpression="uid" />
                     <asp:BoundField DataField="name1" HeaderText="お名前" SortExpression="name1" Visible="False" />
                     <asp:BoundField DataField="ShinseiSyubetsu" HeaderText="申請種別" SortExpression="ShinseiSyubetsu" />
