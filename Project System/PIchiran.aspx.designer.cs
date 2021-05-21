@@ -132,15 +132,6 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.BulletedList BulletedList2;
 
         /// <summary>
-        /// Calendar1 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
-
-        /// <summary>
         /// lblNewOverTime コントロール。
         /// </summary>
         /// <remarks>
@@ -157,6 +148,15 @@ namespace WhereEver.Project_System
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.BulletedList BulletedList1;
+
+        /// <summary>
+        /// Calendar1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar Calendar1;
 
         /// <summary>
         /// Calendar2 コントロール。

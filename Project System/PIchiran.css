@@ -5,30 +5,15 @@
     font-weight: bold; /*太字にする*/
 }
 
-.btn {
-    width: 200px;
-    height: 40px;
-    position: relative;
-    display: inline-block;
-    font-weight: bold;
-    padding: 0.3em 0.5em;
-    text-decoration: none;
-    color: #000000;
-    background: #ECECEC;
-    transition: .4s;
-    font-size: 1em;
-}
 
-    .btn:hover {
-        background: #000000;
-        color: white;
-    }
 .cell {
     text-align: center;
     height:50px;
+    margin-left:100px;
 }
 .datagrid {
-    width: 100%
+    width: 100%;
+    margin-left:200px;
 }
 .txt{
     width:200px;
@@ -40,4 +25,17 @@
 #Wrap {
     width: 1880px;
     overflow: hidden;
+}
+.xxx {
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: black;
+    color: white;
+}
+.calendar {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+.DgPIchiran{
+    border-block-color:black;
 }

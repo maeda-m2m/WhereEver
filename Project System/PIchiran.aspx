@@ -26,7 +26,7 @@
             </table>
 
             <div>
-                <table>
+                <table class="xxx">
                     <tr>
                         <td class="datagrid" colspan="4">
 
@@ -36,7 +36,7 @@
                                 OnCancelCommand="DgPIchiran_CancelCommand"
                                 OnUpdateCommand="DgPIchiran_UpdateCommand"
                                 OnItemCommand="DgPIchiran_ItemCommand"
-                                AutoGenerateColumns="False" Width="100%">
+                                AutoGenerateColumns="False" Width="100%" CssClass="DgPIchiran">
                                     <Columns>
                     
                                         <asp:BoundColumn HeaderText="プロジェクトID(変更✖)" DataField="Pid" ReadOnly="True"/>
@@ -46,9 +46,9 @@
                                         <asp:BoundColumn HeaderText="カテゴリー" DataField="Pcategory"/>
                                         <asp:BoundColumn HeaderText="開始日" DataField="PstartTime"/>
                                         <asp:BoundColumn HeaderText="終了日" DataField="PoverTime"/>
-                                        <asp:EditCommandColumn EditText="変更" CancelText="キャンセル" UpdateText="保存" ></asp:EditCommandColumn>
-                                        <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
-                                        <asp:ButtonColumn HeaderText="詳細" ButtonType="LinkButton" Text="編集(WBS図)" CommandName="wbs"/>
+                                        <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>キャンセル" UpdateText="<font color = red>保存"></asp:EditCommandColumn>
+                                        <asp:ButtonColumn ButtonType="LinkButton" Text="<font color = red>削除" CommandName="Delete"/>
+                                        <asp:ButtonColumn HeaderText="詳細" ButtonType="LinkButton" Text="<font color = red>編集(WBS図)" CommandName="wbs"/>
 
                                     </Columns>
                                 <HeaderStyle Width="200px" Height="50px" HorizontalAlign="Center" VerticalAlign="Middle"></HeaderStyle>
@@ -112,14 +112,6 @@
              Visible="false"
              >
         </asp:BulletedList>
-                <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnSelectionChanged="Calendar1_SelectionChanged" >
-                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                    <OtherMonthDayStyle ForeColor="#999999" />
-                    <SelectedDayStyle BackColor="Red" ForeColor="White" />
-                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                    <TodayDayStyle BackColor="#CCCCCC" />
-                        </asp:Calendar>
 
                     </td>
                     <td class="cell" colspan="2">
@@ -132,15 +124,34 @@
              >
         </asp:BulletedList>
 
-                <asp:Calendar ID="Calendar2" runat="server" 
-                    BackColor="White" BorderColor="White" BorderWidth="1px" 
-                    Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnSelectionChanged="Calendar2_SelectionChanged">
+                        </td>
+                    <td class="cell">
+
+                        &nbsp;</td>
+                </tr>
+                    <tr>
+                    <td class="cell" colspan="2">
+
+                <asp:Calendar ID="Calendar1" runat="server" CssClass="calendar" Font-Names="Verdana" Font-Size="13pt" ForeColor="White" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnSelectionChanged="Calendar1_SelectionChanged" >
                     <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                     <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
                     <OtherMonthDayStyle ForeColor="#999999" />
                     <SelectedDayStyle BackColor="Red" ForeColor="White" />
-                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                    <TitleStyle Font-Bold="True" Font-Size="15pt" ForeColor="#ff0000" CssClass="calendar-title"/>
                     <TodayDayStyle BackColor="#CCCCCC" />
+                        </asp:Calendar>
+
+                    </td>
+                    <td class="cell" colspan="2">
+
+                <asp:Calendar ID="Calendar2" runat="server" CssClass="calendar"
+                    Font-Names="Verdana" Font-Size="13pt" ForeColor="White" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnSelectionChanged="Calendar2_SelectionChanged">
+                    <DayHeaderStyle Font-Bold="True" Font-Size="10pt" />
+                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                    <OtherMonthDayStyle ForeColor="WhiteSmoke" />
+                    <SelectedDayStyle BackColor="Red" ForeColor="White" />
+                    <TitleStyle Font-Bold="True" Font-Size="15pt" ForeColor="#ff0000" CssClass="calendar-title"/>
+                    <TodayDayStyle />
                         </asp:Calendar>
 
                         終了日未定の場合はそのまま保存してください。</td>
