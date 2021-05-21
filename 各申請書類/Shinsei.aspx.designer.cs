@@ -204,6 +204,33 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
+        /// Button_Master_A コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Master_A;
+
+        /// <summary>
+        /// Button_Master_B コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Master_B;
+
+        /// <summary>
+        /// Button_Master_C コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Master_C;
+
+        /// <summary>
         /// DropDownList1 コントロール。
         /// </summary>
         /// <remarks>

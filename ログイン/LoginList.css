@@ -21,21 +21,21 @@
 
 #Main {
     width: 1230px;
-    height: 30em;
+    height: auto;
     margin-right: 50px;
     margin-top: 1.85em;
     float: right;
 }
 
 #Innner {
-    height: 100%;
+    height: auto;
     background-color: #1e1e1e;
     color: white;
 }
 
 #Edit {
     width: 1230px;
-    height: 20em;
+    height: 22em;
     margin-right: 50px;
     margin-top: 1.85em;
     background-color: #1e1e1e;

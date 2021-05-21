@@ -41,7 +41,7 @@ namespace WhereEver.Class
 
 
                     //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
-                    command.CommandText = "UPDATE TOP(1) [T_TopPage] SET[TopPage] = @TopPage, [DateTime]=@DateTime";
+                    command.CommandText = "UPDATE TOP(1) [T_TopPage] SET[TopPage] = CAST(@TopPage AS nvarchar(MAX)), [DateTime]=@DateTime";
 
                     //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
                     //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。
