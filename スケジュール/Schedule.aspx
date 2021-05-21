@@ -29,6 +29,7 @@
         </table>
 
         <asp:Button runat="server" ID="ButtonA" OnClick="ButtonA_Click" />
+        <asp:Label runat="server" ID="LabelA" CssClass="Center_Color1"></asp:Label>
 
 
         <div class="Center">
@@ -156,27 +157,28 @@
         <div>
             <asp:DataGrid runat="server"
                 ID="Scdl3"
-                CssClass="Center"
+                class="Center"
                 AutoGenerateColumns="False"
                 OnItemDataBound="Scdl3_ItemDataBound"
-                HeaderStyle-Width="200px"
                 OnSelectedIndexChanged="Scdl3_SelectedIndexChanged"
-                BackColor="White"
-                BorderColor="#999999"
                 BorderStyle="Solid"
                 BorderWidth="1px"
                 CellPadding="3"
-                ForeColor="Black"
                 GridLines="Vertical"
                 Width="1200px">
 
+                <HeaderStyle Width="200px" BackColor=" #16BA00" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px"></HeaderStyle>
+
+                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px" />
 
                 <AlternatingItemStyle BackColor="#ccffcc" />
 
                 <Columns>
 
-                    <asp:TemplateColumn HeaderText="曜日" ItemStyle-Height="50px"
-                        ItemStyle-Width="100px">
+                    <asp:TemplateColumn
+                        HeaderText="曜日"
+                        ItemStyle-Height="30px"
+                        ItemStyle-Width="200px">
                         <HeaderStyle Wrap="true" />
 
                         <ItemStyle Wrap="true" />
@@ -185,82 +187,113 @@
                             <asp:Label ID="Jikan" runat="server" Text=""></asp:Label>
                             <input type="hidden" id="Jikan1" runat="server" />
                         </ItemTemplate>
+
                     </asp:TemplateColumn>
 
-                    <asp:TemplateColumn HeaderText="月" ItemStyle-Width="100px">
+                    <asp:TemplateColumn
+                        HeaderText="月"
+                        ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
 
                         <ItemTemplate>
+
                             <asp:Label ID="MondayTitle" runat="server" Text=""></asp:Label>
                             <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
+
                         </ItemTemplate>
+
                     </asp:TemplateColumn>
 
-                    <asp:TemplateColumn HeaderText="火" ItemStyle-Width="100px">
+                    <asp:TemplateColumn
+                        HeaderText="火"
+                        ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+
                         <ItemTemplate>
+
                             <asp:Label ID="TuesdayTitle" runat="server" Text=""></asp:Label>
                             <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
+
                         </ItemTemplate>
+
                     </asp:TemplateColumn>
 
                     <asp:TemplateColumn HeaderText="水" ItemStyle-Width="100px">
+
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+
                         <ItemTemplate>
+
                             <asp:Label ID="WednesdayTitle" runat="server" Text=""></asp:Label>
                             <asp:Label ID="Label9" runat="server" Text=""></asp:Label>
+
                         </ItemTemplate>
+
                     </asp:TemplateColumn>
 
                     <asp:TemplateColumn HeaderText="木" ItemStyle-Width="100px">
+
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+
                         <ItemTemplate>
                             <asp:Label ID="ThursdayTitle" runat="server" Text=""></asp:Label>
                             <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
+
                         </ItemTemplate>
+
                     </asp:TemplateColumn>
 
                     <asp:TemplateColumn HeaderText="金" ItemStyle-Width="100px">
+
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+
                         <ItemTemplate>
                             <asp:Label ID="FridayTitle" runat="server" Text=""></asp:Label>
                             <asp:Label ID="Label11" runat="server" Text=""></asp:Label>
+
                         </ItemTemplate>
+
                     </asp:TemplateColumn>
 
                     <asp:TemplateColumn HeaderText="土" ItemStyle-Width="100px">
+
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+
                         <ItemTemplate>
+
                             <asp:Label ID="Saturday" runat="server" Text=""></asp:Label>
-                            
+
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
                     <asp:TemplateColumn HeaderText="日" ItemStyle-Width="100px">
+
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+
                         <ItemTemplate>
+
                             <asp:Label ID="Sunday" runat="server" Text=""></asp:Label>
-                            
+
                         </ItemTemplate>
+
                     </asp:TemplateColumn>
 
                 </Columns>
 
-
-                <FooterStyle BackColor="#CCCCCC" />
-
-
-                <HeaderStyle Width="200px" BackColor="#16BA00" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="12px"></HeaderStyle>
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px" />
-                <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                <SelectedItemStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
             </asp:DataGrid>
 
         </div>
@@ -274,7 +307,7 @@
                 <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
 
                 <asp:DropDownList runat="server" ID="Ddl" AutoPostBack="True" OnTextChanged="Create4">
-                     <asp:ListItem>昇順</asp:ListItem>
+                    <asp:ListItem>昇順</asp:ListItem>
                     <asp:ListItem>降順</asp:ListItem>
 
                 </asp:DropDownList>
@@ -380,7 +413,7 @@
                     <tr>
                         <td colspan="2">
                             <asp:Button ID="Button8" runat="server" class="btn-flat-border" OnClick="Button8_Click" Text="検索" />
-                            <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="A()" Text="戻る" />
+                            <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" Text="戻る" />
                         </td>
                     </tr>
                 </table>
@@ -576,18 +609,12 @@
 
         </div>--%>
 
-      
+
         <script>
 
             function A() {
-                var a1 = window.confirm('本当に実行しますか？');
-                if (a1 === true) {
-                    return (true)
-                }
-                else if (a1 === false) {
-                    return (false
-                    )
-                }
+                return window.confirm('本当に戻りますか？');
+
 
             }
 

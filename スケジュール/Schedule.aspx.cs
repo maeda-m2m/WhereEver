@@ -146,6 +146,13 @@ namespace WhereEver
                 Scdl3.Items[0].Cells[6].CssClass = "Center_cs";
                 Scdl3.Items[0].Cells[7].CssClass = "Center_cs";
 
+                Scdl3.Items[2].Cells[1].CssClass = "Center_cs_Color";
+                Scdl3.Items[4].Cells[1].CssClass = "Center_cs_Color";
+                Scdl3.Items[6].Cells[1].CssClass = "Center_cs_Color";
+                Scdl3.Items[8].Cells[1].CssClass = "Center_cs_Color";
+
+
+
 
                 if (Z0 == "月")
                 {
@@ -241,6 +248,7 @@ namespace WhereEver
                         string A1 = Scdl3.Items[1].Cells[1].Text;
                         A1 += dl.time + "\r\n" + dl.title + "<font color=#17a404>" + "\r\n" + dl.name + "</font color>" + "\r\n" + "\r\n";
                         Scdl3.Items[1].Cells[1].Text = A1.Replace("\r\n", "<br>");
+
                     }
                     if (week == "火")
                     {
