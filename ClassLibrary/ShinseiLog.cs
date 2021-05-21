@@ -46,12 +46,16 @@ namespace WhereEver.ClassLibrary
                 if (dt.Count >= 1)
                 {
                     //ダブりあり
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return true;
 
                 }
                 else
                 {
                     //ダブりなし
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return false;
                 }
 
@@ -59,6 +63,8 @@ namespace WhereEver.ClassLibrary
             catch
             {
                 //例えばguestなどの不正な値が入力された場合はtrueを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return true;
             }
 
@@ -99,12 +105,16 @@ namespace WhereEver.ClassLibrary
                 if (dt.Count >= 1)
                 {
                     //中身あり
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return dt;  //dt[0]の中にflag_del_popなどが入っています。
 
                 }
                 else
                 {
                     //中身なし
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return null;
                 }
 
@@ -112,6 +122,8 @@ namespace WhereEver.ClassLibrary
             catch
             {
                 //不正な値が入力された場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return null;
             }
 
@@ -174,7 +186,9 @@ namespace WhereEver.ClassLibrary
                 }
 
             } //sqlConnection.Close();
-
+           
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -238,6 +252,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -273,12 +289,16 @@ namespace WhereEver.ClassLibrary
             {
                 //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
                 da.Fill(dt);
+                // データベースの接続終了
+                sqlConnection.Close();
                 return true;
 
             }
             catch
             {
                 //不正な値が入力された場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return false;
             }
 
@@ -311,6 +331,8 @@ namespace WhereEver.ClassLibrary
             {
                 //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
                 da.Fill(dt);
+                // データベースの接続終了
+                sqlConnection.Close();
                 return true;
 
                 //test
@@ -318,6 +340,8 @@ namespace WhereEver.ClassLibrary
             catch
             {
                 //不正な値が入力された場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return false;
             }
 
@@ -351,12 +375,16 @@ namespace WhereEver.ClassLibrary
 
                 //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
                 da.Fill(dt);
+                // データベースの接続終了
+                sqlConnection.Close();
                 return true;
 
             }
             catch
             {
                 //不正な値が入力された場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return false;
             }
 
@@ -390,12 +418,16 @@ namespace WhereEver.ClassLibrary
             {
                 //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
                 da.Fill(dt);
+                // データベースの接続終了
+                sqlConnection.Close();
                 return true;
 
             }
             catch
             {
                 //不正な値が入力された場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return false;
             }
 
@@ -437,12 +469,16 @@ namespace WhereEver.ClassLibrary
                 if (dt.Count >= 1)
                 {
                     //中身あり
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return dt;
 
                 }
                 else
                 {
                     //中身なし
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return null;
                 }
 
@@ -450,6 +486,8 @@ namespace WhereEver.ClassLibrary
             catch
             {
                 //不正な値が入力された場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return null;
             }
 
@@ -516,6 +554,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -588,6 +628,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -630,12 +672,16 @@ namespace WhereEver.ClassLibrary
                 if (dt.Count >= 1)
                 {
                     //中身あり
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return dt;
 
                 }
                 else
                 {
                     //中身なし
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return null;
                 }
 
@@ -643,6 +689,8 @@ namespace WhereEver.ClassLibrary
             catch
             {
                 //不正な値が入力された場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return null;
             }
 
@@ -722,6 +770,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -813,6 +863,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -854,12 +906,16 @@ namespace WhereEver.ClassLibrary
                 if (dt.Count >= 1)
                 {
                     //中身あり
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return dt;
 
                 }
                 else
                 {
                     //中身なし
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return null;
                 }
 
@@ -867,6 +923,8 @@ namespace WhereEver.ClassLibrary
             catch
             {
                 //不正な値が入力された場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return null;
             }
 
@@ -946,6 +1004,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -1036,6 +1096,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -1090,6 +1152,8 @@ namespace WhereEver.ClassLibrary
             catch
             {
                 //不正な値が入力された場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return null;
             }
 
@@ -1166,6 +1230,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -1244,6 +1310,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }

@@ -48,18 +48,24 @@ namespace WhereEver.ClassLibrary
                 if (dt.Count >= 1)
                 {
                     //ファイルあり
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return dt[0];
 
                 }
                 else
                 {
                     //ファイルなし
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return null;
                 }
             }
             catch
             {
                 //不正な処理
+                // データベースの接続終了
+                sqlConnection.Close();
                 return null;
             }
 
@@ -80,35 +86,53 @@ namespace WhereEver.ClassLibrary
         /// <returns>bool</returns>
         public static bool DeleteT_FileShareRow(SqlConnection sqlConnection, string id, string FileName)
         {
+
+            //sql接続開始
+            sqlConnection.Open();
+
+            //Sql Commandを作成します。
+            SqlCommand command = sqlConnection.CreateCommand();
+
+            //Must assign both transaction object and connection
+            //to Command object for apending local transaction
+            command.Connection = sqlConnection;
+
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
 
             //パラメータを取得
-            da.SelectCommand.Parameters.AddWithValue("@id", id);
-            da.SelectCommand.Parameters.AddWithValue("@FileName", FileName);
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@FileName", FileName);
 
-            da.SelectCommand.CommandText =
-                "DELETE FROM T_FileShare WHERE id = LTRIM(RTRIM(@id)) AND FileName = LTRIM(RTRIM(@FileName))";
+            command.CommandText =
+                "DELETE FROM [T_FileShare] WHERE [id] = LTRIM(RTRIM(@id)) AND [FileName] = LTRIM(RTRIM(@FileName))";
 
             //特定のDataTableをインスタンス化
-            DATASET.DataSet.T_FileShareDataTable dt = new DATASET.DataSet.T_FileShareDataTable();
+            //DATASET.DataSet.T_FileShareDataTable dt = new DATASET.DataSet.T_FileShareDataTable();
 
             try
             {
                 //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
-                da.Fill(dt);
-                if (dt.Count == 0)
+                if (command.ExecuteNonQuery() > 0)
                 {
+                    // データベースの接続終了
+                    sqlConnection.Close();
+                    return true;
+                }
+                else
+                {
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return false;
                 }
-                return true;
 
             }
             catch
             {
                 //不正な値が入力された場合やidが誤っている場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
                 return false;
             }
-
         }
         //------------------------------------------------------------------------------------------------------------
 
@@ -261,6 +285,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return result;
 
         }

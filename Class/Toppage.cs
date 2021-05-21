@@ -64,6 +64,8 @@ namespace WhereEver.Class
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -90,18 +92,24 @@ namespace WhereEver.Class
                 if (dt.Count >= 1)
                 {
                     //ファイルあり
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return dt[0];
 
                 }
                 else
                 {
                     //ファイルなし
+                    // データベースの接続終了
+                    sqlConnection.Close();
                     return null;
                 }
             }
             catch
             {
                 //不正な処理
+                // データベースの接続終了
+                sqlConnection.Close();
                 return null;
             }
 
