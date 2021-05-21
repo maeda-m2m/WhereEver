@@ -89,7 +89,6 @@ namespace WhereEver.Project_System
 
         protected void DgPIchiran_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
-            TextBox txtPid = (TextBox)e.Item.Cells[0].Controls[0];
             TextBox txtPname = (TextBox)e.Item.Cells[1].Controls[0];
             TextBox txtPcustomer = (TextBox)e.Item.Cells[2].Controls[0];
             TextBox txtPresponsible = (TextBox)e.Item.Cells[3].Controls[0];
@@ -97,7 +96,7 @@ namespace WhereEver.Project_System
             TextBox txtPstartTime = (TextBox)e.Item.Cells[5].Controls[0];
             TextBox txtPoverTime = (TextBox)e.Item.Cells[6].Controls[0];
 
-            string Pid = txtPid.Text;
+            string Pid = e.Item.Cells[0].Text;
             string Pname = txtPname.Text;
             string Pcustomer = txtPcustomer.Text;
             string Presponsible = txtPresponsible.Text;
