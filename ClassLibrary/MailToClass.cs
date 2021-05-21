@@ -116,8 +116,8 @@ namespace WhereEver.ClassLibrary
                     //SMTPサーバー ホスト名 mailSecOptはデフォルトでAutoのため省略可能
                     //await client.Connect(@mail, port, mailSecOpt);
 
-                    client.Connect("mail.m2m-asp.com", 587);  //debug用
-                    //client.Connect("192.168.2.156", 25);    //公開用
+                    //client.Connect("mail.m2m-asp.com", 587);  //debug用
+                    client.Connect("192.168.2.156", 25);    //公開用
 
                     //ユーザー認証　※SMTPサーバがユーザー認証を必要としない場合、client.Authenticateは不要
                     //string userName = @"abcdef";
