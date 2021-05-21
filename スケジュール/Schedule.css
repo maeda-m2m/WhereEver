@@ -37,6 +37,8 @@
     color: white;
 }
 
+
+
 .CheckBoxList_Left {
     text-align: left;
 }
@@ -47,14 +49,19 @@
 }
 
 .Schedule_1 {
-   
     background-color: #000000;
-    
 }
 
 .Center_cs {
     background-color: #16ba00;
     color: white;
+    margin: auto;
+    text-align: center;
+}
+
+.Center_cs_Color {
+    background-color: #00008B;
+    color: red;
     margin: auto;
     text-align: center;
 }
