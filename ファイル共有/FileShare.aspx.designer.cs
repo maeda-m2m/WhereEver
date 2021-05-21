@@ -132,6 +132,42 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button_Download;
 
         /// <summary>
+        /// RadioButton_Streaming_8000 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton_Streaming_8000;
+
+        /// <summary>
+        /// RadioButton_Streaming_20000 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton_Streaming_20000;
+
+        /// <summary>
+        /// RadioButton_Streaming_30000 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton_Streaming_30000;
+
+        /// <summary>
+        /// RadioButton_Streaming_40000 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton_Streaming_40000;
+
+        /// <summary>
         /// Button_DataBind コントロール。
         /// </summary>
         /// <remarks>
