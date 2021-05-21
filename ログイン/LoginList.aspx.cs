@@ -163,5 +163,20 @@ namespace WhereEver
             Panel_EditTop.Visible = false;
             TextBox_EditTop.Text = "";
         }
+
+        protected void btnReformTopDel_Click(object sender, EventArgs e)
+        {
+            TextBox_EditTop.Text = "";
+        }
+
+        protected void btnReformTopReload_Click(object sender, EventArgs e)
+        {
+            //再読み込み
+            DATASET.DataSet.T_TopPageRow dr = Class.Toppage.GetT_TopPage(Global.GetConnection());
+            if (dr != null)
+            {
+                TextBox_EditTop.Text = dr.TopPage;
+            }
+        }
     }
 }

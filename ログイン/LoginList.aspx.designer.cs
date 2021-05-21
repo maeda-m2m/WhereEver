@@ -87,6 +87,24 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button_ReformTopEnd;
 
         /// <summary>
+        /// Button_ReformDelete コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_ReformDelete;
+
+        /// <summary>
+        /// Button_ReformReload コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_ReformReload;
+
+        /// <summary>
         /// btnOut コントロール。
         /// </summary>
         /// <remarks>

@@ -52,11 +52,16 @@
                       <span class="hr"></span>
                        <a name="edittop"><p class="index1"> ◆お知らせ編集（&lt;br /&gt;タグのみ使用できます）</p></a>
                         <div class="article">
-                           
-                    <asp:TextBox ID="TextBox_EditTop" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="300" Height="100px" Width="1160px" Style="resize: none" Text="" placeholder="トップページに書く内容　300字以内" CausesValidation="false"></asp:TextBox>
+                           <p>文字数制限なし　最新情報を日付とともにいちばん上に書くことを推奨</p>
+                    <asp:TextBox ID="TextBox_EditTop" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" Height="100px" Width="1160px" Style="resize: none" Text="" placeholder="トップページに書く内容　文字数無制限" CausesValidation="false"></asp:TextBox>
                         </div>
 
-                    <div class="center"><asp:Button ID="Button_ReformTop" runat="server" CssClass="btn_loginlist" Text="更新" OnClick="btnReformTop_Click" /><asp:Button ID="Button_ReformTopEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformTopEnd_Click" /></div>
+                    <div class="center">
+                        <asp:Button ID="Button_ReformTop" runat="server" CssClass="btn_loginlist" Text="更新" OnClick="btnReformTop_Click" />
+                        <asp:Button ID="Button_ReformTopEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformTopEnd_Click" />
+                        <asp:Button ID="Button_ReformDelete" runat="server" CssClass="btn_loginlist" Text="全消去" OnClick="btnReformTopDel_Click" PostBackUrl="#edittop" />
+                        <asp:Button ID="Button_ReformReload" runat="server" CssClass="btn_loginlist" Text="全取り消し" OnClick="btnReformTopReload_Click" PostBackUrl="#edittop" />
+                    </div>
 
                    </div><%-- Edit --%>
                   </asp:Panel>
