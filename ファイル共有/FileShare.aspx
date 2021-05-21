@@ -31,7 +31,7 @@
       
 
            <p>
-            <asp:Label ID="lblResult" runat="server" Text="ファイルをアップロードできます。ファイル名はUUIDに自動変換されます。4MBまでアップロードできます。"></asp:Label>
+            <asp:Label ID="lblResult" runat="server" Text="ファイルをアップロードできます。ファイル名はUUIDに自動変換されます。40MBまでアップロードできます。"></asp:Label>
            </p>
 
            <p class ="form-flat-border">

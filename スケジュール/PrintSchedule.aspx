@@ -369,18 +369,18 @@
             background-color: #272727;
             color: white;
             text-align: center;
-            width: 130px;
+            width: 150px;
         }
         .auto-style7 {
-            width: 130px;
+            width: 150px;
             height: 10px;
         }
         .auto-style8 {
-            width: 130px;
+            width: 150px;
         }
         .auto-style9 {
             border-bottom: 3px double #bababa;
-            width: 130px;
+            width: 150px;
         }
         .auto-style10 {
             text-align: center;
@@ -413,6 +413,20 @@
             width:50%;
         }
 
+        .auto-style13 {
+            background-color: #272727;
+            color: white;
+            text-align: center;
+            width: 50px;
+        }
+        .auto-style14 {
+            width: 50px;
+        }
+        .auto-style15 {
+            border-bottom: 3px double #bababa;
+            width: 50px;
+        }
+
     </style>
 </head>
 <body>
@@ -429,7 +443,7 @@
                 <td class="auto-style10">
                     <p>曜日</p>
                 </td>
-                <td class="aa">
+                <td class="auto-style13">
                     <p>時間</p>
                 </td>
                 <td class="auto-style1">
@@ -457,7 +471,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -468,7 +482,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label9" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -479,7 +493,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Label12" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -496,7 +510,7 @@
                 <td rowspan="4" class="auto-style11">
                     <asp:Label ID="Label16" runat="server" Text="火"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label17" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -507,7 +521,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label20" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -518,7 +532,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label23" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -529,7 +543,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Label26" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -546,7 +560,7 @@
                 <td rowspan="4" class="auto-style11">
                     <asp:Label ID="Label30" runat="server" Text="水"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label31" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -557,7 +571,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label34" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -568,7 +582,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label37" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -579,7 +593,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Label40" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -596,7 +610,7 @@
                 <td rowspan="4" class="auto-style11">
                     <asp:Label ID="Label44" runat="server" Text="木"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label45" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -607,7 +621,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label48" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -618,7 +632,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label51" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -629,7 +643,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Label54" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -646,7 +660,7 @@
                 <td rowspan="4" class="auto-style11">
                     <asp:Label ID="Label58" runat="server" Text="金"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label59" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -657,7 +671,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label62" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -668,7 +682,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label65" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -679,7 +693,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Label68" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -696,7 +710,7 @@
                 <td rowspan="4" class="auto-style12">
                     <asp:Label ID="Labelsat2" runat="server" Text="土"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsat3" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -707,7 +721,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsat6" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -718,7 +732,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsat9" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -729,7 +743,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Labelsat12" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -746,7 +760,7 @@
                 <td rowspan="4" class="auto-style12">
                     <asp:Label ID="Labelsun2" runat="server" Text="日"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsun3" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -757,7 +771,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsun6" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -768,7 +782,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsun9" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -779,7 +793,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Labelsun12" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -797,7 +811,7 @@
                 <td rowspan="4" class="auto-style11">
                     <asp:Label ID="Label100" runat="server" Text="月"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label101" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -808,7 +822,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label104" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -819,7 +833,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label107" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -830,7 +844,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Label110" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -847,7 +861,7 @@
                 <td rowspan="4" class="auto-style11">
                     <asp:Label ID="Label114" runat="server" Text="火"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label115" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -858,7 +872,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label118" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -869,7 +883,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label121" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -880,7 +894,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Label124" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -897,7 +911,7 @@
                 <td rowspan="4" class="auto-style11">
                     <asp:Label ID="Label128" runat="server" Text="水"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label129" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -908,7 +922,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label132" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -919,7 +933,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label135" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -930,7 +944,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Label138" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -947,7 +961,7 @@
                 <td rowspan="4" class="auto-style11">
                     <asp:Label ID="Label142" runat="server" Text="木"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label143" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -958,7 +972,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label146" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -969,7 +983,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label149" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -980,7 +994,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Label152" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -997,7 +1011,7 @@
                 <td rowspan="4" class="auto-style11">
                     <asp:Label ID="Label156" runat="server" Text="金"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label157" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -1008,7 +1022,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label160" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -1019,7 +1033,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Label163" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -1030,7 +1044,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Label166" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -1047,7 +1061,7 @@
                 <td rowspan="4" class="auto-style12">
                     <asp:Label ID="Labelsat16" runat="server" Text="土"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsat17" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -1058,7 +1072,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsat20" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -1069,7 +1083,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsat23" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -1080,7 +1094,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Labelsat26" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
@@ -1097,7 +1111,7 @@
                 <td rowspan="4" class="auto-style12">
                     <asp:Label ID="Labelsun16" runat="server" Text="日"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsun17" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -1108,7 +1122,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsun20" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -1119,7 +1133,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style14">
                     <asp:Label ID="Labelsun23" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style3">
@@ -1130,7 +1144,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="under">
+                <td class="auto-style15">
                     <asp:Label ID="Labelsun26" runat="server" Text=""></asp:Label>
                 </td>
                 <td class="auto-style4">
