@@ -116,17 +116,87 @@ namespace WhereEver
                     //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
 
                     //バイトを取得します。
-                    Byte[] aryData = new Byte[FileUpload_userfile.PostedFile.ContentLength];
+                    byte[] aryData = new Byte[FileUpload_userfile.PostedFile.ContentLength];
                     FileUpload_userfile.PostedFile.InputStream.Read(aryData, 0, FileUpload_userfile.PostedFile.ContentLength);
                     //MIMEタイプを取得します。
                     string type = FileUpload_userfile.PostedFile.ContentType;
 
+                    //-----------------------------------
+                    //バイトを分割します。
+                    byte[] bsSource = aryData;
+                    //分割回数
+                    int cutcount = 0;
+
+                    //for (int i = 0; i < bsSource.Length; i++)
+                    //{
+                    //    bsSource[i] = (byte)(i & 0xff);
+                    //}
+
+                    //一度にロードするデータバイト長
+                    int separatesize = LoadByteLength();
+
+                    //宣言と初期化
+                    int remain = bsSource.Length;
+                    int position = 0;
+                    int split = 0;
+
+                    //配列リストを宣言と初期化
+                    List<byte[]> list = new List<byte[]>();
+
+                    while (remain > 0)
+                    {
+                        //定数byteごとに分割 xが真ならばaを返し、偽ならばbを返す三項演算子だと、split = remain < 240 ? remain : 240;
+                        if (remain < separatesize)
+                        {
+                            split = remain;
+                        }
+                        else
+                        {
+                            split = separatesize;
+                        }
+                        remain -= split;
+                        cutcount += 1;
+
+                        //配列リストに分割した配列を加算　途中で送信失敗しても再開できる（ようにするための仮実装）
+                        byte[] bs = new byte[split];
+                        Array.Copy(bsSource, position, bs, 0, split);
+                        list.Add(bs);
+
+                        //切り出し位置をずらす
+                        position += split;
+                    }
+
+                    //return list;
+
+                    //-----------------------------------
+
+                    //宣言と初期化　初回のみtrue Insert
+                    bool b = true;
+                    for(int i = 0; i < list.Count; i++)
+                    {
+                        //データベースにファイルを保存します。
+                        byte[] smallbyte = list[i];
+                        if (!FileShareClass.SetT_FileShareInsert(Global.GetConnection(), userid, username, fileName, title, pass, type, smallbyte, b))
+                        {
+                            lblResult.Text = "アップロードに失敗しました。";
+                            return;
+                        }
+
+                        //Updateに変更
+                        b = false;
+                    }
+                    //-----------------------------------
+
+
+
+                    /*
                     //データベースにファイルを保存します。
-                    if (!FileShareClass.SetT_FileShareInsert(Global.GetConnection(), userid, username, fileName, title, pass, type, aryData))
+                    if (!FileShareClass.SetT_FileShareInsert(Global.GetConnection(), userid, username, fileName, title, pass, type, aryData, true))
                     {
                         lblResult.Text = "アップロードに失敗しました。ファイル容量等を見直して下さい。";
                         return;
                     }
+                    */
 
                     lblResult.Text = "アップロードファイルを保存しました！";
 
@@ -151,6 +221,34 @@ namespace WhereEver
         }
 
 
+        /// <summary>
+        /// 一度にロードするデータバイト長設定をロードします。
+        /// </summary>
+        /// <returns></returns>
+        protected int LoadByteLength()
+        {
+            //一度にロードするデータバイト長
+            int length = 8000;
+
+            if (RadioButton_Streaming_8000.Checked)
+            {
+                length = 8000;
+            }
+            else if (RadioButton_Streaming_20000.Checked)
+            {
+                length = 2000;
+            }
+            else if (RadioButton_Streaming_30000.Checked)
+            {
+                length = 30000;
+            }
+            else if (RadioButton_Streaming_40000.Checked)
+            {
+                length = 40000;
+            }
+
+            return length;
+        }
 
         protected void Button_DownLoad(object sender, EventArgs e)
         {
@@ -205,8 +303,45 @@ namespace WhereEver
                 }
                 */
 
-                DATASET.DataSet.T_FileShareRow dr = FileShareClass.GetT_FileShareRow(Global.GetConnection(), TextBox_dl.Text, pass);
-                if (dr != null)
+                //一度にロードするデータバイト長
+                int length = LoadByteLength();
+
+                //初期化
+                byte[] allbyte = new Byte[0];
+                string type = "";
+
+                //無限ループ
+                for (int i = 0; i < int.MaxValue; i++)
+                {
+                    int startindex = 1 + (length * i); //1からはじまる長さ
+                    DATASET.DataSet.T_FileShareRow dr = FileShareClass.GetT_FileShareRow(Global.GetConnection(), TextBox_dl.Text, pass, startindex, length);
+                    if (dr != null)
+                    {
+                        if (i == 0)
+                        {
+                            //初回はタイプ取得
+                            type = @dr.type;
+                        }
+
+                        //取得した一部データの残りの長さを取得
+                        if (dr.datum.Length <= 0)
+                        {
+                            //終了
+                            break;
+                        }
+
+                        //配列allbyteの末尾にコピー
+                        allbyte = allbyte.Concat(dr.datum).ToArray();   //LINQ .NET Framework 3.5以上
+                        //Array.Copy(dr.datum, 0, allbyte, startindex, rlength);    //旧式　この場合は新しい配列を作って拡張して配列に代入し、最後にまとめてコピーしないとダメ
+                    }
+                    else
+                    {
+                        //終了
+                        break;
+                    }
+                }
+
+                if (allbyte.Length > 0)
                 {
 
                     // HTTPレスポンスのヘッダ＆エンティティのクリア（初期化）
@@ -220,10 +355,10 @@ namespace WhereEver
                     Response.AppendHeader("Content-Disposition", "attachment; filename=" + TextBox_dl.Text);
 
                     // MIME Typeを取得
-                    Response.ContentType = (string)@dr.type;
+                    Response.ContentType = @type;
 
                     // ダウンロード実行 binary HTMLページと一緒にロードされる
-                    Response.BinaryWrite((Byte[])dr.datum);
+                    Response.BinaryWrite((Byte[])allbyte);
 
                     // ダウンロード実行　その2　ストリームに書き出し　やることは同じ
                     //this.Response.OutputStream.Write((Byte[])dr.datum, 0, ((Byte[])dr.datum).Length);
@@ -242,14 +377,14 @@ namespace WhereEver
                     //Response.Endはシステムのパフォーマンスに悪影響を与えるため、Response.SuppressContent = true;かashxを使用する。
                     Response.Flush();
                     Response.SuppressContent = true;    //必ずResponse.Flush();の後！                   
-
                 }
                 else
                 {
                     //ファイルが存在しません。
                     lblDLResult.Text = "指定したファイルが存在しません。あるいは、パスワードが誤っています。";
-                    return;
                 }
+
+
 
                 /*
                 //Response情報クリア

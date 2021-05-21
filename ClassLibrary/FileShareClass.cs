@@ -15,21 +15,27 @@ namespace WhereEver.ClassLibrary
 
         /// <summary>
         /// 共有ファイルをロードします。uuidと拡張子で構成されたFileNameとpassを入力して下さい。
+        /// countは1～数えます。lengthは一度にロードするbyte数です。
         /// </summary>
         /// <param name="sqlConnection"></param>
         /// <param name="FileName"></param>
         /// <param name="pass"></param>
-        /// <returns></returns>
-        public static DATASET.DataSet.T_FileShareRow GetT_FileShareRow(SqlConnection sqlConnection, string FileName, string pass)
+        /// <param name="count">処理は何回目か？</param>
+        /// <param name="length"></param>
+        /// <returns>DATASET.DataSet.T_FileShareRow</returns>
+        public static DATASET.DataSet.T_FileShareRow GetT_FileShareRow(SqlConnection sqlConnection, string FileName, string pass ,int count,int length)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
 
             //パラメータを取得
             da.SelectCommand.Parameters.AddWithValue("@FileName", FileName);
             da.SelectCommand.Parameters.AddWithValue("@pass", pass);
+            da.SelectCommand.Parameters.AddWithValue("@count", count);
+            da.SelectCommand.Parameters.AddWithValue("@length", length);
 
+            //少しずつロード
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_FileShare WHERE [FileName] = LTRIM(RTRIM(@FileName)) AND [Password] = LTRIM(RTRIM(@pass))";
+                "SELECT [id], [userName], [FileName], [Title], [Password], [Ispass], [type], [datum]=SUBSTRING(CAST([datum] AS varbinary(max)),@count,@length), [size], [DateTime] FROM [T_FileShare] WHERE [FileName] = LTRIM(RTRIM(@FileName)) AND [Password] = LTRIM(RTRIM(@pass)) ORDER BY [DateTime] DESC";
 
             //特定のDataTableをインスタンス化
             DATASET.DataSet.T_FileShareDataTable dt = new DATASET.DataSet.T_FileShareDataTable();
@@ -106,14 +112,22 @@ namespace WhereEver.ClassLibrary
         }
         //------------------------------------------------------------------------------------------------------------
 
+
+
         /// <summary>
-        /// FileShareテーブルにインサートします。
+        /// FileShareテーブルにインサートやアップデートを実行します。
         /// </summary>
         /// <param name="sqlConnection"></param>
         /// <param name="id">主キー１：Session変数に保存されているUserIDです。</param>
+        /// <param name="username">ユーザーの漢字名です。</param>
         /// <param name="filename">主キー２：uuidによって構成されたファイルネームです。拡張子まで含まれています。</param>
-        /// <param name="filepath">ファイルパスです。</param>
-        public static bool SetT_FileShareInsert(SqlConnection sqlConnection, string id, string username, string filename, string title, string pass, string type, byte[] datum)
+        /// <param name="title">ファイルに付属するタイトルないしコメントです。</param>
+        /// <param name="pass">ファイルのパスワードです。空でも可。</param>
+        /// <param name="type">ファイルのMIMEタイプです。</param>
+        /// <param name="datum">データバイト配列です。</param>
+        /// <param name="isinsert">trueでInsert、falseでUpdateします。初回は必ずtrueで実行してください。ストリーミング型で転送するときは２回目以降falseに設定してください。</param>
+        /// <returns></returns>
+        public static bool SetT_FileShareInsert(SqlConnection sqlConnection, string id, string username, string filename, string title, string pass, string type, byte[] datum, bool isinsert)
         {
 
             //結果の宣言と定義
@@ -196,18 +210,28 @@ namespace WhereEver.ClassLibrary
                 //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
                 //-------------------------------------------------------------------------------------------------------------------
                 command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 100, "id")).Value = id;
-                command.Parameters.Add(new SqlParameter("@userName", System.Data.SqlDbType.NVarChar, 50, "userName")).Value = username;
                 command.Parameters.Add(new SqlParameter("@FileName", System.Data.SqlDbType.NVarChar, 100, "FileName")).Value = filename;
-                command.Parameters.Add(new SqlParameter("@Title", System.Data.SqlDbType.NVarChar, 100, "Title")).Value = title;
-                command.Parameters.Add(new SqlParameter("@Password", System.Data.SqlDbType.NVarChar, 100, "Password")).Value = pass;
-                command.Parameters.Add(new SqlParameter("@type", System.Data.SqlDbType.NVarChar, 50, "type")).Value = type;
                 command.Parameters.Add(new SqlParameter("@datum", System.Data.SqlDbType.VarBinary, -1, "datum")).Value = datum;
-                command.Parameters.Add(new SqlParameter("@DateTime", System.Data.SqlDbType.DateTime, 8, "DateTime")).Value = date;
-                command.Parameters.Add(new SqlParameter("@size", System.Data.SqlDbType.NVarChar, 50, "size")).Value = printFileSize;
-                command.Parameters.Add(new SqlParameter("@IsPass", System.Data.SqlDbType.Char, 2, "IsPass")).Value = ispass;
 
-                //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
-                command.CommandText = "INSERT INTO T_FileShare([id], [userName], [filename], [title], [Password], [type], [datum], [DateTime], [size], [IsPass]) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@userName)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), CAST(@datum AS varbinary(max)), LTRIM(RTRIM(@DateTime)), LTRIM(RTRIM(@size)), LTRIM(RTRIM(@IsPass)))";
+                if (isinsert)
+                {
+                    //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
+                    //-------------------------------------------------------------------------------------------------------------------
+                    command.Parameters.Add(new SqlParameter("@userName", System.Data.SqlDbType.NVarChar, 50, "userName")).Value = username;
+                    command.Parameters.Add(new SqlParameter("@Title", System.Data.SqlDbType.NVarChar, 100, "Title")).Value = title;
+                    command.Parameters.Add(new SqlParameter("@Password", System.Data.SqlDbType.NVarChar, 100, "Password")).Value = pass;
+                    command.Parameters.Add(new SqlParameter("@type", System.Data.SqlDbType.NVarChar, 50, "type")).Value = type;
+                    command.Parameters.Add(new SqlParameter("@DateTime", System.Data.SqlDbType.DateTime, 8, "DateTime")).Value = date;
+                    command.Parameters.Add(new SqlParameter("@size", System.Data.SqlDbType.NVarChar, 50, "size")).Value = printFileSize;
+                    command.Parameters.Add(new SqlParameter("@IsPass", System.Data.SqlDbType.Char, 2, "IsPass")).Value = ispass;
+                    //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
+                    command.CommandText = "INSERT INTO T_FileShare([id], [userName], [filename], [title], [Password], [type], [datum], [DateTime], [size], [IsPass]) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@userName)), LTRIM(RTRIM(@FileName)), LTRIM(RTRIM(@Title)), LTRIM(RTRIM(@Password)), LTRIM(RTRIM(@type)), CAST(@datum AS varbinary(max)), LTRIM(RTRIM(@DateTime)), LTRIM(RTRIM(@size)), LTRIM(RTRIM(@IsPass)))";
+                }
+                else
+                {
+                    //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
+                    command.CommandText = "UPDATE [T_FileShare] SET [datum] += CAST(@datum AS varbinary(max)) WHERE id = LTRIM(RTRIM(@id)) AND FileName = LTRIM(RTRIM(@FileName))";
+                }
 
                 //ストリーミング型のときは下記のようにByteを追加すると実装できそう
                 //UPDATE TOP (1) [T_FileShare] SET datum += (0x00);

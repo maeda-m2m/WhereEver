@@ -31,7 +31,7 @@
       
 
            <p>
-            <asp:Label ID="lblResult" runat="server" Text="ファイルをアップロードできます。ファイル名はUUIDに自動変換されます。40MBまでアップロードできます。"></asp:Label>
+            <asp:Label ID="lblResult" runat="server" Text="ファイルをアップロードできます。ファイル名はUUIDに自動変換されます。タイムアウトしない限り、容量無制限でストリーミングアップロードできます。"></asp:Label>
            </p>
 
            <p class ="form-flat-border">
@@ -47,7 +47,7 @@
            <%-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// --%>
 
            <p>
-            <asp:Label ID="lblDLResult" runat="server" Text="ファイルをダウンロードできます。拡張子を忘れずにつけて下さい。"></asp:Label>
+            <asp:Label ID="lblDLResult" runat="server" Text="ファイルをストリーミングダウンロードできます。拡張子を忘れずにつけて下さい。"></asp:Label>
            </p>
 
            <%--
@@ -91,8 +91,19 @@
 
            <hr />
 
+            <p class ="form-flat-border">
+                [一度の転送量]　<asp:RadioButton ID="RadioButton_Streaming_8000" runat="server" GroupName="Streaming" Checked="true" Text="8000Byte" /><asp:RadioButton ID="RadioButton_Streaming_20000" runat="server" GroupName="Streaming" Checked="false" Text="20000Byte" /><asp:RadioButton ID="RadioButton_Streaming_30000" runat="server" GroupName="Streaming" Checked="false" Text="30000Byte" /><asp:RadioButton ID="RadioButton_Streaming_40000" runat="server" GroupName="Streaming" Checked="false" Text="40000Byte" />　※ファイルサイズに応じて使い分けて下さい。
+            </p>
+
+           <hr />
+
            <p>～共有ファイル一覧～</p>
-           <p><asp:Button ID="Button_DataBind" runat="server" Text="一覧更新" OnClick="Push_DataBind" CssClass="btn-flat-border" /></p>
+
+           <div class ="btn-wrap">
+               <p><asp:Button ID="Button_DataBind" runat="server" Text="一覧更新" OnClick="Push_DataBind" CssClass="btn-flat-border" /></p>
+           </div>
+
+           <hr />
 
            <div>
               <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,FileName" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowCommand="grid_RowCommand" AllowPaging="True" AllowSorting="True">
@@ -133,6 +144,8 @@
            <p>
             <asp:Label ID="lbluid" runat="server" Text="null" Visible="False"></asp:Label>
            </p>
+
+           <hr />
 
         </div>
     </form>
