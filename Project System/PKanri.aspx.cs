@@ -355,16 +355,16 @@ namespace WhereEver.Project_System
                             cell.Height = 50;
                             cell.BorderWidth = 3;
                             cell.BorderColor = Color.Black;
-                            cell.Controls.Add(new LiteralControl(ar[i].Month+ "月"+ Environment.NewLine + "0" + ar[i].Day));
+                            cell.Controls.Add(new LiteralControl("<font size = 1px>" + ar[i].Month+ "月"+ Environment.NewLine + "0" + ar[i].Day));
                         }
                         else
                         {
-                            cell.Controls.Add(new LiteralControl("0" + ar[i].Day.ToString()));
+                            cell.Controls.Add(new LiteralControl("<font size = 1px>" +"0"+ ar[i].Day.ToString()));
                         }
                     }
                     else
                     {
-                        cell.Controls.Add(new LiteralControl(ar[i].Day.ToString()));//ヘッダー
+                        cell.Controls.Add(new LiteralControl("<font size = 1px>" + ar[i].Day.ToString()));//ヘッダー
                     }
                     e.Item.Cells.Add(cell);
                 }

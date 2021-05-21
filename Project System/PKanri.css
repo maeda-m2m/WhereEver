@@ -8,27 +8,6 @@
     text-align: center;
     font-weight: bold;
 }
-.btn {
-    width: 200px;
-    height: 40px;
-    position: relative;
-    display: inline-block;
-    font-weight: bold;
-    padding: 0.3em 0.5em;
-    text-decoration: none;
-    color: #000000;
-    background: #ECECEC;
-    transition: .4s;
-    font-size: 1em;
-}
-
-    .btn:hover {
-        background: #000000;
-        color: white;
-    }
-.table {
-    width: 100%;
-}
 .txt {
     width: 200px;
     height: 25px;
@@ -36,9 +15,18 @@
 .btn-wbs {
     text-align: right;
 }
-.wbs {
-    width: 100%
-}
 .lblMonth {
     white-space: pre;
+}
+.xxx {
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: black;
+    color: white;
+}
+.table{
+    width:100%;
+}
+.DgPKanri {
+    border-block-color: black;
 }
