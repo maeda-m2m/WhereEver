@@ -53,7 +53,7 @@ namespace WhereEver.Project_System
                 e.Item.Cells[3].Text = dr.Presponsible.ToString();
                 e.Item.Cells[4].Text = dr.Pcategory.ToString();
                 e.Item.Cells[5].Text = dr.Pstarttime.ToShortDateString();
-                if (dr.Povertime.ToString() == "0001/01/01 0:00:00")
+                if (dr.Povertime == DateTime.Parse("2100/01/01 00:00:00"))
                 {
                     e.Item.Cells[6].Text = "未定";
                 }
