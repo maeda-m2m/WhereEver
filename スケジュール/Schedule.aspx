@@ -233,6 +233,24 @@
                         </ItemTemplate>
                     </asp:TemplateColumn>
 
+                    <asp:TemplateColumn HeaderText="土" ItemStyle-Width="100px">
+                        <HeaderStyle Wrap="true" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemTemplate>
+                            <asp:Label ID="Saturday" runat="server" Text=""></asp:Label>
+                            
+                        </ItemTemplate>
+                    </asp:TemplateColumn>
+
+                    <asp:TemplateColumn HeaderText="日" ItemStyle-Width="100px">
+                        <HeaderStyle Wrap="true" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemTemplate>
+                            <asp:Label ID="Sunday" runat="server" Text=""></asp:Label>
+                            
+                        </ItemTemplate>
+                    </asp:TemplateColumn>
+
                 </Columns>
 
 

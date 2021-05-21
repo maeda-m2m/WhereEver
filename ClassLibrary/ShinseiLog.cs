@@ -174,7 +174,9 @@ namespace WhereEver.ClassLibrary
                 }
 
             } //sqlConnection.Close();
-
+           
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -238,6 +240,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -516,6 +520,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -588,6 +594,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -722,6 +730,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -813,6 +823,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -946,6 +958,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -1036,6 +1050,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -1166,6 +1182,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
@@ -1244,6 +1262,8 @@ namespace WhereEver.ClassLibrary
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }

@@ -99,6 +99,30 @@ namespace WhereEver
                 }
 
 
+                //-----------------------------------------------------
+                DropDownList_A_Time.Items.Clear();
+                DropDownList_B_Time.Items.Clear();
+                for (int i = 0; i <= 23; i++)
+                {
+                    for (int i2 = 0; i2 <= 59; i2++)
+                    {
+                        StringBuilder item = new StringBuilder();
+                        item.Append(i);
+                        item.Append(":");
+                        if (i2 < 10)
+                        {
+                            item.Append("0");
+                        }
+                        item.Append(i2);
+                        DropDownList_A_Time.Items.Add(item.ToString());
+                        DropDownList_B_Time.Items.Add(item.ToString());
+                    }
+
+                }
+                DropDownList_A_Time.SelectedValue = "9:00";
+                DropDownList_B_Time.SelectedValue = "9:00";
+                //-----------------------------------------------------
+
             }//!IsPostBack
 
             topchange();
@@ -2047,5 +2071,103 @@ namespace WhereEver
         }
 
 
+        //--------------------------------------------------------------------------------------------
+        // Master Button
+        //--------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// 物品購入申請
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Push_Master_A(object sender, EventArgs e)
+        {
+                //初期選択パネル
+                Panel1.Visible = true;
+                //物品購入申請書パネル
+                Panel2.Visible = true;
+                //勤怠パネル
+                Panel3.Visible = false;
+                //物品購入申請書印刷フォーム
+                Panel4.Visible = false;
+                //勤怠届印刷フォーム
+                Panel5.Visible = false;
+                //立替金明細表申請パネル
+                Panel6.Visible = false;
+                //立替金明細表印刷フォーム
+                Panel7.Visible = false;
+                //印刷ボタンパネル
+                Panel_Print.Visible = false;
+
+                name1.Text = "氏名：" + SessionManager.User.M_User.name1;
+
+                DateTime dt = DateTime.Now;
+                date.Text = dt.ToShortDateString();
+                //ChangeValidate(true);
+        }
+
+        /// <summary>
+        /// 勤怠関連申請
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Push_Master_B(object sender, EventArgs e)
+        {
+            //初期選択パネル
+            Panel1.Visible = true;
+            //物品購入申請書パネル
+            Panel2.Visible = false;
+            //勤怠パネル
+            Panel3.Visible = true;
+            //物品購入申請書印刷フォーム
+            Panel4.Visible = false;
+            //勤怠届印刷フォーム
+            Panel5.Visible = false;
+            //立替金明細表申請パネル
+            Panel6.Visible = false;
+            //立替金明細表印刷フォーム
+            Panel7.Visible = false;
+            //印刷ボタンパネル
+            Panel_Print.Visible = false;
+
+            name1.Text = "氏名：" + SessionManager.User.M_User.name1;
+
+            DateTime dt = DateTime.Now;
+            date.Text = dt.ToShortDateString();
+            //ChangeValidate(true);
+
+        }
+
+        /// <summary>
+        /// 立替金明細表申請
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Push_Master_C(object sender, EventArgs e)
+        {
+            //初期選択パネル
+            Panel1.Visible = true;
+            //物品購入申請書パネル
+            Panel2.Visible = false;
+            //勤怠パネル
+            Panel3.Visible = false;
+            //物品購入申請書印刷フォーム
+            Panel4.Visible = false;
+            //勤怠届印刷フォーム
+            Panel5.Visible = false;
+            //立替金明細表申請パネル
+            Panel6.Visible = true;
+            //立替金明細表印刷フォーム
+            Panel7.Visible = true;
+            //印刷ボタンパネル
+            Panel_Print.Visible = true;
+
+            name1.Text = SessionManager.User.M_User.name1;
+
+            DateTime dt = DateTime.Now;
+            date.Text = dt.ToShortDateString();
+            //ChangeValidate(true);
+
+        }
     }
 }
