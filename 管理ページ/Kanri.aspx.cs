@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text;
+using static System.Web.HttpUtility;
 
 namespace WhereEver.管理ページ
 {
@@ -51,5 +53,52 @@ namespace WhereEver.管理ページ
             }
             return;
         }
+
+
+        //-----------------------------------------------------------------------------------
+
+        //メール送信システム
+
+        protected void btnEditTop_Click(object sender, EventArgs e)
+        {
+            DATASET.DataSet.T_TopPageRow dr = Class.Toppage.GetT_TopPage(Global.GetConnection());
+            if (dr != null)
+            {
+                TextBox_EditTop.Text = dr.TopPage;
+            }
+        }
+
+        protected void btnReformTop_Click(object sender, EventArgs e)
+        {
+            //sql更新 ※全部Nullだと更新できません。DBのDateTimeには何か値を入れておいて下さい。
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(HtmlEncode(TextBox_EditTop.Text));
+            //"<br />"タグのみ許可
+            sb.Replace("&lt;br /&gt;", "<br />");
+
+            if(ClassLibrary.MailToClass.MailTo(HtmlEncode(TextBox_MailTo.Text), HtmlEncode(TextBox_CC.Text), HtmlEncode(TextBox_BCC.Text), sb.ToString()))
+            {
+                //送信成功
+                Label_MailTo_Result.Text = @"メールの送信に成功しました。";
+            }
+            else
+            {
+                //送信失敗
+                Label_MailTo_Result.Text = @"メールの送信に失敗しました。";
+            }
+
+        }
+
+        protected void btnReformTopDel_Click(object sender, EventArgs e)
+        {
+            TextBox_EditTop.Text = "";
+        }
+
+        //-----------------------------------------------------------------------------------
+
+
+
+
     }
 }

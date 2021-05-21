@@ -27,6 +27,7 @@
             </table>
 
         <div id="Wrap">
+          <span class="hr"></span>
            <p>ユーザー情報を変更できます。</p>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowUpdated="grid_RowUpdatedCommand" OnRowCommand="grid_RowCommand">
                 <Columns>
@@ -72,6 +73,32 @@
            <p>
             <asp:Label ID="lblResult" runat="server" Text="null" Visible="False"></asp:Label>
            </p>
+
+                  <div id="Edit">
+                      <span class="hr"></span>
+                       <a name="edittop"><p class="index1"> ◆メール送信システム（&lt;br /&gt;タグのみ使用できます）</p></a>
+                        <div class="article">
+                           <p>文字数制限なし　仮実装のため送信できません</p>
+                    [To:]<br />
+                    <asp:TextBox ID="TextBox_MailTo" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="xxxxxx@m2m-asp.com" CausesValidation="false"></asp:TextBox><br />
+                    [CC:]<br />
+                    <asp:TextBox ID="TextBox_CC" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="xxxxxx@m2m-asp.com　省略可" CausesValidation="false"></asp:TextBox><br />
+                    [BCC:]<br />
+                    <asp:TextBox ID="TextBox_BCC" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="xxxxxx@m2m-asp.com　省略可" CausesValidation="false"></asp:TextBox><br />
+                    [本文]<br />
+                    <asp:TextBox ID="TextBox_EditTop" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" Height="100px" Width="1160px" Style="resize: none" Text="" placeholder="メール本文　文字数無制限" CausesValidation="false"></asp:TextBox>
+
+                                                 <p><asp:Label ID="Label_MailTo_Result" runat="server" Text="Ready..."></asp:Label></p>
+
+                        </div>
+
+                    <div class="center">
+                        <asp:Button ID="Button_ReformTop" runat="server" CssClass="btn_loginlist" Text="送信" OnClick="btnReformTop_Click" />
+                        <asp:Button ID="Button_ReformDelete" runat="server" CssClass="btn_loginlist" Text="全消去" OnClick="btnReformTopDel_Click" PostBackUrl="#edittop" />
+                    </div>
+                  </div>
+
+
 
         </div><%-- Wrap --%>
 

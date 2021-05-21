@@ -29,6 +29,53 @@
     margin-bottom: 100px;
 }
 
+.hr {
+    display: block;
+    height: 0;
+    width: auto;
+    margin: 0.5em 0;
+    border: 1px inset;
+    border-color: red;
+}
+
+#Edit {
+    width: 1230px;
+    height: 34em;
+    margin-right: 50px;
+    margin-top: 1.85em;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.article {
+    margin-left: 2em;
+}
+
+.center {
+    width: 1230px;
+    margin-top: 1.85em;
+    text-align: center;
+}
+
+.btn_loginlist {
+    width: 200px;
+    height: 40px;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.3em 0.5em;
+    text-decoration: none;
+    color: white;
+    background: #1e1e1e;
+    transition: .4s;
+    font-size: 1em;
+}
+
+    .btn_loginlist:hover {
+        background: #808080;
+        cursor: pointer;
+    }
+
 .DGTable {
     margin-left: 10px;
     margin-right: 10px;
