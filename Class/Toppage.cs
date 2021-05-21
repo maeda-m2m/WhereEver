@@ -64,6 +64,8 @@ namespace WhereEver.Class
 
             } //sqlConnection.Close();
 
+            // データベースの接続終了
+            sqlConnection.Close();
             return;
 
         }
