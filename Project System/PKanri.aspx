@@ -8,12 +8,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link href="PKanri.css" type="text/css" rel="stylesheet" />
+    <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
     <title>プロジェクト管理(WBS)</title>
     
 </head>
 <body>
     <form id="form1" runat="server">
-         <div>
+         <div id ="Wrap">
             <table>
                 <tr class="All">
                     <td>
@@ -22,7 +23,7 @@
                 </tr>
             </table>
         </div>
-        <div class="wbs">
+        <div class="xxx">
             <table class="table">
                 <tr>
                     <td colspan="3">
@@ -104,8 +105,7 @@
                             OnCancelCommand="DgPKanri_CancelCommand"
                             OnUpdateCommand="DgPKanri_UpdateCommand"
                             OnItemCommand="DgPKanri_ItemCommand"
-                            Width="100%"
-                            ItemStyle-CssClass="item">
+                            Width="100%" CssClass="DgPKanri">
                             <Columns>
                                 <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ReadOnly="True"/>
                                 <asp:BoundColumn DataField="PMiddleid" HeaderText="中項目ID" ReadOnly="True"/>
@@ -116,8 +116,8 @@
                                 <asp:BoundColumn DataField="PTorokutime" HeaderText="最新編集日付" ReadOnly="True"/>
                                 <asp:BoundColumn DataField="PTorokusya" HeaderText="最新編集者" ReadOnly="True"/>
                                 
-                                <asp:EditCommandColumn EditText="変更" CancelText="cancel" UpdateText="update" ItemStyle-Width="10%" ></asp:EditCommandColumn>
-                                <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
+                                <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>キャンセル" UpdateText="<font color = red>保存" ItemStyle-Width="10%" ></asp:EditCommandColumn>
+                                <asp:ButtonColumn ButtonType="LinkButton" Text="<font color = red>削除" CommandName="Delete"/>
                             </Columns>
                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10%"/>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"/>
@@ -127,7 +127,7 @@
             </table>
         </div>
 
-        <div class="wbs">
+        <div>
 
             <asp:DataGrid ID="wbs" runat="server" 
                 AutoGenerateColumns="False"
