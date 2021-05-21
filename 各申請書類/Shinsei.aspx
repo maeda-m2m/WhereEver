@@ -124,8 +124,14 @@
                             <td class="title">
                                 申請書類                             
                             </td>
+                            <td>
+                                <a name="master"></a>
+                                <asp:Button ID="Button_Master_A" CssClass="btn-flat-border" runat="server" Text="物品購入" OnClick="Push_Master_A" CausesValidation="False" PostBackUrl="#master" />
+                                <asp:Button ID="Button_Master_B" CssClass="btn-flat-border" runat="server" Text="勤怠関連" OnClick="Push_Master_B" CausesValidation="False" PostBackUrl="#master" />
+                                <asp:Button ID="Button_Master_C" CssClass="btn-flat-border" runat="server" Text="立替金明細表" OnClick="Push_Master_C" CausesValidation="False" PostBackUrl="#master" />
+                            </td>
                             <td class="text">
-                                <asp:DropDownList ID="DropDownList1" runat="server" OnTextChanged="DropDownList_Master_SelectionChanged" AutoPostBack="True" CausesValidation="False" >
+                                <asp:DropDownList ID="DropDownList1" runat="server" OnTextChanged="DropDownList_Master_SelectionChanged" AutoPostBack="True" CausesValidation="False" Visible="false" >
                                     <asp:ListItem>【申請書類を選択】</asp:ListItem>
                                     <asp:ListItem>物品購入申請</asp:ListItem>
                                     <asp:ListItem>勤怠関連申請</asp:ListItem>
@@ -133,7 +139,7 @@
                                 </asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Button ID="Button_Master" CssClass="btn-flat-border" runat="server" Text="申請" OnClick="DropDownList_Master_SelectionChanged" CausesValidation="False" />
+                                <asp:Button ID="Button_Master" CssClass="btn-flat-border" runat="server" Text="申請" OnClick="DropDownList_Master_SelectionChanged" CausesValidation="False" Visible="false" />
                             </td>
                     </tr>
                 </table>
@@ -274,7 +280,6 @@
                                             <asp:ListItem>9:00</asp:ListItem>
                                             <asp:ListItem>9:30</asp:ListItem>
                                             <asp:ListItem>10:00</asp:ListItem>
-                                            <asp:ListItem>10:00</asp:ListItem>
                                             <asp:ListItem>10:30</asp:ListItem>
                                             <asp:ListItem>11:00</asp:ListItem>
                                             <asp:ListItem>11:30</asp:ListItem>
@@ -307,7 +312,6 @@
                                         <asp:DropDownList ID="DropDownList_B_Time" runat="server" OnTextChanged="DropDownList_B_Time_SelectionChanged">
                                             <asp:ListItem>9:00</asp:ListItem>
                                             <asp:ListItem>9:30</asp:ListItem>
-                                            <asp:ListItem>10:00</asp:ListItem>
                                             <asp:ListItem>10:00</asp:ListItem>
                                             <asp:ListItem>10:30</asp:ListItem>
                                             <asp:ListItem>11:00</asp:ListItem>
