@@ -30,16 +30,6 @@ namespace WhereEver
             }
             DATASET.DataSet.T_ChatDataTable cdt = Class.Chat.NewHensin(Global.GetConnection(), time);
 
-            //test
-            if (ch != null)
-            {
-                Class.Chat_CH.SetT_Chat_CHUpdate(Global.GetConnection(), SessionManager.User.M_User.id);
-            }
-            else
-            {
-                Class.Chat_CH.SetT_Chat_CHInsert(Global.GetConnection(), SessionManager.User.M_User.id);
-            }
-
             if (cdt != null)
             {
                 lblHensin.Text = Environment.NewLine+"<font color = red>*";

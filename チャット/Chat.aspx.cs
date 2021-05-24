@@ -30,6 +30,18 @@ namespace WhereEver
             }
             Label2.Text = "";
 
+
+            //返信通知
+            DATASET.DataSet.T_Chat_CHRow ch = Chat_CH.GetT_Chat_CH(Global.GetConnection(), SessionManager.User.M_User.id);
+            if (ch != null)
+            {
+                Chat_CH.SetT_Chat_CHUpdate(Global.GetConnection(), SessionManager.User.M_User.id);
+            }
+            else
+            {
+                Chat_CH.SetT_Chat_CHInsert(Global.GetConnection(), SessionManager.User.M_User.id);
+            }
+
         }
 
         private void Create()
