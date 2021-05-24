@@ -60,6 +60,15 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.TextBox txtNewPName;
 
         /// <summary>
+        /// rfvProject コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProject;
+
+        /// <summary>
         /// lblNewCustomer コントロール。
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace WhereEver.Project_System
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNewCustomer;
+
+        /// <summary>
+        /// rfvNewCustomer コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNewCustomer;
 
         /// <summary>
         /// lblNewResponsible コントロール。
@@ -96,6 +114,15 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.DropDownList ddlResponsible;
 
         /// <summary>
+        /// rfvResponsible コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvResponsible;
+
+        /// <summary>
         /// lblNewCategory コントロール。
         /// </summary>
         /// <remarks>
@@ -112,6 +139,15 @@ namespace WhereEver.Project_System
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNewCategory;
+
+        /// <summary>
+        /// rfvCategory コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCategory;
 
         /// <summary>
         /// lblNewStartTime コントロール。
@@ -168,6 +204,15 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Calendar Calendar2;
 
         /// <summary>
+        /// ValidationSummary1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+
+        /// <summary>
         /// btnNewP コントロール。
         /// </summary>
         /// <remarks>
@@ -175,15 +220,6 @@ namespace WhereEver.Project_System
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNewP;
-
-        /// <summary>
-        /// lblAisatu コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAisatu;
 
         /// <summary>
         /// btnClear コントロール。

@@ -221,7 +221,7 @@
                             <p>備考</p>
                         </td>
                             <td class="text">
-                                <asp:TextBox ID="TextBox_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内" Text="なし"></asp:TextBox>
+                                <asp:TextBox ID="TextBox_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内" Text=""></asp:TextBox>
                             </td>
                     </tr>
                     <tr>
@@ -354,7 +354,7 @@
                             <p>備考</p>
                         </td>
                         <td class="text">
-                           <asp:TextBox ID="TextBox_Notification_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内" Text="なし"></asp:TextBox>
+                           <asp:TextBox ID="TextBox_Notification_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内" Text=""></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -400,13 +400,13 @@
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>出張先*</p>
+                            <p>出張先</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_WPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：m2m　出張していない場合は「なし」" Text="なし"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_WPlace" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：株式会社エム・ツー・エム" Text=""></asp:TextBox>
                         </td>
                         <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_WPlace"></asp:RequiredFieldValidator>
+                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_WPlace"></asp:RequiredFieldValidator> --%>
                         </td>
                     </tr>
 
@@ -435,25 +435,25 @@
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>乗車駅*</p>
+                            <p>乗車駅</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_TIn" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：西新宿駅　ない場合は「なし」" Text="なし"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_TIn" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：西新宿駅" Text=""></asp:TextBox>
                         </td>
                         <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TIn"></asp:RequiredFieldValidator>
+                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TIn"></asp:RequiredFieldValidator> --%>
                         </td>
 
                     </tr>
                     <tr>
                         <td class="title">
-                            <p>降車駅*</p>
+                            <p>降車駅</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_TOut" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：西新宿駅　ない場合は「なし」" Text="なし"></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_TOut" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" placeholder="例：西新宿駅" Text=""></asp:TextBox>
                         </td>
                         <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TOut"></asp:RequiredFieldValidator>
+                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_TOut"></asp:RequiredFieldValidator> --%>
                         </td>
                     </tr>
                     <tr>
@@ -470,13 +470,13 @@
 
                     <tr>
                         <td class="title">
-                            <p>宿泊場所*</p>
+                            <p>宿泊場所</p>
                         </td>
                         <td class="text">
-                            <asp:TextBox ID="TextBox_Tatekae_Place" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="なし" placeholder="例：〇〇宿　ない場合は「なし」" ></asp:TextBox>
+                            <asp:TextBox ID="TextBox_Tatekae_Place" runat="server" CssClass="textbox" Width="415px" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" placeholder="例：〇〇宿" ></asp:TextBox>
                         </td>
                         <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_Place"></asp:RequiredFieldValidator>
+                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="※必須入力です" ForeColor="Red" ControlToValidate="TextBox_Tatekae_Place"></asp:RequiredFieldValidator> --%>
                         </td>
                     </tr>
                     <tr>
@@ -511,7 +511,7 @@
                             <p>備考</p>
                         </td>
                             <td class="text">
-                                <asp:TextBox ID="TextBox_Tatekae_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内" Text="なし"></asp:TextBox>
+                                <asp:TextBox ID="TextBox_Tatekae_ps" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" MaxLength="196" Height="100px" Width="415px" Style="resize: none" ToolTip="全角306文字以内" Text=""></asp:TextBox>
                             </td>
                     </tr>
 

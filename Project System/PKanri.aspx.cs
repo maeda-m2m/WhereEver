@@ -207,7 +207,7 @@ namespace WhereEver.Project_System
                             t_PdbKanriRow.PMiddleid = 1;
                             t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
                             t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
-                            t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01 00:00:00");
+                            t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01");
                             t_PdbKanriRow.PTorokutime = DateTime.Now;
                             t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
                             t_PdbKanriRow.Pid = SessionManager.project.PdbRow.Pid;
@@ -220,7 +220,7 @@ namespace WhereEver.Project_System
                             t_PdbKanriRow.PMiddleid = t_PdbKanriRow1.PMiddleid + 1;
                             t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
                             t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
-                            t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01 00:00:00");
+                            t_PdbKanriRow.PMiddleover = DateTime.Parse("2100/01/01");
                             t_PdbKanriRow.PTorokutime = DateTime.Now;
                             t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
                             t_PdbKanriRow.Pid = SessionManager.project.PdbRow.Pid;

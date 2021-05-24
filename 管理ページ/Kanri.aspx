@@ -74,24 +74,24 @@
             <asp:Label ID="lblResult" runat="server" Text="null" Visible="False"></asp:Label>
            </p>
 
-                      <span class="hr"></span>
-
+            
                   <div id="Edit">
-                       <a name="edittop"><p class="index1"> ◆メール送信システム（HTMLタグは使用できません。空白と改行は反映されます）</p></a>
+                      <span class="hr"></span>
+                       <a name="edittop"><p class="index1"> ◆メール送信システム</p></a>
                         <div class="article">
-                           <p>文字数制限なし</p>
+                           <p>本文の文字数制限なし（HTMLタグは使用できません。空白と改行は反映されます）</p>
                     [To:]<br />
-                    <asp:TextBox ID="TextBox_MailTo" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="xxxxxx@m2m-asp.com　入力必須" CausesValidation="false"></asp:TextBox><br />
+                    <asp:TextBox ID="TextBox_MailTo" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="100%" Style="resize: none" Text="" placeholder="xxxxxx@m2m-asp.com　入力必須" CausesValidation="false"></asp:TextBox><br />
                     [CC:]<br />
-                    <asp:TextBox ID="TextBox_CC" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="xxxxxx@m2m-asp.com　省略可" CausesValidation="false"></asp:TextBox><br />
+                    <asp:TextBox ID="TextBox_CC" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="100%" Style="resize: none" Text="" placeholder="xxxxxx@m2m-asp.com　省略可" CausesValidation="false"></asp:TextBox><br />
                     [BCC:]<br />
-                    <asp:TextBox ID="TextBox_BCC" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="xxxxxx@m2m-asp.com　省略可" CausesValidation="false"></asp:TextBox><br />
+                    <asp:TextBox ID="TextBox_BCC" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="100%" Style="resize: none" Text="" placeholder="xxxxxx@m2m-asp.com　省略可" CausesValidation="false"></asp:TextBox><br />
                     [件名:]<br />
-                    <asp:TextBox ID="TextBox_Title" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="件名　入力推奨" CausesValidation="false"></asp:TextBox><br />
+                    <asp:TextBox ID="TextBox_Title" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="100%" Style="resize: none" Text="" placeholder="件名　入力推奨" CausesValidation="false"></asp:TextBox><br />
                     [本文]<br />
-                    <asp:TextBox ID="TextBox_EditTop" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" Height="100px" Width="1160px" Style="resize: none" Text="" placeholder="メール本文　文字数無制限　空入力可" CausesValidation="false"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_EditTop" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" Height="300px" Width="100%" Style="resize: none" Text="" placeholder="メール本文　文字数無制限　空入力可" CausesValidation="false"></asp:TextBox>
                     [SMTP]<br />
-                            <asp:DropDownList ID="DropDownList_SMTP" runat="server" AutoPostBack="true">
+                            <asp:DropDownList ID="DropDownList_SMTP" runat="server" AutoPostBack="true" Width="50%">
                                 <asp:ListItem>mail.m2m-asp.com</asp:ListItem>
                                 <asp:ListItem>192.168.2.156</asp:ListItem>
                                 <asp:ListItem>手動</asp:ListItem>
@@ -99,13 +99,13 @@
 
                     <asp:Panel ID="Panel_UserSMTP" runat="server" Visible="false">
                     [SMTP HOST]<br />
-                    <asp:TextBox ID="TextBox_Host" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="SMTP HOST" CausesValidation="false"></asp:TextBox><br />
+                    <asp:TextBox ID="TextBox_Host" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="50%" Style="resize: none" Text="" placeholder="SMTP HOST" CausesValidation="false"></asp:TextBox><br />
                     [SMTP PORT]<br />
-                    <asp:TextBox ID="TextBox_Port" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="SMTP Port" CausesValidation="false" TextMode="Number"></asp:TextBox><br />
+                    <asp:TextBox ID="TextBox_Port" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="50%" Style="resize: none" Text="" placeholder="SMTP Port" CausesValidation="false" TextMode="Number"></asp:TextBox><br />
                     [ユーザー名（ユーザー認証）]<br />
-                    <asp:TextBox ID="TextBox_UserName" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="任意" CausesValidation="false"></asp:TextBox><br />
+                    <asp:TextBox ID="TextBox_UserName" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="50%" Style="resize: none" Text="" placeholder="任意" CausesValidation="false"></asp:TextBox><br />
                     [パスワード（ユーザー認証）]<br />
-                    <asp:TextBox ID="TextBox_UserPass" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="400px" Style="resize: none" Text="" placeholder="任意" CausesValidation="false"></asp:TextBox><br />
+                    <asp:TextBox ID="TextBox_UserPass" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" Height="16px" Width="50%" Style="resize: none" Text="" placeholder="任意" CausesValidation="false"></asp:TextBox><br />
                     </asp:Panel>
                             <asp:CheckBox ID="CheckBox_Annonimas" runat="server" Text="匿名" />
 
