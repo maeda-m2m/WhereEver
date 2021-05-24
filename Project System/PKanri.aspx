@@ -105,7 +105,7 @@
                             OnCancelCommand="DgPKanri_CancelCommand"
                             OnUpdateCommand="DgPKanri_UpdateCommand"
                             OnItemCommand="DgPKanri_ItemCommand"
-                            Width="100%" CssClass="DgPKanri">
+                            Width="100%" CssClass="DgPKanri" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False">
                             <Columns>
                                 <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ReadOnly="True"/>
                                 <asp:BoundColumn DataField="PMiddleid" HeaderText="中項目ID" ReadOnly="True"/>
@@ -116,7 +116,9 @@
                                 <asp:BoundColumn DataField="PTorokutime" HeaderText="最新編集日付" ReadOnly="True"/>
                                 <asp:BoundColumn DataField="PTorokusya" HeaderText="最新編集者" ReadOnly="True"/>
                                 
-                                <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>キャンセル" UpdateText="<font color = red>保存" ItemStyle-Width="10%" ></asp:EditCommandColumn>
+                                <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>キャンセル" UpdateText="<font color = red>保存" ItemStyle-Width="10%" >
+<ItemStyle Width="10%"></ItemStyle>
+                                </asp:EditCommandColumn>
                                 <asp:ButtonColumn ButtonType="LinkButton" Text="<font color = red>削除" CommandName="Delete"/>
                             </Columns>
                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10%"/>
