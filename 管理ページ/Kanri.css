@@ -39,18 +39,23 @@
 }
 
 #Edit {
-    width: 1230px;
+    width: 100%;
     height: auto;
     margin-right: 50px;
     margin-top: 1.85em;
     padding-bottom: 2em;
-    background-color: #1e1e1e;
+    background-color: black;
     color: white;
 }
 
 .article {
-    margin-left: 2em;
+    background-color: #1e1e1e;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-left: 20em;
     display: inline-block;
+    border: solid 1px;
+    border-color: red;
 }
 
 .center {
