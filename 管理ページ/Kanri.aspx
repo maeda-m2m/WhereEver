@@ -74,8 +74,9 @@
             <asp:Label ID="lblResult" runat="server" Text="null" Visible="False"></asp:Label>
            </p>
 
-                  <div id="Edit">
                       <span class="hr"></span>
+
+                  <div id="Edit">
                        <a name="edittop"><p class="index1"> ◆メール送信システム（HTMLタグは使用できません。空白と改行は反映されます）</p></a>
                         <div class="article">
                            <p>文字数制限なし</p>
