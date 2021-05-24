@@ -82,9 +82,9 @@
             <div id ="chatbox">
                 <p>
                  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                 <asp:TextBox ID="TextBox1" runat="server" Width="180px"></asp:TextBox>
+                 <asp:TextBox ID="TextBox1" runat="server" Width="250px"></asp:TextBox>
                  &nbsp;&nbsp;<asp:Label ID="lblHenshin" runat="server" Text="返信モード"></asp:Label>
-                    &nbsp;<asp:TextBox ID="txtHenshin" runat="server"></asp:TextBox>
+                    &nbsp;<asp:TextBox ID="txtHenshin" runat="server" Width="250px"></asp:TextBox>
                  <asp:Button ID="Send" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="Send_Click" />
                  <asp:Button ID="btnHenshin" runat="server" Text="⤴" CssClass="btn-flat-border" OnClick="btnHenshin_Click" />
                     <asp:Label ID="Label2" runat="server" Text="" ForeColor="Red" ></asp:Label>
