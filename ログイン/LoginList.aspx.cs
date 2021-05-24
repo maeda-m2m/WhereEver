@@ -80,10 +80,11 @@ namespace WhereEver
             {
                 if (dr.TopPage != "")
                 {
-                @sb.Append(dr.TopPage);
-                @sb.Append("<br />");
-                @sb.Append("最終更新：");
-                @sb.Append(dr.DateTime);
+                    @sb.Append(dr.TopPage);
+                    @sb.Replace("<li>", "<li type=\"circle\">");
+                    @sb.Append("<br />");
+                    @sb.Append("最終更新：");
+                    @sb.Append(dr.DateTime);
                 }
                 else
                 {
@@ -153,8 +154,14 @@ namespace WhereEver
 
             StringBuilder sb = new StringBuilder();
             sb.Append(HtmlEncode(TextBox_EditTop.Text));
-            //"<br />"タグのみ許可
+            //一部タグのみ許可
             sb.Replace("&lt;br /&gt;", "<br />");
+            sb.Replace("&lt;p&gt;", "<p>");
+            sb.Replace("&lt;/p&gt;", "</p>");
+            sb.Replace("&lt;ol&gt;", "<ol>");
+            sb.Replace("&lt;/ol&gt;", "</ol>");
+            sb.Replace("&lt;li&gt;", "<li>");
+            sb.Replace("&lt;/li&gt;", "</li>");
             Class.Toppage.SetT_TopPageUpdate(Global.GetConnection(), sb.ToString());
             //リダイレクト
             this.Response.Redirect("LoginList.aspx", false);
