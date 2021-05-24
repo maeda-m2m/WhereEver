@@ -55,8 +55,11 @@ namespace WhereEver
                     }
                     if (!dts[i].IsNull(@"name"))
                     {
-                        @sb.Append(@"　担当：");
-                        @sb.Append(dts[i].name);
+                        if(dts[i].name != "")
+                        {
+                            @sb.Append(@"　担当：");
+                            @sb.Append(dts[i].name);
+                        }
                     }
 
                     @sb.Append("<br />");
