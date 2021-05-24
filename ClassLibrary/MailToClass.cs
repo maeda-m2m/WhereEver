@@ -23,12 +23,6 @@ namespace WhereEver.ClassLibrary
         public static bool MailTo(string @email, string @cc, string @bcc, string @title, string @str, string @smtphost, int port, string @user, string @pass, int @usersmtp, bool annonimas)
         {
 
-
-#if DEBUG
-            //test専用
-            email = "koibuchi@m2m-asp.com";
-#endif
-
             //Trim
             @email = @email.Trim();
             @cc = @cc.Trim();
