@@ -105,13 +105,13 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
-        /// Calendar10 コントロール。
+        /// TextBox2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Calendar10;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
 
         /// <summary>
         /// DropDownList1 コントロール。

@@ -38,7 +38,7 @@ namespace WhereEver
                 //Panel3、検索
                 //panel4、検索メニュー
 
-                //TextBox1,3,5 used
+                //TextBox1,2,3,5 used
 
 
             }
@@ -737,7 +737,7 @@ namespace WhereEver
 
             string t = DropDownList1.SelectedValue;
 
-            string f = (Calendar10.Value) + " " + (DropDownList1.SelectedValue);
+            string f = TextBox2.Text + " " + DropDownList1.SelectedValue;
 
             DateTime dd = DateTime.Parse(f);
 
