@@ -27,14 +27,22 @@ namespace WhereEver.Class
             da.Fill(dt);
             return dt;
         }
-        internal static DATASET.DataSet.T_ChatDataTable NewHensin(SqlConnection sqlConnection,string time)
+        internal static DATASET.DataSet.T_ChatDataTable NewHensin(SqlConnection sqlConnection, DateTime time)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText = "select * from T_Chat where Date > @DateTime";
+            da.SelectCommand.CommandText = "SELECT * FROM [T_Chat] WHERE CONVERT(DateTime, [Date]) > CONVERT(DateTime ,@DateTime)";
             da.SelectCommand.Parameters.AddWithValue("@DateTime", time);
             DATASET.DataSet.T_ChatDataTable dt = new DataSet.T_ChatDataTable();
             da.Fill(dt);
-            return dt;
+            if(dt.Count > 0)
+            {
+                return dt;
+            }
+            else
+            {
+                return null;
+            }
+
         }
         internal static DATASET.DataSet.T_ChatDataTable GetChatDataTable(SqlConnection sqlConnection)
         {
