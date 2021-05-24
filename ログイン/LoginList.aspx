@@ -80,7 +80,7 @@
             <table class="bg_test-text">
                     <tr>
                         <td><asp:Button ID="btnOut" runat="server" CssClass="btn_loginlist" Text="ログアウト" OnClick="btnOut_Click" /></td>
-                        <td><asp:Button ID="btnKanri" runat="server" CssClass="btn_loginlist" Text="ユーザー情報変更" OnClick="btnKanri_Click" /></td>
+                        <td><asp:Button ID="btnKanri" runat="server" CssClass="btn_loginlist" Text="マイページ" OnClick="btnKanri_Click" /></td>
                     </tr>
 
                     <tr>

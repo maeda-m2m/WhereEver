@@ -24,8 +24,10 @@
     <tr>
         <td class="All">
             <asp:Image ID="Image1" runat="server" ImageUrl="~/ログイン/m2m-logo.png"/>
+        </td>
             <td>
                 <h1>WhereEver</h1>
+            </td>
                 <td>
                     <a href="~/ログイン/LoginList.aspx" class="btn" runat="server">トップページ</a>
                 </td>
@@ -46,7 +48,7 @@
                     <a href="~/Project System/PIchiran.aspx" class="btn" runat="server">プロジェクト</a>
                </td>
                <td>
-                    <a href="~/管理ページ/Kanri.aspx" class="btn" runat="server">ユーザー情報変更</a>
+                    <a href="~/管理ページ/Kanri.aspx" class="btn" runat="server">マイページ</a>
                </td>
                <td>
                     <asp:Label ID="Label1" CssClass="label" runat="server" Text="Label"></asp:Label>

@@ -20,15 +20,21 @@ namespace WhereEver.ClassLibrary
         /// <param name="email"></param>
         /// <param name="str">本文</param>
         /// <returns></returns>
-        public static bool MailTo(string email, string cc, string bcc, string str)
+        public static bool MailTo(string @email, string @cc, string @bcc, string @title, string @str, string @smtphost, int port, string @user, string @pass, int @usersmtp, bool annonimas)
         {
 
-            //Trim
-            email = email.Trim();
-            cc = cc.Trim();
-            bcc = bcc.Trim();
 
-            if (email == null || email == "")
+#if DEBUG
+            //test専用
+            email = "koibuchi@m2m-asp.com";
+#endif
+
+            //Trim
+            @email = @email.Trim();
+            @cc = @cc.Trim();
+            @bcc = @bcc.Trim();
+
+            if (@email == null || @email == "")
             {
                 //mailの中身なし
                 return false;
@@ -39,16 +45,55 @@ namespace WhereEver.ClassLibrary
             //件名と本文の設定
             //--------------------------------------------------------------------------------------------
             //
-            String sub = "NO TITLE";
+
+            // MimeMessageを作り、宛先やタイトルなどを設定する
+            MimeKit.MimeMessage message = new MimeKit.MimeMessage();
+
+            //p1: 名前（一覧に表示）  p2: メールアドレス（架空でもOK）
+            //匿名希望
+            string fromname = "Annonimas";
+            if (!annonimas)
+            {
+                fromname = HtmlEncode(SessionManager.User.M_User.name1.Trim());
+            }
+            message.From.Add(new MimeKit.MailboxAddress(@fromname, @"m2m-PortalServer@m2m-asp.com"));   //Test thnderbirdは暗号化されたパスワード認証
+
+            // 左が@送り先名、右が@メールアドレス
+            message.To.Add(new MimeKit.MailboxAddress(@email, @email));
+
+            if (cc != null && cc != "")
+            {
+                message.Cc.Add(new MimeKit.MailboxAddress(@cc, @cc));
+            }
+            if (bcc != null && bcc != "")
+            {
+                message.Bcc.Add(new MimeKit.MailboxAddress(@bcc, @bcc));
+            }
+
+
+            //件名とタイトルを入力
+            string @sub = @"NO_SUBJECT";
+            if (@title != "" && @title != null)
+            {
+                @sub = @title;
+            }
+            message.Subject = @sub;
+
+
+            //--------------------------------------------------------------------------------------------
+
+
             StringBuilder sb = new StringBuilder();
             StringBuilder sb2 = new StringBuilder();
             sb.Append(@"<html><body>");
 
-            // タイトルを入力
-            sub = @"m2mポータルからのお知らせ";
-            sb.Append(@"<h1>m2mポータルからのお知らせです。</h1>");
+            sb.Append(@"<h1>");
+            sb.Append(@sub);
+            sb.Append(@"</h1>");
             // 内容を入力
+            sb.Append(@"<div><pre>");
             sb.Append(@str);
+            sb.Append(@"</pre></div>");
 
             //\r\nで改行ができる。フォーマット方式の設定によってはhtml形式でも記述可能。
 
@@ -62,36 +107,14 @@ namespace WhereEver.ClassLibrary
             sb.Append(@"</p>");
             //-------------------
             sb.Append(@"<p>");
-            sb.Append(@"このメールはサーバーからの自動送信です。返信することはできません。");
+            sb.Append(@"このメールはサーバーを媒介した送信あるいは自動送信です。返信することはできません。");
             sb.Append(@"</p>");
             //-------------------
             sb.Append(@"</body></html>");
             //-------------------
-            String mes = sb.ToString();
+            string mes = sb.ToString();           
             //--------------------------------------------------------------------------------------------
 
-
-            // MimeMessageを作り、宛先やタイトルなどを設定する
-            MimeKit.MimeMessage message = new MimeKit.MimeMessage();
-
-            //p1: 名前（一覧に表示）  p2: メールアドレス（架空でもOK）
-            message.From.Add(new MimeKit.MailboxAddress(@"m2mPortal@m2m-asp.com", @"m2mPortal@m2m-asp.com"));   //Test thnderbirdは暗号化されたパスワード認証
-
-            // 左が@送り先名、右が@メールアドレス
-            message.To.Add(new MimeKit.MailboxAddress("テスト", @email));
-
-            if (cc != null || cc != "")
-            {
-                message.Cc.Add(new MimeKit.MailboxAddress("テストCC", @cc));
-            }
-            if (bcc != null || bcc != "")
-            {
-                message.Bcc.Add(new MimeKit.MailboxAddress("テストBCC", @bcc));
-            }
-
-
-            //件名を入力
-            message.Subject = @sub;
 
             // 本文を入力
             MimeKit.TextPart textPart = new MimeKit.TextPart(MimeKit.Text.TextFormat.Html);    //Plainなら平文 HtmlならHtml文
@@ -114,21 +137,39 @@ namespace WhereEver.ClassLibrary
                 try
                 {
                     //SMTPサーバー ホスト名 mailSecOptはデフォルトでAutoのため省略可能
-                    //await client.Connect(@mail, port, mailSecOpt);
+                    //client.Connect(@mail, port, mailSecOpt);
+                    //--------------------------------------------------------------
 
-                    //client.Connect("mail.m2m-asp.com", 587);  //debug用
-                    client.Connect("192.168.2.156", 25);    //公開用
+                    if (usersmtp == 1)
+                    {
+                        client.Connect("mail.m2m-asp.com", 587);  //debug用
+                    }
+                    else if (usersmtp == 2)
+                    {
+                        client.Connect("192.168.2.156", 25);    //公開用（サーバーが異なるため、このホスト名だとつながらない？）
+                    }
+                    else if (usersmtp == 3)
+                    {
+                        client.Connect(@smtphost, port);    //手動
+                    }
+                    //--------------------------------------------------------------
 
-                    //ユーザー認証　※SMTPサーバがユーザー認証を必要としない場合、client.Authenticateは不要
-                    //string userName = @"abcdef";
-                    //string password = @"123456";
-                    //client.Authenticate(@userName, @password);
+                    if (usersmtp == 3)
+                    {
+                        //ユーザー認証　※SMTPサーバがユーザー認証を必要としない場合、client.Authenticateは不要
+                        //いずれかが入力されていれば適用
+                        if (user != "" || pass != "")
+                        {
+                            string userName = @user;
+                            string password = @pass;
+                            client.Authenticate(@userName, @password);
+                        }
+                    }
 
                     //SMTPサーバーにメッセージを送信
                     client.Send(@message);
 
                     //切断
-                    //await client.DisconnectAsync(true);
                     client.Disconnect(true);
                 }
                 catch
