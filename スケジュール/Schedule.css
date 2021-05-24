@@ -48,9 +48,7 @@
     justify-content: center;
 }
 
-.Schedule_1 {
-    background-color: #000000;
-}
+
 
 .Center_cs {
     background-color: #16ba00;
@@ -60,8 +58,34 @@
 }
 
 .Center_cs_Color {
-    background-color: #00008B;
-    color: red;
+    border-color: #3f48cc;
+    border-width: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+.Center_cs_Color_Top {
+    border-color: #3f48cc;
+    border-width: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+.Center_cs_Color_Bottom {
+    border-color: #3f48cc;
+    border-width: 10px;
+    border-block-end-color: #3f48cc;
+    /*  border-bottom-width: 10px;
+    border-bottom-color: #3f48cc;*/
+    margin: auto;
+    text-align: center;
+}
+
+.Center_cs_Color_Date {
+    border-color: #3f48cc;
+    border-width: 10px;
+    background-color: #16ba00;
+    color: white;
     margin: auto;
     text-align: center;
 }

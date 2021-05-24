@@ -50,7 +50,7 @@
 
                     <div id="Edit">
                       <span class="hr"></span>
-                       <a name="edittop"><p class="index1"> ◆お知らせ編集（&lt;br /&gt;タグのみ使用できます）</p></a>
+                       <a name="edittop"><p class="index1"> ◆お知らせ編集（&lt;br /&gt;&lt;p&gt;&lt;/p&gt;&lt;ol&gt;&lt;/ol&gt;&lt;li&gt;&lt;/li&gt;タグを使用できます）</p></a>
                         <div class="article">
                            <p>文字数制限なし　最新情報を日付とともにいちばん上に書くことを推奨</p>
                     <asp:TextBox ID="TextBox_EditTop" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" Height="100px" Width="1160px" Style="resize: none" Text="" placeholder="トップページに書く内容　文字数無制限" CausesValidation="false"></asp:TextBox>
