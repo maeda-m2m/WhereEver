@@ -10,6 +10,8 @@ namespace WhereEver.Class
     public class Chat_CH
     {
 
+        //--------------------------------------------------------------------------------------------------------
+
         public static DATASET.DataSet.T_Chat_CHRow GetT_Chat_CH(SqlConnection sqlConnection, string id)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
@@ -52,6 +54,96 @@ namespace WhereEver.Class
 
         //--------------------------------------------------------------------------------------------------------
 
+        public static DATASET.DataSet.T_ChatDataTable GetT_Chat_Distinct(SqlConnection sqlConnection, string id)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            //UserIDからNULL以外の列数を取得します。例えばUserIDがguestひとつなら1を返します。
+
+            //まず自分のNoを探す　重複は無視　エラーが出たときは*や空データで対応する
+            da.SelectCommand.CommandText =
+                "SELECT DISTINCT [No] FROM [T_Chat] WHERE [Id]=@id ORDER BY [No] ASC";
+
+            //パラメータを取得
+            da.SelectCommand.Parameters.AddWithValue("@id", id.Trim());
+
+            //特定のDataTableをインスタンス化
+            DATASET.DataSet.T_ChatDataTable dt = new DATASET.DataSet.T_ChatDataTable();
+
+
+            try
+            {
+                //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
+                da.Fill(dt);
+
+                if (dt.Count >= 1)
+                {
+                    //リストにある
+                    return dt;
+
+                }
+                else
+                {
+                    //リストにない
+                    return null;
+                }
+
+            }
+            catch
+            {
+                //不正な値が入力された場合はnullを返します。
+                return null;
+            }
+
+        }
+
+        //--------------------------------------------------------------------------------------------------------
+
+        public static DATASET.DataSet.T_ChatRow GetT_Chat_Reply(SqlConnection sqlConnection, string id, int No, DateTime lastdate)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            //UserIDからNULL以外の列数を取得します。例えばUserIDがguestひとつなら1を返します。
+
+            //自分のNoと一致するチャットの中から、自分が最後にチャットにアクセスした日時以降の、自分以外のチャットを取り出す
+            //この動作を、重複しない[No]のCount回for文で処理を繰り返す。
+            da.SelectCommand.CommandText =
+                "SELECT * FROM [T_Chat] WHERE [Id]!=@id AND [No]=@No AND CONVERT(DateTime, [Date]) > CONVERT(DateTime, @lastdate) ORDER BY [No] ASC, [Date] DESC";
+
+            //パラメータを取得
+            da.SelectCommand.Parameters.AddWithValue("@id", id.Trim());
+            da.SelectCommand.Parameters.AddWithValue("@lastdate", lastdate);
+            da.SelectCommand.Parameters.AddWithValue("@No", No);
+
+            //特定のDataTableをインスタンス化
+            DATASET.DataSet.T_ChatDataTable dt = new DATASET.DataSet.T_ChatDataTable();
+
+
+            try
+            {
+                //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
+                da.Fill(dt);
+
+                if (dt.Count >= 1)
+                {
+                    //リストにある
+                    return dt[0];
+
+                }
+                else
+                {
+                    //リストにない
+                    return null;
+                }
+
+            }
+            catch
+            {
+                //不正な値が入力された場合はnullを返します。
+                return null;
+            }
+
+        }
+
+        //--------------------------------------------------------------------------------------------------------
 
         public static void SetT_Chat_CHUpdate(SqlConnection sqlConnection, string id)
         {
