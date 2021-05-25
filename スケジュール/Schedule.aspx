@@ -179,7 +179,7 @@
                     <asp:TemplateColumn
                         HeaderText="曜日"
                         ItemStyle-Height="30px"
-                        ItemStyle-Width="200px">
+                        ItemStyle-Width="70px">
                         <HeaderStyle Wrap="true" />
 
                         <ItemStyle Wrap="true" />
