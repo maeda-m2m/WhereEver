@@ -30,18 +30,8 @@ namespace WhereEver
             }
             Label2.Text = "";
 
-
-            //返信通知
-            DATASET.DataSet.T_Chat_CHRow ch = Chat_CH.GetT_Chat_CH(Global.GetConnection(), SessionManager.User.M_User.id);
-            if (ch != null)
-            {
-                Chat_CH.SetT_Chat_CHUpdate(Global.GetConnection(), SessionManager.User.M_User.id);
-            }
-            else
-            {
-                Chat_CH.SetT_Chat_CHInsert(Global.GetConnection(), SessionManager.User.M_User.id);
-            }
-
+            //既読
+            readok();
         }
 
         private void Create()
@@ -109,6 +99,8 @@ namespace WhereEver
             TextBox1.Text = "";
             Create();
 
+            //既読
+            readok();
         }
         protected void Update_Click(object sender, EventArgs e)
         {
@@ -202,11 +194,33 @@ namespace WhereEver
             dt.AddT_ChatRow(dr);
             Class2.InsertList(dt, Global.GetConnection());
             Create();
+
+            //既読
+            readok();
         }
 
         protected void Return_Click(object sender, EventArgs e)
         {
             Response.Redirect("Chat.aspx");
         }
+
+
+        /// <summary>
+        /// 既読処理です。呼ぶだけ。
+        /// </summary>
+        protected void readok()
+        {
+            //返信通知
+            DATASET.DataSet.T_Chat_CHRow ch = Chat_CH.GetT_Chat_CH(Global.GetConnection(), SessionManager.User.M_User.id);
+            if (ch != null)
+            {
+                Chat_CH.SetT_Chat_CHUpdate(Global.GetConnection(), SessionManager.User.M_User.id);
+            }
+            else
+            {
+                Chat_CH.SetT_Chat_CHInsert(Global.GetConnection(), SessionManager.User.M_User.id);
+            }
+        }
+
     }
 }
