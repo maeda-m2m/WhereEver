@@ -39,3 +39,6 @@
 .DgPIchiran{
     border-block-color:black;
 }
+.cell1 {
+    writing-mode: vertical-rl;
+}

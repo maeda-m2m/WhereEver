@@ -8,7 +8,7 @@
 <head runat="server">
     <link href="Schedule.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Schedule</title>
 
@@ -50,12 +50,13 @@
             <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center">
                 <%--登録--%>
 
-                <table class="Center">
+                <table class="Center_Table">
 
                     <tr>
                         <th class="Center_Color">日付</th>
                         <td>
-                            <input type="date" runat="server" name="Calendar10" id="Calendar10" />
+                            <asp:TextBox runat="server" ID="TextBox2" TextMode="Date"></asp:TextBox>
+
                         </td>
                     </tr>
 
@@ -323,7 +324,7 @@
                 <%--検索--%>
 
 
-                <table class="Center">
+                <table class="Center_Table">
 
                     <tr>
                         <th class="Center_Color">日付</th>

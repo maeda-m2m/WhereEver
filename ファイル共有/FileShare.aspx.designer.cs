@@ -132,6 +132,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button_Download;
 
         /// <summary>
+        /// Button_Preview コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Preview;
+
+        /// <summary>
         /// RadioButton_Streaming_8000 コントロール。
         /// </summary>
         /// <remarks>

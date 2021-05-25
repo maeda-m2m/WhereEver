@@ -38,7 +38,7 @@ namespace WhereEver
                 //Panel3、検索
                 //panel4、検索メニュー
 
-                //TextBox1,3,5 used
+                //TextBox1,2,3,5 used
 
 
             }
@@ -88,6 +88,22 @@ namespace WhereEver
                 Ddl.Focus();
 
             }
+        }
+
+        public void CsCollor()
+        {
+
+            Scdl3.Items[2].Cells[1].CssClass = "Center_cs_Color";
+            Scdl3.Items[4].Cells[1].CssClass = "Center_cs_Color";
+            Scdl3.Items[6].Cells[1].CssClass = "Center_cs_Color";
+            Scdl3.Items[8].Cells[1].CssClass = "Center_cs_Color";
+            Scdl3.Items[10].Cells[1].CssClass = "Center_cs_Color_Bottom";//セルの終わり
+
+            Scdl3.Items[1].Cells[1].CssClass = "Center_cs_Color";
+            Scdl3.Items[3].Cells[1].CssClass = "Center_cs_Color";
+            Scdl3.Items[5].Cells[1].CssClass = "Center_cs_Color";
+            Scdl3.Items[7].Cells[1].CssClass = "Center_cs_Color";
+            Scdl3.Items[9].Cells[1].CssClass = "Center_cs_Color";
         }
 
         public void Create2()//今週
@@ -146,8 +162,19 @@ namespace WhereEver
                 Scdl3.Items[0].Cells[6].CssClass = "Center_cs";
                 Scdl3.Items[0].Cells[7].CssClass = "Center_cs";
 
-                void CsCollor()
+
+
+                if (Z0 == "月")
                 {
+                    DateTime a = DateTime.Now;
+
+                    Scdl3.Items[0].Cells[1].Text = a.AddDays(0).ToString("MMMMd日");//mon
+                    Scdl3.Items[0].Cells[2].Text = a.AddDays(+1).ToString("MMMMd日");//tue
+                    Scdl3.Items[0].Cells[3].Text = a.AddDays(+2).ToString("MMMMd日");//wed
+                    Scdl3.Items[0].Cells[4].Text = a.AddDays(+3).ToString("MMMMd日");//thu
+                    Scdl3.Items[0].Cells[5].Text = a.AddDays(+4).ToString("MMMMd日");//fri
+                    Scdl3.Items[0].Cells[6].Text = a.AddDays(+5).ToString("MMMMd日");//sat
+                    Scdl3.Items[0].Cells[7].Text = a.AddDays(+6).ToString("MMMMd日");//sun
 
                     Scdl3.Items[2].Cells[1].CssClass = "Center_cs_Color";
                     Scdl3.Items[4].Cells[1].CssClass = "Center_cs_Color";
@@ -161,20 +188,6 @@ namespace WhereEver
                     Scdl3.Items[7].Cells[1].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[1].CssClass = "Center_cs_Color";
                 }
-
-                if (Z0 == "月")
-                {
-                    DateTime a = DateTime.Now;
-
-                    Scdl3.Items[0].Cells[1].Text = a.AddDays(0).ToString("MMMMd日");//mon
-                    Scdl3.Items[0].Cells[2].Text = a.AddDays(+1).ToString("MMMMd日");//tue
-                    Scdl3.Items[0].Cells[3].Text = a.AddDays(+2).ToString("MMMMd日");//wed
-                    Scdl3.Items[0].Cells[4].Text = a.AddDays(+3).ToString("MMMMd日");//thu
-                    Scdl3.Items[0].Cells[5].Text = a.AddDays(+4).ToString("MMMMd日");//fri
-                    Scdl3.Items[0].Cells[6].Text = a.AddDays(+5).ToString("MMMMd日");//sat
-                    Scdl3.Items[0].Cells[7].Text = a.AddDays(+6).ToString("MMMMd日");//sun
-                    CsCollor();
-                }
                 else if (Z1 == "火")
                 {
                     DateTime a = DateTime.Now;
@@ -186,7 +199,18 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(+3).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(+4).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(+6).ToString("MMMMd日");
-                    CsCollor();
+
+                    Scdl3.Items[2].Cells[2].CssClass = "Center_cs_Color";
+                    Scdl3.Items[4].Cells[2].CssClass = "Center_cs_Color";
+                    Scdl3.Items[6].Cells[2].CssClass = "Center_cs_Color";
+                    Scdl3.Items[8].Cells[2].CssClass = "Center_cs_Color";
+                    Scdl3.Items[10].Cells[2].CssClass = "Center_cs_Color_Bottom";//セルの終わり
+
+                    Scdl3.Items[1].Cells[2].CssClass = "Center_cs_Color";
+                    Scdl3.Items[3].Cells[2].CssClass = "Center_cs_Color";
+                    Scdl3.Items[5].Cells[2].CssClass = "Center_cs_Color";
+                    Scdl3.Items[7].Cells[2].CssClass = "Center_cs_Color";
+                    Scdl3.Items[9].Cells[2].CssClass = "Center_cs_Color";
                 }
                 else if (Z2 == "水")
                 {
@@ -199,7 +223,18 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(+2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(+3).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(+4).ToString("MMMMd日");
-                    CsCollor();
+
+                    Scdl3.Items[2].Cells[3].CssClass = "Center_cs_Color";
+                    Scdl3.Items[4].Cells[3].CssClass = "Center_cs_Color";
+                    Scdl3.Items[6].Cells[3].CssClass = "Center_cs_Color";
+                    Scdl3.Items[8].Cells[3].CssClass = "Center_cs_Color";
+                    Scdl3.Items[10].Cells[3].CssClass = "Center_cs_Color_Bottom";//セルの終わり
+
+                    Scdl3.Items[1].Cells[3].CssClass = "Center_cs_Color";
+                    Scdl3.Items[3].Cells[3].CssClass = "Center_cs_Color";
+                    Scdl3.Items[5].Cells[3].CssClass = "Center_cs_Color";
+                    Scdl3.Items[7].Cells[3].CssClass = "Center_cs_Color";
+                    Scdl3.Items[9].Cells[3].CssClass = "Center_cs_Color";
                 }
                 else if (Z3 == "木")
                 {
@@ -213,7 +248,18 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(+1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(+2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(+3).ToString("MMMMd日");
-                    CsCollor();
+
+                    Scdl3.Items[2].Cells[4].CssClass = "Center_cs_Color";
+                    Scdl3.Items[4].Cells[4].CssClass = "Center_cs_Color";
+                    Scdl3.Items[6].Cells[4].CssClass = "Center_cs_Color";
+                    Scdl3.Items[8].Cells[4].CssClass = "Center_cs_Color";
+                    Scdl3.Items[10].Cells[4].CssClass = "Center_cs_Color_Bottom";//セルの終わり
+
+                    Scdl3.Items[1].Cells[4].CssClass = "Center_cs_Color";
+                    Scdl3.Items[3].Cells[4].CssClass = "Center_cs_Color";
+                    Scdl3.Items[5].Cells[4].CssClass = "Center_cs_Color";
+                    Scdl3.Items[7].Cells[4].CssClass = "Center_cs_Color";
+                    Scdl3.Items[9].Cells[4].CssClass = "Center_cs_Color";
                 }
                 else if (Z4 == "金")
                 {
@@ -227,7 +273,18 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(0).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(+1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(+2).ToString("MMMMd日");
-                    CsCollor();
+
+                    Scdl3.Items[2].Cells[5].CssClass = "Center_cs_Color";
+                    Scdl3.Items[4].Cells[5].CssClass = "Center_cs_Color";
+                    Scdl3.Items[6].Cells[5].CssClass = "Center_cs_Color";
+                    Scdl3.Items[8].Cells[5].CssClass = "Center_cs_Color";
+                    Scdl3.Items[10].Cells[5].CssClass = "Center_cs_Color_Bottom";//セルの終わり
+
+                    Scdl3.Items[1].Cells[5].CssClass = "Center_cs_Color";
+                    Scdl3.Items[3].Cells[5].CssClass = "Center_cs_Color";
+                    Scdl3.Items[5].Cells[5].CssClass = "Center_cs_Color";
+                    Scdl3.Items[7].Cells[5].CssClass = "Center_cs_Color";
+                    Scdl3.Items[9].Cells[5].CssClass = "Center_cs_Color";
                 }
                 else if (Z5 == "土")
                 {
@@ -240,7 +297,19 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(-1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(0).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(+1).ToString("MMMMd日");
-                    CsCollor();
+
+                    Scdl3.Items[2].Cells[6].CssClass = "Center_cs_Color";
+                    Scdl3.Items[4].Cells[6].CssClass = "Center_cs_Color";
+                    Scdl3.Items[6].Cells[6].CssClass = "Center_cs_Color";
+                    Scdl3.Items[8].Cells[6].CssClass = "Center_cs_Color";
+                    Scdl3.Items[10].Cells[6].CssClass = "Center_cs_Color_Bottom";//セルの終わり
+
+                    Scdl3.Items[1].Cells[6].CssClass = "Center_cs_Color";
+                    Scdl3.Items[3].Cells[6].CssClass = "Center_cs_Color";
+                    Scdl3.Items[5].Cells[6].CssClass = "Center_cs_Color";
+                    Scdl3.Items[7].Cells[6].CssClass = "Center_cs_Color";
+                    Scdl3.Items[9].Cells[6].CssClass = "Center_cs_Color";
+
                 }
                 else if (Z6 == "日")
                 {
@@ -253,7 +322,19 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(-2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(-1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(0).ToString("MMMMd日");
-                    CsCollor();
+
+                    Scdl3.Items[2].Cells[7].CssClass = "Center_cs_Color";
+                    Scdl3.Items[4].Cells[7].CssClass = "Center_cs_Color";
+                    Scdl3.Items[6].Cells[7].CssClass = "Center_cs_Color";
+                    Scdl3.Items[8].Cells[7].CssClass = "Center_cs_Color";
+                    Scdl3.Items[10].Cells[7].CssClass = "Center_cs_Color_Bottom";//セルの終わり
+
+                    Scdl3.Items[1].Cells[7].CssClass = "Center_cs_Color";
+                    Scdl3.Items[3].Cells[7].CssClass = "Center_cs_Color";
+                    Scdl3.Items[5].Cells[7].CssClass = "Center_cs_Color";
+                    Scdl3.Items[7].Cells[7].CssClass = "Center_cs_Color";
+                    Scdl3.Items[9].Cells[7].CssClass = "Center_cs_Color";
+
                 }
 
                 if (tm == "9:00" || tm == "9:15" || tm == "9:30" || tm == "9:45")
@@ -737,7 +818,7 @@ namespace WhereEver
 
             string t = DropDownList1.SelectedValue;
 
-            string f = (Calendar10.Value) + " " + (DropDownList1.SelectedValue);
+            string f = TextBox2.Text + " " + DropDownList1.SelectedValue;
 
             DateTime dd = DateTime.Parse(f);
 

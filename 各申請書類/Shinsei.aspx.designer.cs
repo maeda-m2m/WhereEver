@@ -636,15 +636,6 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.TextBox TextBox_Tatekae_WPlace;
 
         /// <summary>
-        /// RequiredFieldValidator1 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-
-        /// <summary>
         /// DropDownList_Way コントロール。
         /// </summary>
         /// <remarks>
@@ -681,15 +672,6 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.TextBox TextBox_Tatekae_TIn;
 
         /// <summary>
-        /// RequiredFieldValidator7 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
-
-        /// <summary>
         /// TextBox_Tatekae_TOut コントロール。
         /// </summary>
         /// <remarks>
@@ -697,15 +679,6 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_Tatekae_TOut;
-
-        /// <summary>
-        /// RequiredFieldValidator8 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
 
         /// <summary>
         /// TextBox_Tatekae_TWaste コントロール。
@@ -733,15 +706,6 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_Tatekae_Place;
-
-        /// <summary>
-        /// RequiredFieldValidator9 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
 
         /// <summary>
         /// TextBox_Tatekae_PWaste コントロール。

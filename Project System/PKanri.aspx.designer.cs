@@ -204,15 +204,6 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Button btnClear;
 
         /// <summary>
-        /// btnWBS コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnWBS;
-
-        /// <summary>
         /// DgPKanri コントロール。
         /// </summary>
         /// <remarks>
@@ -220,6 +211,15 @@ namespace WhereEver.Project_System
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataGrid DgPKanri;
+
+        /// <summary>
+        /// btnWBS コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnWBS;
 
         /// <summary>
         /// wbs コントロール。
