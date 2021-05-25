@@ -14,10 +14,32 @@ namespace WhereEver.スケジュール
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)//登録
         {
-            System.Diagnostics.Process p =
-    System.Diagnostics.Process.Start("notepad.exe");
+            var dt = Class.Wiki.GetT_WikiDataTable(Global.GetConnection());
+
+            var dr = dt.NewT_WikiRow();
+
+            var random = new Random();
+            int ID = int.Parse(random.ToString());
+
+            DateTime datetime = DateTime.Now;
+            datetime = DateTime.Parse(datetime.ToString());
+
+            string name = "";
+
+            string Title = TextBox2.Text;
+
+            string Text1 = TextBox1.Text;
+
+            dr.ID = ID;
+            dr.Date = datetime;
+            dr.Name = name;
+            dr.Title = Title;
+            dr.Text = Text1;
+
+            Class.Wiki.InsertT_Wiki(dt, Global.GetConnection());
+
         }
     }
 }

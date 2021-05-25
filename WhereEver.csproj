@@ -252,6 +252,7 @@
     <Compile Include="Class\Login.cs" />
     <Compile Include="Class\Logout.cs" />
     <Compile Include="Class\Schedule.cs" />
+    <Compile Include="Class\Wiki.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>

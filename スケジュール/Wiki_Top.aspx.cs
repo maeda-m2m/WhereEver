@@ -11,7 +11,30 @@ namespace WhereEver.スケジュール
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
 
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)//登録ボタン
+        {
+            Response.Redirect("Wiki.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        public void Create()
+        {
+            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+
+            dg1.DataSource = dt;
+
+            dg1.DataBind();
         }
     }
 }
