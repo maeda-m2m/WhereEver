@@ -1264,7 +1264,7 @@ namespace WhereEver
                 DATASET.DataSet.T_PrintScheduleRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PrintScheduleRow;
                 e.Item.Cells[0].Text = dr.bikouid.ToString();
                 e.Item.Cells[1].Text = dr.bikou.ToString();
-
+                txtbikou.Text += dr.bikou.ToString() +"\r\n";
             }
         }
         private void CreateDataGrid()
@@ -1286,6 +1286,8 @@ namespace WhereEver
 
         protected void DgBikou_CancelCommand(object source, DataGridCommandEventArgs e)
         {
+
+            txtbikou.Text = "";
             DgBikou.EditItemIndex = -1;
             CreateDataGrid();
         }
@@ -1300,11 +1302,16 @@ namespace WhereEver
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
                 da.SelectCommand.Parameters.AddWithValue("@bikou", dt.bikou);
                 da.SelectCommand.Parameters.AddWithValue("@bikouid", id);
+                connection.Open();
+                int cnt = da.SelectCommand.ExecuteNonQuery();
+                connection.Close();
             }
         }
 
         protected void DgBikou_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
+
+            txtbikou.Text = "";
             TextBox txtBikou = (TextBox)e.Item.Cells[1].Controls[0];
             DATASET.DataSet.T_PrintScheduleDataTable t_PrintScheduleRows = new DATASET.DataSet.T_PrintScheduleDataTable();
             DATASET.DataSet.T_PrintScheduleRow t_PrintScheduleRow = t_PrintScheduleRows.NewT_PrintScheduleRow();
@@ -1317,6 +1324,8 @@ namespace WhereEver
 
         protected void DgBikou_EditCommand(object source, DataGridCommandEventArgs e)
         {
+
+            txtbikou.Text = "";
             DgBikou.EditItemIndex = e.Item.ItemIndex;
             CreateDataGrid();
         }

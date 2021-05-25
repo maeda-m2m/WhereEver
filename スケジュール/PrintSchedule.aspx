@@ -11,14 +11,7 @@
     <title>Print Schedule</title>
     <style type="text/css">
         body {
-            background-image: url(../ログイン/white.jpg);
-    background-repeat: no-repeat; /* 画像重複しない */
-    background-size: cover;
-    font-weight: bold; /*太字にする*/
-}
         }
-
-
         #Scd {
             height: 1273px;
             width: 743px;
@@ -296,7 +289,7 @@
 
         #Btn {
             position: absolute;
-            margin-top: 1150px;
+            margin-top: 1200px;
             margin-left: 230px;
         }
 
@@ -410,8 +403,8 @@
 
         .DgBikou{
             float: left;
-            width: 30%;
-            margin-right: 200px;
+            width: 40%;
+            margin-right: 100px;
 
         }
 
@@ -1160,11 +1153,11 @@
             <tr>
                 <td colspan="5">
                     <asp:Label ID="lblbikou" runat="server" Text="[備考欄]"></asp:Label>
-                    <textarea id="" rows="3" style="width: 685px"></textarea>
+                    <asp:TextBox ID="txtbikou" runat="server" Width="700px" Height="50px" Font-Size="Large" TextMode="MultiLine"></asp:TextBox>
                 </td>
             </tr>
         </table>
-        <input type="button" id="Back" value="戻る" onclick="history.back();" class="noprint" />
+        <input type="button" id="Btn1" value="戻る" onclick="history.back();" class="noprint" />
         <br />
  </div>
         <div class="DgBikou">
