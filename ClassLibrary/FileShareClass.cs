@@ -2,12 +2,249 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
+using System.IO;
 using System.Data.SqlClient;
+using static System.Web.HttpUtility;
 
 namespace WhereEver.ClassLibrary
 {
     public class FileShareClass
     {
+
+        //-----------------------------------------------------------------------------------------------------------
+
+
+
+        /// <summary>
+        /// １つのファイルをDBにアップロードするためのクラスです。
+        /// p1 FileUploadなどから取得したPostedFileです。
+        /// p2 fileのtitleです。ファイル名とは異なります。
+        /// p3 一度に転送する容量です。
+        /// p4 trueなら匿名になります。
+        /// return int 0:ファイル名が無効 -1:db入力失敗 1:成功
+        /// </summary>
+        /// <param name="posted">必須</param>
+        /// <param name="title">任意　なければ「無題」</param>
+        /// <param name="pass">任意</param>
+        /// <param name="separatesize">任意変更　初期設定は8000</param>
+        /// <param name="annonimas">任意変更　初期設定は匿名(true)</param>
+        /// <returns></returns>
+        public static int Set_File_UpLoad(HttpPostedFile posted, string title="", string pass="", int separatesize=8000, bool annonimas=true)
+        {
+
+                //パスを排除したファイル名を取得
+                string fileName = posted.FileName;
+
+                //拡張子を取得
+                string extension = Path.GetExtension(fileName);
+
+                //ファイル内容を取得: HttpPostedFile posted;
+
+                if (fileName != null && fileName != "")
+                {
+
+                    //不正なファイル名にならないようuuidに置き換え
+                    fileName = Guid.NewGuid().ToString() + extension;
+
+                    //投稿者id（変更不可）
+                    string userid = SessionManager.User.M_User.id; //M_User
+
+                    //投稿者名
+                    string username = SessionManager.User.M_User.name1; //M_User
+                    if (annonimas)
+                    {
+                        username = "Annonimas";
+                    }
+
+                    //タイトル
+                    title = HtmlEncode(title);
+                    if (title == "")
+                    {
+                        title = "無題";
+                    }
+                    //パスワード
+                    if (pass != "")
+                    {
+                        pass = pass.GetHashCode().ToString();
+                    }
+
+                    //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
+                    //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
+
+                    //バイトを取得します。
+                    byte[] aryData = new Byte[posted.ContentLength];
+                    posted.InputStream.Read(aryData, 0, posted.ContentLength);
+
+                    //MIMEタイプを取得します。
+                    string type = posted.ContentType;
+                    //-----------------------------------
+                    //バイトを分割します。
+                    byte[] bsSource = aryData;
+                    //分割回数
+                    int cutcount = 0;
+
+                    //一度にロードするデータバイト長: int separatesize;
+
+                    //宣言と初期化
+                    int remain = bsSource.Length;
+                    int position = 0;
+                    int split = 0;
+
+                    //配列リストを宣言と初期化
+                    List<byte[]> list = new List<byte[]>();
+
+                    while (remain > 0)
+                    {
+                        //定数byteごとに分割 xが真ならばaを返し、偽ならばbを返す。三項演算子だと、split = remain < separatesize ? remain : separatesize;
+                        if (remain < separatesize)
+                        {
+                            split = remain;
+                        }
+                        else
+                        {
+                            split = separatesize;
+                        }
+                        remain -= split;
+                        cutcount += 1;
+
+                        //配列リストに分割した配列を加算　途中で送信失敗しても再開できる（ようにするための仮実装）
+                        byte[] bs = new byte[split];
+                        Array.Copy(bsSource, position, bs, 0, split);
+                        list.Add(bs);
+
+                        //切り出し位置をずらす
+                        position += split;
+                    }
+                    //-----------------------------------
+
+                    //宣言と初期化　初回のみtrue Insert
+                    bool b = true;
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        //データベースにファイルを保存します。
+                        byte[] smallbyte = list[i];
+                        if (!FileShareClass.SetT_FileShareInsert(Global.GetConnection(), userid, username, fileName, title, pass, type, smallbyte, b))
+                        {
+                            return -1; //db save filed
+                        }
+
+                        //Updateに変更
+                        b = false;
+                    }
+                    //-----------------------------------
+
+                    //データバインド
+                    //GridView1.DataBind();
+
+                    return 1;   //file saved
+
+                }
+                else
+                {
+                    return 0;  //filename is invalid
+                }
+
+        }
+
+
+
+        //-----------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// 1つのファイルをDBからロードするためのクラスです。
+        /// p1 必須　ロードページのPage.Response
+        /// p2 必須　ファイル名　uuid.xxx
+        /// p3 任意変更　ファイルのパスワード
+        /// p4 任意変更　一度の転送容量
+        /// return bool true:成功（Flushされるため取得不可）　false:失敗
+        /// </summary>
+        /// <param name="response">必須　Page.Response</param>
+        /// <param name="file">必須</param>
+        /// <param name="pass">あれば</param>
+        /// <param name="separatesize">任意変更　初期設定は8000</param>
+        /// <returns>bool</returns>
+        public static bool Get_File_DownLoad(HttpResponse response, string file, string pass = "", int separatesize = 8000)
+        {
+            //Password
+            if (pass != "")
+            {
+                pass = pass.GetHashCode().ToString();
+            }
+
+            if (file != null && file != "")
+            {
+
+                //一度にロードするデータバイト長: int separatesize;
+                //初期化
+                byte[] allbyte = new Byte[0];
+                string type = "";
+
+                //無限ループ
+                for (int i = 0; i < int.MaxValue; i++)
+                {
+                    int startindex = 1 + (separatesize * i); //1からはじまる長さ
+                    DATASET.DataSet.T_FileShareRow dr = FileShareClass.GetT_FileShareRow(Global.GetConnection(), file, pass, startindex, separatesize);
+                    if (dr != null)
+                    {
+                        if (i == 0)
+                        {
+                            //初回はタイプ取得
+                            type = @dr.type;
+                        }
+
+                        //取得した一部データの残りの長さを取得
+                        if (dr.datum.Length <= 0)
+                        {
+                            //終了
+                            break;
+                        }
+
+                        //配列allbyteの末尾にコピー
+                        allbyte = allbyte.Concat(dr.datum).ToArray();   //LINQ .NET Framework 3.5以上
+                    }
+                    else
+                    {
+                        //終了
+                        break;
+                    }
+                }
+
+                if (allbyte.Length > 0)
+                {
+
+                    // HTTPレスポンスのヘッダ＆エンティティのクリア（初期化）
+                    response.Clear();
+
+                    // ダウンロード用ファイルの種別とデフォルトの名前を指定
+                    response.ContentType = @"application/octet-stream"; //デフォルト設定: @"application/octet-stream"
+                    response.AppendHeader("Content-Disposition", "attachment; filename=" + file);
+
+                    // MIME Typeを取得
+                    response.ContentType = @type;
+
+                    // ダウンロード実行 binary HTMLページと一緒にロードされる
+                    response.BinaryWrite((Byte[])allbyte);
+
+                    response.Flush();
+                    response.SuppressContent = true;    //必ずResponse.Flush();の後！              
+                    return true;    //実際はFlushされているためこの値は返らない。
+                }
+                else
+                {
+                    //指定したファイルが存在しません。あるいは、パスワードが誤っています。
+                    return false;
+                }
+
+            }
+            else
+            {
+                //"ダウンロードしたいファイル名を入力して下さい。
+                return false;
+            }
+
+        }
+
+
 
         //------------------------------------------------------------------------------------------------------------
         //T_FileShare   SELECT
