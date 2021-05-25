@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI.WebControls;
 using System.IO;
 using System.Data.SqlClient;
 using static System.Web.HttpUtility;
@@ -240,6 +239,87 @@ namespace WhereEver.ClassLibrary
             {
                 //"ダウンロードしたいファイル名を入力して下さい。
                 return false;
+            }
+
+        }
+
+
+        //-----------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// 1つのファイルをDBからロードし、img srcにするためのクラスです。
+        /// p1 必須　ロードページのPage.Response
+        /// p2 必須　ファイル名　uuid.xxx
+        /// p3 任意変更　ファイルのパスワード
+        /// p4 任意変更　一度の転送容量
+        /// return string <img src=\"data:image/png;base64,.......\" />
+        /// </summary>
+        /// <param name="response">必須　Page.Response</param>
+        /// <param name="file">必須</param>
+        /// <param name="pass">あれば</param>
+        /// <param name="separatesize">任意変更　初期設定は8000</param>
+        /// <returns>string</returns>
+        public static string Get_File_DownLoad_src(HttpResponse response, string file, string pass = "", int separatesize = 8000)
+        {
+            //Password
+            if (pass != "")
+            {
+                pass = pass.GetHashCode().ToString();
+            }
+
+            if (file != null && file != "")
+            {
+
+                //一度にロードするデータバイト長: int separatesize;
+                //初期化
+                byte[] allbyte = new Byte[0];
+                string type = "";
+
+                //無限ループ
+                for (int i = 0; i < int.MaxValue; i++)
+                {
+                    int startindex = 1 + (separatesize * i); //1からはじまる長さ
+                    DATASET.DataSet.T_FileShareRow dr = FileShareClass.GetT_FileShareRow(Global.GetConnection(), file, pass, startindex, separatesize);
+                    if (dr != null)
+                    {
+                        if (i == 0)
+                        {
+                            //初回はタイプ取得
+                            type = @dr.type;
+                        }
+
+                        //取得した一部データの残りの長さを取得
+                        if (dr.datum.Length <= 0)
+                        {
+                            //終了
+                            break;
+                        }
+
+                        //配列allbyteの末尾にコピー
+                        allbyte = allbyte.Concat(dr.datum).ToArray();   //LINQ .NET Framework 3.5以上
+                    }
+                    else
+                    {
+                        //終了
+                        break;
+                    }
+                }
+
+                if (allbyte.Length > 0)
+                {
+                    //貼り付け用タグを返す           
+                    return "<img src=\"data:" + @type + ";base64," + Convert.ToBase64String(allbyte) +"\" />";
+                }
+                else
+                {
+                    //指定したファイルが存在しません。あるいは、パスワードが誤っています。
+                    return "Not_Found";
+                }
+
+            }
+            else
+            {
+                //"ダウンロードしたいファイル名を入力して下さい。
+                return "Not_Found";
             }
 
         }

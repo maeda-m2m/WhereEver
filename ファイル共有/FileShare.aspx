@@ -35,7 +35,7 @@
            </p>
 
            <p class ="form-flat-border">
-            <span class="f-notice">[アップロードするファイル]</span>　<asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
+            <span class="f-notice">[アップロードファイル]</span>　<asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
             <span class="f-notice">[パスワード]</span>　<asp:TextBox ID="TextBox_UploadPass" runat="server" CssClass="form-flat-border-inner" Width="100px" MaxLength="20" placeholder="未設定"></asp:TextBox>
             <asp:Button ID="Button_Upload" runat="server" Text="アップロード" OnClick="Button_UpLoad" CssClass="btn-flat-border" /><br />
             <span class="f-notice">[コメント]</span>　<asp:TextBox ID="TextBox_Upload_Comment" runat="server" CssClass="form-flat-border-inner" Width="896px" MaxLength="40" placeholder="ファイルの説明　なければ「無題」"></asp:TextBox>
@@ -47,45 +47,15 @@
            <%-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// --%>
 
            <p>
-            <asp:Label ID="lblDLResult" runat="server" Text="ファイルをストリーミングダウンロードできます。"></asp:Label>
+            <asp:Label ID="lblDLResult" runat="server" Text="ファイルをストリーミングダウンロードできます。" ValidateRequestMode="Disabled"></asp:Label>
            </p>
-
-           <%--
-           <p>ダウンロードするMIMEタイプを選択して下さい：
-           <asp:DropDownList ID="DropDownList1" runat="server">
-               <asp:ListItem Value="text/plain" Text="テキストファイル"></asp:ListItem>
-               <asp:ListItem Value="text/csv">CSVファイル</asp:ListItem>
-               <asp:ListItem Value="text/html">HTMLファイル</asp:ListItem>
-               <asp:ListItem Value="text/css">CSSファイル</asp:ListItem>
-               <asp:ListItem Value="text/javascript">JavaScript</asp:ListItem>
-               <asp:ListItem Value="application/octet-stream">実行ファイル(.exeなど)</asp:ListItem>
-               <asp:ListItem Value="application/json">jsonファイル</asp:ListItem>
-               <asp:ListItem Value="application/pdf">PDF</asp:ListItem>
-               <asp:ListItem Value="application/vnd.ms-excel">旧Excel(.xls)</asp:ListItem>
-               <asp:ListItem Value="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">Excel(.xlsx)</asp:ListItem>
-               <asp:ListItem Value="application/vnd.ms-powerpoint">旧PowerPoint(.ppt)</asp:ListItem>
-               <asp:ListItem Value="application/vnd.openxmlformats-officedocument.presentationml.presentation">PowerPoint(.pptx)</asp:ListItem>
-               <asp:ListItem Value="application/msword">旧Word(.doc)</asp:ListItem>
-               <asp:ListItem Value="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Word(.docx)</asp:ListItem>
-               <asp:ListItem Value="image/jpeg">JPEG(JPG)</asp:ListItem>
-               <asp:ListItem Value="image/png">PNG</asp:ListItem>
-               <asp:ListItem Value="image/gif">GIF</asp:ListItem>
-               <asp:ListItem Value="image/bmp">BMP</asp:ListItem>
-               <asp:ListItem Value="image/svg+xml">SVG</asp:ListItem>
-               <asp:ListItem Value="application/zip">ZIP</asp:ListItem>
-               <asp:ListItem Value="application/x-lzh">LZH</asp:ListItem>
-               <asp:ListItem Value="application/x-tar">TAR/TAR&amp;ZZIP</asp:ListItem>
-               <asp:ListItem Value="audio/mpeg">MPEG</asp:ListItem>
-               <asp:ListItem Value="video/mp4">MP4</asp:ListItem>
-               <asp:ListItem Value="video/mpeg">MPEG</asp:ListItem>
-           </asp:DropDownList></p>
-            --%>
 
            <asp:Panel ID="Panel1" runat="server" DefaultButton="Button_Download">
             <p class ="form-flat-border">
-            <span class="f-notice">[ダウンロードするファイル]</span>　<asp:TextBox ID="TextBox_dl" runat="server" Width="485px" CssClass="form-flat-border-inner" placeholder="テーブルの「参照」ボタンを押して下さい"></asp:TextBox>
+            <span class="f-notice">[ダウンロードファイル]</span>　<asp:TextBox ID="TextBox_dl" runat="server" Width="485px" CssClass="form-flat-border-inner" placeholder="テーブルの「参照」ボタンを押して下さい"></asp:TextBox>
             <span class="f-notice">[パスワード]</span>　<asp:TextBox ID="TextBox_DownloadPass" runat="server" CssClass="form-flat-border-inner" Width="100px" MaxLength="20" placeholder="未設定"></asp:TextBox>
                 <asp:Button ID="Button_Download" runat="server" Text="ダウンロード" OnClick="Button_DownLoad" CssClass="btn-flat-border" PostBackUrl="#" />
+                <asp:Button ID="Button_Preview" runat="server" Text="プレビュー" OnClick="Button_PreView" CssClass="btn-flat-border" PostBackUrl="#" />
             </p>
            </asp:Panel>
 

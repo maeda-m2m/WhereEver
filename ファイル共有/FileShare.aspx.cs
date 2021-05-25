@@ -277,5 +277,22 @@ namespace WhereEver
         {
             GridView1.DataBind();
         }
+
+        protected void Button_PreView(object sender, EventArgs e)
+        {
+            lblDLResult.Text = "";
+            if (TextBox_dl.Text != null && TextBox_dl.Text != "")
+            {
+                //FileDownLoad by DataBase
+                string result = FileShareClass.Get_File_DownLoad_src(Page.Response, HtmlEncode(TextBox_dl.Text), TextBox_DownloadPass.Text, LoadByteLength());
+                lblDLResult.Text = @result;
+            }
+            else
+            {
+                lblDLResult.Text = "ダウンロードしたいファイル名を入力して下さい。";
+                return;
+            }
+            return;
+        }
     }
 }
