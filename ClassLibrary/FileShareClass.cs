@@ -286,6 +286,12 @@ namespace WhereEver.ClassLibrary
                         {
                             //初回はタイプ取得
                             type = @dr.type;
+
+                            if (type != "image/jpeg" && type != "image/png" && type != "image/gif" && type != "image/svg+xml" && type != "application/pdf" && type != "text/plain")
+                            {
+                                return "Content_MIME_Type_Not_Supported";
+                            }
+
                         }
 
                         //取得した一部データの残りの長さを取得
