@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -306,8 +307,24 @@ namespace WhereEver.ClassLibrary
 
                 if (allbyte.Length > 0)
                 {
-                    //貼り付け用タグを返す           
-                    return "<img src=\"data:" + @type + ";base64," + Convert.ToBase64String(allbyte) +"\" />";
+                    if (type == "image/jpeg" || type == "image/png" || type == "image/gif" || type == "image/svg+xml")
+                    {
+                        //貼り付け用タグを返す           
+                        return "<img src=\"data:" + @type + ";base64," + Convert.ToBase64String(allbyte) + "\" />";
+                    }
+                    else if (type == "application/pdf")
+                    {
+                        //貼り付け用タグを返す           
+                        return "<embed type=\"" + @type + "\"data;" + @type + ";base64," + Convert.ToBase64String(allbyte) + "\" />";
+                    }
+                    else if (type == "text/plain")
+                    {
+                        //貼り付け用タグを返す           
+                        //return Convert.ToBase64String(allbyte);
+                        Encoding enc = Encoding.GetEncoding("UTF-8");
+                        return HtmlEncode(enc.GetString(Convert.FromBase64String(Convert.ToBase64String(allbyte))));
+                    }
+                    return "Content_MIME_Type_Not_Supported";
                 }
                 else
                 {
