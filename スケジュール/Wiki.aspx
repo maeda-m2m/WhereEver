@@ -34,7 +34,7 @@
         </div>
 
         <div class="Test1">
-            <asp:Menu runat="server" ID="Menu"></asp:Menu>
+         
             <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="MultiLine" MaxLength="1000" Rows="100" Height="1000" Width="1000"></asp:TextBox>
 
         </div>
