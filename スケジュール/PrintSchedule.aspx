@@ -8,19 +8,16 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-
     <title>Print Schedule</title>
     <style type="text/css">
         body {
-            margin: 0;
-            padding: 0;
+            background-image: url(../ログイン/white.jpg);
+    background-repeat: no-repeat; /* 画像重複しない */
+    background-size: cover;
+    font-weight: bold; /*太字にする*/
+}
         }
 
-        #ImgDiv {
-            position: absolute;
-            height: 1175px;
-            width: 721px;
-        }
 
         #Scd {
             height: 1273px;
@@ -346,6 +343,7 @@
             color: white;
             text-align: center;
             width: 380px;
+            height: 48px;
         }
         .auto-style3 {
             width: 380px;
@@ -370,6 +368,7 @@
             color: white;
             text-align: center;
             width: 150px;
+            height: 48px;
         }
         .auto-style7 {
             width: 150px;
@@ -387,6 +386,7 @@
             background-color: #272727;
             color: white;
             width: 50px;
+            height: 48px;
         }
         .auto-style11 {
             text-align: center;
@@ -410,21 +410,24 @@
 
         .DgBikou{
             float: left;
-            width:50%;
+            width: 30%;
+            margin-right: 200px;
+
         }
 
-        .auto-style13 {
-            background-color: #272727;
-            color: white;
-            text-align: center;
-            width: 50px;
-        }
         .auto-style14 {
             width: 50px;
         }
         .auto-style15 {
             border-bottom: 3px double #bababa;
             width: 50px;
+        }
+
+        .auto-style16 {
+            text-align: center;
+            background-color: #272727;
+            color: white;
+            height: 48px;
         }
 
     </style>
@@ -437,13 +440,13 @@
         <table id="newsdl">
             <asp:Label ID="lbltitle" runat="server" Text="スケジュール表"></asp:Label>
             <tr>
-                <td class="bb">
+                <td class="auto-style16">
                     <p>日付</p>
                 </td>
                 <td class="auto-style10">
                     <p>曜日</p>
                 </td>
-                <td class="auto-style13">
+                <td class="auto-style10">
                     <p>時間</p>
                 </td>
                 <td class="auto-style1">
@@ -1165,7 +1168,7 @@
         <br />
  </div>
         <div class="DgBikou">
-            <asp:DataGrid ID="DgBikou" runat="server" Width="100%" class="noprint"
+            <asp:DataGrid ID="DgBikou" runat="server" Width="100%" CssClass="DgBikou1"
                             AutoGenerateColumns="False" 
                             OnItemDataBound="DgBikou_ItemDataBound"
                             OnEditCommand="DgBikou_EditCommand"

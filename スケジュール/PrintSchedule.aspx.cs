@@ -30,7 +30,7 @@ namespace WhereEver
                 DgBikou.UpdateCommand +=
                     new DataGridCommandEventHandler(this.DgBikou_UpdateCommand);
                 DgBikou.ItemCommand +=
-                        new DataGridCommandEventHandler(this.DgBikou_UpdateCommand);
+                        new DataGridCommandEventHandler(this.DgBikou_ItemCommand);
 
                 ////今週の週番号と来週の週番号を取得する
                 //DateTime date = DateTime.Now;
@@ -1295,26 +1295,21 @@ namespace WhereEver
             string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(cstr))
             {
-                string sql = "update T_PrintSchedule set " +
-                    "bikou = @bikou" +
-                    "where bikouid = @bikouid";
+                string sql = "update T_PrintSchedule set bikou = @bikou where bikouid = @bikouid";
 
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
                 da.SelectCommand.Parameters.AddWithValue("@bikou", dt.bikou);
                 da.SelectCommand.Parameters.AddWithValue("@bikouid", id);
-                connection.Open();
-                int cnt = da.SelectCommand.ExecuteNonQuery();
-                connection.Close();
             }
         }
 
         protected void DgBikou_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
-            TextBox txtBikou = (TextBox)e.Item.Cells[0].Controls[0];
+            TextBox txtBikou = (TextBox)e.Item.Cells[1].Controls[0];
             DATASET.DataSet.T_PrintScheduleDataTable t_PrintScheduleRows = new DATASET.DataSet.T_PrintScheduleDataTable();
             DATASET.DataSet.T_PrintScheduleRow t_PrintScheduleRow = t_PrintScheduleRows.NewT_PrintScheduleRow();
 
-            t_PrintScheduleRow[1] = txtBikou.Text;
+            t_PrintScheduleRow[0] = txtBikou.Text;
             Update(t_PrintScheduleRow, e.Item.Cells[0].Text);
             DgBikou.EditItemIndex = -1;
             CreateDataGrid();
@@ -1323,6 +1318,7 @@ namespace WhereEver
         protected void DgBikou_EditCommand(object source, DataGridCommandEventArgs e)
         {
             DgBikou.EditItemIndex = e.Item.ItemIndex;
+            CreateDataGrid();
         }
 
         protected void DgBikou_ItemCommand(object source, DataGridCommandEventArgs e)
@@ -1347,7 +1343,7 @@ namespace WhereEver
             string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(cstr))
             {
-                string sql = "DELETE FROM T_PrintSchedule WHERE bikouid = @id";
+                string sql = "DELETE FROM T_PrintSchedule where bikouid = @id";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 da.SelectCommand.Parameters.AddWithValue("@id", id);
