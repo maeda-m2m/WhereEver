@@ -138,6 +138,7 @@
     <Content Include="Tatekae.ascx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
     <Content Include="スケジュール\Wiki.aspx" />
+    <Content Include="スケジュール\Wiki_Top.aspx" />
     <Content Include="チャット\purple.jpg" />
     <Content Include="チャット\yajirusi.png" />
     <Content Include="ログイン\LoginList.css" />
@@ -313,6 +314,13 @@
     </Compile>
     <Compile Include="スケジュール\Wiki.aspx.designer.cs">
       <DependentUpon>Wiki.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="スケジュール\Wiki_Top.aspx.cs">
+      <DependentUpon>Wiki_Top.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="スケジュール\Wiki_Top.aspx.designer.cs">
+      <DependentUpon>Wiki_Top.aspx</DependentUpon>
     </Compile>
     <Compile Include="ログイン\LoginList.aspx.cs">
       <DependentUpon>LoginList.aspx</DependentUpon>

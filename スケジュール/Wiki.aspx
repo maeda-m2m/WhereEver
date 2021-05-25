@@ -34,7 +34,7 @@
         </div>
 
         <div class="Test1">
-         
+
             <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="MultiLine" MaxLength="1000" Rows="100" Height="1000" Width="1000"></asp:TextBox>
 
         </div>
@@ -42,6 +42,7 @@
         <div class="Center">
 
             <asp:Button runat="server" ID="Button1" Text="登録" OnClick="Button1_Click" />
+            <asp:Button runat="server" ID="Button2" Text="戻る" />
 
         </div>
 
