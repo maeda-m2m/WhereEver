@@ -11,6 +11,12 @@
             margin: auto;
             text-align: center;
         }
+
+        #Title1 {
+            margin: auto;
+            text-align: center;
+            width: 500px;
+        }
     </style>
 
 </head>
@@ -18,6 +24,8 @@
 <body>
 
     <form id="form1" runat="server">
+
+        <h1 id="Title1">WhereEver　社内Wiki</h1>
 
         <div class="Center">
 
@@ -27,11 +35,37 @@
         </div>
 
         <div class="Center">
-            <asp:DataGrid runat="server" ID="dg1"></asp:DataGrid>
+            <asp:DataGrid runat="server" ID="dg1" AutoGenerateColumns="False" OnSelectedIndexChanged="dg1_SelectedIndexChanged" CssClass="Center">
+                <Columns>
+
+
+                    <asp:BoundColumn DataField="Date" HeaderText="日付" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="200px">
+                        <HeaderStyle Wrap="true" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" />
+                    </asp:BoundColumn>
+
+                    <asp:BoundColumn DataField="Name" HeaderText="名前" ItemStyle-Width="100px">
+                        <HeaderStyle Wrap="true" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                    </asp:BoundColumn>
+
+
+                    <asp:BoundColumn DataField="Title" HeaderText="タイトル" ItemStyle-Width="100px">
+                        <HeaderStyle Wrap="true" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                    </asp:BoundColumn>
+
+                    
+
+                </Columns>
+
+
+            </asp:DataGrid>
         </div>
 
     </form>
 
 </body>
+
 
 </html>
