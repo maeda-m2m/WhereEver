@@ -692,35 +692,34 @@ namespace WhereEver
                     string week = DT.ToString("ddd");
                     // string.Format("HH:mm", dr.time);
                     string tm = dr.time.ToString();
-                    string tm1 = tm.Substring(0, 5);
 
                     while (week == "月")
                     {
 
                         if (Label3.Text == "")
                         {
-                            Label3.Text = tm1;
+                            Label3.Text = tm;
                             Label4.Text = dr.title;
                             Label5.Text = dr.name;
                             break;
                         }
                         if (Label6.Text == "")
                         {
-                            Label6.Text = tm1;
+                            Label6.Text = tm;
                             Label7.Text = dr.title;
                             Label8.Text = dr.name;
                             break;
                         }
                         if (Label9.Text == "")
                         {
-                            Label9.Text = tm1;
+                            Label9.Text = tm;
                             Label10.Text = dr.title;
                             Label11.Text = dr.name;
                             break;
                         }
                         if (Label12.Text == "")
                         {
-                            Label12.Text = tm1;
+                            Label12.Text = tm;
                             Label13.Text = dr.title;
                             Label14.Text = dr.name;
                             break;
@@ -733,28 +732,28 @@ namespace WhereEver
 
                         if (Label17.Text == "")
                         {
-                            Label17.Text = tm1;
+                            Label17.Text = tm;
                             Label18.Text = dr.title;
                             Label19.Text = dr.name;
                             break;
                         }
                         if (Label20.Text == "")
                         {
-                            Label20.Text = tm1;
+                            Label20.Text = tm;
                             Label21.Text = dr.title;
                             Label22.Text = dr.name;
                             break;
                         }
                         if (Label23.Text == "")
                         {
-                            Label23.Text = tm1;
+                            Label23.Text = tm;
                             Label24.Text = dr.title;
                             Label25.Text = dr.name;
                             break;
                         }
                         if (Label26.Text == "")
                         {
-                            Label26.Text = tm1;
+                            Label26.Text = tm;
                             Label27.Text = dr.title;
                             Label28.Text = dr.name;
                             break;
@@ -767,28 +766,28 @@ namespace WhereEver
 
                         if (Label31.Text == "")
                         {
-                            Label31.Text = tm1;
+                            Label31.Text = tm;
                             Label32.Text = dr.title;
                             Label33.Text = dr.name;
                             break;
                         }
                         if (Label34.Text == "")
                         {
-                            Label34.Text = tm1;
+                            Label34.Text = tm;
                             Label35.Text = dr.title;
                             Label36.Text = dr.name;
                             break;
                         }
                         if (Label37.Text == "")
                         {
-                            Label37.Text = tm1;
+                            Label37.Text = tm;
                             Label38.Text = dr.title;
                             Label39.Text = dr.name;
                             break;
                         }
                         if (Label40.Text == "")
                         {
-                            Label40.Text = tm1;
+                            Label40.Text = tm;
                             Label41.Text = dr.title;
                             Label42.Text = dr.name;
                             break;
@@ -801,28 +800,28 @@ namespace WhereEver
 
                         if (Label45.Text == "")
                         {
-                            Label45.Text = tm1;
+                            Label45.Text = tm;
                             Label46.Text = dr.title;
                             Label47.Text = dr.name;
                             break;
                         }
                         if (Label48.Text == "")
                         {
-                            Label48.Text = tm1;
+                            Label48.Text = tm;
                             Label49.Text = dr.title;
                             Label50.Text = dr.name;
                             break;
                         }
                         if (Label51.Text == "")
                         {
-                            Label51.Text = tm1;
+                            Label51.Text = tm;
                             Label52.Text = dr.title;
                             Label53.Text = dr.name;
                             break;
                         }
                         if (Label54.Text == "")
                         {
-                            Label54.Text = tm1;
+                            Label54.Text = tm;
                             Label55.Text = dr.title;
                             Label56.Text = dr.name;
                             break;
@@ -835,28 +834,28 @@ namespace WhereEver
 
                         if (Label59.Text == "")
                         {
-                            Label59.Text = tm1;
+                            Label59.Text = tm;
                             Label60.Text = dr.title;
                             Label61.Text = dr.name;
                             break;
                         }
                         if (Label62.Text == "")
                         {
-                            Label62.Text = tm1;
+                            Label62.Text = tm;
                             Label63.Text = dr.title;
                             Label64.Text = dr.name;
                             break;
                         }
                         if (Label65.Text == "")
                         {
-                            Label65.Text = tm1;
+                            Label65.Text = tm;
                             Label66.Text = dr.title;
                             Label67.Text = dr.name;
                             break;
                         }
                         if (Label68.Text == "")
                         {
-                            Label68.Text = tm1;
+                            Label68.Text = tm;
                             Label69.Text = dr.title;
                             Label70.Text = dr.name;
                             break;
@@ -868,28 +867,28 @@ namespace WhereEver
 
                         if (Labelsat3.Text == "")
                         {
-                            Labelsat3.Text = tm1;
+                            Labelsat3.Text = tm;
                             Labelsat4.Text = dr.title;
                             Labelsat5.Text = dr.name;
                             break;
                         }
                         if (Labelsat6.Text == "")
                         {
-                            Labelsat6.Text = tm1;
+                            Labelsat6.Text = tm;
                             Labelsat7.Text = dr.title;
                             Labelsat8.Text = dr.name;
                             break;
                         }
                         if (Labelsat9.Text == "")
                         {
-                            Labelsat9.Text = tm1;
+                            Labelsat9.Text = tm;
                             Labelsat10.Text = dr.title;
                             Labelsat11.Text = dr.name;
                             break;
                         }
                         if (Labelsat12.Text == "")
                         {
-                            Labelsat12.Text = tm1;
+                            Labelsat12.Text = tm;
                             Labelsat13.Text = dr.title;
                             Labelsat14.Text = dr.name;
                             break;
@@ -901,28 +900,28 @@ namespace WhereEver
 
                         if (Labelsun3.Text == "")
                         {
-                            Labelsun3.Text = tm1;
+                            Labelsun3.Text = tm;
                             Labelsun4.Text = dr.title;
                             Labelsun5.Text = dr.name;
                             break;
                         }
                         if (Labelsun6.Text == "")
                         {
-                            Labelsun6.Text = tm1;
+                            Labelsun6.Text = tm;
                             Labelsun7.Text = dr.title;
                             Labelsun8.Text = dr.name;
                             break;
                         }
                         if (Labelsun9.Text == "")
                         {
-                            Labelsun9.Text = tm1;
+                            Labelsun9.Text = tm;
                             Labelsun10.Text = dr.title;
                             Labelsun11.Text = dr.name;
                             break;
                         }
                         if (Labelsun12.Text == "")
                         {
-                            Labelsun12.Text = tm1;
+                            Labelsun12.Text = tm;
                             Labelsun13.Text = dr.title;
                             Labelsun14.Text = dr.name;
                             break;
@@ -944,35 +943,34 @@ namespace WhereEver
                     // string.Format("HH:mm", dr.time);
 
                     string tm = dr.time.ToString();
-                    string tm1 = tm;
 
                     while (week == "月")
                     {
 
                         if (Label101.Text == "")
                         {
-                            Label101.Text = tm1;
+                            Label101.Text = tm;
                             Label102.Text = dr.title;
                             Label103.Text = dr.name;
                             break;
                         }
                         if (Label104.Text == "")
                         {
-                            Label104.Text = tm1;
+                            Label104.Text = tm;
                             Label105.Text = dr.title;
                             Label106.Text = dr.name;
                             break;
                         }
                         if (Label107.Text == "")
                         {
-                            Label107.Text = tm1;
+                            Label107.Text = tm;
                             Label108.Text = dr.title;
                             Label109.Text = dr.name;
                             break;
                         }
                         if (Label110.Text == "")
                         {
-                            Label110.Text = tm1;
+                            Label110.Text = tm;
                             Label111.Text = dr.title;
                             Label112.Text = dr.name;
                             break;
@@ -985,28 +983,28 @@ namespace WhereEver
 
                         if (Label115.Text == "")
                         {
-                            Label115.Text = tm1;
+                            Label115.Text = tm;
                             Label116.Text = dr.title;
                             Label117.Text = dr.name;
                             break;
                         }
                         if (Label118.Text == "")
                         {
-                            Label118.Text = tm1;
+                            Label118.Text = tm;
                             Label119.Text = dr.title;
                             Label120.Text = dr.name;
                             break;
                         }
                         if (Label121.Text == "")
                         {
-                            Label121.Text = tm1;
+                            Label121.Text = tm;
                             Label122.Text = dr.title;
                             Label123.Text = dr.name;
                             break;
                         }
                         if (Label124.Text == "")
                         {
-                            Label124.Text = tm1;
+                            Label124.Text = tm;
                             Label125.Text = dr.title;
                             Label126.Text = dr.name;
                             break;
@@ -1019,28 +1017,28 @@ namespace WhereEver
 
                         if (Label129.Text == "")
                         {
-                            Label129.Text = tm1;
+                            Label129.Text = tm;
                             Label130.Text = dr.title;
                             Label131.Text = dr.name;
                             break;
                         }
                         if (Label132.Text == "")
                         {
-                            Label132.Text = tm1;
+                            Label132.Text = tm;
                             Label133.Text = dr.title;
                             Label134.Text = dr.name;
                             break;
                         }
                         if (Label135.Text == "")
                         {
-                            Label135.Text = tm1;
+                            Label135.Text = tm;
                             Label136.Text = dr.title;
                             Label137.Text = dr.name;
                             break;
                         }
                         if (Label138.Text == "")
                         {
-                            Label138.Text = tm1;
+                            Label138.Text = tm;
                             Label139.Text = dr.title;
                             Label140.Text = dr.name;
                             break;
@@ -1053,28 +1051,28 @@ namespace WhereEver
 
                         if (Label143.Text == "")
                         {
-                            Label143.Text = tm1;
+                            Label143.Text = tm;
                             Label144.Text = dr.title;
                             Label145.Text = dr.name;
                             break;
                         }
                         if (Label146.Text == "")
                         {
-                            Label146.Text = tm1;
+                            Label146.Text = tm;
                             Label147.Text = dr.title;
                             Label148.Text = dr.name;
                             break;
                         }
                         if (Label149.Text == "")
                         {
-                            Label149.Text = tm1;
+                            Label149.Text = tm;
                             Label150.Text = dr.title;
                             Label151.Text = dr.name;
                             break;
                         }
                         if (Label152.Text == "")
                         {
-                            Label152.Text = tm1;
+                            Label152.Text = tm;
                             Label153.Text = dr.title;
                             Label154.Text = dr.name;
                             break;
@@ -1087,28 +1085,28 @@ namespace WhereEver
 
                         if (Label157.Text == "")
                         {
-                            Label157.Text = tm1;
+                            Label157.Text = tm;
                             Label158.Text = dr.title;
                             Label159.Text = dr.name;
                             break;
                         }
                         if (Label160.Text == "")
                         {
-                            Label160.Text = tm1;
+                            Label160.Text = tm;
                             Label161.Text = dr.title;
                             Label162.Text = dr.name;
                             break;
                         }
                         if (Label163.Text == "")
                         {
-                            Label163.Text = tm1;
+                            Label163.Text = tm;
                             Label164.Text = dr.title;
                             Label165.Text = dr.name;
                             break;
                         }
                         if (Label166.Text == "")
                         {
-                            Label166.Text = tm1;
+                            Label166.Text = tm;
                             Label167.Text = dr.title;
                             Label168.Text = dr.name;
                             break;
@@ -1120,28 +1118,28 @@ namespace WhereEver
 
                         if (Labelsat17.Text == "")
                         {
-                            Labelsat17.Text = tm1;
+                            Labelsat17.Text = tm;
                             Labelsat18.Text = dr.title;
                             Labelsat19.Text = dr.name;
                             break;
                         }
                         if (Labelsat20.Text == "")
                         {
-                            Labelsat20.Text = tm1;
+                            Labelsat20.Text = tm;
                             Labelsat21.Text = dr.title;
                             Labelsat22.Text = dr.name;
                             break;
                         }
                         if (Labelsat23.Text == "")
                         {
-                            Labelsat23.Text = tm1;
+                            Labelsat23.Text = tm;
                             Labelsat24.Text = dr.title;
                             Labelsat25.Text = dr.name;
                             break;
                         }
                         if (Labelsat26.Text == "")
                         {
-                            Labelsat26.Text = tm1;
+                            Labelsat26.Text = tm;
                             Labelsat27.Text = dr.title;
                             Labelsat28.Text = dr.name;
                             break;
@@ -1153,28 +1151,28 @@ namespace WhereEver
 
                         if (Labelsun17.Text == "")
                         {
-                            Labelsun17.Text = tm1;
+                            Labelsun17.Text = tm;
                             Labelsun18.Text = dr.title;
                             Labelsun19.Text = dr.name;
                             break;
                         }
                         if (Labelsun20.Text == "")
                         {
-                            Labelsun20.Text = tm1;
+                            Labelsun20.Text = tm;
                             Labelsun21.Text = dr.title;
                             Labelsun22.Text = dr.name;
                             break;
                         }
                         if (Labelsun23.Text == "")
                         {
-                            Labelsun23.Text = tm1;
+                            Labelsun23.Text = tm;
                             Labelsun24.Text = dr.title;
                             Labelsun25.Text = dr.name;
                             break;
                         }
                         if (Labelsun26.Text == "")
                         {
-                            Labelsun26.Text = tm1;
+                            Labelsun26.Text = tm;
                             Labelsun27.Text = dr.title;
                             Labelsun28.Text = dr.name;
                             break;
