@@ -90,14 +90,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="btn-wbs">
-                        <asp:Button ID="btnWBS" CssClass="btn" runat="server" Text="WBS表一覧↓" OnClick="btnWBS_Click" />
-                    </td>
-                    <td colspan="2" >
-                        &nbsp;</td>
-                </tr>
-                <tr>
-                    <td colspan="3">
+                    <td class="auto-style2" colspan="3">
                         <asp:DataGrid ID="DgPKanri" runat="server" 
                             AutoGenerateColumns="False" 
                             OnItemDataBound="DgPKanri_ItemDataBound" 
@@ -124,7 +117,14 @@
                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10%"/>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"/>
                         </asp:DataGrid>
+                        </td>
+                </tr>
+                <tr>
+                    <td class="btn-wbs">
+                        <asp:Button ID="btnWBS" CssClass="btn" runat="server" Text="WBS表一覧↓" OnClick="btnWBS_Click" />
                     </td>
+                    <td colspan="2" >
+                        &nbsp;</td>
                 </tr>
             </table>
         </div>

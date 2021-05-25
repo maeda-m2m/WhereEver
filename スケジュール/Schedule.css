@@ -32,6 +32,12 @@
     text-align: center;
 }
 
+.Center_Table {
+    margin: auto;
+    text-align: center;
+    width: 500px;
+}
+
 .Center_Color {
     background-color: #16ba00;
     color: white;
@@ -58,21 +64,21 @@
 }
 
 .Center_cs_Color {
-    border-color: #3f48cc;
+    border-color: #c1c2ff;
     border-width: 10px;
     margin: auto;
     text-align: center;
 }
 
 .Center_cs_Color_Top {
-    border-color: #3f48cc;
+    border-color: #c1c2ff;
     border-width: 10px;
     margin: auto;
     text-align: center;
 }
 
 .Center_cs_Color_Bottom {
-    border-color: #3f48cc;
+    border-color: #c1c2ff;
     border-width: 10px;
     border-block-end-color: #3f48cc;
     /*  border-bottom-width: 10px;
@@ -82,7 +88,7 @@
 }
 
 .Center_cs_Color_Date {
-    border-color: #3f48cc;
+    border-color: #c1c2ff;
     border-width: 10px;
     background-color: #16ba00;
     color: white;

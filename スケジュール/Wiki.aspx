@@ -12,14 +12,11 @@
         .Center {
             margin: auto;
             text-align: center;
-            background-color: aqua;
         }
 
         .Test1 {
             margin: auto;
             text-align: center;
-         
-            background-color: antiquewhite;
         }
     </style>
 
@@ -32,18 +29,19 @@
         <div class="Center">
 
             <asp:Label runat="server" ID="Label1" Text="タイトル" Font-Size="Large"></asp:Label>
+            <asp:TextBox runat="server" ID="TextBox2" Text=""></asp:TextBox>
 
         </div>
 
         <div class="Test1">
-
-            <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="MultiLine" MaxLength="1000" Rows="100" Height="2000" Width="1000"></asp:TextBox>
+            <asp:Menu runat="server" ID="Menu"></asp:Menu>
+            <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="MultiLine" MaxLength="1000" Rows="100" Height="1000" Width="1000"></asp:TextBox>
 
         </div>
 
         <div class="Center">
 
-            <asp:Button runat="server" ID="Button1" Text="登録" />
+            <asp:Button runat="server" ID="Button1" Text="登録" OnClick="Button1_Click" />
 
         </div>
 

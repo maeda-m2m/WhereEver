@@ -13,5 +13,11 @@ namespace WhereEver.スケジュール
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process p =
+    System.Diagnostics.Process.Start("notepad.exe");
+        }
     }
 }
