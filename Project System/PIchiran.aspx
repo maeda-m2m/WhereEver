@@ -64,7 +64,7 @@
                         </td>
                         <td class="cell">
 
-                            <asp:TextBox ID="txtNewPName" CssClass="txt" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtNewPName" CssClass="txt" runat="server" ValidationGroup="new"></asp:TextBox>
 
                             <asp:RequiredFieldValidator ID="rfvProject" runat="server" ControlToValidate="txtNewPName" Display="None" ErrorMessage="プロジェクト名を入力してください" ValidationGroup="new"></asp:RequiredFieldValidator>
 
@@ -76,7 +76,7 @@
                         </td>
                         <td class="cell">
 
-                            <asp:TextBox ID="txtNewCustomer" CssClass="txt" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtNewCustomer" CssClass="txt" runat="server" ValidationGroup="new"></asp:TextBox>
 
                             <asp:RequiredFieldValidator ID="rfvNewCustomer" runat="server" ControlToValidate="txtNewCustomer" Display="None" ErrorMessage="取引先名を入力してください" ValidationGroup="new"></asp:RequiredFieldValidator>
 
@@ -90,7 +90,7 @@
                         </td>
                         <td class="cell">
 
-                            <asp:DropDownList ID="ddlResponsible" CssClass="txt" runat="server" Font-Size="Larger">
+                            <asp:DropDownList ID="ddlResponsible" CssClass="txt" runat="server" Font-Size="Larger" ValidationGroup="new">
                                 <asp:ListItem></asp:ListItem>
                             </asp:DropDownList>
 
@@ -104,7 +104,7 @@
                         </td>
                         <td class="cell">
 
-                            <asp:TextBox ID="txtNewCategory" CssClass="txt" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtNewCategory" CssClass="txt" runat="server" ValidationGroup="new"></asp:TextBox>
 
                             <asp:RequiredFieldValidator ID="rfvCategory" runat="server" ControlToValidate="txtNewCategory" Display="None" ErrorMessage="カテゴリーを入力してください" ValidationGroup="new"></asp:RequiredFieldValidator>
 
@@ -170,7 +170,7 @@
                     <tr>
                     <td class="cell" colspan="4">
 
-                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="List" ForeColor="Red" />
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="List" ForeColor="Red" ValidationGroup="new" />
 
                     </td>
                     <td class="cell">
@@ -182,7 +182,7 @@
 
                         <asp:Button ID="btnNewP" CssClass="btn" runat="server" Text="新規として保存" OnClick="btnNewP_Click" ValidationGroup="new"/>
 
-                        <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" OnClick="btnClear_Click" />
+                        <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" OnClick="btnClear_Click" ValidationGroup="clear" />
 
                     </td>
                 </tr>
