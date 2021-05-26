@@ -35,7 +35,7 @@
 
         <div class="Test1">
 
-            <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="MultiLine" MaxLength="1000" Rows="100" Height="1000" Width="1000"></asp:TextBox>
+            <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="MultiLine" MaxLength="1000" Rows="100" Height="880" Width="810"></asp:TextBox>
 
         </div>
 
