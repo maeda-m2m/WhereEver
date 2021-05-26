@@ -137,6 +137,11 @@ namespace WhereEver.管理ページ
             this.Response.Redirect("Kanri.aspx#edittop", false);
         }
 
+        protected void btnVideo_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("../Video/Video.aspx", false);
+        }
+
         //-----------------------------------------------------------------------------------
 
 

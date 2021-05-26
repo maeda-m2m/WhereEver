@@ -130,12 +130,15 @@
     <Content Include="IMG\m2mlogo_r.png" />
     <Content Include="IMG\日付2.png" />
     <Content Include="Insatsu.ascx" />
+    <Content Include="signaling.js" />
     <Content Include="Project System\PIchiran.aspx" />
     <Content Include="Project System\PIchiran.css" />
     <Content Include="Project System\PKanri.aspx" />
     <Content Include="Project System\PKanri.css" />
     <Content Include="ShinseiMenu.css" />
     <Content Include="Tatekae.ascx" />
+    <Content Include="Video\Video.css" />
+    <Content Include="Video\Video.aspx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
     <Content Include="スケジュール\Wiki.aspx" />
     <Content Include="スケジュール\Wiki_Top.aspx" />
@@ -300,6 +303,13 @@
     </Compile>
     <Compile Include="Tatekae.ascx.designer.cs">
       <DependentUpon>Tatekae.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Video\Video.aspx.cs">
+      <DependentUpon>Video.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Video\Video.aspx.designer.cs">
+      <DependentUpon>Video.aspx</DependentUpon>
     </Compile>
     <Compile Include="スケジュール\PrintSchedule.aspx.cs">
       <DependentUpon>PrintSchedule.aspx</DependentUpon>
