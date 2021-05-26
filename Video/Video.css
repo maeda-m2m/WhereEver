@@ -3,30 +3,15 @@
     background-repeat: no-repeat; /* 画像重複しない */
     background-size: cover;
     font-weight: bold; /*太字にする*/
-
     font-family: Meiryo;
-}
-
-#title {
-    width: 300px;
-    text-align: center;
-}
-
-.title {
-    background-color: #16ba00;
-    text-align: center;
-    width: 230px;
-    height: 30px;
-    color: white;
 }
 
 #Wrap {
     background-color: #1e1e1e;
     color: white;
-    width: 1280px; /*1280px か 100%*/
+    width: 1280px;
     margin-left: 300px;
     margin-right: 300px;
-    margin-bottom: 100px;
 }
 
 .hr {
@@ -38,7 +23,7 @@
     border-color: red;
 }
 
-#Edit {
+#Video {
     width: 100%;
     height: auto;
     margin-right: 50px;
@@ -48,24 +33,21 @@
     color: white;
 }
 
-#SampleSystem {
-    width: 100%;
-    height: auto;
-    margin-right: 50px;
-    margin-top: 1.85em;
-    padding-bottom: 2em;
-    background-color: #1e1e1e;
-    color: white;
+.DGTable {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    width: 1260px;
+    padding: 0.3em 1em;
+    border: solid 2px red;
+    border-radius: 3px;
+    font-family: Meiryo;
+    border-radius: 3px;
 }
 
-.article {
-    background-color: #1e1e1e;
-    padding-left: 2em;
-    padding-right: 2em;
-    margin-left: 20em;
+.f-notice {
+    height: 2.25em;
     display: inline-block;
-    border: solid 1px;
-    border-color: red;
 }
 
 .center {
@@ -82,58 +64,61 @@
     margin-left: 1em;
 }
 
-.btn_loginlist {
-    width: 200px;
-    height: 40px;
-    position: relative;
-    display: inline-block;
-    font-weight: bold;
-    padding: 0.3em 0.5em;
-    text-decoration: none;
-    color: white;
-    background: #1e1e1e;
-    transition: .4s;
-    font-size: 1em;
-}
-
-    .btn_loginlist:hover {
-        background: #808080;
-        cursor: pointer;
-    }
-
-.DGTable {
+.btn-wrap {
+    width: auto;
+    height: auto;
+    background-color: #1e1e1e;
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
-    width: 1260px;
-    padding: 0.3em 1em;
-    border: solid 2px red;
-    border-radius: 3px;
-    font-family: Meiryo;
-    border-radius: 3px;
-}
-
-/*
-.form-flat-border {
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: left;
-    width: 1200px;
     display: inline-block;
     padding: 0.3em 1em;
     text-decoration: none;
-    color: #16ba00;
-    border: solid 2px #16ba00;
+    color: white;
+    border: solid 2px red;
     border-radius: 3px;
     transition: .4s;
     font-family: Meiryo;
     border-radius: 3px;
 }
-*/
+
+.form-flat-border {
+    width: 1225px;
+    height: auto;
+    background-color: #1e1e1e;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px red;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+.form-flat-border-inner {
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: black;
+    border: solid 1px black;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
 
 .btn-flat-border {
     text-align: center;
-    width: 120px;
+    width: 180px;
     height: 32px;
     display: inline-block;
     padding: 0.15em 1em;
@@ -151,4 +136,3 @@
         background: #808080;
         cursor: pointer;
     }
-
