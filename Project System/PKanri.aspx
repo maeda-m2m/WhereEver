@@ -85,7 +85,7 @@
                     <td class="auto-style2">
                         </td>
                     <td colspan="2" class="auto-style2">
-                        <asp:Button ID="btnPMiddle" CssClass="btn" runat="server" Text="中項目登録" OnClick="btnPMiddle_Click" ValidationGroup="Group02"/>
+                        <asp:Button ID="btnPMiddle" CssClass="btn" runat="server" Text="中項目登録" OnClick="btnPMiddle_Click" ValidationGroup="Group02" Font-Overline="False"/>
                         <asp:Button ID="btnClear" CssClass="btn" runat="server" Text="クリア" CausesValidation="False" OnClick="btnClear_Click" />
                     </td>
                 </tr>
@@ -101,20 +101,31 @@
                             Width="100%" CssClass="DgPKanri" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False">
                             <Columns>
                                 <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ReadOnly="True"/>
-                                <asp:BoundColumn DataField="PMiddleid" HeaderText="中項目ID" ReadOnly="True"/>
+                                <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
+                                        <ItemTemplate>
+                                            <asp:Button ID="uebig" Text="↑" runat="server" CssClass="jyunban" CommandName="uebig"/><br>
+                                            <asp:Button ID="sitabig" Text="↓" runat="server" CssClass="jyunban" CommandName="sitabig"/>
+                                    </ItemTemplate>
+                                </asp:TemplateColumn>
+                                <asp:BoundColumn DataField="PMiddleid" HeaderText="中項目ID" ReadOnly="True" HeaderStyle-Width="10px" HeaderStyle-Font-Size="Small" ItemStyle-Width="10px"/>
                                 <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目"/>
+                                <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
+                                        <ItemTemplate>
+                                            <asp:Button ID="uemiddle" Text="↑" runat="server" CssClass="jyunban" CommandName="uemiddle"/><br>
+                                            <asp:Button ID="sitamiddle" Text="↓" runat="server" CssClass="jyunban" CommandName="sitamiddle"/>
+                                    </ItemTemplate>
+                                </asp:TemplateColumn>
                                 <asp:BoundColumn DataField="PMiddlestart" HeaderText="開始"/>
                                 <asp:BoundColumn DataField="PMiddleover" HeaderText="終了"/>
-                                <asp:BoundColumn HeaderText="ステータス" ReadOnly="True"/>
+                                <asp:BoundColumn ReadOnly="True" HeaderStyle-Width="40px"/>
                                 <asp:BoundColumn DataField="PTorokutime" HeaderText="最新編集日付" ReadOnly="True"/>
                                 <asp:BoundColumn DataField="PTorokusya" HeaderText="最新編集者" ReadOnly="True"/>
                                 
-                                <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>キャンセル" UpdateText="<font color = red>保存" ItemStyle-Width="10%" >
-<ItemStyle Width="10%"></ItemStyle>
+                                <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>キャンセル" UpdateText="<font color = red>保存" HeaderStyle-Width="50px">
                                 </asp:EditCommandColumn>
-                                <asp:ButtonColumn ButtonType="LinkButton" Text="<font color = red>削除" CommandName="Delete"/>
+                                <asp:ButtonColumn ButtonType="LinkButton" Text="<font color = red>削除" CommandName="Delete" HeaderStyle-Width="50px"/>
                             </Columns>
-                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10%"/>
+                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle"/>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"/>
                         </asp:DataGrid>
                         </td>

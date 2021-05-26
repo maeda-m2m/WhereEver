@@ -30,3 +30,10 @@
 .DgPKanri {
     border-block-color: black;
 }
+.jyunban {
+    height: 15px;
+    width: 15px;
+    background-color: black;
+    color: red;
+    border-color: black;
+}

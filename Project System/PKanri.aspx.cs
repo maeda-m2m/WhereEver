@@ -81,23 +81,23 @@ namespace WhereEver.Project_System
             {
                 DATASET.DataSet.T_PdbKanriRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbKanriRow;
                 e.Item.Cells[0].Text = dr.PBigname.ToString();
-                e.Item.Cells[1].Text = dr.PMiddleid.ToString();
-                e.Item.Cells[2].Text = dr.PMiddlename.ToString();
-                e.Item.Cells[3].Text = dr.PMiddlestart.ToShortDateString();
-                e.Item.Cells[4].Text = dr.PMiddleover.ToShortDateString();
+                e.Item.Cells[2].Text = dr.PMiddleid.ToString();
+                e.Item.Cells[3].Text = dr.PMiddlename.ToString();
+                e.Item.Cells[5].Text = dr.PMiddlestart.ToShortDateString();
+                e.Item.Cells[6].Text = dr.PMiddleover.ToShortDateString();
                 if (dr.PMiddleover < DateTime.Now)
                 {
-                    e.Item.Cells[5].Text = "完了";
+                    e.Item.Cells[7].Text = "完了";
                 }
                 else
                 {
                     if (dr.PMiddleover == DateTime.Parse("2100/01/01 00:00:00"))
                     {
-                        e.Item.Cells[4].Text = "";
+                        e.Item.Cells[6].Text = "";
                     }
                 }
-                e.Item.Cells[6].Text = dr.PTorokutime.ToShortDateString();
-                e.Item.Cells[7].Text = dr.PTorokusya.ToString();
+                e.Item.Cells[8].Text = dr.PTorokutime.ToShortDateString();
+                e.Item.Cells[9].Text = dr.PTorokusya.ToString();
 
             }
         }
@@ -240,9 +240,9 @@ namespace WhereEver.Project_System
 
         protected void DgPKanri_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
-            TextBox txtPMiddlename = (TextBox)e.Item.Cells[2].Controls[0];
-            TextBox txtPMiddlestart = (TextBox)e.Item.Cells[3].Controls[0];
-            TextBox txtPMiddleover = (TextBox)e.Item.Cells[4].Controls[0];
+            TextBox txtPMiddlename = (TextBox)e.Item.Cells[3].Controls[0];
+            TextBox txtPMiddlestart = (TextBox)e.Item.Cells[5].Controls[0];
+            TextBox txtPMiddleover = (TextBox)e.Item.Cells[6].Controls[0];
             DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = new DATASET.DataSet.T_PdbKanriDataTable();
             DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
 
@@ -251,7 +251,7 @@ namespace WhereEver.Project_System
             t_PdbKanriRow[5] = txtPMiddleover.Text;
             t_PdbKanriRow[6] = SessionManager.User.M_User.id.Trim();
             t_PdbKanriRow[7] = DateTime.Now;
-            Update.UpdateMiddle(t_PdbKanriRow, e.Item.Cells[0].Text, e.Item.Cells[1].Text);
+            Update.UpdateMiddle(t_PdbKanriRow, e.Item.Cells[0].Text, e.Item.Cells[2].Text);
             DgPKanri.EditItemIndex = -1;
             CreateDataGrid(SessionManager.project.PdbRow.Pid);
         }
@@ -259,7 +259,7 @@ namespace WhereEver.Project_System
         protected void DgPKanri_ItemCommand(object source, DataGridCommandEventArgs e)
         {
             string bigname = e.Item.Cells[0].Text;
-            string Middleid = e.Item.Cells[1].Text;
+            string Middleid = e.Item.Cells[2].Text;
             switch (((LinkButton)e.CommandSource).CommandName)
             {
 
@@ -269,7 +269,14 @@ namespace WhereEver.Project_System
 
                 // Add other cases here, if there are multiple ButtonColumns in 
                 // the DataGrid control.
-
+                case "uebig":
+                    break;
+                case "sitabig":
+                    break;
+                case "uemiddle":
+                    break;
+                case "sitamiddle":
+                    break;
                 default:
                     // Do nothing.
                     break;
