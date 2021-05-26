@@ -21,6 +21,27 @@
     margin-right: 1em;
 }
 
+.textbox_pl {
+    text-align: right;
+    height: auto;
+    width: 20em;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+#th_pl_master{
+    background-color: black;
+}
+
+#td_pl_master {
+    width: 61em;
+}
+
+td {
+    border: solid 1px white;   
+    border-collapse: collapse;
+}
+
 .hr {
     display: block;
     height: 0;

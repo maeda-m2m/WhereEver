@@ -30,12 +30,135 @@
        <div id="Wrap">
 
 
+           <span class="hr"></span>
+
+           <p class="index1">
+               ◆損益計算書(PL)
+               <asp:Button ID="Button_PL" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_PL_test" CausesValidation="False" />
+           </p>
+
+           <hr />
+
+<asp:Panel ID="Panel_PL" runat="server" Visible="false">
+
+    <div class="center">
+
+        <table class="DGTable">
+            <tr>
+                <th colspan="2" id="th_pl_master">
+                    P/L
+                </th>
+            </tr>
+            <tr>
+                <td rowspan="2" id="td_pl_master">
+                    売上高<br />売上原価
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_Uriage" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:TextBox ID="TextBox_UriageGenka" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    売上総利益
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_UriageSourieki" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                    販売費及び一般管理費
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_HanbaiKanrihi" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                    営業利益
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_EigyouRieki" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                    営業外費用
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_EigyougaiHiyou" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                    経常利益
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_KeijyouRieki" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+             </tr>
+             <tr>
+                <td rowspan="2">
+                    特別利益<br />特別損失
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_TokubetsuRieki" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                    <asp:TextBox ID="TextBox_TokubetsuSonshitsu" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                    税引前当期純利益
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_Zeibikimae" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                    法人税等
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_Houjinzei" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+             </tr>
+             <tr>
+                <td>
+                    当期純利益
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_Jyunrieki" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0"></asp:TextBox>
+                </td>
+             </tr>
+        </table>
+
+        <p>予定：確認/確定ボタンを押す→Validation→入力値をGridViewに通貨単位で代入→TryParseした値をSqlに保存/表の印刷をできるようにする。</p>
+
+        <asp:GridView ID="GridView_PL" runat="server" CssClass="DGTable" Visible="false">
+        <HeaderStyle BackColor="Black" ForeColor="White" />
+        <RowStyle BackColor="#1E1E1E" ForeColor="White" />
+        </asp:GridView>
+
+    </div>
+
+</asp:Panel>
+
+
 
 
            <span class="hr"></span>
            <p class="index1">
                ◆動画貼り付け機能(YouTube)
-               <asp:Button ID="Button_YT_test" CssClass="btn-flat-border" runat="server" Text="ためす" OnClick="Push_YT_test" CausesValidation="False" />
+               <asp:Button ID="Button_YT_test" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_YT_test" CausesValidation="False" />
            </p>
 
            <hr />
@@ -65,7 +188,7 @@
 
            <p class="index1">
                ◆リモート通話機能（Hand Signaling 2016 改造版）
-               <asp:Button ID="Button_Video_test" CssClass="btn-flat-border" runat="server" Text="ためす" OnClick="Push_Video_test" CausesValidation="False" />
+               <asp:Button ID="Button_Video_test" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_Video_test" CausesValidation="False" />
            </p>
 
 <asp:Panel ID="Panel_Video" runat="server" Visible="false">
