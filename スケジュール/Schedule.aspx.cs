@@ -82,22 +82,6 @@ namespace WhereEver
             }
         }
 
-        public void CsCollor()
-        {
-
-            Scdl3.Items[2].Cells[1].CssClass = "Center_cs_Color";
-            Scdl3.Items[4].Cells[1].CssClass = "Center_cs_Color";
-            Scdl3.Items[6].Cells[1].CssClass = "Center_cs_Color";
-            Scdl3.Items[8].Cells[1].CssClass = "Center_cs_Color";
-            Scdl3.Items[10].Cells[1].CssClass = "Center_cs_Color_Bottom";//セルの終わり
-
-            Scdl3.Items[1].Cells[1].CssClass = "Center_cs_Color";
-            Scdl3.Items[3].Cells[1].CssClass = "Center_cs_Color";
-            Scdl3.Items[5].Cells[1].CssClass = "Center_cs_Color";
-            Scdl3.Items[7].Cells[1].CssClass = "Center_cs_Color";
-            Scdl3.Items[9].Cells[1].CssClass = "Center_cs_Color";
-        }
-
         public void Create2()//今週
         {
             ViewState["count"] = 0;
@@ -154,8 +138,6 @@ namespace WhereEver
                 Scdl3.Items[0].Cells[6].CssClass = "Center_cs";
                 Scdl3.Items[0].Cells[7].CssClass = "Center_cs";
 
-
-
                 if (Z0 == "月")
                 {
                     DateTime a = DateTime.Now;
@@ -179,6 +161,8 @@ namespace WhereEver
                     Scdl3.Items[5].Cells[1].CssClass = "Center_cs_Color";
                     Scdl3.Items[7].Cells[1].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[1].CssClass = "Center_cs_Color";
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z1 == "火")
                 {
@@ -203,6 +187,8 @@ namespace WhereEver
                     Scdl3.Items[5].Cells[2].CssClass = "Center_cs_Color";
                     Scdl3.Items[7].Cells[2].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[2].CssClass = "Center_cs_Color";
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z2 == "水")
                 {
@@ -227,6 +213,8 @@ namespace WhereEver
                     Scdl3.Items[5].Cells[3].CssClass = "Center_cs_Color";
                     Scdl3.Items[7].Cells[3].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[3].CssClass = "Center_cs_Color";
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z3 == "木")
                 {
@@ -252,6 +240,8 @@ namespace WhereEver
                     Scdl3.Items[5].Cells[4].CssClass = "Center_cs_Color";
                     Scdl3.Items[7].Cells[4].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[4].CssClass = "Center_cs_Color";
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z4 == "金")
                 {
@@ -277,6 +267,8 @@ namespace WhereEver
                     Scdl3.Items[5].Cells[5].CssClass = "Center_cs_Color";
                     Scdl3.Items[7].Cells[5].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[5].CssClass = "Center_cs_Color";
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z5 == "土")
                 {
@@ -302,6 +294,8 @@ namespace WhereEver
                     Scdl3.Items[7].Cells[6].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[6].CssClass = "Center_cs_Color";
 
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z6 == "日")
                 {
@@ -326,6 +320,8 @@ namespace WhereEver
                     Scdl3.Items[5].Cells[7].CssClass = "Center_cs_Color";
                     Scdl3.Items[7].Cells[7].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[7].CssClass = "Center_cs_Color";
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
 
                 }
 
@@ -1304,6 +1300,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 5).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 6).ToString("MMMMd日");
 
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z1 == "火")
                 {
@@ -1316,6 +1314,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 4).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 5).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z2 == "水")
                 {
@@ -1328,6 +1328,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 4).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z3 == "木")
                 {
@@ -1340,6 +1342,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z4 == "金")
                 {
@@ -1352,6 +1356,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z5 == "土")
                 {
@@ -1364,6 +1370,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week - 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z6 == "日")
                 {
@@ -1376,6 +1384,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week - 2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week - 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
 
 
@@ -1915,6 +1925,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 5).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 6).ToString("MMMMd日");
 
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z1 == "火")
                 {
@@ -1927,6 +1939,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 4).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 5).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z2 == "水")
                 {
@@ -1939,6 +1953,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 4).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z3 == "木")
                 {
@@ -1951,6 +1967,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z4 == "金")
                 {
@@ -1963,6 +1981,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z5 == "土")
                 {
@@ -1975,6 +1995,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week - 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
                 else if (Z6 == "日")
                 {
@@ -1987,6 +2009,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week - 2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week - 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week).ToString("MMMMd日");
+
+                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
 
                 if (tm == "9:00" || tm == "9:15" || tm == "9:30" || tm == "9:45")
