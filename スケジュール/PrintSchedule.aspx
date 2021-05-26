@@ -427,11 +427,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div>
+        <asp:Label ID="lbltitle" runat="server" Text="スケジュール表<br>＊Web会議日程等は変更・追加が有り次第、ホワイトボードに必ず最新情報を反映願います。" Font-Size="Small" CssClass=""></asp:Label>
+        </div>
         <div class="DgBikou">
         <input type="button" id="Btn" value="印刷" onclick="window.print();" class="noprint" />
 
         <table id="newsdl">
-            <asp:Label ID="lbltitle" runat="server" Text="スケジュール表"></asp:Label>
             <tr>
                 <td class="auto-style16">
                     <p>日付</p>

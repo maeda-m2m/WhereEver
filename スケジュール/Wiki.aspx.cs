@@ -27,7 +27,7 @@ namespace WhereEver.スケジュール
 
             int no = dl.id;
 
-           
+
 
             DateTime datetime = DateTime.Now;
             datetime = DateTime.Parse(datetime.ToString());
@@ -48,7 +48,7 @@ namespace WhereEver.スケジュール
 
             Class.Wiki.InsertT_Wiki(dt, Global.GetConnection());
 
-           
+            Response.Redirect("Wiki_Top");
 
         }
 
