@@ -12,6 +12,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Schedule</title>
 
+    <style type="text/css">
+        .auto-style1 {
+            background-color: #16ba00;
+            color: white;
+            height: 28px;
+        }
+        .auto-style2 {
+            height: 28px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -106,8 +117,8 @@
                     </tr>
 
                     <tr>
-                        <th class="Center_Color">内容</th>
-                        <td>
+                        <th class="auto-style1">内容</th>
+                        <td class="auto-style2">
                             <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" Columns="40" placeholder="例:LIXIL　Web会議" TextMode="Search"></asp:TextBox>
                         </td>
                     </tr>
@@ -447,22 +458,22 @@
 
                     <asp:BoundColumn DataField="time" HeaderText="時間" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px"  />
                     </asp:BoundColumn>
 
                     <asp:BoundColumn DataField="title" HeaderText="内容" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px"  />
                     </asp:BoundColumn>
 
                     <asp:BoundColumn DataField="name" HeaderText="担当者名" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px"  />
                     </asp:BoundColumn>
 
                     <asp:BoundColumn DataField="SdlNo" HeaderText="管理番号" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px"  />
                     </asp:BoundColumn>
 
 

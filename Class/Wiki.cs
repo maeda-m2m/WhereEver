@@ -48,8 +48,22 @@ namespace WhereEver.Class
             {
                 sql.Close();
             }
-
         }
+
+        public static DATASET.DataSet.T_WikiRow Maxid(SqlConnection schedule)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", schedule);
+            da.SelectCommand.CommandText =
+                "SELECT * FROM T_Wiki ORDER BY id desc";
+            DATASET.DataSet.T_WikiDataTable dt = new DATASET.DataSet.T_WikiDataTable();
+            da.Fill(dt);
+            return dt[0];
+        }
+
+
+
+
+
         internal static void DeleteList(int sdl, SqlConnection sql) //削除ボタン
         {
             var da = new SqlCommand("", sql);
@@ -77,14 +91,6 @@ namespace WhereEver.Class
                 sql.Close();
             }
         }
-        public static DATASET.DataSet.T_ScheduleRow MaxSdlNo(SqlConnection schedule)//SdlNoの最大値を持ってくる
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", schedule);
-            da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule ORDER BY SdlNo desc";
-            DATASET.DataSet.T_ScheduleDataTable dt = new DATASET.DataSet.T_ScheduleDataTable();
-            da.Fill(dt);
-            return dt[0];
-        }
+
     }
 }
