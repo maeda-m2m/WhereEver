@@ -29,13 +29,47 @@
 
        <div id="Wrap">
 
+
+
+
+           <span class="hr"></span>
+           <p class="index1">
+               ◆動画貼り付け機能(YouTube)
+               <asp:Button ID="Button_YT_test" CssClass="btn-flat-border" runat="server" Text="ためす" OnClick="Push_YT_test" CausesValidation="False" />
+           </p>
+
+           <hr />
+
+<asp:Panel ID="Panel_YT" runat="server" Visible="false">
+
+           <a name="yt"></a>
+           <div class="center">
+               <div id="ytplayer"></div><%-- ここに貼り付け --%>
+               <asp:Literal ID="Literal_yt" runat="server"></asp:Literal>
+           </div>
+
+           <hr />
+
+           <div class="center">
+               <asp:TextBox ID="TextBox_yt" CssClass="textbox" runat="server" placeholder="ここにYouTubeのIDを入力"></asp:TextBox>
+               <asp:Button ID="Button_yt" CssClass="btn-flat-border" runat="server" Text="確定" OnClick="Push_yt" CausesValidation="False" PostBackUrl="#yt" />
+           </div>
+
+</asp:Panel>
+
            <span class="hr"></span>
 
            <%-- 参考：https://html5experts.jp/series/webrtc2016/ --%>
            <%-- 参考：https://qiita.com/lighthouse/items/34bb8ccb6149bbfae427 --%>
 
 
-           <p class="index1">◆リモート通話機能（Hand Signaling 2016 改造版）</p>
+           <p class="index1">
+               ◆リモート通話機能（Hand Signaling 2016 改造版）
+               <asp:Button ID="Button_Video_test" CssClass="btn-flat-border" runat="server" Text="ためす" OnClick="Push_Video_test" CausesValidation="False" />
+           </p>
+
+<asp:Panel ID="Panel_Video" runat="server" Visible="false">
+
            <p>※Edgeでは動作しません。"https://～"か"http://localhost/～"で使用できます。事前にカメラを繋いでおいて下さい。</p>
 
            <hr />
@@ -86,7 +120,7 @@
 
     </div>
     </div> <%-- Video --%>
-
+</asp:Panel>
 
 
         </div> <%-- Wrap --%>
