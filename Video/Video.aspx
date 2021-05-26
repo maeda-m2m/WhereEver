@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="Video.css" />
 
     <title>P2PVideoChat</title>
+    <script src="http://localhost:3002/socket.io.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -34,24 +35,30 @@
            <%-- 参考：https://qiita.com/lighthouse/items/34bb8ccb6149bbfae427 --%>
 
 
-           <p class="index1">◆Hand Signaling 2016 改造版</p>
+           <p class="index1">◆リモート通話機能（Hand Signaling 2016 改造版）</p>
            <p>※Edgeでは動作しません。"https://～"か"http://localhost/～"で使用できます。事前にカメラを繋いでおいて下さい。</p>
 
+           <hr />
+
            <p>PCにWebカメラを接続してからFirefox 47 またはChrome 51でアクセスしてみてください。</p>
-           <p>通信するためにAさんとBさんで計2つのページを開く必要があります。</p>
+           <p>ポート番号は手動で変更して下さい。現在の設定は 56803 です。</p>
+           <p>F12キーを押してエラーがないか確認して下さい。</p>
            <p>参考：https://html5experts.jp/mganeko/19814/</p>
 
-           <p>事前準備</p>
-           <p>コマンドプロンプトかターミナルで</p>
-           <p>	npm install ws</p>
+           <hr />
 
-            <p>シグナリングサーバー起動</p>
-            <p>  node signaling.js</p>
+           <p>～事前準備～</p>
+           <p>コマンドプロンプトかターミナルでsocket.ioモジュールのインストール</p>
+           <p>  npm install socket.io</p>
 
+           <p>シグナリングサーバー起動（↓でダメなら node Video/signaling_room.js）</p>
+           <p>  node signaling_room.js</p>
+
+           <hr />
 
            <ol>
-           <li type="circle">カメラ起動方法：AさんとBさんの両方で[ビデオ撮影開始]をクリック（カメラ起動）</li>
-           <li type="circle">接続方法：お手元の[SDP接続開始]をクリック（SDP接続）</li>
+           <li type="circle">カメラ起動方法：通信者は[ビデオ撮影開始]をクリック（カメラ起動）</li>
+           <li type="circle">接続方法：[SDP接続開始]をクリック（SDP接続）</li>
            <li type="circle">送信または返信方法：自動</li>
            <li type="circle">受信方法：自動</li>
            </ol>
@@ -103,7 +110,9 @@
 
 
     // ---------------------- media handling ----------------------- 
-    let wsUrl = 'ws://localhost:3001/'; //localhosutはお使いの環境に合わせて下さい。
+
+/*  単体接続だけのときはWebSocketを直接用いてコメントアウトを解除すればよい
+    let wsUrl = 'ws://localhost:3001/'; //localhostはお使いの環境に合わせて下さい。
     let ws = new WebSocket(wsUrl);
     ws.onopen = function (evt) {
         console.log('ws open()');
@@ -111,6 +120,196 @@
     ws.onerror = function (err) {
         console.error('ws onerror() ERR:', err);
     };
+*/
+
+    // ----- use socket.io ---
+    let port = 56803;
+    let socket = io.connect('http://localhost:' + port + '/');
+    let room = getRoomName();
+    socket.on('connect', function (evt) {
+        socket.emit('enter', room);
+    });
+    socket.on('message', function (message) {
+        let fromId = message.from;
+
+        if (message.type === 'offer') {
+            // -- got offer ---
+            let offer = new RTCSessionDescription(message);
+            setOffer(fromId, offer);
+        }
+        else if (message.type === 'answer') {
+            // --- got answer ---
+            let answer = new RTCSessionDescription(message);
+            setAnswer(fromId, answer);
+        }
+        else if (message.type === 'candidate') {
+            // --- got ICE candidate ---
+            let candidate = new RTCIceCandidate(message.ice);
+            addIceCandidate(fromId, candidate);
+        }
+        else if (message.type === 'call me') {
+            if (!isReadyToConnect()) {
+                console.log('Not ready to connect, so ignore');
+                return;
+            }
+            else if (!canConnectMore()) {
+                console.warn('TOO MANY connections, so ignore');
+            }
+
+            if (isConnectedWith(fromId)) {
+                // already connnected, so skip
+                console.log('already connected, so ignore');
+            }
+            else {
+                // connect new party
+                makeOffer(fromId);
+            }
+        }
+        else if (message.type === 'bye') {
+            if (isConnectedWith(fromId)) {
+                stopConnection(fromId);
+            }
+        }
+    });
+    socket.on('user disconnected', function (evt) {
+        let id = evt.id;
+        if (isConnectedWith(id)) {
+            stopConnection(id);
+        }
+    });
+
+    // --- broadcast message to all members in room
+    function emitRoom(msg) {
+        socket.emit('message', msg);
+    }
+
+    function emitTo(id, msg) {
+        msg.sendto = id;
+        socket.emit('message', msg);
+    }
+    //--------↑ここに設置で合っているか？--------
+
+
+
+    //videoタグの管理JavaScript
+    //---init---
+    let remoteVideos = [];
+    let container = document.getElementById('container');
+
+    // --- video elements ---
+    function addRemoteVideoElement(id = 0) {
+        let video = createVideoElement('remote_video_' + id);
+        remoteVideos[id] = video;
+        return video;
+    }
+
+    function getRemoteVideoElement(id = 0) {
+        let video = remoteVideos[id];
+        return video;
+    }
+
+    function deleteRemoteVideoElement(id = 0) {
+        removeVideoElement('remote_video_' + id);
+        delete remoteVideos[id];
+    }
+
+    function createVideoElement(elementId) {
+        let video = document.createElement('video');
+        video.width = '160';
+        video.height = '120';
+        video.id = elementId;
+
+        video.style.border = 'solid black 1px';
+        video.style.margin = '2px';
+
+        container.appendChild(video);
+
+        return video;
+    }
+
+    function removeVideoElement(elementId) {
+        let video = document.getElementById(elementId);
+        container.removeChild(video);
+        return video;
+    }
+
+
+
+    //------
+
+    function attachVideo(id = 0, stream) {
+        let video = addRemoteVideoElement(id);
+        playVideo(video, stream);
+        video.volume = 1.0;
+    }
+
+    function detachVideo(id = 0) {
+        let video = getRemoteVideoElement(id);
+        pauseVideo(video);
+        deleteRemoteVideoElement(id);
+    }
+
+    function isRemoteVideoAttached(id = 0) {
+        if (remoteVideos[id]) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    //複数PeerConnectionの管理JavaScript
+    // ---- for multi party -----
+    let peerConnections = [];
+    const MAX_CONNECTION_COUNT = 3;
+
+    // --- RTCPeerConnections ---
+    function getConnectionCount() {
+        return peerConnections.length;
+    }
+
+    function canConnectMore() {
+        return (getConnectionCount() < MAX_CONNECTION_COUNT);
+    }
+
+    function isConnectedWith(id = 0) {
+        if (peerConnections[id]) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function addConnection(id = 0, peer) {
+        peerConnections[id] = peer;
+    }
+
+    function getConnection(id = 0) {
+        let peer = peerConnections[id];
+        return peer;
+    }
+
+    function deleteConnection(id = 0) {
+        delete peerConnections[id];
+    }
+
+    function stopConnection(id = 0) {
+        detachVideo(id);
+
+        if (isConnectedWith(id)) {
+            let peer = getConnection(id);
+            peer.close();
+            deleteConnection(id);
+        }
+    }
+
+    function stopAllConnection() {
+        for (let id in peerConnections) {
+            stopConnection(id);
+        }
+    }
+
 
     // ---------------------- Web Socket Message Receive ----------------------- 
     ws.onmessage = function (evt) {
@@ -130,12 +329,29 @@
             let answer = new RTCSessionDescription(message);
             setAnswer(answer);
         }
+        else if (message.type === 'candidate') { // <--- ここから追加
+            // --- got ICE candidate ---
+            console.log('Received ICE candidate ...');
+            let candidate = new RTCIceCandidate(message.ice);
+            console.log(candidate);
+            addIceCandidate(candidate);
+        }
     };
+
+    function addIceCandidate(candidate) {
+        if (peerConnection) {
+            peerConnection.addIceCandidate(candidate);
+        }
+        else {
+            console.error('PeerConnection not exist!');
+            return;
+        }
+    }
 
     // ---------------------- media handling ----------------------- 
     // start local video
     function startVideo() {
-        getDeviceStream({ video: true, audio: false })
+        getDeviceStream({ video: true, audio: true })
             .then(function (stream) { // success
                 localStream = stream;
                 playVideo(localVideo, stream);
@@ -225,22 +441,23 @@
         textToReceiveSdp.value = '';
     }
 
-    function sendSdp(sessionDescription) {
+    function sendSdp(id = 0, sessionDescription) {     //複数人対応
         console.log('---sending sdp ---');
 
-        textForSendSdp.value = sessionDescription.sdp;
-        /*--- テキストエリアをハイライトするのを止める
-        textForSendSdp.focus();
-        textForSendSdp.select();
-        ----*/
+        let message = { type: sessionDescription.type, sdp: sessionDescription.sdp };
+        emitTo(id, message);
+
+        //textForSendSdp.value = sessionDescription.sdp;
 
         // --- シグナリングサーバーに送る ---
+        /*
         let message = JSON.stringify(sessionDescription);
         console.log('sending SDP=' + message);
         ws.send(message);
+        */
     }
     // ---------------------- connection handling -----------------------
-    function prepareNewConnection() {
+    function prepareNewConnection(id = 0) {     //複数人用にidで設定できるようにしておく
         let pc_config = { "iceServers": [] };
         let peer = new RTCPeerConnection(pc_config);
 
@@ -249,14 +466,21 @@
             peer.ontrack = function (event) {
                 console.log('-- peer.ontrack()');
                 let stream = event.streams[0];
-                playVideo(remoteVideo, stream);
+                if (isRemoteVideoAttached(id)) {
+                    console.log('stream already attached, so ignore'); // <--- 同じ相手からの2回目以降のイベントは無視する
+                }
+                else {
+                    //playVideo(remoteVideo, stream);
+                    attachVideo(id, stream);
+                }
             };
         }
         else {
             peer.onaddstream = function (event) {
-                console.log('-- peer.onaddstream()');
                 let stream = event.stream;
-                playVideo(remoteVideo, stream);
+                console.log('-- peer.onaddstream() stream.id=' + stream.id);
+                //playVideo(remoteVideo, stream);
+                attachVideo(id, stream);
             };
         }
 
@@ -266,13 +490,16 @@
                 console.log(evt.candidate);
 
                 // Trickle ICE の場合は、ICE candidateを相手に送る
+                sendIceCandidate(evt.candidate); // <--- ここを追加する
+
                 // Vanilla ICE の場合には、何もしない
             } else {
                 console.log('empty ice event');
 
                 // Trickle ICE の場合は、何もしない
+
                 // Vanilla ICE の場合には、ICE candidateを含んだSDPを相手に送る
-                sendSdp(peer.localDescription);
+                //sendSdp(peer.localDescription); // <-- ここをコメントアウトする
             }
         };
 
@@ -289,6 +516,15 @@
         return peer;
     }
 
+    function sendIceCandidate(candidate) {
+        console.log('---sending ICE candidate ---');
+        let obj = { type: 'candidate', ice: candidate };
+        let message = JSON.stringify(obj);
+        console.log('sending candidate=' + message);
+        ws.send(message);
+    }
+
+    //SDPをすぐに送るJavaScript
     function makeOffer() {
         peerConnection = prepareNewConnection();
         peerConnection.createOffer()
@@ -299,8 +535,52 @@
                 console.log('setLocalDescription() succsess in promise');
 
                 // -- Trickle ICE の場合は、初期SDPを相手に送る -- 
+                sendSdp(peerConnection.localDescription);　// <--- ここを加える
+
                 // -- Vanilla ICE の場合には、まだSDPは送らない --
-                //sendSdp(peerConnection.localDescription);
+            }).catch(function (err) {
+                console.error(err);
+            });
+    }
+
+    function makeAnswer() {
+        console.log('sending Answer. Creating remote session description...');
+        if (!peerConnection) {
+            console.error('peerConnection NOT exist!');
+            return;
+        }
+
+        peerConnection.createAnswer()
+            .then(function (sessionDescription) {
+                console.log('createAnswer() succsess in promise');
+                return peerConnection.setLocalDescription(sessionDescription);
+            }).then(function () {
+                console.log('setLocalDescription() succsess in promise');
+
+                // -- Trickle ICE の場合は、初期SDPを相手に送る -- 
+                sendSdp(peerConnection.localDescription);　// <--- ここを加える
+
+                // -- Vanilla ICE の場合には、まだSDPは送らない --
+            }).catch(function (err) {
+                console.error(err);
+            });
+    }
+
+    function makeOffer(id = 0) {    //複数人対応
+        peerConnection = prepareNewConnection(id);
+        addConnection(id, peerConnection);
+
+        peerConnection.createOffer()
+            .then(function (sessionDescription) {
+                console.log('createOffer() succsess in promise');
+                return peerConnection.setLocalDescription(sessionDescription);
+            }).then(function () {
+                console.log('setLocalDescription() succsess in promise');
+
+                // -- Trickle ICE の場合は、初期SDPを相手に送る -- 
+                sendSdp(id, peerConnection.localDescription);　// <--- ここを加える
+
+                // -- Vanilla ICE の場合には、まだSDPは送らない --
             }).catch(function (err) {
                 console.error(err);
             });
@@ -335,14 +615,16 @@
                 console.log('setLocalDescription() succsess in promise');
 
                 // -- Trickle ICE の場合は、初期SDPを相手に送る -- 
+                sendSdp(peerConnection.localDescription);　// <--- ここを加える
+
                 // -- Vanilla ICE の場合には、まだSDPは送らない --
-                //sendSdp(peerConnection.localDescription);
             }).catch(function (err) {
                 console.error(err);
             });
     }
 
-    function setAnswer(sessionDescription) {
+    function setAnswer(id = 0, sessionDescription) {        //複数人対応
+        let peerConnection = getConnection(id);
         if (!peerConnection) {
             console.error('peerConnection NOT exist!');
             return;

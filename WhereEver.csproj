@@ -130,7 +130,9 @@
     <Content Include="IMG\m2mlogo_r.png" />
     <Content Include="IMG\日付2.png" />
     <Content Include="Insatsu.ascx" />
-    <Content Include="signaling.js" />
+    <Content Include="Video\signalilng_room.js" />
+    <Content Include="Video\socket.io.js" />
+    <Content Include="Video\signaling.js" />
     <Content Include="Project System\PIchiran.aspx" />
     <Content Include="Project System\PIchiran.css" />
     <Content Include="Project System\PKanri.aspx" />
