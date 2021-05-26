@@ -53,6 +53,7 @@ namespace WhereEver
                 Label Name = e.Item.FindControl("Name") as Label;
                 Label Date = e.Item.FindControl("Date") as Label;
                 Label Naiyou = e.Item.FindControl("Naiyou") as Label;
+
                 if (dr.HentouNo == 0)
                 {
                     No.Text = dr.No.ToString();
@@ -88,7 +89,9 @@ namespace WhereEver
            
             dr.Id = SessionManager.User.ID; //変更
             dr.Name = Label1.Text;
-            dr.Naiyou = TextBox1.Text;
+            string str1 = TextBox1.Text;
+            string str2 = str1.Replace("\r\n", "<br>");
+            dr.Naiyou = str2;
             dr.HentouNo = 0;
 
             DATASET.DataSet.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());

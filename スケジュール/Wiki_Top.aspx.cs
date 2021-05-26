@@ -2,6 +2,7 @@
 using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WhereEver.ClassLibrary;
 
 namespace WhereEver.スケジュール
 {
@@ -22,7 +23,7 @@ namespace WhereEver.スケジュール
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Wiki_Top.aspx");
         }
 
 
@@ -54,15 +55,38 @@ namespace WhereEver.スケジュール
 
         protected void dg1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var a = dg1.SelectedItem;
+
 
         }
 
-        //lblDLResult.Text = "";
-        //    if (TextBox_dl.Text != null && TextBox_dl.Text != "")
-        //    {
-        //        //FileDownLoad by DataBase
-        //        string result = FileShareClass.Get_File_DownLoad_src(Page.Response, HtmlEncode(TextBox_dl.Text), TextBox_DownloadPass.Text, LoadByteLength());
-        //lblDLResult.Text = @result;
+        protected void dg1_ItemCommand(object sender, DataGridCommandEventArgs e)
+        {
+
+
+            //int sdl = dr.id;
+            if (e.CommandName == "Read")
+            {
+
+                int Read = e.Item.ItemIndex;
+
+                var dt = Class.Wiki.GetT_WikiDataTable(Global.GetConnection());
+
+                var dr = dt.Rows[Read] as DATASET.DataSet.T_WikiRow;
+
+                Label1.Text = dr.Title;
+
+                Label2.Text = dr.Text;
+
+                //if (sdl > 0)
+                //    Class1.DeleteList(sdl, Global.GetConnection());
+                //dg1.Items[Read].FindControl("No");
+
+
+                //Label1.Text = "";
+                //string result = FileShareClass.Get_File_DownLoad_src(Page.Response, HtmlEncode(TextBox_dl.Text), TextBox_DownloadPass.Text, LoadByteLength());
+                //Label1.Text = @result;
+            }
+        }
+
     }
 }
