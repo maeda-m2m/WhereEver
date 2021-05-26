@@ -12,7 +12,7 @@ namespace WhereEver.ClassLibrary
     {
         //----------------------------------------------------------------------------------------------
         //メール送信
-        // MailKit
+        // MailKit & MimeKit
         // 作成者：(C)Jeffrey Stedfast
         // MIT Licence
         // https://opensource.org/licenses/mit-license.php
