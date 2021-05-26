@@ -447,22 +447,22 @@
 
                     <asp:BoundColumn DataField="time" HeaderText="時間" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
                     </asp:BoundColumn>
 
                     <asp:BoundColumn DataField="title" HeaderText="内容" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
                     </asp:BoundColumn>
 
                     <asp:BoundColumn DataField="name" HeaderText="担当者名" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
                     </asp:BoundColumn>
 
                     <asp:BoundColumn DataField="SdlNo" HeaderText="管理番号" ItemStyle-Width="100px">
                         <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" CssClass="scdl" />
+                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
                     </asp:BoundColumn>
 
 

@@ -42,7 +42,7 @@
         <div class="Center">
 
             <asp:Button runat="server" ID="Button1" Text="登録" OnClick="Button1_Click" />
-            <asp:Button runat="server" ID="Button2" Text="戻る" />
+            <asp:Button runat="server" ID="Button2" Text="戻る" OnClick="Button2_Click" />
 
         </div>
 

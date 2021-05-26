@@ -11,7 +11,10 @@ namespace WhereEver.スケジュール
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
 
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)//登録
@@ -20,8 +23,11 @@ namespace WhereEver.スケジュール
 
             var dr = dt.NewT_WikiRow();
 
-            var random = new Random();
-            int ID = int.Parse(random.ToString());
+            var dl = Class.Wiki.Maxid(Global.GetConnection());
+
+            int no = dl.id;
+
+           
 
             DateTime datetime = DateTime.Now;
             datetime = DateTime.Parse(datetime.ToString());
@@ -32,14 +38,23 @@ namespace WhereEver.スケジュール
 
             string Text1 = TextBox1.Text;
 
-            dr.ID = ID;
+            dr.id = no + 1;
             dr.Date = datetime;
             dr.Name = name;
             dr.Title = Title;
             dr.Text = Text1;
 
+            dt.AddT_WikiRow(dr);
+
             Class.Wiki.InsertT_Wiki(dt, Global.GetConnection());
 
+           
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Wiki_Top");
         }
     }
 }
