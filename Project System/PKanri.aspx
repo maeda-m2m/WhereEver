@@ -103,7 +103,7 @@
                                 <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ReadOnly="True"/>
                                 <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
                                         <ItemTemplate>
-                                            <asp:Button ID="uebig" Text="↑" runat="server" CssClass="jyunban" CommandName="uebig"/><br>
+                                            <asp:Button ID="uebig" Text="↑" runat="server" CssClass="jyunban" CommandName="uebig" OnClick="uebig_Click"/><br>
                                             <asp:Button ID="sitabig" Text="↓" runat="server" CssClass="jyunban" CommandName="sitabig"/>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
