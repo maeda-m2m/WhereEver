@@ -119,7 +119,13 @@
                     </div>
                   </div>
 
-
+           <div id="TestSystem">
+            <span class="hr"></span>
+            <p class="index1"> ◆開発または研究中の機能</p>
+            <div class="center">
+               <asp:Button ID="Button_Video" runat="server" CssClass="btn_loginlist" Text="ビデオ機能を試す" OnClick="btnVideo_Click" />
+            </div>
+           </div>
 
         </div><%-- Wrap --%>
 
