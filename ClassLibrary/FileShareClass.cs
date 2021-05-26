@@ -261,6 +261,9 @@ namespace WhereEver.ClassLibrary
         /// <returns>string</returns>
         public static string Get_File_DownLoad_src(HttpResponse response, string file, string pass = "", int separatesize = 8000)
         {
+            const int maxsize = 41943040;
+
+
             //Password
             if (pass != "")
             {
@@ -286,6 +289,46 @@ namespace WhereEver.ClassLibrary
                         {
                             //初回はタイプ取得
                             type = @dr.type;
+
+                            //ファイルサイズ取得
+                            string size = @dr.size;
+                            float value = 0f;
+                            int n = 1;
+                            StringBuilder sb = new StringBuilder();
+                            sb.Append(size);
+                            if (size.LastIndexOf("GB") != -1)
+                            {
+                                sb.Replace("GB", "");
+                                n = 3;
+                            }
+                            else if (size.LastIndexOf("MB") != -1)
+                            {
+                                sb.Replace("MB", "");
+                                n = 2;
+                            }
+                            else if (size.LastIndexOf("KB") != -1)
+                            {
+                                sb.Replace("KB", "");
+                                n = 1;
+                            }
+                            else if (size.LastIndexOf("B") != -1)
+                            {
+                                sb.Replace("B", "");
+                                n = 0;
+                            }
+
+                            if(!float.TryParse(sb.ToString().Trim(), System.Globalization.NumberStyles.Currency, null, out value))
+                            {
+                                return "Size_TryParse_Failed";
+                            }
+
+                            value = value * (float)(1024 ^n);
+
+                            if(value > maxsize / 100)
+                            {
+                                return "Content_Too_Large_Size";
+                            }
+
 
                             if (type != "image/jpeg" && type != "image/png" && type != "image/gif" && type != "image/svg+xml" && type != "application/pdf" && type != "text/plain")
                             {
@@ -316,12 +359,12 @@ namespace WhereEver.ClassLibrary
                     if (type == "image/jpeg" || type == "image/png" || type == "image/gif" || type == "image/svg+xml")
                     {
                         //貼り付け用タグを返す           
-                        return "<img src=\"data:" + @type + ";base64," + Convert.ToBase64String(allbyte) + "\" />";
+                        return "<img src=\"data:" + @type + ";base64," + HtmlEncode(Convert.ToBase64String(allbyte)) + "\" />";
                     }
                     else if (type == "application/pdf")
                     {
                         //貼り付け用タグを返す           
-                        return "<embed type=\"" + @type + "\"data;" + @type + ";base64," + Convert.ToBase64String(allbyte) + "\" />";
+                        return "<embed width=\"100%\" height=\"100%\" type=\"" + @type + "\" src=\"data:" + @type + "; base64," + HtmlEncode(Convert.ToBase64String(allbyte)) + "\" />";
                     }
                     else if (type == "text/plain")
                     {
