@@ -1153,7 +1153,7 @@
             <tr>
                 <td colspan="5">
                     <asp:Label ID="lblbikou" runat="server" Text="[備考欄]"></asp:Label>
-                    <asp:TextBox ID="txtbikou" runat="server" Width="700px" Height="50px" Font-Size="Large" TextMode="MultiLine"></asp:TextBox>
+                    <asp:Label ID="bikou" runat="server" Width="750px" Height="50px" Font-Size="Small"></asp:Label>
                 </td>
             </tr>
         </table>
@@ -1161,7 +1161,7 @@
         <br />
  </div>
         <div class="DgBikou">
-            <asp:DataGrid ID="DgBikou" runat="server" Width="100%" CssClass="DgBikou1"
+            <asp:DataGrid ID="DgBikou" runat="server" Width="100%" CssClass="noprint"
                             AutoGenerateColumns="False" 
                             OnItemDataBound="DgBikou_ItemDataBound"
                             OnEditCommand="DgBikou_EditCommand"
