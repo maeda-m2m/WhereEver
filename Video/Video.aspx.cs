@@ -75,16 +75,6 @@ namespace WhereEver.Video
 
         }
 
-        protected void Push_PL_test(object sender, EventArgs e)
-        {
-            if (Panel_Video.Visible)
-            {
-                Panel_PL.Visible = false;
-            }
-            else
-            {
-                Panel_PL.Visible = true;
-            }
-        }
+
     }
 }

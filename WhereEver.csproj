@@ -130,6 +130,8 @@
     <Content Include="IMG\m2mlogo_r.png" />
     <Content Include="IMG\日付2.png" />
     <Content Include="Insatsu.ascx" />
+    <Content Include="Money\Money.aspx" />
+    <Content Include="Money\Money.css" />
     <Content Include="Video\signalilng_room.js" />
     <Content Include="Video\socket.io.js" />
     <Content Include="Video\signaling.js" />
@@ -280,6 +282,13 @@
     </Compile>
     <Compile Include="Insatsu.ascx.designer.cs">
       <DependentUpon>Insatsu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Money\Money.aspx.cs">
+      <DependentUpon>Money.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Money\Money.aspx.designer.cs">
+      <DependentUpon>Money.aspx</DependentUpon>
     </Compile>
     <Compile Include="Project System\Delete.cs" />
     <Compile Include="Project System\Insert.cs" />
