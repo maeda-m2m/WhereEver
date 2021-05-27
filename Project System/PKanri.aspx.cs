@@ -260,20 +260,11 @@ namespace WhereEver.Project_System
         {
             string bigname = e.Item.Cells[0].Text;
             string Middleid = e.Item.Cells[2].Text;
-            switch (((LinkButton)e.CommandSource).CommandName)
+            switch (e.CommandName)
             {
                 case "Delete":
                     Delete.DeleteMiddle(bigname, Middleid);
                     break;
-                default:
-                    // Do nothing.
-                    break;
-
-            }
-            switch (((Button)e.CommandSource).CommandName)
-            {
-                // Add other cases here, if there are multiple ButtonColumns in 
-                // the DataGrid control.
                 case "uebig":
                     break;
                 case "sitabig":
@@ -393,11 +384,6 @@ namespace WhereEver.Project_System
             DgPKanri.Visible = false;
             wbs.Visible = false;
             btnWBS.Visible = false;
-        }
-
-        protected void uebig_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
