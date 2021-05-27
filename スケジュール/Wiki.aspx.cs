@@ -52,6 +52,8 @@ namespace WhereEver.スケジュール
 
             sb.Replace("&lt;ol&gt;", "<ol>");
             sb.Replace("&lt;/ol&gt;", "</ol>");
+            sb.Replace("&lt;ul&gt;", "<ul>");
+            sb.Replace("&lt;/ul&gt;", "</ul>");
             sb.Replace("&lt;li&gt;", "<li>");
             sb.Replace("&lt;/li&gt;", "</li>");
             sb.Replace("&lt;a&gt;", "<a>");

@@ -81,7 +81,7 @@ namespace WhereEver
                 if (dr.TopPage != "")
                 {
                     @sb.Append(dr.TopPage);
-                    @sb.Replace("<li>", "<li type=\"circle\">");
+                    //@sb.Replace("<li>", "<li type=\"circle\">");
                     @sb.Append("<br />");
                     @sb.Append("最終更新：");
                     @sb.Append(dr.DateTime);
@@ -162,8 +162,8 @@ namespace WhereEver
             sb.Replace("&lt;/ol&gt;", "</ol>");
             sb.Replace("&lt;li&gt;", "<li>");
             sb.Replace("&lt;/li&gt;", "</li>");
-            sb.Replace("&lt;li&gt;", "<ul>");
-            sb.Replace("&lt;/li&gt;", "</ul>");
+            sb.Replace("&lt;ul&gt;", "<ul>");
+            sb.Replace("&lt;/ul&gt;", "</ul>");
             Class.Toppage.SetT_TopPageUpdate(Global.GetConnection(), sb.ToString());
             //リダイレクト
             this.Response.Redirect("LoginList.aspx", false);

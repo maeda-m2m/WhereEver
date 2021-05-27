@@ -1302,6 +1302,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 5).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 6).ToString("MMMMd日");
 
+          
+
                     Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
 
                 }
@@ -1344,6 +1346,8 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
+
+            
 
                     Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }
@@ -1850,7 +1854,7 @@ namespace WhereEver
 
 
 
-        protected void Button5_Click(object sender, EventArgs e)
+        protected void Button5_Click(object sender, EventArgs e)//次へボタンの処理
         {
             int Count_Week;
             Count_Week = int.Parse(ViewState["count"].ToString()) + 7;
