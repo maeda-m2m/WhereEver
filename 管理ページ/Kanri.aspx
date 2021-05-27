@@ -123,7 +123,8 @@
             <span class="hr"></span>
             <p class="index1"> ◆開発または研究中の機能</p>
             <div class="center">
-               <asp:Button ID="Button_Video" runat="server" CssClass="btn_loginlist" Text="試作機能を試す" OnClick="btnVideo_Click" />
+               <asp:Button ID="Button_Video" runat="server" CssClass="btn_loginlist" Text="ビデオ機能を試す" OnClick="btnVideo_Click" />
+               <asp:Button ID="Button_Money" runat="server" CssClass="btn_loginlist" Text="勘定機能を試す" OnClick="btnMoney_Click" />
             </div>
            </div>
 

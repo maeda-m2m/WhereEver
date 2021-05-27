@@ -162,6 +162,8 @@ namespace WhereEver
             sb.Replace("&lt;/ol&gt;", "</ol>");
             sb.Replace("&lt;li&gt;", "<li>");
             sb.Replace("&lt;/li&gt;", "</li>");
+            sb.Replace("&lt;li&gt;", "<ul>");
+            sb.Replace("&lt;/li&gt;", "</ul>");
             Class.Toppage.SetT_TopPageUpdate(Global.GetConnection(), sb.ToString());
             //リダイレクト
             this.Response.Redirect("LoginList.aspx", false);

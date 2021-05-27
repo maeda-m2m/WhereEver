@@ -142,6 +142,11 @@ namespace WhereEver.管理ページ
             this.Response.Redirect("../Video/Video.aspx", false);
         }
 
+        protected void btnMoney_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("../Money/Money.aspx", false);
+        }
+
         //-----------------------------------------------------------------------------------
 
 
