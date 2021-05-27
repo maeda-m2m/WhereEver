@@ -263,7 +263,7 @@ namespace WhereEver.Project_System
             switch (e.CommandName)
             {
                 case "Delete":
-                    Delete.DeleteMiddle(bigname, Middleid);
+                    Delete.DeleteMiddle(bigname, Middleid, SessionManager.project.PdbRow.Pid);
                     break;
                 case "uebig":
                     break;
