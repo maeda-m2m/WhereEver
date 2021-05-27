@@ -251,6 +251,7 @@
     <Compile Include="Class2.cs" />
     <Compile Include="ClassLibrary\MailToClass.cs" />
     <Compile Include="ClassLibrary\FileShareClass.cs" />
+    <Compile Include="ClassLibrary\MOMClass.cs" />
     <Compile Include="ClassLibrary\ShinseiLog.cs" />
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
     <Compile Include="Class\Chat.cs" />
