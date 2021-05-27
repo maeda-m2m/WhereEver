@@ -82,28 +82,24 @@ namespace WhereEver
             DATASET.DataSet.T_ChatRow dr = dt.NewT_ChatRow();
 
             dr.Date = DateTime.Now;
-            if (TextBox1.Text == "")
-            {
-                string.Format("if (!confirm('{0}')) return false;", "本文が入力されていません");
-            }
-           
-            dr.Id = SessionManager.User.ID; //変更
-            dr.Name = Label1.Text;
-            string str1 = TextBox1.Text;
-            string str2 = str1.Replace("\r\n", "<br>");
-            dr.Naiyou = str2;
-            dr.HentouNo = 0;
+            
+                dr.Id = SessionManager.User.ID; //変更
+                dr.Name = Label1.Text;
+                string str1 = TextBox1.Text;
+                string str2 = str1.Replace("\r\n", "<br>");
+                dr.Naiyou = str2;
+                dr.HentouNo = 0;
 
-            DATASET.DataSet.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());
-            int sl = dl.No;
-            dr.No = sl + 1;
-            dt.AddT_ChatRow(dr);
-            Class2.InsertList(dt, Global.GetConnection());
-            TextBox1.Text = "";
-            Create();
+                DATASET.DataSet.T_ChatRow dl = Class2.MaxNoRow(Global.GetConnection());
+                int sl = dl.No;
+                dr.No = sl + 1;
+                dt.AddT_ChatRow(dr);
+                Class2.InsertList(dt, Global.GetConnection());
+                TextBox1.Text = "";
+                Create();
 
-            //既読
-            readok();
+                //既読
+                readok();
         }
         protected void Update_Click(object sender, EventArgs e)
         {

@@ -83,6 +83,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
+                        <asp:Label ID="lblJyunbanError" runat="server" ForeColor="Red"></asp:Label>
                         </td>
                     <td colspan="2" class="auto-style2">
                         <asp:Button ID="btnPMiddle" CssClass="btn" runat="server" Text="中項目登録" OnClick="btnPMiddle_Click" ValidationGroup="Group02" Font-Overline="False"/>
@@ -103,7 +104,7 @@
                                 <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ReadOnly="True"/>
                                 <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
                                         <ItemTemplate>
-                                            <asp:Button ID="uebig" Text="↑" runat="server" CssClass="jyunban" CommandName="uebig" OnClick="uebig_Click"/><br>
+                                            <asp:Button ID="uebig" Text="↑" runat="server" CssClass="jyunban" CommandName="uebig"/><br>
                                             <asp:Button ID="sitabig" Text="↓" runat="server" CssClass="jyunban" CommandName="sitabig"/>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>

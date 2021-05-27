@@ -40,7 +40,7 @@
                 <asp:Button ID="Button4" runat="server" Text="前へ" class="btn-flat-border" OnClick="Button4_Click" />
                 <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
                 <asp:Button ID="Button5" runat="server" Text="次へ" class="btn-flat-border" OnClick="Button5_Click" />
-                <asp:Label runat="server" ID="Label_Timer" Text="" ></asp:Label>
+                <asp:Label runat="server" ID="Label_Timer" Text=""></asp:Label>
             </asp:Panel>
         </div>
 
@@ -461,10 +461,7 @@
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
                     </asp:BoundColumn>
 
-                    <asp:BoundColumn DataField="SdlNo" HeaderText="管理番号" ItemStyle-Width="100px">
-                        <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
-                    </asp:BoundColumn>
+                 
 
 
                     <asp:ButtonColumn
@@ -611,6 +608,12 @@
 
         </div>--%>
 
+        <footer>
+
+        </footer>
+        <div>
+            <h1>test</h1>
+        </div>
 
         <script>
 

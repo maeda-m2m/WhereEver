@@ -38,17 +38,17 @@ namespace WhereEver.Project_System
                 connection.Close();
             }
         }
-        internal static void DeleteMiddle(string Bigname, string Middleid)
+        internal static void DeleteMiddle(string Bigname, string Middleid,int Pid)
         {
             string cstr = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(cstr))
             {
-                string sql = "DELETE FROM T_PdbKanri WHERE PBigname = @i and PMiddleid = @m";
+                string sql = "DELETE FROM T_PdbKanri WHERE PBigname = @i and PMiddleid = @m and Pid = @Pid";
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
 
                 da.SelectCommand.Parameters.AddWithValue("@i", Bigname);
                 da.SelectCommand.Parameters.AddWithValue("@m", Middleid);
-
+                da.SelectCommand.Parameters.AddWithValue("@Pid", Pid);
                 connection.Open();
                 int cnt = da.SelectCommand.ExecuteNonQuery();
                 connection.Close();
