@@ -6571,7 +6571,7 @@ namespace WhereEver.DATASET {
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
                 this.columnName.MaxLength = 50;
-                this.columnTitle.MaxLength = 50;
+                this.columnTitle.MaxLength = 2147483647;
                 this.columnText.MaxLength = 2147483647;
             }
             

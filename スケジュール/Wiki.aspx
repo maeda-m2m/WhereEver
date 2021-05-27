@@ -29,13 +29,13 @@
         <div class="Center">
 
             <asp:Label runat="server" ID="Label1" Text="タイトル" Font-Size="Large"></asp:Label>
-            <asp:TextBox runat="server" ID="TextBox2" Text=""></asp:TextBox>
+            <asp:TextBox runat="server" ID="TextBox1" Text=""></asp:TextBox>
 
         </div>
 
         <div class="Test1">
 
-            <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="MultiLine" MaxLength="1000" Rows="100" Height="880" Width="810"></asp:TextBox>
+            <asp:TextBox runat="server" ID="TextBox2" Text="" TextMode="MultiLine" MaxLength="1000" Rows="100" Height="880" Width="810" ValidateRequestMode="Disabled"></asp:TextBox>
 
         </div>
 

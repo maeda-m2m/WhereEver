@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Web.HttpUtility;
 
 namespace WhereEver.スケジュール
 {
@@ -34,15 +36,69 @@ namespace WhereEver.スケジュール
 
             string name = "";
 
-            string Title = TextBox2.Text;
+            string Title = TextBox1.Text;
 
-            string Text1 = TextBox1.Text;
+            StringBuilder sb = new StringBuilder();
+            sb.Append(HtmlEncode(TextBox2.Text));
+
+            sb.Replace("\r\n", "<br>");
+
+
+            sb.Replace("&lt;br /&gt;", "<br />");
+
+            sb.Replace("&lt;p&gt;", "<p>");
+
+            sb.Replace("&lt;/p&gt;", "</p>");
+
+            sb.Replace("&lt;ol&gt;", "<ol>");
+            sb.Replace("&lt;/ol&gt;", "</ol>");
+            sb.Replace("&lt;li&gt;", "<li>");
+            sb.Replace("&lt;/li&gt;", "</li>");
+            sb.Replace("&lt;a&gt;", "<a>");
+            sb.Replace("&lt;/a&gt;", "</a>");
+
+            //sb.Replace("&lt;a href=&gt;", "<a href=>");
+
+            sb.Replace("&lt;strong&gt;", "<strong>");
+
+            sb.Replace("&lt;/strong&gt;", "</strong>");
+            sb.Replace("&lt;div&gt;", "<div>");
+            sb.Replace("&lt;/div&gt;", "</div>");
+            sb.Replace("&lt;select&gt;", "<select>");
+            sb.Replace("&lt;/select&gt;", "</select>");
+            sb.Replace("&lt;option&gt;", "<option>");
+            sb.Replace("&lt;/option&gt;", "</option>");
+            sb.Replace("&lt;style&gt;", "<style>");
+            sb.Replace("&lt;/style&gt;", "</style>");
+
+            sb.Replace("&lt;&gt;", "<>");
+            sb.Replace("&lt;/&gt;", "</>");
+
+            sb.Replace("&lt;html&gt;", "<html>");
+            sb.Replace("&lt;/html&gt;", "</html>");
+
+            sb.Replace("&lt;head&gt;", "<head>");
+            sb.Replace("&lt;/head&gt;", "</head>");
+
+            sb.Replace("&lt;form&gt;", "<form>");
+            sb.Replace("&lt;/form&gt;", "</form>");
+
+            sb.Replace("&lt;title&gt;", "<title>");
+            sb.Replace("&lt;/title&gt;", "</title>");
+
+            sb.Replace("&lt;section&gt;", "<section>");
+            sb.Replace("&lt;/section&gt;", "</section>");
+
+            sb.Replace("&lt;body&gt;", "<body>");
+            sb.Replace("&lt;/body&gt;", "</body>");
+
+
 
             dr.id = no + 1;
             dr.Date = datetime;
             dr.Name = name;
             dr.Title = Title;
-            dr.Text = Text1;
+            dr.Text = sb.ToString();
 
             dt.AddT_WikiRow(dr);
 
