@@ -134,12 +134,13 @@ namespace WhereEver.Project_System
             ddlPBigList.Text = txtPBig.Text;
             txtPBig.Text = "";
         }
-        internal static int GetPBigidNow(SqlConnection sqlConnection, string name)
+        internal static int GetPBigidNow(SqlConnection sqlConnection, string name,int Pid)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "select PBigid from T_PdbKanri where PBigname like @name";
+                "select PBigid from T_PdbKanri where PBigname like @name and Pid like @Pid";
             da.SelectCommand.Parameters.AddWithValue("@name", name);
+            da.SelectCommand.Parameters.AddWithValue("@Pid", Pid);
             DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
             da.Fill(dt);
             return dt[0].PBigid;
@@ -173,7 +174,7 @@ namespace WhereEver.Project_System
                         else
                         {
                             t_PdbKanriRow.PBigname = ddlPBigList.SelectedItem.Text;
-                            t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(), ddlPBigList.SelectedItem.Text);
+                            t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(), ddlPBigList.SelectedItem.Text, SessionManager.project.PdbRow.Pid);
                             t_PdbKanriRow.PMiddleid = t_PdbKanriRow1.PMiddleid + 1;
                             t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
                             t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
@@ -266,6 +267,7 @@ namespace WhereEver.Project_System
                     Delete.DeleteMiddle(bigname, Middleid, SessionManager.project.PdbRow.Pid);
                     break;
                 case "uebig":
+                    
                     break;
                 case "sitabig":
                     break;
