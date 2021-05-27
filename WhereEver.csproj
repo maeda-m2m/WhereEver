@@ -293,6 +293,7 @@
     </Compile>
     <Compile Include="Project System\Delete.cs" />
     <Compile Include="Project System\Insert.cs" />
+    <Compile Include="Project System\Narabi.cs" />
     <Compile Include="Project System\PIchiran.aspx.cs">
       <DependentUpon>PIchiran.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

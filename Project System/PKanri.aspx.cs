@@ -267,7 +267,8 @@ namespace WhereEver.Project_System
                     Delete.DeleteMiddle(bigname, Middleid, SessionManager.project.PdbRow.Pid);
                     break;
                 case "uebig":
-                    
+                    Narabi.uebig(Global.GetConnection(), bigname, SessionManager.project.PdbRow.Pid);
+                    CreateDataGrid(SessionManager.project.PdbRow.Pid);
                     break;
                 case "sitabig":
                     break;
