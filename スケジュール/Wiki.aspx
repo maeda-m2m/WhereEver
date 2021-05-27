@@ -35,7 +35,7 @@
 
         <div class="Test1">
 
-            <asp:TextBox runat="server" ID="TextBox2" Text="" TextMode="MultiLine" MaxLength="1000" Rows="100" Height="880" Width="810" ValidateRequestMode="Disabled"></asp:TextBox>
+            <asp:TextBox runat="server" ID="TextBox2" Text="" TextMode="MultiLine" Height="880" Width="810" ValidateRequestMode="Disabled"></asp:TextBox>
 
         </div>
 

@@ -21,8 +21,7 @@
             margin: auto;
             text-align: center;
             background-color: white;
-
-            width:1000px;
+            width: 1000px;
         }
 
         .Center-Button {
@@ -34,18 +33,29 @@
 
         .Center-Label {
             margin: auto;
-            text-align: center;
             background-color: white;
             width: 800px;
-            height:1000px;
-            font-size:15px;
-            padding:10px 10px 10px 10px;
+            height: auto;
+            font-size: 15px;
+            padding: 10px 10px 10px 10px;
         }
 
         #Label1 {
             margin: auto;
             text-align: center;
             font-size: 30px;
+        }
+
+        #Label2 {
+            margin: auto;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        #TextBox_Output {
+            margin: auto;
+            text-align: left;
+            font-size: 20px;
         }
 
         #Title1 {
@@ -57,6 +67,7 @@
         .Center_1 {
             display: flex;
             justify-content: center;
+            height: 200px;
         }
     </style>
 
@@ -83,7 +94,7 @@
                     <Columns>
 
 
-                        <asp:BoundColumn DataField="Date" HeaderText="日付" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="200px">
+                        <asp:BoundColumn DataField="Date" HeaderText="日付" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="200px" DataFormatString="{0:yyyy}年{0:MM}月{0:dd}日">
                             <HeaderStyle Wrap="true" />
                             <ItemStyle Wrap="true" HorizontalAlign="Left" />
                         </asp:BoundColumn>
@@ -116,7 +127,9 @@
 
                 <br />
 
+
                 <asp:Label runat="server" ID="Label2" Text=""></asp:Label>
+
             </div>
 
         </div>

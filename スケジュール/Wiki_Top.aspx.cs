@@ -21,7 +21,7 @@ namespace WhereEver.スケジュール
             Response.Redirect("Wiki.aspx");
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)//編集ボタン
         {
             Response.Redirect("Wiki_Top.aspx");
         }
@@ -37,21 +37,21 @@ namespace WhereEver.スケジュール
             dg1.DataBind();
         }
 
-        protected void dg1_ItemDataBound(object sender, DataGridItemEventArgs e)
-        {
-            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
-            {
+        //protected void dg1_ItemDataBound(object sender, DataGridItemEventArgs e)
+        //{
+        //    if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        //    {
 
-                var dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_WikiRow;
+        //        var dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_WikiRow;
 
-                e.Item.Cells[0].Text = dr.Date.ToString("yyyy年MMMMd日");
-                e.Item.Cells[1].Text = dr.Name.ToString();
-                e.Item.Cells[2].Text = dr.Title.ToString();
+        //        e.Item.Cells[0].Text = dr.Date.ToString("yyyy年MMMMd日HH時mm分");
+        //        e.Item.Cells[1].Text = dr.Name.ToString();
+        //        e.Item.Cells[2].Text = dr.Title.ToString();
 
 
 
-            }
-        }
+        //    }
+        //}
 
         protected void dg1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -77,14 +77,6 @@ namespace WhereEver.スケジュール
 
                 Label2.Text = dr.Text;
 
-                //if (sdl > 0)
-                //    Class1.DeleteList(sdl, Global.GetConnection());
-                //dg1.Items[Read].FindControl("No");
-
-
-                //Label1.Text = "";
-                //string result = FileShareClass.Get_File_DownLoad_src(Page.Response, HtmlEncode(TextBox_dl.Text), TextBox_DownloadPass.Text, LoadByteLength());
-                //Label1.Text = @result;
             }
         }
 
