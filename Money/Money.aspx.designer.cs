@@ -7,11 +7,11 @@
 // </自動生成>
 //------------------------------------------------------------------------------
 
-namespace WhereEver.管理ページ
+namespace WhereEver.Money
 {
 
 
-    public partial class Kanri
+    public partial class WebForm1
     {
 
         /// <summary>
@@ -33,192 +33,228 @@ namespace WhereEver.管理ページ
         protected global::WhereEver.MenuControl m;
 
         /// <summary>
-        /// GridView1 コントロール。
+        /// Button_PL コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Button Button_PL;
 
         /// <summary>
-        /// GridView2 コントロール。
+        /// Panel_PL コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.Panel Panel_PL;
 
         /// <summary>
-        /// SqlDataSource1 コントロール。
+        /// DropDownList_PL_year_s コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_PL_year_s;
 
         /// <summary>
-        /// lblResult コントロール。
+        /// DropDownList_PL_month_s コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResult;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_PL_month_s;
 
         /// <summary>
-        /// TextBox_MailTo コントロール。
+        /// DropDownList_PL_day_s コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_MailTo;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_PL_day_s;
 
         /// <summary>
-        /// TextBox_CC コントロール。
+        /// DropDownList_PL_year_g コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_CC;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_PL_year_g;
 
         /// <summary>
-        /// TextBox_BCC コントロール。
+        /// DropDownList_PL_month_g コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_BCC;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_PL_month_g;
 
         /// <summary>
-        /// TextBox_Title コントロール。
+        /// DropDownList_PL_day_g コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Title;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_PL_day_g;
 
         /// <summary>
-        /// TextBox_EditTop コントロール。
+        /// TextBox_Uriage コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_EditTop;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Uriage;
 
         /// <summary>
-        /// DropDownList_SMTP コントロール。
+        /// TextBox_UriageGenka コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_SMTP;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_UriageGenka;
 
         /// <summary>
-        /// Panel_UserSMTP コントロール。
+        /// Label_UriageSourieki コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_UserSMTP;
+        protected global::System.Web.UI.WebControls.Label Label_UriageSourieki;
 
         /// <summary>
-        /// TextBox_Host コントロール。
+        /// TextBox_HanbaiKanrihi コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Host;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_HanbaiKanrihi;
 
         /// <summary>
-        /// TextBox_Port コントロール。
+        /// TextBox_EigyouRieki コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Port;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_EigyouRieki;
 
         /// <summary>
-        /// TextBox_UserName コントロール。
+        /// TextBox_EigyougaiHiyou コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_UserName;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_EigyougaiHiyou;
 
         /// <summary>
-        /// TextBox_UserPass コントロール。
+        /// Label_KeijyouRieki コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_UserPass;
+        protected global::System.Web.UI.WebControls.Label Label_KeijyouRieki;
 
         /// <summary>
-        /// CheckBox_Annonimas コントロール。
+        /// TextBox_TokubetsuRieki コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_Annonimas;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_TokubetsuRieki;
 
         /// <summary>
-        /// Label_MailTo_Result コントロール。
+        /// TextBox_TokubetsuSonshitsu コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_MailTo_Result;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_TokubetsuSonshitsu;
 
         /// <summary>
-        /// Button_ReformTop コントロール。
+        /// Label_Zeibikimae コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_ReformTop;
+        protected global::System.Web.UI.WebControls.Label Label_Zeibikimae;
 
         /// <summary>
-        /// Button_ReformDelete コントロール。
+        /// TextBox_Houjinzei コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_ReformDelete;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Houjinzei;
 
         /// <summary>
-        /// Button_Video コントロール。
+        /// Label_Jyunrieki コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Video;
+        protected global::System.Web.UI.WebControls.Label Label_Jyunrieki;
 
         /// <summary>
-        /// Button_Money コントロール。
+        /// Label_ArariR コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Money;
+        protected global::System.Web.UI.WebControls.Label Label_ArariR;
+
+        /// <summary>
+        /// Label_EigyouR コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_EigyouR;
+
+        /// <summary>
+        /// Label_KeijyouR コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_KeijyouR;
+
+        /// <summary>
+        /// Button_Check_PL コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Check_PL;
+
+        /// <summary>
+        /// GridView_PL コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView_PL;
     }
 }

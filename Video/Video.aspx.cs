@@ -55,12 +55,10 @@ namespace WhereEver.Video
             if (Panel_YT.Visible)
             {
                 Panel_YT.Visible = false;
-                Button_YT_test.Text = "とじる";
             }
             else
             {
                 Panel_YT.Visible = true;
-                Button_YT_test.Text = "ためす";
             }
         }
 
@@ -69,14 +67,14 @@ namespace WhereEver.Video
             if (Panel_Video.Visible)
             {
                 Panel_Video.Visible = false;
-                Button_Video_test.Text = "とじる";
             }
             else
             {
                 Panel_Video.Visible = true;
-                Button_Video_test.Text = "ためす";
             }
 
         }
+
+
     }
 }

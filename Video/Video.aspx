@@ -29,13 +29,10 @@
 
        <div id="Wrap">
 
-
-
-
            <span class="hr"></span>
            <p class="index1">
                ◆動画貼り付け機能(YouTube)
-               <asp:Button ID="Button_YT_test" CssClass="btn-flat-border" runat="server" Text="ためす" OnClick="Push_YT_test" CausesValidation="False" />
+               <asp:Button ID="Button_YT_test" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_YT_test" CausesValidation="False" />
            </p>
 
            <hr />
@@ -65,7 +62,7 @@
 
            <p class="index1">
                ◆リモート通話機能（Hand Signaling 2016 改造版）
-               <asp:Button ID="Button_Video_test" CssClass="btn-flat-border" runat="server" Text="ためす" OnClick="Push_Video_test" CausesValidation="False" />
+               <asp:Button ID="Button_Video_test" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_Video_test" CausesValidation="False" />
            </p>
 
 <asp:Panel ID="Panel_Video" runat="server" Visible="false">
@@ -90,12 +87,12 @@
 
            <hr />
 
-           <ol>
-           <li type="circle">カメラ起動方法：通信者は[ビデオ撮影開始]をクリック（カメラ起動）</li>
-           <li type="circle">接続方法：[SDP接続開始]をクリック（SDP接続）</li>
-           <li type="circle">送信または返信方法：自動</li>
-           <li type="circle">受信方法：自動</li>
-           </ol>
+           <ul>
+           <li>カメラ起動方法：通信者は[ビデオ撮影開始]をクリック（カメラ起動）</li>
+           <li">接続方法：[SDP接続開始]をクリック（SDP接続）</li>
+           <li>送信または返信方法：自動</li>
+           <li>受信方法：自動</li>
+           </ul>
 
     <div id="Video">
     <div class="center">

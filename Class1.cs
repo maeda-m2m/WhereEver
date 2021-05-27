@@ -99,7 +99,7 @@ namespace WhereEver
         }
 
 
-        
+
         public static DATASET.DataSet.T_ScheduleRow MaxSdlNo(SqlConnection schedule)//SdlNoの最大値を持ってくる
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
@@ -112,7 +112,7 @@ namespace WhereEver
 
 
 
-       
+
         public static void InsertList(DATASET.DataSet.T_ScheduleDataTable dt, SqlConnection sql) //スケジュールを追加する
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
@@ -141,7 +141,7 @@ namespace WhereEver
 
         }
 
-       
+
         internal static void DeleteList(int sdl, SqlConnection sql) //削除ボタン
         {
             var da = new SqlCommand("", sql);
