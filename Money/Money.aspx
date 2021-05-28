@@ -34,17 +34,17 @@
            <p class="index1">
                ◆損益計算書(P/L)
                <asp:Button ID="Button_PL" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_PL_test" CausesValidation="False" />
-               動作テスト済　要ブラッシュアップ</p>
+               　手軽に黒字か赤字かを見極めることができます。</p>
 
            <hr />
 </div>
 
-<asp:Panel ID="Panel_PL" runat="server" Visible="false">
+<asp:Panel ID="Panel_PL" runat="server" Visible="false" DefaultButton="Button_PL_SUM">
 
 <div class="noprint">
                        <span class="hr"></span>
 
-    <p class="center">損益計算書をDBに記録できます。すべて正の値で入力して下さい。</p>
+    <p class="center">一般的なテンプレートを用いてP/Lを作成します。すべて正の値で入力して下さい。</p>
 
                        <span class="hr"></span>
 </div>
@@ -75,12 +75,12 @@
                     売上高<br /><span class="minus">売上原価</span>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_Uriage" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Uriage" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:TextBox ID="TextBox_UriageGenka" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_UriageGenka" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -96,7 +96,7 @@
                     販売管理費
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_HanbaiKanrihi" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_HanbaiKanrihi" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -104,7 +104,7 @@
                     営業利益
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_EigyouRieki" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_EigyouRieki" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -112,7 +112,7 @@
                     営業外費用
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_EigyougaiHiyou" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_EigyougaiHiyou" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -128,12 +128,12 @@
                     特別利益<br /><span class="minus">特別損失</span>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_TokubetsuRieki" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_TokubetsuRieki" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
                 <td>
-                    <asp:TextBox ID="TextBox_TokubetsuSonshitsu" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_TokubetsuSonshitsu" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -149,7 +149,7 @@
                     <span class="minus">法人税等</span>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_Houjinzei" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Houjinzei" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -195,6 +195,7 @@
         <p class="center">
             <asp:Button ID="Button_Check_PL" CssClass="btn-flat-border" runat="server" Text="新規保存" OnClick="Push_Check_PL" CausesValidation="False" />
             <asp:Button ID="Button_CheckAS_PL" CssClass="btn-flat-border" runat="server" Text="上書き保存" OnClick="Push_CheckAS_PL" CausesValidation="False" />
+            <asp:Button ID="Button_PL_SUM" CssClass="btn-flat-border" runat="server" Text="小計/合計" OnClick="Change_PL" CausesValidation="False" />
             <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
         </p>
 
@@ -249,17 +250,16 @@
            <p class="index1">
                ◆貸借対照表(B/S)
                <asp:Button ID="Button_BS" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_BS_test" CausesValidation="False" />
-               動作テスト済　P/Lとの連携機能なし
-           </p>
+               &nbsp;　無駄遣いや自己資本比率が一目でわかります。</p>
 
            <hr />
 </div>
 
-<asp:Panel ID="Panel_BS" runat="server" Visible="false">
+<asp:Panel ID="Panel_BS" runat="server" Visible="false" DefaultButton="Button_BS_SUM">
 
     <div class="noprint">
            <span class="hr"></span>
-            <p class="center">B/Sを作成します。値はすべて正の値で入力して下さい。資産合計と負債・純資産合計が同じになるように作成して下さい。</p>
+            <p class="center">一般的なテンプレートを用いてB/Sを作成します。すべて正の値で入力して下さい。資産合計と負債・純資産合計が同じになるように作成して下さい。</p>
            <span class="hr"></span>
     </div>
 
@@ -887,16 +887,16 @@
            <p class="index1">
                ◆キャッシュフロー(C/F)
                <asp:Button ID="Button_CF" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_CF_test" CausesValidation="False" />
-               工事予定地</p>
+               　P/Lでは見抜けない企業のお金の流れを見分けられます。</p>
 
            <hr />
 </div>
 
-<asp:Panel ID="Panel_CF" runat="server" Visible="false">
+<asp:Panel ID="Panel_CF" runat="server" Visible="false" DefaultButton="Button_CF_SUM">
 
 <div class="noprint">
            <span class="hr"></span>
-            <p class="center">///工事中///</p>
+            <p class="center">一般的なテンプレートを用いてC/Fを作成します。すべて正の値で入力して下さい。</p>
            <span class="hr"></span>
 </div>
 
@@ -926,10 +926,10 @@
                 </th>
             </tr>
             <tr>
-                <td>
+                <td class="th_master">
                     (1)営業活動によるキャッシュフロー
                 </td>
-                <td class="td_master_q">
+                <td class="th_master">
                 </td>
             </tr>
             <tr>
@@ -944,7 +944,7 @@
                 <td class="sum">
                     減価償却費　＋
                 </td>
-                <td>
+                <td class="td_master_q">
                     <asp:TextBox ID="TextBox_CF2" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>                  
                 </td>
             </tr>
@@ -989,14 +989,14 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="th_master">
                     (2)投資活動によるキャッシュフロー
                 </td>
-                <td>
+                <td class="th_master">
                 </td>
             </tr>
             <tr>
-                <td class="minus">
+                <td class="sum">
                     有形固定資産の購入　－
                 </td>
                 <td>
@@ -1004,7 +1004,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="sum">
+                <td class="minus">
                     有形固定資産の売却　＋
                 </td>
                 <td>
@@ -1012,7 +1012,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="minus">
+                <td class="sum">
                     有価証券の購入　－
                 </td>
                 <td>
@@ -1020,7 +1020,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="sum">
+                <td class="minus">
                     有価証券の売却及び満期償還　＋
                 </td>
                 <td>
@@ -1036,14 +1036,14 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="th_master">
                     (3)財務活動によるキャッシュ・フロー
                 </td>
-                <td>
+                <td class="th_master">
                 </td>
             </tr>
             <tr>
-                <td class="sum">
+                <td class="even">
                     借入金の増加　＋
                 </td>
                 <td>
@@ -1051,8 +1051,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="sum">
-                    借入金の返済　＋
+                <td class="even">
+                    借入金の返済　－
                 </td>
                 <td>
                     <asp:TextBox ID="TextBox_CF12" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
@@ -1091,7 +1091,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="even">
                     売上高
                 </td>
                 <td>
@@ -1117,7 +1117,7 @@
         <p class="center">
             <asp:Button ID="Button_Check_CF" CssClass="btn-flat-border" runat="server" Text="新規保存" OnClick="Push_Check_CF" CausesValidation="False" />
             <asp:Button ID="Button_CheckAS_CF" CssClass="btn-flat-border" runat="server" Text="上書き保存" OnClick="Push_CheckAS_CF" CausesValidation="False" />
-            <asp:Button ID="Button_Change_CF" CssClass="btn-flat-border" runat="server" Text="小計/合計" OnClick="Change_CF" CausesValidation="False" />
+            <asp:Button ID="Button_CF_SUM" CssClass="btn-flat-border" runat="server" Text="小計/合計" OnClick="Change_CF" CausesValidation="False" />
             <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
         </p>
 
@@ -1149,6 +1149,30 @@
             </asp:GridView>
 
            <asp:SqlDataSource ID="SqlDataSource_CF" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT [uuid], [ACL1], [ACL2], [ACL3], [ACL4], [ACL5], [CF14], [ACL6], [Date], [UpDateTime] FROM [T_CF] ORDER BY [UpDateTime] DESC"></asp:SqlDataSource>
+
+    <span class="hr"></span>
+    <p class="index1">◆コラム：C/Fの見方</p>
+            <ul>
+                <li>キャッシュフロー(C/F)は企業のお金の流れを示す表です。上場企業以外には作成義務がありません。</li>
+                <li>C/Fを見ると、例えば、P/Lでは黒字の企業でも、倒産の危機にある企業を見分けることができます。</li>
+                <li>同様に、P/Lでは赤字の企業でも、将来有望な企業を見分けることができます。</li>
+                <li>(1)営業活動によるキャッシュフローはプラスなほど、本業でしっかりと稼いでいる優秀な企業です。反対に、マイナスなほど本業が疎かです。</li>
+                <li>(2)投資活動によるキャッシュフロー はマイナスなほど、多額の投資をしている将来有望な企業です。反対に、プラスなほど現状維持傾向にあります。</li>
+                <li>(3)財務活動によるキャッシュ・フローとは、簡単にいえば、お金の貸し借りの流れのことです。</li>
+                <li>借金返済額が多く、投資が多い企業は好景気です。◎</li>
+                <li>借金返済額が多く、投資が少ない企業は内部留保傾向です。〇</li>
+                <li>借入金が多く、投資が多い企業はベンチャー傾向にあります。〇</li>
+                <li>借入金が多く、投資が少ない企業は倒産の危機にあります。×</li>
+                <li>キャッシュフロー・マージンは一般的に7%や15%が目安です。業種により異なります。</li>
+                <li>マージンが低い企業は、スタートアップ企業ではない場合、黒字倒産の危機にあります。</li>
+                <li>キャッシュフロー・マージンは経年変化で見るとよいです。長期的にマージンが低下している企業は倒産の危機にあります。</li>
+                <li>キャッシュフロー・マージンはが異常に高い企業は、現金の一括払いを疑ったほうがよいです。</li>
+                <li>参考：</li>
+                <li>「経理COMPASS」: https://advisors-freee.jp/article/category/cat-big-02/cat-small-04/7901/（2021年５月28日アクセス）.</li>
+                <li>「プロが教える会計講座――会計ショップ」: https://kaikei-shop.net/contents122/（2021年５月28日アクセス）.</li>
+            </ul>
+    <span class="hr"></span>
+
 
 </div>
 

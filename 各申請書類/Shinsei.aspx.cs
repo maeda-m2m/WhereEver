@@ -2169,5 +2169,10 @@ namespace WhereEver
             //ChangeValidate(true);
 
         }
+
+        protected void btnMoney_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Money/Money.aspx", false);
+        }
     }
 }

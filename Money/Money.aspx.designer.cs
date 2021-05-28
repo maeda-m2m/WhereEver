@@ -258,6 +258,15 @@ namespace WhereEver.Money
         protected global::System.Web.UI.WebControls.Button Button_CheckAS_PL;
 
         /// <summary>
+        /// Button_PL_SUM コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_PL_SUM;
+
+        /// <summary>
         /// GridView_PL コントロール。
         /// </summary>
         /// <remarks>
@@ -1185,13 +1194,13 @@ namespace WhereEver.Money
         protected global::System.Web.UI.WebControls.Button Button_CheckAS_CF;
 
         /// <summary>
-        /// Button_Change_CF コントロール。
+        /// Button_CF_SUM コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Change_CF;
+        protected global::System.Web.UI.WebControls.Button Button_CF_SUM;
 
         /// <summary>
         /// GridView_CF コントロール。

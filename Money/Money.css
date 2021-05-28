@@ -92,6 +92,9 @@ table {
     color: lightgreen;
 }
 
+.even {
+    color: lightyellow;
+}
 
 .hr {
     display: block;
@@ -271,6 +274,10 @@ table {
     }
 
     .per {
+        color: inherit;
+    }
+
+    .even {
         color: inherit;
     }
 
