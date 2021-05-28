@@ -902,5 +902,383 @@ namespace WhereEver.ClassLibrary
         }
 
 
+
+
+
+
+
+
+
+
+        //------------------------------------------------------------------------------------------------------------
+        //T_CF
+        //------------------------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// T_CFのDataTableを返します。
+        /// 引数はDATASET.DataSet.T_CFRow型で参照して下さい。
+        /// 中身がない場合や入力値が不正な場合はnullを返します。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="uuid"></param>
+        /// <returns>DATASET.DataSet.T_CFRow</returns>
+        public static DATASET.DataSet.T_CFRow GetT_CFRow(SqlConnection sqlConnection, string uuid)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //パラメータを取得（必要のないパラメータを設定するとコンパイルエラーする）
+            da.SelectCommand.Parameters.Add(new SqlParameter("@uuid", System.Data.SqlDbType.NVarChar, 50, "uuid")).Value = uuid;
+
+            //idとuidからNULL以外の列数を取得します。
+            da.SelectCommand.CommandText =
+                "SELECT * FROM [T_CF] WHERE [uuid] = LTRIM(RTRIM(@uuid))";
+
+            //特定のDataTableをインスタンス化
+            DATASET.DataSet.T_CFDataTable dt = new DATASET.DataSet.T_CFDataTable();
+
+
+            try
+            {
+                //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
+                da.Fill(dt);
+
+                if (dt.Count >= 1)
+                {
+                    //中身あり
+                    return dt[0];  //dt[0]の中にflag_del_popなどが入っています。
+
+                }
+                else
+                {
+                    //中身なし
+                    return null;
+                }
+
+            }
+            catch
+            {
+                //不正な値が入力された場合はnullを返します。
+                return null;
+            }
+
+        }
+
+        /// <summary>
+        /// T_BSから指定したuuidのRowをDeleteします。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="uuid"></param>
+        public static void DeleteT_CFRow(SqlConnection sqlConnection, string uuid)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //パラメータを取得（必要のないパラメータを設定するとコンパイルエラーする）
+            da.SelectCommand.Parameters.Add(new SqlParameter("@uuid", System.Data.SqlDbType.NVarChar, 50, "uuid")).Value = uuid;
+
+            //idとuidからNULL以外の列数を取得します。
+            da.SelectCommand.CommandText =
+                "DELETE FROM [T_CF] WHERE [uuid] = LTRIM(RTRIM(@uuid))";
+
+            //特定のDataTableをインスタンス化
+            DATASET.DataSet.T_CFDataTable dt = new DATASET.DataSet.T_CFDataTable();
+
+
+            try
+            {
+                //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
+                da.Fill(dt);
+                return;
+            }
+            catch
+            {
+                //不正な値が入力された場合はnullを返します。
+                return;
+            }
+
+        }
+
+
+        /// <summary>
+        /// C/Fテーブルにインサートします。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <param name="v3"></param>
+        /// <param name="v4"></param>
+        /// <param name="v5"></param>
+        /// <param name="v6"></param>
+        /// <param name="v7"></param>
+        /// <param name="v8"></param>
+        /// <param name="v9"></param>
+        /// <param name="v10"></param>
+        /// <param name="v11"></param>
+        /// <param name="v12"></param>
+        /// <param name="v13"></param>
+        /// <param name="v14"></param>
+        /// <param name="v15"></param>
+        /// <param name="Date"></param>
+        public static void SetT_CFInsert(SqlConnection sqlConnection, int v1, int v2, int v3, int v4, int v5, int v6, int v7, int v8, int v9, int v10, int v11, int v12, int v13, int v14, int v15, DateTime Date)
+        {
+            sqlConnection.Open();
+
+            //Create the Update Command.
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //Sql Commandを作成します。
+            SqlCommand command = sqlConnection.CreateCommand();
+
+            //ファイルを書き込み可能なようにオープンしてSqlのデータをアップデートします。
+            //Start a local transaction. usingブロックを抜けると自動でcloseされます。
+            using (SqlTransaction transaction = sqlConnection.BeginTransaction())
+            {
+
+                //Must assign both transaction object and connection
+                //to Command object for apending local transaction
+                command.Connection = sqlConnection;
+                command.Transaction = transaction;
+
+                try
+                {
+                    //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
+                    //-------------------------------------------------------------------------------------------------------------------
+                    command.Parameters.Add(new SqlParameter("@uuid", System.Data.SqlDbType.NVarChar, 50, "uuid")).Value = Guid.NewGuid().ToString();
+
+                    command.Parameters.Add(new SqlParameter("@v1", System.Data.SqlDbType.BigInt, 8, "CF1")).Value = v1;
+                    command.Parameters.Add(new SqlParameter("@v2", System.Data.SqlDbType.BigInt, 8, "CF2")).Value = v2;
+                    command.Parameters.Add(new SqlParameter("@v3", System.Data.SqlDbType.BigInt, 8, "CF3")).Value = v3;
+                    command.Parameters.Add(new SqlParameter("@v4", System.Data.SqlDbType.BigInt, 8, "CF4")).Value = v4;
+                    command.Parameters.Add(new SqlParameter("@v5", System.Data.SqlDbType.BigInt, 8, "CF5")).Value = v5;
+                    command.Parameters.Add(new SqlParameter("@v6", System.Data.SqlDbType.BigInt, 8, "CF6")).Value = v6;
+                    command.Parameters.Add(new SqlParameter("@v7", System.Data.SqlDbType.BigInt, 8, "CF7")).Value = v7;
+                    command.Parameters.Add(new SqlParameter("@v8", System.Data.SqlDbType.BigInt, 8, "CF8")).Value = v8;
+                    command.Parameters.Add(new SqlParameter("@v9", System.Data.SqlDbType.BigInt, 8, "CF9")).Value = v9;
+                    command.Parameters.Add(new SqlParameter("@v10", System.Data.SqlDbType.BigInt, 8, "CF10")).Value = v10;
+                    command.Parameters.Add(new SqlParameter("@v11", System.Data.SqlDbType.BigInt, 8, "CF11")).Value = v11;
+                    command.Parameters.Add(new SqlParameter("@v12", System.Data.SqlDbType.BigInt, 8, "CF12")).Value = v12;
+                    command.Parameters.Add(new SqlParameter("@v13", System.Data.SqlDbType.BigInt, 8, "CF13")).Value = v13;
+
+                    command.Parameters.Add(new SqlParameter("@v14", System.Data.SqlDbType.BigInt, 8, "CF14")).Value = v15;
+                    command.Parameters.Add(new SqlParameter("@Date", System.Data.SqlDbType.Date, 3, "Date")).Value = Date;
+                    command.Parameters.Add(new SqlParameter("@UpDateTime", System.Data.SqlDbType.DateTime, 8, "UpDateTime")).Value = DateTime.Now;
+
+                    // C/F 内部計算
+                    int cf1 = v1 + v2 - v3 - v4 + v5 - v6;
+                    int cf2 = -v7 + v8 - v9 + v10;
+                    int cf3 = v11 + v12;
+                    int cf4 = cf1 + cf2 + cf3;
+                    //int cf5 = v14;
+
+                    //キャッシュ・フローマージン＝「営業活動によるキャッシュ・フロー」÷「売上高」
+                    float ri_r;
+                    if ((float)v15 != 0)
+                    {
+                        ri_r = (float)cf1 / (float)v15;
+                    }
+                    else
+                    {
+                        ri_r = 0f;
+                    }
+
+                    command.Parameters.Add(new SqlParameter("@a1", System.Data.SqlDbType.BigInt, 8, "ACL1")).Value = cf1;
+                    command.Parameters.Add(new SqlParameter("@a2", System.Data.SqlDbType.BigInt, 8, "ACL2")).Value = cf2;
+                    command.Parameters.Add(new SqlParameter("@a3", System.Data.SqlDbType.BigInt, 8, "ACL3")).Value = cf3;
+                    command.Parameters.Add(new SqlParameter("@a4", System.Data.SqlDbType.BigInt, 8, "ACL4")).Value = cf4;
+                    command.Parameters.Add(new SqlParameter("@a5", System.Data.SqlDbType.BigInt, 8, "ACL5")).Value = v14;
+                    command.Parameters.Add(new SqlParameter("@a6", System.Data.SqlDbType.Float, 8, "ACL6")).Value = ri_r;
+
+
+                    //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
+                    command.CommandText = "INSERT INTO [T_CF]([uuid], [CF1], [CF2], [CF3], [CF4], [CF5], [CF6], [CF7], [CF8], [CF9], [CF10], [CF11], [CF12], [CF13], [CF14], [ACL1], [ACL2], [ACL3], [ACL4], [ACL5], [ACL6], [Date], [UpDateTime]) VALUES(LTRIM(RTRIM(@uuid)), @v1, @v2, @v3, @v4, @v5, @v6, @v7, @v8, @v9, @v10, @v11, @v12, @v13, @v14, @a1, @a2, @a3, @a4, @a5, @a6, CONVERT(Date, @Date), CONVERT(DateTime, @UpDateTime))";
+
+
+                    //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
+                    //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。
+                    command.ExecuteNonQuery();
+
+
+                    //Attempt to commit the transaction.
+                    da.UpdateCommand = command;
+                    transaction.Commit();
+
+                    //Console.WriteLine("Update Completed");
+
+
+                }
+                catch
+                {
+                    //catch文
+                    //Console.WriteLine("Update Failed");
+                    transaction.Rollback();
+                }
+
+            } //sqlConnection.Close();
+
+            // データベースの接続終了
+            sqlConnection.Close();
+            return;
+
+        }
+
+
+
+
+
+        /// <summary>
+        /// C/Fテーブルにuuidをキーにアップデートします。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="uuid"></param>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <param name="v3"></param>
+        /// <param name="v4"></param>
+        /// <param name="v5"></param>
+        /// <param name="v6"></param>
+        /// <param name="v7"></param>
+        /// <param name="v8"></param>
+        /// <param name="v9"></param>
+        /// <param name="v10"></param>
+        /// <param name="v11"></param>
+        /// <param name="v12"></param>
+        /// <param name="v13"></param>
+        /// <param name="v14"></param>
+        /// <param name="v15"></param>
+        /// <param name="Date"></param>
+        public static void SetT_CFUpdate(SqlConnection sqlConnection, string uuid, int v1, int v2, int v3, int v4, int v5, int v6, int v7, int v8, int v9, int v10, int v11, int v12, int v13, int v14, int v15, DateTime Date)
+        {
+            sqlConnection.Open();
+
+            //Create the Update Command.
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //Sql Commandを作成します。
+            SqlCommand command = sqlConnection.CreateCommand();
+
+            //ファイルを書き込み可能なようにオープンしてSqlのデータをアップデートします。
+            //Start a local transaction. usingブロックを抜けると自動でcloseされます。
+            using (SqlTransaction transaction = sqlConnection.BeginTransaction())
+            {
+
+                //Must assign both transaction object and connection
+                //to Command object for apending local transaction
+                command.Connection = sqlConnection;
+                command.Transaction = transaction;
+
+                try
+                {
+                    //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
+                    //-------------------------------------------------------------------------------------------------------------------
+                    command.Parameters.Add(new SqlParameter("@uuid", System.Data.SqlDbType.NVarChar, 50, "uuid")).Value = uuid;
+
+                    command.Parameters.Add(new SqlParameter("@v1", System.Data.SqlDbType.BigInt, 8, "CF1")).Value = v1;
+                    command.Parameters.Add(new SqlParameter("@v2", System.Data.SqlDbType.BigInt, 8, "CF2")).Value = v2;
+                    command.Parameters.Add(new SqlParameter("@v3", System.Data.SqlDbType.BigInt, 8, "CF3")).Value = v3;
+                    command.Parameters.Add(new SqlParameter("@v4", System.Data.SqlDbType.BigInt, 8, "CF4")).Value = v4;
+                    command.Parameters.Add(new SqlParameter("@v5", System.Data.SqlDbType.BigInt, 8, "CF5")).Value = v5;
+                    command.Parameters.Add(new SqlParameter("@v6", System.Data.SqlDbType.BigInt, 8, "CF6")).Value = v6;
+                    command.Parameters.Add(new SqlParameter("@v7", System.Data.SqlDbType.BigInt, 8, "CF7")).Value = v7;
+                    command.Parameters.Add(new SqlParameter("@v8", System.Data.SqlDbType.BigInt, 8, "CF8")).Value = v8;
+                    command.Parameters.Add(new SqlParameter("@v9", System.Data.SqlDbType.BigInt, 8, "CF9")).Value = v9;
+                    command.Parameters.Add(new SqlParameter("@v10", System.Data.SqlDbType.BigInt, 8, "CF10")).Value = v10;
+                    command.Parameters.Add(new SqlParameter("@v11", System.Data.SqlDbType.BigInt, 8, "CF11")).Value = v11;
+                    command.Parameters.Add(new SqlParameter("@v12", System.Data.SqlDbType.BigInt, 8, "CF12")).Value = v12;
+                    command.Parameters.Add(new SqlParameter("@v13", System.Data.SqlDbType.BigInt, 8, "CF13")).Value = v13;
+
+                    command.Parameters.Add(new SqlParameter("@v14", System.Data.SqlDbType.BigInt, 8, "CF14")).Value = v15;
+                    command.Parameters.Add(new SqlParameter("@Date", System.Data.SqlDbType.Date, 3, "Date")).Value = Date;
+                    command.Parameters.Add(new SqlParameter("@UpDateTime", System.Data.SqlDbType.DateTime, 8, "UpDateTime")).Value = DateTime.Now;
+
+                    // C/F 内部計算
+                    int cf1 = v1 + v2 - v3 - v4 + v5 - v6;
+                    int cf2 = -v7 + v8 - v9 + v10;
+                    int cf3 = v11 + v12;
+                    int cf4 = cf1 + cf2 + cf3;
+                    //int cf5 = v14;
+
+                    //キャッシュ・フローマージン＝「営業活動によるキャッシュ・フロー」÷「売上高」
+                    float ri_r;
+                    if ((float)v15 != 0)
+                    {
+                        ri_r = (float)cf1 / (float)v15;
+                    }
+                    else
+                    {
+                        ri_r = 0f;
+                    }
+
+                    command.Parameters.Add(new SqlParameter("@a1", System.Data.SqlDbType.BigInt, 8, "ACL1")).Value = cf1;
+                    command.Parameters.Add(new SqlParameter("@a2", System.Data.SqlDbType.BigInt, 8, "ACL2")).Value = cf2;
+                    command.Parameters.Add(new SqlParameter("@a3", System.Data.SqlDbType.BigInt, 8, "ACL3")).Value = cf3;
+                    command.Parameters.Add(new SqlParameter("@a4", System.Data.SqlDbType.BigInt, 8, "ACL4")).Value = cf4;
+                    command.Parameters.Add(new SqlParameter("@a5", System.Data.SqlDbType.BigInt, 8, "ACL5")).Value = v14;
+                    command.Parameters.Add(new SqlParameter("@a6", System.Data.SqlDbType.Float, 8, "ACL6")).Value = ri_r;
+
+
+                    //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
+                    command.CommandText = "UPDATE [T_CF] SET [uuid]=@uuid, [CF1]=@v1, [CF2]=@v2, [CF3]=@v3, [CF4]=@v4, [CF5]=@v5, [CF6]=@v6, [CF7]=@v7, [CF8]=@v8, [CF9]=@v9, [CF10]=@v10, [CF11]=@v11, [CF12]=@v12, [CF13]=@v13, [CF14]=@v14, [CF15]=@v15, [ACF1]=@a1, [ACF2]=@a2, [ACF3]=@a3, [ACF4]=@a4, [ACF5]=@a5, [ACF6]=@a6, [Date]=CONVERT(Date, @Date), [UpDateTime]=CONVERT(DateTime, @UpDateTime) WHERE [uuid]=LTRIM(RTRIM(@uuid))";
+
+                    //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
+                    //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。
+                    command.ExecuteNonQuery();
+
+
+                    //Attempt to commit the transaction.
+                    da.UpdateCommand = command;
+                    transaction.Commit();
+
+                    //Console.WriteLine("Update Completed");
+
+
+                }
+                catch
+                {
+                    //catch文
+                    //Console.WriteLine("Update Failed");
+                    transaction.Rollback();
+                }
+
+            } //sqlConnection.Close();
+
+            // データベースの接続終了
+            sqlConnection.Close();
+            return;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

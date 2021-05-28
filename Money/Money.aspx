@@ -165,7 +165,7 @@
                     売上総利益率（粗利率）
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_ArariR" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_ArariR" runat="server" Text="0.0%" CssClass="lbl_pl"></asp:Label>
                 </td>
              </tr>
              <tr>
@@ -173,7 +173,7 @@
                     売上高営業利益率
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_EigyouR" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_EigyouR" runat="server" Text="0.0%" CssClass="lbl_pl"></asp:Label>
                 </td>
              </tr>
              <tr>
@@ -181,7 +181,7 @@
                     売上高経常利益率
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_KeijyouR" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_KeijyouR" runat="server" Text="0.0%" CssClass="lbl_pl"></asp:Label>
                 </td>
              </tr>
         </table>
@@ -1087,7 +1087,7 @@
                     (6)現金および現金同等物期末残高
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_CF5" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
+                    <asp:TextBox ID="TextBox_CF14" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1095,7 +1095,7 @@
                     売上高
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF14" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF15" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1104,7 +1104,7 @@
                 </td>
                 <td class="right">
                     <%-- 「営業活動によるキャッシュ・フロー」÷「売上高」一般的な目標は7% --%>
-                    <asp:Label ID="Label_CF6" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
+                    <asp:Label ID="Label_CF6" runat="server" Text="0.0%" CssClass="lbl_BS"></asp:Label>
                 </td>
             </tr>
 </table>
@@ -1122,13 +1122,17 @@
         </p>
 
 
-            <asp:GridView ID="GridView1" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_CF" AllowPaging="True" AllowSorting="True" OnRowCommand="grid_RowCommand">
+            <asp:GridView ID="GridView_CF" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_CF" AllowPaging="True" AllowSorting="True" OnRowCommand="grid_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" />
-                    <asp:BoundField DataField="shisan_a" HeaderText="資産合計" SortExpression="shisan_a" DataFormatString="{0:C}" HeaderStyle-ForeColor="LightGreen" />
-                    <asp:BoundField DataField="fusai_a" HeaderText="負債合計" SortExpression="fusai_a" DataFormatString="{0:C}" HeaderStyle-ForeColor="Red" />
-                    <asp:BoundField DataField="jyunshisan_a" HeaderText="純資産" SortExpression="jyunshisan_a" DataFormatString="{0:C}" HeaderStyle-ForeColor="LightBlue" />
-                    <asp:BoundField DataField="Date" HeaderText="申告年月日" SortExpression="Date" DataFormatString="{0:d}" />
+                    <asp:BoundField DataField="ACL1" HeaderText="営業活動C/F" SortExpression="ACL1" HeaderStyle-ForeColor="LightBlue" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="ACL2" HeaderText="投資活動C/F" SortExpression="ACL2" HeaderStyle-ForeColor="LightBlue" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="ACL3" HeaderText="財務活動C/F" SortExpression="ACL3" HeaderStyle-ForeColor="LightBlue" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="ACL4" HeaderText="現金等増加額" SortExpression="ACL4" HeaderStyle-ForeColor="LightYellow" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="ACL5" HeaderText="現金等期首残高" SortExpression="ACL5" HeaderStyle-ForeColor="LightYellow" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="CF14" HeaderText="現金等期未残高" SortExpression="CF14" HeaderStyle-ForeColor="LightYellow" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="ACL6" HeaderText="C/Fマージン" SortExpression="ACL6" HeaderStyle-ForeColor="LightGreen" DataFormatString="{0:0.0%}" />
+                    <asp:BoundField DataField="Date" HeaderText="申請年月日" SortExpression="Date" DataFormatString="{0:d}" />
                     <asp:BoundField DataField="UpDateTime" HeaderText="最終更新日" SortExpression="UpDateTime" />
 
                     <asp:ButtonField ButtonType="Button" Text="削除" HeaderText="削除" CommandName="CFRemove" CausesValidation="False" >
@@ -1144,7 +1148,7 @@
         <RowStyle BackColor="#1E1E1E" ForeColor="White" />
             </asp:GridView>
 
-           <asp:SqlDataSource ID="SqlDataSource_CF" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT [uuid], [shisan_a], [fusai_a], [jyunshisan_a], [Date], [UpDateTime] FROM [T_BS] ORDER BY [UpDateTime] DESC"></asp:SqlDataSource>
+           <asp:SqlDataSource ID="SqlDataSource_CF" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT [uuid], [ACL1], [ACL2], [ACL3], [ACL4], [ACL5], [CF14], [ACL6], [Date], [UpDateTime] FROM [T_CF] ORDER BY [UpDateTime] DESC"></asp:SqlDataSource>
 
 </div>
 

@@ -547,7 +547,7 @@ namespace WhereEver.Money
             //宣言と初期化
             int value;
             int pl_sum = 0;
-            double ri_r;
+            float ri_r;
             string str;
 
             str = TextBox_Uriage.Text;
@@ -860,6 +860,93 @@ namespace WhereEver.Money
                 GridView_BS.Rows[args].BackColor = System.Drawing.Color.Red;
 
             }
+
+            // コマンド名が“CFRemove”の場合にのみ処理（独自の削除ボタン）
+            if (e.CommandName == "CFRemove")
+            {
+
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
+
+                //セッション変数argsを初期化
+                Session.Add("args", (string)"null");
+                Session.Add("uuid", (string)"null");
+
+                string uuid = GridView_CF.Rows[args].Cells[0].Text;
+                ClassLibrary.MOMClass.DeleteT_CFRow(Global.GetConnection(), uuid);
+
+                GridView_CF.DataBind();
+
+
+                // コマンド名が“CFDownLoad”の場合にのみ処理（選択ボタン）
+            }
+            else if (e.CommandName == "CFDownLoad")
+            {
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
+
+                ResetCF();
+
+                string uuid = GridView_CF.Rows[args].Cells[0].Text;
+                DATASET.DataSet.T_CFRow dr = ClassLibrary.MOMClass.GetT_CFRow(Global.GetConnection(), uuid);
+
+
+                if (Session["args"].ToString() != "null")
+                {
+                    //GridView1の色を変えた色をもとに戻す
+                    int resetargs = int.Parse(Session["args"].ToString());
+                    GridView_CF.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
+                }
+
+                if (dr == null)
+                {
+                    //Fatal Error
+                    return;
+                }
+
+                Session.Add("uuid", uuid);
+
+                //編集テーブルに代入
+                TextBox_CF1.Text = dr.CF1.ToString();
+                TextBox_CF2.Text = dr.CF2.ToString();
+                TextBox_CF3.Text = dr.CF3.ToString();
+                TextBox_CF4.Text = dr.CF4.ToString();
+                TextBox_CF5.Text = dr.CF5.ToString();
+                TextBox_CF6.Text = dr.CF6.ToString();
+                TextBox_CF7.Text = dr.CF7.ToString();
+                TextBox_CF8.Text = dr.CF8.ToString();
+                TextBox_CF9.Text = dr.CF9.ToString();
+                TextBox_CF10.Text = dr.CF10.ToString();
+                TextBox_CF11.Text = dr.CF11.ToString();
+                TextBox_CF12.Text = dr.CF12.ToString();
+                TextBox_CF13.Text = dr.CF13.ToString();
+                TextBox_CF14.Text = dr.ACL5.ToString(); //(6)現金および現金同等物期末残高
+                TextBox_CF15.Text = dr.CF14.ToString(); //売上高
+
+
+                DropDownList_CF_year.SelectedValue = dr.Date.Year.ToString();
+                DropDownList_CF_month.SelectedValue = dr.Date.Month.ToString();
+                SetMaxDate();
+                DropDownList_CF_day.SelectedValue = dr.Date.Day.ToString();
+
+                //SUM
+                Sum_CF();
+                GridView_CF.DataBind();
+
+                //新たに色を変更する行を記憶
+                Session.Add("args", args);
+
+                //行の色変更（選択行を強調表示）
+                GridView_CF.Rows[args].BackColor = System.Drawing.Color.Red;
+
+            }
+
             //---------------------
             return; //grid_RowCommand
             //---------------------
@@ -1369,7 +1456,7 @@ namespace WhereEver.Money
         protected void Sum_CF()
         {
             //宣言と初期化
-            double ri_r;
+            float ri_r;
             string str;
 
             //(1)営業活動によるキャッシュフロー 
@@ -1412,15 +1499,23 @@ namespace WhereEver.Money
             str = TextBox_CF13.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value13);
 
-            //売上高
+            //(6)現金および現金同等物期末残高
             str = TextBox_CF14.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value14);
 
+            //売上高
+            str = TextBox_CF15.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value15);
+
+            int cf4 = cf1 + cf2 + cf3;
+            int cf5 = value14;
+
+
 
             //キャッシュ・フローマージン＝「営業活動によるキャッシュ・フロー」÷「売上高」
-            if ((float)value14 != 0)
+            if ((float)value15 != 0)
             {
-                ri_r = (float)cf1 / (float)value14;
+                ri_r = (float)cf1 / (float)value15;
             }
             else
             {
@@ -1483,9 +1578,13 @@ namespace WhereEver.Money
             str = TextBox_CF13.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value13);
 
-            //売上高
+            //(6)現金および現金同等物期末残高
             str = TextBox_CF14.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value14);
+
+            //売上高
+            str = TextBox_CF15.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value15);
 
             StringBuilder sb = new StringBuilder();
             sb.Append(DropDownList_CF_year.SelectedValue);
@@ -1499,10 +1598,10 @@ namespace WhereEver.Money
 
             if (b)
             {
-                DATASET.DataSet.T_PLRow dr = ClassLibrary.MOMClass.GetT_PLRow(Global.GetConnection(), uuid);
+                DATASET.DataSet.T_CFRow dr = ClassLibrary.MOMClass.GetT_CFRow(Global.GetConnection(), uuid);
                 if (dr != null)
                 {
-                    //ClassLibrary.MOMClass.SetT_PLUpdate(Global.GetConnection(), uuid, value1, value2, value3, value4, value5, value6, value7, value8, dt);
+                    ClassLibrary.MOMClass.SetT_CFUpdate(Global.GetConnection(), uuid, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, dt);
                 }
                 else
                 {
@@ -1512,10 +1611,10 @@ namespace WhereEver.Money
 
             if (!b)
             {
-                //ClassLibrary.MOMClass.SetT_PLInsert(Global.GetConnection(), value1, value2, value3, value4, value5, value6, value7, value8, dt);
+                ClassLibrary.MOMClass.SetT_CFInsert(Global.GetConnection(), value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, dt);
             }
 
-            GridView_PL.DataBind();
+            GridView_CF.DataBind();
         }
 
 
@@ -1536,12 +1635,12 @@ namespace WhereEver.Money
             TextBox_CF12.Text = "0";
             TextBox_CF13.Text = "0";
             TextBox_CF14.Text = "0";
+            TextBox_CF15.Text = "0";
 
             Label_CF1.Text = string.Format("{0:C}", 0);
             Label_CF2.Text = string.Format("{0:C}", 0);
             Label_CF3.Text = string.Format("{0:C}", 0);
             Label_CF4.Text = string.Format("{0:C}", 0);
-            Label_CF5.Text = string.Format("{0:C}", 0);
             Label_CF6.Text = string.Format("{0:0.0%}", 0);
 
             DropDownList_CF_month.SelectedValue = "4";

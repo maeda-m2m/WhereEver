@@ -1140,15 +1140,6 @@ namespace WhereEver.Money
         protected global::System.Web.UI.WebControls.TextBox TextBox_CF13;
 
         /// <summary>
-        /// Label_CF5 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_CF5;
-
-        /// <summary>
         /// TextBox_CF14 コントロール。
         /// </summary>
         /// <remarks>
@@ -1156,6 +1147,15 @@ namespace WhereEver.Money
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_CF14;
+
+        /// <summary>
+        /// TextBox_CF15 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_CF15;
 
         /// <summary>
         /// Label_CF6 コントロール。
@@ -1194,13 +1194,13 @@ namespace WhereEver.Money
         protected global::System.Web.UI.WebControls.Button Button_Change_CF;
 
         /// <summary>
-        /// GridView1 コントロール。
+        /// GridView_CF コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView GridView_CF;
 
         /// <summary>
         /// SqlDataSource_CF コントロール。
