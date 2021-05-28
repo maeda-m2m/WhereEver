@@ -62,6 +62,8 @@ namespace WhereEver.DATASET {
         
         private T_PLDataTable tableT_PL;
         
+        private T_BSDataTable tableT_BS;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -146,6 +148,9 @@ namespace WhereEver.DATASET {
                 }
                 if ((ds.Tables["T_PL"] != null)) {
                     base.Tables.Add(new T_PLDataTable(ds.Tables["T_PL"]));
+                }
+                if ((ds.Tables["T_BS"] != null)) {
+                    base.Tables.Add(new T_BSDataTable(ds.Tables["T_BS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -357,6 +362,16 @@ namespace WhereEver.DATASET {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public T_BSDataTable T_BS {
+            get {
+                return this.tableT_BS;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -478,6 +493,9 @@ namespace WhereEver.DATASET {
                 }
                 if ((ds.Tables["T_PL"] != null)) {
                     base.Tables.Add(new T_PLDataTable(ds.Tables["T_PL"]));
+                }
+                if ((ds.Tables["T_BS"] != null)) {
+                    base.Tables.Add(new T_BSDataTable(ds.Tables["T_BS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -626,6 +644,12 @@ namespace WhereEver.DATASET {
                     this.tableT_PL.InitVars();
                 }
             }
+            this.tableT_BS = ((T_BSDataTable)(base.Tables["T_BS"]));
+            if ((initTable == true)) {
+                if ((this.tableT_BS != null)) {
+                    this.tableT_BS.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -674,6 +698,8 @@ namespace WhereEver.DATASET {
             base.Tables.Add(this.tableT_Wiki);
             this.tableT_PL = new T_PLDataTable();
             base.Tables.Add(this.tableT_PL);
+            this.tableT_BS = new T_BSDataTable();
+            base.Tables.Add(this.tableT_BS);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -792,6 +818,12 @@ namespace WhereEver.DATASET {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeT_BS() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -901,6 +933,9 @@ namespace WhereEver.DATASET {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void T_PLRowChangeEventHandler(object sender, T_PLRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void T_BSRowChangeEventHandler(object sender, T_BSRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -7003,18 +7038,18 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public T_PLRow AddT_PLRow(
                         string uuid, 
-                        decimal uriagedaka, 
-                        decimal uriagegenka, 
-                        decimal uriagesourieki, 
-                        decimal hanbaikanrihi, 
-                        decimal eigyourieki, 
-                        decimal eigyougaihiyou, 
-                        decimal keijyourieki, 
-                        decimal tokubetsurieki, 
-                        decimal tokubetsusonshitsu, 
-                        decimal zeibikimaetoukijyunrieki, 
-                        decimal houjinzeitou, 
-                        decimal toukijyunrieki, 
+                        long uriagedaka, 
+                        long uriagegenka, 
+                        long uriagesourieki, 
+                        long hanbaikanrihi, 
+                        long eigyourieki, 
+                        long eigyougaihiyou, 
+                        long keijyourieki, 
+                        long tokubetsurieki, 
+                        long tokubetsusonshitsu, 
+                        long zeibikimaetoukijyunrieki, 
+                        long houjinzeitou, 
+                        long toukijyunrieki, 
                         double arari_r, 
                         double eigyou_r, 
                         double keijyou_r, 
@@ -7097,29 +7132,29 @@ namespace WhereEver.DATASET {
             private void InitClass() {
                 this.columnuuid = new global::System.Data.DataColumn("uuid", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuuid);
-                this.columnuriagedaka = new global::System.Data.DataColumn("uriagedaka", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnuriagedaka = new global::System.Data.DataColumn("uriagedaka", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuriagedaka);
-                this.columnuriagegenka = new global::System.Data.DataColumn("uriagegenka", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnuriagegenka = new global::System.Data.DataColumn("uriagegenka", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuriagegenka);
-                this.columnuriagesourieki = new global::System.Data.DataColumn("uriagesourieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnuriagesourieki = new global::System.Data.DataColumn("uriagesourieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuriagesourieki);
-                this.columnhanbaikanrihi = new global::System.Data.DataColumn("hanbaikanrihi", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnhanbaikanrihi = new global::System.Data.DataColumn("hanbaikanrihi", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhanbaikanrihi);
-                this.columneigyourieki = new global::System.Data.DataColumn("eigyourieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columneigyourieki = new global::System.Data.DataColumn("eigyourieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columneigyourieki);
-                this.columneigyougaihiyou = new global::System.Data.DataColumn("eigyougaihiyou", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columneigyougaihiyou = new global::System.Data.DataColumn("eigyougaihiyou", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columneigyougaihiyou);
-                this.columnkeijyourieki = new global::System.Data.DataColumn("keijyourieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnkeijyourieki = new global::System.Data.DataColumn("keijyourieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnkeijyourieki);
-                this.columntokubetsurieki = new global::System.Data.DataColumn("tokubetsurieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columntokubetsurieki = new global::System.Data.DataColumn("tokubetsurieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntokubetsurieki);
-                this.columntokubetsusonshitsu = new global::System.Data.DataColumn("tokubetsusonshitsu", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columntokubetsusonshitsu = new global::System.Data.DataColumn("tokubetsusonshitsu", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntokubetsusonshitsu);
-                this.columnzeibikimaetoukijyunrieki = new global::System.Data.DataColumn("zeibikimaetoukijyunrieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnzeibikimaetoukijyunrieki = new global::System.Data.DataColumn("zeibikimaetoukijyunrieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnzeibikimaetoukijyunrieki);
-                this.columnhoujinzeitou = new global::System.Data.DataColumn("houjinzeitou", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnhoujinzeitou = new global::System.Data.DataColumn("houjinzeitou", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhoujinzeitou);
-                this.columntoukijyunrieki = new global::System.Data.DataColumn("toukijyunrieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columntoukijyunrieki = new global::System.Data.DataColumn("toukijyunrieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntoukijyunrieki);
                 this.columnarari_r = new global::System.Data.DataColumn("arari_r", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnarari_r);
@@ -7242,6 +7277,1274 @@ namespace WhereEver.DATASET {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "T_PLDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class T_BSDataTable : global::System.Data.TypedTableBase<T_BSRow> {
+            
+            private global::System.Data.DataColumn columnuuid;
+            
+            private global::System.Data.DataColumn columnBS1;
+            
+            private global::System.Data.DataColumn columnBS2;
+            
+            private global::System.Data.DataColumn columnBS3;
+            
+            private global::System.Data.DataColumn columnBS4;
+            
+            private global::System.Data.DataColumn columnBS5;
+            
+            private global::System.Data.DataColumn columnBS6;
+            
+            private global::System.Data.DataColumn columnBS7;
+            
+            private global::System.Data.DataColumn columnBS8;
+            
+            private global::System.Data.DataColumn columnBS9;
+            
+            private global::System.Data.DataColumn columnBS10;
+            
+            private global::System.Data.DataColumn columnBS11;
+            
+            private global::System.Data.DataColumn columnBS12;
+            
+            private global::System.Data.DataColumn columnBS13;
+            
+            private global::System.Data.DataColumn columnBS14;
+            
+            private global::System.Data.DataColumn columnBS15;
+            
+            private global::System.Data.DataColumn columnBS16;
+            
+            private global::System.Data.DataColumn columnBS17;
+            
+            private global::System.Data.DataColumn columnBS18;
+            
+            private global::System.Data.DataColumn columnBS19;
+            
+            private global::System.Data.DataColumn columnBS20;
+            
+            private global::System.Data.DataColumn columnBS21;
+            
+            private global::System.Data.DataColumn columnBS22;
+            
+            private global::System.Data.DataColumn columnBS23;
+            
+            private global::System.Data.DataColumn columnBS24;
+            
+            private global::System.Data.DataColumn columnBS25;
+            
+            private global::System.Data.DataColumn columnBS26;
+            
+            private global::System.Data.DataColumn columnBS27;
+            
+            private global::System.Data.DataColumn columnBS28;
+            
+            private global::System.Data.DataColumn columnBS29;
+            
+            private global::System.Data.DataColumn columnBS30;
+            
+            private global::System.Data.DataColumn columnBS31;
+            
+            private global::System.Data.DataColumn columnBS32;
+            
+            private global::System.Data.DataColumn columnBS33;
+            
+            private global::System.Data.DataColumn columnBS34;
+            
+            private global::System.Data.DataColumn columnBS35;
+            
+            private global::System.Data.DataColumn columnBS36;
+            
+            private global::System.Data.DataColumn columnBS37;
+            
+            private global::System.Data.DataColumn columnBS38;
+            
+            private global::System.Data.DataColumn columnBS39;
+            
+            private global::System.Data.DataColumn columnBS40;
+            
+            private global::System.Data.DataColumn columnBS41;
+            
+            private global::System.Data.DataColumn columnBS42;
+            
+            private global::System.Data.DataColumn columnBS43;
+            
+            private global::System.Data.DataColumn columnBS44;
+            
+            private global::System.Data.DataColumn columnBS45;
+            
+            private global::System.Data.DataColumn columnBS46;
+            
+            private global::System.Data.DataColumn columnBS47;
+            
+            private global::System.Data.DataColumn columnBS48;
+            
+            private global::System.Data.DataColumn columnBS49;
+            
+            private global::System.Data.DataColumn columnBS50;
+            
+            private global::System.Data.DataColumn columnBS51;
+            
+            private global::System.Data.DataColumn columnryuudoushisan;
+            
+            private global::System.Data.DataColumn columnyuukeikoteishisan;
+            
+            private global::System.Data.DataColumn columnmukeikoteishisan;
+            
+            private global::System.Data.DataColumn columntoushisonotanoshisan;
+            
+            private global::System.Data.DataColumn columnkoteishisan;
+            
+            private global::System.Data.DataColumn columnshisan_a;
+            
+            private global::System.Data.DataColumn columnryuudoufusai;
+            
+            private global::System.Data.DataColumn columnkoteifusai;
+            
+            private global::System.Data.DataColumn columnfusai_a;
+            
+            private global::System.Data.DataColumn columnjyunshisan_a;
+            
+            private global::System.Data.DataColumn columnDate;
+            
+            private global::System.Data.DataColumn columnUpDateTime;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public T_BSDataTable() {
+                this.TableName = "T_BS";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal T_BSDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected T_BSDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn uuidColumn {
+                get {
+                    return this.columnuuid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS1Column {
+                get {
+                    return this.columnBS1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS2Column {
+                get {
+                    return this.columnBS2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS3Column {
+                get {
+                    return this.columnBS3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS4Column {
+                get {
+                    return this.columnBS4;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS5Column {
+                get {
+                    return this.columnBS5;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS6Column {
+                get {
+                    return this.columnBS6;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS7Column {
+                get {
+                    return this.columnBS7;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS8Column {
+                get {
+                    return this.columnBS8;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS9Column {
+                get {
+                    return this.columnBS9;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS10Column {
+                get {
+                    return this.columnBS10;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS11Column {
+                get {
+                    return this.columnBS11;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS12Column {
+                get {
+                    return this.columnBS12;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS13Column {
+                get {
+                    return this.columnBS13;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS14Column {
+                get {
+                    return this.columnBS14;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS15Column {
+                get {
+                    return this.columnBS15;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS16Column {
+                get {
+                    return this.columnBS16;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS17Column {
+                get {
+                    return this.columnBS17;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS18Column {
+                get {
+                    return this.columnBS18;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS19Column {
+                get {
+                    return this.columnBS19;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS20Column {
+                get {
+                    return this.columnBS20;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS21Column {
+                get {
+                    return this.columnBS21;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS22Column {
+                get {
+                    return this.columnBS22;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS23Column {
+                get {
+                    return this.columnBS23;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS24Column {
+                get {
+                    return this.columnBS24;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS25Column {
+                get {
+                    return this.columnBS25;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS26Column {
+                get {
+                    return this.columnBS26;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS27Column {
+                get {
+                    return this.columnBS27;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS28Column {
+                get {
+                    return this.columnBS28;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS29Column {
+                get {
+                    return this.columnBS29;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS30Column {
+                get {
+                    return this.columnBS30;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS31Column {
+                get {
+                    return this.columnBS31;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS32Column {
+                get {
+                    return this.columnBS32;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS33Column {
+                get {
+                    return this.columnBS33;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS34Column {
+                get {
+                    return this.columnBS34;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS35Column {
+                get {
+                    return this.columnBS35;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS36Column {
+                get {
+                    return this.columnBS36;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS37Column {
+                get {
+                    return this.columnBS37;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS38Column {
+                get {
+                    return this.columnBS38;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS39Column {
+                get {
+                    return this.columnBS39;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS40Column {
+                get {
+                    return this.columnBS40;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS41Column {
+                get {
+                    return this.columnBS41;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS42Column {
+                get {
+                    return this.columnBS42;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS43Column {
+                get {
+                    return this.columnBS43;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS44Column {
+                get {
+                    return this.columnBS44;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS45Column {
+                get {
+                    return this.columnBS45;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS46Column {
+                get {
+                    return this.columnBS46;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS47Column {
+                get {
+                    return this.columnBS47;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS48Column {
+                get {
+                    return this.columnBS48;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS49Column {
+                get {
+                    return this.columnBS49;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS50Column {
+                get {
+                    return this.columnBS50;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BS51Column {
+                get {
+                    return this.columnBS51;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ryuudoushisanColumn {
+                get {
+                    return this.columnryuudoushisan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn yuukeikoteishisanColumn {
+                get {
+                    return this.columnyuukeikoteishisan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn mukeikoteishisanColumn {
+                get {
+                    return this.columnmukeikoteishisan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn toushisonotanoshisanColumn {
+                get {
+                    return this.columntoushisonotanoshisan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn koteishisanColumn {
+                get {
+                    return this.columnkoteishisan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn shisan_aColumn {
+                get {
+                    return this.columnshisan_a;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ryuudoufusaiColumn {
+                get {
+                    return this.columnryuudoufusai;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn koteifusaiColumn {
+                get {
+                    return this.columnkoteifusai;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn fusai_aColumn {
+                get {
+                    return this.columnfusai_a;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn jyunshisan_aColumn {
+                get {
+                    return this.columnjyunshisan_a;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DateColumn {
+                get {
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn UpDateTimeColumn {
+                get {
+                    return this.columnUpDateTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public T_BSRow this[int index] {
+                get {
+                    return ((T_BSRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event T_BSRowChangeEventHandler T_BSRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event T_BSRowChangeEventHandler T_BSRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event T_BSRowChangeEventHandler T_BSRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event T_BSRowChangeEventHandler T_BSRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddT_BSRow(T_BSRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public T_BSRow AddT_BSRow(
+                        string uuid, 
+                        long BS1, 
+                        long BS2, 
+                        long BS3, 
+                        long BS4, 
+                        long BS5, 
+                        long BS6, 
+                        long BS7, 
+                        long BS8, 
+                        long BS9, 
+                        long BS10, 
+                        long BS11, 
+                        long BS12, 
+                        long BS13, 
+                        long BS14, 
+                        long BS15, 
+                        long BS16, 
+                        long BS17, 
+                        long BS18, 
+                        long BS19, 
+                        long BS20, 
+                        long BS21, 
+                        long BS22, 
+                        long BS23, 
+                        long BS24, 
+                        long BS25, 
+                        long BS26, 
+                        long BS27, 
+                        long BS28, 
+                        long BS29, 
+                        long BS30, 
+                        long BS31, 
+                        long BS32, 
+                        long BS33, 
+                        long BS34, 
+                        long BS35, 
+                        long BS36, 
+                        long BS37, 
+                        long BS38, 
+                        long BS39, 
+                        long BS40, 
+                        long BS41, 
+                        long BS42, 
+                        long BS43, 
+                        long BS44, 
+                        long BS45, 
+                        long BS46, 
+                        long BS47, 
+                        long BS48, 
+                        long BS49, 
+                        long BS50, 
+                        long BS51, 
+                        long ryuudoushisan, 
+                        long yuukeikoteishisan, 
+                        long mukeikoteishisan, 
+                        long toushisonotanoshisan, 
+                        long koteishisan, 
+                        long shisan_a, 
+                        long ryuudoufusai, 
+                        long koteifusai, 
+                        long fusai_a, 
+                        long jyunshisan_a, 
+                        System.DateTime Date, 
+                        System.DateTime UpDateTime) {
+                T_BSRow rowT_BSRow = ((T_BSRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        uuid,
+                        BS1,
+                        BS2,
+                        BS3,
+                        BS4,
+                        BS5,
+                        BS6,
+                        BS7,
+                        BS8,
+                        BS9,
+                        BS10,
+                        BS11,
+                        BS12,
+                        BS13,
+                        BS14,
+                        BS15,
+                        BS16,
+                        BS17,
+                        BS18,
+                        BS19,
+                        BS20,
+                        BS21,
+                        BS22,
+                        BS23,
+                        BS24,
+                        BS25,
+                        BS26,
+                        BS27,
+                        BS28,
+                        BS29,
+                        BS30,
+                        BS31,
+                        BS32,
+                        BS33,
+                        BS34,
+                        BS35,
+                        BS36,
+                        BS37,
+                        BS38,
+                        BS39,
+                        BS40,
+                        BS41,
+                        BS42,
+                        BS43,
+                        BS44,
+                        BS45,
+                        BS46,
+                        BS47,
+                        BS48,
+                        BS49,
+                        BS50,
+                        BS51,
+                        ryuudoushisan,
+                        yuukeikoteishisan,
+                        mukeikoteishisan,
+                        toushisonotanoshisan,
+                        koteishisan,
+                        shisan_a,
+                        ryuudoufusai,
+                        koteifusai,
+                        fusai_a,
+                        jyunshisan_a,
+                        Date,
+                        UpDateTime};
+                rowT_BSRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowT_BSRow);
+                return rowT_BSRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public T_BSRow FindByuuid(string uuid) {
+                return ((T_BSRow)(this.Rows.Find(new object[] {
+                            uuid})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                T_BSDataTable cln = ((T_BSDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new T_BSDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnuuid = base.Columns["uuid"];
+                this.columnBS1 = base.Columns["BS1"];
+                this.columnBS2 = base.Columns["BS2"];
+                this.columnBS3 = base.Columns["BS3"];
+                this.columnBS4 = base.Columns["BS4"];
+                this.columnBS5 = base.Columns["BS5"];
+                this.columnBS6 = base.Columns["BS6"];
+                this.columnBS7 = base.Columns["BS7"];
+                this.columnBS8 = base.Columns["BS8"];
+                this.columnBS9 = base.Columns["BS9"];
+                this.columnBS10 = base.Columns["BS10"];
+                this.columnBS11 = base.Columns["BS11"];
+                this.columnBS12 = base.Columns["BS12"];
+                this.columnBS13 = base.Columns["BS13"];
+                this.columnBS14 = base.Columns["BS14"];
+                this.columnBS15 = base.Columns["BS15"];
+                this.columnBS16 = base.Columns["BS16"];
+                this.columnBS17 = base.Columns["BS17"];
+                this.columnBS18 = base.Columns["BS18"];
+                this.columnBS19 = base.Columns["BS19"];
+                this.columnBS20 = base.Columns["BS20"];
+                this.columnBS21 = base.Columns["BS21"];
+                this.columnBS22 = base.Columns["BS22"];
+                this.columnBS23 = base.Columns["BS23"];
+                this.columnBS24 = base.Columns["BS24"];
+                this.columnBS25 = base.Columns["BS25"];
+                this.columnBS26 = base.Columns["BS26"];
+                this.columnBS27 = base.Columns["BS27"];
+                this.columnBS28 = base.Columns["BS28"];
+                this.columnBS29 = base.Columns["BS29"];
+                this.columnBS30 = base.Columns["BS30"];
+                this.columnBS31 = base.Columns["BS31"];
+                this.columnBS32 = base.Columns["BS32"];
+                this.columnBS33 = base.Columns["BS33"];
+                this.columnBS34 = base.Columns["BS34"];
+                this.columnBS35 = base.Columns["BS35"];
+                this.columnBS36 = base.Columns["BS36"];
+                this.columnBS37 = base.Columns["BS37"];
+                this.columnBS38 = base.Columns["BS38"];
+                this.columnBS39 = base.Columns["BS39"];
+                this.columnBS40 = base.Columns["BS40"];
+                this.columnBS41 = base.Columns["BS41"];
+                this.columnBS42 = base.Columns["BS42"];
+                this.columnBS43 = base.Columns["BS43"];
+                this.columnBS44 = base.Columns["BS44"];
+                this.columnBS45 = base.Columns["BS45"];
+                this.columnBS46 = base.Columns["BS46"];
+                this.columnBS47 = base.Columns["BS47"];
+                this.columnBS48 = base.Columns["BS48"];
+                this.columnBS49 = base.Columns["BS49"];
+                this.columnBS50 = base.Columns["BS50"];
+                this.columnBS51 = base.Columns["BS51"];
+                this.columnryuudoushisan = base.Columns["ryuudoushisan"];
+                this.columnyuukeikoteishisan = base.Columns["yuukeikoteishisan"];
+                this.columnmukeikoteishisan = base.Columns["mukeikoteishisan"];
+                this.columntoushisonotanoshisan = base.Columns["toushisonotanoshisan"];
+                this.columnkoteishisan = base.Columns["koteishisan"];
+                this.columnshisan_a = base.Columns["shisan_a"];
+                this.columnryuudoufusai = base.Columns["ryuudoufusai"];
+                this.columnkoteifusai = base.Columns["koteifusai"];
+                this.columnfusai_a = base.Columns["fusai_a"];
+                this.columnjyunshisan_a = base.Columns["jyunshisan_a"];
+                this.columnDate = base.Columns["Date"];
+                this.columnUpDateTime = base.Columns["UpDateTime"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnuuid = new global::System.Data.DataColumn("uuid", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnuuid);
+                this.columnBS1 = new global::System.Data.DataColumn("BS1", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS1);
+                this.columnBS2 = new global::System.Data.DataColumn("BS2", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS2);
+                this.columnBS3 = new global::System.Data.DataColumn("BS3", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS3);
+                this.columnBS4 = new global::System.Data.DataColumn("BS4", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS4);
+                this.columnBS5 = new global::System.Data.DataColumn("BS5", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS5);
+                this.columnBS6 = new global::System.Data.DataColumn("BS6", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS6);
+                this.columnBS7 = new global::System.Data.DataColumn("BS7", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS7);
+                this.columnBS8 = new global::System.Data.DataColumn("BS8", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS8);
+                this.columnBS9 = new global::System.Data.DataColumn("BS9", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS9);
+                this.columnBS10 = new global::System.Data.DataColumn("BS10", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS10);
+                this.columnBS11 = new global::System.Data.DataColumn("BS11", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS11);
+                this.columnBS12 = new global::System.Data.DataColumn("BS12", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS12);
+                this.columnBS13 = new global::System.Data.DataColumn("BS13", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS13);
+                this.columnBS14 = new global::System.Data.DataColumn("BS14", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS14);
+                this.columnBS15 = new global::System.Data.DataColumn("BS15", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS15);
+                this.columnBS16 = new global::System.Data.DataColumn("BS16", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS16);
+                this.columnBS17 = new global::System.Data.DataColumn("BS17", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS17);
+                this.columnBS18 = new global::System.Data.DataColumn("BS18", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS18);
+                this.columnBS19 = new global::System.Data.DataColumn("BS19", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS19);
+                this.columnBS20 = new global::System.Data.DataColumn("BS20", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS20);
+                this.columnBS21 = new global::System.Data.DataColumn("BS21", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS21);
+                this.columnBS22 = new global::System.Data.DataColumn("BS22", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS22);
+                this.columnBS23 = new global::System.Data.DataColumn("BS23", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS23);
+                this.columnBS24 = new global::System.Data.DataColumn("BS24", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS24);
+                this.columnBS25 = new global::System.Data.DataColumn("BS25", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS25);
+                this.columnBS26 = new global::System.Data.DataColumn("BS26", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS26);
+                this.columnBS27 = new global::System.Data.DataColumn("BS27", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS27);
+                this.columnBS28 = new global::System.Data.DataColumn("BS28", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS28);
+                this.columnBS29 = new global::System.Data.DataColumn("BS29", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS29);
+                this.columnBS30 = new global::System.Data.DataColumn("BS30", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS30);
+                this.columnBS31 = new global::System.Data.DataColumn("BS31", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS31);
+                this.columnBS32 = new global::System.Data.DataColumn("BS32", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS32);
+                this.columnBS33 = new global::System.Data.DataColumn("BS33", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS33);
+                this.columnBS34 = new global::System.Data.DataColumn("BS34", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS34);
+                this.columnBS35 = new global::System.Data.DataColumn("BS35", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS35);
+                this.columnBS36 = new global::System.Data.DataColumn("BS36", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS36);
+                this.columnBS37 = new global::System.Data.DataColumn("BS37", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS37);
+                this.columnBS38 = new global::System.Data.DataColumn("BS38", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS38);
+                this.columnBS39 = new global::System.Data.DataColumn("BS39", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS39);
+                this.columnBS40 = new global::System.Data.DataColumn("BS40", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS40);
+                this.columnBS41 = new global::System.Data.DataColumn("BS41", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS41);
+                this.columnBS42 = new global::System.Data.DataColumn("BS42", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS42);
+                this.columnBS43 = new global::System.Data.DataColumn("BS43", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS43);
+                this.columnBS44 = new global::System.Data.DataColumn("BS44", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS44);
+                this.columnBS45 = new global::System.Data.DataColumn("BS45", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS45);
+                this.columnBS46 = new global::System.Data.DataColumn("BS46", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS46);
+                this.columnBS47 = new global::System.Data.DataColumn("BS47", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS47);
+                this.columnBS48 = new global::System.Data.DataColumn("BS48", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS48);
+                this.columnBS49 = new global::System.Data.DataColumn("BS49", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS49);
+                this.columnBS50 = new global::System.Data.DataColumn("BS50", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS50);
+                this.columnBS51 = new global::System.Data.DataColumn("BS51", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBS51);
+                this.columnryuudoushisan = new global::System.Data.DataColumn("ryuudoushisan", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnryuudoushisan);
+                this.columnyuukeikoteishisan = new global::System.Data.DataColumn("yuukeikoteishisan", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnyuukeikoteishisan);
+                this.columnmukeikoteishisan = new global::System.Data.DataColumn("mukeikoteishisan", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmukeikoteishisan);
+                this.columntoushisonotanoshisan = new global::System.Data.DataColumn("toushisonotanoshisan", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntoushisonotanoshisan);
+                this.columnkoteishisan = new global::System.Data.DataColumn("koteishisan", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkoteishisan);
+                this.columnshisan_a = new global::System.Data.DataColumn("shisan_a", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnshisan_a);
+                this.columnryuudoufusai = new global::System.Data.DataColumn("ryuudoufusai", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnryuudoufusai);
+                this.columnkoteifusai = new global::System.Data.DataColumn("koteifusai", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkoteifusai);
+                this.columnfusai_a = new global::System.Data.DataColumn("fusai_a", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfusai_a);
+                this.columnjyunshisan_a = new global::System.Data.DataColumn("jyunshisan_a", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjyunshisan_a);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnUpDateTime = new global::System.Data.DataColumn("UpDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUpDateTime);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnuuid}, true));
+                this.columnuuid.AllowDBNull = false;
+                this.columnuuid.Unique = true;
+                this.columnuuid.MaxLength = 50;
+                this.columnBS1.AllowDBNull = false;
+                this.columnBS2.AllowDBNull = false;
+                this.columnBS3.AllowDBNull = false;
+                this.columnBS4.AllowDBNull = false;
+                this.columnBS5.AllowDBNull = false;
+                this.columnBS6.AllowDBNull = false;
+                this.columnBS7.AllowDBNull = false;
+                this.columnBS8.AllowDBNull = false;
+                this.columnBS9.AllowDBNull = false;
+                this.columnBS10.AllowDBNull = false;
+                this.columnBS11.AllowDBNull = false;
+                this.columnBS12.AllowDBNull = false;
+                this.columnBS13.AllowDBNull = false;
+                this.columnBS14.AllowDBNull = false;
+                this.columnBS15.AllowDBNull = false;
+                this.columnBS16.AllowDBNull = false;
+                this.columnBS17.AllowDBNull = false;
+                this.columnBS18.AllowDBNull = false;
+                this.columnBS19.AllowDBNull = false;
+                this.columnBS20.AllowDBNull = false;
+                this.columnBS21.AllowDBNull = false;
+                this.columnBS22.AllowDBNull = false;
+                this.columnBS23.AllowDBNull = false;
+                this.columnBS24.AllowDBNull = false;
+                this.columnBS25.AllowDBNull = false;
+                this.columnBS26.AllowDBNull = false;
+                this.columnBS27.AllowDBNull = false;
+                this.columnBS28.AllowDBNull = false;
+                this.columnBS29.AllowDBNull = false;
+                this.columnBS30.AllowDBNull = false;
+                this.columnBS31.AllowDBNull = false;
+                this.columnBS32.AllowDBNull = false;
+                this.columnBS33.AllowDBNull = false;
+                this.columnBS34.AllowDBNull = false;
+                this.columnBS35.AllowDBNull = false;
+                this.columnBS36.AllowDBNull = false;
+                this.columnBS37.AllowDBNull = false;
+                this.columnBS38.AllowDBNull = false;
+                this.columnBS39.AllowDBNull = false;
+                this.columnBS40.AllowDBNull = false;
+                this.columnBS41.AllowDBNull = false;
+                this.columnBS42.AllowDBNull = false;
+                this.columnBS43.AllowDBNull = false;
+                this.columnBS44.AllowDBNull = false;
+                this.columnBS45.AllowDBNull = false;
+                this.columnBS46.AllowDBNull = false;
+                this.columnBS47.AllowDBNull = false;
+                this.columnBS48.AllowDBNull = false;
+                this.columnBS49.AllowDBNull = false;
+                this.columnBS50.AllowDBNull = false;
+                this.columnBS51.AllowDBNull = false;
+                this.columnryuudoushisan.AllowDBNull = false;
+                this.columnyuukeikoteishisan.AllowDBNull = false;
+                this.columnmukeikoteishisan.AllowDBNull = false;
+                this.columntoushisonotanoshisan.AllowDBNull = false;
+                this.columnkoteishisan.AllowDBNull = false;
+                this.columnshisan_a.AllowDBNull = false;
+                this.columnryuudoufusai.AllowDBNull = false;
+                this.columnkoteifusai.AllowDBNull = false;
+                this.columnfusai_a.AllowDBNull = false;
+                this.columnjyunshisan_a.AllowDBNull = false;
+                this.columnDate.AllowDBNull = false;
+                this.columnUpDateTime.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public T_BSRow NewT_BSRow() {
+                return ((T_BSRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new T_BSRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(T_BSRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.T_BSRowChanged != null)) {
+                    this.T_BSRowChanged(this, new T_BSRowChangeEvent(((T_BSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.T_BSRowChanging != null)) {
+                    this.T_BSRowChanging(this, new T_BSRowChangeEvent(((T_BSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.T_BSRowDeleted != null)) {
+                    this.T_BSRowDeleted(this, new T_BSRowChangeEvent(((T_BSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.T_BSRowDeleting != null)) {
+                    this.T_BSRowDeleting(this, new T_BSRowChangeEvent(((T_BSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveT_BSRow(T_BSRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet ds = new DataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "T_BSDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -9625,9 +10928,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal uriagedaka {
+            public long uriagedaka {
                 get {
-                    return ((decimal)(this[this.tableT_PL.uriagedakaColumn]));
+                    return ((long)(this[this.tableT_PL.uriagedakaColumn]));
                 }
                 set {
                     this[this.tableT_PL.uriagedakaColumn] = value;
@@ -9636,9 +10939,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal uriagegenka {
+            public long uriagegenka {
                 get {
-                    return ((decimal)(this[this.tableT_PL.uriagegenkaColumn]));
+                    return ((long)(this[this.tableT_PL.uriagegenkaColumn]));
                 }
                 set {
                     this[this.tableT_PL.uriagegenkaColumn] = value;
@@ -9647,9 +10950,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal uriagesourieki {
+            public long uriagesourieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.uriagesouriekiColumn]));
+                    return ((long)(this[this.tableT_PL.uriagesouriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.uriagesouriekiColumn] = value;
@@ -9658,9 +10961,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal hanbaikanrihi {
+            public long hanbaikanrihi {
                 get {
-                    return ((decimal)(this[this.tableT_PL.hanbaikanrihiColumn]));
+                    return ((long)(this[this.tableT_PL.hanbaikanrihiColumn]));
                 }
                 set {
                     this[this.tableT_PL.hanbaikanrihiColumn] = value;
@@ -9669,9 +10972,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal eigyourieki {
+            public long eigyourieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.eigyouriekiColumn]));
+                    return ((long)(this[this.tableT_PL.eigyouriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.eigyouriekiColumn] = value;
@@ -9680,9 +10983,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal eigyougaihiyou {
+            public long eigyougaihiyou {
                 get {
-                    return ((decimal)(this[this.tableT_PL.eigyougaihiyouColumn]));
+                    return ((long)(this[this.tableT_PL.eigyougaihiyouColumn]));
                 }
                 set {
                     this[this.tableT_PL.eigyougaihiyouColumn] = value;
@@ -9691,9 +10994,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal keijyourieki {
+            public long keijyourieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.keijyouriekiColumn]));
+                    return ((long)(this[this.tableT_PL.keijyouriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.keijyouriekiColumn] = value;
@@ -9702,9 +11005,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal tokubetsurieki {
+            public long tokubetsurieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.tokubetsuriekiColumn]));
+                    return ((long)(this[this.tableT_PL.tokubetsuriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.tokubetsuriekiColumn] = value;
@@ -9713,9 +11016,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal tokubetsusonshitsu {
+            public long tokubetsusonshitsu {
                 get {
-                    return ((decimal)(this[this.tableT_PL.tokubetsusonshitsuColumn]));
+                    return ((long)(this[this.tableT_PL.tokubetsusonshitsuColumn]));
                 }
                 set {
                     this[this.tableT_PL.tokubetsusonshitsuColumn] = value;
@@ -9724,9 +11027,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal zeibikimaetoukijyunrieki {
+            public long zeibikimaetoukijyunrieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.zeibikimaetoukijyunriekiColumn]));
+                    return ((long)(this[this.tableT_PL.zeibikimaetoukijyunriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.zeibikimaetoukijyunriekiColumn] = value;
@@ -9735,9 +11038,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal houjinzeitou {
+            public long houjinzeitou {
                 get {
-                    return ((decimal)(this[this.tableT_PL.houjinzeitouColumn]));
+                    return ((long)(this[this.tableT_PL.houjinzeitouColumn]));
                 }
                 set {
                     this[this.tableT_PL.houjinzeitouColumn] = value;
@@ -9746,9 +11049,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal toukijyunrieki {
+            public long toukijyunrieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.toukijyunriekiColumn]));
+                    return ((long)(this[this.tableT_PL.toukijyunriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.toukijyunriekiColumn] = value;
@@ -9818,6 +11121,725 @@ namespace WhereEver.DATASET {
                 }
                 set {
                     this[this.tableT_PL.UpDateTimeColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class T_BSRow : global::System.Data.DataRow {
+            
+            private T_BSDataTable tableT_BS;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal T_BSRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableT_BS = ((T_BSDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string uuid {
+                get {
+                    return ((string)(this[this.tableT_BS.uuidColumn]));
+                }
+                set {
+                    this[this.tableT_BS.uuidColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS1 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS1Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS2 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS2Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS3 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS3Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS4 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS4Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS4Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS5 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS5Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS5Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS6 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS6Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS6Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS7 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS7Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS7Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS8 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS8Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS8Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS9 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS9Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS9Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS10 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS10Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS10Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS11 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS11Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS11Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS12 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS12Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS12Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS13 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS13Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS13Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS14 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS14Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS14Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS15 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS15Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS15Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS16 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS16Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS16Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS17 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS17Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS17Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS18 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS18Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS18Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS19 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS19Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS19Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS20 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS20Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS20Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS21 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS21Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS21Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS22 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS22Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS22Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS23 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS23Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS23Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS24 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS24Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS24Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS25 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS25Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS25Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS26 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS26Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS26Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS27 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS27Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS27Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS28 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS28Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS28Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS29 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS29Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS29Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS30 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS30Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS30Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS31 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS31Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS31Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS32 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS32Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS32Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS33 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS33Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS33Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS34 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS34Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS34Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS35 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS35Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS35Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS36 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS36Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS36Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS37 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS37Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS37Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS38 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS38Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS38Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS39 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS39Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS39Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS40 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS40Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS40Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS41 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS41Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS41Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS42 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS42Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS42Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS43 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS43Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS43Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS44 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS44Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS44Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS45 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS45Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS45Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS46 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS46Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS46Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS47 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS47Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS47Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS48 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS48Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS48Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS49 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS49Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS49Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS50 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS50Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS50Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long BS51 {
+                get {
+                    return ((long)(this[this.tableT_BS.BS51Column]));
+                }
+                set {
+                    this[this.tableT_BS.BS51Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long ryuudoushisan {
+                get {
+                    return ((long)(this[this.tableT_BS.ryuudoushisanColumn]));
+                }
+                set {
+                    this[this.tableT_BS.ryuudoushisanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long yuukeikoteishisan {
+                get {
+                    return ((long)(this[this.tableT_BS.yuukeikoteishisanColumn]));
+                }
+                set {
+                    this[this.tableT_BS.yuukeikoteishisanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long mukeikoteishisan {
+                get {
+                    return ((long)(this[this.tableT_BS.mukeikoteishisanColumn]));
+                }
+                set {
+                    this[this.tableT_BS.mukeikoteishisanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long toushisonotanoshisan {
+                get {
+                    return ((long)(this[this.tableT_BS.toushisonotanoshisanColumn]));
+                }
+                set {
+                    this[this.tableT_BS.toushisonotanoshisanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long koteishisan {
+                get {
+                    return ((long)(this[this.tableT_BS.koteishisanColumn]));
+                }
+                set {
+                    this[this.tableT_BS.koteishisanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long shisan_a {
+                get {
+                    return ((long)(this[this.tableT_BS.shisan_aColumn]));
+                }
+                set {
+                    this[this.tableT_BS.shisan_aColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long ryuudoufusai {
+                get {
+                    return ((long)(this[this.tableT_BS.ryuudoufusaiColumn]));
+                }
+                set {
+                    this[this.tableT_BS.ryuudoufusaiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long koteifusai {
+                get {
+                    return ((long)(this[this.tableT_BS.koteifusaiColumn]));
+                }
+                set {
+                    this[this.tableT_BS.koteifusaiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long fusai_a {
+                get {
+                    return ((long)(this[this.tableT_BS.fusai_aColumn]));
+                }
+                set {
+                    this[this.tableT_BS.fusai_aColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public long jyunshisan_a {
+                get {
+                    return ((long)(this[this.tableT_BS.jyunshisan_aColumn]));
+                }
+                set {
+                    this[this.tableT_BS.jyunshisan_aColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime Date {
+                get {
+                    return ((global::System.DateTime)(this[this.tableT_BS.DateColumn]));
+                }
+                set {
+                    this[this.tableT_BS.DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime UpDateTime {
+                get {
+                    return ((global::System.DateTime)(this[this.tableT_BS.UpDateTimeColumn]));
+                }
+                set {
+                    this[this.tableT_BS.UpDateTimeColumn] = value;
                 }
             }
         }
@@ -10454,6 +12476,40 @@ namespace WhereEver.DATASET {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public T_PLRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class T_BSRowChangeEvent : global::System.EventArgs {
+            
+            private T_BSRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public T_BSRowChangeEvent(T_BSRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public T_BSRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -16567,18 +18623,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [T_PL] ([uuid], [uriagedaka], [uriagegenka], [uriagesourieki], [hanbaikanrihi], [eigyourieki], [eigyougaihiyou], [keijyourieki], [tokubetsurieki], [tokubetsusonshitsu], [zeibikimaetoukijyunrieki], [houjinzeitou], [toukijyunrieki], [arari_r], [eigyou_r], [keijyou_r], [Date_S], [Date_G], [UpDateTime]) VALUES (@uuid, @uriagedaka, @uriagegenka, @uriagesourieki, @hanbaikanrihi, @eigyourieki, @eigyougaihiyou, @keijyourieki, @tokubetsurieki, @tokubetsusonshitsu, @zeibikimaetoukijyunrieki, @houjinzeitou, @toukijyunrieki, @arari_r, @eigyou_r, @keijyou_r, @Date_S, @Date_G, @UpDateTime)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uuid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagedaka", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagedaka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagegenka", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagegenka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagesourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagesourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hanbaikanrihi", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "hanbaikanrihi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyougaihiyou", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyougaihiyou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsurieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsurieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsusonshitsu", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsusonshitsu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zeibikimaetoukijyunrieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zeibikimaetoukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@houjinzeitou", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "houjinzeitou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@toukijyunrieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "toukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagedaka", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagedaka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagegenka", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagegenka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagesourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagesourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hanbaikanrihi", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "hanbaikanrihi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyougaihiyou", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyougaihiyou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsurieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsurieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsusonshitsu", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsusonshitsu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zeibikimaetoukijyunrieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zeibikimaetoukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@houjinzeitou", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "houjinzeitou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@toukijyunrieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "toukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@arari_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "arari_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyou_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyou_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyou_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyou_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -16590,18 +18646,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             this._adapter.UpdateCommand.CommandText = @"UPDATE [T_PL] SET [uuid] = @uuid, [uriagedaka] = @uriagedaka, [uriagegenka] = @uriagegenka, [uriagesourieki] = @uriagesourieki, [hanbaikanrihi] = @hanbaikanrihi, [eigyourieki] = @eigyourieki, [eigyougaihiyou] = @eigyougaihiyou, [keijyourieki] = @keijyourieki, [tokubetsurieki] = @tokubetsurieki, [tokubetsusonshitsu] = @tokubetsusonshitsu, [zeibikimaetoukijyunrieki] = @zeibikimaetoukijyunrieki, [houjinzeitou] = @houjinzeitou, [toukijyunrieki] = @toukijyunrieki, [arari_r] = @arari_r, [eigyou_r] = @eigyou_r, [keijyou_r] = @keijyou_r, [Date_S] = @Date_S, [Date_G] = @Date_G, [UpDateTime] = @UpDateTime WHERE (([uuid] = @Original_uuid))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uuid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagedaka", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagedaka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagegenka", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagegenka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagesourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagesourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hanbaikanrihi", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "hanbaikanrihi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyougaihiyou", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyougaihiyou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsurieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsurieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsusonshitsu", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsusonshitsu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zeibikimaetoukijyunrieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zeibikimaetoukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@houjinzeitou", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "houjinzeitou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@toukijyunrieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "toukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagedaka", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagedaka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagegenka", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagegenka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagesourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagesourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hanbaikanrihi", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "hanbaikanrihi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyougaihiyou", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyougaihiyou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsurieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsurieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsusonshitsu", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsusonshitsu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zeibikimaetoukijyunrieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zeibikimaetoukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@houjinzeitou", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "houjinzeitou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@toukijyunrieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "toukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@arari_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "arari_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyou_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyou_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyou_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyou_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -16714,18 +18770,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
                     string uuid, 
-                    decimal uriagedaka, 
-                    decimal uriagegenka, 
-                    decimal uriagesourieki, 
-                    decimal hanbaikanrihi, 
-                    decimal eigyourieki, 
-                    decimal eigyougaihiyou, 
-                    decimal keijyourieki, 
-                    decimal tokubetsurieki, 
-                    decimal tokubetsusonshitsu, 
-                    decimal zeibikimaetoukijyunrieki, 
-                    decimal houjinzeitou, 
-                    decimal toukijyunrieki, 
+                    long uriagedaka, 
+                    long uriagegenka, 
+                    long uriagesourieki, 
+                    long hanbaikanrihi, 
+                    long eigyourieki, 
+                    long eigyougaihiyou, 
+                    long keijyourieki, 
+                    long tokubetsurieki, 
+                    long tokubetsusonshitsu, 
+                    long zeibikimaetoukijyunrieki, 
+                    long houjinzeitou, 
+                    long toukijyunrieki, 
                     double arari_r, 
                     double eigyou_r, 
                     double keijyou_r, 
@@ -16738,18 +18794,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(uuid));
             }
-            this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(uriagedaka));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(uriagegenka));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(uriagesourieki));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(hanbaikanrihi));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(eigyourieki));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(eigyougaihiyou));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((decimal)(keijyourieki));
-            this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(tokubetsurieki));
-            this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(tokubetsusonshitsu));
-            this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(zeibikimaetoukijyunrieki));
-            this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(houjinzeitou));
-            this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(toukijyunrieki));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(uriagedaka));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(uriagegenka));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((long)(uriagesourieki));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((long)(hanbaikanrihi));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((long)(eigyourieki));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((long)(eigyougaihiyou));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((long)(keijyourieki));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((long)(tokubetsurieki));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((long)(tokubetsusonshitsu));
+            this.Adapter.InsertCommand.Parameters[10].Value = ((long)(zeibikimaetoukijyunrieki));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((long)(houjinzeitou));
+            this.Adapter.InsertCommand.Parameters[12].Value = ((long)(toukijyunrieki));
             this.Adapter.InsertCommand.Parameters[13].Value = ((double)(arari_r));
             this.Adapter.InsertCommand.Parameters[14].Value = ((double)(eigyou_r));
             this.Adapter.InsertCommand.Parameters[15].Value = ((double)(keijyou_r));
@@ -16778,18 +18834,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string uuid, 
-                    decimal uriagedaka, 
-                    decimal uriagegenka, 
-                    decimal uriagesourieki, 
-                    decimal hanbaikanrihi, 
-                    decimal eigyourieki, 
-                    decimal eigyougaihiyou, 
-                    decimal keijyourieki, 
-                    decimal tokubetsurieki, 
-                    decimal tokubetsusonshitsu, 
-                    decimal zeibikimaetoukijyunrieki, 
-                    decimal houjinzeitou, 
-                    decimal toukijyunrieki, 
+                    long uriagedaka, 
+                    long uriagegenka, 
+                    long uriagesourieki, 
+                    long hanbaikanrihi, 
+                    long eigyourieki, 
+                    long eigyougaihiyou, 
+                    long keijyourieki, 
+                    long tokubetsurieki, 
+                    long tokubetsusonshitsu, 
+                    long zeibikimaetoukijyunrieki, 
+                    long houjinzeitou, 
+                    long toukijyunrieki, 
                     double arari_r, 
                     double eigyou_r, 
                     double keijyou_r, 
@@ -16803,18 +18859,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(uuid));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(uriagedaka));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(uriagegenka));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(uriagesourieki));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(hanbaikanrihi));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(eigyourieki));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(eigyougaihiyou));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(keijyourieki));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(tokubetsurieki));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(tokubetsusonshitsu));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(zeibikimaetoukijyunrieki));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(houjinzeitou));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(toukijyunrieki));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(uriagedaka));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(uriagegenka));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(uriagesourieki));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(hanbaikanrihi));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(eigyourieki));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(eigyougaihiyou));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(keijyourieki));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(tokubetsurieki));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((long)(tokubetsusonshitsu));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((long)(zeibikimaetoukijyunrieki));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((long)(houjinzeitou));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((long)(toukijyunrieki));
             this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(arari_r));
             this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(eigyou_r));
             this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(keijyou_r));
@@ -16848,18 +18904,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    decimal uriagedaka, 
-                    decimal uriagegenka, 
-                    decimal uriagesourieki, 
-                    decimal hanbaikanrihi, 
-                    decimal eigyourieki, 
-                    decimal eigyougaihiyou, 
-                    decimal keijyourieki, 
-                    decimal tokubetsurieki, 
-                    decimal tokubetsusonshitsu, 
-                    decimal zeibikimaetoukijyunrieki, 
-                    decimal houjinzeitou, 
-                    decimal toukijyunrieki, 
+                    long uriagedaka, 
+                    long uriagegenka, 
+                    long uriagesourieki, 
+                    long hanbaikanrihi, 
+                    long eigyourieki, 
+                    long eigyougaihiyou, 
+                    long keijyourieki, 
+                    long tokubetsurieki, 
+                    long tokubetsusonshitsu, 
+                    long zeibikimaetoukijyunrieki, 
+                    long houjinzeitou, 
+                    long toukijyunrieki, 
                     double arari_r, 
                     double eigyou_r, 
                     double keijyou_r, 
@@ -16868,6 +18924,821 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     System.DateTime UpDateTime, 
                     string Original_uuid) {
             return this.Update(Original_uuid, uriagedaka, uriagegenka, uriagesourieki, hanbaikanrihi, eigyourieki, eigyougaihiyou, keijyourieki, tokubetsurieki, tokubetsusonshitsu, zeibikimaetoukijyunrieki, houjinzeitou, toukijyunrieki, arari_r, eigyou_r, keijyou_r, Date_S, Date_G, UpDateTime, Original_uuid);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class T_BSTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public T_BSTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "T_BS";
+            tableMapping.ColumnMappings.Add("uuid", "uuid");
+            tableMapping.ColumnMappings.Add("BS1", "BS1");
+            tableMapping.ColumnMappings.Add("BS2", "BS2");
+            tableMapping.ColumnMappings.Add("BS3", "BS3");
+            tableMapping.ColumnMappings.Add("BS4", "BS4");
+            tableMapping.ColumnMappings.Add("BS5", "BS5");
+            tableMapping.ColumnMappings.Add("BS6", "BS6");
+            tableMapping.ColumnMappings.Add("BS7", "BS7");
+            tableMapping.ColumnMappings.Add("BS8", "BS8");
+            tableMapping.ColumnMappings.Add("BS9", "BS9");
+            tableMapping.ColumnMappings.Add("BS10", "BS10");
+            tableMapping.ColumnMappings.Add("BS11", "BS11");
+            tableMapping.ColumnMappings.Add("BS12", "BS12");
+            tableMapping.ColumnMappings.Add("BS13", "BS13");
+            tableMapping.ColumnMappings.Add("BS14", "BS14");
+            tableMapping.ColumnMappings.Add("BS15", "BS15");
+            tableMapping.ColumnMappings.Add("BS16", "BS16");
+            tableMapping.ColumnMappings.Add("BS17", "BS17");
+            tableMapping.ColumnMappings.Add("BS18", "BS18");
+            tableMapping.ColumnMappings.Add("BS19", "BS19");
+            tableMapping.ColumnMappings.Add("BS20", "BS20");
+            tableMapping.ColumnMappings.Add("BS21", "BS21");
+            tableMapping.ColumnMappings.Add("BS22", "BS22");
+            tableMapping.ColumnMappings.Add("BS23", "BS23");
+            tableMapping.ColumnMappings.Add("BS24", "BS24");
+            tableMapping.ColumnMappings.Add("BS25", "BS25");
+            tableMapping.ColumnMappings.Add("BS26", "BS26");
+            tableMapping.ColumnMappings.Add("BS27", "BS27");
+            tableMapping.ColumnMappings.Add("BS28", "BS28");
+            tableMapping.ColumnMappings.Add("BS29", "BS29");
+            tableMapping.ColumnMappings.Add("BS30", "BS30");
+            tableMapping.ColumnMappings.Add("BS31", "BS31");
+            tableMapping.ColumnMappings.Add("BS32", "BS32");
+            tableMapping.ColumnMappings.Add("BS33", "BS33");
+            tableMapping.ColumnMappings.Add("BS34", "BS34");
+            tableMapping.ColumnMappings.Add("BS35", "BS35");
+            tableMapping.ColumnMappings.Add("BS36", "BS36");
+            tableMapping.ColumnMappings.Add("BS37", "BS37");
+            tableMapping.ColumnMappings.Add("BS38", "BS38");
+            tableMapping.ColumnMappings.Add("BS39", "BS39");
+            tableMapping.ColumnMappings.Add("BS40", "BS40");
+            tableMapping.ColumnMappings.Add("BS41", "BS41");
+            tableMapping.ColumnMappings.Add("BS42", "BS42");
+            tableMapping.ColumnMappings.Add("BS43", "BS43");
+            tableMapping.ColumnMappings.Add("BS44", "BS44");
+            tableMapping.ColumnMappings.Add("BS45", "BS45");
+            tableMapping.ColumnMappings.Add("BS46", "BS46");
+            tableMapping.ColumnMappings.Add("BS47", "BS47");
+            tableMapping.ColumnMappings.Add("BS48", "BS48");
+            tableMapping.ColumnMappings.Add("BS49", "BS49");
+            tableMapping.ColumnMappings.Add("BS50", "BS50");
+            tableMapping.ColumnMappings.Add("BS51", "BS51");
+            tableMapping.ColumnMappings.Add("ryuudoushisan", "ryuudoushisan");
+            tableMapping.ColumnMappings.Add("yuukeikoteishisan", "yuukeikoteishisan");
+            tableMapping.ColumnMappings.Add("mukeikoteishisan", "mukeikoteishisan");
+            tableMapping.ColumnMappings.Add("toushisonotanoshisan", "toushisonotanoshisan");
+            tableMapping.ColumnMappings.Add("koteishisan", "koteishisan");
+            tableMapping.ColumnMappings.Add("shisan_a", "shisan_a");
+            tableMapping.ColumnMappings.Add("ryuudoufusai", "ryuudoufusai");
+            tableMapping.ColumnMappings.Add("koteifusai", "koteifusai");
+            tableMapping.ColumnMappings.Add("fusai_a", "fusai_a");
+            tableMapping.ColumnMappings.Add("jyunshisan_a", "jyunshisan_a");
+            tableMapping.ColumnMappings.Add("Date", "Date");
+            tableMapping.ColumnMappings.Add("UpDateTime", "UpDateTime");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [T_BS] WHERE (([uuid] = @Original_uuid))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_uuid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uuid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [T_BS] ([uuid], [BS1], [BS2], [BS3], [BS4], [BS5], [BS6], [BS7], [BS8], [BS9], [BS10], [BS11], [BS12], [BS13], [BS14], [BS15], [BS16], [BS17], [BS18], [BS19], [BS20], [BS21], [BS22], [BS23], [BS24], [BS25], [BS26], [BS27], [BS28], [BS29], [BS30], [BS31], [BS32], [BS33], [BS34], [BS35], [BS36], [BS37], [BS38], [BS39], [BS40], [BS41], [BS42], [BS43], [BS44], [BS45], [BS46], [BS47], [BS48], [BS49], [BS50], [BS51], [ryuudoushisan], [yuukeikoteishisan], [mukeikoteishisan], [toushisonotanoshisan], [koteishisan], [shisan_a], [ryuudoufusai], [koteifusai], [fusai_a], [jyunshisan_a], [Date], [UpDateTime]) VALUES (@uuid, @BS1, @BS2, @BS3, @BS4, @BS5, @BS6, @BS7, @BS8, @BS9, @BS10, @BS11, @BS12, @BS13, @BS14, @BS15, @BS16, @BS17, @BS18, @BS19, @BS20, @BS21, @BS22, @BS23, @BS24, @BS25, @BS26, @BS27, @BS28, @BS29, @BS30, @BS31, @BS32, @BS33, @BS34, @BS35, @BS36, @BS37, @BS38, @BS39, @BS40, @BS41, @BS42, @BS43, @BS44, @BS45, @BS46, @BS47, @BS48, @BS49, @BS50, @BS51, @ryuudoushisan, @yuukeikoteishisan, @mukeikoteishisan, @toushisonotanoshisan, @koteishisan, @shisan_a, @ryuudoufusai, @koteifusai, @fusai_a, @jyunshisan_a, @Date, @UpDateTime)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uuid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS1", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS2", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS3", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS4", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS4", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS5", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS5", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS6", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS6", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS7", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS7", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS8", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS8", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS9", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS9", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS10", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS10", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS11", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS11", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS12", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS12", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS13", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS13", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS14", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS14", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS15", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS15", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS16", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS16", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS17", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS17", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS18", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS18", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS19", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS19", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS20", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS20", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS21", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS21", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS22", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS22", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS23", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS23", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS24", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS24", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS25", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS25", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS26", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS26", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS27", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS27", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS28", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS28", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS29", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS29", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS30", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS30", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS31", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS31", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS32", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS32", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS33", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS33", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS34", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS34", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS35", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS35", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS36", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS36", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS37", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS37", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS38", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS38", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS39", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS39", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS40", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS40", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS41", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS41", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS42", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS42", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS43", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS43", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS44", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS44", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS45", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS45", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS46", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS46", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS47", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS47", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS48", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS48", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS49", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS49", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS50", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS50", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS51", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS51", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ryuudoushisan", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ryuudoushisan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yuukeikoteishisan", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "yuukeikoteishisan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mukeikoteishisan", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "mukeikoteishisan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@toushisonotanoshisan", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "toushisonotanoshisan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@koteishisan", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "koteishisan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shisan_a", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "shisan_a", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ryuudoufusai", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ryuudoufusai", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@koteifusai", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "koteifusai", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fusai_a", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fusai_a", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@jyunshisan_a", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "jyunshisan_a", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UpDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UpDateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [T_BS] SET [uuid] = @uuid, [BS1] = @BS1, [BS2] = @BS2, [BS3] = @BS3, [BS4] = @BS4, [BS5] = @BS5, [BS6] = @BS6, [BS7] = @BS7, [BS8] = @BS8, [BS9] = @BS9, [BS10] = @BS10, [BS11] = @BS11, [BS12] = @BS12, [BS13] = @BS13, [BS14] = @BS14, [BS15] = @BS15, [BS16] = @BS16, [BS17] = @BS17, [BS18] = @BS18, [BS19] = @BS19, [BS20] = @BS20, [BS21] = @BS21, [BS22] = @BS22, [BS23] = @BS23, [BS24] = @BS24, [BS25] = @BS25, [BS26] = @BS26, [BS27] = @BS27, [BS28] = @BS28, [BS29] = @BS29, [BS30] = @BS30, [BS31] = @BS31, [BS32] = @BS32, [BS33] = @BS33, [BS34] = @BS34, [BS35] = @BS35, [BS36] = @BS36, [BS37] = @BS37, [BS38] = @BS38, [BS39] = @BS39, [BS40] = @BS40, [BS41] = @BS41, [BS42] = @BS42, [BS43] = @BS43, [BS44] = @BS44, [BS45] = @BS45, [BS46] = @BS46, [BS47] = @BS47, [BS48] = @BS48, [BS49] = @BS49, [BS50] = @BS50, [BS51] = @BS51, [ryuudoushisan] = @ryuudoushisan, [yuukeikoteishisan] = @yuukeikoteishisan, [mukeikoteishisan] = @mukeikoteishisan, [toushisonotanoshisan] = @toushisonotanoshisan, [koteishisan] = @koteishisan, [shisan_a] = @shisan_a, [ryuudoufusai] = @ryuudoufusai, [koteifusai] = @koteifusai, [fusai_a] = @fusai_a, [jyunshisan_a] = @jyunshisan_a, [Date] = @Date, [UpDateTime] = @UpDateTime WHERE (([uuid] = @Original_uuid))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uuid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS1", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS1", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS2", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS2", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS3", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS3", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS4", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS4", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS5", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS5", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS6", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS6", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS7", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS7", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS8", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS8", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS9", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS9", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS10", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS10", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS11", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS11", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS12", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS12", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS13", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS13", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS14", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS14", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS15", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS15", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS16", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS16", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS17", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS17", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS18", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS18", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS19", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS19", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS20", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS20", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS21", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS21", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS22", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS22", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS23", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS23", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS24", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS24", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS25", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS25", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS26", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS26", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS27", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS27", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS28", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS28", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS29", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS29", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS30", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS30", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS31", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS31", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS32", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS32", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS33", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS33", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS34", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS34", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS35", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS35", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS36", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS36", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS37", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS37", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS38", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS38", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS39", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS39", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS40", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS40", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS41", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS41", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS42", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS42", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS43", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS43", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS44", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS44", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS45", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS45", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS46", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS46", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS47", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS47", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS48", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS48", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS49", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS49", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS50", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS50", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BS51", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BS51", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ryuudoushisan", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ryuudoushisan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yuukeikoteishisan", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "yuukeikoteishisan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mukeikoteishisan", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "mukeikoteishisan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@toushisonotanoshisan", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "toushisonotanoshisan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@koteishisan", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "koteishisan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@shisan_a", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "shisan_a", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ryuudoufusai", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ryuudoufusai", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@koteifusai", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "koteifusai", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fusai_a", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fusai_a", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@jyunshisan_a", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "jyunshisan_a", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UpDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UpDateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_uuid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uuid", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["WhereverConnectionString"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT                      T_BS.*\r\nFROM                         T_BS";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DataSet.T_BSDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSet.T_BSDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSet.T_BSDataTable dataTable = new DataSet.T_BSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DataSet.T_BSDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DataSet dataSet) {
+            return this.Adapter.Update(dataSet, "T_BS");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(string Original_uuid) {
+            if ((Original_uuid == null)) {
+                throw new global::System.ArgumentNullException("Original_uuid");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_uuid));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(
+                    string uuid, 
+                    long BS1, 
+                    long BS2, 
+                    long BS3, 
+                    long BS4, 
+                    long BS5, 
+                    long BS6, 
+                    long BS7, 
+                    long BS8, 
+                    long BS9, 
+                    long BS10, 
+                    long BS11, 
+                    long BS12, 
+                    long BS13, 
+                    long BS14, 
+                    long BS15, 
+                    long BS16, 
+                    long BS17, 
+                    long BS18, 
+                    long BS19, 
+                    long BS20, 
+                    long BS21, 
+                    long BS22, 
+                    long BS23, 
+                    long BS24, 
+                    long BS25, 
+                    long BS26, 
+                    long BS27, 
+                    long BS28, 
+                    long BS29, 
+                    long BS30, 
+                    long BS31, 
+                    long BS32, 
+                    long BS33, 
+                    long BS34, 
+                    long BS35, 
+                    long BS36, 
+                    long BS37, 
+                    long BS38, 
+                    long BS39, 
+                    long BS40, 
+                    long BS41, 
+                    long BS42, 
+                    long BS43, 
+                    long BS44, 
+                    long BS45, 
+                    long BS46, 
+                    long BS47, 
+                    long BS48, 
+                    long BS49, 
+                    long BS50, 
+                    long BS51, 
+                    long ryuudoushisan, 
+                    long yuukeikoteishisan, 
+                    long mukeikoteishisan, 
+                    long toushisonotanoshisan, 
+                    long koteishisan, 
+                    long shisan_a, 
+                    long ryuudoufusai, 
+                    long koteifusai, 
+                    long fusai_a, 
+                    long jyunshisan_a, 
+                    System.DateTime Date, 
+                    System.DateTime UpDateTime) {
+            if ((uuid == null)) {
+                throw new global::System.ArgumentNullException("uuid");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(uuid));
+            }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(BS1));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(BS2));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((long)(BS3));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((long)(BS4));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((long)(BS5));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((long)(BS6));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((long)(BS7));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((long)(BS8));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((long)(BS9));
+            this.Adapter.InsertCommand.Parameters[10].Value = ((long)(BS10));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((long)(BS11));
+            this.Adapter.InsertCommand.Parameters[12].Value = ((long)(BS12));
+            this.Adapter.InsertCommand.Parameters[13].Value = ((long)(BS13));
+            this.Adapter.InsertCommand.Parameters[14].Value = ((long)(BS14));
+            this.Adapter.InsertCommand.Parameters[15].Value = ((long)(BS15));
+            this.Adapter.InsertCommand.Parameters[16].Value = ((long)(BS16));
+            this.Adapter.InsertCommand.Parameters[17].Value = ((long)(BS17));
+            this.Adapter.InsertCommand.Parameters[18].Value = ((long)(BS18));
+            this.Adapter.InsertCommand.Parameters[19].Value = ((long)(BS19));
+            this.Adapter.InsertCommand.Parameters[20].Value = ((long)(BS20));
+            this.Adapter.InsertCommand.Parameters[21].Value = ((long)(BS21));
+            this.Adapter.InsertCommand.Parameters[22].Value = ((long)(BS22));
+            this.Adapter.InsertCommand.Parameters[23].Value = ((long)(BS23));
+            this.Adapter.InsertCommand.Parameters[24].Value = ((long)(BS24));
+            this.Adapter.InsertCommand.Parameters[25].Value = ((long)(BS25));
+            this.Adapter.InsertCommand.Parameters[26].Value = ((long)(BS26));
+            this.Adapter.InsertCommand.Parameters[27].Value = ((long)(BS27));
+            this.Adapter.InsertCommand.Parameters[28].Value = ((long)(BS28));
+            this.Adapter.InsertCommand.Parameters[29].Value = ((long)(BS29));
+            this.Adapter.InsertCommand.Parameters[30].Value = ((long)(BS30));
+            this.Adapter.InsertCommand.Parameters[31].Value = ((long)(BS31));
+            this.Adapter.InsertCommand.Parameters[32].Value = ((long)(BS32));
+            this.Adapter.InsertCommand.Parameters[33].Value = ((long)(BS33));
+            this.Adapter.InsertCommand.Parameters[34].Value = ((long)(BS34));
+            this.Adapter.InsertCommand.Parameters[35].Value = ((long)(BS35));
+            this.Adapter.InsertCommand.Parameters[36].Value = ((long)(BS36));
+            this.Adapter.InsertCommand.Parameters[37].Value = ((long)(BS37));
+            this.Adapter.InsertCommand.Parameters[38].Value = ((long)(BS38));
+            this.Adapter.InsertCommand.Parameters[39].Value = ((long)(BS39));
+            this.Adapter.InsertCommand.Parameters[40].Value = ((long)(BS40));
+            this.Adapter.InsertCommand.Parameters[41].Value = ((long)(BS41));
+            this.Adapter.InsertCommand.Parameters[42].Value = ((long)(BS42));
+            this.Adapter.InsertCommand.Parameters[43].Value = ((long)(BS43));
+            this.Adapter.InsertCommand.Parameters[44].Value = ((long)(BS44));
+            this.Adapter.InsertCommand.Parameters[45].Value = ((long)(BS45));
+            this.Adapter.InsertCommand.Parameters[46].Value = ((long)(BS46));
+            this.Adapter.InsertCommand.Parameters[47].Value = ((long)(BS47));
+            this.Adapter.InsertCommand.Parameters[48].Value = ((long)(BS48));
+            this.Adapter.InsertCommand.Parameters[49].Value = ((long)(BS49));
+            this.Adapter.InsertCommand.Parameters[50].Value = ((long)(BS50));
+            this.Adapter.InsertCommand.Parameters[51].Value = ((long)(BS51));
+            this.Adapter.InsertCommand.Parameters[52].Value = ((long)(ryuudoushisan));
+            this.Adapter.InsertCommand.Parameters[53].Value = ((long)(yuukeikoteishisan));
+            this.Adapter.InsertCommand.Parameters[54].Value = ((long)(mukeikoteishisan));
+            this.Adapter.InsertCommand.Parameters[55].Value = ((long)(toushisonotanoshisan));
+            this.Adapter.InsertCommand.Parameters[56].Value = ((long)(koteishisan));
+            this.Adapter.InsertCommand.Parameters[57].Value = ((long)(shisan_a));
+            this.Adapter.InsertCommand.Parameters[58].Value = ((long)(ryuudoufusai));
+            this.Adapter.InsertCommand.Parameters[59].Value = ((long)(koteifusai));
+            this.Adapter.InsertCommand.Parameters[60].Value = ((long)(fusai_a));
+            this.Adapter.InsertCommand.Parameters[61].Value = ((long)(jyunshisan_a));
+            this.Adapter.InsertCommand.Parameters[62].Value = ((System.DateTime)(Date));
+            this.Adapter.InsertCommand.Parameters[63].Value = ((System.DateTime)(UpDateTime));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string uuid, 
+                    long BS1, 
+                    long BS2, 
+                    long BS3, 
+                    long BS4, 
+                    long BS5, 
+                    long BS6, 
+                    long BS7, 
+                    long BS8, 
+                    long BS9, 
+                    long BS10, 
+                    long BS11, 
+                    long BS12, 
+                    long BS13, 
+                    long BS14, 
+                    long BS15, 
+                    long BS16, 
+                    long BS17, 
+                    long BS18, 
+                    long BS19, 
+                    long BS20, 
+                    long BS21, 
+                    long BS22, 
+                    long BS23, 
+                    long BS24, 
+                    long BS25, 
+                    long BS26, 
+                    long BS27, 
+                    long BS28, 
+                    long BS29, 
+                    long BS30, 
+                    long BS31, 
+                    long BS32, 
+                    long BS33, 
+                    long BS34, 
+                    long BS35, 
+                    long BS36, 
+                    long BS37, 
+                    long BS38, 
+                    long BS39, 
+                    long BS40, 
+                    long BS41, 
+                    long BS42, 
+                    long BS43, 
+                    long BS44, 
+                    long BS45, 
+                    long BS46, 
+                    long BS47, 
+                    long BS48, 
+                    long BS49, 
+                    long BS50, 
+                    long BS51, 
+                    long ryuudoushisan, 
+                    long yuukeikoteishisan, 
+                    long mukeikoteishisan, 
+                    long toushisonotanoshisan, 
+                    long koteishisan, 
+                    long shisan_a, 
+                    long ryuudoufusai, 
+                    long koteifusai, 
+                    long fusai_a, 
+                    long jyunshisan_a, 
+                    System.DateTime Date, 
+                    System.DateTime UpDateTime, 
+                    string Original_uuid) {
+            if ((uuid == null)) {
+                throw new global::System.ArgumentNullException("uuid");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(uuid));
+            }
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(BS1));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(BS2));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(BS3));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(BS4));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(BS5));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(BS6));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(BS7));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(BS8));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((long)(BS9));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((long)(BS10));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((long)(BS11));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((long)(BS12));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((long)(BS13));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((long)(BS14));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((long)(BS15));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((long)(BS16));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((long)(BS17));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((long)(BS18));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((long)(BS19));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((long)(BS20));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((long)(BS21));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((long)(BS22));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((long)(BS23));
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((long)(BS24));
+            this.Adapter.UpdateCommand.Parameters[25].Value = ((long)(BS25));
+            this.Adapter.UpdateCommand.Parameters[26].Value = ((long)(BS26));
+            this.Adapter.UpdateCommand.Parameters[27].Value = ((long)(BS27));
+            this.Adapter.UpdateCommand.Parameters[28].Value = ((long)(BS28));
+            this.Adapter.UpdateCommand.Parameters[29].Value = ((long)(BS29));
+            this.Adapter.UpdateCommand.Parameters[30].Value = ((long)(BS30));
+            this.Adapter.UpdateCommand.Parameters[31].Value = ((long)(BS31));
+            this.Adapter.UpdateCommand.Parameters[32].Value = ((long)(BS32));
+            this.Adapter.UpdateCommand.Parameters[33].Value = ((long)(BS33));
+            this.Adapter.UpdateCommand.Parameters[34].Value = ((long)(BS34));
+            this.Adapter.UpdateCommand.Parameters[35].Value = ((long)(BS35));
+            this.Adapter.UpdateCommand.Parameters[36].Value = ((long)(BS36));
+            this.Adapter.UpdateCommand.Parameters[37].Value = ((long)(BS37));
+            this.Adapter.UpdateCommand.Parameters[38].Value = ((long)(BS38));
+            this.Adapter.UpdateCommand.Parameters[39].Value = ((long)(BS39));
+            this.Adapter.UpdateCommand.Parameters[40].Value = ((long)(BS40));
+            this.Adapter.UpdateCommand.Parameters[41].Value = ((long)(BS41));
+            this.Adapter.UpdateCommand.Parameters[42].Value = ((long)(BS42));
+            this.Adapter.UpdateCommand.Parameters[43].Value = ((long)(BS43));
+            this.Adapter.UpdateCommand.Parameters[44].Value = ((long)(BS44));
+            this.Adapter.UpdateCommand.Parameters[45].Value = ((long)(BS45));
+            this.Adapter.UpdateCommand.Parameters[46].Value = ((long)(BS46));
+            this.Adapter.UpdateCommand.Parameters[47].Value = ((long)(BS47));
+            this.Adapter.UpdateCommand.Parameters[48].Value = ((long)(BS48));
+            this.Adapter.UpdateCommand.Parameters[49].Value = ((long)(BS49));
+            this.Adapter.UpdateCommand.Parameters[50].Value = ((long)(BS50));
+            this.Adapter.UpdateCommand.Parameters[51].Value = ((long)(BS51));
+            this.Adapter.UpdateCommand.Parameters[52].Value = ((long)(ryuudoushisan));
+            this.Adapter.UpdateCommand.Parameters[53].Value = ((long)(yuukeikoteishisan));
+            this.Adapter.UpdateCommand.Parameters[54].Value = ((long)(mukeikoteishisan));
+            this.Adapter.UpdateCommand.Parameters[55].Value = ((long)(toushisonotanoshisan));
+            this.Adapter.UpdateCommand.Parameters[56].Value = ((long)(koteishisan));
+            this.Adapter.UpdateCommand.Parameters[57].Value = ((long)(shisan_a));
+            this.Adapter.UpdateCommand.Parameters[58].Value = ((long)(ryuudoufusai));
+            this.Adapter.UpdateCommand.Parameters[59].Value = ((long)(koteifusai));
+            this.Adapter.UpdateCommand.Parameters[60].Value = ((long)(fusai_a));
+            this.Adapter.UpdateCommand.Parameters[61].Value = ((long)(jyunshisan_a));
+            this.Adapter.UpdateCommand.Parameters[62].Value = ((System.DateTime)(Date));
+            this.Adapter.UpdateCommand.Parameters[63].Value = ((System.DateTime)(UpDateTime));
+            if ((Original_uuid == null)) {
+                throw new global::System.ArgumentNullException("Original_uuid");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((string)(Original_uuid));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    long BS1, 
+                    long BS2, 
+                    long BS3, 
+                    long BS4, 
+                    long BS5, 
+                    long BS6, 
+                    long BS7, 
+                    long BS8, 
+                    long BS9, 
+                    long BS10, 
+                    long BS11, 
+                    long BS12, 
+                    long BS13, 
+                    long BS14, 
+                    long BS15, 
+                    long BS16, 
+                    long BS17, 
+                    long BS18, 
+                    long BS19, 
+                    long BS20, 
+                    long BS21, 
+                    long BS22, 
+                    long BS23, 
+                    long BS24, 
+                    long BS25, 
+                    long BS26, 
+                    long BS27, 
+                    long BS28, 
+                    long BS29, 
+                    long BS30, 
+                    long BS31, 
+                    long BS32, 
+                    long BS33, 
+                    long BS34, 
+                    long BS35, 
+                    long BS36, 
+                    long BS37, 
+                    long BS38, 
+                    long BS39, 
+                    long BS40, 
+                    long BS41, 
+                    long BS42, 
+                    long BS43, 
+                    long BS44, 
+                    long BS45, 
+                    long BS46, 
+                    long BS47, 
+                    long BS48, 
+                    long BS49, 
+                    long BS50, 
+                    long BS51, 
+                    long ryuudoushisan, 
+                    long yuukeikoteishisan, 
+                    long mukeikoteishisan, 
+                    long toushisonotanoshisan, 
+                    long koteishisan, 
+                    long shisan_a, 
+                    long ryuudoufusai, 
+                    long koteifusai, 
+                    long fusai_a, 
+                    long jyunshisan_a, 
+                    System.DateTime Date, 
+                    System.DateTime UpDateTime, 
+                    string Original_uuid) {
+            return this.Update(Original_uuid, BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS11, BS12, BS13, BS14, BS15, BS16, BS17, BS18, BS19, BS20, BS21, BS22, BS23, BS24, BS25, BS26, BS27, BS28, BS29, BS30, BS31, BS32, BS33, BS34, BS35, BS36, BS37, BS38, BS39, BS40, BS41, BS42, BS43, BS44, BS45, BS46, BS47, BS48, BS49, BS50, BS51, ryuudoushisan, yuukeikoteishisan, mukeikoteishisan, toushisonotanoshisan, koteishisan, shisan_a, ryuudoufusai, koteifusai, fusai_a, jyunshisan_a, Date, UpDateTime, Original_uuid);
         }
     }
     
@@ -16920,6 +19791,8 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         private T_WikiTableAdapter _t_WikiTableAdapter;
         
         private T_PLTableAdapter _t_PLTableAdapter;
+        
+        private T_BSTableAdapter _t_BSTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -17204,6 +20077,20 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public T_BSTableAdapter T_BSTableAdapter {
+            get {
+                return this._t_BSTableAdapter;
+            }
+            set {
+                this._t_BSTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -17297,6 +20184,10 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                             && (this._t_PLTableAdapter.Connection != null))) {
                     return this._t_PLTableAdapter.Connection;
                 }
+                if (((this._t_BSTableAdapter != null) 
+                            && (this._t_BSTableAdapter.Connection != null))) {
+                    return this._t_BSTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -17367,6 +20258,9 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                 if ((this._t_PLTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._t_BSTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -17384,6 +20278,15 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._t_PdbTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._t_WikiTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.T_Wiki.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._t_WikiTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -17450,21 +20353,21 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._t_WikiTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.T_Wiki.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._t_WikiTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._t_ChatTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.T_Chat.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._t_ChatTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._t_Shinsei_ConfigTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.T_Shinsei_Config.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._t_Shinsei_ConfigTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -17531,21 +20434,21 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._t_Shinsei_ConfigTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.T_Shinsei_Config.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._t_Shinsei_ConfigTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._t_PLTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.T_PL.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._t_PLTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._t_BSTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.T_BS.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._t_BSTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -17564,6 +20467,14 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._t_PdbTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._t_WikiTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.T_Wiki.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._t_WikiTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -17623,19 +20534,19 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._t_WikiTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.T_Wiki.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._t_WikiTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._t_ChatTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.T_Chat.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._t_ChatTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._t_Shinsei_ConfigTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.T_Shinsei_Config.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._t_Shinsei_ConfigTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -17695,19 +20606,19 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._t_Shinsei_ConfigTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.T_Shinsei_Config.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._t_Shinsei_ConfigTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._t_PLTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.T_PL.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._t_PLTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._t_BSTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.T_BS.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._t_BSTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -17721,19 +20632,19 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._t_BSTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.T_BS.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._t_BSTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._t_PLTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.T_PL.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._t_PLTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._t_Shinsei_ConfigTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.T_Shinsei_Config.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._t_Shinsei_ConfigTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -17793,19 +20704,19 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._t_Shinsei_ConfigTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.T_Shinsei_Config.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._t_Shinsei_ConfigTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._t_ChatTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.T_Chat.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._t_ChatTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._t_WikiTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.T_Wiki.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._t_WikiTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -17862,6 +20773,14 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._t_Chat_CHTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._t_WikiTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.T_Wiki.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._t_WikiTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -17986,6 +20905,10 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             }
             if (((this._t_PLTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._t_PLTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。");
+            }
+            if (((this._t_BSTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._t_BSTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。");
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
@@ -18190,6 +21113,15 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._t_PLTableAdapter.Adapter);
                     }
                 }
+                if ((this._t_BSTableAdapter != null)) {
+                    revertConnections.Add(this._t_BSTableAdapter, this._t_BSTableAdapter.Connection);
+                    this._t_BSTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._t_BSTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._t_BSTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._t_BSTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._t_BSTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -18323,6 +21255,10 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
                 if ((this._t_PLTableAdapter != null)) {
                     this._t_PLTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._t_PLTableAdapter]));
                     this._t_PLTableAdapter.Transaction = null;
+                }
+                if ((this._t_BSTableAdapter != null)) {
+                    this._t_BSTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._t_BSTableAdapter]));
+                    this._t_BSTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

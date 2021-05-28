@@ -38,9 +38,8 @@
                     <a href="~/各申請書類/Shinsei.aspx" class="btn" runat="server">各申請書類</a>
                </td>
                <td>
-                    <a href="~/チャット/Chat.aspx" class="btn" runat="server">チャット<asp:Label ID="lblHensin" runat="server" Visible="False"></asp:Label>
-                    </a>
-               &nbsp;</td>
+                    <a href="~/チャット/Chat.aspx" class="btn" runat="server">チャット<asp:Label ID="lblHensin" runat="server" Visible="False"></asp:Label></a>
+               </td>
                <td>
                     <a href="~/ファイル共有/FileShare.aspx" class="btn" runat="server">ファイル共有</a>
                </td>
@@ -49,6 +48,9 @@
                </td>
                <td>
                     <a href="~/管理ページ/Kanri.aspx" class="btn" runat="server">マイページ</a>
+               </td>
+               <td>
+                    <a href="~/ログイン/Login.aspx" class="btn" runat="server">ログアウト</a>
                </td>
                <td>
                     <asp:Label ID="Label1" CssClass="label" runat="server" Text="Label"></asp:Label>

@@ -32,6 +32,13 @@ table {
     color: white;
 }
 
+.lbl_BS {
+    text-align: right;
+    height: auto;
+    width: 20em;
+    color: white;
+}
+
 .none {
     display: none;
 }
@@ -40,6 +47,22 @@ table {
     text-align: right;
     height: auto;
     width: 20em;
+    background-color: black;
+    color: white;
+}
+
+.textbox_BS {
+    text-align: right;
+    height: auto;
+    width: 20em;
+    background-color: black;
+    color: white;
+}
+
+.ddl_date {
+    text-align: right;
+    height: auto;
+    width: auto;
     background-color: black;
     color: white;
 }
@@ -225,3 +248,19 @@ table {
         background: #808080;
         cursor: pointer;
     }
+
+
+@media print {
+    .noprint {
+        display: none;
+    }
+
+    #Wrap {
+        margin-left: 0em;
+        margin-right: 0em;
+    }
+
+    body {
+        background-image: none;
+    }
+}
