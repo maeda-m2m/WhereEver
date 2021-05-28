@@ -38,9 +38,8 @@
                     <a href="~/各申請書類/Shinsei.aspx" class="btn" runat="server">各申請書類</a>
                </td>
                <td>
-                    <a href="~/チャット/Chat.aspx" class="btn" runat="server">チャット<asp:Label ID="lblHensin" runat="server" Visible="False"></asp:Label>
-                    </a>
-               &nbsp;</td>
+                    <a href="~/チャット/Chat.aspx" class="btn" runat="server">チャット<asp:Label ID="lblHensin" runat="server" Visible="False"></asp:Label></a>
+               </td>
                <td>
                     <a href="~/ファイル共有/FileShare.aspx" class="btn" runat="server">ファイル共有</a>
                </td>
