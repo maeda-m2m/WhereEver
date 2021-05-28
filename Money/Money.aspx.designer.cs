@@ -321,13 +321,13 @@ namespace WhereEver.Money
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_BS_day;
 
         /// <summary>
-        /// Label_BS_Sisan コントロール。
+        /// Label_BS_Shisan コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_BS_Sisan;
+        protected global::System.Web.UI.WebControls.Label Label_BS_Shisan;
 
         /// <summary>
         /// Label_BS_Fusai コントロール。
@@ -339,13 +339,13 @@ namespace WhereEver.Money
         protected global::System.Web.UI.WebControls.Label Label_BS_Fusai;
 
         /// <summary>
-        /// Label_BS_RyuudouSisan コントロール。
+        /// Label_BS_RyuudouShisan コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_BS_RyuudouSisan;
+        protected global::System.Web.UI.WebControls.Label Label_BS_RyuudouShisan;
 
         /// <summary>
         /// Label_BS_RyuudouFusai コントロール。
@@ -573,13 +573,13 @@ namespace WhereEver.Money
         protected global::System.Web.UI.WebControls.TextBox TextBox_BS39;
 
         /// <summary>
-        /// Label_YuukeiKoteiShisan コントロール。
+        /// Label_BS_YuukeiKoteiShisan コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_YuukeiKoteiShisan;
+        protected global::System.Web.UI.WebControls.Label Label_BS_YuukeiKoteiShisan;
 
         /// <summary>
         /// TextBox_BS40 コントロール。
@@ -699,13 +699,13 @@ namespace WhereEver.Money
         protected global::System.Web.UI.WebControls.TextBox TextBox_BS44;
 
         /// <summary>
-        /// Label_MukeiKoteiShisan コントロール。
+        /// Label_BS_MukeiKoteiShisan コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_MukeiKoteiShisan;
+        protected global::System.Web.UI.WebControls.Label Label_BS_MukeiKoteiShisan;
 
         /// <summary>
         /// TextBox_BS45 コントロール。
@@ -771,13 +771,13 @@ namespace WhereEver.Money
         protected global::System.Web.UI.WebControls.TextBox TextBox_BS48;
 
         /// <summary>
-        /// LabelToushiSonotanoShisan コントロール。
+        /// Label_BS_ToushiSonotanoShisan コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelToushiSonotanoShisan;
+        protected global::System.Web.UI.WebControls.Label Label_BS_ToushiSonotanoShisan;
 
         /// <summary>
         /// TextBox_BS22 コントロール。
@@ -879,22 +879,22 @@ namespace WhereEver.Money
         protected global::System.Web.UI.WebControls.TextBox TextBox_BS28;
 
         /// <summary>
-        /// Label_ShisanGoukei コントロール。
+        /// Label_BS_ShisanGoukei コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_ShisanGoukei;
+        protected global::System.Web.UI.WebControls.Label Label_BS_ShisanGoukei;
 
         /// <summary>
-        /// Label_Fusai_JyunshisanGoukei コントロール。
+        /// Label_BS_Fusai_JyunshisanGoukei コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Fusai_JyunshisanGoukei;
+        protected global::System.Web.UI.WebControls.Label Label_BS_Fusai_JyunshisanGoukei;
 
         /// <summary>
         /// Button_Check_BS コントロール。
@@ -913,6 +913,33 @@ namespace WhereEver.Money
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_CheckAS_BS;
+
+        /// <summary>
+        /// Button_BS_SUM コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_BS_SUM;
+
+        /// <summary>
+        /// GridView_BS コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView_BS;
+
+        /// <summary>
+        /// SqlDataSource_BS コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_BS;
 
         /// <summary>
         /// Button_CF コントロール。

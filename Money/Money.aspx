@@ -240,7 +240,7 @@
            <p class="index1">
                ◆貸借対照表(B/S)
                <asp:Button ID="Button_BS" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_BS_test" CausesValidation="False" />
-               未完成　DataBase等を実装予定
+               動作テスト済　P/Lとの連携機能なし
            </p>
 
            <hr />
@@ -248,10 +248,10 @@
 <asp:Panel ID="Panel_BS" runat="server" Visible="false">
 
            <span class="hr"></span>
-            <p class="center">///工事中///</p>
+            <p class="center">B/Sを作成します。値はすべて正の値で入力して下さい。資産合計と負債・純資産合計が同じになるように作成して下さい。</p>
            <span class="hr"></span>
 
-    <div class="center">
+    <div class="center"><a name="BS_TOP"></a>
 　<p class="right">（単位：円）</p>
         <table class="DGTable">
             <tr>
@@ -261,9 +261,9 @@
             </tr>
             <tr>
                 <th colspan="4" class="th_master">
-                    <asp:DropDownList ID="DropDownList_BS_year" runat="server" OnSelectedIndexChanged="Change_BS" AutoPostBack="true"></asp:DropDownList>年
-                    <asp:DropDownList ID="DropDownList_BS_month" runat="server" OnSelectedIndexChanged="Change_BS" AutoPostBack="true"></asp:DropDownList>月
-                    <asp:DropDownList ID="DropDownList_BS_day" runat="server" OnSelectedIndexChanged="Change_BS" AutoPostBack="true"></asp:DropDownList>日
+                    <asp:DropDownList ID="DropDownList_BS_year" runat="server" OnSelectedIndexChanged="Change_BS" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_BS_month" runat="server" OnSelectedIndexChanged="Change_BS" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_BS_day" runat="server" OnSelectedIndexChanged="Change_BS" ></asp:DropDownList>日
                 </th>
             </tr>
             <tr>
@@ -285,13 +285,13 @@
                     （資産の部）
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_BS_Sisan" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>円
+                    <asp:Label ID="Label_BS_Shisan" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>円
                 </td>
                 <td>
                     （負債の部）
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_BS_Fusai" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>円
+                    <asp:Label ID="Label_BS_Fusai" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>円
                 </td>
             </tr>
             <tr>
@@ -299,13 +299,13 @@
                     流動資産
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_BS_RyuudouSisan" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_RyuudouShisan" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
                 <td>
                     流動負債
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_BS_RyuudouFusai" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_RyuudouFusai" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -313,13 +313,13 @@
                     現金及び預金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS1" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS1" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     買掛金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS29" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS29" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -327,13 +327,13 @@
                     受取手形
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS2" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS2" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     短期借入金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS30" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS30" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -341,13 +341,13 @@
                     売掛金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS3" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS3" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     未払金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS31" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS31" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -355,13 +355,13 @@
                     商品
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS4" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS4" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     未払費用
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS32" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS32" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -369,13 +369,13 @@
                     部品
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS5" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS5" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     未払法人税等
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS33" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS33" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -383,13 +383,13 @@
                     前払費用
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS6" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS6" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     預り金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS34" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS34" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -397,13 +397,13 @@
                     繰延税金資産
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS7" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS7" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     賞与引当金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS35" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS35" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -411,13 +411,13 @@
                     短期貸付金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS8" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS8" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     製品保証引当金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS36" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS36" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -425,13 +425,13 @@
                     未収入金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS9" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS9" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     その他
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS37" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS37" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -439,7 +439,7 @@
                     その他
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS10" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS10" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     
@@ -453,13 +453,13 @@
                     貸倒引当金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS11" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS11" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     固定負債
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_BS_KoteiFusai" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_KoteiFusai" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -473,7 +473,7 @@
                     退職給費引当金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS38" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS38" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -481,13 +481,13 @@
                     固定資産
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_BS_KoteiShisan" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_KoteiShisan" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
                 <td>
                     繰延税金負債
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS39" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS39" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -495,13 +495,13 @@
                     有形固定資産
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_YuukeiKoteiShisan" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_YuukeiKoteiShisan" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
                 <td>
                     その他
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS40" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS40" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -509,7 +509,7 @@
                     建物
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS12" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS12" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     
@@ -523,13 +523,13 @@
                     構築物
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS13" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS13" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     負債合計
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_BS_FusaiGoukei" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_FusaiGoukei" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -537,7 +537,7 @@
                     機械及び装置
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS14" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS14" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     
@@ -551,7 +551,7 @@
                     車両及び運搬具
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS15" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS15" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     （総資産の部）
@@ -565,13 +565,13 @@
                     工具、器具及び備品
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS16" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS16" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     株主資本
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS41" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS41" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -579,13 +579,13 @@
                     土地
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS17" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS17" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     資本金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS42" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS42" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -593,13 +593,13 @@
                     建設仮勘定
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS18" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS18" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     資本余剰金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS43" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS43" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -613,7 +613,7 @@
                     資本準備金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS44" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS44" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -621,13 +621,13 @@
                     無形固定資産
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_MukeiKoteiShisan" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_MukeiKoteiShisan" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
                 <td>
                     その他資本剰余金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS45" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS45" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -635,7 +635,7 @@
                     施設利用権
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS19" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS19" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     
@@ -649,13 +649,13 @@
                     ソフトウェア
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS20" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS20" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     利益余剰金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS46" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS46" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -663,13 +663,13 @@
                     その他
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS21" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS21" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     その他利益剰余金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS47" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS47" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -683,7 +683,7 @@
                     繰越利益剰余金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS48" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS48" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -691,7 +691,7 @@
                     投資その他の資産
                 </td>
                 <td class="right">
-                    <asp:Label ID="LabelToushiSonotanoShisan" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_ToushiSonotanoShisan" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
                 <td>
                     
@@ -705,13 +705,13 @@
                     投資有価証券
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS22" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS22" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     自己株式
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS49" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS49" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -719,7 +719,7 @@
                     関係会社株式
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS23" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS23" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     
@@ -733,13 +733,13 @@
                     関係会社出資金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS24" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS24" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     評価・換算差額等
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS50" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS50" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -747,13 +747,13 @@
                     長期貸付金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS25" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS25" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     その他有価証券評価差額金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS51" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS51" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -761,7 +761,7 @@
                     長期前払費用
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS26" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS26" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     
@@ -775,13 +775,13 @@
                     その他
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS27" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS27" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     純資産合計
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_BS_JyunshisanGoukei" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_JyunshisanGoukei" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -789,7 +789,7 @@
                     貸倒引当金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS28" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS28" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
                 </td>
                 <td>
                     
@@ -817,13 +817,13 @@
                     資産合計
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_ShisanGoukei" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_ShisanGoukei" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
                 <td>
                     負債・純資産合計
                 </td>
                 <td class="right">
-                    <asp:Label ID="Label_Fusai_JyunshisanGoukei" runat="server" Text="0" CssClass="lbl_pl"></asp:Label>
+                    <asp:Label ID="Label_BS_Fusai_JyunshisanGoukei" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
                 </td>
             </tr>
         </table>
@@ -832,7 +832,36 @@
         <p class="center">
             <asp:Button ID="Button_Check_BS" CssClass="btn-flat-border" runat="server" Text="新規保存" OnClick="Push_Check_BS" CausesValidation="False" />
             <asp:Button ID="Button_CheckAS_BS" CssClass="btn-flat-border" runat="server" Text="上書き保存" OnClick="Push_CheckAS_BS" CausesValidation="False" />
+            <asp:Button ID="Button_BS_SUM" CssClass="btn-flat-border" runat="server" Text="小計/合計" OnClick="Change_BS" CausesValidation="False" />
         </p>
+
+
+            <asp:GridView ID="GridView_BS" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_BS" AllowPaging="True" AllowSorting="True" OnRowCommand="grid_RowCommand">
+                <Columns>
+                    <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" />
+                    <asp:BoundField DataField="shisan_a" HeaderText="資産合計" SortExpression="shisan_a" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="fusai_a" HeaderText="負債合計" SortExpression="fusai_a" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="jyunshisan_a" HeaderText="純資産" SortExpression="jyunshisan_a" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" DataFormatString="{0:d}" />
+                    <asp:BoundField DataField="UpDateTime" HeaderText="最終更新日" SortExpression="UpDateTime" />
+
+                    <asp:ButtonField ButtonType="Button" Text="削除" HeaderText="削除" CommandName="BSRemove" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border-mini" />
+                    </asp:ButtonField>
+
+                    <asp:ButtonField ButtonType="Button" Text="参照" HeaderText="編集" CommandName="BSDownLoad" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border-mini" />
+                    </asp:ButtonField>
+
+            </Columns>
+        <HeaderStyle BackColor="Black" ForeColor="White" />
+        <RowStyle BackColor="#1E1E1E" ForeColor="White" />
+            </asp:GridView>
+
+
+
+           <asp:SqlDataSource ID="SqlDataSource_BS" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT [uuid], [shisan_a], [fusai_a], [jyunshisan_a], [Date], [UpDateTime] FROM [T_BS] ORDER BY [UpDateTime] DESC"></asp:SqlDataSource>
+
 
 
 </asp:Panel>

@@ -32,6 +32,13 @@ table {
     color: white;
 }
 
+.lbl_BS {
+    text-align: right;
+    height: auto;
+    width: 20em;
+    color: white;
+}
+
 .none {
     display: none;
 }
@@ -43,6 +50,15 @@ table {
     background-color: black;
     color: white;
 }
+
+.textbox_BS {
+    text-align: right;
+    height: auto;
+    width: 20em;
+    background-color: black;
+    color: white;
+}
+
 
 .th_master{
     background-color: black;

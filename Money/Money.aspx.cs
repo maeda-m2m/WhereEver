@@ -432,17 +432,13 @@ namespace WhereEver.Money
             str = HtmlEncode(TextBox_Houjinzei.Text);
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value8);
 
-            DateTime dts = new DateTime();
-            DateTime dtg = new DateTime();
-
             StringBuilder sb = new StringBuilder();
             sb.Append(DropDownList_PL_year_s.SelectedValue);
             sb.Append("/");
             sb.Append(DropDownList_PL_month_s.SelectedValue);
             sb.Append("/");
             sb.Append(DropDownList_PL_day_s.SelectedValue);
-            dts = DateTime.Parse(sb.ToString());
-
+            DateTime dts = DateTime.Parse(sb.ToString());
 
             sb = new StringBuilder();
             sb.Append(DropDownList_PL_year_g.SelectedValue);
@@ -450,7 +446,7 @@ namespace WhereEver.Money
             sb.Append(DropDownList_PL_month_g.SelectedValue);
             sb.Append("/");
             sb.Append(DropDownList_PL_day_g.SelectedValue);
-            dtg = DateTime.Parse(sb.ToString());
+            DateTime dtg = DateTime.Parse(sb.ToString());
 
             string uuid = Session["uuid"].ToString();
 
@@ -647,14 +643,14 @@ namespace WhereEver.Money
                 Session.Add("uuid", uuid);
 
                 //編集テーブルに代入
-                TextBox_Uriage.Text = dr.uriagedaka.ToString().Replace(".0000","");
-                TextBox_UriageGenka.Text = dr.uriagegenka.ToString().Replace(".0000", "");
-                TextBox_HanbaiKanrihi.Text = dr.hanbaikanrihi.ToString().Replace(".0000", "");
-                TextBox_EigyouRieki.Text = dr.eigyourieki.ToString().Replace(".0000", "");
-                TextBox_EigyougaiHiyou.Text = dr.eigyougaihiyou.ToString().Replace(".0000", "");
-                TextBox_TokubetsuRieki.Text = dr.tokubetsurieki.ToString().Replace(".0000", "");
-                TextBox_TokubetsuSonshitsu.Text = dr.tokubetsusonshitsu.ToString().Replace(".0000", "");
-                TextBox_Houjinzei.Text = dr.houjinzeitou.ToString().Replace(".0000", "");
+                TextBox_Uriage.Text = dr.uriagedaka.ToString();
+                TextBox_UriageGenka.Text = dr.uriagegenka.ToString();
+                TextBox_HanbaiKanrihi.Text = dr.hanbaikanrihi.ToString();
+                TextBox_EigyouRieki.Text = dr.eigyourieki.ToString();
+                TextBox_EigyougaiHiyou.Text = dr.eigyougaihiyou.ToString();
+                TextBox_TokubetsuRieki.Text = dr.tokubetsurieki.ToString();
+                TextBox_TokubetsuSonshitsu.Text = dr.tokubetsusonshitsu.ToString();
+                TextBox_Houjinzei.Text = dr.houjinzeitou.ToString();
 
                 DropDownList_PL_year_s.SelectedValue = dr.Date_S.Year.ToString();
                 DropDownList_PL_month_s.SelectedValue = dr.Date_S.Month.ToString();
@@ -676,6 +672,127 @@ namespace WhereEver.Money
 
                 //行の色変更（選択行を強調表示）
                 GridView_PL.Rows[args].BackColor = System.Drawing.Color.Red;
+
+            }
+
+            // コマンド名が“BSRemove”の場合にのみ処理（独自の削除ボタン）
+            if (e.CommandName == "BSRemove")
+            {
+
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
+
+                //セッション変数argsを初期化
+                Session.Add("args", (string)"null");
+                Session.Add("uuid", (string)"null");
+
+                string uuid = GridView_BS.Rows[args].Cells[0].Text;
+                ClassLibrary.MOMClass.DeleteT_BSRow(Global.GetConnection(), uuid);
+
+                GridView_BS.DataBind();
+
+
+                // コマンド名が“BSDownLoad”の場合にのみ処理（選択ボタン）
+            }
+            else if (e.CommandName == "BSDownLoad")
+            {
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
+
+                ResetBS();
+
+                string uuid = GridView_BS.Rows[args].Cells[0].Text;
+                DATASET.DataSet.T_BSRow dr = ClassLibrary.MOMClass.GetT_BSRow(Global.GetConnection(), uuid);
+
+
+                if (Session["args"].ToString() != "null")
+                {
+                    //GridView1の色を変えた色をもとに戻す
+                    int resetargs = int.Parse(Session["args"].ToString());
+                    GridView_BS.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
+                }
+
+                if (dr == null)
+                {
+                    //Fatal Error
+                    return;
+                }
+
+                Session.Add("uuid", uuid);
+
+                //編集テーブルに代入
+                TextBox_BS1.Text = dr.BS1.ToString();
+                TextBox_BS2.Text = dr.BS2.ToString();
+                TextBox_BS3.Text = dr.BS3.ToString();
+                TextBox_BS4.Text = dr.BS4.ToString();
+                TextBox_BS5.Text = dr.BS5.ToString();
+                TextBox_BS6.Text = dr.BS6.ToString();
+                TextBox_BS7.Text = dr.BS7.ToString();
+                TextBox_BS8.Text = dr.BS8.ToString();
+                TextBox_BS9.Text = dr.BS9.ToString();
+                TextBox_BS10.Text = dr.BS10.ToString();
+                TextBox_BS11.Text = dr.BS11.ToString();
+                TextBox_BS12.Text = dr.BS12.ToString();
+                TextBox_BS13.Text = dr.BS13.ToString();
+                TextBox_BS14.Text = dr.BS14.ToString();
+                TextBox_BS15.Text = dr.BS15.ToString();
+                TextBox_BS16.Text = dr.BS16.ToString();
+                TextBox_BS17.Text = dr.BS17.ToString();
+                TextBox_BS18.Text = dr.BS18.ToString();
+                TextBox_BS19.Text = dr.BS19.ToString();
+                TextBox_BS20.Text = dr.BS20.ToString();
+                TextBox_BS21.Text = dr.BS21.ToString();
+                TextBox_BS22.Text = dr.BS22.ToString();
+                TextBox_BS23.Text = dr.BS23.ToString();
+                TextBox_BS24.Text = dr.BS24.ToString();
+                TextBox_BS25.Text = dr.BS25.ToString();
+                TextBox_BS26.Text = dr.BS26.ToString();
+                TextBox_BS27.Text = dr.BS27.ToString();
+                TextBox_BS28.Text = dr.BS28.ToString();
+                TextBox_BS29.Text = dr.BS29.ToString();
+                TextBox_BS30.Text = dr.BS30.ToString();
+                TextBox_BS31.Text = dr.BS31.ToString();
+                TextBox_BS32.Text = dr.BS32.ToString();
+                TextBox_BS33.Text = dr.BS33.ToString();
+                TextBox_BS34.Text = dr.BS34.ToString();
+                TextBox_BS35.Text = dr.BS35.ToString();
+                TextBox_BS36.Text = dr.BS36.ToString();
+                TextBox_BS37.Text = dr.BS37.ToString();
+                TextBox_BS38.Text = dr.BS38.ToString();
+                TextBox_BS39.Text = dr.BS39.ToString();
+                TextBox_BS40.Text = dr.BS40.ToString();
+                TextBox_BS41.Text = dr.BS41.ToString();
+                TextBox_BS42.Text = dr.BS42.ToString();
+                TextBox_BS43.Text = dr.BS43.ToString();
+                TextBox_BS44.Text = dr.BS44.ToString();
+                TextBox_BS45.Text = dr.BS45.ToString();
+                TextBox_BS46.Text = dr.BS46.ToString();
+                TextBox_BS47.Text = dr.BS47.ToString();
+                TextBox_BS48.Text = dr.BS48.ToString();
+                TextBox_BS49.Text = dr.BS49.ToString();
+                TextBox_BS50.Text = dr.BS50.ToString();
+                TextBox_BS51.Text = dr.BS51.ToString();              
+
+                DropDownList_BS_year.SelectedValue = dr.Date.Year.ToString();
+                DropDownList_BS_month.SelectedValue = dr.Date.Month.ToString();
+                SetMaxDate();
+                DropDownList_BS_day.SelectedValue = dr.Date.Day.ToString();
+
+                //SUM
+                Sum_BS();
+                GridView_BS.DataBind();
+
+                //新たに色を変更する行を記憶
+                Session.Add("args", args);
+
+                //行の色変更（選択行を強調表示）
+                GridView_BS.Rows[args].BackColor = System.Drawing.Color.Red;
 
             }
             //---------------------
@@ -729,6 +846,7 @@ namespace WhereEver.Money
         protected void Change_BS(object sender, EventArgs e)
         {
             Sum_BS();
+            //Response.Redirect("Money.aspx#BS_TOP", false);
         }
 
 
@@ -745,6 +863,154 @@ namespace WhereEver.Money
 
         protected void Sum_BS()
         {
+            //宣言と初期化
+            string str;
+
+            str = HtmlEncode(TextBox_BS1.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value1);
+            str = HtmlEncode(TextBox_BS2.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value2);
+            str = HtmlEncode(TextBox_BS3.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value3);
+            str = HtmlEncode(TextBox_BS4.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value4);
+            str = HtmlEncode(TextBox_BS5.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value5);
+            str = HtmlEncode(TextBox_BS6.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value6);
+            str = HtmlEncode(TextBox_BS7.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value7);
+            str = HtmlEncode(TextBox_BS8.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value8);
+            str = HtmlEncode(TextBox_BS9.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value9);
+            str = HtmlEncode(TextBox_BS10.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value10);
+            str = HtmlEncode(TextBox_BS11.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value11);
+            str = HtmlEncode(TextBox_BS12.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value12);
+            str = HtmlEncode(TextBox_BS13.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value13);
+            str = HtmlEncode(TextBox_BS14.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value14);
+            str = HtmlEncode(TextBox_BS15.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value15);
+            str = HtmlEncode(TextBox_BS16.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value16);
+            str = HtmlEncode(TextBox_BS17.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value17);
+            str = HtmlEncode(TextBox_BS18.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value18);
+            str = HtmlEncode(TextBox_BS19.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value19);
+            str = HtmlEncode(TextBox_BS20.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value20);
+            str = HtmlEncode(TextBox_BS21.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value21);
+            str = HtmlEncode(TextBox_BS22.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value22);
+            str = HtmlEncode(TextBox_BS23.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value23);
+            str = HtmlEncode(TextBox_BS24.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value24);
+            str = HtmlEncode(TextBox_BS25.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value25);
+            str = HtmlEncode(TextBox_BS26.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value26);
+            str = HtmlEncode(TextBox_BS27.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value27);
+            str = HtmlEncode(TextBox_BS28.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value28);
+            str = HtmlEncode(TextBox_BS29.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value29);
+            str = HtmlEncode(TextBox_BS30.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value30);
+            str = HtmlEncode(TextBox_BS31.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value31);
+            str = HtmlEncode(TextBox_BS32.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value32);
+            str = HtmlEncode(TextBox_BS33.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value33);
+            str = HtmlEncode(TextBox_BS34.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value34);
+            str = HtmlEncode(TextBox_BS35.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value35);
+            str = HtmlEncode(TextBox_BS36.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value36);
+            str = HtmlEncode(TextBox_BS37.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value37);
+            str = HtmlEncode(TextBox_BS38.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value38);
+            str = HtmlEncode(TextBox_BS39.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value39);
+            str = HtmlEncode(TextBox_BS40.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value40);
+            str = HtmlEncode(TextBox_BS41.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value41);
+            str = HtmlEncode(TextBox_BS42.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value42);
+            str = HtmlEncode(TextBox_BS43.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value43);
+            str = HtmlEncode(TextBox_BS44.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value44);
+            str = HtmlEncode(TextBox_BS45.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value45);
+            str = HtmlEncode(TextBox_BS46.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value46);
+            str = HtmlEncode(TextBox_BS47.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value47);
+            str = HtmlEncode(TextBox_BS48.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value48);
+            str = HtmlEncode(TextBox_BS49.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value49);
+            str = HtmlEncode(TextBox_BS50.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value50);
+            str = HtmlEncode(TextBox_BS51.Text);
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value51);
+
+            //--------------------------            
+            //BS1-11　流動資産
+            int ryuudoushisan = value1 + value2 + value3 + value4 + value5 + value6 + value7 + value8 + value9 + value10 + value11;
+            Label_BS_RyuudouShisan.Text = string.Format("{0:C}", ryuudoushisan);
+            //--------------------------            
+            //BS12-18　有形固定資産
+            int yuukeikoteishisan = value12 + value13 + value14 + value15 + value16 + value17 + value18;
+            Label_BS_YuukeiKoteiShisan.Text = string.Format("{0:C}", yuukeikoteishisan);
+            //BS19-21　無形固定資産
+            int mukeikoteishisan = value19 + value20 + value21;
+            Label_BS_MukeiKoteiShisan.Text = string.Format("{0:C}", mukeikoteishisan);
+            //BS22-28　投資その他の資産
+            int toushisonotanoshisan = value22 + value23 + value24 + value25 + value26 + value27 + value28;
+            Label_BS_ToushiSonotanoShisan.Text = string.Format("{0:C}", toushisonotanoshisan);
+            //BS12-28　固定資産(SUM)
+            int koteishisan = yuukeikoteishisan + mukeikoteishisan + toushisonotanoshisan;
+            Label_BS_KoteiShisan.Text = string.Format("{0:C}", koteishisan);
+            //--------------------------            
+            //BS1-29　資産合計
+            int shisan_a = ryuudoushisan + koteishisan;
+            Label_BS_ShisanGoukei.Text = string.Format("{0:C}", shisan_a);
+            Label_BS_Shisan.Text = string.Format("{0:#,0}", shisan_a);
+            //--------------------------
+            //BS29-37　流動負債
+            int ryuudoufusai = value29 + value30 + value31 + value32 + value33 + value34 + value35 + value36 + value37;
+            Label_BS_RyuudouFusai.Text = string.Format("{0:C}", ryuudoufusai);
+            //BS38-40　固定負債
+            int koteifusai = value38 + value39 + value40;
+            Label_BS_KoteiFusai.Text = string.Format("{0:C}", koteifusai);
+            //--------------------------
+            //BS29-40　負債合計
+            int fusai_a = ryuudoufusai + koteifusai;
+            Label_BS_FusaiGoukei.Text = string.Format("{0:C}", fusai_a);
+            Label_BS_Fusai.Text = string.Format("{0:#,0}", fusai_a);
+            //--------------------------
+            //BS41-51　純資産
+            int jyunshisan_a = value41 + value42 + value43 + value44 + value45 + value46 + value47 + value48 + value49 + value50 + value51;
+            Label_BS_JyunshisanGoukei.Text = string.Format("{0:C}", jyunshisan_a);
+            //--------------------------
+            //負債純資産合計
+            Label_BS_Fusai_JyunshisanGoukei.Text = string.Format("{0:C}", fusai_a + jyunshisan_a); ;
+            //--------------------------
 
         }
 
@@ -802,19 +1068,19 @@ namespace WhereEver.Money
             TextBox_BS50.Text = "0";
             TextBox_BS51.Text = "0";
 
-            Label_BS_Sisan.Text = string.Format("{0:C}", 0);
-            Label_BS_RyuudouSisan.Text = string.Format("{0:C}", 0);
+            Label_BS_Shisan.Text = string.Format("{0:C}", 0);
+            Label_BS_RyuudouShisan.Text = string.Format("{0:C}", 0);
             Label_BS_KoteiShisan.Text = string.Format("{0:C}", 0);
-            Label_YuukeiKoteiShisan.Text = string.Format("{0:C}", 0);
-            Label_MukeiKoteiShisan.Text = string.Format("{0:C}", 0);
-            LabelToushiSonotanoShisan.Text = string.Format("{0:C}", 0);
-            Label_ShisanGoukei.Text = string.Format("{0:C}", 0);
+            Label_BS_YuukeiKoteiShisan.Text = string.Format("{0:C}", 0);
+            Label_BS_MukeiKoteiShisan.Text = string.Format("{0:C}", 0);
+            Label_BS_ToushiSonotanoShisan.Text = string.Format("{0:C}", 0);
+            Label_BS_ShisanGoukei.Text = string.Format("{0:C}", 0);
             Label_BS_Fusai.Text = string.Format("{0:C}", 0);
             Label_BS_RyuudouFusai.Text = string.Format("{0:C}", 0);
             Label_BS_KoteiFusai.Text = string.Format("{0:C}", 0);
             Label_BS_FusaiGoukei.Text = string.Format("{0:C}", 0);
             Label_BS_JyunshisanGoukei.Text = string.Format("{0:C}", 0);
-            Label_Fusai_JyunshisanGoukei.Text = string.Format("{0:C}", 0);
+            Label_BS_Fusai_JyunshisanGoukei.Text = string.Format("{0:C}", 0);
 
             DropDownList_BS_month.SelectedValue = "4";
             SetMaxDate();
@@ -944,6 +1210,7 @@ namespace WhereEver.Money
             str = HtmlEncode(TextBox_BS51.Text);
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value51);
 
+            /*
             //--------------------------            
             //BS1-11　流動資産
             int ryuudoushisan = value1 + value2 + value3 + value4 + value5 + value6 + value7 + value8 + value9 + value10 + value11;
@@ -968,20 +1235,43 @@ namespace WhereEver.Money
             //BS29-40　負債合計
             int fusai_a = ryuudoufusai + koteifusai;
             //--------------------------
-            //BS41-51　総資産
-            int soushisann_a = value41 + value42 + value43 + value44 + value45 + value46 + value47 + value48 + value49 + value50 + value51;
+            //BS41-51　純資産
+            int jyunshisan_a = value41 + value42 + value43 + value44 + value45 + value46 + value47 + value48 + value49 + value50 + value51;
             //--------------------------
+            */
 
-            //SQL DB Tableは、サブマスター、資産、負債、総資産の４つに分けるとよい。
-
-            DateTime dt = new DateTime();
             StringBuilder sb = new StringBuilder();
             sb.Append(DropDownList_BS_year.SelectedValue);
             sb.Append("/");
             sb.Append(DropDownList_BS_month.SelectedValue);
             sb.Append("/");
             sb.Append(DropDownList_BS_day.SelectedValue);
-            dt = DateTime.Parse(sb.ToString());
+            DateTime dt = DateTime.Parse(sb.ToString());
+
+
+            string uuid = Session["uuid"].ToString();
+
+            if (b)
+            {
+                DATASET.DataSet.T_BSRow dr = ClassLibrary.MOMClass.GetT_BSRow(Global.GetConnection(), uuid);
+                if (dr != null)
+                {
+                    //Update
+                    ClassLibrary.MOMClass.SetT_BSUpdate(Global.GetConnection(), uuid, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19, value20, value21, value22, value23, value24, value25, value26, value27, value28, value29, value30, value31, value32, value33, value34, value35, value36, value37, value38, value39, value40, value41, value42, value43, value44, value45, value46, value47, value48, value49, value50, value51, dt);
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+
+            if (!b)
+            {
+                //Insert
+                ClassLibrary.MOMClass.SetT_BSInsert(Global.GetConnection(), value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19, value20, value21, value22, value23, value24, value25, value26, value27, value28, value29, value30, value31, value32, value33, value34, value35, value36, value37, value38, value39, value40, value41, value42, value43, value44, value45, value46, value47, value48, value49, value50, value51, dt);
+            }
+
+            GridView_BS.DataBind();
 
         }
 
