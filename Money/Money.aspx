@@ -44,7 +44,7 @@
 <div class="noprint">
                        <span class="hr"></span>
 
-    <p class="center">損益計算書をDBに記録できます。経費は負の値で入力して下さい。</p>
+    <p class="center">損益計算書をDBに記録できます。すべて正の値で入力して下さい。</p>
 
                        <span class="hr"></span>
 </div>
@@ -899,6 +899,255 @@
             <p class="center">///工事中///</p>
            <span class="hr"></span>
 </div>
+
+
+
+    <div class="center"><a name="BS_TOP"></a>
+　<p class="right">（単位：円）</p>
+        <table class="DGTable">
+            <tr>
+                <th colspan="2" class="th_master">
+                    財務活動によるキャッシュフロー(C/F)
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2" class="th_master">
+                    <asp:DropDownList ID="DropDownList_CF_year" runat="server" OnSelectedIndexChanged="Change_CF" CssClass="ddl_date" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_CF_month" runat="server" OnSelectedIndexChanged="Change_CF" CssClass="ddl_date" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_CF_day" runat="server" OnSelectedIndexChanged="Change_CF" CssClass="ddl_date" ></asp:DropDownList>日
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    区分
+                </th>
+                <th class="th_master">
+                    金額
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    (1)営業活動によるキャッシュフロー
+                </td>
+                <td class="td_master_q">
+                </td>
+            </tr>
+            <tr>
+                <td class="sum">
+                    税引き前当期純利益　＋
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF1" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="sum">
+                    減価償却費　＋
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF2" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>                  
+                </td>
+            </tr>
+            <tr>
+                <td class="minus">
+                    売上債権の増加　－
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF3" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="minus">
+                    棚卸資産の増加　－
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF4" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="sum">
+                    社入債務の増加　＋
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF5" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="minus">
+                    法人税等の支払い　－
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF6" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="per">
+                    営業営業活動によるキャッシュ・フロー
+                </td>
+                <td class="right">
+                    <asp:Label ID="Label_CF1" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    (2)投資活動によるキャッシュフロー
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td class="minus">
+                    有形固定資産の購入　－
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF7" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="sum">
+                    有形固定資産の売却　＋
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF8" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="minus">
+                    有価証券の購入　－
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF9" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="sum">
+                    有価証券の売却及び満期償還　＋
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF10" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="per">
+                    投資営業活動によるキャッシュ・フロー
+                </td>
+                <td class="right">
+                    <asp:Label ID="Label_CF2" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>                   
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    (3)財務活動によるキャッシュ・フロー
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td class="sum">
+                    借入金の増加　＋
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF11" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="sum">
+                    借入金の返済　＋
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF12" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="per">
+                    財務営業活動によるキャッシュ・フロー
+                </td>
+                <td class="right">
+                    <asp:Label ID="Label_CF3" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    (4)現金及び現金同等物等の増加額
+                </td>
+                <td class="right">
+                    <asp:Label ID="Label_CF4" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    (5)現金及び現金同等物等期首残高
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF13" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    (6)現金および現金同等物期末残高
+                </td>
+                <td class="right">
+                    <asp:Label ID="Label_CF5" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    売上高
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CF14" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="per">
+                    キャッシュ・フローマージン
+                </td>
+                <td class="right">
+                    <%-- 「営業活動によるキャッシュ・フロー」÷「売上高」一般的な目標は7% --%>
+                    <asp:Label ID="Label_CF6" runat="server" Text="0" CssClass="lbl_BS"></asp:Label>
+                </td>
+            </tr>
+</table>
+</div>
+
+
+
+<div class="noprint">
+
+        <p class="center">
+            <asp:Button ID="Button_Check_CF" CssClass="btn-flat-border" runat="server" Text="新規保存" OnClick="Push_Check_CF" CausesValidation="False" />
+            <asp:Button ID="Button_CheckAS_CF" CssClass="btn-flat-border" runat="server" Text="上書き保存" OnClick="Push_CheckAS_CF" CausesValidation="False" />
+            <asp:Button ID="Button_Change_CF" CssClass="btn-flat-border" runat="server" Text="小計/合計" OnClick="Change_CF" CausesValidation="False" />
+            <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
+        </p>
+
+
+            <asp:GridView ID="GridView1" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_CF" AllowPaging="True" AllowSorting="True" OnRowCommand="grid_RowCommand">
+                <Columns>
+                    <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" />
+                    <asp:BoundField DataField="shisan_a" HeaderText="資産合計" SortExpression="shisan_a" DataFormatString="{0:C}" HeaderStyle-ForeColor="LightGreen" />
+                    <asp:BoundField DataField="fusai_a" HeaderText="負債合計" SortExpression="fusai_a" DataFormatString="{0:C}" HeaderStyle-ForeColor="Red" />
+                    <asp:BoundField DataField="jyunshisan_a" HeaderText="純資産" SortExpression="jyunshisan_a" DataFormatString="{0:C}" HeaderStyle-ForeColor="LightBlue" />
+                    <asp:BoundField DataField="Date" HeaderText="申告年月日" SortExpression="Date" DataFormatString="{0:d}" />
+                    <asp:BoundField DataField="UpDateTime" HeaderText="最終更新日" SortExpression="UpDateTime" />
+
+                    <asp:ButtonField ButtonType="Button" Text="削除" HeaderText="削除" CommandName="CFRemove" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border-mini" />
+                    </asp:ButtonField>
+
+                    <asp:ButtonField ButtonType="Button" Text="参照" HeaderText="編集" CommandName="CFDownLoad" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border-mini" />
+                    </asp:ButtonField>
+
+            </Columns>
+        <HeaderStyle BackColor="Black" ForeColor="White" />
+        <RowStyle BackColor="#1E1E1E" ForeColor="White" />
+            </asp:GridView>
+
+           <asp:SqlDataSource ID="SqlDataSource_CF" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT [uuid], [shisan_a], [fusai_a], [jyunshisan_a], [Date], [UpDateTime] FROM [T_BS] ORDER BY [UpDateTime] DESC"></asp:SqlDataSource>
+
+</div>
+
 
 </asp:Panel>
 
