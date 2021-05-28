@@ -182,12 +182,13 @@ namespace WhereEver
                 }
                 dr.No = Int32.Parse(txtHozon.Text);
             }
-            
-            
+
+            string str1 = txtHenshin.Text;
+            string str2 = str1.Replace("\r\n", "<br>");
             dr.Date = DateTime.Now;
             dr.Id = SessionManager.User.ID; //変更
             dr.Name = Label1.Text;
-            dr.Naiyou = txtHenshin.Text;
+            dr.Naiyou = str2;
 
             txtHenshin.Text = "";
             dt.AddT_ChatRow(dr);
