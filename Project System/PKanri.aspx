@@ -83,6 +83,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
+                        <asp:Label ID="lblJyunbanError" runat="server" ForeColor="Red"></asp:Label>
                         </td>
                     <td colspan="2" class="auto-style2">
                         <asp:Button ID="btnPMiddle" CssClass="btn" runat="server" Text="中項目登録" OnClick="btnPMiddle_Click" ValidationGroup="Group02" Font-Overline="False"/>
@@ -103,16 +104,16 @@
                                 <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ReadOnly="True"/>
                                 <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
                                         <ItemTemplate>
-                                            <asp:Button ID="uebig" Text="↑" runat="server" CssClass="jyunban" CommandName="uebig" OnClick="uebig_Click"/><br>
-                                            <asp:Button ID="sitabig" Text="↓" runat="server" CssClass="jyunban" CommandName="sitabig"/>
+                                            <asp:Button ID="uebig" Text="↑" runat="server" CssClass="jyunban" CommandName="uebig" Visible="false"/><br>
+                                            <asp:Button ID="sitabig" Text="↓" runat="server" CssClass="jyunban" CommandName="sitabig" Visible="false"/>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
                                 <asp:BoundColumn DataField="PMiddleid" HeaderText="中項目ID" ReadOnly="True" HeaderStyle-Width="10px" HeaderStyle-Font-Size="Small" ItemStyle-Width="10px"/>
                                 <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目"/>
                                 <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
                                         <ItemTemplate>
-                                            <asp:Button ID="uemiddle" Text="↑" runat="server" CssClass="jyunban" CommandName="uemiddle"/><br>
-                                            <asp:Button ID="sitamiddle" Text="↓" runat="server" CssClass="jyunban" CommandName="sitamiddle"/>
+                                            <asp:Button ID="uemiddle" Text="↑" runat="server" CssClass="jyunban" CommandName="uemiddle" Visible="false"/><br>
+                                            <asp:Button ID="sitamiddle" Text="↓" runat="server" CssClass="jyunban" CommandName="sitamiddle" Visible="false"/>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
                                 <asp:BoundColumn DataField="PMiddlestart" HeaderText="開始"/>
@@ -121,7 +122,7 @@
                                 <asp:BoundColumn DataField="PTorokutime" HeaderText="最新編集日付" ReadOnly="True"/>
                                 <asp:BoundColumn DataField="PTorokusya" HeaderText="最新編集者" ReadOnly="True"/>
                                 
-                                <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>キャンセル" UpdateText="<font color = red>保存" HeaderStyle-Width="50px">
+                                <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>取消" UpdateText="<font color = red>保存" HeaderStyle-Width="100px">
                                 </asp:EditCommandColumn>
                                 <asp:ButtonColumn ButtonType="LinkButton" Text="<font color = red>削除" CommandName="Delete" HeaderStyle-Width="50px"/>
                             </Columns>

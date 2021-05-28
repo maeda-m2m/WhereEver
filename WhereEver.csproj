@@ -251,6 +251,7 @@
     <Compile Include="Class2.cs" />
     <Compile Include="ClassLibrary\MailToClass.cs" />
     <Compile Include="ClassLibrary\FileShareClass.cs" />
+    <Compile Include="ClassLibrary\MOMClass.cs" />
     <Compile Include="ClassLibrary\ShinseiLog.cs" />
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
     <Compile Include="Class\Chat.cs" />
@@ -292,6 +293,7 @@
     </Compile>
     <Compile Include="Project System\Delete.cs" />
     <Compile Include="Project System\Insert.cs" />
+    <Compile Include="Project System\Narabi.cs" />
     <Compile Include="Project System\PIchiran.aspx.cs">
       <DependentUpon>PIchiran.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

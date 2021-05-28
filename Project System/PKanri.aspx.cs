@@ -75,13 +75,44 @@ namespace WhereEver.Project_System
                 }
             }
         }
+
+        public string bigname = "";
         protected void DgPKanri_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
             if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
             {
                 DATASET.DataSet.T_PdbKanriRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbKanriRow;
-                e.Item.Cells[0].Text = dr.PBigname.ToString();
+                
+                if (dr.PBigname != bigname)
+                {
+                    e.Item.Cells[0].Text = "<font color = white>"+dr.PBigname.ToString();
+                    bigname = dr.PBigname;
+                    if (dr.PBigid!=1)
+                    {
+                        Button uebig = e.Item.FindControl("uebig") as Button;
+                        uebig.Visible = true;
+                    }
+                    else if(dr.PBigid != Insert.GetMaxPBigidRow(Global.GetConnection(), SessionManager.project.PdbRow.Pid).PBigid)
+                    {
+                        Button sitabig = e.Item.FindControl("sitabig") as Button;
+                        sitabig.Visible = true;
+                    }
+                }
+                else
+                {
+                    e.Item.Cells[0].Text = "<font color = black>"+dr.PBigname.ToString();
+                }
                 e.Item.Cells[2].Text = dr.PMiddleid.ToString();
+                if (dr.PMiddleid != 1)
+                {
+                    Button uemiddle = e.Item.FindControl("uemiddle") as Button;
+                    uemiddle.Visible = true;
+                }
+                else if (dr.PMiddleid != Insert.GetMaxPMiddleidRow(Global.GetConnection(), dr.PBigname).PMiddleid)
+                {
+                    Button sitamiddle = e.Item.FindControl("sitamiddle") as Button;
+                    sitamiddle.Visible = true;
+                }
                 e.Item.Cells[3].Text = dr.PMiddlename.ToString();
                 e.Item.Cells[5].Text = dr.PMiddlestart.ToShortDateString();
                 e.Item.Cells[6].Text = dr.PMiddleover.ToShortDateString();
@@ -134,12 +165,13 @@ namespace WhereEver.Project_System
             ddlPBigList.Text = txtPBig.Text;
             txtPBig.Text = "";
         }
-        internal static int GetPBigidNow(SqlConnection sqlConnection, string name)
+        internal static int GetPBigidNow(SqlConnection sqlConnection, string name,int Pid)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "select PBigid from T_PdbKanri where PBigname like @name";
+                "select PBigid from T_PdbKanri where PBigname like @name and Pid like @Pid";
             da.SelectCommand.Parameters.AddWithValue("@name", name);
+            da.SelectCommand.Parameters.AddWithValue("@Pid", Pid);
             DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
             da.Fill(dt);
             return dt[0].PBigid;
@@ -173,7 +205,7 @@ namespace WhereEver.Project_System
                         else
                         {
                             t_PdbKanriRow.PBigname = ddlPBigList.SelectedItem.Text;
-                            t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(), ddlPBigList.SelectedItem.Text);
+                            t_PdbKanriRow.PBigid = GetPBigidNow(Global.GetConnection(), ddlPBigList.SelectedItem.Text, SessionManager.project.PdbRow.Pid);
                             t_PdbKanriRow.PMiddleid = t_PdbKanriRow1.PMiddleid + 1;
                             t_PdbKanriRow.PMiddlename = txtPMiddle.Text;
                             t_PdbKanriRow.PMiddlestart = DateTime.Parse(date1.Value);
@@ -258,37 +290,42 @@ namespace WhereEver.Project_System
 
         protected void DgPKanri_ItemCommand(object source, DataGridCommandEventArgs e)
         {
-            string bigname = e.Item.Cells[0].Text;
-            string Middleid = e.Item.Cells[2].Text;
-            switch (((LinkButton)e.CommandSource).CommandName)
+            if (e.CommandName== "Delete"|| e.CommandName == "uebig" || e.CommandName == "sitabig" || e.CommandName == "uemiddle" || e.CommandName == "sitamiddle")
             {
-                case "Delete":
-                    Delete.DeleteMiddle(bigname, Middleid);
-                    break;
-                default:
-                    // Do nothing.
-                    break;
+                string name = e.Item.Cells[0].Text;
+                string[] arr = name.Split('>');
+                string bigname = arr[1];
+                string Middleid = e.Item.Cells[2].Text;
+                switch (e.CommandName)
+                {
+                    case "Delete":
+                        Delete.DeleteMiddle(bigname, Middleid, SessionManager.project.PdbRow.Pid);
+                        break;
+                    case "uebig":
+                        Narabi.uebig(Global.GetConnection(), bigname, SessionManager.project.PdbRow.Pid);
+                        CreateDataGrid(SessionManager.project.PdbRow.Pid);
+                        break;
+                    case "sitabig":
+                        Narabi.sitabig(Global.GetConnection(), bigname, SessionManager.project.PdbRow.Pid);
+                        CreateDataGrid(SessionManager.project.PdbRow.Pid);
+                        break;
+                    case "uemiddle":
+                        Narabi.uemiddle(Global.GetConnection(), Middleid, bigname, SessionManager.project.PdbRow.Pid);
+                        CreateDataGrid(SessionManager.project.PdbRow.Pid);
+                        break;
+                    case "sitamiddle":
+                        Narabi.sitamiddle(Global.GetConnection(), Middleid, bigname, SessionManager.project.PdbRow.Pid);
+                        CreateDataGrid(SessionManager.project.PdbRow.Pid);
+                        break;
+                    default:
+                        // Do nothing.
+                        break;
 
+                }
+                DgPKanri.EditItemIndex = -1;
+                CreateDataGrid(SessionManager.project.PdbRow.Pid);
             }
-            switch (((Button)e.CommandSource).CommandName)
-            {
-                // Add other cases here, if there are multiple ButtonColumns in 
-                // the DataGrid control.
-                case "uebig":
-                    break;
-                case "sitabig":
-                    break;
-                case "uemiddle":
-                    break;
-                case "sitamiddle":
-                    break;
-                default:
-                    // Do nothing.
-                    break;
-
-            }
-            DgPKanri.EditItemIndex = -1;
-            CreateDataGrid(SessionManager.project.PdbRow.Pid);
+                
         }
 
         protected void btnDeleteBig_Click(object sender, EventArgs e)
@@ -393,11 +430,6 @@ namespace WhereEver.Project_System
             DgPKanri.Visible = false;
             wbs.Visible = false;
             btnWBS.Visible = false;
-        }
-
-        protected void uebig_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
