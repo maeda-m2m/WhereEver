@@ -30,8 +30,8 @@
         <table>
             <asp:DataGrid runat="server" ID="ChatArea" AutoGenerateColumns="false" 
                 OnItemDataBound="Chat_ItemDataBound"
-                OnItemCommand="ChatArea_ItemCommand" >
-                
+                OnItemCommand="ChatArea_ItemCommand" AllowPaging="True" OnPageIndexChanged="ChatArea_PageIndexChanged"
+            PageSize="10">
                 <Columns>
 
                     <asp:TemplateColumn HeaderText="" ItemStyle-Width="50px">
