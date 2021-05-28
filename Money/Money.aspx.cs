@@ -19,6 +19,7 @@ namespace WhereEver.Money
                 ResetMonthItem();
                 ResetPL();
                 ResetBS();
+                ResetCF();
 
                 //セッション変数argsを初期化
                 Session.Add("args", (string)"null");
@@ -29,28 +30,37 @@ namespace WhereEver.Money
 
             if (DropDownList_PL_month_s.SelectedValue != "--")
             {
-                DropDownList_PL_month_s.BackColor = System.Drawing.Color.Black;
+                DropDownList_PL_month_s.BackColor = System.Drawing.Color.Empty;
             }
             if (DropDownList_PL_day_s.SelectedValue != "--")
             {
-                DropDownList_PL_day_s.BackColor = System.Drawing.Color.Black;
+                DropDownList_PL_day_s.BackColor = System.Drawing.Color.Empty;
             }
             if (DropDownList_PL_month_g.SelectedValue != "--")
             {
-                DropDownList_PL_month_g.BackColor = System.Drawing.Color.Black;
+                DropDownList_PL_month_g.BackColor = System.Drawing.Color.Empty;
             }
             if (DropDownList_PL_day_g.SelectedValue != "--")
             {
-                DropDownList_PL_day_g.BackColor = System.Drawing.Color.Black;
+                DropDownList_PL_day_g.BackColor = System.Drawing.Color.Empty;
             }
 
             if (DropDownList_BS_month.SelectedValue != "--")
             {
-                DropDownList_BS_month.BackColor = System.Drawing.Color.Black;
+                DropDownList_BS_month.BackColor = System.Drawing.Color.Empty;
             }
             if (DropDownList_BS_day.SelectedValue != "--")
             {
-                DropDownList_BS_day.BackColor = System.Drawing.Color.Black;
+                DropDownList_BS_day.BackColor = System.Drawing.Color.Empty;
+            }
+
+            if (DropDownList_CF_month.SelectedValue != "--")
+            {
+                DropDownList_CF_month.BackColor = System.Drawing.Color.Empty;
+            }
+            if (DropDownList_CF_day.SelectedValue != "--")
+            {
+                DropDownList_CF_day.BackColor = System.Drawing.Color.Empty;
             }
 
 
@@ -131,6 +141,7 @@ namespace WhereEver.Money
             DropDownList_PL_year_s.Items.Clear();
             DropDownList_PL_year_g.Items.Clear();
             DropDownList_BS_year.Items.Clear();
+            DropDownList_CF_year.Items.Clear();
         }
 
         /// <summary>
@@ -146,10 +157,15 @@ namespace WhereEver.Money
             DropDownList_BS_month.Items.Clear();
             DropDownList_BS_month.Items.Insert(0, "--");
 
+            DropDownList_CF_month.Items.Clear();
+            DropDownList_CF_month.Items.Insert(0, "--");
+
+
             for (int i=1; i <= 12; i++) {
                 DropDownList_PL_month_s.Items.Insert(i, i.ToString());
                 DropDownList_PL_month_g.Items.Insert(i, i.ToString());
                 DropDownList_BS_month.Items.Insert(i, i.ToString());
+                DropDownList_CF_month.Items.Insert(i, i.ToString());
             }
 
         }
@@ -165,6 +181,7 @@ namespace WhereEver.Money
             DropDownList_PL_year_s.Items.Insert(i, item);
             DropDownList_PL_year_g.Items.Insert(i, item);
             DropDownList_BS_year.Items.Insert(i, item);
+            DropDownList_CF_year.Items.Insert(i, item);
         }
 
         /// <summary>
@@ -177,6 +194,7 @@ namespace WhereEver.Money
             DropDownList_PL_year_s.SelectedValue = (int.Parse(item) - 1).ToString();
             DropDownList_PL_year_g.SelectedValue = item;
             DropDownList_BS_year.SelectedValue = item;
+            DropDownList_CF_year.SelectedValue = item;
         }
 
         /// <summary>
@@ -192,6 +210,8 @@ namespace WhereEver.Money
             DropDownList_PL_day_g.Items.Insert(0, "--");
             DropDownList_BS_day.Items.Clear();
             DropDownList_BS_day.Items.Insert(0, "--");
+            DropDownList_CF_day.Items.Clear();
+            DropDownList_CF_day.Items.Insert(0, "--");
             //-------------------------------------------------------------------------------
 
             //month
@@ -199,6 +219,7 @@ namespace WhereEver.Money
             DropDownList_PL_month_s.SelectedValue = "--";
             DropDownList_PL_month_g.SelectedValue = "--";
             DropDownList_BS_month.SelectedValue = "--";
+            DropDownList_CF_month.SelectedValue = "--";
 
             SetMaxYear();
         }
@@ -345,6 +366,50 @@ namespace WhereEver.Money
             //---------------------------------------------------------------------------------
 
 
+            //memory
+            memory1 = DropDownList_CF_day.SelectedValue;
+
+            if (memory1 == "--" || memory1 == "")
+            {
+                memory1 = "0";
+            }
+
+            //初期化
+            DropDownList_CF_day.Items.Clear();
+            DropDownList_CF_day.Items.Insert(0, "--");
+
+            y = int.Parse(DropDownList_CF_year.SelectedValue);
+            if (DropDownList_CF_month.SelectedValue != "--")
+            {
+
+                m = int.Parse(DropDownList_CF_month.SelectedValue);
+                maxday = GetDateMax(y, m);
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_CF_day.Items.Insert(i, i.ToString());
+                }
+
+            }
+            else
+            {
+                maxday = 31;
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_CF_day.Items.Insert(i, i.ToString());
+                }
+            }
+
+            //load
+            if (memory1 == "0")
+            {
+                memory1 = "--";
+            }
+
+            DropDownList_CF_day.SelectedValue = memory1;
+            //---------------------------------------------------------------------------------
+
         }
 
 
@@ -482,7 +547,7 @@ namespace WhereEver.Money
             //宣言と初期化
             int value;
             int pl_sum = 0;
-            double ri_r;
+            float ri_r;
             string str;
 
             str = TextBox_Uriage.Text;
@@ -492,7 +557,7 @@ namespace WhereEver.Money
 
             str = TextBox_UriageGenka.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out value);
-            pl_sum += value;
+            pl_sum -= value;
 
             Label_UriageSourieki.Text = string.Format("{0:C}", pl_sum);
 
@@ -509,7 +574,7 @@ namespace WhereEver.Money
 
             str = TextBox_HanbaiKanrihi.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out value);
-            pl_sum += value;
+            pl_sum -= value;
 
             str = TextBox_EigyouRieki.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out value);
@@ -528,7 +593,7 @@ namespace WhereEver.Money
 
             str = TextBox_EigyougaiHiyou.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out value);
-            pl_sum += value;
+            pl_sum -= value;
 
             Label_KeijyouRieki.Text = string.Format("{0:C}", pl_sum);
             //売上高経常利益率（％）＝経常利益÷売上高×100%
@@ -546,15 +611,15 @@ namespace WhereEver.Money
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out value);
             pl_sum += value;
 
-            Label_Zeibikimae.Text = string.Format("{0:C}", pl_sum);
-
             str = TextBox_TokubetsuSonshitsu.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out value);
-            pl_sum += value;
+            pl_sum -= value;
+
+            Label_Zeibikimae.Text = string.Format("{0:C}", pl_sum);
 
             str = TextBox_Houjinzei.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out value);
-            pl_sum += value;
+            pl_sum -= value;
 
             Label_Jyunrieki.Text = string.Format("{0:C}", pl_sum);
         }
@@ -795,6 +860,93 @@ namespace WhereEver.Money
                 GridView_BS.Rows[args].BackColor = System.Drawing.Color.Red;
 
             }
+
+            // コマンド名が“CFRemove”の場合にのみ処理（独自の削除ボタン）
+            if (e.CommandName == "CFRemove")
+            {
+
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
+
+                //セッション変数argsを初期化
+                Session.Add("args", (string)"null");
+                Session.Add("uuid", (string)"null");
+
+                string uuid = GridView_CF.Rows[args].Cells[0].Text;
+                ClassLibrary.MOMClass.DeleteT_CFRow(Global.GetConnection(), uuid);
+
+                GridView_CF.DataBind();
+
+
+                // コマンド名が“CFDownLoad”の場合にのみ処理（選択ボタン）
+            }
+            else if (e.CommandName == "CFDownLoad")
+            {
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
+
+                ResetCF();
+
+                string uuid = GridView_CF.Rows[args].Cells[0].Text;
+                DATASET.DataSet.T_CFRow dr = ClassLibrary.MOMClass.GetT_CFRow(Global.GetConnection(), uuid);
+
+
+                if (Session["args"].ToString() != "null")
+                {
+                    //GridView1の色を変えた色をもとに戻す
+                    int resetargs = int.Parse(Session["args"].ToString());
+                    GridView_CF.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
+                }
+
+                if (dr == null)
+                {
+                    //Fatal Error
+                    return;
+                }
+
+                Session.Add("uuid", uuid);
+
+                //編集テーブルに代入
+                TextBox_CF1.Text = dr.CF1.ToString();
+                TextBox_CF2.Text = dr.CF2.ToString();
+                TextBox_CF3.Text = dr.CF3.ToString();
+                TextBox_CF4.Text = dr.CF4.ToString();
+                TextBox_CF5.Text = dr.CF5.ToString();
+                TextBox_CF6.Text = dr.CF6.ToString();
+                TextBox_CF7.Text = dr.CF7.ToString();
+                TextBox_CF8.Text = dr.CF8.ToString();
+                TextBox_CF9.Text = dr.CF9.ToString();
+                TextBox_CF10.Text = dr.CF10.ToString();
+                TextBox_CF11.Text = dr.CF11.ToString();
+                TextBox_CF12.Text = dr.CF12.ToString();
+                TextBox_CF13.Text = dr.CF13.ToString();
+                TextBox_CF14.Text = dr.ACL5.ToString(); //(6)現金および現金同等物期末残高
+                TextBox_CF15.Text = dr.CF14.ToString(); //売上高
+
+
+                DropDownList_CF_year.SelectedValue = dr.Date.Year.ToString();
+                DropDownList_CF_month.SelectedValue = dr.Date.Month.ToString();
+                SetMaxDate();
+                DropDownList_CF_day.SelectedValue = dr.Date.Day.ToString();
+
+                //SUM
+                Sum_CF();
+                GridView_CF.DataBind();
+
+                //新たに色を変更する行を記憶
+                Session.Add("args", args);
+
+                //行の色変更（選択行を強調表示）
+                GridView_CF.Rows[args].BackColor = System.Drawing.Color.Red;
+
+            }
+
             //---------------------
             return; //grid_RowCommand
             //---------------------
@@ -824,24 +976,7 @@ namespace WhereEver.Money
 
 
 
-        //------------------------------------------------------------------------------------------------------------------------------------------
-        //C/F
-        //------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-        protected void Push_CF_test(object sender, EventArgs e)
-        {
-            if (Panel_CF.Visible)
-            {
-                Panel_CF.Visible = false;
-            }
-            else
-            {
-                Panel_CF.Visible = true;
-            }
-
-        }
 
         protected void Change_BS(object sender, EventArgs e)
         {
@@ -1273,6 +1408,246 @@ namespace WhereEver.Money
 
             GridView_BS.DataBind();
 
+        }
+
+
+
+
+
+
+
+
+        //------------------------------------------------------------------------------------------------------------------------------------------
+        //C/F
+        //------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+        protected void Push_CF_test(object sender, EventArgs e)
+        {
+            if (Panel_CF.Visible)
+            {
+                Panel_CF.Visible = false;
+            }
+            else
+            {
+                Panel_CF.Visible = true;
+            }
+
+        }
+
+
+        protected void Push_Check_CF(object sender, EventArgs e)
+        {
+            Check_CF(false);
+        }
+
+        protected void Push_CheckAS_CF(object sender, EventArgs e)
+        {
+            Check_CF(true);
+        }
+
+        protected void Change_CF(object sender, EventArgs e)
+        {
+            Sum_CF();
+        }
+
+
+        protected void Sum_CF()
+        {
+            //宣言と初期化
+            float ri_r;
+            string str;
+
+            //(1)営業活動によるキャッシュフロー 
+            str = TextBox_CF1.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value1);
+            str = TextBox_CF2.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value2);
+            str = TextBox_CF3.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value3);
+            str = TextBox_CF4.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value4);
+            str = TextBox_CF5.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value5);
+            str = TextBox_CF6.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value6);
+            int cf1 = value1 + value2 - value3 - value4 + value5 - value6;
+            Label_CF1.Text = string.Format("{0:C}", cf1);
+
+            //(2)投資活動によるキャッシュフロー
+            str = TextBox_CF7.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value7);
+            str = TextBox_CF8.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value8);
+            str = TextBox_CF9.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value9);
+            str = TextBox_CF10.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value10);
+            int cf2 = - value7 + value8 - value9 + value10;
+            Label_CF2.Text = string.Format("{0:C}", cf2);
+
+            //(3)財務活動によるキャッシュ・フロー
+            str = TextBox_CF11.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value11);
+            str = TextBox_CF12.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value12);
+            int cf3 = value11 - value12;
+            Label_CF3.Text = string.Format("{0:C}", cf3);
+
+            //(5)現金及び現金同等物等期首残高
+            str = TextBox_CF13.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value13);
+
+            //(6)現金および現金同等物期末残高
+            str = TextBox_CF14.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value14);
+
+            //売上高
+            str = TextBox_CF15.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value15);
+
+            int cf4 = cf1 + cf2 + cf3;
+            Label_CF4.Text = string.Format("{0:C}", cf4);
+
+            //int cf5 = value14; //削除
+
+
+
+            //キャッシュ・フローマージン＝「営業活動によるキャッシュ・フロー」÷「売上高」
+            if ((float)value15 != 0)
+            {
+                ri_r = (float)cf1 / (float)value15;
+            }
+            else
+            {
+                ri_r = 0f;
+            }
+            Label_CF6.Text = string.Format("{0:0.0%}", (double)ri_r);
+        }
+
+
+        protected void Check_CF(bool b = false)
+        {
+            Sum_CF();
+
+            if (DropDownList_CF_month.SelectedValue == "--")
+            {
+                DropDownList_CF_month.BackColor = System.Drawing.Color.Red;
+                return;
+            }
+            if (DropDownList_CF_day.SelectedValue == "--")
+            {
+                DropDownList_CF_day.BackColor = System.Drawing.Color.Red;
+                return;
+            }
+
+
+            //宣言と初期化
+            string str;
+
+            //(1)営業活動によるキャッシュフロー 
+            str = TextBox_CF1.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value1);
+            str = TextBox_CF2.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value2);
+            str = TextBox_CF3.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value3);
+            str = TextBox_CF4.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value4);
+            str = TextBox_CF5.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value5);
+            str = TextBox_CF6.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value6);
+
+            //(2)投資活動によるキャッシュフロー
+            str = TextBox_CF7.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value7);
+            str = TextBox_CF8.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value8);
+            str = TextBox_CF9.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value9);
+            str = TextBox_CF10.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value10);
+
+            //(3)財務活動によるキャッシュ・フロー
+            str = TextBox_CF11.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value11);
+            str = TextBox_CF12.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value12);
+
+            //(5)現金及び現金同等物等期首残高
+            str = TextBox_CF13.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value13);
+
+            //(6)現金および現金同等物期末残高
+            str = TextBox_CF14.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value14);
+
+            //売上高
+            str = TextBox_CF15.Text;
+            int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value15);
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(DropDownList_CF_year.SelectedValue);
+            sb.Append("/");
+            sb.Append(DropDownList_CF_month.SelectedValue);
+            sb.Append("/");
+            sb.Append(DropDownList_CF_day.SelectedValue);
+            DateTime dt = DateTime.Parse(sb.ToString());
+
+            string uuid = Session["uuid"].ToString();
+
+            if (b)
+            {
+                DATASET.DataSet.T_CFRow dr = ClassLibrary.MOMClass.GetT_CFRow(Global.GetConnection(), uuid);
+                if (dr != null)
+                {
+                    ClassLibrary.MOMClass.SetT_CFUpdate(Global.GetConnection(), uuid, value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, dt);
+                }
+                else
+                {
+                    b = false;
+                }
+            }
+
+            if (!b)
+            {
+                ClassLibrary.MOMClass.SetT_CFInsert(Global.GetConnection(), value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, dt);
+            }
+
+            GridView_CF.DataBind();
+        }
+
+
+
+        protected void ResetCF()
+        {
+            TextBox_CF1.Text = "0";
+            TextBox_CF2.Text = "0";
+            TextBox_CF3.Text = "0";
+            TextBox_CF4.Text = "0";
+            TextBox_CF5.Text = "0";
+            TextBox_CF6.Text = "0";
+            TextBox_CF7.Text = "0";
+            TextBox_CF8.Text = "0";
+            TextBox_CF9.Text = "0";
+            TextBox_CF10.Text = "0";
+            TextBox_CF11.Text = "0";
+            TextBox_CF12.Text = "0";
+            TextBox_CF13.Text = "0";
+            TextBox_CF14.Text = "0";
+            TextBox_CF15.Text = "0";
+
+            Label_CF1.Text = string.Format("{0:C}", 0);
+            Label_CF2.Text = string.Format("{0:C}", 0);
+            Label_CF3.Text = string.Format("{0:C}", 0);
+            Label_CF4.Text = string.Format("{0:C}", 0);
+            Label_CF6.Text = string.Format("{0:0.0%}", 0);
+
+            DropDownList_CF_month.SelectedValue = "4";
+            SetMaxDate();
+            DropDownList_CF_day.SelectedValue = "1";
         }
 
 
