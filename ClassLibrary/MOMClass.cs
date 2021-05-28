@@ -1065,7 +1065,7 @@ namespace WhereEver.ClassLibrary
                     // C/F 内部計算
                     int cf1 = v1 + v2 - v3 - v4 + v5 - v6;
                     int cf2 = -v7 + v8 - v9 + v10;
-                    int cf3 = v11 + v12;
+                    int cf3 = v11 - v12;
                     int cf4 = cf1 + cf2 + cf3;
                     //int cf5 = v14;
 
@@ -1192,7 +1192,7 @@ namespace WhereEver.ClassLibrary
                     // C/F 内部計算
                     int cf1 = v1 + v2 - v3 - v4 + v5 - v6;
                     int cf2 = -v7 + v8 - v9 + v10;
-                    int cf3 = v11 + v12;
+                    int cf3 = v11 - v12;
                     int cf4 = cf1 + cf2 + cf3;
                     //int cf5 = v14;
 

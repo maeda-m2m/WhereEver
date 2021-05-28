@@ -1439,12 +1439,12 @@ namespace WhereEver.Money
 
         protected void Push_Check_CF(object sender, EventArgs e)
         {
-            Check_CF(true);
+            Check_CF(false);
         }
 
         protected void Push_CheckAS_CF(object sender, EventArgs e)
         {
-            Check_CF(false);
+            Check_CF(true);
         }
 
         protected void Change_CF(object sender, EventArgs e)
@@ -1492,7 +1492,7 @@ namespace WhereEver.Money
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value11);
             str = TextBox_CF12.Text;
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value12);
-            int cf3 = value11 + value12;
+            int cf3 = value11 - value12;
             Label_CF3.Text = string.Format("{0:C}", cf3);
 
             //(5)現金及び現金同等物等期首残高
@@ -1508,7 +1508,9 @@ namespace WhereEver.Money
             int.TryParse(str, System.Globalization.NumberStyles.Currency, null, out int value15);
 
             int cf4 = cf1 + cf2 + cf3;
-            int cf5 = value14;
+            Label_CF4.Text = string.Format("{0:C}", cf4);
+
+            //int cf5 = value14; //削除
 
 
 
