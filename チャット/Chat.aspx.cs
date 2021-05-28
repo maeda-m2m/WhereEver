@@ -187,7 +187,7 @@ namespace WhereEver
             dr.Date = DateTime.Now;
             dr.Id = SessionManager.User.ID; //変更
             dr.Name = Label1.Text;
-            dr.Naiyou = txtHenshin.Text;
+            dr.Naiyou = txtHenshin.Text.Replace("\r\n", "<br>");
 
             txtHenshin.Text = "";
             dt.AddT_ChatRow(dr);
