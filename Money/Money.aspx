@@ -220,7 +220,7 @@
                 <asp:BoundField DataField="arari_r" HeaderText="粗利率" SortExpression="arari_r" DataFormatString="{0:0.0%}" HeaderStyle-ForeColor="LightGreen" />
                 <asp:BoundField DataField="eigyou_r" HeaderText="営業利益率" SortExpression="eigyou_r" DataFormatString="{0:0.0%}" HeaderStyle-ForeColor="LightGreen" />
                 <asp:BoundField DataField="keijyou_r" HeaderText="経常利益率" SortExpression="keijyou_r" DataFormatString="{0:0.0%}" HeaderStyle-ForeColor="LightGreen" />
-                <asp:BoundField DataField="Date_S" HeaderText="自" SortExpression="Date_S" DataFormatString="{0:d}" />
+                <asp:BoundField DataField="Date_S" HeaderText="出" SortExpression="Date_S" DataFormatString="{0:d}" />
                 <asp:BoundField DataField="Date_G" HeaderText="至" SortExpression="Date_G" DataFormatString="{0:d}" />
                 <asp:BoundField DataField="UpDateTime" HeaderText="最終更新日" SortExpression="UpDateTime" />
 
