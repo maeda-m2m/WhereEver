@@ -134,17 +134,12 @@ namespace WhereEver.管理ページ
 
         protected void Radio_SMTP_changed(object sender, EventArgs e)
         {
-            this.Response.Redirect("Kanri.aspx#edittop", false);
+            Response.Redirect("Kanri.aspx#edittop", false);
         }
 
         protected void btnVideo_Click(object sender, EventArgs e)
         {
-            this.Response.Redirect("../Video/Video.aspx", false);
-        }
-
-        protected void btnMoney_Click(object sender, EventArgs e)
-        {
-            this.Response.Redirect("../Money/Money.aspx", false);
+            Response.Redirect("../Video/Video.aspx", false);
         }
 
         //-----------------------------------------------------------------------------------

@@ -129,6 +129,7 @@
                                 <asp:Button ID="Button_Master_A" CssClass="btn-flat-border" runat="server" Text="物品購入" OnClick="Push_Master_A" CausesValidation="False" PostBackUrl="#master" />
                                 <asp:Button ID="Button_Master_B" CssClass="btn-flat-border" runat="server" Text="勤怠関連" OnClick="Push_Master_B" CausesValidation="False" PostBackUrl="#master" />
                                 <asp:Button ID="Button_Master_C" CssClass="btn-flat-border" runat="server" Text="立替金明細表" OnClick="Push_Master_C" CausesValidation="False" PostBackUrl="#master" />
+                                <asp:Button ID="Button_Money" runat="server" CssClass="btn-flat-border" Text="財務諸表" OnClick="btnMoney_Click" />
                             </td>
                             <td class="text">
                                 <asp:DropDownList ID="DropDownList1" runat="server" OnTextChanged="DropDownList_Master_SelectionChanged" AutoPostBack="True" CausesValidation="False" Visible="false" >

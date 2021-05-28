@@ -231,6 +231,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button_Master_C;
 
         /// <summary>
+        /// Button_Money コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Money;
+
+        /// <summary>
         /// DropDownList1 コントロール。
         /// </summary>
         /// <remarks>
