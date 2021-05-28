@@ -7003,18 +7003,18 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public T_PLRow AddT_PLRow(
                         string uuid, 
-                        decimal uriagedaka, 
-                        decimal uriagegenka, 
-                        decimal uriagesourieki, 
-                        decimal hanbaikanrihi, 
-                        decimal eigyourieki, 
-                        decimal eigyougaihiyou, 
-                        decimal keijyourieki, 
-                        decimal tokubetsurieki, 
-                        decimal tokubetsusonshitsu, 
-                        decimal zeibikimaetoukijyunrieki, 
-                        decimal houjinzeitou, 
-                        decimal toukijyunrieki, 
+                        long uriagedaka, 
+                        long uriagegenka, 
+                        long uriagesourieki, 
+                        long hanbaikanrihi, 
+                        long eigyourieki, 
+                        long eigyougaihiyou, 
+                        long keijyourieki, 
+                        long tokubetsurieki, 
+                        long tokubetsusonshitsu, 
+                        long zeibikimaetoukijyunrieki, 
+                        long houjinzeitou, 
+                        long toukijyunrieki, 
                         double arari_r, 
                         double eigyou_r, 
                         double keijyou_r, 
@@ -7097,29 +7097,29 @@ namespace WhereEver.DATASET {
             private void InitClass() {
                 this.columnuuid = new global::System.Data.DataColumn("uuid", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuuid);
-                this.columnuriagedaka = new global::System.Data.DataColumn("uriagedaka", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnuriagedaka = new global::System.Data.DataColumn("uriagedaka", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuriagedaka);
-                this.columnuriagegenka = new global::System.Data.DataColumn("uriagegenka", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnuriagegenka = new global::System.Data.DataColumn("uriagegenka", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuriagegenka);
-                this.columnuriagesourieki = new global::System.Data.DataColumn("uriagesourieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnuriagesourieki = new global::System.Data.DataColumn("uriagesourieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuriagesourieki);
-                this.columnhanbaikanrihi = new global::System.Data.DataColumn("hanbaikanrihi", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnhanbaikanrihi = new global::System.Data.DataColumn("hanbaikanrihi", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhanbaikanrihi);
-                this.columneigyourieki = new global::System.Data.DataColumn("eigyourieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columneigyourieki = new global::System.Data.DataColumn("eigyourieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columneigyourieki);
-                this.columneigyougaihiyou = new global::System.Data.DataColumn("eigyougaihiyou", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columneigyougaihiyou = new global::System.Data.DataColumn("eigyougaihiyou", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columneigyougaihiyou);
-                this.columnkeijyourieki = new global::System.Data.DataColumn("keijyourieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnkeijyourieki = new global::System.Data.DataColumn("keijyourieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnkeijyourieki);
-                this.columntokubetsurieki = new global::System.Data.DataColumn("tokubetsurieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columntokubetsurieki = new global::System.Data.DataColumn("tokubetsurieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntokubetsurieki);
-                this.columntokubetsusonshitsu = new global::System.Data.DataColumn("tokubetsusonshitsu", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columntokubetsusonshitsu = new global::System.Data.DataColumn("tokubetsusonshitsu", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntokubetsusonshitsu);
-                this.columnzeibikimaetoukijyunrieki = new global::System.Data.DataColumn("zeibikimaetoukijyunrieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnzeibikimaetoukijyunrieki = new global::System.Data.DataColumn("zeibikimaetoukijyunrieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnzeibikimaetoukijyunrieki);
-                this.columnhoujinzeitou = new global::System.Data.DataColumn("houjinzeitou", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnhoujinzeitou = new global::System.Data.DataColumn("houjinzeitou", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhoujinzeitou);
-                this.columntoukijyunrieki = new global::System.Data.DataColumn("toukijyunrieki", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columntoukijyunrieki = new global::System.Data.DataColumn("toukijyunrieki", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntoukijyunrieki);
                 this.columnarari_r = new global::System.Data.DataColumn("arari_r", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnarari_r);
@@ -9625,9 +9625,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal uriagedaka {
+            public long uriagedaka {
                 get {
-                    return ((decimal)(this[this.tableT_PL.uriagedakaColumn]));
+                    return ((long)(this[this.tableT_PL.uriagedakaColumn]));
                 }
                 set {
                     this[this.tableT_PL.uriagedakaColumn] = value;
@@ -9636,9 +9636,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal uriagegenka {
+            public long uriagegenka {
                 get {
-                    return ((decimal)(this[this.tableT_PL.uriagegenkaColumn]));
+                    return ((long)(this[this.tableT_PL.uriagegenkaColumn]));
                 }
                 set {
                     this[this.tableT_PL.uriagegenkaColumn] = value;
@@ -9647,9 +9647,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal uriagesourieki {
+            public long uriagesourieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.uriagesouriekiColumn]));
+                    return ((long)(this[this.tableT_PL.uriagesouriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.uriagesouriekiColumn] = value;
@@ -9658,9 +9658,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal hanbaikanrihi {
+            public long hanbaikanrihi {
                 get {
-                    return ((decimal)(this[this.tableT_PL.hanbaikanrihiColumn]));
+                    return ((long)(this[this.tableT_PL.hanbaikanrihiColumn]));
                 }
                 set {
                     this[this.tableT_PL.hanbaikanrihiColumn] = value;
@@ -9669,9 +9669,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal eigyourieki {
+            public long eigyourieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.eigyouriekiColumn]));
+                    return ((long)(this[this.tableT_PL.eigyouriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.eigyouriekiColumn] = value;
@@ -9680,9 +9680,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal eigyougaihiyou {
+            public long eigyougaihiyou {
                 get {
-                    return ((decimal)(this[this.tableT_PL.eigyougaihiyouColumn]));
+                    return ((long)(this[this.tableT_PL.eigyougaihiyouColumn]));
                 }
                 set {
                     this[this.tableT_PL.eigyougaihiyouColumn] = value;
@@ -9691,9 +9691,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal keijyourieki {
+            public long keijyourieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.keijyouriekiColumn]));
+                    return ((long)(this[this.tableT_PL.keijyouriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.keijyouriekiColumn] = value;
@@ -9702,9 +9702,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal tokubetsurieki {
+            public long tokubetsurieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.tokubetsuriekiColumn]));
+                    return ((long)(this[this.tableT_PL.tokubetsuriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.tokubetsuriekiColumn] = value;
@@ -9713,9 +9713,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal tokubetsusonshitsu {
+            public long tokubetsusonshitsu {
                 get {
-                    return ((decimal)(this[this.tableT_PL.tokubetsusonshitsuColumn]));
+                    return ((long)(this[this.tableT_PL.tokubetsusonshitsuColumn]));
                 }
                 set {
                     this[this.tableT_PL.tokubetsusonshitsuColumn] = value;
@@ -9724,9 +9724,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal zeibikimaetoukijyunrieki {
+            public long zeibikimaetoukijyunrieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.zeibikimaetoukijyunriekiColumn]));
+                    return ((long)(this[this.tableT_PL.zeibikimaetoukijyunriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.zeibikimaetoukijyunriekiColumn] = value;
@@ -9735,9 +9735,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal houjinzeitou {
+            public long houjinzeitou {
                 get {
-                    return ((decimal)(this[this.tableT_PL.houjinzeitouColumn]));
+                    return ((long)(this[this.tableT_PL.houjinzeitouColumn]));
                 }
                 set {
                     this[this.tableT_PL.houjinzeitouColumn] = value;
@@ -9746,9 +9746,9 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal toukijyunrieki {
+            public long toukijyunrieki {
                 get {
-                    return ((decimal)(this[this.tableT_PL.toukijyunriekiColumn]));
+                    return ((long)(this[this.tableT_PL.toukijyunriekiColumn]));
                 }
                 set {
                     this[this.tableT_PL.toukijyunriekiColumn] = value;
@@ -16567,18 +16567,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [T_PL] ([uuid], [uriagedaka], [uriagegenka], [uriagesourieki], [hanbaikanrihi], [eigyourieki], [eigyougaihiyou], [keijyourieki], [tokubetsurieki], [tokubetsusonshitsu], [zeibikimaetoukijyunrieki], [houjinzeitou], [toukijyunrieki], [arari_r], [eigyou_r], [keijyou_r], [Date_S], [Date_G], [UpDateTime]) VALUES (@uuid, @uriagedaka, @uriagegenka, @uriagesourieki, @hanbaikanrihi, @eigyourieki, @eigyougaihiyou, @keijyourieki, @tokubetsurieki, @tokubetsusonshitsu, @zeibikimaetoukijyunrieki, @houjinzeitou, @toukijyunrieki, @arari_r, @eigyou_r, @keijyou_r, @Date_S, @Date_G, @UpDateTime)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uuid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagedaka", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagedaka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagegenka", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagegenka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagesourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagesourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hanbaikanrihi", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "hanbaikanrihi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyougaihiyou", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyougaihiyou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsurieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsurieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsusonshitsu", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsusonshitsu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zeibikimaetoukijyunrieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zeibikimaetoukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@houjinzeitou", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "houjinzeitou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@toukijyunrieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "toukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagedaka", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagedaka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagegenka", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagegenka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagesourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagesourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hanbaikanrihi", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "hanbaikanrihi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyougaihiyou", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyougaihiyou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsurieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsurieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsusonshitsu", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsusonshitsu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zeibikimaetoukijyunrieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zeibikimaetoukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@houjinzeitou", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "houjinzeitou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@toukijyunrieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "toukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@arari_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "arari_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyou_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyou_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyou_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyou_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -16590,18 +16590,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             this._adapter.UpdateCommand.CommandText = @"UPDATE [T_PL] SET [uuid] = @uuid, [uriagedaka] = @uriagedaka, [uriagegenka] = @uriagegenka, [uriagesourieki] = @uriagesourieki, [hanbaikanrihi] = @hanbaikanrihi, [eigyourieki] = @eigyourieki, [eigyougaihiyou] = @eigyougaihiyou, [keijyourieki] = @keijyourieki, [tokubetsurieki] = @tokubetsurieki, [tokubetsusonshitsu] = @tokubetsusonshitsu, [zeibikimaetoukijyunrieki] = @zeibikimaetoukijyunrieki, [houjinzeitou] = @houjinzeitou, [toukijyunrieki] = @toukijyunrieki, [arari_r] = @arari_r, [eigyou_r] = @eigyou_r, [keijyou_r] = @keijyou_r, [Date_S] = @Date_S, [Date_G] = @Date_G, [UpDateTime] = @UpDateTime WHERE (([uuid] = @Original_uuid))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uuid", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uuid", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagedaka", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagedaka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagegenka", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagegenka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagesourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagesourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hanbaikanrihi", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "hanbaikanrihi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyougaihiyou", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyougaihiyou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyourieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsurieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsurieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsusonshitsu", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsusonshitsu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zeibikimaetoukijyunrieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zeibikimaetoukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@houjinzeitou", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "houjinzeitou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@toukijyunrieki", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "toukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagedaka", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagedaka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagegenka", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagegenka", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@uriagesourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "uriagesourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hanbaikanrihi", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "hanbaikanrihi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyougaihiyou", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyougaihiyou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyourieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyourieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsurieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsurieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tokubetsusonshitsu", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tokubetsusonshitsu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zeibikimaetoukijyunrieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zeibikimaetoukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@houjinzeitou", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "houjinzeitou", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@toukijyunrieki", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "toukijyunrieki", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@arari_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "arari_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eigyou_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eigyou_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@keijyou_r", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "keijyou_r", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -16714,18 +16714,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
                     string uuid, 
-                    decimal uriagedaka, 
-                    decimal uriagegenka, 
-                    decimal uriagesourieki, 
-                    decimal hanbaikanrihi, 
-                    decimal eigyourieki, 
-                    decimal eigyougaihiyou, 
-                    decimal keijyourieki, 
-                    decimal tokubetsurieki, 
-                    decimal tokubetsusonshitsu, 
-                    decimal zeibikimaetoukijyunrieki, 
-                    decimal houjinzeitou, 
-                    decimal toukijyunrieki, 
+                    long uriagedaka, 
+                    long uriagegenka, 
+                    long uriagesourieki, 
+                    long hanbaikanrihi, 
+                    long eigyourieki, 
+                    long eigyougaihiyou, 
+                    long keijyourieki, 
+                    long tokubetsurieki, 
+                    long tokubetsusonshitsu, 
+                    long zeibikimaetoukijyunrieki, 
+                    long houjinzeitou, 
+                    long toukijyunrieki, 
                     double arari_r, 
                     double eigyou_r, 
                     double keijyou_r, 
@@ -16738,18 +16738,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(uuid));
             }
-            this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(uriagedaka));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(uriagegenka));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(uriagesourieki));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(hanbaikanrihi));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(eigyourieki));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(eigyougaihiyou));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((decimal)(keijyourieki));
-            this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(tokubetsurieki));
-            this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(tokubetsusonshitsu));
-            this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(zeibikimaetoukijyunrieki));
-            this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(houjinzeitou));
-            this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(toukijyunrieki));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(uriagedaka));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(uriagegenka));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((long)(uriagesourieki));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((long)(hanbaikanrihi));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((long)(eigyourieki));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((long)(eigyougaihiyou));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((long)(keijyourieki));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((long)(tokubetsurieki));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((long)(tokubetsusonshitsu));
+            this.Adapter.InsertCommand.Parameters[10].Value = ((long)(zeibikimaetoukijyunrieki));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((long)(houjinzeitou));
+            this.Adapter.InsertCommand.Parameters[12].Value = ((long)(toukijyunrieki));
             this.Adapter.InsertCommand.Parameters[13].Value = ((double)(arari_r));
             this.Adapter.InsertCommand.Parameters[14].Value = ((double)(eigyou_r));
             this.Adapter.InsertCommand.Parameters[15].Value = ((double)(keijyou_r));
@@ -16778,18 +16778,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string uuid, 
-                    decimal uriagedaka, 
-                    decimal uriagegenka, 
-                    decimal uriagesourieki, 
-                    decimal hanbaikanrihi, 
-                    decimal eigyourieki, 
-                    decimal eigyougaihiyou, 
-                    decimal keijyourieki, 
-                    decimal tokubetsurieki, 
-                    decimal tokubetsusonshitsu, 
-                    decimal zeibikimaetoukijyunrieki, 
-                    decimal houjinzeitou, 
-                    decimal toukijyunrieki, 
+                    long uriagedaka, 
+                    long uriagegenka, 
+                    long uriagesourieki, 
+                    long hanbaikanrihi, 
+                    long eigyourieki, 
+                    long eigyougaihiyou, 
+                    long keijyourieki, 
+                    long tokubetsurieki, 
+                    long tokubetsusonshitsu, 
+                    long zeibikimaetoukijyunrieki, 
+                    long houjinzeitou, 
+                    long toukijyunrieki, 
                     double arari_r, 
                     double eigyou_r, 
                     double keijyou_r, 
@@ -16803,18 +16803,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(uuid));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(uriagedaka));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(uriagegenka));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(uriagesourieki));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(hanbaikanrihi));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(eigyourieki));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(eigyougaihiyou));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(keijyourieki));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(tokubetsurieki));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(tokubetsusonshitsu));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(zeibikimaetoukijyunrieki));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(houjinzeitou));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(toukijyunrieki));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(uriagedaka));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(uriagegenka));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(uriagesourieki));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(hanbaikanrihi));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(eigyourieki));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(eigyougaihiyou));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(keijyourieki));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(tokubetsurieki));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((long)(tokubetsusonshitsu));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((long)(zeibikimaetoukijyunrieki));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((long)(houjinzeitou));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((long)(toukijyunrieki));
             this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(arari_r));
             this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(eigyou_r));
             this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(keijyou_r));
@@ -16848,18 +16848,18 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    decimal uriagedaka, 
-                    decimal uriagegenka, 
-                    decimal uriagesourieki, 
-                    decimal hanbaikanrihi, 
-                    decimal eigyourieki, 
-                    decimal eigyougaihiyou, 
-                    decimal keijyourieki, 
-                    decimal tokubetsurieki, 
-                    decimal tokubetsusonshitsu, 
-                    decimal zeibikimaetoukijyunrieki, 
-                    decimal houjinzeitou, 
-                    decimal toukijyunrieki, 
+                    long uriagedaka, 
+                    long uriagegenka, 
+                    long uriagesourieki, 
+                    long hanbaikanrihi, 
+                    long eigyourieki, 
+                    long eigyougaihiyou, 
+                    long keijyourieki, 
+                    long tokubetsurieki, 
+                    long tokubetsusonshitsu, 
+                    long zeibikimaetoukijyunrieki, 
+                    long houjinzeitou, 
+                    long toukijyunrieki, 
                     double arari_r, 
                     double eigyou_r, 
                     double keijyou_r, 

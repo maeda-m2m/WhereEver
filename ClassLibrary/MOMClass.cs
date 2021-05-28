@@ -139,25 +139,25 @@ namespace WhereEver.ClassLibrary
                     //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
                     //-------------------------------------------------------------------------------------------------------------------
                     command.Parameters.Add(new SqlParameter("@uuid", System.Data.SqlDbType.NVarChar, 50, "uuid")).Value = Guid.NewGuid().ToString();
-                    command.Parameters.Add(new SqlParameter("@uriagedaka", System.Data.SqlDbType.Money, 8, "uriagedaka")).Value = uriagedaka;
-                    command.Parameters.Add(new SqlParameter("@uriagegenka", System.Data.SqlDbType.Money, 8, "uriagegenka")).Value = uriagegenka;
+                    command.Parameters.Add(new SqlParameter("@uriagedaka", System.Data.SqlDbType.BigInt, 8, "uriagedaka")).Value = uriagedaka;
+                    command.Parameters.Add(new SqlParameter("@uriagegenka", System.Data.SqlDbType.BigInt, 8, "uriagegenka")).Value = uriagegenka;
                     int uriagesourieki = uriagedaka + uriagegenka;
-                    command.Parameters.Add(new SqlParameter("@uriagesourieki", System.Data.SqlDbType.Money, 8, "uriagesourieki")).Value = uriagesourieki;
+                    command.Parameters.Add(new SqlParameter("@uriagesourieki", System.Data.SqlDbType.BigInt, 8, "uriagesourieki")).Value = uriagesourieki;
 
-                    command.Parameters.Add(new SqlParameter("@hanbaikanrihi", System.Data.SqlDbType.Money, 8, "hanbaikanrihi")).Value = hanbaikanrihi;
-                    command.Parameters.Add(new SqlParameter("@eigyourieki", System.Data.SqlDbType.Money, 8, "eigyourieki")).Value = eigyourieki;
-                    command.Parameters.Add(new SqlParameter("@eigyougaihiyou", System.Data.SqlDbType.Money, 8, "eigyougaihiyou")).Value = eigyougaihiyou;
+                    command.Parameters.Add(new SqlParameter("@hanbaikanrihi", System.Data.SqlDbType.BigInt, 8, "hanbaikanrihi")).Value = hanbaikanrihi;
+                    command.Parameters.Add(new SqlParameter("@eigyourieki", System.Data.SqlDbType.BigInt, 8, "eigyourieki")).Value = eigyourieki;
+                    command.Parameters.Add(new SqlParameter("@eigyougaihiyou", System.Data.SqlDbType.BigInt, 8, "eigyougaihiyou")).Value = eigyougaihiyou;
                     int keijyourieki = uriagesourieki + hanbaikanrihi + eigyourieki + eigyougaihiyou;
-                    command.Parameters.Add(new SqlParameter("@keijyourieki", System.Data.SqlDbType.Money, 8, "keijyourieki")).Value = keijyourieki;
+                    command.Parameters.Add(new SqlParameter("@keijyourieki", System.Data.SqlDbType.BigInt, 8, "keijyourieki")).Value = keijyourieki;
 
-                    command.Parameters.Add(new SqlParameter("@tokubetsurieki", System.Data.SqlDbType.Money, 8, "tokubetsurieki")).Value = tokubetsurieki;
-                    command.Parameters.Add(new SqlParameter("@tokubetsusonshitsu", System.Data.SqlDbType.Money, 8, "tokubetsusonshitsu")).Value = tokubetsusonshitsu;
+                    command.Parameters.Add(new SqlParameter("@tokubetsurieki", System.Data.SqlDbType.BigInt, 8, "tokubetsurieki")).Value = tokubetsurieki;
+                    command.Parameters.Add(new SqlParameter("@tokubetsusonshitsu", System.Data.SqlDbType.BigInt, 8, "tokubetsusonshitsu")).Value = tokubetsusonshitsu;
                     int zeibikimaetoukijyunrieki = keijyourieki + tokubetsurieki + tokubetsusonshitsu;                 
-                    command.Parameters.Add(new SqlParameter("@zeibikimaetoukijyunrieki", System.Data.SqlDbType.Money, 8, "zeibikimaetoukijyunrieki")).Value = zeibikimaetoukijyunrieki;
+                    command.Parameters.Add(new SqlParameter("@zeibikimaetoukijyunrieki", System.Data.SqlDbType.BigInt, 8, "zeibikimaetoukijyunrieki")).Value = zeibikimaetoukijyunrieki;
 
-                    command.Parameters.Add(new SqlParameter("@houjinzeitou", System.Data.SqlDbType.Money, 8, "houjinzeitou")).Value = houjinzeitou;
+                    command.Parameters.Add(new SqlParameter("@houjinzeitou", System.Data.SqlDbType.BigInt, 8, "houjinzeitou")).Value = houjinzeitou;
                     int toukijyunrieki = zeibikimaetoukijyunrieki + houjinzeitou;
-                    command.Parameters.Add(new SqlParameter("@toukijyunrieki", System.Data.SqlDbType.Money, 8, "toukijyunrieki")).Value = toukijyunrieki;
+                    command.Parameters.Add(new SqlParameter("@toukijyunrieki", System.Data.SqlDbType.BigInt, 8, "toukijyunrieki")).Value = toukijyunrieki;
 
                     float arari_r;
                     float eigyou_r;
@@ -279,25 +279,25 @@ namespace WhereEver.ClassLibrary
                     //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
                     //-------------------------------------------------------------------------------------------------------------------
                     command.Parameters.Add(new SqlParameter("@uuid", System.Data.SqlDbType.NVarChar, 50, "uuid")).Value = uuid;
-                    command.Parameters.Add(new SqlParameter("@uriagedaka", System.Data.SqlDbType.Money, 8, "uriagedaka")).Value = uriagedaka;
-                    command.Parameters.Add(new SqlParameter("@uriagegenka", System.Data.SqlDbType.Money, 8, "uriagegenka")).Value = uriagegenka;
+                    command.Parameters.Add(new SqlParameter("@uriagedaka", System.Data.SqlDbType.BigInt, 8, "uriagedaka")).Value = uriagedaka;
+                    command.Parameters.Add(new SqlParameter("@uriagegenka", System.Data.SqlDbType.BigInt, 8, "uriagegenka")).Value = uriagegenka;
                     int uriagesourieki = uriagedaka + uriagegenka;
-                    command.Parameters.Add(new SqlParameter("@uriagesourieki", System.Data.SqlDbType.Money, 8, "uriagesourieki")).Value = uriagesourieki;
+                    command.Parameters.Add(new SqlParameter("@uriagesourieki", System.Data.SqlDbType.BigInt, 8, "uriagesourieki")).Value = uriagesourieki;
 
-                    command.Parameters.Add(new SqlParameter("@hanbaikanrihi", System.Data.SqlDbType.Money, 8, "hanbaikanrihi")).Value = hanbaikanrihi;
-                    command.Parameters.Add(new SqlParameter("@eigyourieki", System.Data.SqlDbType.Money, 8, "eigyourieki")).Value = eigyourieki;
-                    command.Parameters.Add(new SqlParameter("@eigyougaihiyou", System.Data.SqlDbType.Money, 8, "eigyougaihiyou")).Value = eigyougaihiyou;
+                    command.Parameters.Add(new SqlParameter("@hanbaikanrihi", System.Data.SqlDbType.BigInt, 8, "hanbaikanrihi")).Value = hanbaikanrihi;
+                    command.Parameters.Add(new SqlParameter("@eigyourieki", System.Data.SqlDbType.BigInt, 8, "eigyourieki")).Value = eigyourieki;
+                    command.Parameters.Add(new SqlParameter("@eigyougaihiyou", System.Data.SqlDbType.BigInt, 8, "eigyougaihiyou")).Value = eigyougaihiyou;
                     int keijyourieki = uriagesourieki + hanbaikanrihi + eigyourieki + eigyougaihiyou;
-                    command.Parameters.Add(new SqlParameter("@keijyourieki", System.Data.SqlDbType.Money, 8, "keijyourieki")).Value = keijyourieki;
+                    command.Parameters.Add(new SqlParameter("@keijyourieki", System.Data.SqlDbType.BigInt, 8, "keijyourieki")).Value = keijyourieki;
 
-                    command.Parameters.Add(new SqlParameter("@tokubetsurieki", System.Data.SqlDbType.Money, 8, "tokubetsurieki")).Value = tokubetsurieki;
-                    command.Parameters.Add(new SqlParameter("@tokubetsusonshitsu", System.Data.SqlDbType.Money, 8, "tokubetsusonshitsu")).Value = tokubetsusonshitsu;
+                    command.Parameters.Add(new SqlParameter("@tokubetsurieki", System.Data.SqlDbType.BigInt, 8, "tokubetsurieki")).Value = tokubetsurieki;
+                    command.Parameters.Add(new SqlParameter("@tokubetsusonshitsu", System.Data.SqlDbType.BigInt, 8, "tokubetsusonshitsu")).Value = tokubetsusonshitsu;
                     int zeibikimaetoukijyunrieki = keijyourieki + tokubetsurieki + tokubetsusonshitsu;
-                    command.Parameters.Add(new SqlParameter("@zeibikimaetoukijyunrieki", System.Data.SqlDbType.Money, 8, "zeibikimaetoukijyunrieki")).Value = zeibikimaetoukijyunrieki;
+                    command.Parameters.Add(new SqlParameter("@zeibikimaetoukijyunrieki", System.Data.SqlDbType.BigInt, 8, "zeibikimaetoukijyunrieki")).Value = zeibikimaetoukijyunrieki;
 
-                    command.Parameters.Add(new SqlParameter("@houjinzeitou", System.Data.SqlDbType.Money, 8, "houjinzeitou")).Value = houjinzeitou;
+                    command.Parameters.Add(new SqlParameter("@houjinzeitou", System.Data.SqlDbType.BigInt, 8, "houjinzeitou")).Value = houjinzeitou;
                     int toukijyunrieki = zeibikimaetoukijyunrieki + houjinzeitou;
-                    command.Parameters.Add(new SqlParameter("@toukijyunrieki", System.Data.SqlDbType.Money, 8, "toukijyunrieki")).Value = toukijyunrieki;
+                    command.Parameters.Add(new SqlParameter("@toukijyunrieki", System.Data.SqlDbType.BigInt, 8, "toukijyunrieki")).Value = toukijyunrieki;
 
                     float arari_r;
                     float eigyou_r;
