@@ -15,7 +15,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <div>
+        <div class="noprint">
             <table>
                 <tr>
                     <td id="menu">
@@ -27,7 +27,9 @@
 
         <div id="Wrap">
 
-                       <span class="hr"></span>
+
+<div class="noprint">
+           <span class="hr"></span>
 
            <p class="index1">
                ◆損益計算書(P/L)
@@ -35,16 +37,17 @@
                動作テスト済　要ブラッシュアップ</p>
 
            <hr />
+</div>
 
 <asp:Panel ID="Panel_PL" runat="server" Visible="false">
 
-
-
+<div class="noprint">
                        <span class="hr"></span>
 
     <p class="center">損益計算書をDBに記録できます。経費は負の値で入力して下さい。</p>
 
                        <span class="hr"></span>
+</div>
 
 <div class="center">
 　<p class="right">（単位：円）</p>
@@ -57,14 +60,14 @@
             <tr>
                 <th colspan="2">
                     出
-                    <asp:DropDownList ID="DropDownList_PL_year_s" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true"></asp:DropDownList>年
-                    <asp:DropDownList ID="DropDownList_PL_month_s" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true"></asp:DropDownList>月
-                    <asp:DropDownList ID="DropDownList_PL_day_s" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true"></asp:DropDownList>日
+                    <asp:DropDownList ID="DropDownList_PL_year_s" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true" CssClass="ddl_date" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_PL_month_s" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true" CssClass="ddl_date" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_PL_day_s" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true" CssClass="ddl_date" ></asp:DropDownList>日
                     <br />
                     至
-                    <asp:DropDownList ID="DropDownList_PL_year_g" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true"></asp:DropDownList>年
-                    <asp:DropDownList ID="DropDownList_PL_month_g" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true"></asp:DropDownList>月
-                    <asp:DropDownList ID="DropDownList_PL_day_g" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true"></asp:DropDownList>日
+                    <asp:DropDownList ID="DropDownList_PL_year_g" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true" CssClass="ddl_date" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_PL_month_g" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true" CssClass="ddl_date" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_PL_day_g" runat="server" OnSelectedIndexChanged="Change_PL" AutoPostBack="true" CssClass="ddl_date" ></asp:DropDownList>日
                 </th>
             </tr>
             <tr>
@@ -182,16 +185,20 @@
                 </td>
              </tr>
         </table>
+</div>
+
+
+
+
+<div class="noprint">
 
         <p class="center">
             <asp:Button ID="Button_Check_PL" CssClass="btn-flat-border" runat="server" Text="新規保存" OnClick="Push_Check_PL" CausesValidation="False" />
             <asp:Button ID="Button_CheckAS_PL" CssClass="btn-flat-border" runat="server" Text="上書き保存" OnClick="Push_CheckAS_PL" CausesValidation="False" />
+            <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
         </p>
 
-</div>
-
-                           <span class="hr"></span>
-
+  <span class="hr"></span>
 
   <p class="index1">◆P/L一覧</p>
 　<p class="right">（単位：円）</p>
@@ -232,9 +239,11 @@
 
         <asp:SqlDataSource ID="SqlDataSource_PL" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT * FROM [T_PL] ORDER BY [UpDateTime] DESC"></asp:SqlDataSource>
 
+</div>
+
 </asp:Panel>
 
-
+<div class="noprint">
            <span class="hr"></span>
 
            <p class="index1">
@@ -244,12 +253,15 @@
            </p>
 
            <hr />
+</div>
 
 <asp:Panel ID="Panel_BS" runat="server" Visible="false">
 
+    <div class="noprint">
            <span class="hr"></span>
             <p class="center">B/Sを作成します。値はすべて正の値で入力して下さい。資産合計と負債・純資産合計が同じになるように作成して下さい。</p>
            <span class="hr"></span>
+    </div>
 
     <div class="center"><a name="BS_TOP"></a>
 　<p class="right">（単位：円）</p>
@@ -261,9 +273,9 @@
             </tr>
             <tr>
                 <th colspan="4" class="th_master">
-                    <asp:DropDownList ID="DropDownList_BS_year" runat="server" OnSelectedIndexChanged="Change_BS" ></asp:DropDownList>年
-                    <asp:DropDownList ID="DropDownList_BS_month" runat="server" OnSelectedIndexChanged="Change_BS" ></asp:DropDownList>月
-                    <asp:DropDownList ID="DropDownList_BS_day" runat="server" OnSelectedIndexChanged="Change_BS" ></asp:DropDownList>日
+                    <asp:DropDownList ID="DropDownList_BS_year" runat="server" OnSelectedIndexChanged="Change_BS" CssClass="ddl_date" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_BS_month" runat="server" OnSelectedIndexChanged="Change_BS" CssClass="ddl_date" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_BS_day" runat="server" OnSelectedIndexChanged="Change_BS" CssClass="ddl_date" ></asp:DropDownList>日
                 </th>
             </tr>
             <tr>
@@ -829,20 +841,24 @@
         </table>
     </div>
 
+
+<div class="noprint">
+
         <p class="center">
             <asp:Button ID="Button_Check_BS" CssClass="btn-flat-border" runat="server" Text="新規保存" OnClick="Push_Check_BS" CausesValidation="False" />
             <asp:Button ID="Button_CheckAS_BS" CssClass="btn-flat-border" runat="server" Text="上書き保存" OnClick="Push_CheckAS_BS" CausesValidation="False" />
             <asp:Button ID="Button_BS_SUM" CssClass="btn-flat-border" runat="server" Text="小計/合計" OnClick="Change_BS" CausesValidation="False" />
+            <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
         </p>
 
 
             <asp:GridView ID="GridView_BS" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_BS" AllowPaging="True" AllowSorting="True" OnRowCommand="grid_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" />
-                    <asp:BoundField DataField="shisan_a" HeaderText="資産合計" SortExpression="shisan_a" DataFormatString="{0:C}" />
-                    <asp:BoundField DataField="fusai_a" HeaderText="負債合計" SortExpression="fusai_a" DataFormatString="{0:C}" />
-                    <asp:BoundField DataField="jyunshisan_a" HeaderText="純資産" SortExpression="jyunshisan_a" DataFormatString="{0:C}" />
-                    <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" DataFormatString="{0:d}" />
+                    <asp:BoundField DataField="shisan_a" HeaderText="資産合計" SortExpression="shisan_a" DataFormatString="{0:C}" HeaderStyle-ForeColor="LightGreen" />
+                    <asp:BoundField DataField="fusai_a" HeaderText="負債合計" SortExpression="fusai_a" DataFormatString="{0:C}" HeaderStyle-ForeColor="Red" />
+                    <asp:BoundField DataField="jyunshisan_a" HeaderText="純資産" SortExpression="jyunshisan_a" DataFormatString="{0:C}" HeaderStyle-ForeColor="LightBlue" />
+                    <asp:BoundField DataField="Date" HeaderText="申告年月日" SortExpression="Date" DataFormatString="{0:d}" />
                     <asp:BoundField DataField="UpDateTime" HeaderText="最終更新日" SortExpression="UpDateTime" />
 
                     <asp:ButtonField ButtonType="Button" Text="削除" HeaderText="削除" CommandName="BSRemove" CausesValidation="False" >
@@ -858,15 +874,13 @@
         <RowStyle BackColor="#1E1E1E" ForeColor="White" />
             </asp:GridView>
 
-
-
            <asp:SqlDataSource ID="SqlDataSource_BS" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT [uuid], [shisan_a], [fusai_a], [jyunshisan_a], [Date], [UpDateTime] FROM [T_BS] ORDER BY [UpDateTime] DESC"></asp:SqlDataSource>
 
-
+</div>
 
 </asp:Panel>
 
-
+<div class="noprint">
            <span class="hr"></span>
 
 
@@ -876,13 +890,15 @@
                工事予定地</p>
 
            <hr />
+</div>
 
 <asp:Panel ID="Panel_CF" runat="server" Visible="false">
 
-
+<div class="noprint">
            <span class="hr"></span>
             <p class="center">///工事中///</p>
            <span class="hr"></span>
+</div>
 
 </asp:Panel>
 

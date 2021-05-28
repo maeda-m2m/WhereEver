@@ -59,6 +59,13 @@ table {
     color: white;
 }
 
+.ddl_date {
+    text-align: right;
+    height: auto;
+    width: auto;
+    background-color: black;
+    color: white;
+}
 
 .th_master{
     background-color: black;
@@ -241,3 +248,19 @@ table {
         background: #808080;
         cursor: pointer;
     }
+
+
+@media print {
+    .noprint {
+        display: none;
+    }
+
+    #Wrap {
+        margin-left: 0em;
+        margin-right: 0em;
+    }
+
+    body {
+        background-image: none;
+    }
+}

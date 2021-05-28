@@ -29,28 +29,28 @@ namespace WhereEver.Money
 
             if (DropDownList_PL_month_s.SelectedValue != "--")
             {
-                DropDownList_PL_month_s.BackColor = System.Drawing.Color.White;
+                DropDownList_PL_month_s.BackColor = System.Drawing.Color.Black;
             }
             if (DropDownList_PL_day_s.SelectedValue != "--")
             {
-                DropDownList_PL_day_s.BackColor = System.Drawing.Color.White;
+                DropDownList_PL_day_s.BackColor = System.Drawing.Color.Black;
             }
             if (DropDownList_PL_month_g.SelectedValue != "--")
             {
-                DropDownList_PL_month_g.BackColor = System.Drawing.Color.White;
+                DropDownList_PL_month_g.BackColor = System.Drawing.Color.Black;
             }
             if (DropDownList_PL_day_g.SelectedValue != "--")
             {
-                DropDownList_PL_day_g.BackColor = System.Drawing.Color.White;
+                DropDownList_PL_day_g.BackColor = System.Drawing.Color.Black;
             }
 
             if (DropDownList_BS_month.SelectedValue != "--")
             {
-                DropDownList_BS_month.BackColor = System.Drawing.Color.White;
+                DropDownList_BS_month.BackColor = System.Drawing.Color.Black;
             }
             if (DropDownList_BS_day.SelectedValue != "--")
             {
-                DropDownList_BS_day.BackColor = System.Drawing.Color.White;
+                DropDownList_BS_day.BackColor = System.Drawing.Color.Black;
             }
 
 

@@ -51,6 +51,9 @@
                     <a href="~/管理ページ/Kanri.aspx" class="btn" runat="server">マイページ</a>
                </td>
                <td>
+                    <a href="~/ログイン/Login.aspx" class="btn" runat="server">ログアウト</a>
+               </td>
+               <td>
                     <asp:Label ID="Label1" CssClass="label" runat="server" Text="Label"></asp:Label>
                </td>
     </tr>
