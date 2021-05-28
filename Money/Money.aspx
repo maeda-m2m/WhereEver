@@ -896,7 +896,7 @@
 
 <div class="noprint">
            <span class="hr"></span>
-            <p class="center">一般的なテンプレートを用いてC/Fを作成します。すべて正の値で入力して下さい。</p>
+            <p class="center">一般的なテンプレートを用いてC/Fを作成します。正の値または負の値で入力して下さい。</p>
            <span class="hr"></span>
 </div>
 
