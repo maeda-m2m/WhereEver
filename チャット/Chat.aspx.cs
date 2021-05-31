@@ -108,46 +108,49 @@ namespace WhereEver
 
         protected void ChatArea_ItemCommand(object source, DataGridCommandEventArgs e)
         {
-            Label Cno = (Label)e.Item.Cells[0].FindControl("No");
-            Label Cname = (Label)e.Item.Cells[1].FindControl("Id"); //変更
-            Label Cnaiyou = (Label)e.Item.Cells[3].FindControl("Naiyou");
-            string Cid = Cno.Text;
-            string CnameNow = Cname.Text.Trim();
-            string id = SessionManager.User.M_User.id.Trim();
-            string cnaiyou = Cnaiyou.Text;
-            switch (((LinkButton)e.CommandSource).CommandName)
+            if (e.CommandName =="Delete" || e.CommandName == "Reply")
             {
-                case "Delete":
-                    if (CnameNow == id)
-                    {
-                        if (Cid == "")
+                Label Cno = (Label)e.Item.Cells[0].FindControl("No");
+                Label Cname = (Label)e.Item.Cells[1].FindControl("Id"); //変更
+                Label Cnaiyou = (Label)e.Item.Cells[3].FindControl("Naiyou");
+                string Cid = Cno.Text;
+                string CnameNow = Cname.Text.Trim();
+                string id = SessionManager.User.M_User.id.Trim();
+                string cnaiyou = Cnaiyou.Text;
+                switch (((LinkButton)e.CommandSource).CommandName)
+                {
+                    case "Delete":
+                        if (CnameNow == id)
                         {
-                            Class.Chat.DeleteHenshin(cnaiyou,id);
+                            if (Cid == "")
+                            {
+                                Class.Chat.DeleteHenshin(cnaiyou, id);
+                            }
+                            else
+                            {
+                                Class.Chat.DeleteChat(Cid);
+                            }
+
+                            //Class.Chat.UpdateChat(Global.GetConnection());
                         }
                         else
                         {
-                            Class.Chat.DeleteChat(Cid);
+                            Label2.Text = "他の人のコメントは削除できません！";
                         }
-                        
-                        //Class.Chat.UpdateChat(Global.GetConnection());
-                    }
-                    else
-                    {
-                        Label2.Text = "他の人のコメントは削除できません！";
-                    }
-                break;
-                case "Reply":
-                    btnHenshin.Visible = true;
-                    txtHenshin.Visible = true;
-                    lblHenshin.Visible = true;
-                    TextBox1.Visible = false;
-                    txtHozon.Text = Cid;
-                    lbl.Text = cnaiyou;
-                    Send.Visible = false;
-                    Return.Visible = true;
-                    break;
+                        break;
+                    case "Reply":
+                        btnHenshin.Visible = true;
+                        txtHenshin.Visible = true;
+                        lblHenshin.Visible = true;
+                        TextBox1.Visible = false;
+                        txtHozon.Text = Cid;
+                        lbl.Text = cnaiyou;
+                        Send.Visible = false;
+                        Return.Visible = true;
+                        break;
+                }
+                Create();
             }
-            Create();
         }
 
         protected void btnHenshin_Click(object sender, EventArgs e)
@@ -221,5 +224,10 @@ namespace WhereEver
             }
         }
 
+        protected void ChatArea_PageIndexChanged(object source, DataGridPageChangedEventArgs e)
+        {
+            ChatArea.CurrentPageIndex = e.NewPageIndex;
+            Create();
+        }
     }
 }

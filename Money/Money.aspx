@@ -39,7 +39,7 @@
            <hr />
 </div>
 
-<asp:Panel ID="Panel_PL" runat="server" Visible="false">
+<asp:Panel ID="Panel_PL" runat="server" Visible="false" DefaultButton="Button_PL_SUM">
 
 <div class="noprint">
                        <span class="hr"></span>
@@ -75,12 +75,12 @@
                     売上高<br /><span class="minus">売上原価</span>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_Uriage" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Uriage" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:TextBox ID="TextBox_UriageGenka" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_UriageGenka" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -96,7 +96,7 @@
                     販売管理費
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_HanbaiKanrihi" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_HanbaiKanrihi" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -104,7 +104,7 @@
                     営業利益
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_EigyouRieki" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_EigyouRieki" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -112,7 +112,7 @@
                     営業外費用
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_EigyougaiHiyou" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_EigyougaiHiyou" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -128,12 +128,12 @@
                     特別利益<br /><span class="minus">特別損失</span>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_TokubetsuRieki" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_TokubetsuRieki" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
                 <td>
-                    <asp:TextBox ID="TextBox_TokubetsuSonshitsu" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_TokubetsuSonshitsu" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -149,7 +149,7 @@
                     <span class="minus">法人税等</span>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_Houjinzei" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" AutoPostBack="true"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Houjinzei" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -195,6 +195,7 @@
         <p class="center">
             <asp:Button ID="Button_Check_PL" CssClass="btn-flat-border" runat="server" Text="新規保存" OnClick="Push_Check_PL" CausesValidation="False" />
             <asp:Button ID="Button_CheckAS_PL" CssClass="btn-flat-border" runat="server" Text="上書き保存" OnClick="Push_CheckAS_PL" CausesValidation="False" />
+            <asp:Button ID="Button_PL_SUM" CssClass="btn-flat-border" runat="server" Text="小計/合計" OnClick="Change_PL" CausesValidation="False" />
             <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
         </p>
 
@@ -254,7 +255,7 @@
            <hr />
 </div>
 
-<asp:Panel ID="Panel_BS" runat="server" Visible="false">
+<asp:Panel ID="Panel_BS" runat="server" Visible="false" DefaultButton="Button_BS_SUM">
 
     <div class="noprint">
            <span class="hr"></span>
@@ -891,11 +892,11 @@
            <hr />
 </div>
 
-<asp:Panel ID="Panel_CF" runat="server" Visible="false">
+<asp:Panel ID="Panel_CF" runat="server" Visible="false" DefaultButton="Button_CF_SUM">
 
 <div class="noprint">
            <span class="hr"></span>
-            <p class="center">一般的なテンプレートを用いてC/Fを作成します。すべて正の値で入力して下さい。</p>
+            <p class="center">一般的なテンプレートを用いてC/Fを作成します。正の値または負の値で入力して下さい。</p>
            <span class="hr"></span>
 </div>
 
@@ -1116,7 +1117,7 @@
         <p class="center">
             <asp:Button ID="Button_Check_CF" CssClass="btn-flat-border" runat="server" Text="新規保存" OnClick="Push_Check_CF" CausesValidation="False" />
             <asp:Button ID="Button_CheckAS_CF" CssClass="btn-flat-border" runat="server" Text="上書き保存" OnClick="Push_CheckAS_CF" CausesValidation="False" />
-            <asp:Button ID="Button_Change_CF" CssClass="btn-flat-border" runat="server" Text="小計/合計" OnClick="Change_CF" CausesValidation="False" />
+            <asp:Button ID="Button_CF_SUM" CssClass="btn-flat-border" runat="server" Text="小計/合計" OnClick="Change_CF" CausesValidation="False" />
             <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
         </p>
 
