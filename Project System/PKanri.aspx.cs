@@ -87,12 +87,19 @@ namespace WhereEver.Project_System
                 {
                     e.Item.Cells[0].Text = "<font color = white>"+dr.PBigname.ToString();
                     bigname = dr.PBigname;
-                    if (dr.PBigid!=1)
+                    if (dr.PBigid > 1&& dr.PBigid < Insert.GetMaxPBigidRow(Global.GetConnection(), SessionManager.project.PdbRow.Pid).PBigid)
+                    {
+                        Button uebig = e.Item.FindControl("uebig") as Button;
+                        uebig.Visible = true;
+                        Button sitabig = e.Item.FindControl("sitabig") as Button;
+                        sitabig.Visible = true;
+                    }
+                    else if (dr.PBigid > 1)
                     {
                         Button uebig = e.Item.FindControl("uebig") as Button;
                         uebig.Visible = true;
                     }
-                    else if(dr.PBigid != Insert.GetMaxPBigidRow(Global.GetConnection(), SessionManager.project.PdbRow.Pid).PBigid)
+                    else if(dr.PBigid < Insert.GetMaxPBigidRow(Global.GetConnection(), SessionManager.project.PdbRow.Pid).PBigid)
                     {
                         Button sitabig = e.Item.FindControl("sitabig") as Button;
                         sitabig.Visible = true;
@@ -103,12 +110,19 @@ namespace WhereEver.Project_System
                     e.Item.Cells[0].Text = "<font color = black>"+dr.PBigname.ToString();
                 }
                 e.Item.Cells[2].Text = dr.PMiddleid.ToString();
-                if (dr.PMiddleid != 1)
+                if (dr.PMiddleid > 1 && dr.PMiddleid < Insert.GetMaxPMiddleidRow(Global.GetConnection(), dr.PBigname).PMiddleid)
+                {
+                    Button uemiddle = e.Item.FindControl("uemiddle") as Button;
+                    uemiddle.Visible = true;
+                    Button sitamiddle = e.Item.FindControl("sitamiddle") as Button;
+                    sitamiddle.Visible = true;
+                }
+                else if (dr.PMiddleid > 1)
                 {
                     Button uemiddle = e.Item.FindControl("uemiddle") as Button;
                     uemiddle.Visible = true;
                 }
-                else if (dr.PMiddleid != Insert.GetMaxPMiddleidRow(Global.GetConnection(), dr.PBigname).PMiddleid)
+                else if (dr.PMiddleid < Insert.GetMaxPMiddleidRow(Global.GetConnection(), dr.PBigname).PMiddleid)
                 {
                     Button sitamiddle = e.Item.FindControl("sitamiddle") as Button;
                     sitamiddle.Visible = true;
