@@ -87,15 +87,26 @@ namespace WhereEver.Project_System
                 {
                     e.Item.Cells[0].Text = "<font color = white>"+dr.PBigname.ToString();
                     bigname = dr.PBigname;
-                    if (dr.PBigid!=1)
+                    if (dr.PBigid == 1)
                     {
                         Button uebig = e.Item.FindControl("uebig") as Button;
-                        uebig.Visible = true;
-                    }
-                    else if(dr.PBigid != Insert.GetMaxPBigidRow(Global.GetConnection(), SessionManager.project.PdbRow.Pid).PBigid)
-                    {
+                        uebig.CssClass = "visibility_hidden";
                         Button sitabig = e.Item.FindControl("sitabig") as Button;
-                        sitabig.Visible = true;
+                        sitabig.CssClass = "jyunban";
+                    }
+                    else if (dr.PBigid == Insert.GetMaxPBigidRow(Global.GetConnection(), SessionManager.project.PdbRow.Pid).PBigid)
+                    {
+                        Button uebig = e.Item.FindControl("uebig") as Button;
+                        uebig.CssClass = "jyunban";
+                        Button sitabig = e.Item.FindControl("sitabig") as Button;
+                        sitabig.CssClass = "visibility_hidden";
+                    }
+                    else
+                    {
+                        Button uebig = e.Item.FindControl("uebig") as Button;
+                        uebig.CssClass = "jyunban";
+                        Button sitabig = e.Item.FindControl("sitabig") as Button;
+                        sitabig.CssClass = "jyunban";
                     }
                 }
                 else
@@ -103,16 +114,36 @@ namespace WhereEver.Project_System
                     e.Item.Cells[0].Text = "<font color = black>"+dr.PBigname.ToString();
                 }
                 e.Item.Cells[2].Text = dr.PMiddleid.ToString();
-                if (dr.PMiddleid != 1)
+                if (dr.PMiddleid == 1)
                 {
                     Button uemiddle = e.Item.FindControl("uemiddle") as Button;
-                    uemiddle.Visible = true;
-                }
-                else if (dr.PMiddleid != Insert.GetMaxPMiddleidRow(Global.GetConnection(), dr.PBigname).PMiddleid)
-                {
+                    uemiddle.CssClass = "visibility_hidden";
                     Button sitamiddle = e.Item.FindControl("sitamiddle") as Button;
-                    sitamiddle.Visible = true;
+                    sitamiddle.CssClass = "jyunban";
                 }
+                else if (dr.PMiddleid == Insert.GetMaxPMiddleidRow(Global.GetConnection(), dr.PBigname).PMiddleid)
+                {
+                    Button uemiddle = e.Item.FindControl("uemiddle") as Button;
+                    uemiddle.CssClass = "jyunban";
+                    Button sitamiddle = e.Item.FindControl("sitamiddle") as Button;
+                    sitamiddle.CssClass = "visibility_hidden";
+                    Button uebig = e.Item.FindControl("uebig") as Button;
+                    uebig.CssClass = "visibility_hidden";
+                    Button sitabig = e.Item.FindControl("sitabig") as Button;
+                    sitabig.CssClass = "visibility_hidden";
+                }
+                else
+                {
+                    Button uemiddle = e.Item.FindControl("uemiddle") as Button;
+                    uemiddle.CssClass = "jyunban";
+                    Button sitamiddle = e.Item.FindControl("sitamiddle") as Button;
+                    sitamiddle.CssClass = "jyunban";
+                    Button uebig = e.Item.FindControl("uebig") as Button;
+                    uebig.CssClass = "visibility_hidden";
+                    Button sitabig = e.Item.FindControl("sitabig") as Button;
+                    sitabig.CssClass = "visibility_hidden";
+                }
+                
                 e.Item.Cells[3].Text = dr.PMiddlename.ToString();
                 e.Item.Cells[5].Text = dr.PMiddlestart.ToShortDateString();
                 e.Item.Cells[6].Text = dr.PMiddleover.ToShortDateString();

@@ -26,9 +26,9 @@ namespace WhereEver
                 ViewState["Count2"] = 0;
 
                 //Panel1、登録
-                //Panel2、登録メニュー
+                //Panel2、登録のメニュー
                 //Panel3、検索
-                //panel4、検索メニュー
+                //panel4、検索のメニュー
 
                 //TextBox1,2,3,5 used
 
@@ -842,7 +842,7 @@ namespace WhereEver
             Create3();
             Create2();
 
-            Panel1.Visible = false;
+            Panel1.Visible = true;
             Panel2.Visible = true;
             Panel3.Visible = false;
         }

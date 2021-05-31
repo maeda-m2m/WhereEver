@@ -33,6 +33,15 @@ namespace WhereEver.Project_System
         protected global::WhereEver.MenuControl m;
 
         /// <summary>
+        /// DgPKanri コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid DgPKanri;
+
+        /// <summary>
         /// lblPBig コントロール。
         /// </summary>
         /// <remarks>
@@ -211,15 +220,6 @@ namespace WhereEver.Project_System
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClear;
-
-        /// <summary>
-        /// DgPKanri コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataGrid DgPKanri;
 
         /// <summary>
         /// btnWBS コントロール。
