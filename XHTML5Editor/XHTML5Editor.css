@@ -46,7 +46,7 @@ table {
 .textbox_pl {
     text-align: right;
     height: auto;
-    width: 20em;
+    width: 16em;
     background-color: black;
     color: white;
 }
@@ -55,6 +55,13 @@ table {
     text-align: right;
     height: auto;
     width: 20em;
+    background-color: black;
+    color: white;
+}
+.textbox_Wide {
+    text-align: left;
+    height: 12em;
+    width: 100%;
     background-color: black;
     color: white;
 }
@@ -212,6 +219,7 @@ table {
     border-radius: 3px;
     transition: .4s;
     font-family: Meiryo;
+    border-radius: 3px;
 }
 
     .btn-flat-border:hover {
@@ -232,7 +240,6 @@ table {
     border-radius: 3px;
     transition: .4s;
     font-family: Meiryo;
-    border-radius: 3px;
 }
 
     .btn-flat-border-mini:hover {
@@ -311,6 +318,13 @@ table {
     }
 
     .textbox_BS {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    .textbox_Wide {
         background-color: white;
         color: black;
         text-decoration: none;

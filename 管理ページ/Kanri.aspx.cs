@@ -142,6 +142,11 @@ namespace WhereEver.管理ページ
             Response.Redirect("../Video/Video.aspx", false);
         }
 
+        protected void btnButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../XHTML5Editor/XHTML5Editor.aspx", false);
+        }
+
         //-----------------------------------------------------------------------------------
 
 

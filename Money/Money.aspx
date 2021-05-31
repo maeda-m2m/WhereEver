@@ -75,12 +75,12 @@
                     売上高<br /><span class="minus">売上原価</span>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_Uriage" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Uriage" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:TextBox ID="TextBox_UriageGenka" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_UriageGenka" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -96,7 +96,7 @@
                     販売管理費
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_HanbaiKanrihi" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_HanbaiKanrihi" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" MaxLength="50"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -104,7 +104,7 @@
                     営業利益
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_EigyouRieki" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_EigyouRieki" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" MaxLength="50"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -112,7 +112,7 @@
                     営業外費用
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_EigyougaiHiyou" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_EigyougaiHiyou" runat="server" CssClass="textbox_pl"  ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" MaxLength="50"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -128,12 +128,12 @@
                     特別利益<br /><span class="minus">特別損失</span>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_TokubetsuRieki" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_TokubetsuRieki" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" MaxLength="50"></asp:TextBox>
                 </td>
              </tr>
              <tr>
                 <td>
-                    <asp:TextBox ID="TextBox_TokubetsuSonshitsu" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_TokubetsuSonshitsu" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" MaxLength="50"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -149,7 +149,7 @@
                     <span class="minus">法人税等</span>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_Houjinzei" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Houjinzei" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_PL" MaxLength="50"></asp:TextBox>
                 </td>
              </tr>
              <tr>
@@ -325,13 +325,13 @@
                     現金及び預金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS1" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS1" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     買掛金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS29" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS29" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -339,13 +339,13 @@
                     受取手形
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS2" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS2" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     短期借入金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS30" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS30" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -353,13 +353,13 @@
                     売掛金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS3" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS3" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     未払金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS31" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS31" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -367,13 +367,13 @@
                     商品
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS4" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS4" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     未払費用
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS32" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS32" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -381,13 +381,13 @@
                     部品
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS5" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS5" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     未払法人税等
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS33" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS33" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -395,13 +395,13 @@
                     前払費用
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS6" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS6" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     預り金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS34" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS34" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -409,13 +409,13 @@
                     繰延税金資産
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS7" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS7" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     賞与引当金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS35" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS35" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -423,13 +423,13 @@
                     短期貸付金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS8" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS8" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     製品保証引当金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS36" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS36" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -437,13 +437,13 @@
                     未収入金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS9" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS9" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     その他
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS37" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS37" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -451,7 +451,7 @@
                     その他
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS10" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS10" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     
@@ -465,7 +465,7 @@
                     貸倒引当金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS11" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS11" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     固定負債
@@ -485,7 +485,7 @@
                     退職給費引当金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS38" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS38" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -499,7 +499,7 @@
                     繰延税金負債
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS39" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS39" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -513,7 +513,7 @@
                     その他
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS40" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS40" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -521,7 +521,7 @@
                     建物
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS12" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS12" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     
@@ -535,7 +535,7 @@
                     構築物
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS13" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS13" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     負債合計
@@ -549,7 +549,7 @@
                     機械及び装置
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS14" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS14" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     
@@ -563,7 +563,7 @@
                     車両及び運搬具
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS15" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS15" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     （総資産の部）
@@ -577,13 +577,13 @@
                     工具、器具及び備品
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS16" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS16" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     株主資本
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS41" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS41" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -591,13 +591,13 @@
                     土地
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS17" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS17" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     資本金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS42" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS42" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -605,13 +605,13 @@
                     建設仮勘定
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS18" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS18" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     資本余剰金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS43" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS43" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -625,7 +625,7 @@
                     資本準備金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS44" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS44" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -639,7 +639,7 @@
                     その他資本剰余金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS45" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS45" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -647,7 +647,7 @@
                     施設利用権
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS19" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS19" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     
@@ -661,13 +661,13 @@
                     ソフトウェア
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS20" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS20" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     利益余剰金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS46" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS46" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -675,13 +675,13 @@
                     その他
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS21" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS21" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     その他利益剰余金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS47" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS47" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -695,7 +695,7 @@
                     繰越利益剰余金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS48" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS48" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -717,13 +717,13 @@
                     投資有価証券
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS22" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS22" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     自己株式
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS49" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS49" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -731,7 +731,7 @@
                     関係会社株式
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS23" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS23" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     
@@ -745,13 +745,13 @@
                     関係会社出資金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS24" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS24" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     評価・換算差額等
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS50" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS50" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -759,13 +759,13 @@
                     長期貸付金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS25" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS25" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50" ></asp:TextBox>
                 </td>
                 <td>
                     その他有価証券評価差額金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS51" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS51" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -773,7 +773,7 @@
                     長期前払費用
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS26" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS26" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     
@@ -787,7 +787,7 @@
                     その他
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS27" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS27" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     純資産合計
@@ -801,7 +801,7 @@
                     貸倒引当金
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_BS28" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BS28" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     
@@ -937,7 +937,7 @@
                     税引き前当期純利益　＋
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF1" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF1" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -945,7 +945,7 @@
                     減価償却費　＋
                 </td>
                 <td class="td_master_q">
-                    <asp:TextBox ID="TextBox_CF2" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>                  
+                    <asp:TextBox ID="TextBox_CF2" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>                  
                 </td>
             </tr>
             <tr>
@@ -953,7 +953,7 @@
                     売上債権の増加　－
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF3" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF3" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -961,7 +961,7 @@
                     棚卸資産の増加　－
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF4" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF4" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -969,7 +969,7 @@
                     社入債務の増加　＋
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF5" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF5" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -977,7 +977,7 @@
                     法人税等の支払い　－
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF6" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF6" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1000,7 +1000,7 @@
                     有形固定資産の購入　－
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF7" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF7" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1008,7 +1008,7 @@
                     有形固定資産の売却　＋
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF8" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF8" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1016,7 +1016,7 @@
                     有価証券の購入　－
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF9" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF9" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1024,7 +1024,7 @@
                     有価証券の売却及び満期償還　＋
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF10" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF10" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1047,7 +1047,7 @@
                     借入金の増加　＋
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF11" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF11" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1055,7 +1055,7 @@
                     借入金の返済　－
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF12" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF12" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1079,7 +1079,7 @@
                     (5)現金及び現金同等物等期首残高
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF13" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF13" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1087,7 +1087,7 @@
                     (6)現金および現金同等物期末残高
                 </td>
                 <td class="right">
-                    <asp:TextBox ID="TextBox_CF14" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF14" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -1095,7 +1095,7 @@
                     売上高
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_CF15" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_BS" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_CF15" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" OnTextChanged="Change_CF" MaxLength="50"></asp:TextBox>
                 </td>
             </tr>
             <tr>
