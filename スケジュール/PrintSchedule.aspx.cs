@@ -1361,6 +1361,28 @@ namespace WhereEver
                 connection.Close();
             }
         }
+
+        protected void btnPlus_Click(object sender, EventArgs e)
+        {
+            Plus(txtPlus.Text);
+
+        }
+        internal static void Plus(string plus)
+        {
+            DATASET.DataSet.T_PrintScheduleDataTable t_PrintSchedule = new DATASET.DataSet.T_PrintScheduleDataTable();
+            DATASET.DataSet.T_PrintScheduleRow t_PrintScheduleRow = t_PrintSchedule.NewT_PrintScheduleRow();
+
+            DATASET.DataSet.T_PrintScheduleRow t_PrintScheduleRow1 = GetMaxPrintSchedule(Global.GetConnection());
+        }
+        internal static DATASET.DataSet.T_PrintScheduleRow GetMaxPrintSchedule(SqlConnection sqlConnection)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            da.SelectCommand.CommandText =
+                "select MAX(bikouid) as bikouid from T_PrintSchedule";
+            DATASET.DataSet.T_PrintScheduleDataTable dt = new DATASET.DataSet.T_PrintScheduleDataTable();
+            da.Fill(dt);
+            return dt[0];
+        }
     }
 }
 
