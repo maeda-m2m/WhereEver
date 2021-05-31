@@ -36,4 +36,13 @@
     background-color: black;
     color: red;
     border-color: black;
+    visibility:visible;
+}
+.visibility_hidden {
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    color: red;
+    border-color: black;
+    visibility: hidden;
 }
