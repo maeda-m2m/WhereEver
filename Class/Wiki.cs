@@ -23,7 +23,7 @@ namespace WhereEver.Class
 
         }
 
-        public static void InsertT_Wiki(DATASET.DataSet.T_WikiDataTable dt, SqlConnection sql)
+        public static void InsertT_Wiki(DATASET.DataSet.T_WikiDataTable dt, HttpPostedFile file, SqlConnection sql )
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
 
