@@ -7,11 +7,11 @@
 // </自動生成>
 //------------------------------------------------------------------------------
 
-namespace WhereEver.管理ページ
+namespace WhereEver.XHTML5Editor
 {
 
 
-    public partial class Kanri
+    public partial class WebForm1
     {
 
         /// <summary>
@@ -33,192 +33,192 @@ namespace WhereEver.管理ページ
         protected global::WhereEver.MenuControl m;
 
         /// <summary>
-        /// GridView1 コントロール。
+        /// Button_Button コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Button Button_Button;
 
         /// <summary>
-        /// GridView2 コントロール。
+        /// Panel_BT コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.Panel Panel_BT;
 
         /// <summary>
-        /// SqlDataSource1 コントロール。
+        /// TextBox_BTNText コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_BTNText;
 
         /// <summary>
-        /// lblResult コントロール。
+        /// Label_ButtonResult コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResult;
+        protected global::System.Web.UI.WebControls.Label Label_ButtonResult;
 
         /// <summary>
-        /// TextBox_MailTo コントロール。
+        /// TextBox_FontFamily コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_MailTo;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_FontFamily;
 
         /// <summary>
-        /// TextBox_CC コントロール。
+        /// TextBox_Width コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_CC;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Width;
 
         /// <summary>
-        /// TextBox_BCC コントロール。
+        /// DropDownList_Width コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_BCC;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Width;
 
         /// <summary>
-        /// TextBox_Title コントロール。
+        /// TextBox_Height コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Title;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Height;
 
         /// <summary>
-        /// TextBox_EditTop コントロール。
+        /// DropDownList_Height コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_EditTop;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Height;
 
         /// <summary>
-        /// DropDownList_SMTP コントロール。
+        /// TextBox_Border コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_SMTP;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Border;
 
         /// <summary>
-        /// Panel_UserSMTP コントロール。
+        /// DropDownList_Border コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_UserSMTP;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Border;
 
         /// <summary>
-        /// TextBox_Host コントロール。
+        /// TextBox_Radius コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Host;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Radius;
 
         /// <summary>
-        /// TextBox_Port コントロール。
+        /// DropDownList_Radius コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Port;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Radius;
 
         /// <summary>
-        /// TextBox_UserName コントロール。
+        /// TextBox_BorderColor コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_UserName;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_BorderColor;
 
         /// <summary>
-        /// TextBox_UserPass コントロール。
+        /// TextBox_Color コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_UserPass;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Color;
 
         /// <summary>
-        /// CheckBox_Annonimas コントロール。
+        /// TextBox_BColor コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_Annonimas;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_BColor;
 
         /// <summary>
-        /// Label_MailTo_Result コントロール。
+        /// TextBox_HColor コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_MailTo_Result;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_HColor;
 
         /// <summary>
-        /// Button_ReformTop コントロール。
+        /// TextBox_HBColor コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_ReformTop;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_HBColor;
 
         /// <summary>
-        /// Button_ReformDelete コントロール。
+        /// CheckBox_Pointer コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_ReformDelete;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_Pointer;
 
         /// <summary>
-        /// Button_Video コントロール。
+        /// Button_Correct コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Video;
+        protected global::System.Web.UI.WebControls.Button Button_Correct;
 
         /// <summary>
-        /// Button_XHTMLButton コントロール。
+        /// TextBox_ButtonCodeResult コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_XHTMLButton;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ButtonCodeResult;
     }
 }

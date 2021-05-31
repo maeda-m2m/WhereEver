@@ -143,6 +143,8 @@
     <Content Include="Tatekae.ascx" />
     <Content Include="Video\Video.css" />
     <Content Include="Video\Video.aspx" />
+    <Content Include="XHTML5Editor\XHTML5Editor.css" />
+    <Content Include="XHTML5Editor\XHTML5Editor.aspx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
     <Content Include="スケジュール\Wiki.aspx" />
     <Content Include="スケジュール\Wiki_Top.aspx" />
@@ -323,6 +325,13 @@
     </Compile>
     <Compile Include="Video\Video.aspx.designer.cs">
       <DependentUpon>Video.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="XHTML5Editor\XHTML5Editor.aspx.cs">
+      <DependentUpon>XHTML5Editor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="XHTML5Editor\XHTML5Editor.aspx.designer.cs">
+      <DependentUpon>XHTML5Editor.aspx</DependentUpon>
     </Compile>
     <Compile Include="スケジュール\PrintSchedule.aspx.cs">
       <DependentUpon>PrintSchedule.aspx</DependentUpon>
