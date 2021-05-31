@@ -30,6 +30,7 @@
 
             <asp:Label runat="server" ID="Label1" Text="タイトル" Font-Size="Large"></asp:Label>
             <asp:TextBox runat="server" ID="TextBox1" Text=""></asp:TextBox>
+            <asp:FileUpload runat="server" ID="FileUpload1" />
 
         </div>
 

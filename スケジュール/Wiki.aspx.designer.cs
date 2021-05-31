@@ -42,6 +42,15 @@ namespace WhereEver.スケジュール
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
+        /// FileUpload1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+
+        /// <summary>
         /// TextBox2 コントロール。
         /// </summary>
         /// <remarks>

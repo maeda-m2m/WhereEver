@@ -12,6 +12,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Schedule</title>
 
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -464,12 +467,13 @@
                  
 
 
-                    <asp:ButtonColumn
+                    <asp:ButtonColumn 
                         ItemStyle-Width="100px"
                         HeaderText="削除"
                         ButtonType="PushButton"
                         Text="削除"
                         CommandName="Delete">
+                        
 
                         <ItemStyle Width="100px"></ItemStyle>
                     </asp:ButtonColumn>
@@ -611,9 +615,21 @@
         <footer>
 
         </footer>
-        <div>
-            <h1>test</h1>
-        </div>
+     
+        <script src="jquery-3.6.0.min.js"></script>
+
+         <script>
+        "use strict"
+        $(document).ready(function () {
+            $.ajax({ url: "data.json", dataType: "json" })
+                .done(function (data) {
+                    console.log(data);
+                })
+                .fail(function () {
+                    window.alert("読み込みエラー");
+                });
+        });
+         </script>
 
         <script>
 

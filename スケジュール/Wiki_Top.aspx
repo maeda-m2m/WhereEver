@@ -99,7 +99,7 @@
                             <ItemStyle Wrap="true" HorizontalAlign="Left" />
                         </asp:BoundColumn>
 
-                        <asp:BoundColumn DataField="Name" HeaderText="名前" ItemStyle-Width="100px">
+                        <asp:BoundColumn DataField="Name" HeaderText="筆者" ItemStyle-Width="100px">
                             <HeaderStyle Wrap="true" />
                             <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
                         </asp:BoundColumn>
@@ -135,6 +135,7 @@
         </div>
 
     </form>
+
 
 </body>
 
