@@ -1177,6 +1177,7 @@
                     <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
                 </Columns>
             </asp:DataGrid>
+            <asp:TextBox ID="txtPlus" runat="server" Width="500px" class="noprint"></asp:TextBox><asp:Button ID="btnPlus" runat="server" Text="追加"  class="noprint" OnClick="btnPlus_Click"/>
         </div>
     </form>
 
