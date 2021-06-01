@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
     <link rel="stylesheet" type="text/css" href="Money.css" />
-    <title></title>
+    <title>勘定システム</title>
 </head>
 <body>
     <form id="form1" runat="server">
