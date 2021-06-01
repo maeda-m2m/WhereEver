@@ -225,6 +225,18 @@ namespace WhereEver.ResearchAnalitics
         {
             RunMatrix();
         }
+
+        protected void Push_DP(object sender, EventArgs e)
+        {
+            if (Panel_DP.Visible)
+            {
+                Panel_DP.Visible = false;
+            }
+            else
+            {
+                Panel_DP.Visible = true;
+            }
+        }
     }
 }
 

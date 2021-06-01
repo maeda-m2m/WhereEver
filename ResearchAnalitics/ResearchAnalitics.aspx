@@ -32,7 +32,7 @@
 
            <p class="index1">
                ◆ディープラーニング
-               <asp:Button ID="Button_DP" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_PL_test" CausesValidation="False" />
+               <asp:Button ID="Button_DP" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_DP" CausesValidation="False" />
                　手軽にディープラーニングを試すことができます。</p>
 
            <hr />
@@ -61,7 +61,7 @@
                     学習回数(int>0)
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_Learn" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" ToolTip="全角6文字以内" Text="30" OnTextChanged="Change_PL" MaxLength="6"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Learn" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" ToolTip="全角6文字以内" Text="30" MaxLength="6"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -69,7 +69,7 @@
                     学習率(double>0)
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_Rate" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" ToolTip="全角6文字以内" Text="0.1" OnTextChanged="Change_PL" MaxLength="6"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Rate" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" ToolTip="全角6文字以内" Text="0.1" MaxLength="6"></asp:TextBox>
                 </td>
             </tr>
             <tr>
