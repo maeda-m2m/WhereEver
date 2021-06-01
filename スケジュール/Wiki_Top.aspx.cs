@@ -2,9 +2,11 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WhereEver.ClassLibrary;
+using static System.Web.HttpUtility;
+
 
 namespace WhereEver.スケジュール
 {
@@ -26,6 +28,10 @@ namespace WhereEver.スケジュール
         protected void Button2_Click(object sender, EventArgs e)//編集ボタン
         {
             Response.Redirect("Wiki_Top.aspx");
+
+
+
+
         }
 
 
@@ -61,13 +67,12 @@ namespace WhereEver.スケジュール
 
         }
 
-        protected void dg1_ItemCommand(object sender, DataGridCommandEventArgs e)//データベースにある画像を表示する
+        protected void dg1_ItemCommand(object sender, DataGridCommandEventArgs e)
         {
-
-
-            //int sdl = dr.id;
             if (e.CommandName == "Read")
             {
+
+                byte[] allbyte = new byte[0];
 
                 int Read = e.Item.ItemIndex;
 
@@ -75,14 +80,25 @@ namespace WhereEver.スケジュール
 
                 var dr = dt.Rows[Read] as DATASET.DataSet.T_WikiRow;
 
-                Label1.Text = dr.Title;
+                if (!dr.IstypeNull())
+                {
+                    allbyte = allbyte.Concat(dr.datum).ToArray();
 
-                Label2.Text = dr.Text;
+                    Label1.Text = dr.Title;
 
+                    Label2.Text = dr.Text;
+
+                    Label3.Text = "<img src=\"data:" + dr.type + ";base64," + HtmlEncode(Convert.ToBase64String(allbyte)) + "\" />";
+                }
+                else
+                {
+                    Label1.Text = dr.Title;
+
+                    Label2.Text = dr.Text;
+
+                    Label3.Text = "";
+                }
             }
         }
-
-   
-
     }
 }

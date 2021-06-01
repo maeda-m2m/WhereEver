@@ -159,44 +159,7 @@ namespace WhereEver.スケジュール
 
         }
 
-        SqlDataReader objRs;
+      
 
-        //void Page_Load(Object sender, EventArgs e)////表示
-        //{
-        //    if (!Page.IsPostBack)
-        //    {
-        //        SqlConnection objDb = new SqlConnection("Data Source=(local);User ID=sa;Password=sa;Persist Security Info=True;Initial Catalog=dotnet");
-        //        // image_dataテーブルから取り出したファイル情報を
-        //        // DropDownListコントロールにバインド
-        //        SqlCommand objCom = new SqlCommand("SELECT id,title FROM image_data", objDb);
-        //        objDb.Open();
-        //        objRs = objCom.ExecuteReader();
-        //        Page.DataBind();
-        //        objDb.Close();
-        //    }
-        //}
-        //void objBtn_Click(Object sender, EventArgs e)
-        //{
-        //    SqlConnection objDb = new SqlConnection("Data Source=(local);User ID=sa;Password=sa;Persist Security Info=True;Initial Catalog=dotnet");
-        //    // ドキュメントIDをキーに
-        //    // DropDownListコントロールで指定されたファイルを取得
-        //    SqlCommand objCom = new SqlCommand("SELECT type,datum FROM image_data WHERE id=@id", objDb);
-        //    objCom.Parameters.Add("@id", objDdp.SelectedItem.Value);
-        //    objDb.Open();
-        //    objRs = objCom.ExecuteReader();
-        //    // データベースから取得したファイルを出力する。
-        //    // typeフィールドの値をContentTypeプロパティにセットし、
-        //    // datumフィールドの値をBinaryWriteメソッドで出力する。
-        //    // それぞれ取得したフィールド値はキャストする必要がある。
-
-        //    if (objRs.Read())
-        //    {
-        //        Response.ContentType = (String)objRs[0];
-        //        Response.BinaryWrite((Byte[])objRs[1]);
-        //    }
-        //    objDb.Close();
-
-        //    Response.End();
-        //}
     }
 }
