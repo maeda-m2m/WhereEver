@@ -87,7 +87,7 @@
             </tr>
              <tr>
                 <td colspan="2">
-                    <asp:Button ID="Button_SetDeepRun" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_Deep" CausesValidation="False" />
+                    <asp:Button ID="Button_SetDeepRun" CssClass="btn-flat-border" runat="server" Text="実行" OnClick="Push_Deep" CausesValidation="False" />
                 </td>
             </tr>
         </table>
