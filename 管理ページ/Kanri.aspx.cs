@@ -147,6 +147,11 @@ namespace WhereEver.管理ページ
             Response.Redirect("../XHTML5Editor/XHTML5Editor.aspx", false);
         }
 
+        protected void btnDP_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../ResearchAnalitics/ResearchAnalitics.aspx", false);
+        }
+
         //-----------------------------------------------------------------------------------
 
 

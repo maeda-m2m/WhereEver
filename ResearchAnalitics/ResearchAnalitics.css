@@ -1,0 +1,332 @@
+﻿body {
+    background-image: url(../ログイン/white.jpg);
+    background-repeat: no-repeat; /* 画像重複しない */
+    background-size: cover;
+    font-weight: bold; /*太字にする*/
+    font-family: Meiryo;
+}
+
+#Wrap {
+    background-color: #1e1e1e;
+    color: white;
+    width: 1280px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.textbox {
+    height: 2em;
+    width: 16em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.textbox_Wide {
+    text-align: left;
+    height: 12em;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.lbl {
+    text-align: right;
+    height: auto;
+    width: 20em;
+    color: white;
+}
+
+.none {
+    display: none;
+}
+
+.textbox_normat {
+    text-align: left;
+    height: auto;
+    width: 20em;
+    background-color: black;
+    color: white;
+}
+
+.textbox_math {
+    text-align: right;
+    height: auto;
+    width: 20em;
+    background-color: black;
+    color: white;
+}
+
+.ddl_date {
+    text-align: right;
+    height: auto;
+    width: auto;
+    background-color: black;
+    color: white;
+}
+
+.th_master{
+    background-color: black;
+}
+
+.td_master {
+    width: 61em;
+}
+
+.td_master_q {
+    width: 20%;
+}
+
+
+.minus{
+    color: red;
+}
+
+.sum {
+    color: lightblue;
+}
+
+.per {
+    color: lightgreen;
+}
+
+.even {
+    color: lightyellow;
+}
+
+.hr {
+    display: block;
+    height: 0;
+    width: auto;
+    margin: 0.5em;
+    border: 1px inset;
+    border-color: red;
+}
+
+.DGTable {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    width: 1260px;
+    padding: 0.3em 1em;
+    border: solid 2px red;
+    border-radius: 3px;
+    font-family: Meiryo;
+}
+
+
+    .DGTable td {
+        border: groove 1px white;
+        border-collapse: collapse;
+    }
+
+.f-notice {
+    height: 2.25em;
+    display: inline-block;
+}
+
+.center {
+    width: 1230px;
+    margin-top: 1.85em;
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.index1 {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+    background-color: black;
+}
+
+.btn-wrap {
+    width: auto;
+    height: auto;
+    background-color: #1e1e1e;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px red;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+.form-flat-border {
+    width: 1225px;
+    height: auto;
+    background-color: #1e1e1e;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px red;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+.form-flat-border-inner {
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: black;
+    border: solid 1px black;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+.btn-flat-border {
+    text-align: center;
+    width: 180px;
+    height: 32px;
+    display: inline-block;
+    padding: 0.15em 1em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px white;
+    background: #1e1e1e;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+}
+
+    .btn-flat-border:hover {
+        background: #808080;
+        cursor: pointer;
+    }
+
+.btn-flat-border-mini {
+    text-align: center;
+    width: auto;
+    height: 32px;
+    display: inline-block;
+    padding: 0.15em 1em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px white;
+    background: #1e1e1e;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+    .btn-flat-border-mini:hover {
+        background: #808080;
+        cursor: pointer;
+    }
+
+
+@media print {
+    .noprint {
+        display: none;
+    }
+
+    #Wrap {
+        margin-left: 0em;
+        margin-right: 0em;
+    }
+
+    .th_master {
+        background-color: white;
+    }
+
+    .ddl_date {
+        background-color: white;
+        color: black;
+        -webkit-appearance: none; /* ベンダープレフィックス(Google Chrome、Safari用) */
+        -moz-appearance: none; /* ベンダープレフィックス(Firefox用) */
+        border: none;
+        text-decoration: none;
+    }
+
+    .minus {
+        color: inherit;
+    }
+
+    .sum {
+        color: inherit;
+    }
+
+    .per {
+        color: inherit;
+    }
+
+    .even {
+        color: inherit;
+    }
+
+    .DGTable {
+        border: solid 2px black;
+        background-color: white;
+        color: black;
+    }
+
+        .DGTable td {
+            border: groove 1px black;
+            border-collapse: collapse;
+        }
+
+    .hr {
+        display: none;
+    }
+
+    .lbl {
+        color: black;
+    }
+
+    .textbox_normal {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    .textbox_math {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    .textbox_Wide {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    #Wrap {
+        background-color: white;
+        color: black;
+    }
+
+    body {
+        background-image: none;
+    }
+}

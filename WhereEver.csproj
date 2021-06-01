@@ -132,6 +132,8 @@
     <Content Include="Insatsu.ascx" />
     <Content Include="Money\Money.aspx" />
     <Content Include="Money\Money.css" />
+    <Content Include="ResearchAnalitics\ResearchAnalitics.css" />
+    <Content Include="ResearchAnalitics\ResearchAnalitics.aspx" />
     <Content Include="Video\signalilng_room.js" />
     <Content Include="Video\socket.io.js" />
     <Content Include="Video\signaling.js" />
@@ -253,6 +255,7 @@
     <Compile Include="Class2.cs" />
     <Compile Include="ClassLibrary\MailToClass.cs" />
     <Compile Include="ClassLibrary\FileShareClass.cs" />
+    <Compile Include="ClassLibrary\Matrix.cs" />
     <Compile Include="ClassLibrary\MOMClass.cs" />
     <Compile Include="ClassLibrary\ShinseiLog.cs" />
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
@@ -312,6 +315,13 @@
     </Compile>
     <Compile Include="Project System\Update.cs" />
     <Compile Include="Project System\WBS.cs" />
+    <Compile Include="ResearchAnalitics\ResearchAnalitics.aspx.cs">
+      <DependentUpon>ResearchAnalitics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResearchAnalitics\ResearchAnalitics.aspx.designer.cs">
+      <DependentUpon>ResearchAnalitics.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tatekae.ascx.cs">
       <DependentUpon>Tatekae.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
