@@ -23,17 +23,17 @@ namespace WhereEver.ClassLibrary
         {
             //プロパティR,Cは、行列の行と列の数を示す
 
-            private int r = 0;
+            private readonly int r = 0;
             public int R
             {
                 get { return r; }
             }
-            private int c = 0;
+            private readonly int c = 0;
             public int C
             {
                 get { return c; }
             }
-            private bool err = false;
+            private readonly bool err = false;
             public bool Err
             {
                 get { return err; }
@@ -46,8 +46,15 @@ namespace WhereEver.ClassLibrary
                     double[][] a = new double[2][];
                     a[0] = new double[] { 0, 0 };
                     a[1] = new double[] { 0, 0 };
-                    if (err) return a;
-                    else return matrix_data;
+                    if (err)
+                    {
+                        //エラー
+                        return a;
+                    }
+                    else
+                    {
+                        return matrix_data;
+                    }
                 }
                 set
                 {
@@ -58,6 +65,9 @@ namespace WhereEver.ClassLibrary
             {
                 get
                 {
+                    //Heの初期値(ReLU関数使用時の初期分散)
+                    //double sigma = Math.Sqrt(2.0f / (float)this.r);
+
                     double[][] zm = new double[this.r][];
                     for (int i = 0; i < this.r; i++)
                     {
@@ -65,6 +75,7 @@ namespace WhereEver.ClassLibrary
                         for (int j = 0; j < this.c; j++)
                         {
                             zm[i][j] = 0;
+                            //zm[i][j] = sigma; //0.0f, sigmaの標準偏差
                         }
                     }
                     return zm;
@@ -113,7 +124,7 @@ namespace WhereEver.ClassLibrary
 
                 for (int i = 0; i < this.c; i++)
                 {
-                    sig[0][i] = 1 / (1 + System.Math.Exp(-this.matrix_data[0][i]));
+                    sig[0][i] = 1 / (1 + Math.Exp(-this.matrix_data[0][i]));
                 }
 
                 sigmoid_out = sig;
@@ -142,7 +153,7 @@ namespace WhereEver.ClassLibrary
                 double[] exp_a = new double[this.c];
                 for (int i = 0; i < this.c; i++)
                 {
-                    exp_a[i] = System.Math.Exp(this.matrix_data[0][i] - m);
+                    exp_a[i] = Math.Exp(this.matrix_data[0][i] - m);
                 }
 
                 double sum = 0.0;
@@ -164,7 +175,7 @@ namespace WhereEver.ClassLibrary
                 double sum = 0.0;
                 for (int i = 0; i < this.c; i++)
                 {
-                    sum = sum + t.matrix_data[0][i] * System.Math.Log(this.matrix_data[0][i] + delta);
+                    sum = sum + t.matrix_data[0][i] * Math.Log(this.matrix_data[0][i] + delta);
                 }
 
                 return -sum;
@@ -656,73 +667,6 @@ namespace WhereEver.ClassLibrary
             }
         }
 
-
-
-
-
-        public class Result
-        {
-            private string result = "";
-
-            public void SetResult(string str)
-            {
-                result = str;
-                return;
-            }
-
-            public string GetResult()
-            {
-                return result;
-            }
-
-        }
-
-        public class Setting
-        {
-
-            //学習率
-            private double rate = 0.1f;
-            public void SetRate(double d)
-            {
-                rate = d;
-                return;
-            }
-
-            public double GetRate()
-            {
-                return rate;
-            }
-
-
-            //誤差逆伝播 1=true 0=false
-            private int deeplearning = 1;
-            public void SetDeep(int d)
-            {
-                deeplearning = d;
-                return;
-            }
-
-            public int GetDeep()
-            {
-                return deeplearning;
-            }
-
-
-            //学習回数
-            private int learn = 10;
-            public void SetLearn(int l)
-            {
-                learn = l;
-                return;
-            }
-
-            public int GetLearn()
-            {
-                return learn;
-            }
-
-
-        }
 
 
 
