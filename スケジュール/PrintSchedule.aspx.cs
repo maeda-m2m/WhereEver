@@ -1373,6 +1373,17 @@ namespace WhereEver
             DATASET.DataSet.T_PrintScheduleRow t_PrintScheduleRow = t_PrintSchedule.NewT_PrintScheduleRow();
 
             DATASET.DataSet.T_PrintScheduleRow t_PrintScheduleRow1 = GetMaxPrintSchedule(Global.GetConnection());
+
+            if (t_PrintScheduleRow1.IsNull("bikouid"))
+            {
+                t_PrintScheduleRow.bikouid = 1;
+            }
+            else
+            {
+                t_PrintScheduleRow.bikouid = t_PrintScheduleRow1.bikouid + 1;
+
+            }
+
         }
         internal static DATASET.DataSet.T_PrintScheduleRow GetMaxPrintSchedule(SqlConnection sqlConnection)
         {
