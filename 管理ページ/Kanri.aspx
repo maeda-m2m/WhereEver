@@ -125,6 +125,7 @@
             <div class="center">
                <asp:Button ID="Button_Video" runat="server" CssClass="btn_loginlist" Text="ビデオ機能を試す" OnClick="btnVideo_Click" />
                <asp:Button ID="Button_XHTMLButton" runat="server" CssClass="btn_loginlist" Text="ボタン生成を試す" OnClick="btnButton_Click" />
+               <asp:Button ID="Button_DP" runat="server" CssClass="btn_loginlist" Text="誤差逆伝搬法を試す" OnClick="btnDP_Click" />
             </div>
            </div>
 
