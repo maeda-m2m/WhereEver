@@ -492,6 +492,75 @@ namespace WhereEver.ResearchAnalitics
                 Panel_DP.Visible = true;
             }
         }
+
+
+
+        /// <summary>
+        /// 要素[]x, []yより、相関係数rを求めます。
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        protected double Soukan(double []x, double []y)
+        {
+            //x基準
+            int number = x.Count();
+
+            //共分散(Sxy): Σ(データx - データxの平均)(データy - データyの平均) /n -1
+            double s_xy = S_xy(x, y, number, 1);
+
+            //xの標準偏差: √(Σ(データx - データxの平均)^2 /n -1)
+            //yの標準偏差: √(Σ(データy - データyの平均)^2 /n -1)
+            double h = Hensa(x, y, number, 1);
+
+            //相関係数(r): 共分散 / xの標準偏差 * yの標準偏差
+            double r = s_xy / h;
+
+            return r;   //相関係数r
+        }
+
+        /// <summary>
+        /// 要素[]x, []yの共分散を求めます。
+        /// Σ(データx - データxの平均)(データy - データyの平均) /n -1
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="n"></param>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        protected double S_xy(double []x, double []y, int n, int i)
+        {
+            double sum = 0; //合計
+            for (int k = i; k <= n; k++)
+            {
+                sum += (x[k] * k - x.Average()) * (y[k] - y.Average()) / x.Count(); //x基準　nullはないものとみなす
+            }
+
+            return sum;
+        }
+
+        /// <summary>
+        /// 要素[]x, []yの標準偏差を求めます。
+        /// √(Σ(データx - データxの平均)^2 /n -1) * √(Σ(データy - データyの平均)^2 /n -1)
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="n"></param>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        protected double Hensa(double []x, double []y, int n, int i)
+        {
+            double sum = 0; //合計
+            for (int k = i; k <= n; k++)
+            {
+                sum += Math.Sqrt((x[k] * k - x.Average())*(x[k] * k - x.Average()) / x.Count()) * Math.Sqrt((y[k] - y.Average()) *(y[k] - y.Average()) / y.Count()); //x基準とy基準　nullはないものとみなす
+            }
+
+            return sum;
+        }
+
+
+
     }
 }
 
