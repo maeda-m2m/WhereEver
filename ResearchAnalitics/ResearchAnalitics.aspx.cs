@@ -15,7 +15,7 @@ namespace WhereEver.ResearchAnalitics
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
+            TextBox_Soukan_id.Text = SessionManager.User.M_User.id;
 
 
 
