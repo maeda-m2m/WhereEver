@@ -90,6 +90,9 @@
 
             <div class="Center-dg">
 
+                <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="Search"></asp:TextBox>
+                <asp:Button runat="server" ID="Button3" Text="検索" OnClick="Button3_Click" />
+
                 <asp:DataGrid runat="server" ID="dg1" AutoGenerateColumns="False" OnSelectedIndexChanged="dg1_SelectedIndexChanged" CssClass="Center" OnItemCommand="dg1_ItemCommand">
                     <Columns>
 

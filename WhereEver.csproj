@@ -148,6 +148,7 @@
     <Content Include="XHTML5Editor\XHTML5Editor.css" />
     <Content Include="XHTML5Editor\XHTML5Editor.aspx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
+    <Content Include="スケジュール\Schedule.js" />
     <Content Include="スケジュール\Wiki.aspx" />
     <Content Include="スケジュール\Wiki_Top.aspx" />
     <Content Include="チャット\purple.jpg" />

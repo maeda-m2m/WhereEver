@@ -8,7 +8,7 @@ namespace WhereEver.Class
 {
     public class Wiki
     {
-        public static DATASET.DataSet.T_WikiDataTable GetT_WikiDataTable(SqlConnection Sqlco)
+        public static DATASET.DataSet.T_WikiDataTable GetT_WikiDataTable(SqlConnection Sqlco)//データバインド用
         {
             var da = new SqlDataAdapter("", Sqlco);
 
@@ -23,7 +23,7 @@ namespace WhereEver.Class
 
         }
 
-        public static void InsertT_Wiki(DATASET.DataSet.T_WikiDataTable dt, HttpPostedFile file, SqlConnection sql )
+        public static void InsertT_Wiki(DATASET.DataSet.T_WikiDataTable dt, HttpPostedFile file, SqlConnection sql)//データベースに値を追加する時の処理
         {
             SqlDataAdapter da = new SqlDataAdapter("", sql);
 
@@ -50,7 +50,7 @@ namespace WhereEver.Class
             }
         }
 
-        public static DATASET.DataSet.T_WikiRow Maxid(SqlConnection schedule)
+        public static DATASET.DataSet.T_WikiRow Maxid(SqlConnection schedule)//idの最大値をとってくる
         {
             SqlDataAdapter da = new SqlDataAdapter("", schedule);
             da.SelectCommand.CommandText =
@@ -90,6 +90,23 @@ namespace WhereEver.Class
             {
                 sql.Close();
             }
+        }
+
+        public static DATASET.DataSet.T_WikiDataTable Search(string Search, SqlConnection Sqlco)//検索用
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+
+            da.SelectCommand.CommandText =
+              "SELECT * FROM T_Wiki WHERE Text LIKE @Search order by Date asc";
+
+
+            da.SelectCommand.Parameters.AddWithValue("@Search", "%" + Search + "%");
+
+            var dt = new DATASET.DataSet.T_WikiDataTable();
+
+            da.Fill(dt);
+
+            return dt;
         }
 
     }

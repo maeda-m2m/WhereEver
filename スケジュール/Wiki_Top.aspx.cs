@@ -34,6 +34,17 @@ namespace WhereEver.スケジュール
 
         }
 
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            string Search = TextBox1.Text;
+
+            var dt = Class.Wiki.Search(Search, Global.GetConnection());
+
+            dg1.DataSource = dt;
+
+            dg1.DataBind();
+        }
+
 
         public void Create()
         {

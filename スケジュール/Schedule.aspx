@@ -13,7 +13,6 @@
     <title>Schedule</title>
 
     <style>
-
     </style>
 </head>
 
@@ -464,16 +463,16 @@
                         <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
                     </asp:BoundColumn>
 
-                 
 
 
-                    <asp:ButtonColumn 
+
+                    <asp:ButtonColumn
                         ItemStyle-Width="100px"
                         HeaderText="削除"
                         ButtonType="PushButton"
                         Text="削除"
                         CommandName="Delete">
-                        
+
 
                         <ItemStyle Width="100px"></ItemStyle>
                     </asp:ButtonColumn>
@@ -613,36 +612,16 @@
         </div>--%>
 
         <footer>
-
+            <section class="Center">
+                <p>最終アクセス:<span id="time"></span></p>
+            </section>
         </footer>
-     
+
         <script src="jquery-3.6.0.min.js"></script>
+        <script src="Schedule.js"></script>
 
-         <script>
-        "use strict"
-        $(document).ready(function () {
-            $.ajax({ url: "data.json", dataType: "json" })
-                .done(function (data) {
-                    console.log(data);
-                })
-                .fail(function () {
-                    window.alert("読み込みエラー");
-                });
-        });
-         </script>
-
-        <script>
-
-            function A() {
-                return window.confirm('本当に戻りますか？');
-
-
-            }
-
-            var time = new Date();
-            document.getElementById("Label_Time").textContent = time;
-
-        </script>
     </form>
+
 </body>
+
 </html>
