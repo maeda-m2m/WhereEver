@@ -1383,6 +1383,8 @@ namespace WhereEver
                 t_PrintScheduleRow.bikouid = t_PrintScheduleRow1.bikouid + 1;
 
             }
+            t_PrintSchedule.Rows.Add(t_PrintScheduleRow);
+           
 
         }
         internal static DATASET.DataSet.T_PrintScheduleRow GetMaxPrintSchedule(SqlConnection sqlConnection)
