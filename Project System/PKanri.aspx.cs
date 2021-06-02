@@ -143,6 +143,13 @@ namespace WhereEver.Project_System
                     Button sitabig = e.Item.FindControl("sitabig") as Button;
                     sitabig.CssClass = "visibility_hidden";
                 }
+                if (Insert.GetMaxPMiddleidRow(Global.GetConnection(), dr.PBigname).PMiddleid==1)
+                {
+                    Button uemiddle = e.Item.FindControl("uemiddle") as Button;
+                    uemiddle.CssClass = "visibility_hidden";
+                    Button sitamiddle = e.Item.FindControl("sitamiddle") as Button;
+                    sitamiddle.CssClass = "visibility_hidden";
+                }
                 
                 e.Item.Cells[3].Text = dr.PMiddlename.ToString();
                 e.Item.Cells[5].Text = dr.PMiddlestart.ToShortDateString();
