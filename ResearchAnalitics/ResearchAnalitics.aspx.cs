@@ -15,8 +15,8 @@ namespace WhereEver.ResearchAnalitics
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            TextBox_Soukan_id.Text = SessionManager.User.M_User.id.Trim();
-
+            TextBox_Soukan_id.Text = HtmlEncode(SessionManager.User.M_User.id.Trim()).Trim();
+            GridView_Soukan.DataBind();
 
 
         }
@@ -494,10 +494,11 @@ namespace WhereEver.ResearchAnalitics
         }
 
 
-
         /// <summary>
         /// 要素List<double> x, List<double> yより、相関係数rを求めます。
         /// Listのいずれかがnullの場合は0をreturnします。
+        /// ピアソンとスピアマンはこちら
+        /// https://kusuri-jouhou.com/statistics/soukan.html
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -512,32 +513,42 @@ namespace WhereEver.ResearchAnalitics
             }
 
             //x基準
-            int number = x.Count();
+            //int number = x.Count();
 
-            //共分散(Sxy): Σ(データx - データxの平均)(データy - データyの平均) /n -1
-            double s_xy = S_xy(x, y, number, 1);
 
-            //xの標準偏差: √(Σ(データx - データxの平均)^2 /n -1)
-            //yの標準偏差: √(Σ(データy - データyの平均)^2 /n -1)
-            double h = Hensa(x, y, number, 1);
+            /*
+            Σの公式一覧
+            1. [∑ k=1 n] a = na
+            2. [∑ k=1 n] k = (1/2n)(n+1)
+            3. [∑ k=1 n] k^2 = (1/6n)(n+1)(2n+1)
+            4. [∑ k=1 n] k^3 = {(1/2n)(n+1)}2
+            5. [∑ k=1 n] ar^(k−1) = a(1−rn)/1−r = a(rn–1)/r−1
+             */
+
+            //共分散(Sxy): [Σ i=1 n] (データx - データxの平均)(データy - データyの平均)
+            double s_xy = S_xy(x, y);
+
+            //xの標準偏差: √([Σ i=1 n] (データx - データxの平均)^2)
+            //yの標準偏差: √([Σ i=1 n] (データy - データyの平均)^2)
+            double h = Hensa(x, y);
 
             //相関係数(r): 共分散 / xの標準偏差 * yの標準偏差
-            double r = s_xy / h;
+            double r = (double)s_xy / (double)h;
 
             return r;   //相関係数r
         }
 
+
+
         /// <summary>
         /// 要素List<double> x, List<double> yの共分散を求めます。
-        /// Σ(データx - データxの平均)(データy - データyの平均) /n -1
+        /// Σ(データx - データxの平均)(データy - データyの平均)
         /// Listのいずれかがnullの場合は0をreturnします。
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        /// <param name="n"></param>
-        /// <param name="i"></param>
         /// <returns></returns>
-        protected double S_xy(List<double> x, List<double> y, int n, int i)
+        protected double S_xy(List<double> x, List<double> y)
         {
 
             if (x == null || y == null)
@@ -546,10 +557,13 @@ namespace WhereEver.ResearchAnalitics
                 return 0;
             }
 
+            //x基準
+            int n = x.Count();
+
             double sum = 0; //合計
-            for (int k = i; k <= n; k++)
+            for (int k = 1; k <= n; k++)
             {
-                sum += (x[k] * k - x.Average()) * (y[k] - y.Average()) / x.Count(); //x基準　nullはないものとみなす
+                sum += (x[k-1] * k - x.Average()) * (y[k-1] * k - y.Average()); //x基準　nullはないものとみなす
             }
 
             return sum;
@@ -557,15 +571,13 @@ namespace WhereEver.ResearchAnalitics
 
         /// <summary>
         /// 要素List<double> x, List<double> yの標準偏差を求めます。
-        /// √(Σ(データx - データxの平均)^2 /n -1) * √(Σ(データy - データyの平均)^2 /n -1)
+        /// √(Σ(データx - データxの平均)^2 /(n - 1)) * √(Σ(データy - データyの平均)^2)
         /// Listのいずれかがnullの場合は0をreturnします。
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        /// <param name="n"></param>
-        /// <param name="i"></param>
         /// <returns></returns>
-        protected double Hensa(List<double> x, List<double> y, int n, int i)
+        protected double Hensa(List<double> x, List<double> y)
         {
 
             if (x == null || y == null)
@@ -574,10 +586,13 @@ namespace WhereEver.ResearchAnalitics
                 return 0;
             }
 
+            //x基準
+            int n = x.Count();
+
             double sum = 0; //合計
-            for (int k = i; k <= n; k++)
+            for (int k = 1; k <= n; k++)
             {
-                sum += Math.Sqrt((x[k] * k - x.Average())*(x[k] * k - x.Average()) / x.Count()) * Math.Sqrt((y[k] - y.Average()) *(y[k] - y.Average()) / y.Count()); //x基準とy基準　nullはないものとみなす
+                sum += Math.Sqrt((x[k-1] * k - x.Average())*(x[k-1] * k - x.Average())) * Math.Sqrt((y[k-1] * k - y.Average()) * (y[k-1] * k - y.Average())); //x基準とy基準　nullはないものとみなす
             }
 
             return sum;
@@ -586,16 +601,17 @@ namespace WhereEver.ResearchAnalitics
         protected void Push_Soukan_Correct(object sender, EventArgs e)
         {
             //指定したid&&Table内で計算を実行します。
-            string id = SessionManager.User.M_User.id;
-            string tableName = HtmlEncode(TextBox_Soukan_TableName.Text);
+            string id = HtmlEncode(SessionManager.User.M_User.id).Trim();
+            string tableName = HtmlEncode(TextBox_Soukan_TableName.Text).Trim();
 
             //Listなら動的に要素数を増やせる。
             List<double> x = new List<double>();
             List<double> y = new List<double>();
 
 
-            for (int i = 0; i <= GridView_Soukan.Rows.Count; i++)
+            for (int i = 0; i < GridView_Soukan.Rows.Count; i++)
             {
+
                 //idが一致するか？
                 if(id == GridView_Soukan.Rows[i].Cells[0].Text)
                 {
@@ -626,21 +642,46 @@ namespace WhereEver.ResearchAnalitics
                 }
 
             }
+            double hensa = Hensa(x, y); //標準偏差 0.00
+            double s_xy = S_xy(x, y);   //共分散 0.00
+            double result = Soukan(x, y);   //相関関係値 r 0.00
 
-            Soukan(x, y);
-            //SQLにインサート
+            StringBuilder sb = new StringBuilder();
+            sb.Append("標準偏差: ");
+            sb.Append(string.Format("{0:#.00}", hensa));
+            sb.Append(";\r\f");
+            sb.Append("共分散: ");
+            sb.Append(string.Format("{0:#.00}", s_xy));
+            sb.Append(";\r\f");
+            sb.Append("r値: ");
+            sb.Append(string.Format("{0:#.00}", result));
+            sb.Append(";\r\f");
+
+            TextBox_Soukan_Result.Text = @sb.ToString();
+
+            //SQLにインサート（いる？）
         }
 
         protected void Push_Soukan_Insert(object sender, EventArgs e)
         {
             //SQLで新規項目をインサートします。
-            string id = SessionManager.User.M_User.id.Trim();
-            string item_A = HtmlEncode(TextBox_Soukan_A.Text);
-            string item_B = HtmlEncode(TextBox_Soukan_B.Text);
-            string tableName = HtmlEncode(TextBox_Soukan_TableName.Text);
-            //string uuid = Guid.NewGuid().ToString();
+            string id = HtmlEncode(SessionManager.User.M_User.id.Trim()).Trim();
+            string item_A = HtmlEncode(@TextBox_Soukan_A.Text);
+            string item_B = HtmlEncode(@TextBox_Soukan_B.Text);
+            string tableName = HtmlEncode(@TextBox_Soukan_TableName.Text).Trim();
 
+            if(tableName == "")
+            {
+                TextBox_Soukan_Result.Text = @"TableNameを入力して下さい。";
+                return;
+            }
 
+            float.TryParse(item_A, System.Globalization.NumberStyles.Currency, null, out float value_A);
+            float.TryParse(item_B, System.Globalization.NumberStyles.Currency, null, out float value_B);
+
+            ClassLibrary.Soukan.SetT_Soukan_Main(Global.GetConnection(), @id, @tableName, (float)value_A, (float)value_B);
+
+            GridView_Soukan.DataBind();
 
         }
 

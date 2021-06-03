@@ -278,23 +278,26 @@
 <div class="noprint">
 <span class="hr"></span>
 
-    <p class="center">リストA-B間の相関分析を実行します。</p>
+    <p class="center">リストA-B間の相関分析を実行します。ピアソンとスピアマンは未実装（次回実装予定）</p>
 
 
                   <asp:GridView ID="GridView_Soukan" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uuid,TableName" DataSourceID="SqlDataSource1" CssClass="DGTable" AllowPaging="True" AllowSorting="True">
                 <Columns>
+                    
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
-                    <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" HeaderStyle-CssClass="none" ItemStyle-CssClass="none" />
+                    <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" HeaderStyle-CssClass="none" ItemStyle-CssClass="none" >
+                    <HeaderStyle CssClass="none" />
+                    <ItemStyle CssClass="none" />
+                    </asp:BoundField>
                     <asp:BoundField DataField="TableName" HeaderText="TableName" ReadOnly="True" SortExpression="TableName" />
                     <asp:BoundField DataField="item_A" HeaderText="item_A" SortExpression="item_A" />
                     <asp:BoundField DataField="item_B" HeaderText="item_B" SortExpression="item_B" />
-                    <asp:BoundField DataField="AB_S_xy" HeaderText="AB_S_xy" SortExpression="AB_S_xy" />
-                    <asp:BoundField DataField="AB_Hensa" HeaderText="AB_Hensa" SortExpression="AB_Hensa" />
-                    <asp:BoundField DataField="r" HeaderText="r" SortExpression="r" />
-                    <asp:BoundField DataField="p" HeaderText="p" SortExpression="p" HeaderStyle-CssClass="none" ItemStyle-CssClass="none" />
                     <asp:BoundField DataField="DateTime" HeaderText="DateTime" SortExpression="DateTime" />
                     <%-- <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn-flat-border-mini" /> --%>
-                    <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="btn-flat-border-mini" />
+
+                    <asp:CommandField ShowDeleteButton="True"  ControlStyle-CssClass="btn-flat-border-mini" HeaderText="削除"/>
+
+
                 </Columns>
                 <HeaderStyle BackColor="#1E1E1E" ForeColor="White" />
                   <RowStyle BackColor="Gray" ForeColor="White" />
@@ -302,17 +305,13 @@
 
              <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                 ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>"
-                SelectCommand="SELECT * FROM [T_Soukan] WHERE (([id] = @id) AND ([TableName] = @TableName)) ORDER BY [DateTime]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [T_Soukan] WHERE [id] = @original_id AND [uuid] = @original_uuid AND [TableName] = @original_TableName AND (([item_A] = @original_item_A) OR ([item_A] IS NULL AND @original_item_A IS NULL)) AND (([item_B] = @original_item_B) OR ([item_B] IS NULL AND @original_item_B IS NULL)) AND (([AB_S_xy] = @original_AB_S_xy) OR ([AB_S_xy] IS NULL AND @original_AB_S_xy IS NULL)) AND (([AB_Hensa] = @original_AB_Hensa) OR ([AB_Hensa] IS NULL AND @original_AB_Hensa IS NULL)) AND (([r] = @original_r) OR ([r] IS NULL AND @original_r IS NULL)) AND (([p] = @original_p) OR ([p] IS NULL AND @original_p IS NULL)) AND [DateTime] = @original_DateTime" InsertCommand="INSERT INTO [T_Soukan] ([id], [uuid], [TableName], [item_A], [item_B], [AB_S_xy], [AB_Hensa], [r], [p], [DateTime]) VALUES (@id, @uuid, @TableName, @item_A, @item_B, @AB_S_xy, @AB_Hensa, @r, @p, @DateTime)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [T_Soukan] SET [item_A] = @item_A, [item_B] = @item_B, [AB_S_xy] = @AB_S_xy, [AB_Hensa] = @AB_Hensa, [r] = @r, [p] = @p, [DateTime] = @DateTime WHERE [id] = @original_id AND [uuid] = @original_uuid AND [TableName] = @original_TableName AND (([item_A] = @original_item_A) OR ([item_A] IS NULL AND @original_item_A IS NULL)) AND (([item_B] = @original_item_B) OR ([item_B] IS NULL AND @original_item_B IS NULL)) AND (([AB_S_xy] = @original_AB_S_xy) OR ([AB_S_xy] IS NULL AND @original_AB_S_xy IS NULL)) AND (([AB_Hensa] = @original_AB_Hensa) OR ([AB_Hensa] IS NULL AND @original_AB_Hensa IS NULL)) AND (([r] = @original_r) OR ([r] IS NULL AND @original_r IS NULL)) AND (([p] = @original_p) OR ([p] IS NULL AND @original_p IS NULL)) AND [DateTime] = @original_DateTime">
+                SelectCommand="SELECT * FROM [T_Soukan_Main] WHERE (([id] = @id) AND ([TableName] = @TableName)) ORDER BY [TableName], [DateTime]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [T_Soukan_Main] WHERE [id] = @original_id AND [uuid] = @original_uuid AND [TableName] = @original_TableName AND (([item_A] = @original_item_A) OR ([item_A] IS NULL AND @original_item_A IS NULL)) AND (([item_B] = @original_item_B) OR ([item_B] IS NULL AND @original_item_B IS NULL)) AND [DateTime] = @original_DateTime" InsertCommand="INSERT INTO [T_Soukan_Main] ([id], [uuid], [TableName], [item_A], [item_B], [DateTime]) VALUES (@id, @uuid, @TableName, @item_A, @item_B, @DateTime)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [T_Soukan_Main] SET [item_A] = @item_A, [item_B] = @item_B, [DateTime] = @DateTime WHERE [id] = @original_id AND [uuid] = @original_uuid AND [TableName] = @original_TableName AND (([item_A] = @original_item_A) OR ([item_A] IS NULL AND @original_item_A IS NULL)) AND (([item_B] = @original_item_B) OR ([item_B] IS NULL AND @original_item_B IS NULL)) AND [DateTime] = @original_DateTime">
                  <DeleteParameters>
                      <asp:Parameter Name="original_id" Type="String" />
                      <asp:Parameter Name="original_uuid" Type="String" />
                      <asp:Parameter Name="original_TableName" Type="String" />
                      <asp:Parameter Name="original_item_A" Type="Double" />
                      <asp:Parameter Name="original_item_B" Type="Double" />
-                     <asp:Parameter Name="original_AB_S_xy" Type="String" />
-                     <asp:Parameter Name="original_AB_Hensa" Type="String" />
-                     <asp:Parameter Name="original_r" Type="String" />
-                     <asp:Parameter Name="original_p" Type="String" />
                      <asp:Parameter Name="original_DateTime" Type="DateTime" />
                  </DeleteParameters>
                  <InsertParameters>
@@ -321,10 +320,6 @@
                      <asp:Parameter Name="TableName" Type="String" />
                      <asp:Parameter Name="item_A" Type="Double" />
                      <asp:Parameter Name="item_B" Type="Double" />
-                     <asp:Parameter Name="AB_S_xy" Type="String" />
-                     <asp:Parameter Name="AB_Hensa" Type="String" />
-                     <asp:Parameter Name="r" Type="String" />
-                     <asp:Parameter Name="p" Type="String" />
                      <asp:Parameter Name="DateTime" Type="DateTime" />
                  </InsertParameters>
                  <SelectParameters>
@@ -334,31 +329,26 @@
                  <UpdateParameters>
                      <asp:Parameter Name="item_A" Type="Double" />
                      <asp:Parameter Name="item_B" Type="Double" />
-                     <asp:Parameter Name="AB_S_xy" Type="String" />
-                     <asp:Parameter Name="AB_Hensa" Type="String" />
-                     <asp:Parameter Name="r" Type="String" />
-                     <asp:Parameter Name="p" Type="String" />
                      <asp:Parameter Name="DateTime" Type="DateTime" />
                      <asp:Parameter Name="original_id" Type="String" />
                      <asp:Parameter Name="original_uuid" Type="String" />
                      <asp:Parameter Name="original_TableName" Type="String" />
                      <asp:Parameter Name="original_item_A" Type="Double" />
                      <asp:Parameter Name="original_item_B" Type="Double" />
-                     <asp:Parameter Name="original_AB_S_xy" Type="String" />
-                     <asp:Parameter Name="original_AB_Hensa" Type="String" />
-                     <asp:Parameter Name="original_r" Type="String" />
-                     <asp:Parameter Name="original_p" Type="String" />
                      <asp:Parameter Name="original_DateTime" Type="DateTime" />
                  </UpdateParameters>
             </asp:SqlDataSource>
 
     <p>あなたのid<asp:TextBox ID="TextBox_Soukan_id" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="" MaxLength="50" ReadOnly="true"></asp:TextBox></p>
-    <p>テーブル名<asp:TextBox ID="TextBox_Soukan_TableName" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="" MaxLength="50"></asp:TextBox></p>
+    <p>テーブル名<asp:TextBox ID="TextBox_Soukan_TableName" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="" MaxLength="50" AutoPostBack="True"></asp:TextBox></p>
     <p>項目A<asp:TextBox ID="TextBox_Soukan_A" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="0.0" MaxLength="50"></asp:TextBox></p>
     <p>項目B<asp:TextBox ID="TextBox_Soukan_B" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="0.0" MaxLength="50"></asp:TextBox></p>
 
     <asp:Button ID="Button_Soukan_Insert" CssClass="btn-flat-border" runat="server" Text="挿入" OnClick="Push_Soukan_Insert" CausesValidation="False" />
     <asp:Button ID="Button_Soukan_Correct" CssClass="btn-flat-border" runat="server" Text="計算実行" OnClick="Push_Soukan_Correct" CausesValidation="False" />
+
+    <asp:TextBox ID="TextBox_Soukan_Result" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="Ready..." CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
+
 
 </div>
 </asp:Panel>
