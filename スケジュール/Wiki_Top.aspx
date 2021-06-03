@@ -28,7 +28,7 @@
             margin: auto;
             text-align: center;
             background-color: white;
-            width: 300px;
+            width: 500px;
         }
 
         .Center-Label {
@@ -83,6 +83,9 @@
 
             <asp:Button runat="server" ID="Button1" Text="登録" OnClick="Button1_Click" />
             <asp:Button runat="server" ID="Button2" Text="編集" OnClick="Button2_Click" />
+            <asp:TextBox runat="server" ID="TextBox1" Text="" placeholder="タイトル、本文を検索できます" TextMode="Search" Width="210px"></asp:TextBox>
+            <asp:Button runat="server" ID="Button3" Text="検索" OnClick="Button3_Click" />
+
 
         </div>
 
@@ -90,8 +93,7 @@
 
             <div class="Center-dg">
 
-                <asp:TextBox runat="server" ID="TextBox1" Text="" TextMode="Search"></asp:TextBox>
-                <asp:Button runat="server" ID="Button3" Text="検索" OnClick="Button3_Click" />
+
 
                 <asp:DataGrid runat="server" ID="dg1" AutoGenerateColumns="False" OnSelectedIndexChanged="dg1_SelectedIndexChanged" CssClass="Center" OnItemCommand="dg1_ItemCommand">
                     <Columns>

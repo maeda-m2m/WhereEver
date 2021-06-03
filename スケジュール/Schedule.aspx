@@ -30,8 +30,8 @@
             </tr>
         </table>
 
-        <asp:Button runat="server" ID="ButtonA" OnClick="ButtonA_Click" />
-        <asp:Label runat="server" ID="LabelA" CssClass="Center_Color1"></asp:Label>
+        <asp:Button runat="server" ID="ButtonA" Text="社内Wiki" OnClick="ButtonA_Click" />
+
 
 
         <div class="Center">
@@ -42,7 +42,7 @@
                 <asp:Button ID="Button4" runat="server" Text="前へ" class="btn-flat-border" OnClick="Button4_Click" />
                 <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
                 <asp:Button ID="Button5" runat="server" Text="次へ" class="btn-flat-border" OnClick="Button5_Click" />
-                <asp:Label runat="server" ID="Label_Timer" Text=""></asp:Label>
+
             </asp:Panel>
         </div>
 

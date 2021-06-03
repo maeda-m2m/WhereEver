@@ -92,15 +92,16 @@ namespace WhereEver.Class
             }
         }
 
-        public static DATASET.DataSet.T_WikiDataTable Search(string Search, SqlConnection Sqlco)//検索用
+        public static DATASET.DataSet.T_WikiDataTable Search(string Search1,string Search2, SqlConnection Sqlco)//検索用
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 
             da.SelectCommand.CommandText =
-              "SELECT * FROM T_Wiki WHERE Text LIKE @Search order by Date asc";
+              "SELECT * FROM T_Wiki WHERE Text LIKE @Search1 OR Title LIKE @Search2 order by Date asc";
 
 
-            da.SelectCommand.Parameters.AddWithValue("@Search", "%" + Search + "%");
+            da.SelectCommand.Parameters.AddWithValue("@Search1", "%" + Search1 + "%");
+            da.SelectCommand.Parameters.AddWithValue("@Search2", "%" + Search2 + "%");
 
             var dt = new DATASET.DataSet.T_WikiDataTable();
 

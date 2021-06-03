@@ -1302,7 +1302,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 5).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 6).ToString("MMMMd日");
 
-          
+
 
                     Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
 
@@ -1347,7 +1347,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
 
-            
+
 
                     Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
                 }

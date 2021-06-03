@@ -17,6 +17,8 @@ namespace WhereEver.スケジュール
             if (!Page.IsPostBack)
             {
                 Create();
+
+                ViewState["Count"] = 0;
             }
         }
 
@@ -34,11 +36,15 @@ namespace WhereEver.スケジュール
 
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
+        protected void Button3_Click(object sender, EventArgs e)//検索ボタン
         {
-            string Search = TextBox1.Text;
+            ViewState["Count"] = +1;
 
-            var dt = Class.Wiki.Search(Search, Global.GetConnection());
+            string Search1 = TextBox1.Text;
+
+            string Search2 = TextBox1.Text;
+
+            var dt = Class.Wiki.Search(Search1, Search2, Global.GetConnection());
 
             dg1.DataSource = dt;
 
@@ -80,34 +86,76 @@ namespace WhereEver.スケジュール
 
         protected void dg1_ItemCommand(object sender, DataGridCommandEventArgs e)
         {
+            int Count = int.Parse(ViewState["Count"].ToString());
+
+            int zero = 0;
+
+            string Search1 = TextBox1.Text;
+
+            string Search2 = TextBox1.Text;
+
+
             if (e.CommandName == "Read")
             {
-
-                byte[] allbyte = new byte[0];
-
-                int Read = e.Item.ItemIndex;
-
-                var dt = Class.Wiki.GetT_WikiDataTable(Global.GetConnection());
-
-                var dr = dt.Rows[Read] as DATASET.DataSet.T_WikiRow;
-
-                if (!dr.IstypeNull())
+                if (Count == zero)
                 {
-                    allbyte = allbyte.Concat(dr.datum).ToArray();
 
-                    Label1.Text = dr.Title;
 
-                    Label2.Text = dr.Text;
+                    byte[] allbyte = new byte[0];
 
-                    Label3.Text = "<img src=\"data:" + dr.type + ";base64," + HtmlEncode(Convert.ToBase64String(allbyte)) + "\" />";
+                    int Read = e.Item.ItemIndex;
+
+                    var dt = Class.Wiki.GetT_WikiDataTable(Global.GetConnection());
+
+                    var dr = dt.Rows[Read] as DATASET.DataSet.T_WikiRow;
+
+                    if (!dr.IstypeNull())
+                    {
+                        allbyte = allbyte.Concat(dr.datum).ToArray();
+
+                        Label1.Text = dr.Title;
+
+                        Label2.Text = dr.Text;
+
+                        Label3.Text = "<img src=\"data:" + dr.type + ";base64," + HtmlEncode(Convert.ToBase64String(allbyte)) + "\" />";
+                    }
+                    else
+                    {
+                        Label1.Text = dr.Title;
+
+                        Label2.Text = dr.Text;
+
+                        Label3.Text = "";
+                    }
                 }
                 else
                 {
-                    Label1.Text = dr.Title;
+                    byte[] allbyte = new byte[0];
 
-                    Label2.Text = dr.Text;
+                    int Read = e.Item.ItemIndex;
 
-                    Label3.Text = "";
+                    var dt = Class.Wiki.Search(Search1, Search2, Global.GetConnection());
+
+                    var dr = dt.Rows[Read] as DATASET.DataSet.T_WikiRow;
+
+                    if (!dr.IstypeNull())
+                    {
+                        allbyte = allbyte.Concat(dr.datum).ToArray();
+
+                        Label1.Text = dr.Title;
+
+                        Label2.Text = dr.Text;
+
+                        Label3.Text = "<img src=\"data:" + dr.type + ";base64," + HtmlEncode(Convert.ToBase64String(allbyte)) + "\" />";
+                    }
+                    else
+                    {
+                        Label1.Text = dr.Title;
+
+                        Label2.Text = dr.Text;
+
+                        Label3.Text = "";
+                    }
                 }
             }
         }
