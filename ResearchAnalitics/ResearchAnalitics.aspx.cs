@@ -15,7 +15,7 @@ namespace WhereEver.ResearchAnalitics
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            TextBox_Soukan_id.Text = SessionManager.User.M_User.id;
+            TextBox_Soukan_id.Text = SessionManager.User.M_User.id.Trim();
 
 
 
@@ -496,13 +496,21 @@ namespace WhereEver.ResearchAnalitics
 
 
         /// <summary>
-        /// 要素[]x, []yより、相関係数rを求めます。
+        /// 要素List<double> x, List<double> yより、相関係数rを求めます。
+        /// Listのいずれかがnullの場合は0をreturnします。
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
         protected double Soukan(List<double> x, List<double> y)
         {
+
+            if(x==null || y == null)
+            {
+                //中身なし
+                return 0;
+            }
+
             //x基準
             int number = x.Count();
 
@@ -520,8 +528,9 @@ namespace WhereEver.ResearchAnalitics
         }
 
         /// <summary>
-        /// 要素[]x, []yの共分散を求めます。
+        /// 要素List<double> x, List<double> yの共分散を求めます。
         /// Σ(データx - データxの平均)(データy - データyの平均) /n -1
+        /// Listのいずれかがnullの場合は0をreturnします。
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -530,6 +539,13 @@ namespace WhereEver.ResearchAnalitics
         /// <returns></returns>
         protected double S_xy(List<double> x, List<double> y, int n, int i)
         {
+
+            if (x == null || y == null)
+            {
+                //中身なし
+                return 0;
+            }
+
             double sum = 0; //合計
             for (int k = i; k <= n; k++)
             {
@@ -540,8 +556,9 @@ namespace WhereEver.ResearchAnalitics
         }
 
         /// <summary>
-        /// 要素[]x, []yの標準偏差を求めます。
+        /// 要素List<double> x, List<double> yの標準偏差を求めます。
         /// √(Σ(データx - データxの平均)^2 /n -1) * √(Σ(データy - データyの平均)^2 /n -1)
+        /// Listのいずれかがnullの場合は0をreturnします。
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -550,6 +567,13 @@ namespace WhereEver.ResearchAnalitics
         /// <returns></returns>
         protected double Hensa(List<double> x, List<double> y, int n, int i)
         {
+
+            if (x == null || y == null)
+            {
+                //中身なし
+                return 0;
+            }
+
             double sum = 0; //合計
             for (int k = i; k <= n; k++)
             {
@@ -604,13 +628,13 @@ namespace WhereEver.ResearchAnalitics
             }
 
             Soukan(x, y);
-
+            //SQLにインサート
         }
 
         protected void Push_Soukan_Insert(object sender, EventArgs e)
         {
             //SQLで新規項目をインサートします。
-            string id = SessionManager.User.M_User.id;
+            string id = SessionManager.User.M_User.id.Trim();
             string item_A = HtmlEncode(TextBox_Soukan_A.Text);
             string item_B = HtmlEncode(TextBox_Soukan_B.Text);
             string tableName = HtmlEncode(TextBox_Soukan_TableName.Text);
@@ -618,6 +642,18 @@ namespace WhereEver.ResearchAnalitics
 
 
 
+        }
+
+        protected void Push_Soukan(object sender, EventArgs e)
+        {
+            if (Panel_Soukan.Visible)
+            {
+                Panel_Soukan.Visible = false;
+            }
+            else
+            {
+                Panel_Soukan.Visible = true;
+            }
         }
     }
 }

@@ -267,13 +267,13 @@
 
            <p class="index1">
                ◆相関分析
-               <asp:Button ID="Button1" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_DP" CausesValidation="False" />
+               <asp:Button ID="Button1" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_Soukan" CausesValidation="False" />
                　手軽に相関分析を試すことができます。</p>
 
            <hr />
 </div>
 
-<asp:Panel ID="Panel_Soukan" runat="server" Visible="false" DefaultButton="Button_SetSoukan">
+<asp:Panel ID="Panel_Soukan" runat="server" Visible="false" DefaultButton="Button_Soukan_Correct">
 
 <div class="noprint">
 <span class="hr"></span>
@@ -284,14 +284,14 @@
                   <asp:GridView ID="GridView_Soukan" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uuid,TableName" DataSourceID="SqlDataSource1" CssClass="DGTable" AllowPaging="True" AllowSorting="True">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
-                    <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" />
+                    <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" HeaderStyle-CssClass="none" ItemStyle-CssClass="none" />
                     <asp:BoundField DataField="TableName" HeaderText="TableName" ReadOnly="True" SortExpression="TableName" />
                     <asp:BoundField DataField="item_A" HeaderText="item_A" SortExpression="item_A" />
                     <asp:BoundField DataField="item_B" HeaderText="item_B" SortExpression="item_B" />
                     <asp:BoundField DataField="AB_S_xy" HeaderText="AB_S_xy" SortExpression="AB_S_xy" />
                     <asp:BoundField DataField="AB_Hensa" HeaderText="AB_Hensa" SortExpression="AB_Hensa" />
                     <asp:BoundField DataField="r" HeaderText="r" SortExpression="r" />
-                    <asp:BoundField DataField="p" HeaderText="p" SortExpression="p" />
+                    <asp:BoundField DataField="p" HeaderText="p" SortExpression="p" HeaderStyle-CssClass="none" ItemStyle-CssClass="none" />
                     <asp:BoundField DataField="DateTime" HeaderText="DateTime" SortExpression="DateTime" />
                     <%-- <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn-flat-border-mini" /> --%>
                     <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="btn-flat-border-mini" />
