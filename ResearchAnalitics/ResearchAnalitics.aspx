@@ -281,7 +281,7 @@
     <p class="center">リストA-B間の相関分析を実行します。</p>
 
 
-                  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uuid,TableName" DataSourceID="SqlDataSource1" CssClass="DGTable" AllowPaging="True" AllowSorting="True">
+                  <asp:GridView ID="GridView_Soukan" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uuid,TableName" DataSourceID="SqlDataSource1" CssClass="DGTable" AllowPaging="True" AllowSorting="True">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
                     <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" />
@@ -354,8 +354,8 @@
 
     <p>あなたのid<asp:TextBox ID="TextBox_Soukan_id" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="" MaxLength="50" ReadOnly="true"></asp:TextBox></p>
     <p>テーブル名<asp:TextBox ID="TextBox_Soukan_TableName" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="" MaxLength="50"></asp:TextBox></p>
-    <p>項目A<asp:TextBox ID="TextBox1" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="0.0" MaxLength="50"></asp:TextBox></p>
-    <p>項目B<asp:TextBox ID="TextBox2" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="0.0" MaxLength="50"></asp:TextBox></p>
+    <p>項目A<asp:TextBox ID="TextBox_Soukan_A" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="0.0" MaxLength="50"></asp:TextBox></p>
+    <p>項目B<asp:TextBox ID="TextBox_Soukan_B" runat="server" CssClass="textbox_math"  ValidateRequestMode="Disabled" Text="0.0" MaxLength="50"></asp:TextBox></p>
 
     <asp:Button ID="Button_Soukan_Insert" CssClass="btn-flat-border" runat="server" Text="挿入" OnClick="Push_Soukan_Insert" CausesValidation="False" />
     <asp:Button ID="Button_Soukan_Correct" CssClass="btn-flat-border" runat="server" Text="計算実行" OnClick="Push_Soukan_Correct" CausesValidation="False" />

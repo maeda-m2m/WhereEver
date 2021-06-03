@@ -591,13 +591,13 @@ namespace WhereEver.ResearchAnalitics
         protected global::System.Web.UI.WebControls.Panel Panel_Soukan;
 
         /// <summary>
-        /// GridView1 コントロール。
+        /// GridView_Soukan コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView GridView_Soukan;
 
         /// <summary>
         /// SqlDataSource1 コントロール。
@@ -627,22 +627,22 @@ namespace WhereEver.ResearchAnalitics
         protected global::System.Web.UI.WebControls.TextBox TextBox_Soukan_TableName;
 
         /// <summary>
-        /// TextBox1 コントロール。
+        /// TextBox_Soukan_A コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Soukan_A;
 
         /// <summary>
-        /// TextBox2 コントロール。
+        /// TextBox_Soukan_B コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Soukan_B;
 
         /// <summary>
         /// Button_Soukan_Insert コントロール。

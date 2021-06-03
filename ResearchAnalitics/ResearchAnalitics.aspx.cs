@@ -155,7 +155,7 @@ namespace WhereEver.ResearchAnalitics
 
             // 入力値 X
             Mat X = new Mat(
-                new double[] { X_1, X_2, X_3, X_4 }
+                new double[] { X_1, X_2, X_3, X_4 } //Listに改造すればいくらでも動的にXを追加できる。
                 );
 
                 //---------------------------------------------------------------------------------------------------------
@@ -501,7 +501,7 @@ namespace WhereEver.ResearchAnalitics
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        protected double Soukan(double []x, double []y)
+        protected double Soukan(List<double> x, List<double> y)
         {
             //x基準
             int number = x.Count();
@@ -528,7 +528,7 @@ namespace WhereEver.ResearchAnalitics
         /// <param name="n"></param>
         /// <param name="i"></param>
         /// <returns></returns>
-        protected double S_xy(double []x, double []y, int n, int i)
+        protected double S_xy(List<double> x, List<double> y, int n, int i)
         {
             double sum = 0; //合計
             for (int k = i; k <= n; k++)
@@ -548,7 +548,7 @@ namespace WhereEver.ResearchAnalitics
         /// <param name="n"></param>
         /// <param name="i"></param>
         /// <returns></returns>
-        protected double Hensa(double []x, double []y, int n, int i)
+        protected double Hensa(List<double> x, List<double> y, int n, int i)
         {
             double sum = 0; //合計
             for (int k = i; k <= n; k++)
@@ -559,8 +559,66 @@ namespace WhereEver.ResearchAnalitics
             return sum;
         }
 
+        protected void Push_Soukan_Correct(object sender, EventArgs e)
+        {
+            //指定したid&&Table内で計算を実行します。
+            string id = SessionManager.User.M_User.id;
+            string tableName = HtmlEncode(TextBox_Soukan_TableName.Text);
+
+            //Listなら動的に要素数を増やせる。
+            List<double> x = new List<double>();
+            List<double> y = new List<double>();
 
 
+            for (int i = 0; i <= GridView_Soukan.Rows.Count; i++)
+            {
+                //idが一致するか？
+                if(id == GridView_Soukan.Rows[i].Cells[0].Text)
+                {
+                    //TableNameが一致するか？
+                    if (tableName == GridView_Soukan.Rows[i].Cells[2].Text)
+                    {
+                        //SQL UPDATE用のuuid取得
+                        string uuid = GridView_Soukan.Rows[i].Cells[1].Text;
+
+                        string item_A = GridView_Soukan.Rows[i].Cells[3].Text;
+                        string item_B = GridView_Soukan.Rows[i].Cells[4].Text;
+
+                        item_A = HtmlEncode(item_A);
+                        double.TryParse(item_A, System.Globalization.NumberStyles.Currency, null, out double value_A);
+                        item_B = HtmlEncode(item_B);
+                        double.TryParse(item_B, System.Globalization.NumberStyles.Currency, null, out double value_B);
+
+                        x.Add(value_A);
+                        y.Add(value_B);
+
+
+                    }
+
+
+
+
+
+                }
+
+            }
+
+            Soukan(x, y);
+
+        }
+
+        protected void Push_Soukan_Insert(object sender, EventArgs e)
+        {
+            //SQLで新規項目をインサートします。
+            string id = SessionManager.User.M_User.id;
+            string item_A = HtmlEncode(TextBox_Soukan_A.Text);
+            string item_B = HtmlEncode(TextBox_Soukan_B.Text);
+            string tableName = HtmlEncode(TextBox_Soukan_TableName.Text);
+            //string uuid = Guid.NewGuid().ToString();
+
+
+
+        }
     }
 }
 
