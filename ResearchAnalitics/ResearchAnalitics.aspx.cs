@@ -14,11 +14,18 @@ namespace WhereEver.ResearchAnalitics
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //user id
             TextBox_Soukan_id.Text = HtmlEncode(SessionManager.User.M_User.id.Trim()).Trim();
+
+            //data bind
             GridView_Soukan.DataBind();
+            GridView_SoukanTable.DataBind();
 
-
+            if (!IsPostBack)
+            {
+                //init
+                Session.Add("args", @"null");
+            }
         }
 
 
@@ -494,109 +501,7 @@ namespace WhereEver.ResearchAnalitics
         }
 
 
-        /// <summary>
-        /// 要素List<double> x, List<double> yより、相関係数rを求めます。
-        /// Listのいずれかがnullの場合は0をreturnします。
-        /// ピアソンとスピアマンはこちら
-        /// https://kusuri-jouhou.com/statistics/soukan.html
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        protected double Soukan(List<double> x, List<double> y)
-        {
 
-            if(x==null || y == null)
-            {
-                //中身なし
-                return 0;
-            }
-
-            //x基準
-            //int number = x.Count();
-
-
-            /*
-            Σの公式一覧
-            1. [∑ k=1 n] a = na
-            2. [∑ k=1 n] k = (1/2n)(n+1)
-            3. [∑ k=1 n] k^2 = (1/6n)(n+1)(2n+1)
-            4. [∑ k=1 n] k^3 = {(1/2n)(n+1)}2
-            5. [∑ k=1 n] ar^(k−1) = a(1−rn)/1−r = a(rn–1)/r−1
-             */
-
-            //共分散(Sxy): [Σ i=1 n] (データx - データxの平均)(データy - データyの平均)
-            double s_xy = S_xy(x, y);
-
-            //xの標準偏差: √([Σ i=1 n] (データx - データxの平均)^2)
-            //yの標準偏差: √([Σ i=1 n] (データy - データyの平均)^2)
-            double h = Hensa(x, y);
-
-            //相関係数(r): 共分散 / xの標準偏差 * yの標準偏差
-            double r = (double)s_xy / (double)h;
-
-            return r;   //相関係数r
-        }
-
-
-
-        /// <summary>
-        /// 要素List<double> x, List<double> yの共分散を求めます。
-        /// Σ(データx - データxの平均)(データy - データyの平均)
-        /// Listのいずれかがnullの場合は0をreturnします。
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        protected double S_xy(List<double> x, List<double> y)
-        {
-
-            if (x == null || y == null)
-            {
-                //中身なし
-                return 0;
-            }
-
-            //x基準
-            int n = x.Count();
-
-            double sum = 0; //合計
-            for (int k = 1; k <= n; k++)
-            {
-                sum += (x[k-1] * k - x.Average()) * (y[k-1] * k - y.Average()); //x基準　nullはないものとみなす
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        /// 要素List<double> x, List<double> yの標準偏差を求めます。
-        /// √(Σ(データx - データxの平均)^2 /(n - 1)) * √(Σ(データy - データyの平均)^2)
-        /// Listのいずれかがnullの場合は0をreturnします。
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        protected double Hensa(List<double> x, List<double> y)
-        {
-
-            if (x == null || y == null)
-            {
-                //中身なし
-                return 0;
-            }
-
-            //x基準
-            int n = x.Count();
-
-            double sum = 0; //合計
-            for (int k = 1; k <= n; k++)
-            {
-                sum += Math.Sqrt((x[k-1] * k - x.Average())*(x[k-1] * k - x.Average())) * Math.Sqrt((y[k-1] * k - y.Average()) * (y[k-1] * k - y.Average())); //x基準とy基準　nullはないものとみなす
-            }
-
-            return sum;
-        }
 
         protected void Push_Soukan_Correct(object sender, EventArgs e)
         {
@@ -642,9 +547,12 @@ namespace WhereEver.ResearchAnalitics
                 }
 
             }
-            double hensa = Hensa(x, y); //標準偏差 0.00
-            double s_xy = S_xy(x, y);   //共分散 0.00
-            double result = Soukan(x, y);   //相関関係値 r 0.00
+            double hensa = ClassLibrary.Soukan.GetHensa(x, y); //標準偏差 0.00
+            double s_xy = ClassLibrary.Soukan.GetS_xy(x, y);   //共分散 0.00
+            double result = ClassLibrary.Soukan.GetSoukan(x, y);   //相関関係値 r 0.00
+            double para = ClassLibrary.Soukan.GetParametric(x, y);
+            double pearson_t = ClassLibrary.Soukan.GetPearson(para, x.Count);
+            double nonpara = ClassLibrary.Soukan.GetNonParametric(x, y);
 
             StringBuilder sb = new StringBuilder();
             sb.Append("標準偏差: ");
@@ -653,9 +561,34 @@ namespace WhereEver.ResearchAnalitics
             sb.Append("共分散: ");
             sb.Append(string.Format("{0:#.00}", s_xy));
             sb.Append(";\r\f");
-            sb.Append("r値: ");
+            sb.Append("相関係数r: ");
             sb.Append(string.Format("{0:#.00}", result));
             sb.Append(";\r\f");
+            sb.Append("pearsonの検定統計量r値（パラメトリック）: ");
+            sb.Append(string.Format("{0:#.00}", para));
+            sb.Append(";\r\f");
+            sb.Append("pearsonのt値: ");
+            sb.Append(string.Format("{0:#.00}", pearson_t));
+            sb.Append(";\r\f");
+            sb.Append("spearmanのr値（ノンパラメトリック）: ");
+            sb.Append(string.Format("{0:#.00}", nonpara));
+            sb.Append(";\r\f");
+
+            //x基準
+            if (x.Count <= 30)
+            {
+                //spearman検定表を使用
+                //p >= a ×帰無仮説あり
+                //p < a 〇帰無仮説棄却
+                sb.Append("spearman検定表を使用");
+                sb.Append(";\r\f");
+            }
+            if (x.Count > 30)
+            {
+                //t=t=rs√((n-2)/1-rs^2)が自由度df=n-1のt分布→t分布表
+                sb.Append("t=rs√((n-2)/1-rs^2)が自由度df=n-1のt分布→t分布表");
+                sb.Append(";\r\f");
+            }
 
             TextBox_Soukan_Result.Text = @sb.ToString();
 
@@ -696,6 +629,48 @@ namespace WhereEver.ResearchAnalitics
                 Panel_Soukan.Visible = true;
             }
         }
+
+
+
+
+
+        /// <summary>
+        /// GridViewのRowCommand属性に参照可能なメソッドを入力すると↓が自動生成されます。
+        /// GridViewが読み込まれたときに実行されます。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            //コマンドの引数を取得
+            int args = Int32.Parse(e.CommandArgument.ToString());
+
+            //好きなコードを入れて下さい。
+            if (Session["args"].ToString() != "null")
+            {
+                //GridView_SoukanTableの変えた色をもとに戻す
+                int resetargs = int.Parse(Session["args"].ToString());
+                GridView_SoukanTable.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
+            }
+
+            //新たに色を変更する行を記憶
+            Session.Add("args", args);
+
+            //行の色変更（選択行を強調表示）
+            GridView_SoukanTable.Rows[args].BackColor = System.Drawing.Color.Red;    //背景白ならAliceBlue
+
+            // クリックされた[args]行の左から0番目の列[0-nで数える]のセルにある「テキスト」を取得
+            string isbn_table = GridView_SoukanTable.Rows[args].Cells[0].Text.Trim();
+            TextBox_Soukan_TableName.Text = HtmlEncode(isbn_table);
+
+
+        }
+
+
+
+
+
     }
 }
 

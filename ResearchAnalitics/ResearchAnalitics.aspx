@@ -278,7 +278,34 @@
 <div class="noprint">
 <span class="hr"></span>
 
-    <p class="center">リストA-B間の相関分析を実行します。ピアソンとスピアマンは未実装（次回実装予定）</p>
+    <p class="center">リストA-B間の相関分析を実行します。ピアソンとスピアマンは値から対応表を用いてP値を計算して下さい。</p>
+
+
+                  <asp:GridView ID="GridView_SoukanTable" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CssClass="DGTable" AllowPaging="True" OnRowCommand="grid_RowCommand">
+                <Columns>                  
+
+                    <asp:BoundField DataField="TableName" HeaderText="テーブル名一覧" SortExpression="TableName" />
+
+                    <asp:ButtonField ButtonType="Button" Text="選択" HeaderText="選択" CommandName="Reform" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border" />
+                    </asp:ButtonField>
+
+
+                </Columns>
+                <HeaderStyle BackColor="#1E1E1E" ForeColor="White" />
+                  <RowStyle BackColor="Gray" ForeColor="White" />
+            </asp:GridView>
+
+
+
+
+                  <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT DISTINCT [TableName] FROM [T_Soukan_Main] WHERE ([id] = @id) ORDER BY [TableName]">
+                      <SelectParameters>
+                          <asp:ControlParameter ControlID="TextBox_Soukan_id" Name="id" PropertyName="Text" Type="String" />
+                      </SelectParameters>
+    </asp:SqlDataSource>
+
+
 
 
                   <asp:GridView ID="GridView_Soukan" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uuid,TableName" DataSourceID="SqlDataSource1" CssClass="DGTable" AllowPaging="True" AllowSorting="True">
