@@ -24,6 +24,7 @@ namespace WhereEver
                 DgTimeDetail.DataBind();
 
                 Label_WhatNow.Text = "";
+                Label_Weather.Text = "";
 
                 TextBox_EditTop.Text = "";
                 Button_EditTop.Visible = true;
@@ -33,6 +34,88 @@ namespace WhereEver
 
             //宣言と初期化
             StringBuilder @sb = new StringBuilder();
+
+
+            DATASET.DataSet.T_WeatherDataTable wdt = Class.Toppage.GetT_Weather(Global.GetConnection());
+            if (wdt != null)
+            {
+                //初期化
+                @sb = new StringBuilder();
+                @sb.Append("<ul>");
+                @sb.Append("<li>");
+                @sb.Append("新宿区の10日間天気予報（出典：気象庁 tenki.jp");              
+                if (!wdt[0].IsNull(@"Date"))
+                {
+                    @sb.Append(" ");
+                    if (wdt[0].Date.Date < DateTime.Now.Date)
+                    {
+                        if (DateTime.Now.Date < wdt[wdt.Count-1].Date.Date)
+                        {
+                            @sb.Append(DateTime.Now.ToShortDateString());
+                        }
+                        else
+                        {
+                            //更新していない
+                            @sb.Append(wdt[wdt.Count-1].Date.ToShortDateString());
+                        }
+                    }
+                    else
+                    {
+                        //現在か未来のできごとについて語っている
+                        @sb.Append(DateTime.Now.ToShortDateString());
+                    }
+                    @sb.Append("時点）");
+                }
+                else
+                {
+                    @sb.Append("）");
+                }
+                @sb.Append("</li>");
+                for (int i = 0; i < wdt.Count; i++)
+                {
+
+                    if (wdt[i].Date.Date < DateTime.Now.Date)
+                    {
+                        continue;
+                    }
+
+
+                        @sb.Append("<li>");
+                    if (!wdt[i].IsNull(@"Date"))
+                    {
+                        @sb.Append(wdt[i].Date.ToShortDateString());
+                        @sb.Append("（");
+                        @sb.Append(string.Format("{0:ddd}", wdt[i].Date));
+                        @sb.Append("）");
+                    }
+                    if (!wdt[i].IsNull(@"Weather"))
+                    {
+                        @sb.Append(wdt[i].Weather);
+                        @sb.Append("　");
+                    }
+                    if (!wdt[i].IsNull(@"MaxTemp"))
+                    {
+                        @sb.Append("<span class=\"hot\">");
+                        @sb.Append(wdt[i].MaxTemp);
+                        @sb.Append("℃</span>");
+                    }
+                    @sb.Append("/");
+                    if (!wdt[i].IsNull(@"MinTemp"))
+                    {
+                        @sb.Append("<span class=\"cold\">");
+                        @sb.Append(wdt[i].MinTemp);
+                        @sb.Append("℃</span>");
+                    }
+                    @sb.Append("</li>");
+                }
+                @sb.Append("</ul>");
+                Label_Weather.Text = sb.ToString();
+            }
+            else
+            {
+                Label_Weather.Text = @"No Data";
+            }
+
 
             //WhatNowをロード
             Label_WhatNow.Text = "";
