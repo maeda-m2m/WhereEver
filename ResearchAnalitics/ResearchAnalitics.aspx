@@ -278,7 +278,7 @@
 <div class="noprint">
 <span class="hr"></span>
 
-    <p class="center">リストA-B間の相関分析を実行します。ピアソンとスピアマンは未実装（次回実装予定）</p>
+    <p class="center">リストA-B間の相関分析を実行します。ピアソンとスピアマンは値から対応表を用いてP値を計算して下さい。</p>
 
 
                   <asp:GridView ID="GridView_SoukanTable" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CssClass="DGTable" AllowPaging="True" OnRowCommand="grid_RowCommand">

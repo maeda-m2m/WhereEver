@@ -564,7 +564,7 @@ namespace WhereEver.ResearchAnalitics
             sb.Append("相関係数r: ");
             sb.Append(string.Format("{0:#.00}", result));
             sb.Append(";\r\f");
-            sb.Append("pearsonの検定統計量ρ（パラメトリック）: ");
+            sb.Append("pearsonの検定統計量r値（パラメトリック）: ");
             sb.Append(string.Format("{0:#.00}", para));
             sb.Append(";\r\f");
             sb.Append("pearsonのt値: ");

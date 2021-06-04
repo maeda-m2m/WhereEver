@@ -162,9 +162,9 @@ namespace WhereEver.ClassLibrary
             double Syy = sigma_yi2 - (sigma_yi * sigma_yi / count_y);
             double Sxy = sigma_xiyi - (sigma_xi * sigma_yi / count_x); //x優先
 
-            //統計量ρを求める（ρが全角のため、pで代用）
-            double pearson_p = Sxy / (Math.Sqrt(Sxx * Syy));
-            return pearson_p;
+            //統計量rを求める
+            double pearson_r = Sxy / (Math.Sqrt(Sxx * Syy));
+            return pearson_r;
         }
 
         public static double GetPearson(double r, double n)
