@@ -550,28 +550,50 @@ namespace WhereEver.ResearchAnalitics
             double hensa = ClassLibrary.Soukan.GetHensa(x, y); //標準偏差 0.00
             double s_xy = ClassLibrary.Soukan.GetS_xy(x, y);   //共分散 0.00
             double result = ClassLibrary.Soukan.GetSoukan(x, y);   //相関関係値 r 0.00
+            double result_t = ClassLibrary.Soukan.GetPearson(result, x.Count);
             double para = ClassLibrary.Soukan.GetParametric(x, y);
             double pearson_t = ClassLibrary.Soukan.GetPearson(para, x.Count);
             double nonpara = ClassLibrary.Soukan.GetNonParametric(x, y);
+            double spearman_t = ClassLibrary.Soukan.GetSpearman(nonpara, x.Count);
+
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("標準偏差: ");
+            if(x.Count != y.Count)
+            {
+                sb.Append("警告：有効なサンプル数に差異があるため、精確な値が出ません。NULL値はペアで除外して下さい。");
+                sb.Append(";\r\f");
+                sb.Append("-------------------------------------------------------;\r\f");
+            }
+            sb.Append("サンプル数 n: ");
+            sb.Append(string.Format("{0:0}", x.Count)); //A基準
+            sb.Append(";\r\f");
+            sb.Append("自由度 f: ");
+            sb.Append(string.Format("{0:0}", x.Count - 2)); //A基準
+            sb.Append(";\r\f");
+            sb.Append("標準偏差 h: ");
             sb.Append(string.Format("{0:#.00}", hensa));
             sb.Append(";\r\f");
-            sb.Append("共分散: ");
+            sb.Append("共分散 Sxy: ");
             sb.Append(string.Format("{0:#.00}", s_xy));
             sb.Append(";\r\f");
-            sb.Append("相関係数r: ");
+            sb.Append("相関係数 r: ");
             sb.Append(string.Format("{0:#.00}", result));
             sb.Append(";\r\f");
-            sb.Append("pearsonの検定統計量r値（パラメトリック）: ");
+            sb.Append("2サンプル間のt検定 t（母相関係数ρ=0の帰無仮説）: ");
+            sb.Append(string.Format("{0:#.00}", result_t));
+            sb.Append(";\r\f");
+            sb.Append("-------------------------------------------------------;\r\f");
+            sb.Append("pearsonの相関係数 p_r（パラメトリック）: ");
             sb.Append(string.Format("{0:#.00}", para));
             sb.Append(";\r\f");
-            sb.Append("pearsonのt値: ");
+            sb.Append("pearsonの検定統計量rのp_t検定 p_t（母相関係数ρ=0の帰無仮説）: ");
             sb.Append(string.Format("{0:#.00}", pearson_t));
             sb.Append(";\r\f");
-            sb.Append("spearmanのr値（ノンパラメトリック）: ");
+            sb.Append("spearmanの相関係数 ρ（ノンパラメトリック）: ");
             sb.Append(string.Format("{0:#.00}", nonpara));
+            sb.Append(";\r\f");
+            sb.Append("spearmanの検定統計量ρのt検定 tρ（標本数 n は約20以上が望ましい）: ");
+            sb.Append(string.Format("{0:#.00}", spearman_t));
             sb.Append(";\r\f");
 
             //x基準
@@ -580,13 +602,13 @@ namespace WhereEver.ResearchAnalitics
                 //spearman検定表を使用
                 //p >= a ×帰無仮説あり
                 //p < a 〇帰無仮説棄却
-                sb.Append("spearman検定表を使用");
+                sb.Append("spearman検定表を使用して下さい。");
                 sb.Append(";\r\f");
             }
             if (x.Count > 30)
             {
                 //t=t=rs√((n-2)/1-rs^2)が自由度df=n-1のt分布→t分布表
-                sb.Append("t=rs√((n-2)/1-rs^2)が自由度df=n-1のt分布→t分布表");
+                sb.Append("t=rs√((n-2)/1-rs^2)が自由度df=n-1のt分布→t分布表して下さい。");
                 sb.Append(";\r\f");
             }
 

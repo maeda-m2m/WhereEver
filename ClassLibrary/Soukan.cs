@@ -80,11 +80,11 @@ namespace WhereEver.ClassLibrary
             int n = x.Count();
 
             double sum = 0; //合計
+            //(x-x.Average)(y-y.Average)
             for (int k = 1; k <= n; k++)
             {
-                sum += (x[k - 1] * k - x.Average()) * (y[k - 1] * k - y.Average()); //x基準　nullはないものとみなす
+                sum += (x[k - 1] - x.Average()) * (y[k - 1] - y.Average()); //x基準　nullはないものとみなす
             }
-
             return sum;
         }
 
@@ -108,12 +108,14 @@ namespace WhereEver.ClassLibrary
             //x基準
             int n = x.Count();
 
+
+            
             double sum = 0; //合計
+            //Math.Sqrt(x-x.average)^2*(y-y.Average)^2)
             for (int k = 1; k <= n; k++)
             {
-                sum += Math.Sqrt((x[k - 1] * k - x.Average()) * (x[k - 1] * k - x.Average())) * Math.Sqrt((y[k - 1] * k - y.Average()) * (y[k - 1] * k - y.Average())); //x基準とy基準　nullはないものとみなす
+                sum += Math.Sqrt((x[k - 1] - x.Average()) * (x[k - 1] - x.Average())) * Math.Sqrt((y[k - 1] - y.Average()) * (y[k - 1] - y.Average())); //x基準とy基準　nullはないものとみなす
             }
-
             return sum;
         }
 
@@ -127,8 +129,7 @@ namespace WhereEver.ClassLibrary
         public static double GetParametric(List<double> x, List<double> y)
         {
 
-            int count_x = x.Count;
-            int count_y = y.Count;
+            int n = x.Count;
 
             //Σxi   xを全て足したもの
             double sigma_xi = x.Sum();
@@ -141,40 +142,50 @@ namespace WhereEver.ClassLibrary
             double sigma_xiyi = 0;
 
             //Σxi^2 xの２乗を全て足したもの
-            for(int i = 1; i < count_x; i++)
+            for(int i = 1; i <= n; i++)
             {
                 sigma_xi2 += (x[i - 1] * x[i - 1]);
             }
             //Σyi^2 yの２乗を全て足したもの
-            for (int i = 1; i < count_x; i++)
+            for (int i = 1; i <= n; i++)
             {
                 sigma_yi2 += (y[i - 1] * y[i - 1]);
             }
             //Σxiyi xとyの積を全て足したもの
-            for (int i = 1; i < count_x; i++)
+            for (int i = 1; i <= n; i++)
             {
                 sigma_xiyi += (x[i - 1] * y[i - 1]);
             }
 
             //Sxx, Sxy, Syyを求める。countは本来n(Number)のため、xとyの値数がnullで異なるとうまくいかない。
-
-            double Sxx = sigma_xi2 - (sigma_xi * sigma_xi / count_x);
-            double Syy = sigma_yi2 - (sigma_yi * sigma_yi / count_y);
-            double Sxy = sigma_xiyi - (sigma_xi * sigma_yi / count_x); //x優先
-
-            //統計量rを求める
+            double Sxx = sigma_xi2 - ((sigma_xi * sigma_xi) / n);
+            double Syy = sigma_yi2 - ((sigma_yi * sigma_yi) / n);
+            double Sxy = sigma_xiyi - ((sigma_xi * sigma_yi) / n); //x優先
+            //Pearsonの相関係数p_rを求める
             double pearson_r = Sxy / (Math.Sqrt(Sxx * Syy));
             return pearson_r;
+
+            //Pearsonの相関係数p_r
+            //double result = (((sigma_xi * sigma_yi) - (x.Average() * y.Average())));
+            //double result2 = Math.Sqrt(sigma_xi2 - n * (x.Average() * x.Average()) * sigma_yi2 - n * (y.Average() * y.Average()));
+            //result = result / result2;
+            //return result;
         }
 
+        /// <summary>
+        /// 正規分布を対象とするPearsonのt検定を行います。
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
         public static double GetPearson(double r, double n)
         {
             //正規分布が前提　FisherのF>=10
-            // 自由度 = サンプル数 - 2;
+            // 自由度f = サンプル数 - 2;
             // ※サンプル数とは片方の群;
 
-            // t分布に従う検定統計量 t = Pearsonの相関係数r * (サンプル数 - 2) / SQRT(1 - (r*r));
-            double t = r * (n - 2) / Math.Sqrt(1 - (r * r));
+            // t分布に従う検定統計量 t = Pearsonの相関係数r * SQRT(サンプル数 - 2) / SQRT(1 - (r*r));
+            double t = r * Math.Sqrt(n - 2) / Math.Sqrt(1 - (r * r));
 
             // tが得られる確率 = p値 TDIST(t);
 
@@ -202,7 +213,7 @@ namespace WhereEver.ClassLibrary
             int n = x.Count;
 
 
-            for(int i=1; i < n; i++)
+            for(int i=1; i <= n; i++)
             {
                 di += y[i - 1] - x[i - 1];
                 di2 += di * di; //Σdi^2
@@ -224,20 +235,40 @@ namespace WhereEver.ClassLibrary
             return rs;
         }
 
+        /// <summary>
+        /// Spearmanの検定の一種を行います。下記は標本数が20以上あると有効です。
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static double GetSpearman(double r, double n)
+        {
+            //正規分布は不要
+            // 自由度f = サンプル数 - 2;
+            // ※サンプル数とは片方の群;
+
+            //帰無仮説が真（2変数に相関なし）であると仮定した場合、スチューデントのt分布(自由度n-2)に従う検定統計量 t = Spearmanの相関係数r / SQRT((1 - r*r) / (n - 2));
+            double t = r / Math.Sqrt((1 - (r * r)) / (n - 2));
+
+            // tが得られる確率 = p値 TDIST(t);
+
+            return t;
+        }
 
 
-            //----------------------------------------------------------------------------------------------------
+
+        //----------------------------------------------------------------------------------------------------
 
 
-            /// <summary>
-            /// 申請コンフィグテーブルにインサートします。
-            /// </summary>
-            /// <param name="sqlConnection"></param>
-            /// <param name="id"></param>
-            /// <param name="tableName"></param>
-            /// <param name="item_A"></param>
-            /// <param name="item_B"></param>
-            public static void SetT_Soukan_Main(SqlConnection sqlConnection, string id, string tableName, float item_A, float item_B)
+        /// <summary>
+        /// 申請コンフィグテーブルにインサートします。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="id"></param>
+        /// <param name="tableName"></param>
+        /// <param name="item_A"></param>
+        /// <param name="item_B"></param>
+        public static void SetT_Soukan_Main(SqlConnection sqlConnection, string id, string tableName, float item_A, float item_B)
         {
             sqlConnection.Open();
 
