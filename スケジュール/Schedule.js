@@ -50,4 +50,10 @@ function refresh() {
 }
 
 
+//$(document).ready(function () {
+//    $("#test1").on("click", function () {
+//        $(this).
+//    })
+//})
+
 
