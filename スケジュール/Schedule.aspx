@@ -616,10 +616,29 @@
             <section class="Center">
                 <p>最終アクセス:<span id="time"></span></p>
             </section>
+
+            <h1 id="Image1">社内Wikiへ</h1>
+
+            <%--<a href="Schedule.aspx" id="gu" runat="server">トップページ</a>--%>
         </footer>
 
         <script src="jquery-3.6.0.min.js"></script>
         <script src="Schedule.js"></script>
+
+        <script>
+
+           
+            
+
+
+            $(document).ready(function () {
+                $("#Image1").on("click", function () {
+                    location.href = "Wiki_Top.aspx";
+
+                });
+            });
+
+        </script>
 
     </form>
 
