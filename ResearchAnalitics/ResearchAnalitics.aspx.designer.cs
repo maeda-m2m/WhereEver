@@ -591,6 +591,24 @@ namespace WhereEver.ResearchAnalitics
         protected global::System.Web.UI.WebControls.Panel Panel_Soukan;
 
         /// <summary>
+        /// GridView_SoukanTable コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView_SoukanTable;
+
+        /// <summary>
+        /// SqlDataSource2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+
+        /// <summary>
         /// GridView_Soukan コントロール。
         /// </summary>
         /// <remarks>
@@ -661,5 +679,14 @@ namespace WhereEver.ResearchAnalitics
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_Soukan_Correct;
+
+        /// <summary>
+        /// TextBox_Soukan_Result コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Soukan_Result;
     }
 }

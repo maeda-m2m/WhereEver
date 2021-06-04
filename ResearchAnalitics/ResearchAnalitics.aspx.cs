@@ -14,11 +14,18 @@ namespace WhereEver.ResearchAnalitics
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //user id
+            TextBox_Soukan_id.Text = HtmlEncode(SessionManager.User.M_User.id.Trim()).Trim();
 
-            TextBox_Soukan_id.Text = SessionManager.User.M_User.id.Trim();
+            //data bind
+            GridView_Soukan.DataBind();
+            GridView_SoukanTable.DataBind();
 
-
-
+            if (!IsPostBack)
+            {
+                //init
+                Session.Add("args", @"null");
+            }
         }
 
 
@@ -495,107 +502,21 @@ namespace WhereEver.ResearchAnalitics
 
 
 
-        /// <summary>
-        /// 要素List<double> x, List<double> yより、相関係数rを求めます。
-        /// Listのいずれかがnullの場合は0をreturnします。
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        protected double Soukan(List<double> x, List<double> y)
-        {
-
-            if(x==null || y == null)
-            {
-                //中身なし
-                return 0;
-            }
-
-            //x基準
-            int number = x.Count();
-
-            //共分散(Sxy): Σ(データx - データxの平均)(データy - データyの平均) /n -1
-            double s_xy = S_xy(x, y, number, 1);
-
-            //xの標準偏差: √(Σ(データx - データxの平均)^2 /n -1)
-            //yの標準偏差: √(Σ(データy - データyの平均)^2 /n -1)
-            double h = Hensa(x, y, number, 1);
-
-            //相関係数(r): 共分散 / xの標準偏差 * yの標準偏差
-            double r = s_xy / h;
-
-            return r;   //相関係数r
-        }
-
-        /// <summary>
-        /// 要素List<double> x, List<double> yの共分散を求めます。
-        /// Σ(データx - データxの平均)(データy - データyの平均) /n -1
-        /// Listのいずれかがnullの場合は0をreturnします。
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="n"></param>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        protected double S_xy(List<double> x, List<double> y, int n, int i)
-        {
-
-            if (x == null || y == null)
-            {
-                //中身なし
-                return 0;
-            }
-
-            double sum = 0; //合計
-            for (int k = i; k <= n; k++)
-            {
-                sum += (x[k] * k - x.Average()) * (y[k] - y.Average()) / x.Count(); //x基準　nullはないものとみなす
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        /// 要素List<double> x, List<double> yの標準偏差を求めます。
-        /// √(Σ(データx - データxの平均)^2 /n -1) * √(Σ(データy - データyの平均)^2 /n -1)
-        /// Listのいずれかがnullの場合は0をreturnします。
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="n"></param>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        protected double Hensa(List<double> x, List<double> y, int n, int i)
-        {
-
-            if (x == null || y == null)
-            {
-                //中身なし
-                return 0;
-            }
-
-            double sum = 0; //合計
-            for (int k = i; k <= n; k++)
-            {
-                sum += Math.Sqrt((x[k] * k - x.Average())*(x[k] * k - x.Average()) / x.Count()) * Math.Sqrt((y[k] - y.Average()) *(y[k] - y.Average()) / y.Count()); //x基準とy基準　nullはないものとみなす
-            }
-
-            return sum;
-        }
 
         protected void Push_Soukan_Correct(object sender, EventArgs e)
         {
             //指定したid&&Table内で計算を実行します。
-            string id = SessionManager.User.M_User.id;
-            string tableName = HtmlEncode(TextBox_Soukan_TableName.Text);
+            string id = HtmlEncode(SessionManager.User.M_User.id).Trim();
+            string tableName = HtmlEncode(TextBox_Soukan_TableName.Text).Trim();
 
             //Listなら動的に要素数を増やせる。
             List<double> x = new List<double>();
             List<double> y = new List<double>();
 
 
-            for (int i = 0; i <= GridView_Soukan.Rows.Count; i++)
+            for (int i = 0; i < GridView_Soukan.Rows.Count; i++)
             {
+
                 //idが一致するか？
                 if(id == GridView_Soukan.Rows[i].Cells[0].Text)
                 {
@@ -626,21 +547,74 @@ namespace WhereEver.ResearchAnalitics
                 }
 
             }
+            double hensa = ClassLibrary.Soukan.GetHensa(x, y); //標準偏差 0.00
+            double s_xy = ClassLibrary.Soukan.GetS_xy(x, y);   //共分散 0.00
+            double result = ClassLibrary.Soukan.GetSoukan(x, y);   //相関関係値 r 0.00
+            double para = ClassLibrary.Soukan.GetParametric(x, y);
+            double pearson_t = ClassLibrary.Soukan.GetPearson(para, x.Count);
+            double nonpara = ClassLibrary.Soukan.GetNonParametric(x, y);
 
-            Soukan(x, y);
-            //SQLにインサート
+            StringBuilder sb = new StringBuilder();
+            sb.Append("標準偏差: ");
+            sb.Append(string.Format("{0:#.00}", hensa));
+            sb.Append(";\r\f");
+            sb.Append("共分散: ");
+            sb.Append(string.Format("{0:#.00}", s_xy));
+            sb.Append(";\r\f");
+            sb.Append("相関係数r: ");
+            sb.Append(string.Format("{0:#.00}", result));
+            sb.Append(";\r\f");
+            sb.Append("pearsonの検定統計量r値（パラメトリック）: ");
+            sb.Append(string.Format("{0:#.00}", para));
+            sb.Append(";\r\f");
+            sb.Append("pearsonのt値: ");
+            sb.Append(string.Format("{0:#.00}", pearson_t));
+            sb.Append(";\r\f");
+            sb.Append("spearmanのr値（ノンパラメトリック）: ");
+            sb.Append(string.Format("{0:#.00}", nonpara));
+            sb.Append(";\r\f");
+
+            //x基準
+            if (x.Count <= 30)
+            {
+                //spearman検定表を使用
+                //p >= a ×帰無仮説あり
+                //p < a 〇帰無仮説棄却
+                sb.Append("spearman検定表を使用");
+                sb.Append(";\r\f");
+            }
+            if (x.Count > 30)
+            {
+                //t=t=rs√((n-2)/1-rs^2)が自由度df=n-1のt分布→t分布表
+                sb.Append("t=rs√((n-2)/1-rs^2)が自由度df=n-1のt分布→t分布表");
+                sb.Append(";\r\f");
+            }
+
+            TextBox_Soukan_Result.Text = @sb.ToString();
+
+            //SQLにインサート（いる？）
         }
 
         protected void Push_Soukan_Insert(object sender, EventArgs e)
         {
             //SQLで新規項目をインサートします。
-            string id = SessionManager.User.M_User.id.Trim();
-            string item_A = HtmlEncode(TextBox_Soukan_A.Text);
-            string item_B = HtmlEncode(TextBox_Soukan_B.Text);
-            string tableName = HtmlEncode(TextBox_Soukan_TableName.Text);
-            //string uuid = Guid.NewGuid().ToString();
+            string id = HtmlEncode(SessionManager.User.M_User.id.Trim()).Trim();
+            string item_A = HtmlEncode(@TextBox_Soukan_A.Text);
+            string item_B = HtmlEncode(@TextBox_Soukan_B.Text);
+            string tableName = HtmlEncode(@TextBox_Soukan_TableName.Text).Trim();
 
+            if(tableName == "")
+            {
+                TextBox_Soukan_Result.Text = @"TableNameを入力して下さい。";
+                return;
+            }
 
+            float.TryParse(item_A, System.Globalization.NumberStyles.Currency, null, out float value_A);
+            float.TryParse(item_B, System.Globalization.NumberStyles.Currency, null, out float value_B);
+
+            ClassLibrary.Soukan.SetT_Soukan_Main(Global.GetConnection(), @id, @tableName, (float)value_A, (float)value_B);
+
+            GridView_Soukan.DataBind();
 
         }
 
@@ -655,6 +629,48 @@ namespace WhereEver.ResearchAnalitics
                 Panel_Soukan.Visible = true;
             }
         }
+
+
+
+
+
+        /// <summary>
+        /// GridViewのRowCommand属性に参照可能なメソッドを入力すると↓が自動生成されます。
+        /// GridViewが読み込まれたときに実行されます。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            //コマンドの引数を取得
+            int args = Int32.Parse(e.CommandArgument.ToString());
+
+            //好きなコードを入れて下さい。
+            if (Session["args"].ToString() != "null")
+            {
+                //GridView_SoukanTableの変えた色をもとに戻す
+                int resetargs = int.Parse(Session["args"].ToString());
+                GridView_SoukanTable.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
+            }
+
+            //新たに色を変更する行を記憶
+            Session.Add("args", args);
+
+            //行の色変更（選択行を強調表示）
+            GridView_SoukanTable.Rows[args].BackColor = System.Drawing.Color.Red;    //背景白ならAliceBlue
+
+            // クリックされた[args]行の左から0番目の列[0-nで数える]のセルにある「テキスト」を取得
+            string isbn_table = GridView_SoukanTable.Rows[args].Cells[0].Text.Trim();
+            TextBox_Soukan_TableName.Text = HtmlEncode(isbn_table);
+
+
+        }
+
+
+
+
+
     }
 }
 
