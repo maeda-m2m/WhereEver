@@ -37,7 +37,7 @@ namespace WhereEver
                 Session.Add("wasteR1", wasteR1);
                 Session.Add("wasteR2", wasteR2);
                 Session.Add("wasteR3", wasteR3);
-                Session.Add("args", (string)"null");
+                Session.Add("args", @"null");
 
                 //GridViewパネル
                 Panel0.Visible = true;
