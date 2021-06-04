@@ -60,6 +60,15 @@ namespace WhereEver.スケジュール
         protected global::System.Web.UI.WebControls.Button Button3;
 
         /// <summary>
+        /// Label4 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
+
+        /// <summary>
         /// dg1 コントロール。
         /// </summary>
         /// <remarks>

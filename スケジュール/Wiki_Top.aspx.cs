@@ -49,6 +49,10 @@ namespace WhereEver.スケジュール
             dg1.DataSource = dt;
 
             dg1.DataBind();
+
+            Label4.Text = "「" + TextBox1.Text + "」の検索結果";
+
+
         }
 
 

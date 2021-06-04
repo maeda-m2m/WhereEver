@@ -296,8 +296,8 @@
         #newsdl {
             font-size: 10px;
             font-family: Meiryo;
-            border: 1px solid black;
-            margin:auto;
+            border: 2px solid black;
+            margin:0 auto;
         }
 
         .bb {
@@ -336,7 +336,7 @@
             color: white;
             text-align: center;
             width: 380px;
-            height: 48px;
+            height: 20px;
         }
         .auto-style3 {
             width: 380px;
@@ -361,7 +361,7 @@
             color: white;
             text-align: center;
             width: 150px;
-            height: 48px;
+            height: 20px;
         }
         .auto-style7 {
             width: 150px;
@@ -379,7 +379,7 @@
             background-color: #272727;
             color: white;
             width: 50px;
-            height: 48px;
+            height: 20px;
         }
         .auto-style11 {
             text-align: center;
@@ -409,18 +409,40 @@
         }
 
         .auto-style14 {
-            width: 50px;
+            width: 72px;
         }
         .auto-style15 {
             border-bottom: 3px double #bababa;
-            width: 50px;
+            width: 72px;
         }
 
         .auto-style16 {
             text-align: center;
             background-color: #272727;
             color: white;
-            height: 48px;
+            height: 20px;
+        }
+
+        .auto-style17 {
+            width: 72px;
+            height: 19px;
+        }
+        .auto-style18 {
+            width: 380px;
+            border-right: 1px dotted black;
+            border-left: 1px dotted black;
+            height: 19px;
+        }
+        .auto-style19 {
+            width: 150px;
+            height: 19px;
+        }
+        .auto-style20 {
+            text-align: center;
+            background-color: #272727;
+            color: white;
+            width: 72px;
+            height: 20px;
         }
 
     </style>
@@ -441,7 +463,7 @@
                 <td class="auto-style10">
                     <p>曜日</p>
                 </td>
-                <td class="auto-style10">
+                <td class="auto-style20">
                     <p>時間</p>
                 </td>
                 <td class="auto-style1">
@@ -730,13 +752,13 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style14">
+                <td class="auto-style17">
                     <asp:Label ID="Labelsat9" runat="server" Text=""></asp:Label>
                 </td>
-                <td class="auto-style3">
+                <td class="auto-style18">
                     <asp:Label ID="Labelsat10" runat="server" Text=""></asp:Label>
                 </td>
-                <td class="auto-style8">
+                <td class="auto-style19">
                     <asp:Label ID="Labelsat11" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
