@@ -1095,7 +1095,7 @@ namespace WhereEver
             Create2();
         }
 
-        public void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)//編集ボタンを押して編集を保存した時の処理
+        public void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)//編集ボタンを押して編集を保存した時の処理(アップデート処理)
         {
 
             int Count = 1;
@@ -2519,6 +2519,8 @@ namespace WhereEver
 
             Create3();
             Create2();
+
+            Label2.Text = "「" + "日付:" + a + " " + "時間:" + b + " " + "内容:" + c + " " + "担当者:" + d + " " + "」を検索中";
 
         }
 

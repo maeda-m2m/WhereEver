@@ -69,6 +69,10 @@
             justify-content: center;
             height: 200px;
         }
+
+        #Label4{
+            font-size:20px;
+        }
     </style>
 
 </head>
@@ -94,7 +98,7 @@
             <div class="Center-dg">
 
 
-
+                <asp:Label runat="server" ID="Label4" Text=""></asp:Label>
                 <asp:DataGrid runat="server" ID="dg1" AutoGenerateColumns="False" OnSelectedIndexChanged="dg1_SelectedIndexChanged" CssClass="Center" OnItemCommand="dg1_ItemCommand">
                     <Columns>
 
