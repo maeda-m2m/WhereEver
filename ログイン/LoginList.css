@@ -70,6 +70,25 @@
     top: 150px; /*疑似フレームの上からの座標（デフォルトでは左上）*/
 }
 
+#NewsFeed {
+    color: white;
+    background-color: #1e1e1e;
+    text-align: center;
+    width: 100%;
+    float: left;
+    font-size: 12px;
+    margin: 0px;
+    height: 14.6em; /*縦長なら85em*/
+    top: 150px; /*疑似フレームの上からの座標（デフォルトでは左上）*/
+}
+
+.hot{
+    color:red;
+}
+.cold{
+    color: #4bbdfe;
+}
+
 .logo {
     margin-top: 10em;
 }
@@ -127,4 +146,39 @@
 
 .bg_test {
     text-align: center; /* 文字中央寄せ */
+}
+
+
+/*右から左に流れる文字 <div class=flowtext></div>で囲ったulとliで実装*/
+.flowtext {
+    margin: 0 auto 40px;
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+    overflow: hidden;
+}
+
+    .flowtext ul {
+        margin: 0;
+        display: inline-block;
+        padding-left: 100%;
+        white-space: nowrap;
+        line-height: 1em;
+        animation: scrollText 120s linear infinite;  /*移動にかかる時間 上げると遅くなる*/
+    }
+
+        .flowtext ul li {
+            display: inline;
+            margin: 0 2000px 0 0;   /*p2 = xの間隔（広げると速度も上がる）*/
+        }
+
+/*キーフレーム処理（並列実行[常時]）*/
+@keyframes scrollText {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translateX(-100%)
+    }
 }

@@ -29,6 +29,26 @@
                 <div class="logo"><img src="../IMG/m2mlogo_r.png" alt="m2m_logo" /></div>
             </div>
 
+            <div id="NewsFeed">
+            <p class="index1">-Weather News-</p>
+                <div class="flowtext">
+                    <ul>
+                        <li>新宿区の10日間天気予報（出典：気象庁 tenki.jp 2021年6月4日時点）</li>
+                        <li>6月04日（金）　雨　<span class="hot">23℃</span>/<span class="cold">20℃</span></li>
+                        <li>6月05日（土）　曇　<span class="hot">24℃</span>/<span class="cold">20℃</span></li>
+                        <li>6月06日（日）　曇時々雨　<span class="hot">22℃</span>/<span class="cold">19℃</span></li>
+                        <li>6月07日（月）　曇時々晴　<span class="hot">27℃</span>/<span class="cold">18℃</span></li>
+                        <li>6月08日（火）　曇　<span class="hot">29℃</span>/<span class="cold">18℃</span></li>
+                        <li>6月09日（水）　晴　<span class="hot">27℃</span>/<span class="cold">20℃</span></li>
+                        <li>6月10日（木）　晴　<span class="hot">26℃</span>/<span class="cold">18℃</span></li>
+                        <li>6月11日（月）　曇　<span class="hot">26℃</span>/<span class="cold">20℃</span></li>
+                        <li>6月12日（火）　晴のち曇　<span class="hot">26℃</span>/<span class="cold">20℃</span></li>
+                        <li>6月13日（水）　雨時々曇　<span class="hot">25℃</span>/<span class="cold">22℃</span></li>
+                        <li>6月14日（木）　雨のち曇　<span class="hot">28℃</span>/<span class="cold">23℃</span></li>
+                    </ul>
+                </div>
+                <span class="hr"></span>
+            </div>
 
             <div id="Main">
                <div id="Innner">
