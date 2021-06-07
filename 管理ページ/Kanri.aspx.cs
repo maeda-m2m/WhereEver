@@ -99,9 +99,13 @@ namespace WhereEver.管理ページ
             {
                 smtpvalue = 2;
             }
-            else if (DropDownList_SMTP.SelectedValue == "手動")
+            else if (DropDownList_SMTP.SelectedValue == "192.168.2.209")
             {
                 smtpvalue = 3;
+            }
+            else if (DropDownList_SMTP.SelectedValue == "手動")
+            {
+                smtpvalue = 0;
             }
 
             string pattern = @"^[0-9]";
@@ -150,6 +154,18 @@ namespace WhereEver.管理ページ
         protected void btnDP_Click(object sender, EventArgs e)
         {
             Response.Redirect("../ResearchAnalitics/ResearchAnalitics.aspx", false);
+        }
+
+        protected void MailToOpen_Click(object sender, EventArgs e)
+        {
+            if (Panel_MailTo.Visible)
+            {
+                Panel_MailTo.Visible = false;
+            }
+            else
+            {
+                Panel_MailTo.Visible = true;
+            }
         }
 
         //-----------------------------------------------------------------------------------

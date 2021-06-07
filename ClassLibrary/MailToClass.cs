@@ -170,11 +170,15 @@ namespace WhereEver.ClassLibrary
                     }
                     else if (usersmtp == 3)
                     {
+                        client.Connect("192.168.2.209", 25);    //公開用（DBに合わせたもの。つながらない？）
+                    }
+                    else if (usersmtp == 0)
+                    {
                         client.Connect(@smtphost, port);    //手動
                     }
                     //--------------------------------------------------------------
 
-                    if (usersmtp == 3)
+                    if (usersmtp == 0)
                     {
                         //ユーザー認証　※SMTPサーバがユーザー認証を必要としない場合、client.Authenticateは不要
                         //いずれかが入力されていれば適用

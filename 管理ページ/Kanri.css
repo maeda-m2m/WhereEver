@@ -58,6 +58,15 @@
     color: white;
 }
 
+.textbox {
+    background-color: black;
+    color: white;
+    /* -webkit-appearance: none; ベンダープレフィックス(Google Chrome、Safari用) */
+    /* -moz-appearance: none; ベンダープレフィックス(Firefox用) */
+    border: none;
+    text-decoration: none;
+}
+
 .article {
     background-color: #1e1e1e;
     padding-left: 2em;

@@ -74,7 +74,12 @@
             <asp:Label ID="lblResult" runat="server" Text="null" Visible="False"></asp:Label>
            </p>
 
-            
+            <div class="center">
+                <asp:Button ID="Button_MailTo" runat="server" CssClass="btn_loginlist" Text="メール機能" OnClick="MailToOpen_Click" />
+            </div>
+
+
+            <asp:Panel ID="Panel_MailTo" runat="server" DefaultButton="Button_ReformTop" Visible="false">
                   <div id="Edit">
                       <span class="hr"></span>
                        <a name="edittop"><p class="index1"> ◆メール送信システム</p></a>
@@ -91,9 +96,10 @@
                     [本文]<br />
                     <asp:TextBox ID="TextBox_EditTop" runat="server" CssClass="textbox" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="3" Height="300px" Width="100%" Style="resize: none" Text="" placeholder="メール本文　文字数無制限　空入力可" CausesValidation="false"></asp:TextBox>
                     [SMTP]<br />
-                            <asp:DropDownList ID="DropDownList_SMTP" runat="server" AutoPostBack="true" Width="50%">
+                            <asp:DropDownList ID="DropDownList_SMTP" runat="server" AutoPostBack="true" Width="50%" CssClass="textbox">
                                 <asp:ListItem>mail.m2m-asp.com</asp:ListItem>
                                 <asp:ListItem>192.168.2.156</asp:ListItem>
+                                <asp:ListItem>192.168.2.209</asp:ListItem>
                                 <asp:ListItem>手動</asp:ListItem>
                             </asp:DropDownList>
 
@@ -118,6 +124,7 @@
                         <asp:Button ID="Button_ReformDelete" runat="server" CssClass="btn_loginlist" Text="全消去" OnClick="btnReformTopDel_Click" PostBackUrl="#edittop" />
                     </div>
                   </div>
+                </asp:Panel>
 
            <div id="TestSystem">
             <span class="hr"></span>

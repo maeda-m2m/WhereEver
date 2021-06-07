@@ -69,6 +69,24 @@ namespace WhereEver.管理ページ
         protected global::System.Web.UI.WebControls.Label lblResult;
 
         /// <summary>
+        /// Button_MailTo コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_MailTo;
+
+        /// <summary>
+        /// Panel_MailTo コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_MailTo;
+
+        /// <summary>
         /// TextBox_MailTo コントロール。
         /// </summary>
         /// <remarks>

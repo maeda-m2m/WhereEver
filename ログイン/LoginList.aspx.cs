@@ -18,6 +18,10 @@ namespace WhereEver
         {
             if (!IsPostBack)
             {
+                SetMaxYear();
+                ResetMonthItem();
+                SetTemp();
+
                 DATASET.DataSet.T_LoginListDataTable dtLogin = Class2.GetLoginListDataTable(Global.GetConnection());
 
                 DgTimeDetail.DataSource = dtLogin;
@@ -31,6 +35,19 @@ namespace WhereEver
                 Panel_EditTop.Visible = false;
 
             }
+
+            SetMaxDate();
+            Literal_js.Text = "";
+
+            if (DropDownList_CF_month.SelectedValue != "--")
+            {
+                DropDownList_CF_month.BackColor = System.Drawing.Color.Empty;
+            }
+            if (DropDownList_CF_day.SelectedValue != "--")
+            {
+                DropDownList_CF_day.BackColor = System.Drawing.Color.Empty;
+            }
+
 
             //宣言と初期化
             StringBuilder @sb = new StringBuilder();
@@ -182,6 +199,220 @@ namespace WhereEver
             Label_WhatNow.Text += @sb.ToString();
         }
 
+
+
+        protected void SetTemp()
+        {
+            DropDownList_MaxTemp.Items.Clear();
+            DropDownList_MinTemp.Items.Clear();
+
+            const int maxtemp = 60;
+            const int mintemp = -60;
+
+            for(int i = maxtemp; i >= mintemp; i--)
+            {
+                DropDownList_MaxTemp.Items.Insert((i - maxtemp)*-1, i.ToString());
+                DropDownList_MinTemp.Items.Insert((i - maxtemp)*-1, i.ToString());
+            }
+            DropDownList_MaxTemp.SelectedValue = "24";
+            DropDownList_MinTemp.SelectedValue = "23";
+
+
+        }
+
+
+        protected void SetMaxYear()
+        {
+            //---------------------------------------------------------------------------------------------
+            //---------------------------------------------------------------------------------------------
+
+            //年を初期化
+            DeleteYearItem();
+
+            string item;
+
+            //翌々年を取得
+            item = DateTime.Today.Year.ToString();
+            item = (int.Parse(item) + 2).ToString();
+
+            //---------------------------------------
+            //翌年を取得
+            item = DateTime.Today.Year.ToString();
+            item = (int.Parse(item) + 1).ToString();
+            SetYearItem(0, item);
+
+            //今年を取得
+            item = DateTime.Today.Year.ToString();
+            SetYearItem(0, item);
+
+            //去年を取得
+            item = DateTime.Today.Year.ToString();
+            item = (int.Parse(item) - 1).ToString();
+            SetYearItem(0, item);
+
+            //本年を日付選択肢に適用
+            SetYearValue(DateTime.Today.Year.ToString());
+
+            //---------------------------------------------------------------------------------------------
+        }
+
+        protected int GetDateMax(int y, int m)
+        {
+            int maxday = 31;
+
+            //2 4 6 9 11月は30日まで
+            if (m == 2 || m == 4 || m == 6 || m == 9 || m == 11)
+            {
+                maxday = 30;
+
+                if (m == 2)
+                {
+                    maxday = 28;
+                    //今年が閏年であるか確かめる
+                    if (DateTime.IsLeapYear(y))
+                    {
+                        //閏年
+                        maxday = 29;
+                    }
+
+                }
+
+            }
+            else
+            {
+                maxday = 31;
+            }
+
+            return maxday;
+
+        }
+
+        /// <summary>
+        /// DropDownList_yearを初期化します。
+        /// </summary>
+        protected void DeleteYearItem()
+        {
+            DropDownList_CF_year.Items.Clear();
+        }
+
+        /// <summary>
+        /// DropDownList_monthを初期化します。
+        /// </summary>
+        protected void ResetMonthItem()
+        {
+            DropDownList_CF_month.Items.Clear();
+            DropDownList_CF_month.Items.Insert(0, "--");
+
+            for (int i = 1; i <= 12; i++)
+            {
+                DropDownList_CF_month.Items.Insert(i, i.ToString());
+            }
+
+        }
+
+        /// <summary>
+        /// DropDownList_yearに年の項目を入力します。
+        /// DropDownList.Items.Insert(int p1, string p2);
+        /// </summary>
+        /// <param name="i">index</param>
+        /// <param name="item">item</param>
+        protected void SetYearItem(int i, string item)
+        {
+            DropDownList_CF_year.Items.Insert(i, item);
+        }
+
+        /// <summary>
+        /// 特殊なDwopDownList_yearを任意（現在）の年にします。
+        /// </summary>
+        /// <param name="item"></param>
+        protected void SetYearValue(string item)
+        {
+            DropDownList_CF_year.SelectedValue = item;
+        }
+
+        /// <summary>
+        /// 日付入力を全初期化します。
+        /// </summary>
+        protected void SetResetDate()
+        {
+            //day
+            //初期化
+            DropDownList_CF_day.Items.Clear();
+            DropDownList_CF_day.Items.Insert(0, "--");
+            //-------------------------------------------------------------------------------
+
+            //month
+            //初期化
+            DropDownList_CF_month.SelectedValue = "--";
+
+            SetMaxYear();
+        }
+
+        protected void SetMaxDate()
+        {
+            //---------------------------------------------------------------------------------
+            //選択可能な日付の最大値を設定
+            //---------------------------------------------------------------------------------
+            //宣言
+            int i;
+            int m;
+            int y;
+            int maxday;
+            string memory1;
+            //---------------------------------------------------------------------------------
+            //memory
+            memory1 = DropDownList_CF_day.SelectedValue;
+
+            if (memory1 == "--" || memory1 == "")
+            {
+                memory1 = "0";
+            }
+
+            //初期化
+            DropDownList_CF_day.Items.Clear();
+            DropDownList_CF_day.Items.Insert(0, "--");
+
+            y = int.Parse(DropDownList_CF_year.SelectedValue);
+            if (DropDownList_CF_month.SelectedValue != "--")
+            {
+
+                m = int.Parse(DropDownList_CF_month.SelectedValue);
+                maxday = GetDateMax(y, m);
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_CF_day.Items.Insert(i, i.ToString());
+                }
+
+            }
+            else
+            {
+                maxday = 31;
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_CF_day.Items.Insert(i, i.ToString());
+                }
+            }
+
+            //load
+            if (memory1 == "0")
+            {
+                memory1 = "--";
+            }
+
+            DropDownList_CF_day.SelectedValue = memory1;
+            //---------------------------------------------------------------------------------
+
+        }
+
+
+
+
+
+
+
+
         protected void DgTimeDetail_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
             if ((e.Item.ItemType == ListItemType.Item) || (e.Item.ItemType == ListItemType.AlternatingItem))
@@ -220,16 +451,7 @@ namespace WhereEver
             this.Response.Redirect("../管理ページ/Kanri.aspx", false);
         }
 
-        protected void btnEditTop_Click(object sender, EventArgs e)
-        {
-            DATASET.DataSet.T_TopPageRow dr = Class.Toppage.GetT_TopPage(Global.GetConnection());
-            if (dr != null)
-            {
-                TextBox_EditTop.Text = dr.TopPage;
-            }
-            Button_EditTop.Visible = false;
-            Panel_EditTop.Visible = true;
-        }
+
 
         protected void btnReformTop_Click(object sender, EventArgs e)
         {
@@ -252,12 +474,7 @@ namespace WhereEver
             this.Response.Redirect("LoginList.aspx", false);
         }
 
-        protected void btnReformTopEnd_Click(object sender, EventArgs e)
-        {
-            Button_EditTop.Visible = true;
-            Panel_EditTop.Visible = false;
-            TextBox_EditTop.Text = "";
-        }
+
 
         protected void btnReformTopDel_Click(object sender, EventArgs e)
         {
@@ -272,6 +489,169 @@ namespace WhereEver
             {
                 TextBox_EditTop.Text = dr.TopPage;
             }
+        }
+
+
+
+        /// <summary>
+        /// 天気予報を挿入/更新します。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnReformWeather_Click(object sender, EventArgs e)
+        {
+            //宣言
+            DateTime date;
+            StringBuilder sb = new StringBuilder();
+            StringBuilder sb2 = new StringBuilder();
+            int maxtemp;
+            int mintemp;
+
+            if (DropDownList_Weather1.SelectedValue == "")
+            {
+                if (DropDownList_Weather2.SelectedValue == "")
+                {
+                    //不正な天気
+                    Label_WeatherResult.Text = "※天気を選択して下さい。";
+                    return;
+                }
+            }
+            else
+            {
+                sb.Append(DropDownList_Weather1.SelectedValue);
+            }
+
+            if (DropDownList_WeatherN.SelectedValue != "" && DropDownList_Weather2.SelectedValue != "")
+            {
+                if (DropDownList_Weather1.SelectedValue == "")
+                {
+                    sb.Append(DropDownList_Weather2.SelectedValue);
+                }
+                else
+                {
+                    sb.Append(DropDownList_WeatherN.SelectedValue);
+                    sb.Append(DropDownList_Weather2.SelectedValue);
+                }
+            }
+
+            //気温　セルシウス（摂氏）　※日本で使うことが前提のためファーレンハイト（華氏）は使用しない
+            maxtemp = int.Parse(DropDownList_MaxTemp.SelectedValue);
+            mintemp = int.Parse(DropDownList_MinTemp.SelectedValue);
+
+            if(maxtemp < mintemp)
+            {
+                //不正な気温
+                Label_WeatherResult.Text = "※気温が不正です。";
+                return;
+            }
+
+            if(DropDownList_CF_year.SelectedValue==""|| DropDownList_CF_month.SelectedValue==""|| DropDownList_CF_day.SelectedValue == "")
+            {
+                //不正な日付
+                Label_WeatherResult.Text = "※日付を選択して下さい。";
+                return;
+            }
+
+            sb2.Append(DropDownList_CF_year.SelectedValue);
+            sb2.Append("/");
+            sb2.Append(DropDownList_CF_month.SelectedValue);
+            sb2.Append("/");
+            sb2.Append(DropDownList_CF_day.SelectedValue);
+            date = DateTime.Parse(sb2.ToString()).Date;
+
+            if (Class.Toppage.GetT_WeatherSelect(Global.GetConnection(), date) == null)
+            {
+                Class.Toppage.SetT_WeatherInsert(Global.GetConnection(), date, sb.ToString(), maxtemp, mintemp);
+                Label_WeatherResult.Text = "新しい天気予報を保存しました。";
+            }
+            else
+            {
+                Class.Toppage.SetT_WeatherUpdate(Global.GetConnection(), date, sb.ToString(), maxtemp, mintemp);
+                Label_WeatherResult.Text = "既存の天気予報に上書き保存しました。";
+            }
+
+
+
+
+
+        }
+
+
+
+
+        protected void btnEditTop_Click(object sender, EventArgs e)
+        {
+            DATASET.DataSet.T_TopPageRow dr = Class.Toppage.GetT_TopPage(Global.GetConnection());
+            if (dr != null)
+            {
+                TextBox_EditTop.Text = dr.TopPage;
+            }
+            Button_EditTop.Visible = false;
+            Panel_EditTop.Visible = true;
+
+            Button_EditWeather.Visible = false;
+
+            Panel_Main.Visible = false;
+            Panel_Navigation.Visible = false;
+        }
+
+
+
+        protected void btnReformTopEnd_Click(object sender, EventArgs e)
+        {
+            Button_EditTop.Visible = true;
+            Panel_EditTop.Visible = false;
+
+            Button_EditWeather.Visible = true;
+
+            Panel_Main.Visible = true;
+            Panel_Navigation.Visible = true;
+            TextBox_EditTop.Text = "";
+        }
+
+        /// <summary>
+        /// 天気予報パネルを閉じます。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnReformWeatherEnd_Click(object sender, EventArgs e)
+        {
+            Button_EditTop.Visible = true;
+
+            Button_EditWeather.Visible = true;
+            Panel_EditWeather.Visible = false;
+
+            Panel_Main.Visible = true;
+            Panel_Navigation.Visible = true;
+        }
+
+
+        /// <summary>
+        /// 天気予報パネルを開きます。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnEditWeather_Click(object sender, EventArgs e)
+        {
+            Button_EditTop.Visible = false;
+
+            Button_EditWeather.Visible = false;
+            Panel_EditWeather.Visible = true;
+
+            Panel_Main.Visible = false;
+            Panel_Navigation.Visible = false;
+        }
+
+        protected void Postback_Weather(object sender, EventArgs e)
+        {
+            //↓ASPだと何故か機能しない
+            //Literal_js.Text = "<script type=\"text / javascript\"> var element = document.getElementById(\"weather\"); var rect = element.getBoundingClientRect(); var position = rect.top; function scroll(){ scrollTo(0, position); } scroll();</script>";
+
+            //↓こう書くとセッション変数に入れない限りSelectedValueもリセットされてしまう。メモリ管理の方法としてダメなやり方。MVCには流用できない。
+            //this.Response.Redirect("#editweather", false);
+
+            Label_WeatherResult.Text = "";
+
         }
     }
 }
