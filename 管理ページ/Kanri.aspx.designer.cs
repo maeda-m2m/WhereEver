@@ -69,6 +69,33 @@ namespace WhereEver.管理ページ
         protected global::System.Web.UI.WebControls.Label lblResult;
 
         /// <summary>
+        /// FileUpload_userfile コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_userfile;
+
+        /// <summary>
+        /// Button_Upload コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Upload;
+
+        /// <summary>
+        /// lblDLResult コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDLResult;
+
+        /// <summary>
         /// Button_MailTo コントロール。
         /// </summary>
         /// <remarks>

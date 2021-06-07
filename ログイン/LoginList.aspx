@@ -35,7 +35,7 @@
             <div id="NewsFeed">
             <p class="index1">-Weather News-</p>
                 <div class="flowtext">
-                    <asp:Label ID="Label_Weather" runat="server" Text="Label" ValidateRequestMode="Disabled"></asp:Label>
+                    <asp:Label ID="Label_Weather" runat="server" ValidateRequestMode="Disabled"></asp:Label>
                 </div>
                 <span class="hr"></span>
             </div>
@@ -54,8 +54,12 @@
 
                 <p class="index1">◆Welcome to m2m</p>
                 <div class="article">
-                    <p>--本日の予定--</p>
+                    <p class="index1">--本日の予定--</p>
                     <asp:Label ID="Label_WhatNow" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
+                    <p class="index1">--天気予報--</p>
+                    <asp:Label ID="Label_Weather2" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
+                    <p class="index1">--お知らせ--</p>
+                    <asp:Label ID="Label_Yotei" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
                 </div>
                </div>
               </asp:Panel>

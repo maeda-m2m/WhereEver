@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 using System.Text;
 using static System.Web.HttpUtility;
 using System.Text.RegularExpressions;
@@ -26,7 +27,7 @@ namespace WhereEver.管理ページ
                 Panel_UserSMTP.Visible = false;
             }
 
-
+            PreView();
         }
 
         //GridViewのRowCommand属性に参照可能なメソッドを入力すると↓が自動生成されます。
@@ -172,6 +173,56 @@ namespace WhereEver.管理ページ
 
 
 
+        protected void Button_UpLoad(object sender, EventArgs e)
+        {
+            //ラベル初期化
+            lblResult.Text = "";
+
+            if (FileUpload_userfile.HasFile)
+            {
+                //パスを排除したファイル名を取得
+                string fileName = FileUpload_userfile.PostedFile.FileName;
+
+                //拡張子を取得
+                string extension = Path.GetExtension(fileName);
+
+                if(extension != "png" && extension != "jpg" && extension != "jpeg" && extension != "gif")
+                {
+                    lblResult.Text = "ファイル形式に対応していません！";
+                }
+
+
+                //File Upload to Database
+                int result = ClassLibrary.FileShareClass.Set_Thumbnail_UpLoad(FileUpload_userfile.PostedFile, 20000);
+                if (result == 0)
+                {
+                    lblResult.Text = "ファイル名が見つかりません！";
+                }
+                else if (result == -1)
+                {
+                    lblResult.Text = "アップロードに失敗しました。";
+                }
+                else if (result == 1)
+                {
+                    lblResult.Text = "アップロードファイルが完了しました！";
+                    PreView();
+                }
+
+            }
+            else
+            {
+                lblResult.Text = "ローカルからファイルを選択して下さい。";
+            }
+            return;
+        }
+
+        protected void PreView()
+        {
+                //ThumbnailDownLoad by DataBase
+                string result = ClassLibrary.FileShareClass.Get_Thumbnail_DownLoad_src(Page.Response, 20000);
+                lblDLResult.Text = @result;
+                return;
+        }
 
     }
 }

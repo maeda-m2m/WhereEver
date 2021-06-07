@@ -74,6 +74,24 @@
             <asp:Label ID="lblResult" runat="server" Text="null" Visible="False"></asp:Label>
            </p>
 
+
+
+         <span class="hr"></span>
+           <p class="index1">◆ユーザーアイコンを編集できます。</p>
+         <div class="center">
+          <p class ="form-flat-border">
+            <span class="f-notice">[ユーザーアイコン]</span>　<asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px" CssClass="form-flat-border-inner" />
+            <asp:Button ID="Button_Upload" runat="server" CssClass="btn-flat-border" Text="アップロード" OnClick="Button_UpLoad" />
+          </p>
+         <span class="hr"></span>
+          <p>
+            <asp:Label ID="lblDLResult" runat="server" Text="NO_IMAGE" ValidateRequestMode="Disabled" ></asp:Label>
+          </p>
+
+         </div>
+         <span class="hr"></span>
+
+
             <div class="center">
                 <asp:Button ID="Button_MailTo" runat="server" CssClass="btn_loginlist" Text="メール機能" OnClick="MailToOpen_Click" />
             </div>
