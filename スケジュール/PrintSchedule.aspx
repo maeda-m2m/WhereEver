@@ -1193,7 +1193,7 @@
                             OnUpdateCommand="DgBikou_UpdateCommand"
                             OnItemCommand="DgBikou_ItemCommand">
                 <Columns>
-                    <asp:BoundColumn DataField="BikouID" HeaderText="備考ID" ReadOnly="True" />
+                    <asp:BoundColumn DataField="BikouID" HeaderText="備考欄" ReadOnly="True" />
                     <asp:BoundColumn DataField="Bikou" HeaderText="備考内容" />
                     <asp:EditCommandColumn EditText="変更" CancelText="キャンセル" UpdateText="保存"></asp:EditCommandColumn>
                     <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
