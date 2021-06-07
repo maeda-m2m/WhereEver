@@ -207,7 +207,7 @@ namespace WhereEver.Class
 
 
 
-        public static void SetT_WeatherUpdate(SqlConnection sqlConnection, DateTime date, string weather, int maxtemp, int mintemp)
+        public static void SetT_WeatherUpdate(SqlConnection sqlConnection, DateTime date, string weather, int maxtemp, int mintemp, int rain_p)
         {
             sqlConnection.Open();
 
@@ -235,9 +235,10 @@ namespace WhereEver.Class
                     command.Parameters.Add(new SqlParameter("@Weather", System.Data.SqlDbType.NVarChar, 10, "Weather")).Value = weather;
                     command.Parameters.Add(new SqlParameter("@MaxTemp", System.Data.SqlDbType.Int, 4, "MaxTemp")).Value = maxtemp;
                     command.Parameters.Add(new SqlParameter("@MinTemp", System.Data.SqlDbType.Int, 4, "MinTemp")).Value = mintemp;
+                    command.Parameters.Add(new SqlParameter("@Rain_p", System.Data.SqlDbType.Int, 4, "Rain_p")).Value = rain_p;
 
                     //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
-                    command.CommandText = "UPDATE [T_Weather] SET [Date] = CAST(@Date AS DATE), [Weather]=@Weather, [MaxTemp]=@MaxTemp, [MinTemp]=@MinTemp WHERE CAST([Date] AS DATE) = CAST(@Date AS DATE)";
+                    command.CommandText = "UPDATE [T_Weather] SET [Date] = CAST(@Date AS DATE), [Weather]=@Weather, [MaxTemp]=@MaxTemp, [MinTemp]=@MinTemp, [Rain_p]=@Rain_p WHERE CAST([Date] AS DATE) = CAST(@Date AS DATE)";
 
                     //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
                     //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。
@@ -267,7 +268,7 @@ namespace WhereEver.Class
 
 
 
-        public static void SetT_WeatherInsert(SqlConnection sqlConnection, DateTime date, string weather, int maxtemp, int mintemp)
+        public static void SetT_WeatherInsert(SqlConnection sqlConnection, DateTime date, string weather, int maxtemp, int mintemp, int rain_p)
         {
             sqlConnection.Open();
 
@@ -295,9 +296,10 @@ namespace WhereEver.Class
                     command.Parameters.Add(new SqlParameter("@Weather", System.Data.SqlDbType.NVarChar, 10, "Weather")).Value = weather;
                     command.Parameters.Add(new SqlParameter("@MaxTemp", System.Data.SqlDbType.Int, 4, "MaxTemp")).Value = maxtemp;
                     command.Parameters.Add(new SqlParameter("@MinTemp", System.Data.SqlDbType.Int, 4, "MinTemp")).Value = mintemp;
+                    command.Parameters.Add(new SqlParameter("@Rain_p", System.Data.SqlDbType.Int, 4, "Rain_p")).Value = rain_p;
 
                     //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
-                    command.CommandText = "INSERT INTO [T_Weather] ([Date], [Weather], [MaxTemp], [MinTemp]) VALUES(CAST(@Date AS DATE), @Weather, @MaxTemp, @MinTemp)";
+                    command.CommandText = "INSERT INTO [T_Weather] ([Date], [Weather], [MaxTemp], [MinTemp],[Rain_p]) VALUES(CAST(@Date AS DATE), @Weather, @MaxTemp, @MinTemp, @Rain_p)";
 
                     //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
                     //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。

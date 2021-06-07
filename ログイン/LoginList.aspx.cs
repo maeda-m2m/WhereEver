@@ -123,6 +123,13 @@ namespace WhereEver
                         @sb.Append(wdt[i].MinTemp);
                         @sb.Append("℃</span>");
                     }
+                    @sb.Append(" 降水確率：");
+                    if (!wdt[i].IsNull(@"Rain_p"))
+                    {
+                        @sb.Append("<span>");
+                        @sb.Append(wdt[i].Rain_p);
+                        @sb.Append("%</span>");
+                    }
                     @sb.Append("</li>");
                 }
                 @sb.Append("</ul>");
@@ -506,6 +513,7 @@ namespace WhereEver
             StringBuilder sb2 = new StringBuilder();
             int maxtemp;
             int mintemp;
+            int rain_p;
 
             if (DropDownList_Weather1.SelectedValue == "")
             {
@@ -559,14 +567,16 @@ namespace WhereEver
             sb2.Append(DropDownList_CF_day.SelectedValue);
             date = DateTime.Parse(sb2.ToString()).Date;
 
+            rain_p = int.Parse(DropDownList_Rain_p.SelectedValue);
+
             if (Class.Toppage.GetT_WeatherSelect(Global.GetConnection(), date) == null)
             {
-                Class.Toppage.SetT_WeatherInsert(Global.GetConnection(), date, sb.ToString(), maxtemp, mintemp);
+                Class.Toppage.SetT_WeatherInsert(Global.GetConnection(), date, sb.ToString(), maxtemp, mintemp, rain_p);
                 Label_WeatherResult.Text = "新しい天気予報を保存しました。";
             }
             else
             {
-                Class.Toppage.SetT_WeatherUpdate(Global.GetConnection(), date, sb.ToString(), maxtemp, mintemp);
+                Class.Toppage.SetT_WeatherUpdate(Global.GetConnection(), date, sb.ToString(), maxtemp, mintemp, rain_p);
                 Label_WeatherResult.Text = "既存の天気予報に上書き保存しました。";
             }
 

@@ -10125,6 +10125,8 @@ namespace WhereEver.DATASET {
             
             private global::System.Data.DataColumn columnMinTemp;
             
+            private global::System.Data.DataColumn columnRain_p;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public T_WeatherDataTable() {
@@ -10192,6 +10194,14 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Rain_pColumn {
+                get {
+                    return this.columnRain_p;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -10227,13 +10237,14 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public T_WeatherRow AddT_WeatherRow(System.DateTime Date, string Weather, int MaxTemp, int MinTemp) {
+            public T_WeatherRow AddT_WeatherRow(System.DateTime Date, string Weather, int MaxTemp, int MinTemp, int Rain_p) {
                 T_WeatherRow rowT_WeatherRow = ((T_WeatherRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Date,
                         Weather,
                         MaxTemp,
-                        MinTemp};
+                        MinTemp,
+                        Rain_p};
                 rowT_WeatherRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowT_WeatherRow);
                 return rowT_WeatherRow;
@@ -10267,6 +10278,7 @@ namespace WhereEver.DATASET {
                 this.columnWeather = base.Columns["Weather"];
                 this.columnMaxTemp = base.Columns["MaxTemp"];
                 this.columnMinTemp = base.Columns["MinTemp"];
+                this.columnRain_p = base.Columns["Rain_p"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10280,6 +10292,8 @@ namespace WhereEver.DATASET {
                 base.Columns.Add(this.columnMaxTemp);
                 this.columnMinTemp = new global::System.Data.DataColumn("MinTemp", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMinTemp);
+                this.columnRain_p = new global::System.Data.DataColumn("Rain_p", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRain_p);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDate}, true));
                 this.columnDate.AllowDBNull = false;
@@ -14411,6 +14425,22 @@ namespace WhereEver.DATASET {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Rain_p {
+                get {
+                    try {
+                        return ((int)(this[this.tableT_Weather.Rain_pColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'T_Weather\' にある列 \'Rain_p\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableT_Weather.Rain_pColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsWeatherNull() {
                 return this.IsNull(this.tableT_Weather.WeatherColumn);
             }
@@ -14443,6 +14473,18 @@ namespace WhereEver.DATASET {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetMinTempNull() {
                 this[this.tableT_Weather.MinTempColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsRain_pNull() {
+                return this.IsNull(this.tableT_Weather.Rain_pColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetRain_pNull() {
+                this[this.tableT_Weather.Rain_pColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -24058,6 +24100,7 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Weather", "Weather");
             tableMapping.ColumnMappings.Add("MaxTemp", "MaxTemp");
             tableMapping.ColumnMappings.Add("MinTemp", "MinTemp");
+            tableMapping.ColumnMappings.Add("Rain_p", "Rain_p");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -24066,22 +24109,24 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [T_Weather] ([Date], [Weather], [MaxTemp], [MinTemp]) VALUES (@Date, " +
-                "@Weather, @MaxTemp, @MinTemp)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [T_Weather] ([Date], [Weather], [MaxTemp], [MinTemp], [Rain_p]) VALUE" +
+                "S (@Date, @Weather, @MaxTemp, @MinTemp, @Rain_p)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Weather", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Weather", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxTemp", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTemp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinTemp", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinTemp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rain_p", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rain_p", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [T_Weather] SET [Date] = @Date, [Weather] = @Weather, [MaxTemp] = @MaxTemp" +
-                ", [MinTemp] = @MinTemp WHERE (([Date] = @Original_Date))";
+                ", [MinTemp] = @MinTemp, [Rain_p] = @Rain_p WHERE (([Date] = @Original_Date))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Weather", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Weather", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxTemp", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxTemp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinTemp", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinTemp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rain_p", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rain_p", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -24181,7 +24226,7 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime Date, string Weather, global::System.Nullable<int> MaxTemp, global::System.Nullable<int> MinTemp) {
+        public virtual int Insert(System.DateTime Date, string Weather, global::System.Nullable<int> MaxTemp, global::System.Nullable<int> MinTemp, global::System.Nullable<int> Rain_p) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(Date));
             if ((Weather == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -24200,6 +24245,12 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((Rain_p.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Rain_p.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -24221,7 +24272,7 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime Date, string Weather, global::System.Nullable<int> MaxTemp, global::System.Nullable<int> MinTemp, System.DateTime Original_Date) {
+        public virtual int Update(System.DateTime Date, string Weather, global::System.Nullable<int> MaxTemp, global::System.Nullable<int> MinTemp, global::System.Nullable<int> Rain_p, System.DateTime Original_Date) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(Date));
             if ((Weather == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -24241,7 +24292,13 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Original_Date));
+            if ((Rain_p.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Rain_p.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_Date));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -24262,8 +24319,8 @@ namespace WhereEver.DATASET.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Weather, global::System.Nullable<int> MaxTemp, global::System.Nullable<int> MinTemp, System.DateTime Original_Date) {
-            return this.Update(Original_Date, Weather, MaxTemp, MinTemp, Original_Date);
+        public virtual int Update(string Weather, global::System.Nullable<int> MaxTemp, global::System.Nullable<int> MinTemp, global::System.Nullable<int> Rain_p, System.DateTime Original_Date) {
+            return this.Update(Original_Date, Weather, MaxTemp, MinTemp, Rain_p, Original_Date);
         }
     }
     

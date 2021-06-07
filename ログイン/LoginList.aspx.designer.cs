@@ -222,6 +222,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_MinTemp;
 
         /// <summary>
+        /// DropDownList_Rain_p コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Rain_p;
+
+        /// <summary>
         /// Label_WeatherResult コントロール。
         /// </summary>
         /// <remarks>

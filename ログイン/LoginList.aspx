@@ -131,6 +131,22 @@
                             
                                 最高気温<asp:DropDownList ID="DropDownList_MaxTemp" runat="server" CssClass="textbox" ></asp:DropDownList>℃
                                 最低気温<asp:DropDownList ID="DropDownList_MinTemp" runat="server" CssClass="textbox" ></asp:DropDownList>℃
+
+                            
+                            降水確率<asp:DropDownList ID="DropDownList_Rain_p" runat="server" CssClass="textbox" >
+                                <asp:ListItem Value="0">0%</asp:ListItem>
+                                <asp:ListItem Value="10">10%</asp:ListItem>
+                                <asp:ListItem Value="20">20%</asp:ListItem>
+                                <asp:ListItem Value="30">30%</asp:ListItem>
+                                <asp:ListItem Value="40">40%</asp:ListItem>
+                                <asp:ListItem Value="50">50%</asp:ListItem>
+                                <asp:ListItem Value="60">60%</asp:ListItem>
+                                <asp:ListItem Value="70">70%</asp:ListItem>
+                                <asp:ListItem Value="80">80%</asp:ListItem>
+                                <asp:ListItem Value="90">90%</asp:ListItem>
+                                <asp:ListItem Value="100">100%</asp:ListItem>
+                            </asp:DropDownList>
+
                         </div>
 
                     <div class="center">
