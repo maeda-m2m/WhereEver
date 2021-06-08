@@ -190,26 +190,26 @@
                                         <asp:Label ID="lblTitle" CssClass="All" runat="server" Text="M2M社内アクセス時間表 "></asp:Label>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <span class="hr"></span>
-                                        <p><asp:Label ID="lblName" runat="server"></asp:Label></p>
+                                        <span class="hr"></span>                                       
+                                        <p class="log"><asp:Label ID="lblName" runat="server"></asp:Label></p>
                                         <span class="hr"></span>
                                         <div class="icon"><asp:Label ID="lblIcon" runat="server" ValidateRequestMode="Disabled"></asp:Label></div>
                                         <span class="hr"></span>
-                                        <table>
+                                        <table class="log">
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lbl1" runat="server" Text="ログイン"></asp:Label>
+                                                    <p><asp:Label ID="lbl1" runat="server" Text="ログイン"></asp:Label></p>
                                                 </td>
                                                 <td>
-                                                    <asp:Label ID="lbl2" runat="server" Text="ログアウト"></asp:Label>
+                                                    <p><asp:Label ID="lbl2" runat="server" Text="ログアウト"></asp:Label></p>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lblLoginTime" runat="server"></asp:Label>
+                                                    <p><asp:Label ID="lblLoginTime" runat="server"></asp:Label></p>
                                                 </td>
                                                 <td>
-                                                    <asp:Label ID="lblLogoutTime" runat="server"></asp:Label>
+                                                    <p><asp:Label ID="lblLogoutTime" runat="server"></asp:Label></p>
                                                 </td>
                                             </tr>
                                         </table>
