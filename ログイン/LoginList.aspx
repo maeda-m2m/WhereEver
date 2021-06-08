@@ -190,7 +190,11 @@
                                         <asp:Label ID="lblTitle" CssClass="All" runat="server" Text="M2M社内アクセス時間表 "></asp:Label>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:Label ID="lblName" runat="server"></asp:Label>
+                                        <span class="hr"></span>
+                                        <p><asp:Label ID="lblName" runat="server"></asp:Label></p>
+                                        <span class="hr"></span>
+                                        <div class="icon"><asp:Label ID="lblIcon" runat="server" ValidateRequestMode="Disabled"></asp:Label></div>
+                                        <span class="hr"></span>
                                         <table>
                                             <tr>
                                                 <td>
@@ -209,6 +213,7 @@
                                                 </td>
                                             </tr>
                                         </table>
+                                        <span class="hr"></span>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
                             </Columns>

@@ -77,11 +77,13 @@
 
 
          <span class="hr"></span>
-           <p class="index1">◆ユーザーアイコンを編集できます。</p>
+           <p class="index1">◆ユーザーアイコンを編集できます(150px * 150px)。</p>
          <div class="center">
+           <p><asp:Label ID="lblUpResult" runat="server" Text="好きなサムネイルをローカルから選択し、サーバーにアップロードできます。"></asp:Label></p>
           <p class ="form-flat-border">
             <span class="f-notice">[ユーザーアイコン]</span>　<asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px" CssClass="form-flat-border-inner" />
             <asp:Button ID="Button_Upload" runat="server" CssClass="btn-flat-border" Text="アップロード" OnClick="Button_UpLoad" />
+            <asp:Button ID="Button_Delete" runat="server" CssClass="btn-flat-border" Text="画像初期化" OnClick="Push_Delete" />
           </p>
          <span class="hr"></span>
           <p>

@@ -445,7 +445,32 @@ namespace WhereEver
                 {
                     lblLogoutTime.Text = dt.Date.ToString();
                 }
-                
+
+                //----------------------------------------------------
+                //ユーザーアイコン追加分
+                //----------------------------------------------------
+                Label lblIcon = e.Item.FindControl("lblIcon") as Label;
+                string result;
+                if (dr != null)
+                {
+                    if (!dr.IsNull("name")) //idがnullのため値が同じnameで代用（要最適化）
+                    {
+                        //ThumbnailDownLoad by DataBase
+                        string id = dr.name.Trim();
+                        result = ClassLibrary.FileShareClass.Get_Thumbnail_DownLoad_src(Page.Response, id, 20000);                       
+                    }
+                    else
+                    {
+                        result = @"No_Image";
+                    }
+
+                    if(result == "No_Image")
+                    {
+                        result = "<img width=\"150px\" height=\"150px\" src=\"m2m-logo.png\" alt=\"Replaced_for_No_Image\" />";
+                    }
+                        lblIcon.Text = @result;
+                }
+                //----------------------------------------------------
             }
         }
 

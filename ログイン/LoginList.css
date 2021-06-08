@@ -130,6 +130,11 @@
     text-align: center;
 }
 
+.icon {
+    text-align: center;
+    display: inline-block;
+}
+
 .btn_loginlist {
     width: 200px;
     height: 40px;

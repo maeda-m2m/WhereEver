@@ -176,7 +176,7 @@ namespace WhereEver.管理ページ
         protected void Button_UpLoad(object sender, EventArgs e)
         {
             //ラベル初期化
-            lblResult.Text = "";
+            lblUpResult.Text = "";
 
             if (FileUpload_userfile.HasFile)
             {
@@ -188,7 +188,7 @@ namespace WhereEver.管理ページ
 
                 if(extension != "png" && extension != "jpg" && extension != "jpeg" && extension != "gif")
                 {
-                    lblResult.Text = "ファイル形式に対応していません！";
+                    lblUpResult.Text = "ファイル形式に対応していません！";
                 }
 
 
@@ -196,22 +196,22 @@ namespace WhereEver.管理ページ
                 int result = ClassLibrary.FileShareClass.Set_Thumbnail_UpLoad(FileUpload_userfile.PostedFile, 20000);
                 if (result == 0)
                 {
-                    lblResult.Text = "ファイル名が見つかりません！";
+                    lblUpResult.Text = "ファイル名が見つかりません！";
                 }
                 else if (result == -1)
                 {
-                    lblResult.Text = "アップロードに失敗しました。";
+                    lblUpResult.Text = "アップロードに失敗しました。";
                 }
                 else if (result == 1)
                 {
-                    lblResult.Text = "アップロードファイルが完了しました！";
+                    lblUpResult.Text = "アップロードファイルが完了しました！";
                     PreView();
                 }
 
             }
             else
             {
-                lblResult.Text = "ローカルからファイルを選択して下さい。";
+                lblUpResult.Text = "ローカルからファイルを選択して下さい。";
             }
             return;
         }
@@ -219,9 +219,22 @@ namespace WhereEver.管理ページ
         protected void PreView()
         {
                 //ThumbnailDownLoad by DataBase
-                string result = ClassLibrary.FileShareClass.Get_Thumbnail_DownLoad_src(Page.Response, 20000);
+                string result = ClassLibrary.FileShareClass.Get_Thumbnail_DownLoad_src(Page.Response, SessionManager.User.M_User.id.Trim(), 20000);
                 lblDLResult.Text = @result;
                 return;
+        }
+
+        protected void Push_Delete(object sender, EventArgs e)
+        {
+            if(ClassLibrary.FileShareClass.DeleteT_ThumbnailRow(Global.GetConnection(), SessionManager.User.M_User.id.Trim()))
+            {
+                lblUpResult.Text = "サムネイルをリセットしました。";
+                lblDLResult.Text = "Thumbnail_Deleted";
+            }
+            else
+            {
+                lblUpResult.Text = "サムネイルが見つかりませんでした。";
+            }
         }
 
     }
