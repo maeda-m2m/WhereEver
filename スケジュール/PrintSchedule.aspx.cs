@@ -1327,11 +1327,12 @@ namespace WhereEver
 
         protected void DgBikou_ItemCommand(object source, DataGridCommandEventArgs e)
         {
-            string id = e.Item.Cells[0].Text.Split('>')[1];
+            
             switch (((LinkButton)e.CommandSource).CommandName)
             {
 
                 case "Delete":
+                    string id = e.Item.Cells[0].Text.Split('>')[1];
                     DeleteBikou(id);
                     break;
                 default:
