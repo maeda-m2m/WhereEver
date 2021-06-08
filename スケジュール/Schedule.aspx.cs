@@ -2562,6 +2562,11 @@ namespace WhereEver
             Response.Redirect("Wiki_Top.aspx");
 
         }
+        protected void ButtonB_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("test1.aspx");
+
+        }
     }
 }
 

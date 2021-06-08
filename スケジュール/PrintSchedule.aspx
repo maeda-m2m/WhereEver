@@ -294,10 +294,16 @@
         }
 
         #newsdl {
-            font-size: 10px;
+            font-size: 11px;
             font-family: Meiryo;
             border: 2px solid black;
             margin:0 auto;
+            line-height:13px;
+        }
+        #lblbikou{
+            font-size:13px;
+            font-weight:bold;
+            padding:10px 0 10px 10px;
         }
 
         .bb {

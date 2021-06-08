@@ -1,5 +1,19 @@
-﻿body {
-    font-family: Meiryo;
+﻿@charset "UTF-8";
+
+/*
+    使っている色
+    ・ベースカラー：white
+    ・メインカラー： #16ba00
+    ・アクセントカラー：#ccffcc
+
+
+
+*/
+
+
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 
@@ -64,26 +78,26 @@
 }
 
 .Center_cs_Color {
-    border-color: #c1c2ff;
+    border-color: #16ba00;
     border-width: 10px;
     text-align: left;
 }
 
 .Center_cs_Color_Top {
-    border-color: #c1c2ff;
+    border-color: #16ba00;
     border-width: 10px;
     margin: auto;
     text-align: center;
 }
 
 .Center_cs_Color_Bottom {
-    border-color: #c1c2ff;
+    border-color: #16ba00;
     border-width: 10px;
     text-align: left;
 }
 
 .Center_cs_Color_Date {
-    border-color: #c1c2ff;
+    border-color: #16ba00;
     border-width: 10px;
     background-color: #16ba00;
     color: white;
