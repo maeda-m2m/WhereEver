@@ -69,6 +69,24 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label Label_WhatNow;
 
         /// <summary>
+        /// Label_Weather2 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Weather2;
+
+        /// <summary>
+        /// Label_Yotei コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Yotei;
+
+        /// <summary>
         /// Button_EditTop コントロール。
         /// </summary>
         /// <remarks>

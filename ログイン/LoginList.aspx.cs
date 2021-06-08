@@ -29,6 +29,7 @@ namespace WhereEver
 
                 Label_WhatNow.Text = "";
                 Label_Weather.Text = "";
+                Label_Weather2.Text = "";
 
                 TextBox_EditTop.Text = "";
                 Button_EditTop.Visible = true;
@@ -134,10 +135,12 @@ namespace WhereEver
                 }
                 @sb.Append("</ul>");
                 Label_Weather.Text = sb.ToString();
+                Label_Weather2.Text = sb.ToString();
             }
             else
             {
                 Label_Weather.Text = @"No Data";
+                Label_Weather2.Text = @"No Data";
             }
 
 
@@ -180,7 +183,6 @@ namespace WhereEver
 
             //初期化
             @sb = new StringBuilder();
-            @sb.Append("<br /><div css= \"index1\">--お知らせ--</div><br />");
             //ここに更新内容をAppend
             DATASET.DataSet.T_TopPageRow dr = Class.Toppage.GetT_TopPage(Global.GetConnection());
             if(dr != null)
@@ -203,7 +205,7 @@ namespace WhereEver
                 @sb.Append("警告：T_TopPageのデータベースがNULLです。");
             }
             @sb.Append("<br />");
-            Label_WhatNow.Text += @sb.ToString();
+            Label_Yotei.Text = @sb.ToString();
         }
 
 
