@@ -13,7 +13,7 @@ $(document).ready(function () {
 
 
 function A() {
-    return window.confirm('本当に戻りますか？');
+    return window.confirm('実行しますか？');
 
 
 }
@@ -39,8 +39,9 @@ function recalc() {
     const date = now.getDate();
     const hour = now.getHours();
     const min = now.getMinutes();
+    const sec = now.getSeconds();
 
-    const output = `${year}年${month + 1}月${date}日 ${hour}時${min}分`;
+    const output = `${year}年${month + 1}月${date}日 ${hour}時${min}分${sec}秒`;
     document.getElementById('time').textContent = output;
     refresh();
 }
@@ -49,11 +50,16 @@ function refresh() {
     setTimeout(recalc, 1000);
 }
 
+$(document).ready(function () {
+    $("#Image1").on("click", function () {
+        location.href = "Wiki_Top.aspx";
 
-//$(document).ready(function () {
-//    $("#test1").on("click", function () {
-//        $(this).
-//    })
-//})
+    });
+});
+
+/*
+ 未完成、いいえを選択してもデータが削除される。
+ */
+
 
 

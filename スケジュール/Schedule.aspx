@@ -1,13 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Schedule.aspx.cs" Inherits="WhereEver.Schedule" EnableEventValidation="false" %>
 
-<%@ Register Src="~/MenuControl.ascx" TagName="c_menu" TagPrefix="Menu" %>
+
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" href="Schedule.css" type="text/css" />
-    <link rel="stylesheet" href="../MenuControl.css" type="text/css" />
+
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -16,30 +16,99 @@
     <title>Schedule</title>
 
     <style>
-  
+        .btn {
+            width: 150px;
+            height: 40px;
+            position: relative;
+            display: inline-block;
+            font-weight: bold;
+            padding: 0.3em 0.5em;
+            text-decoration: none;
+            color: #000000;
+            background: #ECECEC;
+            transition: .4s;
+            font-size: 1em;
+            text-align: center;
+        }
+
+            .btn:hover {
+                background: #000000;
+                color: white;
+                cursor: pointer;
+            }
+
+
+        .label {
+            font-size: 1em;
+        }
+
+        .All {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        header {
+            position: fixed;
+            top: 0; /* 上部から配置の基準位置を決める */
+            left: 0; /* 左から配置の基準位置を決める */
+
+
+            background-color: #ffffff; /* ヘッダーの背景色を指定する */
+        }
+
+        .Contents {
+            width: 100%; /* コンテンツの横幅を指定する */
+            overflow: auto; /* コンテンツの表示を自動に設定（スクロール） */
+        }
+
+        .delete_check {
+        }
+
+        .edit_focus {
+        }
     </style>
 </head>
 
-<body>
+<body class="Contents">
     <form runat="server">
 
+        <header>
+            <ul>
+
+                <li><a href="../ログイン/LoginList.aspx" runat="server">
+                    <asp:Image ID="Image2" runat="server" ImageUrl="~/ログイン/m2m-logo.png" /></a></li>
+
+                <li>
+                    <h1><strong>WhereEver</strong> </h1>
+                </li>
+
+                <li><a href="~/ログイン/LoginList.aspx" class="btn" runat="server">トップページ</a></li>
+
+                <li><a href="~/スケジュール/Schedule.aspx" class="btn" runat="server">スケジュール</a></li>
+
+                <li><a href="~/各申請書類/Shinsei.aspx" class="btn" runat="server">各申請書類</a></li>
+
+                <li><a href="~/チャット/Chat.aspx" class="btn" runat="server">チャット<asp:Label ID="lblHensin" runat="server" Visible="False"></asp:Label></a></li>
+
+                <li><a href="~/ファイル共有/FileShare.aspx" class="btn" runat="server">ファイル共有</a></li>
+
+                <li><a href="~/Project System/PIchiran.aspx" class="btn" runat="server">プロジェクト</a></li>
+
+                <li><a href="~/管理ページ/Kanri.aspx" class="btn" runat="server">マイページ</a></li>
+
+                <li><a href="~/ログイン/Login.aspx" class="btn" runat="server">ログアウト</a></li>
 
 
-        <table>
+            </ul>
 
-            <tr>
-                <td id="menu">
-                    <Menu:c_menu ID="m" runat="server"></Menu:c_menu>
-                </td>
-            </tr>
-        </table>
+        </header>
 
-        <asp:Button runat="server" ID="ButtonA" Text="社内Wiki" OnClick="ButtonA_Click" />
+        <%--<asp:Button runat="server" ID="ButtonA" Text="社内Wiki" OnClick="ButtonA_Click" />--%>
         <asp:Button runat="server" ID="ButtonB" Text="" OnClick="ButtonB_Click" />
 
 
 
-        <div class="Center">
+        <section class="Center">
             <asp:Panel ID="Panel2" runat="server" HorizontalAlign="center">
                 <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
 
@@ -49,11 +118,11 @@
                 <asp:Button ID="Button5" runat="server" Text="次へ" class="btn-flat-border" OnClick="Button5_Click" />
                 <%--  <h1 id="test1">test</h1>--%>
             </asp:Panel>
-        </div>
+        </section>
 
         <br />
 
-        <div>
+        <section>
 
             <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center">
                 <%--登録--%>
@@ -160,10 +229,10 @@
 
             </asp:Panel>
 
-        </div>
+        </section>
 
 
-        <div>
+        <section>
             <asp:DataGrid runat="server"
                 ID="Scdl3"
                 class="Center"
@@ -305,11 +374,11 @@
 
             </asp:DataGrid>
 
-        </div>
+        </section>
 
         <br />
 
-        <div class="Center">
+        <section class="Center">
 
             <asp:Panel runat="server" ID="Panel4" CssClass="Center">
 
@@ -325,9 +394,9 @@
 
             </asp:Panel>
 
-        </div>
+        </section>
 
-        <div>
+        <section>
             <asp:Panel ID="Panel3" runat="server">
                 <%--検索--%>
 
@@ -427,11 +496,11 @@
                     </tr>
                 </table>
             </asp:Panel>
-        </div>
+        </section>
 
         <br />
 
-        <div class="Center">
+        <section class="Center">
             <asp:Label runat="server" ID="Label2" Text=""></asp:Label>
             <asp:DataGrid
                 runat="server"
@@ -472,7 +541,7 @@
 
 
 
-                    <asp:ButtonColumn
+                    <asp:ButtonColumn ItemStyle-CssClass="delete_check"
                         ItemStyle-Width="100px"
                         HeaderText="削除"
                         ButtonType="PushButton"
@@ -483,7 +552,7 @@
                         <ItemStyle Width="100px"></ItemStyle>
                     </asp:ButtonColumn>
 
-                    <asp:EditCommandColumn
+                    <asp:EditCommandColumn ItemStyle-CssClass="edit_focus"
                         HeaderText="編集"
                         ItemStyle-Width="100px"
                         EditText="編集"
@@ -497,7 +566,7 @@
                 <HeaderStyle Width="200px" BackColor="#16BA00" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="12px"></HeaderStyle>
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px" />
             </asp:DataGrid>
-        </div>
+        </section>
 
         <br />
 
@@ -620,12 +689,14 @@
 
         <footer>
             <section class="Center">
-                <p>最終アクセス:<span id="time"></span></p>
+                <p>現在時刻:<span id="time"></span></p>
+                <a href="#" runat="server">トップへ</a>
             </section>
 
             <h1 id="Image1">社内Wikiへ</h1>
 
-            <%--<a href="Schedule.aspx" id="gu" runat="server">トップページ</a>--%>
+
+
         </footer>
 
         <script src="jquery-3.6.0.min.js"></script>
@@ -633,16 +704,24 @@
 
         <script>
 
+            $(document).ready(function () {
+                $(".delete_check").on("click", function () {
+                    window.confirm('実行しますか？');
+                });
+
+            });
+
+
 
 
 
 
             $(document).ready(function () {
-                $("#Image1").on("click", function () {
-                    location.href = "Wiki_Top.aspx";
-
+                $(".edit_focus").on("click", function () {
+                    $(this).find(".edit_focus").focus();
                 });
             });
+
 
         </script>
 

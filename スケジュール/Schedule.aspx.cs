@@ -857,6 +857,8 @@ namespace WhereEver
             Create();
             Create3();
             Create2();
+
+            Button2.Focus();
         }
 
         protected void Button10_Click(object sender, EventArgs e)//検索パネル
@@ -2557,11 +2559,11 @@ namespace WhereEver
 
         }
 
-        protected void ButtonA_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Wiki_Top.aspx");
+        //protected void ButtonA_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("Wiki_Top.aspx");
 
-        }
+        //}
         protected void ButtonB_Click(object sender, EventArgs e)
         {
             Response.Redirect("test1.aspx");
