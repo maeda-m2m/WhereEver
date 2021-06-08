@@ -57,4 +57,11 @@
             <asp:Label ID="Label1" CssClass="label" runat="server" Text="Label"></asp:Label>
         </td>
     </tr>
+    <tr>
+        <td colspan="10">
+           <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="true" />
+           <p><asp:SiteMapPath ID="smp" runat="server" PathSeparator=" > " RenderCurrentNodeAsLink="false" /></p>
+        </td>
+    </tr>
 </table>
+

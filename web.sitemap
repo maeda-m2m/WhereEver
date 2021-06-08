@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode title="ログインページ"
+	  description="ログインページ" url="Login.aspx">
+
+		<siteMapNode title="ホーム"
+			description="ホーム" url="LoginList.aspx">
+
+				<siteMapNode title="スケジュール"
+				description="スケジュール" url="Schedule.aspx">
+					<siteMapNode title="スケジュール印刷"
+					description="印刷画面" url="PrintSchedule.aspx" />
+					<siteMapNode title="テスト"
+					description="テスト画面" url="test1.aspx" />
+					<siteMapNode title="社内WikiTop"
+					description="社内WikiTop" url="Wiki_Top.aspx">
+							<siteMapNode title="社内Wiki"
+							description="社内Wiki" url="Wiki.aspx" />
+					</siteMapNode>
+				</siteMapNode>
+
+				<siteMapNode title="各申請書類"
+					description="各種申請書類発行" url="Shinsei.aspx">
+					<siteMapNode title="帳簿"
+					description="基本的な帳簿機能搭載" url="Money.aspx" />
+				</siteMapNode>
+
+			<siteMapNode title="Mちゃんねる"
+			description="チャット" url="Chat.aspx" />
+			<siteMapNode title="ファイル共有"
+			description="容量ほぼ無制限のファイル共有" url="FileShare.aspx" />
+
+			<siteMapNode title="プロジェクト"
+			  description="高機能なプロジェクト管理システム" url="PIchiran.aspx">
+				<siteMapNode title="プロジェクト管理"
+				  description="プロジェクト管理画面" url="PKanri.aspx" />
+			</siteMapNode>
+
+			<siteMapNode title="マイページ"
+			  description="マイページ" url="Karni.aspx" />
+
+			<siteMapNode title="ボタン生成"
+			  description="ボタン生成" url="XHTML5Editor.aspx" />
+			<siteMapNode title="ビデオチャット"
+			  description="ビデオチャット" url="Video.aspx" />
+			<siteMapNode title="リサーチ"
+			  description="リサーチ" url="Researchanalitics.aspx" />
+
+
+		</siteMapNode>
+
+	</siteMapNode>
+</siteMap>
