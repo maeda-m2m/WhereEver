@@ -15,22 +15,22 @@ namespace WhereEver
     {
 
         /// <summary>
-        /// m コントロール。
+        /// Image2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::WhereEver.MenuControl m;
+        protected global::System.Web.UI.WebControls.Image Image2;
 
         /// <summary>
-        /// ButtonA コントロール。
+        /// lblHensin コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonA;
+        protected global::System.Web.UI.WebControls.Label lblHensin;
 
         /// <summary>
         /// ButtonB コントロール。
