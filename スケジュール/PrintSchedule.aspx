@@ -342,7 +342,7 @@
             color: white;
             text-align: center;
             width: 380px;
-            height: 20px;
+            height: 15px;
         }
         .auto-style3 {
             width: 380px;
@@ -367,7 +367,7 @@
             color: white;
             text-align: center;
             width: 150px;
-            height: 20px;
+            height: 15px;
         }
         .auto-style7 {
             width: 150px;
@@ -385,7 +385,7 @@
             background-color: #272727;
             color: white;
             width: 50px;
-            height: 20px;
+            height: 15px;
         }
         .auto-style11 {
             text-align: center;
@@ -426,7 +426,7 @@
             text-align: center;
             background-color: #272727;
             color: white;
-            height: 20px;
+            height: 15px;
         }
 
         .auto-style17 {
@@ -448,7 +448,7 @@
             background-color: #272727;
             color: white;
             width: 72px;
-            height: 20px;
+            height: 15px;
         }
 
     </style>
