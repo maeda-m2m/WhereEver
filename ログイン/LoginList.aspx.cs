@@ -38,6 +38,7 @@ namespace WhereEver
             }
 
             SetMaxDate();
+            Label_WeatherDate.Text = DateTime.Now.Date.ToString();
             Literal_js.Text = "";
 
             if (DropDownList_CF_month.SelectedValue != "--")
