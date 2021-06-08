@@ -149,6 +149,7 @@
     <Content Include="XHTML5Editor\XHTML5Editor.aspx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
     <Content Include="スケジュール\Schedule.js" />
+    <Content Include="スケジュール\test1.aspx" />
     <Content Include="スケジュール\Wiki.aspx" />
     <Content Include="スケジュール\Wiki_Top.aspx" />
     <Content Include="チャット\purple.jpg" />
@@ -353,6 +354,13 @@
       <DependentUpon>PrintSchedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="SessionManager.cs" />
+    <Compile Include="スケジュール\test1.aspx.cs">
+      <DependentUpon>test1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="スケジュール\test1.aspx.designer.cs">
+      <DependentUpon>test1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="スケジュール\Wiki.aspx.cs">
       <DependentUpon>Wiki.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
