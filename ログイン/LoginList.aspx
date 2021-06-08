@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LoginList.aspx.cs" Inherits="WhereEver.LoginList" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <%@ Register Src="~/MenuControl.ascx" TagName="c_menu" TagPrefix="Menu" %>
 <!DOCTYPE html>
 
@@ -58,6 +60,36 @@
                     <asp:Label ID="Label_WhatNow" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
                     <p class="index1">--天気予報--</p>
                     <asp:Label ID="Label_Weather2" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
+
+
+
+                    <asp:Chart runat="server" ID="Chart_Weather" DataSourceID="SqlDataSource_Weather" Width="1170px" AlternateText="図表１　気温と降水確率の推移(No_Image)" >
+                        <Legends>
+                            <asp:Legend IsDockedInsideChartArea="False" Name="Legend1" DockedToChartArea="ChartArea" Alignment="Center" Docking="Top">
+                            </asp:Legend>
+                        </Legends>
+                        <series>
+                            <asp:Series Name="降水確率（%）" ChartType="Column" XValueMember="Date" YValueMembers="Rain_p" IsValueShownAsLabel="true" LabelFormat="0\%" CustomProperties="LabelStyle=Bottom" ></asp:Series>
+                            <asp:Series Name="最低気温（℃）" ChartType="Line" XValueMember="Date" YValueMembers="MinTemp" MarkerStyle="Diamond" MarkerSize="10" IsValueShownAsLabel="true" LabelFormat="0℃" LabelForeColor="Blue" Color="Blue" ></asp:Series>
+                            <asp:Series Name="最高気温（℃）" ChartType="Line" XValueMember="Date" YValueMembers="MaxTemp" MarkerStyle="Circle" MarkerSize="10" IsValueShownAsLabel="true" LabelFormat="0℃" LabelForeColor="Red" Color="Red" ></asp:Series>
+                        </series>
+                        <chartareas>
+                            <asp:ChartArea Name="ChartArea" BackColor="White"></asp:ChartArea>
+                        </chartareas>
+                        <Titles>
+                            <asp:Title DockedToChartArea="ChartArea" Docking="Bottom" IsDockedInsideChartArea="False" Name="Title_Weather" Text="図表１　気温と降水確率の推移">
+                            </asp:Title>
+                        </Titles>
+                    </asp:Chart>
+
+                    <asp:SqlDataSource ID="SqlDataSource_Weather" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT [Date], [MaxTemp], [MinTemp], [Rain_p] FROM [T_Weather] WHERE (CAST(DATE AS [Date]) &gt;= @Date) ORDER BY CAST(DATE AS [Date])">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="Label_WeatherDate" DbType="Date" DefaultValue="2021/01/01" Name="Date" PropertyName="Text" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:Label ID="Label_WeatherDate" runat="server" Text="2021/01/01" Visible="false" ></asp:Label>
+
+
                     <p class="index1">--お知らせ--</p>
                     <asp:Label ID="Label_Yotei" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
                 </div>
@@ -190,25 +222,30 @@
                                         <asp:Label ID="lblTitle" CssClass="All" runat="server" Text="M2M社内アクセス時間表 "></asp:Label>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:Label ID="lblName" runat="server"></asp:Label>
-                                        <table>
+                                        <span class="hr"></span>                                       
+                                        <p class="log"><asp:Label ID="lblName" runat="server"></asp:Label></p>
+                                        <span class="hr"></span>
+                                        <div class="icon"><asp:Label ID="lblIcon" runat="server" ValidateRequestMode="Disabled"></asp:Label></div>
+                                        <span class="hr"></span>
+                                        <table class="log">
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lbl1" runat="server" Text="ログイン"></asp:Label>
+                                                    <p><asp:Label ID="lbl1" runat="server" Text="ログイン"></asp:Label></p>
                                                 </td>
                                                 <td>
-                                                    <asp:Label ID="lbl2" runat="server" Text="ログアウト"></asp:Label>
+                                                    <p><asp:Label ID="lbl2" runat="server" Text="ログアウト"></asp:Label></p>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lblLoginTime" runat="server"></asp:Label>
+                                                    <p><asp:Label ID="lblLoginTime" runat="server"></asp:Label></p>
                                                 </td>
                                                 <td>
-                                                    <asp:Label ID="lblLogoutTime" runat="server"></asp:Label>
+                                                    <p><asp:Label ID="lblLogoutTime" runat="server"></asp:Label></p>
                                                 </td>
                                             </tr>
                                         </table>
+                                        <span class="hr"></span>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
                             </Columns>

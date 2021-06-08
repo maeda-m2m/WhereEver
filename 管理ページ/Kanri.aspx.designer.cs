@@ -69,6 +69,15 @@ namespace WhereEver.管理ページ
         protected global::System.Web.UI.WebControls.Label lblResult;
 
         /// <summary>
+        /// lblUpResult コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUpResult;
+
+        /// <summary>
         /// FileUpload_userfile コントロール。
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace WhereEver.管理ページ
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_Upload;
+
+        /// <summary>
+        /// Button_Delete コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Delete;
 
         /// <summary>
         /// lblDLResult コントロール。

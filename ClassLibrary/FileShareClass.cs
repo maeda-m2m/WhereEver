@@ -515,7 +515,7 @@ namespace WhereEver.ClassLibrary
         /// <param name="pass">あれば</param>
         /// <param name="separatesize">任意変更　初期設定は8000</param>
         /// <returns>string</returns>
-        public static string Get_Thumbnail_DownLoad_src(HttpResponse response, int separatesize = 8000)
+        public static string Get_Thumbnail_DownLoad_src(HttpResponse response, string id, int separatesize = 8000)
         {
 
 
@@ -528,7 +528,7 @@ namespace WhereEver.ClassLibrary
                 for (int i = 0; i < int.MaxValue; i++)
                 {
                     int startindex = 1 + (separatesize * i); //1からはじまる長さ
-                    DATASET.DataSet.T_ThumbnailRow dr = FileShareClass.GetT_ThumbnailRow(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), startindex, separatesize);
+                    DATASET.DataSet.T_ThumbnailRow dr = FileShareClass.GetT_ThumbnailRow(Global.GetConnection(), id, startindex, separatesize);
                     if (dr != null)
                     {
                         if (i == 0)
@@ -579,12 +579,12 @@ namespace WhereEver.ClassLibrary
                         Encoding enc = Encoding.GetEncoding("UTF-8");
                         return HtmlEncode(enc.GetString(Convert.FromBase64String(Convert.ToBase64String(allbyte))));
                     }
-                    return "Content_MIME_Type_Not_Supported";
+                    return @"Content_MIME_Type_Not_Supported";
                 }
                 else
                 {
                     //指定したファイルが存在しません。あるいは、パスワードが誤っています。
-                    return "Not_Found";
+                    return @"No_Image";
                 }
 
         }
@@ -700,6 +700,68 @@ namespace WhereEver.ClassLibrary
 
         }
 
+        //------------------------------------------------------------------------------------------------------------
+        //T_Thumbnail   DELETE
+        //------------------------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// 指定したT_ThumbnailのDataTableRowを削除します。
+        /// 中身がない場合や入力値が不正な場合はfalseを返します。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="id"></param>
+        /// <returns>bool</returns>
+        public static bool DeleteT_ThumbnailRow(SqlConnection sqlConnection, string id)
+        {
+
+            //sql接続開始
+            sqlConnection.Open();
+
+            //Sql Commandを作成します。
+            SqlCommand command = sqlConnection.CreateCommand();
+
+            //Must assign both transaction object and connection
+            //to Command object for apending local transaction
+            command.Connection = sqlConnection;
+
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //パラメータを取得
+            command.Parameters.AddWithValue("@id", id);
+
+            command.CommandText =
+                "DELETE TOP (1) FROM [T_ThumbNail] WHERE [id] = LTRIM(RTRIM(@id))";
+
+            //特定のDataTableをインスタンス化
+            //DATASET.DataSet.T_FileShareDataTable dt = new DATASET.DataSet.T_FileShareDataTable();
+
+            try
+            {
+                //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    // データベースの接続終了
+                    sqlConnection.Close();
+                    return true;
+                }
+                else
+                {
+                    // データベースの接続終了
+                    sqlConnection.Close();
+                    return false;
+                }
+
+            }
+            catch
+            {
+                //不正な値が入力された場合やidが誤っている場合はnullを返します。
+                // データベースの接続終了
+                sqlConnection.Close();
+                return false;
+            }
+        }
+        //------------------------------------------------------------------------------------------------------------
+
 
         //------------------------------------------------------------------------------------------------------------
         //T_FileShare   DELETE
@@ -711,7 +773,7 @@ namespace WhereEver.ClassLibrary
         /// </summary>
         /// <param name="sqlConnection"></param>
         /// <param name="id"></param>
-        /// <param name="uid"></param>
+        /// <param name="FileName"></param>
         /// <returns>bool</returns>
         public static bool DeleteT_FileShareRow(SqlConnection sqlConnection, string id, string FileName)
         {

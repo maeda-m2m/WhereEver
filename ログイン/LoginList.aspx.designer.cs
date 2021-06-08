@@ -78,6 +78,33 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label Label_Weather2;
 
         /// <summary>
+        /// Chart_Weather コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart_Weather;
+
+        /// <summary>
+        /// SqlDataSource_Weather コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Weather;
+
+        /// <summary>
+        /// Label_WeatherDate コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_WeatherDate;
+
+        /// <summary>
         /// Label_Yotei コントロール。
         /// </summary>
         /// <remarks>

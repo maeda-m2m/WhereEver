@@ -130,6 +130,19 @@
     text-align: center;
 }
 
+.icon {
+    text-align: center;
+    display: inline-block;
+}
+
+.log {
+    text-align: center;
+    display: inline-block;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+}
+
 .btn_loginlist {
     width: 200px;
     height: 40px;

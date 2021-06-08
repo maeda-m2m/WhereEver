@@ -23,7 +23,8 @@
 <table>
     <tr>
         <td class="All">
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/ログイン/m2m-logo.png" />
+            <a href="ログイン/LoginList.aspx" runat="server">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/ログイン/m2m-logo.png" /></a>
         </td>
         <td>
             <h1>WhereEver</h1>

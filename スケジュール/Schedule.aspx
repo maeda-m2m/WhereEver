@@ -6,13 +6,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="Schedule.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="../MenuControl.css" />
+    <link rel="stylesheet" href="Schedule.css" type="text/css" />
+    <link rel="stylesheet" href="../MenuControl.css" type="text/css" />
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
+
     <title>Schedule</title>
 
     <style>
+  
     </style>
 </head>
 
@@ -31,6 +35,7 @@
         </table>
 
         <asp:Button runat="server" ID="ButtonA" Text="社内Wiki" OnClick="ButtonA_Click" />
+        <asp:Button runat="server" ID="ButtonB" Text="" OnClick="ButtonB_Click" />
 
 
 
@@ -503,6 +508,7 @@
 
                     <asp:TemplateField HeaderText="管理番号" SortExpression="SdlNo">
 
+
                         <EditItemTemplate>
                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("SdlNo") %>'></asp:Label>
                         </EditItemTemplate>
@@ -627,8 +633,8 @@
 
         <script>
 
-           
-            
+
+
 
 
             $(document).ready(function () {
