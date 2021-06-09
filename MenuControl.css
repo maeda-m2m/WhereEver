@@ -22,6 +22,30 @@
     }
 */
 
+
+    #m_sitemap_main li {
+        background-color: #1e1e1e;
+        font-weight: bold;
+        transition: .4s;
+        border-bottom: 1px solid red; /* topにborderをつけると指定した線の幅だけ下にずれていく */
+    }
+
+    #m_sitemap_main a:link {
+        color: white;
+    }
+    #m_sitemap_main a:visited {
+        color: white;
+    }
+    #m_sitemap_main a:hover {
+        color: black;
+        background-color: white;
+    }
+    #m_sitemap_main a:active {
+        color: white;
+        background-color: red;
+    }
+
+
 .btn {
     width: 150px;
     height: 40px;
@@ -31,7 +55,7 @@
     padding: 0.3em 0.5em;
     text-decoration: none;
     color: #000000;
-    background: #ECECEC;
+    background: #ececec;
     transition: .4s;
     font-size: 1em;
     text-align: center;

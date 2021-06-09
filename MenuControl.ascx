@@ -2,25 +2,6 @@
 
 <link href="MenuControl.css" type="text/css" rel="stylesheet" />
 
-<style type="text/css">
-    .auto-style1 {
-        width: 150px;
-        height: 40px;
-        position: relative;
-        display: inline-block;
-        font-weight: bold;
-        padding: 0.3em 0.5em;
-        text-decoration: none;
-        color: #000000;
-        background: #ECECEC;
-        transition: .4s;
-        font-size: 1em;
-        text-align: center;
-        margin-top: 0px;
-    }
-</style>
-
-
 <table>
     <tr>
         <td class="All">
@@ -60,8 +41,10 @@
     </tr>
     <tr>
         <td colspan="10">
-           <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="true" />
-           <p><asp:SiteMapPath ID="smp" runat="server" PathSeparator=" > " RenderCurrentNodeAsLink="false" /></p>
+            <asp:Menu id="sitemap_main" runat="server"
+              DataSourceID="smd" ExpandDepth="2" ShowLines="True">
+            </asp:Menu>
+            <asp:SiteMapDataSource id="smd" runat="server" />
         </td>
     </tr>
 </table>

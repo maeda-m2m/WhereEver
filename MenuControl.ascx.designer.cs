@@ -42,21 +42,21 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// SiteMapDataSource1 コントロール。
+        /// sitemap_main コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource1;
+        protected global::System.Web.UI.WebControls.Menu sitemap_main;
 
         /// <summary>
-        /// smp コントロール。
+        /// smd コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapPath smp;
+        protected global::System.Web.UI.WebControls.SiteMapDataSource smd;
     }
 }

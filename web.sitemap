@@ -1,53 +1,53 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-	<siteMapNode title="ログインページ"
-	  description="ログインページ" url="Login.aspx">
 
-		<siteMapNode title="ホーム"
-			description="ホーム" url="LoginList.aspx">
+
+	<siteMapNode title="WhereEver"
+	description="ホーム画面です" url="ログイン/LoginList.aspx">
 
 				<siteMapNode title="スケジュール"
-				description="スケジュール" url="Schedule.aspx">
+				description="日々のスケジュールを管理しましょう" url="スケジュール/Schedule.aspx">
+
 					<siteMapNode title="スケジュール印刷"
-					description="印刷画面" url="PrintSchedule.aspx" />
-					<siteMapNode title="テスト"
-					description="テスト画面" url="test1.aspx" />
+					description="スケジュールを印刷します" url="スケジュール/PrintSchedule.aspx" />
 					<siteMapNode title="社内WikiTop"
-					description="社内WikiTop" url="Wiki_Top.aspx">
-							<siteMapNode title="社内Wiki"
-							description="社内Wiki" url="Wiki.aspx" />
+					description="閃きを共有する社内WikiのTopです" url="スケジュール/Wiki_Top.aspx">
 					</siteMapNode>
 				</siteMapNode>
 
 				<siteMapNode title="各申請書類"
-					description="各種申請書類発行" url="Shinsei.aspx">
-					<siteMapNode title="帳簿"
-					description="基本的な帳簿機能搭載" url="Money.aspx" />
+					description="各種申請書類発行" url="各申請書類/Shinsei.aspx">
+			
+					<siteMapNode title="会計帳簿"
+					description="基本的な帳簿機能搭載" url="Money/Money.aspx" />
+
 				</siteMapNode>
 
 			<siteMapNode title="Mちゃんねる"
-			description="チャット" url="Chat.aspx" />
+			description="仲間とつながるチャット機能" url="チャット/Chat.aspx" />
+
 			<siteMapNode title="ファイル共有"
-			description="容量ほぼ無制限のファイル共有" url="FileShare.aspx" />
+			description="容量ほぼ無制限のファイル共有" url="ファイル共有/FileShare.aspx" />
 
 			<siteMapNode title="プロジェクト"
-			  description="高機能なプロジェクト管理システム" url="PIchiran.aspx">
-				<siteMapNode title="プロジェクト管理"
-				  description="プロジェクト管理画面" url="PKanri.aspx" />
+			  description="高機能なプロジェクト管理システム" url="Project System/PIchiran.aspx">
 			</siteMapNode>
 
 			<siteMapNode title="マイページ"
-			  description="マイページ" url="Karni.aspx" />
+			  description="名前とパスワードの管理やサムネイルの登録などができます" url="管理ページ/Kanri.aspx" />
 
-			<siteMapNode title="ボタン生成"
-			  description="ボタン生成" url="XHTML5Editor.aspx" />
-			<siteMapNode title="ビデオチャット"
-			  description="ビデオチャット" url="Video.aspx" />
-			<siteMapNode title="リサーチ"
-			  description="リサーチ" url="Researchanalitics.aspx" />
+			<siteMapNode title="Htmlボタン生成"
+			  description="web上で使えるお好みのボタンを生成できます" url="XHTML5Editor/XHTML5Editor.aspx" />
 
+			<siteMapNode title="ビデオチャット（α版）"
+			  description="ビデオチャット" url="Video/Video.aspx" />
 
-		</siteMapNode>
+			<siteMapNode title="リサーチ（実験用）"
+			  description="さまざまなリサーチを試せます" url="Researchanalitics/Researchanalitics.aspx" />
+
+			<siteMapNode title="ログアウト"
+			  description="ログアウトします" url="ログイン/Login.aspx" />			
 
 	</siteMapNode>
+
 </siteMap>
