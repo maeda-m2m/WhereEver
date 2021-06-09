@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MenuControl.ascx.cs" Inherits="WhereEver.MenuControl" %>
 
 <link href="MenuControl.css" type="text/css" rel="stylesheet" />
+<link href="Scripts/lastModified.js" type="text/javascript" rel="javascript" />
 
 <table>
     <tr>
@@ -40,11 +41,14 @@
         </td>
     </tr>
     <tr>
-        <td colspan="10">
+        <td colspan="9">
             <asp:Menu id="sitemap_main" runat="server"
               DataSourceID="smd" ExpandDepth="2" ShowLines="True">
             </asp:Menu>
             <asp:SiteMapDataSource id="smd" runat="server" />
+        </td>
+        <td colspan="2">
+            <script src="../Scripts/lastModified.js" type="text/javascript" charset="utf-8"></script>
         </td>
     </tr>
 </table>

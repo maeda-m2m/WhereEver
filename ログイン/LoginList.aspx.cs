@@ -37,6 +37,9 @@ namespace WhereEver
 
             }
 
+            //本日の日付を表示
+            Label_Today.Text = DateTime.Now.ToString("yyyy年M月d日");
+
             SetMaxDate();
             Label_WeatherDate.Text = DateTime.Now.Date.ToString();
             Literal_js.Text = "";

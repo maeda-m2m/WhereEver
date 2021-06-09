@@ -60,6 +60,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Panel Panel_Main;
 
         /// <summary>
+        /// Label_Today コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Today;
+
+        /// <summary>
         /// Label_WhatNow コントロール。
         /// </summary>
         /// <remarks>
