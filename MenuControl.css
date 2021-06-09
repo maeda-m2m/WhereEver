@@ -45,6 +45,14 @@
         background-color: red;
     }
 
+.date {
+    background-color: #1e1e1e;
+    color: white;
+    font-weight: bold;
+    transition: .4s;
+    border-bottom: 1px solid red;
+}
+
 
 .btn {
     width: 150px;

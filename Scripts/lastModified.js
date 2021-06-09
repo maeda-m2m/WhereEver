@@ -12,4 +12,4 @@ hour = modified.getHours();
 minute = modified.getMinutes();
 second = modified.getSeconds();
 
-element.insertAdjacentHTML('beforebegin', '最終更新:' + year + "年" + month + "月" + date + "日 " + hour + ':' + minute + ':' + second);
+element.insertAdjacentHTML('beforebegin', '表示更新:' + year + "年" + month + "月" + date + "日 " + hour + ':' + minute + ':' + second);
