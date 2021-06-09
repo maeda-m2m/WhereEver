@@ -1183,7 +1183,7 @@
             <tr>
                 <td colspan="5">
                     <asp:Label ID="lblbikou" runat="server" Text="[備考欄]"></asp:Label>
-                    <asp:Label ID="bikou" runat="server" Width="750px" Height="50px" Font-Size="Small"></asp:Label>
+                    <asp:Label ID="bikou" runat="server" Width="750px" Height="50px" Font-Size="11px"></asp:Label>
                 </td>
             </tr>
         </table>
