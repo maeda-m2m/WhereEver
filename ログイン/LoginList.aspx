@@ -183,14 +183,13 @@
                                 <asp:ListItem Value="100">100%</asp:ListItem>
                             </asp:DropDownList>
 
-                        </div>
+                            <div class="center">
+                                <p><asp:Label ID="Label_WeatherResult" runat="server" Text=""></asp:Label></p>
+                                <asp:Button ID="Button_ReformWeather" runat="server" CssClass="btn_loginlist" Text="追加/更新" OnClick="btnReformWeather_Click" />
+                                <asp:Button ID="Button_ReformWeatherEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformWeatherEnd_Click" />
+                            </div><%-- center --%>
 
-                    <div class="center">
-                        <p><asp:Label ID="Label_WeatherResult" runat="server" Text=""></asp:Label></p>
-                        <asp:Button ID="Button_ReformWeather" runat="server" CssClass="btn_loginlist" Text="追加/更新" OnClick="btnReformWeather_Click" />
-                        <asp:Button ID="Button_ReformWeatherEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformWeatherEnd_Click" />
-                    </div>
-
+                        </div><%-- article --%>
                    </div><%-- Edit --%>
                   </asp:Panel>
 
