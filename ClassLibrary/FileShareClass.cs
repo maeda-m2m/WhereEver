@@ -6,6 +6,8 @@ using System.Web;
 using System.IO;
 using System.Data.SqlClient;
 using static System.Web.HttpUtility;
+using System.Security.Cryptography;
+using System.IO.Compression;
 
 namespace WhereEver.ClassLibrary
 {
@@ -30,120 +32,125 @@ namespace WhereEver.ClassLibrary
         /// <param name="separatesize">任意変更　初期設定は8000</param>
         /// <param name="annonimas">任意変更　初期設定は匿名(true)</param>
         /// <returns></returns>
-        public static int Set_File_UpLoad(HttpPostedFile posted, string title="", string pass="", int separatesize=8000, bool annonimas=true)
+        public static int Set_File_UpLoad(HttpPostedFile posted, string title = "", string pass = "", int separatesize = 8000, bool annonimas = true)
         {
 
-                //パスを排除したファイル名を取得
-                string fileName = posted.FileName;
+            //パスを排除したファイル名を取得
+            string fileName = posted.FileName;
 
-                //拡張子を取得
-                string extension = Path.GetExtension(fileName);
+            //拡張子を取得
+            string extension = Path.GetExtension(fileName);
 
-                //ファイル内容を取得: HttpPostedFile posted;
+            //ファイル内容を取得: HttpPostedFile posted;
 
-                if (fileName != null && fileName != "")
+            if (fileName != null && fileName != "")
+            {
+
+                //不正なファイル名にならないようuuidに置き換え
+                fileName = Guid.NewGuid().ToString() + extension;
+
+                //投稿者id（変更不可）
+                string userid = SessionManager.User.M_User.id; //M_User
+
+                //投稿者名
+                string username = SessionManager.User.M_User.name1; //M_User
+                if (annonimas)
                 {
-
-                    //不正なファイル名にならないようuuidに置き換え
-                    fileName = Guid.NewGuid().ToString() + extension;
-
-                    //投稿者id（変更不可）
-                    string userid = SessionManager.User.M_User.id; //M_User
-
-                    //投稿者名
-                    string username = SessionManager.User.M_User.name1; //M_User
-                    if (annonimas)
-                    {
-                        username = "Annonimas";
-                    }
-
-                    //タイトル
-                    title = HtmlEncode(title);
-                    if (title == "")
-                    {
-                        title = "無題";
-                    }
-                    //パスワード
-                    if (pass != "")
-                    {
-                        pass = pass.GetHashCode().ToString();
-                    }
-
-                    //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
-                    //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
-
-                    //バイトを取得します。
-                    byte[] aryData = new Byte[posted.ContentLength];
-                    posted.InputStream.Read(aryData, 0, posted.ContentLength);
-
-                    //MIMEタイプを取得します。
-                    string type = posted.ContentType;
-                    //-----------------------------------
-                    //バイトを分割します。
-                    byte[] bsSource = aryData;
-                    //分割回数
-                    int cutcount = 0;
-
-                    //一度にロードするデータバイト長: int separatesize;
-
-                    //宣言と初期化
-                    int remain = bsSource.Length;
-                    int position = 0;
-                    int split = 0;
-
-                    //配列リストを宣言と初期化
-                    List<byte[]> list = new List<byte[]>();
-
-                    while (remain > 0)
-                    {
-                        //定数byteごとに分割 xが真ならばaを返し、偽ならばbを返す。三項演算子だと、split = remain < separatesize ? remain : separatesize;
-                        if (remain < separatesize)
-                        {
-                            split = remain;
-                        }
-                        else
-                        {
-                            split = separatesize;
-                        }
-                        remain -= split;
-                        cutcount += 1;
-
-                        //配列リストに分割した配列を加算　途中で送信失敗しても再開できる（ようにするための仮実装）
-                        byte[] bs = new byte[split];
-                        Array.Copy(bsSource, position, bs, 0, split);
-                        list.Add(bs);
-
-                        //切り出し位置をずらす
-                        position += split;
-                    }
-                    //-----------------------------------
-
-                    //宣言と初期化　初回のみtrue Insert
-                    bool b = true;
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        //データベースにファイルを保存します。
-                        byte[] smallbyte = list[i];
-                        if (!FileShareClass.SetT_FileShareInsert(Global.GetConnection(), userid, username, fileName, title, pass, type, smallbyte, b))
-                        {
-                            return -1; //db save filed
-                        }
-
-                        //Updateに変更
-                        b = false;
-                    }
-                    //-----------------------------------
-
-                    //データバインド
-                    //GridView1.DataBind();
-
-                    return 1;   //file saved
-
+                    username = "Annonimas";
                 }
-                else
+
+                //タイトル
+                title = HtmlEncode(title);
+                if (title == "")
                 {
-                    return 0;  //filename is invalid
+                    title = "無題";
                 }
+                //パスワード
+                if (pass != "")
+                {
+                    pass = pass.GetHashCode().ToString();
+                }
+
+                //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
+                //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
+
+                //バイトを取得します。
+                byte[] aryData = new byte[posted.ContentLength];
+
+                //AES暗号化
+                //aryData = SetAESEncrypt(aryData);
+
+                //posted.InputStream.Read(aryData, 0, posted.ContentLength);
+                posted.InputStream.Read(aryData, 0, aryData.Length);
+
+                //MIMEタイプを取得します。
+                string type = posted.ContentType;
+                //-----------------------------------
+                //バイトを分割します。
+                byte[] bsSource = aryData;
+                //分割回数
+                int cutcount = 0;
+
+                //一度にロードするデータバイト長: int separatesize;
+
+                //宣言と初期化
+                int remain = bsSource.Length;
+                int position = 0;
+                int split = 0;
+
+                //配列リストを宣言と初期化
+                List<byte[]> list = new List<byte[]>();
+
+                while (remain > 0)
+                {
+                    //定数byteごとに分割 xが真ならばaを返し、偽ならばbを返す。三項演算子だと、split = remain < separatesize ? remain : separatesize;
+                    if (remain < separatesize)
+                    {
+                        split = remain;
+                    }
+                    else
+                    {
+                        split = separatesize;
+                    }
+                    remain -= split;
+                    cutcount += 1;
+
+                    //配列リストに分割した配列を加算　途中で送信失敗しても再開できる（ようにするための仮実装）
+                    byte[] bs = new byte[split];
+                    Array.Copy(bsSource, position, bs, 0, split);
+                    list.Add(bs);
+
+                    //切り出し位置をずらす
+                    position += split;
+                }
+                //-----------------------------------
+
+                //宣言と初期化　初回のみtrue Insert
+                bool b = true;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    //データベースにファイルを保存します。
+                    byte[] smallbyte = list[i];
+                    if (!FileShareClass.SetT_FileShareInsert(Global.GetConnection(), userid, username, fileName, title, pass, type, smallbyte, b))
+                    {
+                        return -1; //db save filed
+                    }
+
+                    //Updateに変更
+                    b = false;
+                }
+                //-----------------------------------
+
+                //データバインド
+                //GridView1.DataBind();
+
+                return 1;   //file saved
+
+            }
+            else
+            {
+                return 0;  //filename is invalid
+            }
 
         }
 
@@ -322,6 +329,8 @@ namespace WhereEver.ClassLibrary
 
                 if (allbyte.Length > 0)
                 {
+                    //AES複合化
+                    //allbyte = GetAESDecrypt(allbyte);
 
                     // HTTPレスポンスのヘッダ＆エンティティのクリア（初期化）
                     response.Clear();
@@ -428,14 +437,14 @@ namespace WhereEver.ClassLibrary
                                 n = 0;
                             }
 
-                            if(!float.TryParse(sb.ToString().Trim(), System.Globalization.NumberStyles.Currency, null, out value))
+                            if (!float.TryParse(sb.ToString().Trim(), System.Globalization.NumberStyles.Currency, null, out value))
                             {
                                 return "Size_TryParse_Failed";
                             }
 
-                            value = value * (float)(1024 ^n);
+                            value = value * (float)(1024 ^ n);
 
-                            if(value > maxsize / 100)
+                            if (value > maxsize / 100)
                             {
                                 return "Content_Too_Large_Size";
                             }
@@ -519,73 +528,73 @@ namespace WhereEver.ClassLibrary
         {
 
 
-                //一度にロードするデータバイト長: int separatesize;
-                //初期化
-                byte[] allbyte = new Byte[0];
-                string type = "";
+            //一度にロードするデータバイト長: int separatesize;
+            //初期化
+            byte[] allbyte = new Byte[0];
+            string type = "";
 
-                //無限ループ
-                for (int i = 0; i < int.MaxValue; i++)
+            //無限ループ
+            for (int i = 0; i < int.MaxValue; i++)
+            {
+                int startindex = 1 + (separatesize * i); //1からはじまる長さ
+                DATASET.DataSet.T_ThumbnailRow dr = FileShareClass.GetT_ThumbnailRow(Global.GetConnection(), id, startindex, separatesize);
+                if (dr != null)
                 {
-                    int startindex = 1 + (separatesize * i); //1からはじまる長さ
-                    DATASET.DataSet.T_ThumbnailRow dr = FileShareClass.GetT_ThumbnailRow(Global.GetConnection(), id, startindex, separatesize);
-                    if (dr != null)
+                    if (i == 0)
                     {
-                        if (i == 0)
+                        //初回はタイプ取得
+                        type = @dr.type;
+
+                        if (type != "image/jpeg" && type != "image/png" && type != "image/gif" && type != "image/svg+xml" && type != "application/pdf" && type != "text/plain")
                         {
-                            //初回はタイプ取得
-                            type = @dr.type;
-
-                            if (type != "image/jpeg" && type != "image/png" && type != "image/gif" && type != "image/svg+xml" && type != "application/pdf" && type != "text/plain")
-                            {
-                                return "Content_MIME_Type_Not_Supported";
-                            }
-
+                            return "Content_MIME_Type_Not_Supported";
                         }
 
-                        //取得した一部データの残りの長さを取得
-                        if (dr.datum.Length <= 0)
-                        {
-                            //終了
-                            break;
-                        }
-
-                        //配列allbyteの末尾にコピー
-                        allbyte = allbyte.Concat(dr.datum).ToArray();   //LINQ .NET Framework 3.5以上
                     }
-                    else
+
+                    //取得した一部データの残りの長さを取得
+                    if (dr.datum.Length <= 0)
                     {
                         //終了
                         break;
                     }
-                }
 
-                if (allbyte.Length > 0)
-                {
-                    if (type == "image/jpeg" || type == "image/png" || type == "image/gif" || type == "image/svg+xml")
-                    {
-                        //貼り付け用タグを返す           
-                        return "<img width=\"150px\" height=\"150px\" src=\"data:" + @type + ";base64," + HtmlEncode(Convert.ToBase64String(allbyte)) + "\" />";
-                    }
-                    else if (type == "application/pdf")
-                    {
-                        //貼り付け用タグを返す           
-                        return "<embed width=\"150px\" height=\"150px\" type=\"" + @type + "\" src=\"data:" + @type + "; base64," + HtmlEncode(Convert.ToBase64String(allbyte)) + "\" />";
-                    }
-                    else if (type == "text/plain")
-                    {
-                        //貼り付け用タグを返す           
-                        //return Convert.ToBase64String(allbyte);
-                        Encoding enc = Encoding.GetEncoding("UTF-8");
-                        return HtmlEncode(enc.GetString(Convert.FromBase64String(Convert.ToBase64String(allbyte))));
-                    }
-                    return @"Content_MIME_Type_Not_Supported";
+                    //配列allbyteの末尾にコピー
+                    allbyte = allbyte.Concat(dr.datum).ToArray();   //LINQ .NET Framework 3.5以上
                 }
                 else
                 {
-                    //指定したファイルが存在しません。あるいは、パスワードが誤っています。
-                    return @"No_Image";
+                    //終了
+                    break;
                 }
+            }
+
+            if (allbyte.Length > 0)
+            {
+                if (type == "image/jpeg" || type == "image/png" || type == "image/gif" || type == "image/svg+xml")
+                {
+                    //貼り付け用タグを返す           
+                    return "<img width=\"150px\" height=\"150px\" src=\"data:" + @type + ";base64," + HtmlEncode(Convert.ToBase64String(allbyte)) + "\" />";
+                }
+                else if (type == "application/pdf")
+                {
+                    //貼り付け用タグを返す           
+                    return "<embed width=\"150px\" height=\"150px\" type=\"" + @type + "\" src=\"data:" + @type + "; base64," + HtmlEncode(Convert.ToBase64String(allbyte)) + "\" />";
+                }
+                else if (type == "text/plain")
+                {
+                    //貼り付け用タグを返す           
+                    //return Convert.ToBase64String(allbyte);
+                    Encoding enc = Encoding.GetEncoding("UTF-8");
+                    return HtmlEncode(enc.GetString(Convert.FromBase64String(Convert.ToBase64String(allbyte))));
+                }
+                return @"Content_MIME_Type_Not_Supported";
+            }
+            else
+            {
+                //指定したファイルが存在しません。あるいは、パスワードが誤っています。
+                return @"No_Image";
+            }
 
         }
 
@@ -658,7 +667,7 @@ namespace WhereEver.ClassLibrary
         /// <param name="count">処理は何回目か？</param>
         /// <param name="length"></param>
         /// <returns>DATASET.DataSet.T_FileShareRow</returns>
-        public static DATASET.DataSet.T_FileShareRow GetT_FileShareRow(SqlConnection sqlConnection, string FileName, string pass ,int count,int length)
+        public static DATASET.DataSet.T_FileShareRow GetT_FileShareRow(SqlConnection sqlConnection, string FileName, string pass, int count, int length)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
 
@@ -1122,6 +1131,58 @@ namespace WhereEver.ClassLibrary
 
         }
 
+
+
+        //参考
+        //http://programmers.high-way.info/cs/aes.html
+        // 128bit(16byte)のIV（初期ベクタ）とKey（暗号キー）
+        private const string AesIV = @"XXXXXXXXXXXXXXXX";   //自動生成可能
+        private const string AesKey = @"XXXXXXXXXXXXXXXX";
+
+        /// <summary>
+        /// 文字列をAESで暗号化
+        /// </summary>
+        private static byte[] SetAESEncrypt(byte[] src)
+        {
+            // AES暗号化サービスプロバイダ
+            AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
+            //RijndaelManaged aes = new RijndaelManaged();
+            aes.BlockSize = 128;
+            aes.KeySize = 128;
+            aes.IV = Encoding.UTF8.GetBytes(AesIV);
+            aes.Key = Encoding.UTF8.GetBytes(AesKey);
+            aes.Mode = CipherMode.CBC;
+            aes.Padding = PaddingMode.PKCS7;
+
+            // 暗号化する
+            using (ICryptoTransform encrypt = aes.CreateEncryptor(aes.Key, aes.IV))
+            {
+                return encrypt.TransformFinalBlock(src, 0, src.Length);
+            }
+        }
+
+        /// <summary>
+        /// 文字列をAESで復号化
+        /// </summary>
+        private static byte[] GetAESDecrypt(byte[] src)
+        {
+            // AES暗号化サービスプロバイダ
+            AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
+            //RijndaelManaged aes = new RijndaelManaged();
+            aes.BlockSize = 128;
+            aes.KeySize = 128;
+            aes.IV = Encoding.UTF8.GetBytes(AesIV);
+            aes.Key = Encoding.UTF8.GetBytes(AesKey);
+            aes.Mode = CipherMode.CBC;
+            aes.Padding = PaddingMode.PKCS7;
+
+            // 複号化する
+            using (ICryptoTransform decrypt = aes.CreateDecryptor(aes.Key, aes.IV))
+            {
+                 // 暗号化されたデータを取得
+                 return decrypt.TransformFinalBlock(src, 0, src.Length);    //完全なブロックではありません。→暗号化されていないデータ　パディングは無効です。→暗号鍵が異なるorエラー
+            }
+        }
 
     }
 }
