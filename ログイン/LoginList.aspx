@@ -56,7 +56,7 @@
 
                 <p class="index1">◆Welcome to m2m</p>
                 <div class="article">
-                    <p class="index1">--本日の予定--</p>
+                    <p class="index1">--本日（<asp:Label ID="Label_Today" runat="server" Text="Label"></asp:Label>）の予定--</p>
                     <asp:Label ID="Label_WhatNow" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
                     <p class="index1">--天気予報--</p>
                     <asp:Label ID="Label_Weather2" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
@@ -88,7 +88,6 @@
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <asp:Label ID="Label_WeatherDate" runat="server" Text="2021/01/01" Visible="false" ></asp:Label>
-
 
                     <p class="index1">--お知らせ--</p>
                     <asp:Label ID="Label_Yotei" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
@@ -183,14 +182,13 @@
                                 <asp:ListItem Value="100">100%</asp:ListItem>
                             </asp:DropDownList>
 
-                        </div>
+                            <div class="center">
+                                <p><asp:Label ID="Label_WeatherResult" runat="server" Text=""></asp:Label></p>
+                                <asp:Button ID="Button_ReformWeather" runat="server" CssClass="btn_loginlist" Text="追加/更新" OnClick="btnReformWeather_Click" />
+                                <asp:Button ID="Button_ReformWeatherEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformWeatherEnd_Click" />
+                            </div><%-- center --%>
 
-                    <div class="center">
-                        <p><asp:Label ID="Label_WeatherResult" runat="server" Text=""></asp:Label></p>
-                        <asp:Button ID="Button_ReformWeather" runat="server" CssClass="btn_loginlist" Text="追加/更新" OnClick="btnReformWeather_Click" />
-                        <asp:Button ID="Button_ReformWeatherEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformWeatherEnd_Click" />
-                    </div>
-
+                        </div><%-- article --%>
                    </div><%-- Edit --%>
                   </asp:Panel>
 
