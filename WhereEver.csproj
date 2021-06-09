@@ -136,6 +136,7 @@
     <Content Include="ResearchAnalitics\ResearchAnalitics.css" />
     <Content Include="ResearchAnalitics\ResearchAnalitics.aspx" />
     <Content Include="Scripts\lastModified.js" />
+    <Content Include="Scripts\setTwit.js" />
     <Content Include="Video\signalilng_room.js" />
     <Content Include="Video\socket.io.js" />
     <Content Include="Video\signaling.js" />

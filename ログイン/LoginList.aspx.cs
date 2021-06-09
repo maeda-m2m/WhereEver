@@ -34,7 +34,6 @@ namespace WhereEver
                 TextBox_EditTop.Text = "";
                 Button_EditTop.Visible = true;
                 Panel_EditTop.Visible = false;
-
             }
 
             //本日の日付を表示
