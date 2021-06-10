@@ -77,7 +77,7 @@ namespace WhereEver.ClassLibrary
                 posted.InputStream.Read(aryData, 0, aryData.Length);
 
                 //AES暗号化
-                aryData = SetAESEncrypt(aryData, pass);
+                aryData = SetAESEncrypt(aryData, pass, fileName);
 
                 //パスワード
                 if (pass != "")
@@ -203,7 +203,7 @@ namespace WhereEver.ClassLibrary
                 posted.InputStream.Read(aryData, 0, aryData.Length);
 
                 //AES暗号化
-                aryData = SetAESEncrypt(aryData, "thumbnail");
+                aryData = SetAESEncrypt(aryData, "thumbnail", "");
 
                 //MIMEタイプを取得します。
                 string type = posted.ContentType;
@@ -343,7 +343,7 @@ namespace WhereEver.ClassLibrary
                 if (allbyte.Length > 0)
                 {
                     //AES複合化
-                    allbyte = GetAESDecrypt(allbyte, basepass);
+                    allbyte = GetAESDecrypt(allbyte, basepass, file);
 
                     // HTTPレスポンスのヘッダ＆エンティティのクリア（初期化）
                     response.Clear();
@@ -493,7 +493,7 @@ namespace WhereEver.ClassLibrary
                 if (allbyte.Length > 0)
                 {
                     //AES複合化
-                    allbyte = GetAESDecrypt(allbyte, basepass);
+                    allbyte = GetAESDecrypt(allbyte, basepass, file);
 
                     if (type == "image/jpeg" || type == "image/png" || type == "image/gif" || type == "image/svg+xml")
                     {
@@ -591,7 +591,7 @@ namespace WhereEver.ClassLibrary
             if (allbyte.Length > 0)
             {
                 //AES複合化
-                allbyte = GetAESDecrypt(allbyte, "thumbnail");
+                allbyte = GetAESDecrypt(allbyte, "thumbnail", "");
 
                 if (type == "image/jpeg" || type == "image/png" || type == "image/gif" || type == "image/svg+xml")
                 {
@@ -1218,7 +1218,7 @@ namespace WhereEver.ClassLibrary
         /// <summary>
         /// ByteをAESで暗号化
         /// </summary>
-        private static byte[] SetAESEncrypt(byte[] src, string pass)
+        private static byte[] SetAESEncrypt(byte[] src, string pass, string filename)
         {
             // AES暗号化サービスプロバイダ
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
@@ -1226,8 +1226,8 @@ namespace WhereEver.ClassLibrary
             //RijndaelManaged aes = new RijndaelManaged();
             aes.BlockSize = AesIV.Length * 8;
             aes.KeySize = AesKey.Length * 8;
-            aes.IV = Encoding.UTF8.GetBytes(((pass + AesIV).GetHashCode().ToString() + AesIV).Substring(0, aes.BlockSize / 8));
-            aes.Key = Encoding.UTF8.GetBytes(((pass + AesKey).GetHashCode().ToString() + AesKey).Substring(0, aes.KeySize / 8));
+            aes.IV = Encoding.UTF8.GetBytes(((pass + AesIV + filename).GetHashCode().ToString() + AesIV).Substring(0, aes.BlockSize / 8));
+            aes.Key = Encoding.UTF8.GetBytes(((pass + AesKey + filename).GetHashCode().ToString() + AesKey).Substring(0, aes.KeySize / 8));
             aes.Mode = CipherMode.CBC;
             aes.Padding = PaddingMode.PKCS7;
 
@@ -1240,8 +1240,28 @@ namespace WhereEver.ClassLibrary
                 }
                 catch
                 {
-                    //旧式互換 元のデータを返す
-                    return src;
+                    //旧式互換 uuid除外
+                    aes.BlockSize = AesIV.Length * 8;
+                    aes.KeySize = AesKey.Length * 8;
+                    aes.IV = Encoding.UTF8.GetBytes(((pass + AesIV).GetHashCode().ToString() + AesIV).Substring(0, aes.BlockSize / 8));
+                    aes.Key = Encoding.UTF8.GetBytes(((pass + AesKey).GetHashCode().ToString() + AesKey).Substring(0, aes.KeySize / 8));
+                    aes.Mode = CipherMode.CBC;
+                    aes.Padding = PaddingMode.PKCS7;
+
+                    // 暗号化する
+                    using (ICryptoTransform encrypt_old = aes.CreateEncryptor(aes.Key, aes.IV))
+                    {
+                        try
+                        {
+                            return encrypt_old.TransformFinalBlock(src, 0, src.Length);
+                        }
+                        catch
+                        {
+                            //旧式互換 元のデータを返す
+                            return src;
+                        }
+                    }
+
                 }
             }
         }
@@ -1249,7 +1269,7 @@ namespace WhereEver.ClassLibrary
         /// <summary>
         /// ByteをAESで復号化
         /// </summary>
-        private static byte[] GetAESDecrypt(byte[] src, string pass)
+        private static byte[] GetAESDecrypt(byte[] src, string pass, string filename)
         {
             // AES暗号化サービスプロバイダ
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
@@ -1257,8 +1277,8 @@ namespace WhereEver.ClassLibrary
             //RijndaelManaged aes = new RijndaelManaged();
             aes.BlockSize = AesIV.Length * 8;
             aes.KeySize = AesKey.Length * 8;
-            aes.IV = Encoding.UTF8.GetBytes(((pass + AesIV).GetHashCode().ToString() + AesIV).Substring(0, aes.BlockSize / 8));
-            aes.Key = Encoding.UTF8.GetBytes(((pass + AesKey).GetHashCode().ToString() + AesKey).Substring(0, aes.KeySize / 8));
+            aes.IV = Encoding.UTF8.GetBytes(((pass + AesIV + filename).GetHashCode().ToString() + AesIV).Substring(0, aes.BlockSize / 8));
+            aes.Key = Encoding.UTF8.GetBytes(((pass + AesKey + filename).GetHashCode().ToString() + AesKey).Substring(0, aes.KeySize / 8));
             aes.Mode = CipherMode.CBC;
             aes.Padding = PaddingMode.PKCS7;
 
@@ -1272,8 +1292,28 @@ namespace WhereEver.ClassLibrary
                 }
                 catch
                 {
-                    //旧式互換 元のデータを返す
-                    return src;
+                    //旧式互換 uuid除外
+                    aes.BlockSize = AesIV.Length * 8;
+                    aes.KeySize = AesKey.Length * 8;
+                    aes.IV = Encoding.UTF8.GetBytes(((pass + AesIV).GetHashCode().ToString() + AesIV).Substring(0, aes.BlockSize / 8));
+                    aes.Key = Encoding.UTF8.GetBytes(((pass + AesKey).GetHashCode().ToString() + AesKey).Substring(0, aes.KeySize / 8));
+                    aes.Mode = CipherMode.CBC;
+                    aes.Padding = PaddingMode.PKCS7;
+
+                    // 暗号化する
+                    using (ICryptoTransform decrypt_old = aes.CreateDecryptor(aes.Key, aes.IV))
+                    {
+                        try
+                        {
+                            return decrypt_old.TransformFinalBlock(src, 0, src.Length);
+                        }
+                        catch
+                        {
+                            //旧式互換 元のデータを返す
+                            return src;
+                        }
+                    }
+
                 }
             }
         }
