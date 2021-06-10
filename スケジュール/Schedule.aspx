@@ -86,6 +86,8 @@
 
                 <li><a href="~/スケジュール/Schedule.aspx" class="btn" runat="server">スケジュール</a></li>
 
+                <li><a href="~/スケジュール/Wiki_Top.aspx" class="btn" runat="server">社内Wiki</a></li>
+
                 <li><a href="~/各申請書類/Shinsei.aspx" class="btn" runat="server">各申請書類</a></li>
 
                 <li><a href="~/チャット/Chat.aspx" class="btn" runat="server">チャット<asp:Label ID="lblHensin" runat="server" Visible="False"></asp:Label></a></li>
@@ -691,9 +693,10 @@
             <section class="Center">
                 <p>現在時刻:<span id="time"></span></p>
                 <a href="#" runat="server">トップへ</a>
+                <h1 id="Image1">テストページへ</h1>
             </section>
 
-            <h1 id="Image1">社内Wikiへ</h1>
+
 
 
 

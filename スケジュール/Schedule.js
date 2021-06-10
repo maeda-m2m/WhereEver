@@ -52,7 +52,7 @@ function refresh() {
 
 $(document).ready(function () {
     $("#Image1").on("click", function () {
-        location.href = "Wiki_Top.aspx";
+        location.href = "test1.aspx";
 
     });
 });
