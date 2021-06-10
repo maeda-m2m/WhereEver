@@ -133,6 +133,7 @@
     <Content Include="Insatsu.ascx" />
     <Content Include="Money\Money.aspx" />
     <Content Include="Money\Money.css" />
+    <Content Include="Project System\Test.aspx" />
     <Content Include="ResearchAnalitics\ResearchAnalitics.css" />
     <Content Include="ResearchAnalitics\ResearchAnalitics.aspx" />
     <Content Include="Scripts\lastModified.js" />
@@ -319,6 +320,13 @@
     </Compile>
     <Compile Include="Project System\PKanri.aspx.designer.cs">
       <DependentUpon>PKanri.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Project System\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Project System\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Project System\Update.cs" />
     <Compile Include="Project System\WBS.cs" />
