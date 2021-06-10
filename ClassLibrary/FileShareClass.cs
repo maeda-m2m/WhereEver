@@ -65,23 +65,25 @@ namespace WhereEver.ClassLibrary
                 {
                     title = "無題";
                 }
+
+                //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
+                //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
+
+                //空のバイト配列を作成します。
+                byte[] aryData = new byte[posted.ContentLength];
+
+                //ここでファイルをaryDataに読み込み
+                //posted.InputStream.Read(aryData, 0, posted.ContentLength);
+                posted.InputStream.Read(aryData, 0, aryData.Length);
+
+                //AES暗号化
+                aryData = SetAESEncrypt(aryData, pass);
+
                 //パスワード
                 if (pass != "")
                 {
                     pass = pass.GetHashCode().ToString();
                 }
-
-                //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
-                //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
-
-                //バイトを取得します。
-                byte[] aryData = new byte[posted.ContentLength];
-
-                //AES暗号化
-                //aryData = SetAESEncrypt(aryData);
-
-                //posted.InputStream.Read(aryData, 0, posted.ContentLength);
-                posted.InputStream.Read(aryData, 0, aryData.Length);
 
                 //MIMEタイプを取得します。
                 string type = posted.ContentType;
@@ -191,9 +193,15 @@ namespace WhereEver.ClassLibrary
                 //HttpPostedFileクラス（System.Web名前空間）のInputStreamプロパティを介して、アップロード・ファイルをいったんbyte配列に格納しておく
                 //byte配列に格納してしまえば、後は通常のテキストと同様の要領でデータベースに格納できる。
 
-                //バイトを取得します。
+                //空のバイト配列を生成します。
                 byte[] aryData = new Byte[posted.ContentLength];
-                posted.InputStream.Read(aryData, 0, posted.ContentLength);
+
+                //ここでファイルをaryDataに読み込み
+                //posted.InputStream.Read(aryData, 0, posted.ContentLength);
+                posted.InputStream.Read(aryData, 0, aryData.Length);
+
+                //AES暗号化
+                aryData = SetAESEncrypt(aryData, "thumbnail");
 
                 //MIMEタイプを取得します。
                 string type = posted.ContentType;
@@ -284,6 +292,7 @@ namespace WhereEver.ClassLibrary
         public static bool Get_File_DownLoad(HttpResponse response, string file, string pass = "", int separatesize = 8000)
         {
             //Password
+            string basepass = pass;
             if (pass != "")
             {
                 pass = pass.GetHashCode().ToString();
@@ -330,7 +339,7 @@ namespace WhereEver.ClassLibrary
                 if (allbyte.Length > 0)
                 {
                     //AES複合化
-                    //allbyte = GetAESDecrypt(allbyte);
+                    allbyte = GetAESDecrypt(allbyte, basepass);
 
                     // HTTPレスポンスのヘッダ＆エンティティのクリア（初期化）
                     response.Clear();
@@ -385,6 +394,7 @@ namespace WhereEver.ClassLibrary
 
 
             //Password
+            string basepass = pass;
             if (pass != "")
             {
                 pass = pass.GetHashCode().ToString();
@@ -476,6 +486,9 @@ namespace WhereEver.ClassLibrary
 
                 if (allbyte.Length > 0)
                 {
+                    //AES複合化
+                    allbyte = GetAESDecrypt(allbyte, basepass);
+
                     if (type == "image/jpeg" || type == "image/png" || type == "image/gif" || type == "image/svg+xml")
                     {
                         //貼り付け用タグを返す           
@@ -571,6 +584,9 @@ namespace WhereEver.ClassLibrary
 
             if (allbyte.Length > 0)
             {
+                //AES複合化
+                allbyte = GetAESDecrypt(allbyte, "thumbnail");
+
                 if (type == "image/jpeg" || type == "image/png" || type == "image/gif" || type == "image/svg+xml")
                 {
                     //貼り付け用タグを返す           
@@ -1136,51 +1152,123 @@ namespace WhereEver.ClassLibrary
         //参考
         //http://programmers.high-way.info/cs/aes.html
         // 128bit(16byte)のIV（初期ベクタ）とKey（暗号キー）
-        private const string AesIV = @"XXXXXXXXXXXXXXXX";   //自動生成可能
-        private const string AesKey = @"XXXXXXXXXXXXXXXX";
+        // 128bit(16byte)のIV（初期ベクタ）とKey（暗号キー）
+        private const string AesIV = @"TX#ODC1R5V!QPZ2B";   //ブロック長　AESは128bit固定 Rijndealは128／168／192／224／256bit　自動生成可能 16文字(16byte * 8 = 128bit)
+        private const string AesKey = @"MJM)NK<2TJ>&2HN7SHTC%8HK^!A?E$JL";  //鍵長　	AESは128／192／256bit Rijndealは128／168／192／224／256bit 32文字(32byte * 8 = 256bit)
 
         /// <summary>
         /// 文字列をAESで暗号化
         /// </summary>
-        private static byte[] SetAESEncrypt(byte[] src)
+        private static string SetTextEncrypt(string text)
         {
             // AES暗号化サービスプロバイダ
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
-            //RijndaelManaged aes = new RijndaelManaged();
-            aes.BlockSize = 128;
-            aes.KeySize = 128;
+            aes.BlockSize = AesIV.Length * 8;
+            aes.KeySize = AesKey.Length * 8;
             aes.IV = Encoding.UTF8.GetBytes(AesIV);
             aes.Key = Encoding.UTF8.GetBytes(AesKey);
             aes.Mode = CipherMode.CBC;
             aes.Padding = PaddingMode.PKCS7;
 
+            // 文字列をバイト型配列に変換
+            byte[] src = Encoding.Unicode.GetBytes(text);
+
             // 暗号化する
-            using (ICryptoTransform encrypt = aes.CreateEncryptor(aes.Key, aes.IV))
+            using (ICryptoTransform encrypt = aes.CreateEncryptor())
             {
-                return encrypt.TransformFinalBlock(src, 0, src.Length);
+                byte[] dest = encrypt.TransformFinalBlock(src, 0, src.Length);
+                // バイト型配列からBase64形式の文字列に変換
+                return Convert.ToBase64String(dest);
             }
         }
 
         /// <summary>
         /// 文字列をAESで復号化
         /// </summary>
-        private static byte[] GetAESDecrypt(byte[] src)
+        private static string GetTextDecrypt(string text)
         {
             // AES暗号化サービスプロバイダ
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
-            //RijndaelManaged aes = new RijndaelManaged();
-            aes.BlockSize = 128;
-            aes.KeySize = 128;
+            aes.BlockSize = AesIV.Length * 8;
+            aes.KeySize = AesKey.Length * 8;
             aes.IV = Encoding.UTF8.GetBytes(AesIV);
             aes.Key = Encoding.UTF8.GetBytes(AesKey);
+            aes.Mode = CipherMode.CBC;
+            aes.Padding = PaddingMode.PKCS7;
+
+            // Base64形式の文字列からバイト型配列に変換
+            byte[] src = System.Convert.FromBase64String(text);
+
+            // 複号化する
+            using (ICryptoTransform decrypt = aes.CreateDecryptor())
+            {
+                byte[] dest = decrypt.TransformFinalBlock(src, 0, src.Length);
+                return Encoding.Unicode.GetString(dest);
+            }
+        }
+
+
+
+        /// <summary>
+        /// ByteをAESで暗号化
+        /// </summary>
+        private static byte[] SetAESEncrypt(byte[] src, string pass)
+        {
+            // AES暗号化サービスプロバイダ
+            AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
+            // Rijndael暗号化サービスプロバイダ
+            //RijndaelManaged aes = new RijndaelManaged();
+            aes.BlockSize = AesIV.Length * 8;
+            aes.KeySize = AesKey.Length * 8;
+            aes.IV = Encoding.UTF8.GetBytes(((pass + AesIV).GetHashCode().ToString() + AesIV).Substring(0, aes.BlockSize / 8));
+            aes.Key = Encoding.UTF8.GetBytes(((pass + AesKey).GetHashCode().ToString() + AesKey).Substring(0, aes.KeySize / 8));
+            aes.Mode = CipherMode.CBC;
+            aes.Padding = PaddingMode.PKCS7;
+
+            // 暗号化する
+            using (ICryptoTransform encrypt = aes.CreateEncryptor(aes.Key, aes.IV))
+            {
+                try
+                {
+                    return encrypt.TransformFinalBlock(src, 0, src.Length);
+                }
+                catch
+                {
+                    //旧式互換 元のデータを返す
+                    return src;
+                }
+            }
+        }
+
+        /// <summary>
+        /// ByteをAESで復号化
+        /// </summary>
+        private static byte[] GetAESDecrypt(byte[] src, string pass)
+        {
+            // AES暗号化サービスプロバイダ
+            AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
+            // Rijndael暗号化サービスプロバイダ
+            //RijndaelManaged aes = new RijndaelManaged();
+            aes.BlockSize = AesIV.Length * 8;
+            aes.KeySize = AesKey.Length * 8;
+            aes.IV = Encoding.UTF8.GetBytes(((pass + AesIV).GetHashCode().ToString() + AesIV).Substring(0, aes.BlockSize / 8));
+            aes.Key = Encoding.UTF8.GetBytes(((pass + AesKey).GetHashCode().ToString() + AesKey).Substring(0, aes.KeySize / 8));
             aes.Mode = CipherMode.CBC;
             aes.Padding = PaddingMode.PKCS7;
 
             // 複号化する
             using (ICryptoTransform decrypt = aes.CreateDecryptor(aes.Key, aes.IV))
             {
-                 // 暗号化されたデータを取得
-                 return decrypt.TransformFinalBlock(src, 0, src.Length);    //完全なブロックではありません。→暗号化されていないデータ　パディングは無効です。→暗号鍵が異なるorエラー
+                try
+                {
+                    // 暗号化されたデータを取得
+                    return decrypt.TransformFinalBlock(src, 0, src.Length);    //完全なブロックではありません。→暗号化されていないデータ　パディングは無効です。→暗号鍵が異なるorエラーorデータ長が不正
+                }
+                catch
+                {
+                    //旧式互換 元のデータを返す
+                    return src;
+                }
             }
         }
 
