@@ -148,7 +148,7 @@
     <Content Include="Tatekae.ascx" />
     <Content Include="Video\Video.css" />
     <Content Include="Video\Video.aspx" />
-    <None Include="Web.sitemap" />
+    <Content Include="Web.sitemap" />
     <Content Include="XHTML5Editor\XHTML5Editor.css" />
     <Content Include="XHTML5Editor\XHTML5Editor.aspx" />
     <Content Include="スケジュール\PrintSchedule.aspx" />
