@@ -82,6 +82,8 @@ namespace WhereEver.ClassLibrary
                 //パスワード
                 if (pass != "")
                 {
+                    //AES暗号化
+                    pass = SetTextEncrypt(pass);
                     pass = pass.GetHashCode().ToString();
                 }
 
@@ -295,6 +297,8 @@ namespace WhereEver.ClassLibrary
             string basepass = pass;
             if (pass != "")
             {
+                //AES暗号化
+                pass = SetTextEncrypt(pass);
                 pass = pass.GetHashCode().ToString();
             }
 
@@ -397,6 +401,8 @@ namespace WhereEver.ClassLibrary
             string basepass = pass;
             if (pass != "")
             {
+                //AES暗号化
+                pass = SetTextEncrypt(pass);
                 pass = pass.GetHashCode().ToString();
             }
 
