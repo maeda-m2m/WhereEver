@@ -28,6 +28,10 @@ namespace WhereEver.管理ページ
             }
 
             PreView();
+
+            //Twetterボタン作成 test
+            Label_Tweet.Text = "<p class=\"center\"><script src = \"../Scripts/setTwit.js\" type=\"text/javascript\" charset=\"utf-8\"></script>\r\f<button class=\"btn_loginlist\" type=\"button\" onclick=\"twitText('[m2m server]: tweet test.');\">tweet(test)</button></p>";
+
         }
 
         //GridViewのRowCommand属性に参照可能なメソッドを入力すると↓が自動生成されます。

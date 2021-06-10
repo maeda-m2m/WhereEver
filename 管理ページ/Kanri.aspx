@@ -156,6 +156,9 @@
             </div>
            </div>
 
+            <%-- Weather Tweet test --%>
+            <asp:Label ID="Label_Tweet" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label>
+
         </div><%-- Wrap --%>
 
 

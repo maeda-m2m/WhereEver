@@ -89,7 +89,6 @@
                     </asp:SqlDataSource>
                     <asp:Label ID="Label_WeatherDate" runat="server" Text="2021/01/01" Visible="false" ></asp:Label>
 
-
                     <p class="index1">--お知らせ--</p>
                     <asp:Label ID="Label_Yotei" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
                 </div>
