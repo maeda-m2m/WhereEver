@@ -40,16 +40,16 @@
                                 <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ReadOnly="True"/>
                                 <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
                                         <ItemTemplate>
-                                            <asp:Button ID="uebig" Text="↑" runat="server" CommandName="uebig"/><br>
-                                            <asp:Button ID="sitabig" Text="↓" runat="server" CommandName="sitabig"/>
+                                            <asp:Button ID="uebig" Text="↑" runat="server" CommandName="uebig" BackColor="Black" BorderWidth="0px"/><br>
+                                            <asp:Button ID="sitabig" Text="↓" runat="server" CommandName="sitabig" BackColor="Black" BorderWidth="0px"/>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
                                 <asp:BoundColumn DataField="PMiddleid" HeaderText="中項目ID" ReadOnly="True" HeaderStyle-Width="10px" HeaderStyle-Font-Size="Small" ItemStyle-Width="10px"/>
                                 <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目"/>
                                 <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
                                         <ItemTemplate>
-                                            <asp:Button ID="uemiddle" Text="↑" runat="server" CommandName="uemiddle"/><br>
-                                            <asp:Button ID="sitamiddle" Text="↓" runat="server" CommandName="sitamiddle"/>
+                                            <asp:Button ID="uemiddle" Text="↑" runat="server" CommandName="uemiddle" BackColor="Black" BorderWidth="0px"/><br>
+                                            <asp:Button ID="sitamiddle" Text="↓" runat="server" CommandName="sitamiddle" BackColor="Black" BorderWidth="0px"/>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
                                 <asp:BoundColumn DataField="PMiddlestart" HeaderText="開始"/>

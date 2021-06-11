@@ -298,8 +298,11 @@ namespace WhereEver.Project_System
 
         protected void DgPKanri_EditCommand(object source, DataGridCommandEventArgs e)
         {
+            
             DgPKanri.EditItemIndex = e.Item.ItemIndex;
             CreateDataGrid(SessionManager.project.PdbRow.Pid);
+            Button uebig = e.Item.FindControl("uebig") as Button;
+            uebig.BackColor = Color.Black;
         }
 
         protected void DgPKanri_CancelCommand(object source, DataGridCommandEventArgs e)
