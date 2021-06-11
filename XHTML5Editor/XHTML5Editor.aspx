@@ -224,8 +224,14 @@
             Height = <asp:TextBox ID="TextBox_QRCode_Height" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角4文字以内(1000 >= n >= 100)" placeholder="150" Text="150" MaxLength="4"></asp:TextBox>px
         </p>
 
+        <div>
+            <p class=f-notice>[QR画像から文字列を読込]</p><asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
+        </div>
+
+
     <p>
         <asp:Button ID="Button_CreateQRCode" CssClass="btn-flat-border" runat="server" Text="発行" OnClick="Push_QR_Create" CausesValidation="False" />
+        <asp:Button ID="Button_EncodeQRCode" CssClass="btn-flat-border" runat="server" Text="読込" OnClick="Push_QR_Encode" CausesValidation="False" />
     </p>
 
     <p>
@@ -242,7 +248,7 @@
 
     <span class="hr"></span>
         <p class="index1">～概要～</p>
-               <p>入力された文字列からQRコードを生成します（読み取りもできますがClass以外未実装です。FileStreamに入れてGetしてstringをとればできます）。</p>
+               <p>入力された文字列からQRコードを生成します（QR画像から文字列の読み取ることもできるようになりました）。</p>
                <p>本来はBitmapで生成されますが、ASP.NetでSystem.Drawing出力をそのまま使うことは非推奨のため、imgタグのPNG画像に変換しています。</p>
                <p>※環境によって、QRコード生成後に再度ボタンを押すと、動作しないときがあります。その際は、もう１度ボタンを押すと動作します。</p>
     <hr />

@@ -224,7 +224,21 @@ namespace WhereEver.XHTML5Editor
             height = Math.Max(100, height);
 
             Label_QRCode_Area.Text = ClassLibrary.QRCodeClass.GetQRCode(HtmlEncode(TextBox_QR_Text.Text), width, height);
-            TextBox_QRCode_Result.Text = HtmlEncode("[※エンコード後のコードです※]\r\f" + Label_QRCode_Area.Text);
+            TextBox_QRCode_Result.Text = HtmlEncode("/*[生成されたコード（エンコード後のコードです）]*/\r\f" + Label_QRCode_Area.Text);
+        }
+
+        protected void Push_QR_Encode(object sender, EventArgs e)
+        {
+            if (FileUpload_userfile.HasFile)
+            {
+                HttpPostedFile filename = FileUpload_userfile.PostedFile;
+                TextBox_QRCode_Result.Text = HtmlEncode("/*[読み込まれた内容（エンコード後のコードです）]*/\r\f" + ClassLibrary.QRCodeClass.SetQRCode(filename));
+            }
+            else
+            {
+                TextBox_QRCode_Result.Text = "QRコードから読み込みたいファイルを選択して下さい。";
+                return;
+            }
         }
     }
 }

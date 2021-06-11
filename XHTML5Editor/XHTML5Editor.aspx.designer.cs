@@ -267,6 +267,15 @@ namespace WhereEver.XHTML5Editor
         protected global::System.Web.UI.WebControls.TextBox TextBox_QRCode_Height;
 
         /// <summary>
+        /// FileUpload_userfile コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_userfile;
+
+        /// <summary>
         /// Button_CreateQRCode コントロール。
         /// </summary>
         /// <remarks>
@@ -274,6 +283,15 @@ namespace WhereEver.XHTML5Editor
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_CreateQRCode;
+
+        /// <summary>
+        /// Button_EncodeQRCode コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_EncodeQRCode;
 
         /// <summary>
         /// Label_QRCode_Area コントロール。
