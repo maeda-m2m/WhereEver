@@ -231,6 +231,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(+2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(+3).ToString("MMMMd日");
 
+                    Scdl3.Items[0].Cells[4].CssClass = "Center_cs_Color_Top";
                     Scdl3.Items[2].Cells[4].CssClass = "Center_cs_Color";
                     Scdl3.Items[4].Cells[4].CssClass = "Center_cs_Color";
                     Scdl3.Items[6].Cells[4].CssClass = "Center_cs_Color";
@@ -258,13 +259,14 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(+1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(+2).ToString("MMMMd日");
 
+
                     Scdl3.Items[2].Cells[5].CssClass = "Center_cs_Color";
                     Scdl3.Items[4].Cells[5].CssClass = "Center_cs_Color";
                     Scdl3.Items[6].Cells[5].CssClass = "Center_cs_Color";
                     Scdl3.Items[8].Cells[5].CssClass = "Center_cs_Color";
                     Scdl3.Items[10].Cells[5].CssClass = "Center_cs_Color_Bottom";//セルの終わり
 
-                    Scdl3.Items[1].Cells[5].CssClass = "Center_cs_Color";
+                    Scdl3.Items[1].Cells[5].CssClass = "Center_cs_Color_Top";
                     Scdl3.Items[3].Cells[5].CssClass = "Center_cs_Color";
                     Scdl3.Items[5].Cells[5].CssClass = "Center_cs_Color";
                     Scdl3.Items[7].Cells[5].CssClass = "Center_cs_Color";
@@ -310,6 +312,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[5].Text = a.AddDays(-2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(-1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(0).ToString("MMMMd日");
+
 
                     Scdl3.Items[2].Cells[7].CssClass = "Center_cs_Color";
                     Scdl3.Items[4].Cells[7].CssClass = "Center_cs_Color";

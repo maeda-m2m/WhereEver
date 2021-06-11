@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
@@ -157,7 +158,7 @@
 
     <form id="form1" runat="server">
 
-        <h1 id="Title1">社内Wiki</h1>
+
 
         <div class="Center-Button">
 

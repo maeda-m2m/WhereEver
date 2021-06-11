@@ -6,6 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
     <link rel="stylesheet" href="Schedule.css" type="text/css" />
 
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
@@ -21,531 +22,532 @@
 <body>
     <form runat="server">
 
-        <header id="header1">
+        <header id="wrapper">
+            <div id="header_title">
 
-            <a href="~/ログイン/LoginList.aspx" runat="server" id="header_index">WhereEver</a>
+                <a href="~/ログイン/LoginList.aspx" runat="server" id="header_index">WhereEver</a>
 
+            </div>
+
+            <nav>
+
+                <ul class="nav_main">
+                    <li id="open_nav">
+                        <img src="Hamburger-Button (1).png" alt="" /></li>
+                    <li><a href="~/スケジュール/Schedule.aspx" runat="server" class="header2_menu">スケジュール</a></li>
+                    <li><a href="~/スケジュール/Wiki_Top.aspx" runat="server" class="header2_menu">社内Wiki</a></li>
+                    <li><a href="~/各申請書類/Shinsei.aspx" runat="server" class="header2_menu">各申請書類</a></li>
+                    <li><a href="~/チャット/Chat.aspx" runat="server" class="header2_menu">チャット<asp:Label ID="Label1" runat="server" Visible="False"></asp:Label></a></li>
+                    <li><a href="~/ファイル共有/FileShare.aspx" runat="server" class="header2_menu">ファイル共有</a></li>
+                    <li><a href="~/Project System/PIchiran.aspx" runat="server" class="header2_menu">プロジェクト</a></li>
+                    <li><a href="~/管理ページ/Kanri.aspx" runat="server" class="header2_menu">マイページ</a></li>
+
+                </ul>
+
+            </nav>
         </header>
 
-        <header id="header2">
-
-
-            <table>
-                <tr>
-
-                    <td>
-                        <a href="~/スケジュール/Schedule.aspx" runat="server" class="header2_menu">スケジュール</a>
-                    </td>
-                    <td>
-                        <a href="~/スケジュール/Wiki_Top.aspx" runat="server" class="header2_menu">社内Wiki</a>
-                    </td>
-                    <td>
-                        <a href="~/各申請書類/Shinsei.aspx" runat="server" class="header2_menu">各申請書類</a>
-                    </td>
-                    <td>
-                        <a href="~/チャット/Chat.aspx" runat="server" class="header2_menu">チャット<asp:Label ID="Label1" runat="server" Visible="False"></asp:Label></a>
-                    </td>
-                    <td>
-                        <a href="~/ファイル共有/FileShare.aspx" runat="server" class="header2_menu">ファイル共有</a>
-                    </td>
-                    <td>
-                        <a href="~/Project System/PIchiran.aspx" runat="server" class="header2_menu">プロジェクト</a>
-                    </td>
-                    <td>
-                        <a href="~/管理ページ/Kanri.aspx" runat="server" class="header2_menu">マイページ</a>
-                    </td>
-
-                </tr>
-
-            </table>
-        </header>
-
-        <aside>
+        <aside id="aside">
+            <h2>WhereEver</h2>
             <ul>
-
-                <li>
-                    <h1><strong>MySchedule</strong> </h1>
-                </li>
-
-                <li>田中</li>
-
-                <li>佐藤</li>
-
-                <li>山田</li>
+                <li><a href="~/スケジュール/Schedule.aspx" runat="server" class="header2_menu">スケジュール</a></li>
+                <li><a href="~/スケジュール/Wiki_Top.aspx" runat="server" class="header2_menu">社内Wiki</a></li>
+                <li><a href="~/各申請書類/Shinsei.aspx" runat="server" class="header2_menu">各申請書類</a></li>
+                <li><a href="~/チャット/Chat.aspx" runat="server" class="header2_menu">チャット<asp:Label ID="Label3" runat="server" Visible="False"></asp:Label></a></li>
+                <li><a href="~/ファイル共有/FileShare.aspx" runat="server" class="header2_menu">ファイル共有</a></li>
+                <li><a href="~/Project System/PIchiran.aspx" runat="server" class="header2_menu">プロジェクト</a></li>
+                <li><a href="~/管理ページ/Kanri.aspx" runat="server" class="header2_menu">マイページ</a></li>
 
             </ul>
+            <h2>MySchedule</h2>
+            <ul>
+                <li>田中A</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+            </ul>
+            <h2>スケジュールの表示を変える</h2>
 
+            <ul>
+                <li>月</li>
+                <li>週</li>
+                <li>日</li>
+            </ul>
+            <h2>登録・印刷</h2>
+            <ul>
+                <li>
+                    <asp:Button ID="Button11" runat="server" Text="登録" OnClick="Button3_Click" /></li>
+                <li>
+                    <asp:Button ID="Button12" runat="server" OnClick="Button1_Click" Text="印刷" /></li>
+            </ul>
         </aside>
 
         <%--<asp:Button runat="server" ID="ButtonA" Text="社内Wiki" OnClick="ButtonA_Click" />--%>
         <%--  <asp:Button runat="server" ID="ButtonB" Text="" OnClick="ButtonB_Click" />--%>
 
+        <main>
 
+            <br />
+            <section class="section_btn">
 
-        <section class="Center">
-            <asp:Panel ID="Panel2" runat="server" HorizontalAlign="center">
-                <div>
+                <asp:Panel ID="Panel2" runat="server">
+
                     <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
                     <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click" Text="印刷" />
-                </div>
-                <div>
+
                     <asp:Button ID="Button4" runat="server" Text="前へ" class="btn-flat-border" OnClick="Button4_Click" />
                     <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
                     <asp:Button ID="Button5" runat="server" Text="次へ" class="btn-flat-border" OnClick="Button5_Click" />
-                </div>
-                <%--  <h1 id="test1">test</h1>--%>
-            </asp:Panel>
-        </section>
-
-        <br />
-
-        <section>
-
-            <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center">
-                <%--登録--%>
-
-                <table class="Center_Table">
-
-                    <tr>
-                        <th class="Center_Color">日付</th>
-                        <td>
-                            <asp:TextBox runat="server" ID="TextBox2" TextMode="Date"></asp:TextBox>
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th class="Center_Color">時間</th>
-                        <td>
-                            <asp:DropDownList ID="DropDownList1" runat="server">
-                                <asp:ListItem>9:00</asp:ListItem>
-                                <asp:ListItem>9:15</asp:ListItem>
-                                <asp:ListItem>9:30</asp:ListItem>
-                                <asp:ListItem>9:45</asp:ListItem>
-                                <asp:ListItem>10:00</asp:ListItem>
-                                <asp:ListItem>10:15</asp:ListItem>
-                                <asp:ListItem>10:30</asp:ListItem>
-                                <asp:ListItem>10:45</asp:ListItem>
-                                <asp:ListItem>11:00</asp:ListItem>
-                                <asp:ListItem>11:15</asp:ListItem>
-                                <asp:ListItem>11:30</asp:ListItem>
-                                <asp:ListItem>11:45</asp:ListItem>
-                                <asp:ListItem>12:00</asp:ListItem>
-                                <asp:ListItem>12:15</asp:ListItem>
-                                <asp:ListItem>12:30</asp:ListItem>
-                                <asp:ListItem>12:45</asp:ListItem>
-                                <asp:ListItem>13:00</asp:ListItem>
-                                <asp:ListItem>13:15</asp:ListItem>
-                                <asp:ListItem>13:30</asp:ListItem>
-                                <asp:ListItem>13:45</asp:ListItem>
-                                <asp:ListItem>14:00</asp:ListItem>
-                                <asp:ListItem>14:15</asp:ListItem>
-                                <asp:ListItem>14:30</asp:ListItem>
-                                <asp:ListItem>14:45</asp:ListItem>
-                                <asp:ListItem>15:00</asp:ListItem>
-                                <asp:ListItem>15:15</asp:ListItem>
-                                <asp:ListItem>15:30</asp:ListItem>
-                                <asp:ListItem>15:45</asp:ListItem>
-                                <asp:ListItem>16:00</asp:ListItem>
-                                <asp:ListItem>16:15</asp:ListItem>
-                                <asp:ListItem>16:30</asp:ListItem>
-                                <asp:ListItem>16:45</asp:ListItem>
-                                <asp:ListItem>17:00</asp:ListItem>
-                                <asp:ListItem>17:15</asp:ListItem>
-                                <asp:ListItem>17:30</asp:ListItem>
-                                <asp:ListItem>17:45</asp:ListItem>
-                                <asp:ListItem>18:00</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th class="Center_Color">内容</th>
-                        <td>
-                            <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" Columns="40" placeholder="例:LIXIL　Web会議" TextMode="Search"></asp:TextBox>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th class="Center_Color">担当者</th>
-                        <td>
-                            <asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="CheckBoxList_Left">
-                                <asp:ListItem>石岡</asp:ListItem>
-                                <asp:ListItem>木村</asp:ListItem>
-                                <asp:ListItem>佐藤</asp:ListItem>
-                                <asp:ListItem>白井</asp:ListItem>
-                                <asp:ListItem>寺島</asp:ListItem>
-                                <asp:ListItem>前田</asp:ListItem>
-                                <asp:ListItem>三浦</asp:ListItem>
-                                <asp:ListItem>三津谷</asp:ListItem>
-                                <asp:ListItem>柳沢</asp:ListItem>
-                                <asp:ListItem>張</asp:ListItem>
-                                <asp:ListItem>鯉淵</asp:ListItem>
-                                <asp:ListItem>坂口</asp:ListItem>
-                                <asp:ListItem>坂田</asp:ListItem>
-                                <asp:ListItem>一番ヶ瀬</asp:ListItem>
-                                <asp:ListItem>髙栁社長</asp:ListItem>
-                                <asp:ListItem>藤川</asp:ListItem>
-                            </asp:CheckBoxList>
-                        </td>
-                    </tr>
-
-                    <tr>
-
-                        <td colspan="2">
 
-                            <asp:Button ID="Button2" runat="server" Text="登録" class="btn-flat-border" OnClick="Button2_Click" />
+                </asp:Panel>
+
+            </section>
+
+            <br />
+
+            <section>
+
+                <asp:Panel ID="Panel1" runat="server">
+                    <%--登録--%>
+
+                    <table class="Center_Table">
+
+                        <tr>
+                            <th class="Center_Color">日付</th>
+                            <td>
+                                <asp:TextBox runat="server" ID="TextBox2" TextMode="Date"></asp:TextBox>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th class="Center_Color">時間</th>
+                            <td>
+                                <asp:DropDownList ID="DropDownList1" runat="server">
+                                    <asp:ListItem>9:00</asp:ListItem>
+                                    <asp:ListItem>9:15</asp:ListItem>
+                                    <asp:ListItem>9:30</asp:ListItem>
+                                    <asp:ListItem>9:45</asp:ListItem>
+                                    <asp:ListItem>10:00</asp:ListItem>
+                                    <asp:ListItem>10:15</asp:ListItem>
+                                    <asp:ListItem>10:30</asp:ListItem>
+                                    <asp:ListItem>10:45</asp:ListItem>
+                                    <asp:ListItem>11:00</asp:ListItem>
+                                    <asp:ListItem>11:15</asp:ListItem>
+                                    <asp:ListItem>11:30</asp:ListItem>
+                                    <asp:ListItem>11:45</asp:ListItem>
+                                    <asp:ListItem>12:00</asp:ListItem>
+                                    <asp:ListItem>12:15</asp:ListItem>
+                                    <asp:ListItem>12:30</asp:ListItem>
+                                    <asp:ListItem>12:45</asp:ListItem>
+                                    <asp:ListItem>13:00</asp:ListItem>
+                                    <asp:ListItem>13:15</asp:ListItem>
+                                    <asp:ListItem>13:30</asp:ListItem>
+                                    <asp:ListItem>13:45</asp:ListItem>
+                                    <asp:ListItem>14:00</asp:ListItem>
+                                    <asp:ListItem>14:15</asp:ListItem>
+                                    <asp:ListItem>14:30</asp:ListItem>
+                                    <asp:ListItem>14:45</asp:ListItem>
+                                    <asp:ListItem>15:00</asp:ListItem>
+                                    <asp:ListItem>15:15</asp:ListItem>
+                                    <asp:ListItem>15:30</asp:ListItem>
+                                    <asp:ListItem>15:45</asp:ListItem>
+                                    <asp:ListItem>16:00</asp:ListItem>
+                                    <asp:ListItem>16:15</asp:ListItem>
+                                    <asp:ListItem>16:30</asp:ListItem>
+                                    <asp:ListItem>16:45</asp:ListItem>
+                                    <asp:ListItem>17:00</asp:ListItem>
+                                    <asp:ListItem>17:15</asp:ListItem>
+                                    <asp:ListItem>17:30</asp:ListItem>
+                                    <asp:ListItem>17:45</asp:ListItem>
+                                    <asp:ListItem>18:00</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th class="Center_Color">内容</th>
+                            <td>
+                                <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" Columns="40" placeholder="例:LIXIL　Web会議" TextMode="Search"></asp:TextBox>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th class="Center_Color">担当者</th>
+                            <td>
+                                <asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="CheckBoxList_Left">
+                                    <asp:ListItem>石岡</asp:ListItem>
+                                    <asp:ListItem>木村</asp:ListItem>
+                                    <asp:ListItem>佐藤</asp:ListItem>
+                                    <asp:ListItem>白井</asp:ListItem>
+                                    <asp:ListItem>寺島</asp:ListItem>
+                                    <asp:ListItem>前田</asp:ListItem>
+                                    <asp:ListItem>三浦</asp:ListItem>
+                                    <asp:ListItem>三津谷</asp:ListItem>
+                                    <asp:ListItem>柳沢</asp:ListItem>
+                                    <asp:ListItem>張</asp:ListItem>
+                                    <asp:ListItem>鯉淵</asp:ListItem>
+                                    <asp:ListItem>坂口</asp:ListItem>
+                                    <asp:ListItem>坂田</asp:ListItem>
+                                    <asp:ListItem>一番ヶ瀬</asp:ListItem>
+                                    <asp:ListItem>髙栁社長</asp:ListItem>
+                                    <asp:ListItem>藤川</asp:ListItem>
+                                </asp:CheckBoxList>
+                            </td>
+                        </tr>
 
-                            <asp:Button ID="Button7" runat="server" Text="戻る" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" />
+                        <tr>
 
-                        </td>
+                            <td colspan="2">
 
-                    </tr>
+                                <asp:Button ID="Button2" runat="server" Text="登録" class="btn-flat-border" OnClick="Button2_Click" />
 
-                </table>
+                                <asp:Button ID="Button7" runat="server" Text="戻る" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" />
 
-            </asp:Panel>
+                            </td>
 
-        </section>
+                        </tr>
 
+                    </table>
 
-        <section>
-            <asp:DataGrid runat="server"
-                ID="Scdl3"
-                class="Center"
-                AutoGenerateColumns="False"
-                OnItemDataBound="Scdl3_ItemDataBound"
-                OnSelectedIndexChanged="Scdl3_SelectedIndexChanged"
-                BorderStyle="Solid"
-                BorderWidth="1px"
-                CellPadding="3"
-                GridLines="Vertical"
-                Width="1200px">
+                </asp:Panel>
 
-                <HeaderStyle Width="200px" BackColor=" #16BA00" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px"></HeaderStyle>
+            </section>
 
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px" />
 
-                <AlternatingItemStyle BackColor="#ccffcc" />
+            <section>
+                <asp:DataGrid runat="server"
+                    ID="Scdl3"
+                    AutoGenerateColumns="False"
+                    OnItemDataBound="Scdl3_ItemDataBound"
+                    OnSelectedIndexChanged="Scdl3_SelectedIndexChanged"
+                    GridLines="Vertical">
 
-                <Columns>
+                    <HeaderStyle Width="200px" BackColor=" #16BA00" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px"></HeaderStyle>
 
-                    <asp:TemplateColumn
-                        HeaderText="曜日"
-                        ItemStyle-Height="30px"
-                        ItemStyle-Width="30px">
-                        <HeaderStyle Wrap="true" />
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px" />
 
-                        <ItemStyle Wrap="true" />
+                    <AlternatingItemStyle BackColor="#ccffcc" />
 
-                        <ItemTemplate>
-                            <asp:Label ID="Jikan" runat="server" Text=""></asp:Label>
-                            <input type="hidden" id="Jikan1" runat="server" />
-                        </ItemTemplate>
+                    <Columns>
 
-                    </asp:TemplateColumn>
+                        <asp:TemplateColumn
+                            HeaderText="曜日"
+                            ItemStyle-Height="30px"
+                            ItemStyle-Width="30px">
+                            <HeaderStyle Wrap="true" />
 
-                    <asp:TemplateColumn
-                        HeaderText="月"
-                        ItemStyle-Width="100px">
-                        <HeaderStyle Wrap="true" />
+                            <ItemStyle Wrap="true" />
 
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                            <ItemTemplate>
+                                <asp:Label ID="Jikan" runat="server" Text=""></asp:Label>
+                                <input type="hidden" id="Jikan1" runat="server" />
+                            </ItemTemplate>
 
-                        <ItemTemplate>
+                        </asp:TemplateColumn>
 
-                            <asp:Label ID="MondayTitle" runat="server" Text=""></asp:Label>
-                            <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
+                        <asp:TemplateColumn
+                            HeaderText="月"
+                            ItemStyle-Width="100px">
+                            <HeaderStyle Wrap="true" />
 
-                        </ItemTemplate>
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
 
-                    </asp:TemplateColumn>
+                            <ItemTemplate>
 
-                    <asp:TemplateColumn
-                        HeaderText="火"
-                        ItemStyle-Width="100px">
-                        <HeaderStyle Wrap="true" />
+                                <asp:Label ID="MondayTitle" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
 
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                            </ItemTemplate>
 
-                        <ItemTemplate>
+                        </asp:TemplateColumn>
 
-                            <asp:Label ID="TuesdayTitle" runat="server" Text=""></asp:Label>
-                            <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
+                        <asp:TemplateColumn
+                            HeaderText="火"
+                            ItemStyle-Width="100px">
+                            <HeaderStyle Wrap="true" />
 
-                        </ItemTemplate>
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
 
-                    </asp:TemplateColumn>
+                            <ItemTemplate>
 
-                    <asp:TemplateColumn HeaderText="水" ItemStyle-Width="100px">
+                                <asp:Label ID="TuesdayTitle" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="Label8" runat="server" Text=""></asp:Label>
 
-                        <HeaderStyle Wrap="true" />
+                            </ItemTemplate>
 
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        </asp:TemplateColumn>
 
-                        <ItemTemplate>
+                        <asp:TemplateColumn HeaderText="水" ItemStyle-Width="100px">
 
-                            <asp:Label ID="WednesdayTitle" runat="server" Text=""></asp:Label>
-                            <asp:Label ID="Label9" runat="server" Text=""></asp:Label>
+                            <HeaderStyle Wrap="true" />
 
-                        </ItemTemplate>
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
 
-                    </asp:TemplateColumn>
+                            <ItemTemplate>
 
-                    <asp:TemplateColumn HeaderText="木" ItemStyle-Width="100px">
+                                <asp:Label ID="WednesdayTitle" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="Label9" runat="server" Text=""></asp:Label>
 
-                        <HeaderStyle Wrap="true" />
+                            </ItemTemplate>
 
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        </asp:TemplateColumn>
 
-                        <ItemTemplate>
-                            <asp:Label ID="ThursdayTitle" runat="server" Text=""></asp:Label>
-                            <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
+                        <asp:TemplateColumn HeaderText="木" ItemStyle-Width="100px">
 
-                        </ItemTemplate>
+                            <HeaderStyle Wrap="true" />
 
-                    </asp:TemplateColumn>
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
 
-                    <asp:TemplateColumn HeaderText="金" ItemStyle-Width="100px">
+                            <ItemTemplate>
+                                <asp:Label ID="ThursdayTitle" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
 
-                        <HeaderStyle Wrap="true" />
+                            </ItemTemplate>
 
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        </asp:TemplateColumn>
 
-                        <ItemTemplate>
-                            <asp:Label ID="FridayTitle" runat="server" Text=""></asp:Label>
-                            <asp:Label ID="Label11" runat="server" Text=""></asp:Label>
+                        <asp:TemplateColumn HeaderText="金" ItemStyle-Width="100px">
 
-                        </ItemTemplate>
+                            <HeaderStyle Wrap="true" />
 
-                    </asp:TemplateColumn>
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
 
-                    <asp:TemplateColumn HeaderText="土" ItemStyle-Width="100px">
+                            <ItemTemplate>
+                                <asp:Label ID="FridayTitle" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="Label11" runat="server" Text=""></asp:Label>
 
-                        <HeaderStyle Wrap="true" />
+                            </ItemTemplate>
 
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        </asp:TemplateColumn>
 
-                        <ItemTemplate>
+                        <asp:TemplateColumn HeaderText="土" ItemStyle-Width="100px">
 
-                            <asp:Label ID="Saturday" runat="server" Text=""></asp:Label>
+                            <HeaderStyle Wrap="true" />
 
-                        </ItemTemplate>
-                    </asp:TemplateColumn>
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
 
-                    <asp:TemplateColumn HeaderText="日" ItemStyle-Width="100px">
+                            <ItemTemplate>
 
-                        <HeaderStyle Wrap="true" />
+                                <asp:Label ID="Saturday" runat="server" Text=""></asp:Label>
 
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                            </ItemTemplate>
+                        </asp:TemplateColumn>
 
-                        <ItemTemplate>
+                        <asp:TemplateColumn HeaderText="日" ItemStyle-Width="100px">
 
-                            <asp:Label ID="Sunday" runat="server" Text=""></asp:Label>
+                            <HeaderStyle Wrap="true" />
 
-                        </ItemTemplate>
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
 
-                    </asp:TemplateColumn>
+                            <ItemTemplate>
 
-                </Columns>
+                                <asp:Label ID="Sunday" runat="server" Text=""></asp:Label>
 
-            </asp:DataGrid>
+                            </ItemTemplate>
 
-        </section>
+                        </asp:TemplateColumn>
 
-        <br />
+                    </Columns>
 
-        <section class="Center">
+                </asp:DataGrid>
 
-            <asp:Panel runat="server" ID="Panel4" CssClass="Center">
+            </section>
 
-                <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
+            <br />
 
-                <asp:DropDownList runat="server" ID="Ddl" AutoPostBack="True" OnTextChanged="Create4">
-                    <asp:ListItem>昇順</asp:ListItem>
-                    <asp:ListItem>降順</asp:ListItem>
+            <section class="Center">
 
-                </asp:DropDownList>
+                <asp:Panel runat="server" ID="Panel4" CssClass="Center">
 
+                    <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
 
+                    <asp:DropDownList runat="server" ID="Ddl" AutoPostBack="True" OnTextChanged="Create4">
+                        <asp:ListItem>昇順</asp:ListItem>
+                        <asp:ListItem>降順</asp:ListItem>
 
-            </asp:Panel>
+                    </asp:DropDownList>
 
-        </section>
 
-        <section>
-            <asp:Panel ID="Panel3" runat="server">
-                <%--検索--%>
 
+                </asp:Panel>
 
-                <table class="Center_Table">
+            </section>
 
-                    <tr>
-                        <th class="Center_Color">日付</th>
-                        <td>
-                            <asp:TextBox ID="TextBox3" runat="server" Text="" placeholder="例:一か月単位「04」特定の日にち「04　01」など" Columns="40" TextMode="SingleLine"></asp:TextBox>
+            <section>
+                <asp:Panel ID="Panel3" runat="server">
+                    <%--検索--%>
 
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <th class="Center_Color">時間</th>
-                        <td>
-                            <asp:DropDownList ID="DropDownList2" runat="server">
-                                <asp:ListItem></asp:ListItem>
-                                <asp:ListItem>9:00</asp:ListItem>
-                                <asp:ListItem>9:15</asp:ListItem>
-                                <asp:ListItem>9:30</asp:ListItem>
-                                <asp:ListItem>9:45</asp:ListItem>
-                                <asp:ListItem>10:00</asp:ListItem>
-                                <asp:ListItem>10:15</asp:ListItem>
-                                <asp:ListItem>10:30</asp:ListItem>
-                                <asp:ListItem>10:45</asp:ListItem>
-                                <asp:ListItem>11:00</asp:ListItem>
-                                <asp:ListItem>11:15</asp:ListItem>
-                                <asp:ListItem>11:30</asp:ListItem>
-                                <asp:ListItem>11:45</asp:ListItem>
-                                <asp:ListItem>12:00</asp:ListItem>
-                                <asp:ListItem>12:15</asp:ListItem>
-                                <asp:ListItem>12:30</asp:ListItem>
-                                <asp:ListItem>12:45</asp:ListItem>
-                                <asp:ListItem>13:00</asp:ListItem>
-                                <asp:ListItem>13:15</asp:ListItem>
-                                <asp:ListItem>13:30</asp:ListItem>
-                                <asp:ListItem>13:45</asp:ListItem>
-                                <asp:ListItem>14:00</asp:ListItem>
-                                <asp:ListItem>14:15</asp:ListItem>
-                                <asp:ListItem>14:30</asp:ListItem>
-                                <asp:ListItem>14:45</asp:ListItem>
-                                <asp:ListItem>15:00</asp:ListItem>
-                                <asp:ListItem>15:15</asp:ListItem>
-                                <asp:ListItem>15:30</asp:ListItem>
-                                <asp:ListItem>15:45</asp:ListItem>
-                                <asp:ListItem>16:00</asp:ListItem>
-                                <asp:ListItem>16:15</asp:ListItem>
-                                <asp:ListItem>16:30</asp:ListItem>
-                                <asp:ListItem>16:45</asp:ListItem>
-                                <asp:ListItem>17:00</asp:ListItem>
-                                <asp:ListItem>17:15</asp:ListItem>
-                                <asp:ListItem>17:30</asp:ListItem>
-                                <asp:ListItem>17:45</asp:ListItem>
-                                <asp:ListItem>18:00</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
+                    <table class="Center_Table">
 
-                    <tr>
-                        <th class="Center_Color">内容</th>
-                        <td>
-                            <asp:TextBox ID="TextBox5" runat="server" Text="" Columns="40" placeholder="例:LIXIL" TextMode="Search"></asp:TextBox>
-                        </td>
-                    </tr>
+                        <tr>
+                            <th class="Center_Color">日付</th>
+                            <td>
+                                <asp:TextBox ID="TextBox3" runat="server" Text="" placeholder="例:一か月単位「04」特定の日にち「04　01」など" Columns="40" TextMode="SingleLine"></asp:TextBox>
 
-                    <tr>
-                        <th class="Center_Color">担当者</th>
-                        <td>
-                            <asp:CheckBoxList ID="CheckBoxList2" runat="server" CssClass="CheckBoxList_Left">
-                                <asp:ListItem>石岡</asp:ListItem>
-                                <asp:ListItem>木村</asp:ListItem>
-                                <asp:ListItem>佐藤</asp:ListItem>
-                                <asp:ListItem>白井</asp:ListItem>
-                                <asp:ListItem>寺島</asp:ListItem>
-                                <asp:ListItem>前田</asp:ListItem>
-                                <asp:ListItem>三浦</asp:ListItem>
-                                <asp:ListItem>三津谷</asp:ListItem>
-                                <asp:ListItem>柳沢</asp:ListItem>
-                                <asp:ListItem>張</asp:ListItem>
-                                <asp:ListItem>鯉淵</asp:ListItem>
-                                <asp:ListItem>坂口</asp:ListItem>
-                                <asp:ListItem>坂田</asp:ListItem>
-                                <asp:ListItem>一番ヶ瀬</asp:ListItem>
-                                <asp:ListItem>髙栁社長</asp:ListItem>
-                                <asp:ListItem>藤川</asp:ListItem>
-                            </asp:CheckBoxList>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td colspan="2">
-                            <asp:Button ID="Button8" runat="server" class="btn-flat-border" OnClick="Button8_Click" Text="検索" />
-                            <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" Text="戻る" />
-                        </td>
-                    </tr>
-                </table>
-            </asp:Panel>
-        </section>
+                        <tr>
+                            <th class="Center_Color">時間</th>
+                            <td>
+                                <asp:DropDownList ID="DropDownList2" runat="server">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>9:00</asp:ListItem>
+                                    <asp:ListItem>9:15</asp:ListItem>
+                                    <asp:ListItem>9:30</asp:ListItem>
+                                    <asp:ListItem>9:45</asp:ListItem>
+                                    <asp:ListItem>10:00</asp:ListItem>
+                                    <asp:ListItem>10:15</asp:ListItem>
+                                    <asp:ListItem>10:30</asp:ListItem>
+                                    <asp:ListItem>10:45</asp:ListItem>
+                                    <asp:ListItem>11:00</asp:ListItem>
+                                    <asp:ListItem>11:15</asp:ListItem>
+                                    <asp:ListItem>11:30</asp:ListItem>
+                                    <asp:ListItem>11:45</asp:ListItem>
+                                    <asp:ListItem>12:00</asp:ListItem>
+                                    <asp:ListItem>12:15</asp:ListItem>
+                                    <asp:ListItem>12:30</asp:ListItem>
+                                    <asp:ListItem>12:45</asp:ListItem>
+                                    <asp:ListItem>13:00</asp:ListItem>
+                                    <asp:ListItem>13:15</asp:ListItem>
+                                    <asp:ListItem>13:30</asp:ListItem>
+                                    <asp:ListItem>13:45</asp:ListItem>
+                                    <asp:ListItem>14:00</asp:ListItem>
+                                    <asp:ListItem>14:15</asp:ListItem>
+                                    <asp:ListItem>14:30</asp:ListItem>
+                                    <asp:ListItem>14:45</asp:ListItem>
+                                    <asp:ListItem>15:00</asp:ListItem>
+                                    <asp:ListItem>15:15</asp:ListItem>
+                                    <asp:ListItem>15:30</asp:ListItem>
+                                    <asp:ListItem>15:45</asp:ListItem>
+                                    <asp:ListItem>16:00</asp:ListItem>
+                                    <asp:ListItem>16:15</asp:ListItem>
+                                    <asp:ListItem>16:30</asp:ListItem>
+                                    <asp:ListItem>16:45</asp:ListItem>
+                                    <asp:ListItem>17:00</asp:ListItem>
+                                    <asp:ListItem>17:15</asp:ListItem>
+                                    <asp:ListItem>17:30</asp:ListItem>
+                                    <asp:ListItem>17:45</asp:ListItem>
+                                    <asp:ListItem>18:00</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
 
-        <br />
+                        <tr>
+                            <th class="Center_Color">内容</th>
+                            <td>
+                                <asp:TextBox ID="TextBox5" runat="server" Text="" Columns="40" placeholder="例:LIXIL" TextMode="Search"></asp:TextBox>
+                            </td>
+                        </tr>
 
-        <section class="Center">
-            <asp:Label runat="server" ID="Label2" Text=""></asp:Label>
-            <asp:DataGrid
-                runat="server"
-                ID="ScdlList"
-                CssClass="Center"
-                AutoGenerateColumns="False"
-                OnEditCommand="ScdlList_EditCommand"
-                OnCancelCommand="ScdlList_CancelCommand"
-                OnUpdateCommand="ScdlList_UpdateCommand"
-                OnItemDataBound="ScdlList_ItemDataBound" OnItemCommand="ScdlList_ItemCommand"
-                HeaderStyle-Width="200px"
-                HorizontalAlign="Center" Width="1200px">
+                        <tr>
+                            <th class="Center_Color">担当者</th>
+                            <td>
+                                <asp:CheckBoxList ID="CheckBoxList2" runat="server" CssClass="CheckBoxList_Left">
+                                    <asp:ListItem>石岡</asp:ListItem>
+                                    <asp:ListItem>木村</asp:ListItem>
+                                    <asp:ListItem>佐藤</asp:ListItem>
+                                    <asp:ListItem>白井</asp:ListItem>
+                                    <asp:ListItem>寺島</asp:ListItem>
+                                    <asp:ListItem>前田</asp:ListItem>
+                                    <asp:ListItem>三浦</asp:ListItem>
+                                    <asp:ListItem>三津谷</asp:ListItem>
+                                    <asp:ListItem>柳沢</asp:ListItem>
+                                    <asp:ListItem>張</asp:ListItem>
+                                    <asp:ListItem>鯉淵</asp:ListItem>
+                                    <asp:ListItem>坂口</asp:ListItem>
+                                    <asp:ListItem>坂田</asp:ListItem>
+                                    <asp:ListItem>一番ヶ瀬</asp:ListItem>
+                                    <asp:ListItem>髙栁社長</asp:ListItem>
+                                    <asp:ListItem>藤川</asp:ListItem>
+                                </asp:CheckBoxList>
+                            </td>
+                        </tr>
 
-                <AlternatingItemStyle BackColor="#ccffcc" />
-                <Columns>
+                        <tr>
+                            <td colspan="2">
+                                <asp:Button ID="Button8" runat="server" class="btn-flat-border" OnClick="Button8_Click" Text="検索" />
+                                <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" Text="戻る" />
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
+            </section>
 
+            <br />
 
-                    <asp:BoundColumn DataField="date" HeaderText="日付" HeaderStyle-Width="" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="200px">
-                        <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" />
-                    </asp:BoundColumn>
+            <section class="Center">
+                <asp:Label runat="server" ID="Label2" Text=""></asp:Label>
+                <asp:DataGrid runat="server" ID="ScdlList" AutoGenerateColumns="False"
+                    OnEditCommand="ScdlList_EditCommand"
+                    OnCancelCommand="ScdlList_CancelCommand"
+                    OnUpdateCommand="ScdlList_UpdateCommand"
+                    OnItemDataBound="ScdlList_ItemDataBound"
+                    OnItemCommand="ScdlList_ItemCommand">
 
-                    <asp:BoundColumn DataField="time" HeaderText="時間" ItemStyle-Width="100px">
-                        <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
-                    </asp:BoundColumn>
+                    <HeaderStyle Width="200px" Height="50px" BackColor="#16BA00" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px"></HeaderStyle>
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px" />
+                    <AlternatingItemStyle BackColor="#ccffcc" />
+                    <Columns>
 
-                    <asp:BoundColumn DataField="title" HeaderText="内容" ItemStyle-Width="100px">
-                        <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
-                    </asp:BoundColumn>
 
-                    <asp:BoundColumn DataField="name" HeaderText="担当者名" ItemStyle-Width="100px">
-                        <HeaderStyle Wrap="true" />
-                        <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
-                    </asp:BoundColumn>
+                        <asp:BoundColumn DataField="date" HeaderText="日付" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="200px">
 
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" />
+                        </asp:BoundColumn>
 
+                        <asp:BoundColumn DataField="time" HeaderText="時間" ItemStyle-Width="100px">
 
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        </asp:BoundColumn>
 
-                    <asp:ButtonColumn ItemStyle-CssClass="delete_check"
-                        ItemStyle-Width="100px"
-                        HeaderText="削除"
-                        ButtonType="PushButton"
-                        Text="削除"
-                        CommandName="Delete">
+                        <asp:BoundColumn DataField="title" HeaderText="内容" ItemStyle-Width="100px">
 
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        </asp:BoundColumn>
 
-                        <ItemStyle Width="100px"></ItemStyle>
-                    </asp:ButtonColumn>
+                        <asp:BoundColumn DataField="name" HeaderText="担当者名" ItemStyle-Width="100px">
 
-                    <asp:EditCommandColumn ItemStyle-CssClass="edit_focus"
-                        HeaderText="編集"
-                        ItemStyle-Width="100px"
-                        EditText="編集"
-                        CancelText="キャンセル"
-                        UpdateText="保存" ButtonType="PushButton">
-                        <ItemStyle Width="100px"></ItemStyle>
-                    </asp:EditCommandColumn>
+                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        </asp:BoundColumn>
 
-                </Columns>
 
-                <HeaderStyle Width="200px" BackColor="#16BA00" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="12px"></HeaderStyle>
-                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px" />
-            </asp:DataGrid>
-        </section>
 
-        <br />
+
+                        <asp:ButtonColumn ItemStyle-CssClass="delete_check"
+                            ItemStyle-Width="100px"
+                            HeaderText="削除"
+                            ButtonType="PushButton"
+                            Text="削除"
+                            CommandName="Delete">
+
+
+                            <ItemStyle Width="100px"></ItemStyle>
+                        </asp:ButtonColumn>
+
+                        <asp:EditCommandColumn ItemStyle-CssClass="edit_focus"
+                            HeaderText="編集"
+                            ItemStyle-Width="100px"
+                            EditText="編集"
+                            CancelText="キャンセル"
+                            UpdateText="保存" ButtonType="PushButton">
+                            <ItemStyle Width="100px"></ItemStyle>
+                        </asp:EditCommandColumn>
+
+                    </Columns>
+
+                </asp:DataGrid>
+            </section>
+
+            <br />
+        </main>
 
         <%--<div>
             <asp:GridView runat="server" ID="TestGV" CssClass="Center" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="SdlNo" DataSourceID="Sql1" OnRowCreated="TestGV_RowCreated" ShowFooter="True">
@@ -699,6 +701,14 @@
                     $(this).find(".edit_focus").focus();
                 });
             });
+
+            $(document).ready(function () {
+                $("#open_nav").on("click", function () {
+                    $("#wrapper,#aside").toggleClass("show");
+                });
+            });
+
+
 
 
         </script>
