@@ -708,8 +708,11 @@ namespace WhereEver.ResearchAnalitics
             string nc = HtmlEncode(TextBox_Coin_NonceCondition.Text);
             string nll = HtmlEncode(TextBox_Coin_NonceLoopLimit.Text);
 
+            //初期Nonce >= 0
             int.TryParse(fn, System.Globalization.NumberStyles.Currency, null, out int fn_i);
-            if(!int.TryParse(nc, System.Globalization.NumberStyles.Currency, null, out int nc_i))
+            fn_i = Math.Min(fn_i, 0);
+
+            if (!int.TryParse(nc, System.Globalization.NumberStyles.Currency, null, out int nc_i))
             {
                 nc_i = 1000; //1000回
             }

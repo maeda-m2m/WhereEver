@@ -191,5 +191,54 @@ namespace WhereEver.XHTML5Editor
                 Panel_BT.Visible = true;
             }
         }
+
+        protected void Push_QRCode(object sender, EventArgs e)
+        {
+            if (Panel_QRCode.Visible)
+            {
+                Panel_QRCode.Visible = false;
+            }
+            else
+            {
+                Panel_QRCode.Visible = true;
+            }
+        }
+
+        protected void Push_QR_Create(object sender, EventArgs e)
+        {
+            if(TextBox_QR_Text.Text == "")
+            {
+                TextBox_QRCode_Result.Text = "QRコードに変換したいテキストを入力して下さい。";
+                return;
+            }
+
+            int.TryParse(HtmlEncode(TextBox_QRCode_Width.Text), System.Globalization.NumberStyles.Currency, null, out int width);
+            int.TryParse(HtmlEncode(TextBox_QRCode_Height.Text), System.Globalization.NumberStyles.Currency, null, out int height);
+
+            //上限
+            width = Math.Min(1000, width);
+            height = Math.Min(1000, height);
+
+            //下限
+            width = Math.Max(100, width);
+            height = Math.Max(100, height);
+
+            Label_QRCode_Area.Text = ClassLibrary.QRCodeClass.GetQRCode(HtmlEncode(TextBox_QR_Text.Text), width, height);
+            TextBox_QRCode_Result.Text = "/*[生成されたコード]*/\r\f" + Label_QRCode_Area.Text;
+        }
+
+        protected void Push_QR_Encode(object sender, EventArgs e)
+        {
+            if (FileUpload_userfile.HasFile)
+            {
+                HttpPostedFile filename = FileUpload_userfile.PostedFile;
+                TextBox_QRCode_Result.Text = "/*[読み込まれた内容]*/\r\f" + ClassLibrary.QRCodeClass.SetQRCode(filename);
+            }
+            else
+            {
+                TextBox_QRCode_Result.Text = "QRコードから読み込みたいファイルを選択して下さい。";
+                return;
+            }
+        }
     }
 }
