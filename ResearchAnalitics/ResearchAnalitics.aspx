@@ -385,12 +385,10 @@
  <span class="hr"></span>
 
 
-           <div class="index1">
+           <p class="index1">
                ◆m2m仮想通貨発行テスト
-               <asp:Button ID="Button_Coin" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_Coin" CausesValidation="False" />
-               <p>m2m独自の仮想通貨を発行するテストです。</p>
-               <p>仮想通貨発行委託サービスやポイントカードシステムなどの基礎に使えます。</p>
-           </div>
+               <asp:Button ID="Button_Coin" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_Coin" CausesValidation="False" />　m2m独自の仮想通貨を発行する実験です。
+           </p>
 
  <hr />
 </div>
@@ -398,25 +396,47 @@
 <asp:Panel ID="Panel_Coin" runat="server" Visible="false" DefaultButton="Button_CreateCoin">
 
 <div class="noprint">
+
+               <p>このサンプルはm2m独自の仮想通貨を発行する実験用フォームです。</p>
+               <p>仮想通貨発行委託サービスやポイントカードシステムなどの基礎に使えます。</p>
+               <p>悪用を避けるため、ネットワークやノードは実装していません。実際にはブロックチェーンをノード間で共有し、チェーンの長いブロックチェーンを採用します。</p>
+               <p>ジェネシスブロックは固定値です。</p>
+               <p>参考：「プログラマが仮想通貨で億り人目指してみた|ブロックチェーンの基礎を学んでみよう」<br />https//dora345.com/2018/06/03/ブロックチェーンの基礎を学んでみよう/（2021年06月11日アクセス）.</p>
+               <p>ネットワークやノードの参考：「POSTD|200行のコードへのブロックチェーンの実装」<br />https://postd.cc/a-blockchain-in-200-lines-of-code/（2021年06月11日アクセス）.</p>
+
 <span class="hr"></span>
 
-    <p class="center">初期Nonceをセットして下さい。サーバーに負荷がかかるため、計算上限に大きな値を入力しないでください。</p>
-    <p>初期Nonce(n&gt;0)
+<div class="center">
+    <p class="index1">初期Nonceをセットして下さい。</p>
+
+    <div class="index1">
+        <p>初期Nonce(n&gt;=0)</p>
         <asp:TextBox ID="TextBox_Coin_FirstNonce" runat="server" CssClass="textbox_math_s"  ValidateRequestMode="Disabled" Text="0" MaxLength="50" AutoPostBack="True" placeholder="0"></asp:TextBox>
-    </p>
-    <p>計算上限
+    </div>
+
+    <div class="index1">
+        <p>計算上限(99999&gt;=n&gt;=0)</p>
         <asp:TextBox ID="TextBox_Coin_NonceLoopLimit" runat="server" CssClass="textbox_math_s"  ValidateRequestMode="Disabled" Text="1000" MaxLength="6" placeholder="100"></asp:TextBox>
-    </p>
-    <p>条件式(StartsWith)
-        <asp:TextBox ID="TextBox_Coin_NonceCondition" runat="server" CssClass="textbox_math_s"  ValidateRequestMode="Disabled" Text="6666" MaxLength="50" placeholder="（任意のHash値）" ></asp:TextBox>
-    </p>
+    </div>
+
+    <div class="index1">
+        <p>条件式(StartsWith) 3～4桁を推奨</p>
+        <asp:TextBox ID="TextBox_Coin_NonceCondition" runat="server" CssClass="textbox_math_s"  ValidateRequestMode="Disabled" Text="666" MaxLength="50" placeholder="（任意のHash値）" ></asp:TextBox>
+    </div>
+
     <p>
         <asp:Button ID="Button_CreateCoin" CssClass="btn-flat-border" runat="server" Text="発行" OnClick="Push_Coin_Create" CausesValidation="False" />
     </p>
+    
+    
+    
+    
 
     <div>
        <asp:TextBox ID="TextBox_Coin_Result" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="Ready..." CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
     </div>
+</div>
+
 </div>
 </asp:Panel>
 

@@ -189,6 +189,78 @@
 </asp:Panel>
 
 
+<div class="noprint">
+ <span class="hr"></span>
+
+
+           <p class="index1">
+               ◆QRコード生成
+               <asp:Button ID="Button_QRCode" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_QRCode" CausesValidation="False" />　QRコードを生成する機能です。
+           </p>
+
+ <hr />
+</div>
+
+<asp:Panel ID="Panel_QRCode" runat="server" Visible="false" DefaultButton="Button_CreateQRCode">
+
+<div class="noprint">
+
+<span class="hr"></span>
+
+<div class="center"><a name="QRCode"></a>
+    <p class="index1">QRコードにしたい文字列を入力して下さい。生成後は、右クリック→「名前を付けて保存」で画像を保存できます。</p>
+
+    <div class="index1">
+        <p>▼QRCodeにする文字列▼</p>
+    </div>
+    <div>
+        <asp:TextBox ID="TextBox_QR_Text" runat="server" CssClass="textbox_Wide"  ValidateRequestMode="Disabled" Text="http://test.m2m-asp.com/WhereEver/ログイン/Login.aspx" MaxLength="200" TextMode="MultiLine" Style="resize: none"  AutoPostBack="True" placeholder="QRコードにしたい文字列を入力して下さい"></asp:TextBox>
+    </div>
+
+        <p>
+            Width = <asp:TextBox ID="TextBox_QRCode_Width" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角4文字以内(1000 >= n >= 100)" placeholder="150" Text="150" MaxLength="4"></asp:TextBox>px
+        </p>
+        <p>
+            Height = <asp:TextBox ID="TextBox_QRCode_Height" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角4文字以内(1000 >= n >= 100)" placeholder="150" Text="150" MaxLength="4"></asp:TextBox>px
+        </p>
+
+    <p>
+        <asp:Button ID="Button_CreateQRCode" CssClass="btn-flat-border" runat="server" Text="発行" OnClick="Push_QR_Create" CausesValidation="False" />
+    </p>
+
+    <p>
+        <span class="hr"></span>
+        <asp:Label ID="Label_QRCode_Area" runat="server" ValidateRequestMode="Disabled" Text="※このスペースにQRコードの画像が生成されます。"></asp:Label>
+        <span class="hr"></span>
+    </p>
+
+    <div>
+       <asp:TextBox ID="TextBox_QRCode_Result" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="Ready..." CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true"></asp:TextBox>
+    </div>
+</div>
+
+
+    <span class="hr"></span>
+        <p class="index1">～概要～</p>
+               <p>入力された文字列からQRコードを生成します（読み取りもできますがClass以外未実装です。FileStreamに入れてGetしてstringをとればできます）。</p>
+               <p>本来はBitmapで生成されますが、ASP.NetでSystem.Drawing出力をそのまま使うことは非推奨のため、imgタグのPNG画像に変換しています。</p>
+               <p>※環境によって、QRコード生成後に再度ボタンを押すと、動作しないときがあります。その際は、もう１度ボタンを押すと動作します。</p>
+    <hr />
+               <p>This script includes the work that is 'ZXing 0.16.6 (created by Michael Jahn)' distributed in the Apache License 2.0.</p>
+               <p>このスクリプトは、 Apache 2.0ライセンスで配布されている製作物「ZXing 0.16.6 (製作者：Michael Jahn)」が含まれています。</p>
+               <p>http://www.apache.org/licenses/LICENSE-2.0</p>
+
+    <hr />
+
+               <p>QRCodeClassのスクリプトの参照元：「【ZXing.Net】C#でQRコードの読取」@satorimon</p>
+               <p>https://qiita.com/satorimon/items/7b7b70410398ee6fd1a4（2021年6月11日アクセス）.</p>
+    <span class="hr"></span>
+
+</div>
+</asp:Panel>
+
+
+
 </div>
 
 
