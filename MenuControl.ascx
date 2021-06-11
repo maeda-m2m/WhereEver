@@ -15,9 +15,14 @@
         <td>
             <a href="~/ログイン/LoginList.aspx" class="btn" runat="server">トップページ</a>
         </td>
+
         <td>
             <a href="~/スケジュール/Schedule.aspx" class="btn" runat="server">スケジュール</a>
         </td>
+        <td>
+            <a href="~/スケジュール/Wiki_Top.aspx" class="btn" runat="server">社内Wiki</a>
+        </td>
+
         <td>
             <a href="~/各申請書類/Shinsei.aspx" class="btn" runat="server">各申請書類</a>
         </td>
