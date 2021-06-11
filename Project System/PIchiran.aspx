@@ -39,14 +39,14 @@
                                 AutoGenerateColumns="False" Width="100%" CssClass="DgPIchiran">
                                     <Columns>
                     
-                                        <asp:BoundColumn HeaderText="プロジェクトID(変更✖)" DataField="Pid" ReadOnly="True"/>
+                                        <asp:BoundColumn HeaderText="プロジェクトID" DataField="Pid" ReadOnly="True"/>
                                         <asp:BoundColumn HeaderText="プロジェクト名" DataField="Pname"/>
                                         <asp:BoundColumn HeaderText="取引先" DataField="Pcustomer"/>
                                         <asp:BoundColumn HeaderText="担当者" DataField="Presponsible"/>
                                         <asp:BoundColumn HeaderText="カテゴリー" DataField="Pcategory"/>
                                         <asp:BoundColumn HeaderText="開始日" DataField="PstartTime"/>
                                         <asp:BoundColumn HeaderText="終了日" DataField="PoverTime"/>
-                                        <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>キャンセル" UpdateText="<font color = red>保存"></asp:EditCommandColumn>
+                                        <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>取消" UpdateText="<font color = red>保存"></asp:EditCommandColumn>
                                         <asp:ButtonColumn ButtonType="LinkButton" Text="<font color = red>削除" CommandName="Delete"/>
                                         <asp:ButtonColumn HeaderText="詳細" ButtonType="LinkButton" Text="<font color = red>編集(WBS図)" CommandName="wbs"/>
 
