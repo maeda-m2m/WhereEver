@@ -59,6 +59,7 @@
                     <p class="index1">--本日（<asp:Label ID="Label_Today" runat="server" Text="Label"></asp:Label>）の予定--</p>
                     <asp:Label ID="Label_WhatNow" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
                     <p class="index1">--天気予報--</p>
+                    <p><asp:Label ID="Label_WeatherComment" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label></p>
                     <asp:Label ID="Label_Weather2" runat="server" Text="" ValidateRequestMode="Disabled"></asp:Label><br />
 
 
@@ -96,7 +97,7 @@
               </asp:Panel>
 
 
-                <div id="Edit_btn_space">
+                <div class="Edit_btn_space">
                   <asp:Button ID="Button_EditTop" runat="server" CssClass="btn_loginlist" Text="お知らせ編集" OnClick="btnEditTop_Click" PostBackUrl="#" />
                   <asp:Button ID="Button_EditWeather" runat="server" CssClass="btn_loginlist" Text="天気予報編集" OnClick="btnEditWeather_Click" PostBackUrl="#" />
                 </div>
@@ -112,10 +113,12 @@
                         </div>
 
                     <div class="center">
+                        <div class="Edit_btn_space">
                         <asp:Button ID="Button_ReformTop" runat="server" CssClass="btn_loginlist" Text="更新" OnClick="btnReformTop_Click" />
                         <asp:Button ID="Button_ReformTopEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformTopEnd_Click" />
                         <asp:Button ID="Button_ReformDelete" runat="server" CssClass="btn_loginlist" Text="全消去" OnClick="btnReformTopDel_Click" PostBackUrl="#edittop" />
                         <asp:Button ID="Button_ReformReload" runat="server" CssClass="btn_loginlist" Text="全取り消し" OnClick="btnReformTopReload_Click" PostBackUrl="#edittop" />
+                        </div>
                     </div>
 
                    </div><%-- Edit --%>
@@ -182,13 +185,15 @@
                                 <asp:ListItem Value="100">100%</asp:ListItem>
                             </asp:DropDownList>
 
+
+                        </div><%-- article --%>
                             <div class="center">
+                                <div class="Edit_btn_space">
                                 <p><asp:Label ID="Label_WeatherResult" runat="server" Text=""></asp:Label></p>
                                 <asp:Button ID="Button_ReformWeather" runat="server" CssClass="btn_loginlist" Text="追加/更新" OnClick="btnReformWeather_Click" />
                                 <asp:Button ID="Button_ReformWeatherEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformWeatherEnd_Click" />
+                                </div>
                             </div><%-- center --%>
-
-                        </div><%-- article --%>
                    </div><%-- Edit --%>
                   </asp:Panel>
 
