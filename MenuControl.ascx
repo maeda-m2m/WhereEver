@@ -42,13 +42,15 @@
     </tr>
     <tr>
         <td colspan="9">
-            <asp:Menu id="sitemap_main" runat="server"
-              DataSourceID="smd" ExpandDepth="2" ShowLines="True">
+            <asp:Menu ID="sitemap_main" runat="server"
+                DataSourceID="smd" ExpandDepth="2" ShowLines="True">
             </asp:Menu>
-            <asp:SiteMapDataSource id="smd" runat="server" />
+            <asp:SiteMapDataSource ID="smd" runat="server" />
         </td>
         <td colspan="2">
-            <p class="date"><script src="../Scripts/lastModified.js" type="text/javascript" charset="utf-8"></script></p>
+            <p class="date">
+                <script src="../Scripts/lastModified.js" type="text/javascript" charset="utf-8"></script>
+            </p>
         </td>
     </tr>
 </table>
