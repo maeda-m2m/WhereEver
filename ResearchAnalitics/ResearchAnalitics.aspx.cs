@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Text;
 using static System.Web.HttpUtility;
 using static WhereEver.ClassLibrary.Matrix;
+using static WhereEver.ClassLibrary.CoinClass;
 
 namespace WhereEver.ResearchAnalitics
 {
@@ -689,10 +690,49 @@ namespace WhereEver.ResearchAnalitics
 
         }
 
+        protected void Push_Coin(object sender, EventArgs e)
+        {
+            if (Panel_Coin.Visible)
+            {
+                Panel_Coin.Visible = false;
+            }
+            else
+            {
+                Panel_Coin.Visible = true;
+            }
+        }
+
+        protected void Push_Coin_Create(object sender, EventArgs e)
+        {
+            string fn = HtmlEncode(TextBox_Coin_FirstNonce.Text);
+            string nc = HtmlEncode(TextBox_Coin_NonceCondition.Text);
+            string nll = HtmlEncode(TextBox_Coin_NonceLoopLimit.Text);
+
+            int.TryParse(fn, System.Globalization.NumberStyles.Currency, null, out int fn_i);
+            if(!int.TryParse(nc, System.Globalization.NumberStyles.Currency, null, out int nc_i))
+            {
+                nc_i = 1000; //1000回
+            }
+            if(!int.TryParse(nll, System.Globalization.NumberStyles.Currency, null, out int nll_i))
+            {
+                nll_i = 666;//"666"
+            }
+
+            //一度の計算回数　上限99999、下限1
+            nll_i = Math.Max(nll_i, 1);
+            nll_i = Math.Min(nll_i, 99999);
+
+            BlockChain bc = new BlockChain();
+            string result = bc.CreateBlock(fn_i, nll_i, nc_i.ToString());
+
+            if (result == "")
+            {
+                result = "Failed;";
+            }
+            HtmlEncode(TextBox_Coin_Result.Text = result);
 
 
-
-
+        }
     }
 }
 

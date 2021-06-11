@@ -268,7 +268,8 @@
            <p class="index1">
                ◆相関分析
                <asp:Button ID="Button1" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_Soukan" CausesValidation="False" />
-               　手軽に相関分析を試すことができます。</p>
+               　手軽に相関分析を試すことができます。
+           </p>
 
            <hr />
 </div>
@@ -380,6 +381,44 @@
 </div>
 </asp:Panel>
 
+<div class="noprint">
+ <span class="hr"></span>
+
+
+           <div class="index1">
+               ◆m2m仮想通貨発行テスト
+               <asp:Button ID="Button_Coin" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_Coin" CausesValidation="False" />
+               <p>m2m独自の仮想通貨を発行するテストです。</p>
+               <p>仮想通貨発行委託サービスやポイントカードシステムなどの基礎に使えます。</p>
+           </div>
+
+ <hr />
+</div>
+
+<asp:Panel ID="Panel_Coin" runat="server" Visible="false" DefaultButton="Button_CreateCoin">
+
+<div class="noprint">
+<span class="hr"></span>
+
+    <p class="center">初期Nonceをセットして下さい。サーバーに負荷がかかるため、計算上限に大きな値を入力しないでください。</p>
+    <p>初期Nonce(n&gt;0)
+        <asp:TextBox ID="TextBox_Coin_FirstNonce" runat="server" CssClass="textbox_math_s"  ValidateRequestMode="Disabled" Text="0" MaxLength="50" AutoPostBack="True" placeholder="0"></asp:TextBox>
+    </p>
+    <p>計算上限
+        <asp:TextBox ID="TextBox_Coin_NonceLoopLimit" runat="server" CssClass="textbox_math_s"  ValidateRequestMode="Disabled" Text="1000" MaxLength="6" placeholder="100"></asp:TextBox>
+    </p>
+    <p>条件式(StartsWith)
+        <asp:TextBox ID="TextBox_Coin_NonceCondition" runat="server" CssClass="textbox_math_s"  ValidateRequestMode="Disabled" Text="6666" MaxLength="50" placeholder="（任意のHash値）" ></asp:TextBox>
+    </p>
+    <p>
+        <asp:Button ID="Button_CreateCoin" CssClass="btn-flat-border" runat="server" Text="発行" OnClick="Push_Coin_Create" CausesValidation="False" />
+    </p>
+
+    <div>
+       <asp:TextBox ID="TextBox_Coin_Result" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="Ready..." CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
+    </div>
+</div>
+</asp:Panel>
 
         </div>
     </form>
