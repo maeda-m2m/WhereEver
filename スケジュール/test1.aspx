@@ -9,7 +9,7 @@
     <style>
         body {
             background-image: url(sea1.jpg);
-            background-size: cover;
+            
         }
     </style>
 </head>

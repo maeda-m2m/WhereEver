@@ -15,109 +15,84 @@
 
     <title>Schedule</title>
 
-    <style>
-        .btn {
-            width: 150px;
-            height: 40px;
-            position: relative;
-            display: inline-block;
-            font-weight: bold;
-            padding: 0.3em 0.5em;
-            text-decoration: none;
-            color: #000000;
-            background: #ECECEC;
-            transition: .4s;
-            font-size: 1em;
-            text-align: center;
-        }
 
-            .btn:hover {
-                background: #000000;
-                color: white;
-                cursor: pointer;
-            }
-
-
-        .label {
-            font-size: 1em;
-        }
-
-        .All {
-            text-align: center;
-            font-weight: bold;
-        }
-
-        header {
-            position: fixed;
-            top: 0; /* 上部から配置の基準位置を決める */
-            left: 0; /* 左から配置の基準位置を決める */
-
-
-            background-color: #ffffff; /* ヘッダーの背景色を指定する */
-        }
-
-        .Contents {
-            width: 100%; /* コンテンツの横幅を指定する */
-            overflow: auto; /* コンテンツの表示を自動に設定（スクロール） */
-        }
-
-        .delete_check {
-        }
-
-        .edit_focus {
-        }
-    </style>
 </head>
 
-<body class="Contents">
+<body>
     <form runat="server">
 
-        <header>
-            <ul>
+        <header id="header1">
 
-                <li><a href="../ログイン/LoginList.aspx" runat="server">
-                    <asp:Image ID="Image2" runat="server" ImageUrl="~/ログイン/m2m-logo.png" /></a></li>
-
-                <li>
-                    <h1><strong>WhereEver</strong> </h1>
-                </li>
-
-                <li><a href="~/ログイン/LoginList.aspx" class="btn" runat="server">トップページ</a></li>
-
-                <li><a href="~/スケジュール/Schedule.aspx" class="btn" runat="server">スケジュール</a></li>
-
-                <li><a href="~/スケジュール/Wiki_Top.aspx" class="btn" runat="server">社内Wiki</a></li>
-
-                <li><a href="~/各申請書類/Shinsei.aspx" class="btn" runat="server">各申請書類</a></li>
-
-                <li><a href="~/チャット/Chat.aspx" class="btn" runat="server">チャット<asp:Label ID="lblHensin" runat="server" Visible="False"></asp:Label></a></li>
-
-                <li><a href="~/ファイル共有/FileShare.aspx" class="btn" runat="server">ファイル共有</a></li>
-
-                <li><a href="~/Project System/PIchiran.aspx" class="btn" runat="server">プロジェクト</a></li>
-
-                <li><a href="~/管理ページ/Kanri.aspx" class="btn" runat="server">マイページ</a></li>
-
-                <li><a href="~/ログイン/Login.aspx" class="btn" runat="server">ログアウト</a></li>
-
-
-            </ul>
+            <a href="~/ログイン/LoginList.aspx" runat="server" id="header_index">WhereEver</a>
 
         </header>
 
+        <header id="header2">
+
+
+            <table>
+                <tr>
+
+                    <td>
+                        <a href="~/スケジュール/Schedule.aspx" runat="server" class="header2_menu">スケジュール</a>
+                    </td>
+                    <td>
+                        <a href="~/スケジュール/Wiki_Top.aspx" runat="server" class="header2_menu">社内Wiki</a>
+                    </td>
+                    <td>
+                        <a href="~/各申請書類/Shinsei.aspx" runat="server" class="header2_menu">各申請書類</a>
+                    </td>
+                    <td>
+                        <a href="~/チャット/Chat.aspx" runat="server" class="header2_menu">チャット<asp:Label ID="Label1" runat="server" Visible="False"></asp:Label></a>
+                    </td>
+                    <td>
+                        <a href="~/ファイル共有/FileShare.aspx" runat="server" class="header2_menu">ファイル共有</a>
+                    </td>
+                    <td>
+                        <a href="~/Project System/PIchiran.aspx" runat="server" class="header2_menu">プロジェクト</a>
+                    </td>
+                    <td>
+                        <a href="~/管理ページ/Kanri.aspx" runat="server" class="header2_menu">マイページ</a>
+                    </td>
+
+                </tr>
+
+            </table>
+        </header>
+
+        <aside>
+            <ul>
+
+                <li>
+                    <h1><strong>MySchedule</strong> </h1>
+                </li>
+
+                <li>田中</li>
+
+                <li>佐藤</li>
+
+                <li>山田</li>
+
+            </ul>
+
+        </aside>
+
         <%--<asp:Button runat="server" ID="ButtonA" Text="社内Wiki" OnClick="ButtonA_Click" />--%>
-        <asp:Button runat="server" ID="ButtonB" Text="" OnClick="ButtonB_Click" />
+        <%--  <asp:Button runat="server" ID="ButtonB" Text="" OnClick="ButtonB_Click" />--%>
 
 
 
         <section class="Center">
             <asp:Panel ID="Panel2" runat="server" HorizontalAlign="center">
-                <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
-
-                <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click" Text="印刷" />
-                <asp:Button ID="Button4" runat="server" Text="前へ" class="btn-flat-border" OnClick="Button4_Click" />
-                <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
-                <asp:Button ID="Button5" runat="server" Text="次へ" class="btn-flat-border" OnClick="Button5_Click" />
+                <div>
+                    <asp:Button ID="Button3" runat="server" Text="登録" class="btn-flat-border" OnClick="Button3_Click" />
+                    <asp:Button ID="Button1" runat="server" class="btn-flat-border" OnClick="Button1_Click" Text="印刷" />
+                </div>
+                <div>
+                    <asp:Button ID="Button4" runat="server" Text="前へ" class="btn-flat-border" OnClick="Button4_Click" />
+                    <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
+                    <asp:Button ID="Button5" runat="server" Text="次へ" class="btn-flat-border" OnClick="Button5_Click" />
+                </div>
                 <%--  <h1 id="test1">test</h1>--%>
             </asp:Panel>
         </section>

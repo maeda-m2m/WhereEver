@@ -15,9 +15,14 @@
         <td>
             <a href="~/ログイン/LoginList.aspx" class="btn" runat="server">トップページ</a>
         </td>
+
         <td>
             <a href="~/スケジュール/Schedule.aspx" class="btn" runat="server">スケジュール</a>
         </td>
+        <td>
+            <a href="~/スケジュール/Wiki_Top.aspx" class="btn" runat="server">社内Wiki</a>
+        </td>
+
         <td>
             <a href="~/各申請書類/Shinsei.aspx" class="btn" runat="server">各申請書類</a>
         </td>
@@ -42,13 +47,15 @@
     </tr>
     <tr>
         <td colspan="9">
-            <asp:Menu id="sitemap_main" runat="server"
-              DataSourceID="smd" ExpandDepth="2" ShowLines="True">
+            <asp:Menu ID="sitemap_main" runat="server"
+                DataSourceID="smd" ExpandDepth="2" ShowLines="True">
             </asp:Menu>
-            <asp:SiteMapDataSource id="smd" runat="server" />
+            <asp:SiteMapDataSource ID="smd" runat="server" />
         </td>
         <td colspan="2">
-            <p class="date"><script src="../Scripts/lastModified.js" type="text/javascript" charset="utf-8"></script></p>
+            <p class="date">
+                <script src="../Scripts/lastModified.js" type="text/javascript" charset="utf-8"></script>
+            </p>
         </td>
     </tr>
 </table>
