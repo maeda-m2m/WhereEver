@@ -92,6 +92,9 @@ namespace WhereEver
                     @sb.Append("）");
                 }
                 @sb.Append("</li>");
+                //-------------------------------------------------------------------------------
+                int counter = 0;
+                StringBuilder weatherComment = new StringBuilder();
                 for (int i = 0; i < wdt.Count; i++)
                 {
 
@@ -100,8 +103,59 @@ namespace WhereEver
                         continue;
                     }
 
+                    counter++;
+                    if(counter == 1)
+                    {
+                        //今日の天気
+                        if (!wdt[i].IsNull(@"Weather"))
+                        {
+                            if (wdt[i].Weather.Contains("雨"))
+                            {
+                                weatherComment.Append("今日は雨が降りそうです。<br />");
+                            }
+                            else
+                            {
+                                weatherComment.Append("今日の天気は");
+                                weatherComment.Append(wdt[i].Weather);
+                                weatherComment.Append("です。");
+                                if (!wdt[i].IsNull(@"Rain_p"))
+                                {
+                                    if(wdt[i].Rain_p >= 40)
+                                    {
+                                        weatherComment.Append("折り畳み傘を持っておくとよいでしょう。<br />");
+                                    }
+                                }
+                                weatherComment.Append("<br />");
+                            }
+                        }
+                    }
+                    if (counter == 2)
+                    {
+                        //明日の天気
+                        if (!wdt[i].IsNull(@"Weather"))
+                        {
+                            if (wdt[i].Weather.Contains("雨"))
+                            {
+                                weatherComment.Append("明日は雨が降りそうです。傘を忘れないようにしましょう。<br />");
+                            }
+                            else
+                            {
+                                weatherComment.Append("明日は");
+                                weatherComment.Append(wdt[i].Weather);
+                                weatherComment.Append("になるでしょう。");
+                                if (!wdt[i].IsNull(@"Rain_p"))
+                                {
+                                    if (wdt[i].Rain_p >= 40)
+                                    {
+                                        weatherComment.Append("明日は、折り畳み傘を準備しておくとよいでしょう。");
+                                    }
+                                    weatherComment.Append("<br />");
+                                }
+                            }
+                        }
+                    }
 
-                        @sb.Append("<li>");
+                    @sb.Append("<li>");
                     if (!wdt[i].IsNull(@"Date"))
                     {
                         @sb.Append(wdt[i].Date.ToShortDateString());
@@ -137,13 +191,17 @@ namespace WhereEver
                     @sb.Append("</li>");
                 }
                 @sb.Append("</ul>");
+                @sb.Replace("（日）", "（<span class=\"hot\">日</span>）");
+                @sb.Replace("（土）", "（<span class=\"cold\">土</span>）");
                 Label_Weather.Text = sb.ToString();
                 Label_Weather2.Text = sb.ToString();
+                Label_WeatherComment.Text = weatherComment.ToString();
             }
             else
             {
                 Label_Weather.Text = @"No Data";
                 Label_Weather2.Text = @"No Data";
+                Label_WeatherComment.Text = "最新の天気予報データがありません。";
             }
 
 
