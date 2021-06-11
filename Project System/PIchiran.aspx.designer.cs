@@ -159,13 +159,13 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Label lblNewStartTime;
 
         /// <summary>
-        /// BulletedList2 コントロール。
+        /// date1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList BulletedList2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl date1;
 
         /// <summary>
         /// lblNewOverTime コントロール。
@@ -177,31 +177,22 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Label lblNewOverTime;
 
         /// <summary>
-        /// BulletedList1 コントロール。
+        /// date2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList BulletedList1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl date2;
 
         /// <summary>
-        /// Calendar1 コントロール。
+        /// lblStartM コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
-
-        /// <summary>
-        /// Calendar2 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar2;
+        protected global::System.Web.UI.WebControls.Label lblStartM;
 
         /// <summary>
         /// ValidationSummary1 コントロール。

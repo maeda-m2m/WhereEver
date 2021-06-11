@@ -111,58 +111,36 @@
                         </td>
                     </tr>
                     <tr>
-                    <td class="cell" colspan="2">
+                    <td class="cell">
 
                         <asp:Label ID="lblNewStartTime" runat="server" Text="開始日"></asp:Label>
-                        <asp:BulletedList
-             ID="BulletedList2"
-             runat="server"
-             Visible="false"
-             >
-        </asp:BulletedList>
-
-                    </td>
-                    <td class="cell" colspan="2">
-
-                        <asp:Label ID="lblNewOverTime" runat="server" Text="終了日"></asp:Label>
-                <asp:BulletedList
-             ID="BulletedList1"
-             runat="server"
-             Visible="false"
-             >
-        </asp:BulletedList>
 
                         </td>
+                    <td class="cell">
+
+                        <input id="date1" runat="server" min="2018-01-01" type="date" class="txt"/></td>
+                    <td class="cell">
+
+                        <asp:Label ID="lblNewOverTime" runat="server" Text="終了日"></asp:Label>
+
+                        </td>
+                    <td class="cell">
+
+                        <input id="date2" runat="server" type="date" min="2018-01-01" class="txt"/></td>
                     <td class="cell">
 
                         &nbsp;</td>
                 </tr>
                     <tr>
+                    <td class="cell">
+
+                        <asp:Label ID="lblStartM" runat="server" ForeColor="Black" Text="（必須）"></asp:Label>
+                        </td>
+                    <td class="cell">
+
+                        &nbsp;</td>
                     <td class="cell" colspan="2">
-
-                <asp:Calendar ID="Calendar1" runat="server" CssClass="calendar" Font-Names="Verdana" Font-Size="13pt" ForeColor="White" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnSelectionChanged="Calendar1_SelectionChanged" >
-                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                    <OtherMonthDayStyle ForeColor="#999999" />
-                    <SelectedDayStyle BackColor="Red" ForeColor="White" />
-                    <TitleStyle Font-Bold="True" Font-Size="15pt" ForeColor="#ff0000" CssClass="calendar-title"/>
-                    <TodayDayStyle BackColor="#CCCCCC" />
-                        </asp:Calendar>
-
-                    </td>
-                    <td class="cell" colspan="2">
-
-                <asp:Calendar ID="Calendar2" runat="server" CssClass="calendar"
-                    Font-Names="Verdana" Font-Size="13pt" ForeColor="White" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnSelectionChanged="Calendar2_SelectionChanged">
-                    <DayHeaderStyle Font-Bold="True" Font-Size="10pt" />
-                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                    <OtherMonthDayStyle ForeColor="WhiteSmoke" />
-                    <SelectedDayStyle BackColor="Red" ForeColor="White" />
-                    <TitleStyle Font-Bold="True" Font-Size="15pt" ForeColor="#ff0000" CssClass="calendar-title"/>
-                    <TodayDayStyle />
-                        </asp:Calendar>
-
-                        終了日未定の場合はそのまま保存してください。</td>
+                        &nbsp;終了日未定の場合はそのまま保存してください。</td>
                     <td class="cell">
 
                         &nbsp;</td>
@@ -173,9 +151,6 @@
                         <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="List" ForeColor="Red" ValidationGroup="new" />
 
                     </td>
-                    <td class="cell">
-
-                        &nbsp;</td>
                 </tr>
                 <tr>
                     <td class="cell" colspan="4">

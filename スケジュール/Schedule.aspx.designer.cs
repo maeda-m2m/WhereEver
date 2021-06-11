@@ -15,31 +15,22 @@ namespace WhereEver
     {
 
         /// <summary>
-        /// Image2 コントロール。
+        /// header_index コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image2;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor header_index;
 
         /// <summary>
-        /// lblHensin コントロール。
+        /// Label1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHensin;
-
-        /// <summary>
-        /// ButtonB コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonB;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// Panel2 コントロール。
