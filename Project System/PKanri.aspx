@@ -58,7 +58,7 @@
                                 <asp:BoundColumn DataField="PTorokutime" HeaderText="最新編集日付" ReadOnly="True"/>
                                 <asp:BoundColumn DataField="PTorokusya" HeaderText="最新編集者" ReadOnly="True"/>
                                 
-                                <asp:EditCommandColumn EditText="<font color = red>変更" CancelText="<font color = red>取消" UpdateText="<font color = red>保存" HeaderStyle-Width="100px">
+                                <asp:EditCommandColumn EditText="<font color = red>編集" CancelText="<font color = red>取消" UpdateText="<font color = red>保存" HeaderStyle-Width="100px" HeaderText="編集用ボタン">
                                 </asp:EditCommandColumn>
                                 <asp:ButtonColumn ButtonType="LinkButton" Text="<font color = red>削除" CommandName="Delete" HeaderStyle-Width="50px"/>
                             </Columns>
