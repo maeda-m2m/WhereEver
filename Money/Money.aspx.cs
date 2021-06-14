@@ -20,10 +20,25 @@ namespace WhereEver.Money
                 ResetPL();
                 ResetBS();
                 ResetCF();
+                Reset_Rental();             
 
                 //セッション変数argsを初期化
                 Session.Add("args", (string)"null");
                 Session.Add("uuid", (string)"null");
+            }
+
+            //消去すると１段ずれることがあるため、選択行かどうか１段ずつ検索し直す。
+            for (int i = 0; i < GridView_Rental.Rows.Count; i++)
+            {
+                if (GridView_Rental.Rows[i].Cells[0].Text == TextBox_order_uuid.Text)
+                {
+                    Session.Add("args", i);
+                    Session.Add("uuid", GridView_Rental.Rows[i].Cells[0].Text);
+                    //GridView_Resetの選択行を赤色にする
+                    //int resetargs = int.Parse(Session["args"].ToString());
+                    GridView_Rental.Rows[i].BackColor = System.Drawing.Color.Red;
+                    break;
+                }
             }
 
             SetMaxDate();
@@ -63,6 +78,68 @@ namespace WhereEver.Money
                 DropDownList_CF_day.BackColor = System.Drawing.Color.Empty;
             }
 
+            if (DropDownList_order_month.SelectedValue != "--")
+            {
+                DropDownList_order_month.BackColor = System.Drawing.Color.Empty;
+            }
+            if (DropDownList_order_day.SelectedValue != "--")
+            {
+                DropDownList_order_day.BackColor = System.Drawing.Color.Empty;
+            }
+
+            if (DropDownList_youki_month.SelectedValue != "--")
+            {
+                DropDownList_youki_month.BackColor = System.Drawing.Color.Empty;
+            }
+            if (DropDownList_youki_day.SelectedValue != "--")
+            {
+                DropDownList_youki_day.BackColor = System.Drawing.Color.Empty;
+            }
+
+            if (DropDownList_seiki_month.SelectedValue != "--")
+            {
+                DropDownList_seiki_month.BackColor = System.Drawing.Color.Empty;
+            }
+            if (DropDownList_seiki_day.SelectedValue != "--")
+            {
+                DropDownList_seiki_day.BackColor = System.Drawing.Color.Empty;
+            }
+
+            if (DropDownList_shipping_month.SelectedValue != "--")
+            {
+                DropDownList_shipping_month.BackColor = System.Drawing.Color.Empty;
+            }
+            if (DropDownList_shipping_day.SelectedValue != "--")
+            {
+                DropDownList_shipping_day.BackColor = System.Drawing.Color.Empty;
+            }
+
+            if (DropDownList_receive_month.SelectedValue != "--")
+            {
+                DropDownList_receive_month.BackColor = System.Drawing.Color.Empty;
+            }
+            if (DropDownList_receive_day.SelectedValue != "--")
+            {
+                DropDownList_receive_day.BackColor = System.Drawing.Color.Empty;
+            }
+
+            if (DropDownList_send_d_month.SelectedValue != "--")
+            {
+                DropDownList_send_d_month.BackColor = System.Drawing.Color.Empty;
+            }
+            if (DropDownList_send_d_day.SelectedValue != "--")
+            {
+                DropDownList_send_d_day.BackColor = System.Drawing.Color.Empty;
+            }
+
+            if (DropDownList_send_month.SelectedValue != "--")
+            {
+                DropDownList_send_month.BackColor = System.Drawing.Color.Empty;
+            }
+            if (DropDownList_send_day.SelectedValue != "--")
+            {
+                DropDownList_send_day.BackColor = System.Drawing.Color.Empty;
+            }
 
         }
 
@@ -142,6 +219,13 @@ namespace WhereEver.Money
             DropDownList_PL_year_g.Items.Clear();
             DropDownList_BS_year.Items.Clear();
             DropDownList_CF_year.Items.Clear();
+            DropDownList_order_year.Items.Clear();
+            DropDownList_youki_year.Items.Clear();
+            DropDownList_seiki_year.Items.Clear();
+            DropDownList_shipping_year.Items.Clear();
+            DropDownList_receive_year.Items.Clear();
+            DropDownList_send_d_year.Items.Clear();
+            DropDownList_send_year.Items.Clear();
         }
 
         /// <summary>
@@ -160,12 +244,34 @@ namespace WhereEver.Money
             DropDownList_CF_month.Items.Clear();
             DropDownList_CF_month.Items.Insert(0, "--");
 
+            DropDownList_order_month.Items.Clear();
+            DropDownList_youki_month.Items.Clear();
+            DropDownList_seiki_month.Items.Clear();
+            DropDownList_shipping_month.Items.Clear();
+            DropDownList_receive_month.Items.Clear();
+            DropDownList_send_d_month.Items.Clear();
+            DropDownList_send_month.Items.Clear();
+
+            DropDownList_order_month.Items.Insert(0, "--");
+            DropDownList_youki_month.Items.Insert(0, "--");
+            DropDownList_seiki_month.Items.Insert(0, "--");
+            DropDownList_shipping_month.Items.Insert(0, "--");
+            DropDownList_receive_month.Items.Insert(0, "--");
+            DropDownList_send_d_month.Items.Insert(0, "--");
+            DropDownList_send_month.Items.Insert(0, "--");
 
             for (int i=1; i <= 12; i++) {
                 DropDownList_PL_month_s.Items.Insert(i, i.ToString());
                 DropDownList_PL_month_g.Items.Insert(i, i.ToString());
                 DropDownList_BS_month.Items.Insert(i, i.ToString());
                 DropDownList_CF_month.Items.Insert(i, i.ToString());
+                DropDownList_order_month.Items.Insert(i, i.ToString());
+                DropDownList_youki_month.Items.Insert(i, i.ToString());
+                DropDownList_seiki_month.Items.Insert(i, i.ToString());
+                DropDownList_shipping_month.Items.Insert(i, i.ToString());
+                DropDownList_receive_month.Items.Insert(i, i.ToString());
+                DropDownList_send_d_month.Items.Insert(i, i.ToString());
+                DropDownList_send_month.Items.Insert(i, i.ToString());
             }
 
         }
@@ -182,6 +288,13 @@ namespace WhereEver.Money
             DropDownList_PL_year_g.Items.Insert(i, item);
             DropDownList_BS_year.Items.Insert(i, item);
             DropDownList_CF_year.Items.Insert(i, item);
+            DropDownList_order_year.Items.Insert(i, item);
+            DropDownList_youki_year.Items.Insert(i, item);
+            DropDownList_seiki_year.Items.Insert(i, item);
+            DropDownList_shipping_year.Items.Insert(i, item);
+            DropDownList_receive_year.Items.Insert(i, item);
+            DropDownList_send_d_year.Items.Insert(i, item);
+            DropDownList_send_year.Items.Insert(i, item);
         }
 
         /// <summary>
@@ -195,6 +308,13 @@ namespace WhereEver.Money
             DropDownList_PL_year_g.SelectedValue = item;
             DropDownList_BS_year.SelectedValue = item;
             DropDownList_CF_year.SelectedValue = item;
+            DropDownList_order_year.SelectedValue = item;
+            DropDownList_youki_year.SelectedValue = item;
+            DropDownList_seiki_year.SelectedValue = item;
+            DropDownList_shipping_year.SelectedValue = item;
+            DropDownList_receive_year.SelectedValue = item;
+            DropDownList_send_d_year.SelectedValue = item;
+            DropDownList_send_year.SelectedValue = item;
         }
 
         /// <summary>
@@ -212,6 +332,22 @@ namespace WhereEver.Money
             DropDownList_BS_day.Items.Insert(0, "--");
             DropDownList_CF_day.Items.Clear();
             DropDownList_CF_day.Items.Insert(0, "--");
+
+            DropDownList_order_day.Items.Clear();
+            DropDownList_youki_day.Items.Clear();
+            DropDownList_seiki_day.Items.Clear();
+            DropDownList_shipping_day.Items.Clear();
+            DropDownList_receive_day.Items.Clear();
+            DropDownList_send_d_day.Items.Clear();
+            DropDownList_send_day.Items.Clear();
+
+            DropDownList_order_day.Items.Insert(0, "--");
+            DropDownList_youki_day.Items.Insert(0, "--");
+            DropDownList_seiki_day.Items.Insert(0, "--");
+            DropDownList_shipping_day.Items.Insert(0, "--");
+            DropDownList_receive_day.Items.Insert(0, "--");
+            DropDownList_send_d_day.Items.Insert(0, "--");
+            DropDownList_send_day.Items.Insert(0, "--");
             //-------------------------------------------------------------------------------
 
             //month
@@ -220,6 +356,13 @@ namespace WhereEver.Money
             DropDownList_PL_month_g.SelectedValue = "--";
             DropDownList_BS_month.SelectedValue = "--";
             DropDownList_CF_month.SelectedValue = "--";
+            DropDownList_order_month.SelectedValue = "--";
+            DropDownList_youki_month.SelectedValue = "--";
+            DropDownList_seiki_month.SelectedValue = "--";
+            DropDownList_shipping_month.SelectedValue = "--";
+            DropDownList_receive_month.SelectedValue = "--";
+            DropDownList_send_d_month.SelectedValue = "--";
+            DropDownList_send_month.SelectedValue = "--";
 
             SetMaxYear();
         }
@@ -409,7 +552,307 @@ namespace WhereEver.Money
 
             DropDownList_CF_day.SelectedValue = memory1;
             //---------------------------------------------------------------------------------
+            //memory
+            memory1 = DropDownList_order_day.SelectedValue;
 
+            if (memory1 == "--" || memory1 == "")
+            {
+                memory1 = "0";
+            }
+
+            //初期化
+            DropDownList_order_day.Items.Clear();
+            DropDownList_order_day.Items.Insert(0, "--");
+
+            y = int.Parse(DropDownList_order_year.SelectedValue);
+            if (DropDownList_order_month.SelectedValue != "--")
+            {
+
+                m = int.Parse(DropDownList_order_month.SelectedValue);
+                maxday = GetDateMax(y, m);
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_order_day.Items.Insert(i, i.ToString());
+                }
+
+            }
+            else
+            {
+                maxday = 31;
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_order_day.Items.Insert(i, i.ToString());
+                }
+            }
+
+            //load
+            if (memory1 == "0")
+            {
+                memory1 = "--";
+            }
+
+            DropDownList_order_day.SelectedValue = memory1;
+            //---------------------------------------------------------------------------------
+            //memory
+            memory1 = DropDownList_youki_day.SelectedValue;
+
+            if (memory1 == "--" || memory1 == "")
+            {
+                memory1 = "0";
+            }
+
+            //初期化
+            DropDownList_youki_day.Items.Clear();
+            DropDownList_youki_day.Items.Insert(0, "--");
+
+            y = int.Parse(DropDownList_youki_year.SelectedValue);
+            if (DropDownList_youki_month.SelectedValue != "--")
+            {
+
+                m = int.Parse(DropDownList_youki_month.SelectedValue);
+                maxday = GetDateMax(y, m);
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_youki_day.Items.Insert(i, i.ToString());
+                }
+
+            }
+            else
+            {
+                maxday = 31;
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_youki_day.Items.Insert(i, i.ToString());
+                }
+            }
+
+            //load
+            if (memory1 == "0")
+            {
+                memory1 = "--";
+            }
+
+            DropDownList_youki_day.SelectedValue = memory1;
+            //---------------------------------------------------------------------------------
+            //memory
+            memory1 = DropDownList_seiki_day.SelectedValue;
+
+            if (memory1 == "--" || memory1 == "")
+            {
+                memory1 = "0";
+            }
+
+            //初期化
+            DropDownList_seiki_day.Items.Clear();
+            DropDownList_seiki_day.Items.Insert(0, "--");
+
+            y = int.Parse(DropDownList_seiki_year.SelectedValue);
+            if (DropDownList_seiki_month.SelectedValue != "--")
+            {
+
+                m = int.Parse(DropDownList_seiki_month.SelectedValue);
+                maxday = GetDateMax(y, m);
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_seiki_day.Items.Insert(i, i.ToString());
+                }
+
+            }
+            else
+            {
+                maxday = 31;
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_seiki_day.Items.Insert(i, i.ToString());
+                }
+            }
+
+            //load
+            if (memory1 == "0")
+            {
+                memory1 = "--";
+            }
+
+            DropDownList_seiki_day.SelectedValue = memory1;
+            //---------------------------------------------------------------------------------
+            //memory
+            memory1 = DropDownList_shipping_day.SelectedValue;
+
+            if (memory1 == "--" || memory1 == "")
+            {
+                memory1 = "0";
+            }
+
+            //初期化
+            DropDownList_shipping_day.Items.Clear();
+            DropDownList_shipping_day.Items.Insert(0, "--");
+
+            y = int.Parse(DropDownList_shipping_year.SelectedValue);
+            if (DropDownList_shipping_month.SelectedValue != "--")
+            {
+
+                m = int.Parse(DropDownList_shipping_month.SelectedValue);
+                maxday = GetDateMax(y, m);
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_shipping_day.Items.Insert(i, i.ToString());
+                }
+
+            }
+            else
+            {
+                maxday = 31;
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_shipping_day.Items.Insert(i, i.ToString());
+                }
+            }
+
+            //load
+            if (memory1 == "0")
+            {
+                memory1 = "--";
+            }
+
+            DropDownList_shipping_day.SelectedValue = memory1;
+            //---------------------------------------------------------------------------------
+            //memory
+            memory1 = DropDownList_receive_day.SelectedValue;
+
+            if (memory1 == "--" || memory1 == "")
+            {
+                memory1 = "0";
+            }
+
+            //初期化
+            DropDownList_receive_day.Items.Clear();
+            DropDownList_receive_day.Items.Insert(0, "--");
+
+            y = int.Parse(DropDownList_receive_year.SelectedValue);
+            if (DropDownList_receive_month.SelectedValue != "--")
+            {
+
+                m = int.Parse(DropDownList_receive_month.SelectedValue);
+                maxday = GetDateMax(y, m);
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_receive_day.Items.Insert(i, i.ToString());
+                }
+
+            }
+            else
+            {
+                maxday = 31;
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_receive_day.Items.Insert(i, i.ToString());
+                }
+            }
+
+            //load
+            if (memory1 == "0")
+            {
+                memory1 = "--";
+            }
+
+            DropDownList_receive_day.SelectedValue = memory1;
+            //---------------------------------------------------------------------------------
+            //memory
+            memory1 = DropDownList_send_d_day.SelectedValue;
+
+            if (memory1 == "--" || memory1 == "")
+            {
+                memory1 = "0";
+            }
+
+            //初期化
+            DropDownList_send_d_day.Items.Clear();
+            DropDownList_send_d_day.Items.Insert(0, "--");
+
+            y = int.Parse(DropDownList_send_d_year.SelectedValue);
+            if (DropDownList_send_d_month.SelectedValue != "--")
+            {
+
+                m = int.Parse(DropDownList_send_d_month.SelectedValue);
+                maxday = GetDateMax(y, m);
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_send_d_day.Items.Insert(i, i.ToString());
+                }
+
+            }
+            else
+            {
+                maxday = 31;
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_send_d_day.Items.Insert(i, i.ToString());
+                }
+            }
+
+            //load
+            if (memory1 == "0")
+            {
+                memory1 = "--";
+            }
+
+            DropDownList_send_d_day.SelectedValue = memory1;
+            //---------------------------------------------------------------------------------
+            //memory
+            memory1 = DropDownList_send_day.SelectedValue;
+
+            if (memory1 == "--" || memory1 == "")
+            {
+                memory1 = "0";
+            }
+
+            //初期化
+            DropDownList_send_day.Items.Clear();
+            DropDownList_send_day.Items.Insert(0, "--");
+
+            y = int.Parse(DropDownList_send_year.SelectedValue);
+            if (DropDownList_send_month.SelectedValue != "--")
+            {
+
+                m = int.Parse(DropDownList_send_month.SelectedValue);
+                maxday = GetDateMax(y, m);
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_send_day.Items.Insert(i, i.ToString());
+                }
+
+            }
+            else
+            {
+                maxday = 31;
+                memory1 = Math.Min(int.Parse(memory1), maxday).ToString();
+                for (i = 1; i <= maxday; i++)
+                {
+                    DropDownList_send_day.Items.Insert(i, i.ToString());
+                }
+            }
+
+            //load
+            if (memory1 == "0")
+            {
+                memory1 = "--";
+            }
+
+            DropDownList_send_day.SelectedValue = memory1;
+            //---------------------------------------------------------------------------------
         }
 
 
@@ -652,7 +1095,7 @@ namespace WhereEver.Money
         }
 
 
-        protected void grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void Grid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             //好きなコードを入れて下さい。
 
@@ -944,6 +1387,292 @@ namespace WhereEver.Money
 
                 //行の色変更（選択行を強調表示）
                 GridView_CF.Rows[args].BackColor = System.Drawing.Color.Red;
+
+            }
+
+            // コマンド名が“RNRemove”の場合にのみ処理（独自の削除ボタン）
+            if (e.CommandName == "RNRemove")
+            {
+
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
+
+                string uuid = GridView_Rental.Rows[args].Cells[0].Text;
+                ClassLibrary.RentalClass.SetT_RentalDelete(Global.GetConnection(), uuid);
+
+                if(TextBox_order_uuid.Text == uuid)
+                {
+                    //セッション変数argsを初期化
+                    Session.Add("args", (string)"null");
+                    Session.Add("uuid", (string)"null");
+                    Reset_Rental();
+                }
+               
+                GridView_Rental.DataBind();
+
+
+                //消去すると１段ずれることがあるため、選択行かどうか１段ずつ検索し直す。
+                for (int i = 0; i < GridView_Rental.Rows.Count; i++)
+                {
+                    if (GridView_Rental.Rows[i].Cells[0].Text == TextBox_order_uuid.Text)
+                    {
+                        Session.Add("args", i);
+                        Session.Add("uuid", GridView_Rental.Rows[i].Cells[0].Text);
+                        //GridView_Resetの選択行を赤色にする
+                        //int resetargs = int.Parse(Session["args"].ToString());
+                        GridView_Rental.Rows[i].BackColor = System.Drawing.Color.Red;
+                        break;
+                    }
+                }
+
+
+
+
+                // コマンド名が“RNDownLoad”の場合にのみ処理（選択ボタン）
+            }
+            else if (e.CommandName == "RNDownLoad")
+            {
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
+
+                Reset_Rental();
+
+                string uuid = GridView_Rental.Rows[args].Cells[0].Text;
+                DATASET.DataSet.T_RentalRow dr = ClassLibrary.RentalClass.GetT_Rental(Global.GetConnection(), uuid);
+
+                if (Session["args"].ToString() != "null")
+                {
+                    //GridView1の色を変えた色をもとに戻す
+                    int resetargs = int.Parse(Session["args"].ToString());
+                    GridView_Rental.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
+                }
+
+                if (dr == null)
+                {
+                    //Fatal Error
+                    return;
+                }
+
+                Session.Add("uuid", uuid);
+
+                //編集テーブルに代入
+                SetMaxYear();
+
+                if (!dr.IsNull("uuid"))
+                {
+                    TextBox_order_uuid.Text = dr.uuid.ToString().Trim();
+                }
+                if (!dr.IsNull("order_name"))
+                {
+                    TextBox_order_name.Text = dr.order_name.ToString().Trim();
+                }
+                if (!dr.IsNull("order_rest"))
+                {
+                    TextBox_order_rest.Text = dr.order_rest.ToString().Trim();
+                }
+                if (!dr.IsNull("send_rest"))
+                {
+                    TextBox_send_rest.Text = dr.send_rest.ToString().Trim();
+                }
+                if (!dr.IsNull("rental_name"))
+                {
+                    TextBox_rental_name.Text = dr.rental_name.ToString().Trim();
+                }
+                if (!dr.IsNull("rental_type"))
+                {
+                    TextBox_rental_type.Text = dr.rental_type.ToString().Trim();
+                }
+                if (!dr.IsNull("rental_tanka"))
+                {
+                    TextBox_rental_tanka.Text = dr.rental_tanka.ToString().Trim();
+                }
+                if (!dr.IsNull("rental_amount"))
+                {
+                    TextBox_rental_amount.Text = dr.rental_amount.ToString().Trim();
+                }
+                if (!dr.IsNull("rental_total_amount"))
+                {
+                    TextBox_rental_total_amount.Text = dr.rental_total_amount.ToString().Trim();
+                }
+
+                if (!dr.IsNull("order_date"))
+                {
+                    DropDownList_order_year.SelectedValue = dr.order_date.Year.ToString();
+                    DropDownList_order_month.SelectedValue = dr.order_date.Month.ToString();
+                    SetMaxDate();
+                    DropDownList_order_day.SelectedValue = dr.order_date.Day.ToString();
+                }
+                else
+                {
+                    DropDownList_order_year.SelectedValue = DateTime.Now.Year.ToString();
+                    DropDownList_order_month.SelectedValue = "--";
+                    SetMaxDate();
+                    DropDownList_order_day.SelectedValue = "--";
+                }
+
+                if (!dr.IsNull("order_youki"))
+                {
+                    if (dr.order_youki.Year != 0001)
+                    {
+                        DropDownList_youki_year.SelectedValue = dr.order_youki.Year.ToString();
+                        DropDownList_youki_month.SelectedValue = dr.order_youki.Month.ToString();
+                        SetMaxDate();
+                        DropDownList_youki_day.SelectedValue = dr.order_youki.Day.ToString();
+                    }
+                    else
+                    {
+                        DropDownList_youki_year.SelectedValue = DateTime.Now.Year.ToString();
+                        DropDownList_youki_month.SelectedValue = "--";
+                        SetMaxDate();
+                        DropDownList_youki_day.SelectedValue = "--";
+                    }
+                }
+                else
+                {
+                    DropDownList_youki_year.SelectedValue = DateTime.Now.Year.ToString();
+                    DropDownList_youki_month.SelectedValue = "--";
+                    SetMaxDate();
+                    DropDownList_youki_day.SelectedValue = "--";
+                }
+
+                if (!dr.IsNull("order_seiki"))
+                {
+                    if (dr.order_seiki.Year != 0001)
+                    {
+                        DropDownList_seiki_year.SelectedValue = dr.order_seiki.Year.ToString();
+                        DropDownList_seiki_month.SelectedValue = dr.order_seiki.Month.ToString();
+                        SetMaxDate();
+                        DropDownList_seiki_day.SelectedValue = dr.order_seiki.Day.ToString();
+                    }
+                    else
+                    {
+                        DropDownList_seiki_year.SelectedValue = DateTime.Now.Year.ToString();
+                        DropDownList_seiki_month.SelectedValue = "--";
+                        SetMaxDate();
+                        DropDownList_seiki_day.SelectedValue = "--";
+                    }
+                }
+                else
+                {
+                    DropDownList_seiki_year.SelectedValue = DateTime.Now.Year.ToString();
+                    DropDownList_seiki_month.SelectedValue = "--";
+                    SetMaxDate();
+                    DropDownList_seiki_day.SelectedValue = "--";
+                }
+
+                if (!dr.IsNull("order_shipping_date"))
+                {
+                    if (dr.order_shipping_date.Year != 0001)
+                    {
+                        DropDownList_shipping_year.SelectedValue = dr.order_shipping_date.Year.ToString();
+                        DropDownList_shipping_month.SelectedValue = dr.order_shipping_date.Month.ToString();
+                        SetMaxDate();
+                        DropDownList_shipping_day.SelectedValue = dr.order_shipping_date.Day.ToString();
+                    }
+                    else
+                    {
+                        DropDownList_shipping_year.SelectedValue = DateTime.Now.Year.ToString();
+                        DropDownList_shipping_month.SelectedValue = "--";
+                        SetMaxDate();
+                        DropDownList_shipping_day.SelectedValue = "--";
+                    }
+                }
+                else
+                {
+                    DropDownList_shipping_year.SelectedValue = DateTime.Now.Year.ToString();
+                    DropDownList_shipping_month.SelectedValue = "--";
+                    SetMaxDate();
+                    DropDownList_shipping_day.SelectedValue = "--";
+                }
+
+                if (!dr.IsNull("receive_date"))
+                {
+                    if (dr.receive_date.Year != 0001)
+                    {
+                        DropDownList_receive_year.SelectedValue = dr.receive_date.Year.ToString();
+                        DropDownList_receive_month.SelectedValue = dr.receive_date.Month.ToString();
+                        SetMaxDate();
+                        DropDownList_receive_day.SelectedValue = dr.receive_date.Day.ToString();
+                    }
+                    else
+                    {
+                        DropDownList_receive_year.SelectedValue = DateTime.Now.Year.ToString();
+                        DropDownList_receive_month.SelectedValue = "--";
+                        SetMaxDate();
+                        DropDownList_receive_day.SelectedValue = "--";
+                    }
+                }
+                else
+                {
+                    DropDownList_receive_year.SelectedValue = DateTime.Now.Year.ToString();
+                    DropDownList_receive_month.SelectedValue = "--";
+                    SetMaxDate();
+                    DropDownList_receive_day.SelectedValue = "--";
+                }
+
+                if (!dr.IsNull("send_deadline"))
+                {
+                    if (dr.send_deadline.Year != 0001)
+                    {
+                        DropDownList_send_d_year.SelectedValue = dr.send_deadline.Year.ToString();
+                        DropDownList_send_d_month.SelectedValue = dr.send_deadline.Month.ToString();
+                        SetMaxDate();
+                        DropDownList_send_d_day.SelectedValue = dr.send_deadline.Day.ToString();
+                    }
+                    else
+                    {
+                        DropDownList_send_d_year.SelectedValue = DateTime.Now.Year.ToString();
+                        DropDownList_send_d_month.SelectedValue = "--";
+                        SetMaxDate();
+                        DropDownList_send_d_day.SelectedValue = "--";
+                    }
+                }
+                else
+                {
+                    DropDownList_send_d_year.SelectedValue = DateTime.Now.Year.ToString();
+                    DropDownList_send_d_month.SelectedValue = "--";
+                    SetMaxDate();
+                    DropDownList_send_d_day.SelectedValue = "--";
+                }
+
+                if (!dr.IsNull("send_date"))
+                {
+                    if (dr.send_date.Year != 0001)
+                    {
+                        DropDownList_send_year.SelectedValue = dr.send_date.Year.ToString();
+                        DropDownList_send_month.SelectedValue = dr.send_date.Month.ToString();
+                        SetMaxDate();
+                        DropDownList_send_day.SelectedValue = dr.send_date.Day.ToString();
+                    }
+                    else
+                    {
+                        DropDownList_send_year.SelectedValue = DateTime.Now.Year.ToString();
+                        DropDownList_send_month.SelectedValue = "--";
+                        SetMaxDate();
+                        DropDownList_send_day.SelectedValue = "--";
+                    }
+                }
+                else
+                {
+                    DropDownList_send_year.SelectedValue = DateTime.Now.Year.ToString();
+                    DropDownList_send_month.SelectedValue = "--";
+                    SetMaxDate();
+                    DropDownList_send_day.SelectedValue = "--";
+                }
+
+                GridView_Rental.DataBind();
+
+                //新たに色を変更する行を記憶
+                Session.Add("args", args);
+
+                //行の色変更（選択行を強調表示）
+                GridView_Rental.Rows[args].BackColor = System.Drawing.Color.Red;
 
             }
 
@@ -1650,6 +2379,238 @@ namespace WhereEver.Money
             DropDownList_CF_day.SelectedValue = "1";
         }
 
+        //-----------------------------------------------------------------------------------
+
+        protected void Push_Rental(object sender, EventArgs e)
+        {
+            if (Panel_Rental.Visible)
+            {
+                Panel_Rental.Visible = false;
+            }
+            else
+            {
+                Panel_Rental.Visible = true;
+            }
+        }
+
+        protected void Push_Rental_Correct(object sender, EventArgs e)
+        {
+
+            DateTime? order_date;
+            DateTime? youki_date;
+            DateTime? seiki_date;
+            DateTime? shipping_date;
+            DateTime? receive_date;
+            DateTime? send_d_date;
+            DateTime? send_date;
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(HtmlEncode(DropDownList_order_year.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_order_month.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_order_day.Text));
+            if (sb.ToString().Contains("--")){
+                order_date = DateTime.MinValue;
+            }
+            else
+            {
+                order_date = DateTime.Parse(sb.ToString());
+            }
+
+            sb = new StringBuilder();
+            sb.Append(HtmlEncode(DropDownList_youki_year.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_youki_month.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_youki_day.Text));
+            if (sb.ToString().Contains("--")){
+                youki_date = DateTime.MinValue;
+            }
+            else
+            {
+                youki_date = DateTime.Parse(sb.ToString());
+            }
+
+            sb = new StringBuilder();
+            sb.Append(HtmlEncode(DropDownList_seiki_year.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_seiki_month.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_seiki_day.Text));
+            if (sb.ToString().Contains("--")){
+                seiki_date = DateTime.MinValue;
+            }
+            else
+            {
+                seiki_date = DateTime.Parse(sb.ToString());
+            }
+
+            sb = new StringBuilder();
+            sb.Append(HtmlEncode(DropDownList_shipping_year.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_shipping_month.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_shipping_day.Text));
+            if (sb.ToString().Contains("--")){
+                shipping_date = DateTime.MinValue;
+            }
+            else
+            {
+                shipping_date = DateTime.Parse(sb.ToString());
+            }
+
+            sb = new StringBuilder();
+            sb.Append(HtmlEncode(DropDownList_receive_year.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_receive_month.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_receive_day.Text));
+            if (sb.ToString().Contains("--")){
+                receive_date = DateTime.MinValue;
+            }
+            else
+            {
+                receive_date = DateTime.Parse(sb.ToString());
+            }
+
+            sb = new StringBuilder();
+            sb.Append(HtmlEncode(DropDownList_send_d_year.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_send_d_month.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_send_d_day.Text));
+            if (sb.ToString().Contains("--")){
+                send_d_date = DateTime.MinValue;
+            }
+            else
+            {
+                send_d_date = DateTime.Parse(sb.ToString());
+            }
+
+            sb = new StringBuilder();
+            sb.Append(HtmlEncode(DropDownList_send_year.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_send_month.Text));
+            sb.Append("/");
+            sb.Append(HtmlEncode(DropDownList_send_day.Text));
+            if (sb.ToString().Contains("--")){
+                send_date = DateTime.MinValue;
+            }
+            else
+            {
+                send_date = DateTime.Parse(sb.ToString());
+            }
+
+
+            //id
+            string id = HtmlEncode(SessionManager.User.M_User.id).Trim();
+            //uuid
+            string uuid;
+            if (TextBox_order_uuid.Text == "")
+            {
+                uuid = Guid.NewGuid().ToString().Trim();
+            }
+            else
+            {
+                uuid = HtmlEncode(TextBox_order_uuid.Text).Trim();
+            }
+            //発注者名
+            string order_name = HtmlEncode(TextBox_order_name.Text);
+            //リース商品名、リース商品タイプ
+            string rental_name = HtmlEncode(TextBox_rental_name.Text);
+            string rental_type = HtmlEncode(TextBox_rental_type.Text);
+            //発注残、返却残
+            int.TryParse(HtmlEncode(TextBox_order_rest.Text), System.Globalization.NumberStyles.Currency, null, out int order_rest);
+            int.TryParse(HtmlEncode(TextBox_send_rest.Text), System.Globalization.NumberStyles.Currency, null, out int send_rest);
+            //単価、個数
+            string rental_tanka = HtmlEncode(TextBox_rental_tanka.Text);
+            string rental_amount = HtmlEncode(TextBox_rental_amount.Text);
+            int.TryParse(rental_tanka, System.Globalization.NumberStyles.Currency, null, out int rental_tanka_value);
+            int.TryParse(rental_amount, System.Globalization.NumberStyles.Currency, null, out int rental_amount_value);
+            //合計費用
+            TextBox_rental_total_amount.Text = String.Format("{0:C}", rental_tanka_value * rental_amount_value);
+            int rental_total_amount = rental_tanka_value * rental_amount_value;
+
+            if (ClassLibrary.RentalClass.GetT_Rental(Global.GetConnection(), uuid) == null)
+            {
+                //新規登録
+                ClassLibrary.RentalClass.SetT_RentalInsert(Global.GetConnection(), uuid, order_date, order_name, youki_date, seiki_date, order_rest, shipping_date, receive_date, send_d_date, send_rest, send_date, rental_name, rental_type, rental_tanka_value, rental_amount_value, rental_total_amount);
+            }
+            else
+            {
+                //更新登録
+                ClassLibrary.RentalClass.SetT_RentalUpdate(Global.GetConnection(), uuid, order_date, order_name, youki_date, seiki_date, order_rest, shipping_date, receive_date, send_d_date, send_rest, send_date, rental_name, rental_type, rental_tanka_value, rental_amount_value, rental_total_amount);
+            }
+
+            GridView_Rental.DataBind();
+
+            /*
+            if (Session["args"].ToString() != "null")
+            {
+                int resetargs = int.Parse(Session["args"].ToString());
+                if (GridView_Rental.Rows[resetargs].Cells[0].Text == uuid)
+                {
+                    //編集中なら該当uuidを赤色にする
+                    GridView_Rental.Rows[resetargs].BackColor = System.Drawing.Color.Red;
+                }
+            }
+            */
+
+            for (int i = 0; i < GridView_Rental.Rows.Count; i++)
+            {
+                if (GridView_Rental.Rows[i].Cells[0].Text == TextBox_order_uuid.Text)
+                {
+                    Session.Add("args", i);
+                    Session.Add("uuid", GridView_Rental.Rows[i].Cells[0].Text);
+                    //GridView_Resetの選択行を赤色にする
+                    //int resetargs = int.Parse(Session["args"].ToString());
+                    GridView_Rental.Rows[i].BackColor = System.Drawing.Color.Red;
+                    break;
+                }
+            }
+
+
+        }
+
+        protected void Change_Rental(object sender, EventArgs e)
+        {
+            //単価、個数
+            string rental_tanka = HtmlEncode(TextBox_rental_tanka.Text);
+            string rental_amount = HtmlEncode(TextBox_rental_amount.Text);
+            int.TryParse(rental_tanka, System.Globalization.NumberStyles.Currency, null, out int rental_tanka_value);
+            int.TryParse(rental_amount, System.Globalization.NumberStyles.Currency, null, out int rental_amount_value);
+            //合計費用
+            TextBox_rental_total_amount.Text = String.Format("{0:C}", rental_tanka_value * rental_amount_value);
+            int rental_total_amount = rental_tanka_value * rental_amount_value;
+            //int rental_total_amount = rental_tanka_value * rental_amount_value;
+        }
+
+        protected void Reset_Rental()
+        {
+            TextBox_order_uuid.Text = "";
+            TextBox_order_name.Text = HtmlEncode(SessionManager.User.M_User.name1).Trim();
+            DropDownList_order_year.SelectedValue = DateTime.Now.Year.ToString();
+            DropDownList_order_month.SelectedValue = DateTime.Now.Month.ToString();
+            DropDownList_order_day.SelectedValue = DateTime.Now.Day.ToString();
+            TextBox_rental_tanka.Text = "0";
+            TextBox_rental_amount.Text = "0";
+            TextBox_rental_total_amount.Text = String.Format("{0:C}", 0);
+        }
+
+        protected void Push_Reset_Rental(object sender, EventArgs e)
+        {
+            TextBox_order_uuid.Text = "";
+            if (Session["args"].ToString() != "null")
+            {
+                //GridView1の色を変えた色をもとに戻す
+                int resetargs = int.Parse(Session["args"].ToString());
+                GridView_Rental.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
+            }
+            //init
+            Session.Add("uuid", "null");
+            Session.Add("args", "null");
+        }
 
 
     }

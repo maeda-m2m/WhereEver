@@ -98,8 +98,8 @@
 
 
                 <div class="Edit_btn_space">
-                  <asp:Button ID="Button_EditTop" runat="server" CssClass="btn_loginlist" Text="お知らせ編集" OnClick="btnEditTop_Click" PostBackUrl="#" />
-                  <asp:Button ID="Button_EditWeather" runat="server" CssClass="btn_loginlist" Text="天気予報編集" OnClick="btnEditWeather_Click" PostBackUrl="#" />
+                  <asp:Button ID="Button_EditTop" runat="server" CssClass="btn_loginlist" Text="お知らせ編集" OnClick="BtnEditTop_Click" PostBackUrl="#" />
+                  <asp:Button ID="Button_EditWeather" runat="server" CssClass="btn_loginlist" Text="天気予報編集" OnClick="BtnEditWeather_Click" PostBackUrl="#" />
                 </div>
 
                   <asp:Panel ID="Panel_EditTop" runat="server" Visible="false">
@@ -114,10 +114,10 @@
 
                     <div class="center">
                         <div class="Edit_btn_space">
-                        <asp:Button ID="Button_ReformTop" runat="server" CssClass="btn_loginlist" Text="更新" OnClick="btnReformTop_Click" />
-                        <asp:Button ID="Button_ReformTopEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformTopEnd_Click" />
-                        <asp:Button ID="Button_ReformDelete" runat="server" CssClass="btn_loginlist" Text="全消去" OnClick="btnReformTopDel_Click" PostBackUrl="#edittop" />
-                        <asp:Button ID="Button_ReformReload" runat="server" CssClass="btn_loginlist" Text="全取り消し" OnClick="btnReformTopReload_Click" PostBackUrl="#edittop" />
+                        <asp:Button ID="Button_ReformTop" runat="server" CssClass="btn_loginlist" Text="更新" OnClick="BtnReformTop_Click" />
+                        <asp:Button ID="Button_ReformTopEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="BtnReformTopEnd_Click" />
+                        <asp:Button ID="Button_ReformDelete" runat="server" CssClass="btn_loginlist" Text="全消去" OnClick="BtnReformTopDel_Click" PostBackUrl="#edittop" />
+                        <asp:Button ID="Button_ReformReload" runat="server" CssClass="btn_loginlist" Text="全取り消し" OnClick="BtnReformTopReload_Click" PostBackUrl="#edittop" />
                         </div>
                     </div>
 
@@ -190,8 +190,8 @@
                             <div class="center">
                                 <div class="Edit_btn_space">
                                 <p><asp:Label ID="Label_WeatherResult" runat="server" Text=""></asp:Label></p>
-                                <asp:Button ID="Button_ReformWeather" runat="server" CssClass="btn_loginlist" Text="追加/更新" OnClick="btnReformWeather_Click" />
-                                <asp:Button ID="Button_ReformWeatherEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="btnReformWeatherEnd_Click" />
+                                <asp:Button ID="Button_ReformWeather" runat="server" CssClass="btn_loginlist" Text="追加/更新" OnClick="BtnReformWeather_Click" />
+                                <asp:Button ID="Button_ReformWeatherEnd" runat="server" CssClass="btn_loginlist" Text="閉じる" OnClick="BtnReformWeatherEnd_Click" />
                                 </div>
                             </div><%-- center --%>
                    </div><%-- Edit --%>
@@ -212,8 +212,8 @@
         <div class ="bg_test">
             <table class="bg_test-text">
                     <tr>
-                        <td><asp:Button ID="btnOut" runat="server" CssClass="btn_loginlist" Text="ログアウト" OnClick="btnOut_Click" /></td>
-                        <td><asp:Button ID="btnKanri" runat="server" CssClass="btn_loginlist" Text="マイページ" OnClick="btnKanri_Click" /></td>
+                        <td><asp:Button ID="btnOut" runat="server" CssClass="btn_loginlist" Text="ログアウト" OnClick="BtnOut_Click" /></td>
+                        <td><asp:Button ID="btnKanri" runat="server" CssClass="btn_loginlist" Text="マイページ" OnClick="BtnKanri_Click" /></td>
                     </tr>
 
                     <tr>

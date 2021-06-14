@@ -633,20 +633,20 @@ namespace WhereEver
             }
         }
 
-        protected void btnOut_Click(object sender, EventArgs e)
+        protected void BtnOut_Click(object sender, EventArgs e)
         {
             Class.Logout.InsertLogoutList(Global.GetConnection());
             this.Response.Redirect("Login.aspx", false);
         }
 
-        protected void btnKanri_Click(object sender, EventArgs e)
+        protected void BtnKanri_Click(object sender, EventArgs e)
         {
             this.Response.Redirect("../管理ページ/Kanri.aspx", false);
         }
 
 
 
-        protected void btnReformTop_Click(object sender, EventArgs e)
+        protected void BtnReformTop_Click(object sender, EventArgs e)
         {
             //sql更新 ※全部Nullだと更新できません。DBのDateTimeには何か値を入れておいて下さい。
 
@@ -669,12 +669,12 @@ namespace WhereEver
 
 
 
-        protected void btnReformTopDel_Click(object sender, EventArgs e)
+        protected void BtnReformTopDel_Click(object sender, EventArgs e)
         {
             TextBox_EditTop.Text = "";
         }
 
-        protected void btnReformTopReload_Click(object sender, EventArgs e)
+        protected void BtnReformTopReload_Click(object sender, EventArgs e)
         {
             //再読み込み
             DATASET.DataSet.T_TopPageRow dr = Class.Toppage.GetT_TopPage(Global.GetConnection());
@@ -691,7 +691,7 @@ namespace WhereEver
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void btnReformWeather_Click(object sender, EventArgs e)
+        protected void BtnReformWeather_Click(object sender, EventArgs e)
         {
             //宣言
             DateTime date;
@@ -779,7 +779,7 @@ namespace WhereEver
 
 
 
-        protected void btnEditTop_Click(object sender, EventArgs e)
+        protected void BtnEditTop_Click(object sender, EventArgs e)
         {
             DATASET.DataSet.T_TopPageRow dr = Class.Toppage.GetT_TopPage(Global.GetConnection());
             if (dr != null)
@@ -797,7 +797,7 @@ namespace WhereEver
 
 
 
-        protected void btnReformTopEnd_Click(object sender, EventArgs e)
+        protected void BtnReformTopEnd_Click(object sender, EventArgs e)
         {
             Button_EditTop.Visible = true;
             Panel_EditTop.Visible = false;
@@ -814,7 +814,7 @@ namespace WhereEver
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void btnReformWeatherEnd_Click(object sender, EventArgs e)
+        protected void BtnReformWeatherEnd_Click(object sender, EventArgs e)
         {
             Button_EditTop.Visible = true;
 
@@ -831,7 +831,7 @@ namespace WhereEver
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void btnEditWeather_Click(object sender, EventArgs e)
+        protected void BtnEditWeather_Click(object sender, EventArgs e)
         {
             Button_EditTop.Visible = false;
 

@@ -271,6 +271,7 @@
     <Compile Include="ClassLibrary\Matrix.cs" />
     <Compile Include="ClassLibrary\MOMClass.cs" />
     <Compile Include="ClassLibrary\QRCodeClass.cs" />
+    <Compile Include="ClassLibrary\RentalClass.cs" />
     <Compile Include="ClassLibrary\ShinseiLog.cs" />
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
     <Compile Include="ClassLibrary\Soukan.cs" />
