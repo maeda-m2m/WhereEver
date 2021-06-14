@@ -1,0 +1,135 @@
+﻿@charset "UTF-8";
+/*---------------------------------------------------------------------------*/
+html {
+    font-size: 100%;
+}
+
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: gainsboro;
+}
+
+/*上のボタンメニュー一覧のCSS*/
+/*---------------------------------------------------------------------------*/
+.Center-Button {
+    margin: 0 auto;
+    background-color: white;
+    width: 700px;
+    margin-bottom: 30px;
+}
+
+#TextBox1 {
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+    width: 300px;
+}
+
+#Button3 {
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+}
+
+#Button1 {
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+    margin-left: 70px;
+}
+
+#Button2 {
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+}
+
+
+/*---------------------------------------------------------------------------*/
+/*メインの二つの要素を横並びにするCSS*/
+.display-flex {
+    display: flex;
+    justify-content: center;
+}
+/*---------------------------------------------------------------------------*/
+/*データグリッドのCSS*/
+
+#Label4 {
+    /*検索結果をデータグリッドの上に表示するためのラベル*/
+    font-size: 20px;
+}
+
+#dg1 {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.Center-dg {
+    text-align: center;
+    background-color: white;
+}
+
+/*---------------------------------------------------------------------------*/
+/*右のデータを表示するラベルのCSS*/
+
+
+.Center-Label {
+    background-color: white;
+    font-size: 15px;
+    padding: 10px 10px 10px 10px;
+    height: auto;
+    width: 800px;
+    margin: 0 auto;
+}
+
+#Label1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+#Label2 {
+    text-align: left;
+    font-size: 20px;
+}
+
+#Label3 {
+    object-fit: contain;
+}
+
+/*---------------------------------------------------------------------------*/
+
+/*ヘッダーのメニュ一覧のCSS*/
+/*---------------------------------------------------------------------------*/
+.btn {
+    width: 150px;
+    height: 40px;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.3em 0.5em;
+    text-decoration: none;
+    color: #000000;
+    background: #ececec;
+    transition: .4s;
+    font-size: 1em;
+    text-align: center;
+}
+
+    .btn:hover {
+        background: #000000;
+        color: white;
+        cursor: pointer;
+    }
+
+
+.label {
+    font-size: 1em;
+}
+
+.All {
+    text-align: center;
+    font-weight: bold;
+}
+
+/*---------------------------------------------------------------------------*/
