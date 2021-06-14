@@ -83,7 +83,7 @@ namespace WhereEver.Project_System
             {
                 DATASET.DataSet.T_PdbKanriRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PdbKanriRow;
                 
-                if (dr.PBigname != bigname)
+                if (dr.PBigname != bigname && dr.PMiddleid==1)
                 {
                     e.Item.Cells[0].Text = "<font color = white>"+dr.PBigname.ToString();
                     bigname = dr.PBigname;
@@ -112,6 +112,7 @@ namespace WhereEver.Project_System
                 else
                 {
                     e.Item.Cells[0].Text = "<font color = black>"+dr.PBigname.ToString();
+
                 }
                 e.Item.Cells[2].Text = dr.PMiddleid.ToString();
                 if (dr.PMiddleid == 1)
@@ -301,8 +302,6 @@ namespace WhereEver.Project_System
             
             DgPKanri.EditItemIndex = e.Item.ItemIndex;
             CreateDataGrid(SessionManager.project.PdbRow.Pid);
-            Button uebig = e.Item.FindControl("uebig") as Button;
-            uebig.BackColor = Color.Black;
         }
 
         protected void DgPKanri_CancelCommand(object source, DataGridCommandEventArgs e)
