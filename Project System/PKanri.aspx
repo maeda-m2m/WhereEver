@@ -37,7 +37,7 @@
                             OnItemCommand="DgPKanri_ItemCommand"
                             Width="100%" CssClass="DgPKanri" Font-Bold="True" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False">
                             <Columns>
-                                <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ReadOnly="True"/>
+                                <asp:BoundColumn DataField="PBigname" HeaderText="大項目" ReadOnly="True" HeaderStyle-Width="200px"/>
                                 <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
                                         <ItemTemplate>
                                             <asp:Button ID="uebig" Text="↑" runat="server" CommandName="uebig" BackColor="Black" BorderWidth="0px"/><br>
@@ -52,11 +52,11 @@
                                             <asp:Button ID="sitamiddle" Text="↓" runat="server" CommandName="sitamiddle" BackColor="Black" BorderWidth="0px"/>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
-                                <asp:BoundColumn DataField="PMiddlestart" HeaderText="開始"/>
-                                <asp:BoundColumn DataField="PMiddleover" HeaderText="終了"/>
+                                <asp:BoundColumn DataField="PMiddlestart" HeaderText="開始" HeaderStyle-Width="200px"/>
+                                <asp:BoundColumn DataField="PMiddleover" HeaderText="終了" HeaderStyle-Width="200px"/>
                                 <asp:BoundColumn ReadOnly="True" HeaderStyle-Width="40px"/>
-                                <asp:BoundColumn DataField="PTorokutime" HeaderText="最新編集日付" ReadOnly="True"/>
-                                <asp:BoundColumn DataField="PTorokusya" HeaderText="最新編集者" ReadOnly="True"/>
+                                <asp:BoundColumn DataField="PTorokutime" HeaderText="最新編集日付" ReadOnly="True" HeaderStyle-Width="200px"/>
+                                <asp:BoundColumn DataField="PTorokusya" HeaderText="最新編集者" ReadOnly="True" HeaderStyle-Width="100px"/>
                                 
                                 <asp:EditCommandColumn EditText="<font color = red>編集" CancelText="<font color = red>取消" UpdateText="<font color = red>保存" HeaderStyle-Width="100px" HeaderText="編集用ボタン">
                                 </asp:EditCommandColumn>
