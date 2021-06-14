@@ -709,7 +709,7 @@ namespace WhereEver
                     Label_WeatherResult.Text = "※天気を選択して下さい。";
                     return;
                 }
-                else if(DropDownList_WeatherN.SelectedValue != "")
+                else if(DropDownList_WeatherN.SelectedValue == "")
                 {
                     sb.Append(DropDownList_Weather2.SelectedValue);
                 }
