@@ -92,6 +92,9 @@ namespace WhereEver
                     @sb.Append("）");
                 }
                 @sb.Append("</li>");
+                //-------------------------------------------------------------------------------
+                int counter = 0;
+                StringBuilder weatherComment = new StringBuilder();
                 for (int i = 0; i < wdt.Count; i++)
                 {
 
@@ -100,8 +103,157 @@ namespace WhereEver
                         continue;
                     }
 
+                    counter++;
+                    if(counter == 1)
+                    {
+                        //今日の天気
+                        if (!wdt[i].IsNull(@"Weather"))
+                        {
+                            if (wdt[i].Weather.Contains("雨"))
+                            {
+                                @weatherComment.Append("今日は雨が降りそうです。<br />");
+                            }
+                            else
+                            {
+                                @weatherComment.Append("今日の天気は");
+                                @weatherComment.Append(wdt[i].Weather);
+                                @weatherComment.Append("です。");
+                                if (!wdt[i].IsNull(@"Rain_p"))
+                                {
+                                    if(wdt[i].Rain_p >= 40)
+                                    {
+                                        @weatherComment.Append("折り畳み傘を持っておくとよいでしょう。<br />");
+                                    }
+                                }
+                            }
+                            //---------------------------------------------------------------------------------
+                            if (!wdt[i].IsNull(@"MaxTemp"))
+                            {
+                                @weatherComment.Append("最高気温は");
+                                @weatherComment.Append("<span class=\"hot\">");
+                                @weatherComment.Append(wdt[i].MaxTemp);
+                                @weatherComment.Append("℃</span>、");
+                            }
+                            if (!wdt[i].IsNull(@"MinTemp"))
+                            {
+                                @weatherComment.Append("最低気温は");
+                                @weatherComment.Append("<span class=\"cold\">");
+                                @weatherComment.Append(wdt[i].MinTemp);
+                                @weatherComment.Append("℃</span>です。");
+                            }
+                            @weatherComment.Append("<br />");
 
-                        @sb.Append("<li>");
+                            if (!wdt[i].IsNull(@"MaxTemp"))
+                            {
+                                if (!wdt[i].IsNull(@"MinTemp"))
+                                {
+                                    if (wdt[i].MaxTemp - wdt[i].MinTemp >= 10)
+                                    {
+                                        @weatherComment.Append("寒暖差の激しい１日になりそうです。<br />");
+                                    }
+                                    else
+                                    {
+                                        if (wdt[i].MaxTemp >= 30 && wdt[i].MaxTemp < 34)
+                                        {
+                                            @weatherComment.Append("暖かい１日になりそうです。<br />");
+                                        }
+                                        else if (wdt[i].MaxTemp >= 34)
+                                        {
+                                            @weatherComment.Append("熱中症に気を付けて下さい。<br />");
+                                        }
+                                        //-------------------------------------------------------------
+                                        if (wdt[i].MinTemp <= 20 && wdt[i].MinTemp > 10)
+                                        {
+                                            @weatherComment.Append("涼しい１日になりそうです。<br />");
+                                        }
+                                        else if (wdt[i].MinTemp <= 10)
+                                        {
+                                            @weatherComment.Append("外出時は暖かい恰好でお過ごし下さい。<br />");
+                                        }
+
+                                    }
+                                }
+                            }
+                            //---------------------------------------------------------------------------------
+                        }
+                    }
+                    if (counter == 2)
+                    {
+                        //明日の天気
+                        if (!wdt[i].IsNull(@"Weather"))
+                        {
+                            @weatherComment.Append("<br />");
+                            if (wdt[i].Weather.Contains("雨"))
+                            {
+                                @weatherComment.Append("雨が降りそうです。傘を忘れないようにしましょう。<br />");
+                            }
+                            else
+                            {
+                                @weatherComment.Append("明日は");
+                                @weatherComment.Append(wdt[i].Weather);
+                                @weatherComment.Append("になるでしょう。");
+                                if (!wdt[i].IsNull(@"Rain_p"))
+                                {
+                                    if (wdt[i].Rain_p >= 40)
+                                    {
+                                        @weatherComment.Append("折り畳み傘を準備しておくとよいでしょう。");
+                                    }
+                                    @weatherComment.Append("<br />");
+                                }
+                            }
+                            //---------------------------------------------------------------------------------
+                            if (!wdt[i].IsNull(@"MaxTemp"))
+                            {
+                                @weatherComment.Append("最高気温は");
+                                @weatherComment.Append("<span class=\"hot\">");
+                                @weatherComment.Append(wdt[i].MaxTemp);
+                                @weatherComment.Append("℃</span>、");
+                            }
+                            if (!wdt[i].IsNull(@"MinTemp"))
+                            {
+                                @weatherComment.Append("最低気温は");
+                                @weatherComment.Append("<span class=\"cold\">");
+                                @weatherComment.Append(wdt[i].MinTemp);
+                                @weatherComment.Append("℃</span>です。");
+                            }
+                            @weatherComment.Append("<br />");
+
+                            if (!wdt[i].IsNull(@"MaxTemp"))
+                            {
+                                if (!wdt[i].IsNull(@"MinTemp"))
+                                {
+                                    if (wdt[i].MaxTemp - wdt[i].MinTemp >= 10)
+                                    {
+                                        @weatherComment.Append("寒暖差の激しい１日になりそうです。<br />");
+                                    }
+                                    else
+                                    {
+                                        if (wdt[i].MaxTemp >= 30 && wdt[i].MaxTemp < 34)
+                                        {
+                                            @weatherComment.Append("暖かい１日になりそうです。<br />");
+                                        }
+                                        else if (wdt[i].MaxTemp >= 34)
+                                        {
+                                            @weatherComment.Append("熱中症に気を付けて下さい。<br />");
+                                        }
+                                        //-------------------------------------------------------------
+                                        if (wdt[i].MinTemp <= 20 && wdt[i].MinTemp > 10)
+                                        {
+                                            @weatherComment.Append("涼しい１日になりそうです。<br />");
+                                        }
+                                        else if (wdt[i].MinTemp <= 10)
+                                        {
+                                            @weatherComment.Append("部屋を暖かくして快適に過ごしましょう。<br />");
+                                        }
+
+                                    }
+                                }
+                            }
+                            //---------------------------------------------------------------------------------
+                        }
+                    }
+
+                    @sb.Append("<li>");
                     if (!wdt[i].IsNull(@"Date"))
                     {
                         @sb.Append(wdt[i].Date.ToShortDateString());
@@ -137,13 +289,17 @@ namespace WhereEver
                     @sb.Append("</li>");
                 }
                 @sb.Append("</ul>");
+                @sb.Replace("（日）", "（<span class=\"hot\">日</span>）");
+                @sb.Replace("（土）", "（<span class=\"cold\">土</span>）");
                 Label_Weather.Text = sb.ToString();
                 Label_Weather2.Text = sb.ToString();
+                Label_WeatherComment.Text = weatherComment.ToString();
             }
             else
             {
                 Label_Weather.Text = @"No Data";
                 Label_Weather2.Text = @"No Data";
+                Label_WeatherComment.Text = "最新の天気予報データがありません。";
             }
 
 
@@ -552,6 +708,10 @@ namespace WhereEver
                     //不正な天気
                     Label_WeatherResult.Text = "※天気を選択して下さい。";
                     return;
+                }
+                else if(DropDownList_WeatherN.SelectedValue == "")
+                {
+                    sb.Append(DropDownList_Weather2.SelectedValue);
                 }
             }
             else
