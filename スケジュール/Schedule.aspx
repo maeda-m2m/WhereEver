@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="Schedule.css" type="text/css" />
 
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
 
@@ -61,7 +61,7 @@
             </ul>
             <h2>MySchedule</h2>
             <ul>
-                <li>田中A</li>
+
                 <li>1</li>
                 <li>2</li>
                 <li>3</li>
@@ -85,6 +85,7 @@
                 <li>
                     <asp:Button ID="Button12" runat="server" OnClick="Button1_Click" Text="印刷" /></li>
             </ul>
+            <h1 id="Image1">テストページへ</h1>
         </aside>
 
         <%--<asp:Button runat="server" ID="ButtonA" Text="社内Wiki" OnClick="ButtonA_Click" />--%>
@@ -221,28 +222,18 @@
 
 
             <section>
-                <asp:DataGrid runat="server"
-                    ID="Scdl3"
-                    AutoGenerateColumns="False"
-                    OnItemDataBound="Scdl3_ItemDataBound"
-                    OnSelectedIndexChanged="Scdl3_SelectedIndexChanged"
-                    GridLines="Vertical">
+                <asp:DataGrid runat="server" ID="Scdl3" AutoGenerateColumns="False" OnItemDataBound="Scdl3_ItemDataBound" OnSelectedIndexChanged="Scdl3_SelectedIndexChanged" GridLines="Vertical">
 
-                    <HeaderStyle Width="200px" BackColor=" #16BA00" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px"></HeaderStyle>
+                    <HeaderStyle Width="200px" BackColor=" #16BA00" ForeColor="White" VerticalAlign="Middle" Font-Size="15px" HorizontalAlign="Center"></HeaderStyle>
 
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px" />
+
 
                     <AlternatingItemStyle BackColor="#ccffcc" />
 
                     <Columns>
 
-                        <asp:TemplateColumn
-                            HeaderText="曜日"
-                            ItemStyle-Height="30px"
-                            ItemStyle-Width="30px">
-                            <HeaderStyle Wrap="true" />
+                        <asp:TemplateColumn HeaderText="曜日" ItemStyle-Height="30px" ItemStyle-Width="30px">
 
-                            <ItemStyle Wrap="true" />
 
                             <ItemTemplate>
                                 <asp:Label ID="Jikan" runat="server" Text=""></asp:Label>
@@ -251,12 +242,7 @@
 
                         </asp:TemplateColumn>
 
-                        <asp:TemplateColumn
-                            HeaderText="月"
-                            ItemStyle-Width="100px">
-                            <HeaderStyle Wrap="true" />
-
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        <asp:TemplateColumn HeaderText="月" ItemStyle-Width="150px">
 
                             <ItemTemplate>
 
@@ -267,12 +253,10 @@
 
                         </asp:TemplateColumn>
 
-                        <asp:TemplateColumn
-                            HeaderText="火"
-                            ItemStyle-Width="100px">
-                            <HeaderStyle Wrap="true" />
+                        <asp:TemplateColumn HeaderText="火" ItemStyle-Width="150px">
 
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+
+
 
                             <ItemTemplate>
 
@@ -283,11 +267,7 @@
 
                         </asp:TemplateColumn>
 
-                        <asp:TemplateColumn HeaderText="水" ItemStyle-Width="100px">
-
-                            <HeaderStyle Wrap="true" />
-
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        <asp:TemplateColumn HeaderText="水" ItemStyle-Width="150px">
 
                             <ItemTemplate>
 
@@ -298,11 +278,7 @@
 
                         </asp:TemplateColumn>
 
-                        <asp:TemplateColumn HeaderText="木" ItemStyle-Width="100px">
-
-                            <HeaderStyle Wrap="true" />
-
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        <asp:TemplateColumn HeaderText="木" ItemStyle-Width="150px">
 
                             <ItemTemplate>
                                 <asp:Label ID="ThursdayTitle" runat="server" Text=""></asp:Label>
@@ -312,11 +288,7 @@
 
                         </asp:TemplateColumn>
 
-                        <asp:TemplateColumn HeaderText="金" ItemStyle-Width="100px">
-
-                            <HeaderStyle Wrap="true" />
-
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        <asp:TemplateColumn HeaderText="金" ItemStyle-Width="150px">
 
                             <ItemTemplate>
                                 <asp:Label ID="FridayTitle" runat="server" Text=""></asp:Label>
@@ -326,11 +298,8 @@
 
                         </asp:TemplateColumn>
 
-                        <asp:TemplateColumn HeaderText="土" ItemStyle-Width="100px">
+                        <asp:TemplateColumn HeaderText="土" ItemStyle-Width="150px">
 
-                            <HeaderStyle Wrap="true" />
-
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
 
                             <ItemTemplate>
 
@@ -339,11 +308,7 @@
                             </ItemTemplate>
                         </asp:TemplateColumn>
 
-                        <asp:TemplateColumn HeaderText="日" ItemStyle-Width="100px">
-
-                            <HeaderStyle Wrap="true" />
-
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                        <asp:TemplateColumn HeaderText="日" ItemStyle-Width="150px">
 
                             <ItemTemplate>
 
@@ -363,7 +328,7 @@
 
             <section class="Center">
 
-                <asp:Panel runat="server" ID="Panel4" CssClass="Center">
+                <asp:Panel runat="server" ID="Panel4">
 
                     <asp:Button ID="Button10" runat="server" Text="検索" class="btn-flat-border" OnClick="Button10_Click" />
 
@@ -500,22 +465,22 @@
 
                         <asp:BoundColumn DataField="date" HeaderText="日付" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="200px">
 
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" />
+                            <ItemStyle HorizontalAlign="Left" />
                         </asp:BoundColumn>
 
                         <asp:BoundColumn DataField="time" HeaderText="時間" ItemStyle-Width="100px">
 
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                            <ItemStyle HorizontalAlign="Left" Width="150px" />
                         </asp:BoundColumn>
 
                         <asp:BoundColumn DataField="title" HeaderText="内容" ItemStyle-Width="100px">
 
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                            <ItemStyle HorizontalAlign="Left" Width="150px" />
                         </asp:BoundColumn>
 
                         <asp:BoundColumn DataField="name" HeaderText="担当者名" ItemStyle-Width="100px">
 
-                            <ItemStyle Wrap="true" HorizontalAlign="Left" Width="150px" />
+                            <ItemStyle HorizontalAlign="Left" Width="150px" />
                         </asp:BoundColumn>
 
 
@@ -670,7 +635,7 @@
             <section class="Center">
                 <p>現在時刻:<span id="time"></span></p>
                 <a href="#" runat="server">トップへ</a>
-                <h1 id="Image1">テストページへ</h1>
+
             </section>
 
 
@@ -684,32 +649,7 @@
 
         <script>
 
-            $(document).ready(function () {
-                $(".delete_check").on("click", function () {
-                    window.confirm('実行しますか？');
-                });
-
-            });
-
-
-
-
-
-
-            $(document).ready(function () {
-                $(".edit_focus").on("click", function () {
-                    $(this).find(".edit_focus").focus();
-                });
-            });
-
-            $(document).ready(function () {
-                $("#open_nav").on("click", function () {
-                    $("#wrapper,#aside").toggleClass("show");
-                });
-            });
-
-
-
+          
 
         </script>
 

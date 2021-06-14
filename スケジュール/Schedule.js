@@ -57,4 +57,30 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+    $(".delete_check").on("click", function () {
+        window.confirm('実行しますか？');
+    });
+
+});
+
+
+
+
+
+
+$(document).ready(function () {
+    $(".edit_focus").on("click", function () {
+        $(this).find(".edit_focus").focus();
+    });
+});
+
+$(document).ready(function () {
+    $("#open_nav").on("click", function () {
+        $("#wrapper,#aside").toggleClass("show");
+    });
+});
+
+
+
 
