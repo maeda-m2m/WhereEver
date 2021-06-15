@@ -185,7 +185,7 @@ namespace WhereEver
                             @weatherComment.Append("<br />");
                             if (wdt[i].Weather.Contains("雨"))
                             {
-                                @weatherComment.Append("雨が降りそうです。傘を忘れないようにしましょう。<br />");
+                                @weatherComment.Append("明日は雨が降りそうです。傘を忘れないようにしましょう。<br />");
                             }
                             else
                             {

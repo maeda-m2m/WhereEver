@@ -127,6 +127,7 @@
     margin-top: 2em;
     margin-bottom: 2em;
     margin-left: 1em;
+    margin-right: 1em;
 }
 
 .nav_index1 {
@@ -143,6 +144,8 @@
 .article {
     margin-left: 2em;
     margin-right: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 /*汎用　中央ぞろえ*/
