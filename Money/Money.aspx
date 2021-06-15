@@ -203,7 +203,7 @@
 
   <p class="index1">◆P/L一覧</p>
 　<p class="right">（単位：円）</p>
-        <asp:GridView ID="GridView_PL" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_PL" AllowPaging="True" AllowSorting="True" OnRowCommand="grid_RowCommand">
+        <asp:GridView ID="GridView_PL" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_PL" AllowPaging="True" AllowSorting="True" OnRowCommand="Grid_RowCommand">
             <Columns>
                 <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" HeaderStyle-CssClass="none" ItemStyle-CssClass="none" />
                 <asp:BoundField DataField="uriagedaka" HeaderText="売上高" SortExpression="uriagedaka" DataFormatString="{0:C}" />
@@ -852,7 +852,7 @@
         </p>
 
 
-            <asp:GridView ID="GridView_BS" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_BS" AllowPaging="True" AllowSorting="True" OnRowCommand="grid_RowCommand">
+            <asp:GridView ID="GridView_BS" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_BS" AllowPaging="True" AllowSorting="True" OnRowCommand="Grid_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" />
                     <asp:BoundField DataField="shisan_a" HeaderText="資産合計" SortExpression="shisan_a" DataFormatString="{0:C}" HeaderStyle-ForeColor="LightGreen" />
@@ -1122,7 +1122,7 @@
         </p>
 
 
-            <asp:GridView ID="GridView_CF" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_CF" AllowPaging="True" AllowSorting="True" OnRowCommand="grid_RowCommand">
+            <asp:GridView ID="GridView_CF" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataKeyNames="uuid" DataSourceID="SqlDataSource_CF" AllowPaging="True" AllowSorting="True" OnRowCommand="Grid_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="uuid" HeaderText="uuid" ReadOnly="True" SortExpression="uuid" />
                     <asp:BoundField DataField="ACL1" HeaderText="営業活動C/F" SortExpression="ACL1" HeaderStyle-ForeColor="LightBlue" DataFormatString="{0:C}" />
@@ -1178,6 +1178,221 @@
 
 
 </asp:Panel>
+
+
+
+<div class="noprint">
+           <span class="hr"></span>
+
+
+           <p class="index1">
+               ◆リース管理
+               <asp:Button ID="Button_Renatal" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_Rental" CausesValidation="False" />
+               　PCなどのリース品の発注/貸出/返却/延滞情報を一括管理します。</p>
+
+
+
+
+
+           <hr />
+</div>
+
+<asp:Panel ID="Panel_Rental" runat="server" Visible="false" DefaultButton="Button_Rental_Correct">
+
+<div class="noprint">
+           <span class="hr"></span>
+            <p class="center">リースを登録/変更します。</p>
+           <span class="hr"></span>
+</div>
+
+    <div class="center"><a name="Rental_TOP"></a>
+        <table class="DGTable">
+            <tr>
+                <th colspan="2" class="th_master">
+                    リース登録/管理
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    uuid
+                </th>
+                <th class="th_master">
+                    <asp:TextBox ID="TextBox_order_uuid" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" Placeholder="Null" OnTextChanged="Change_Rental" MaxLength="50" ReadOnly="true"></asp:TextBox>
+                    <asp:Button ID="Button_order_uuid_reset" CssClass="btn-flat-border-textinnner" runat="server" Text="Reset" OnClick="Push_Reset_Rental" CausesValidation="False" />
+                </th>
+            </tr>            <tr>
+                <th class="th_master">
+                    発注日
+                </th>
+                <th colspan="2" class="th_master">
+                    <asp:DropDownList ID="DropDownList_order_year" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_order_month" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_order_day" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>日
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    発注者
+                </th>
+                <th class="th_master">
+                    <asp:TextBox ID="TextBox_order_name" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" Placeholder="例：山田太郎" OnTextChanged="Change_Rental" MaxLength="50"></asp:TextBox>
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    要期
+                </th>
+                <th colspan="2" class="th_master">
+                    <asp:DropDownList ID="DropDownList_youki_year" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_youki_month" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_youki_day" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>日
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    請期
+                </th>
+                <th colspan="2" class="th_master">
+                    <asp:DropDownList ID="DropDownList_seiki_year" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_seiki_month" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_seiki_day" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>日
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    発注残
+                </th>
+                <th class="th_master">
+                    <asp:TextBox ID="TextBox_order_rest" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0" OnTextChanged="Change_Rental" MaxLength="50"></asp:TextBox>
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    出荷日
+                </th>
+                <th colspan="2" class="th_master">
+                    <asp:DropDownList ID="DropDownList_shipping_year" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_shipping_month" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_shipping_day" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>日
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    受取完了日
+                </th>
+                <th colspan="2" class="th_master">
+                    <asp:DropDownList ID="DropDownList_receive_year" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_receive_month" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_receive_day" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>日
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    返却期限日
+                </th>
+                <th colspan="2" class="th_master">
+                    <asp:DropDownList ID="DropDownList_send_d_year" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_send_d_month" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_send_d_day" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>日
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    返却残
+                </th>
+                <th class="th_master">
+                    <asp:TextBox ID="TextBox_send_rest" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0" OnTextChanged="Change_Rental" MaxLength="50"></asp:TextBox>
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    返却完了確認日
+                </th>
+                <th colspan="2" class="th_master">
+                    <asp:DropDownList ID="DropDownList_send_year" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>年
+                    <asp:DropDownList ID="DropDownList_send_month" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>月
+                    <asp:DropDownList ID="DropDownList_send_day" runat="server" OnSelectedIndexChanged="Change_Rental" CssClass="ddl_date" AutoPostBack="true" ></asp:DropDownList>日
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    リース品名
+                </th>
+                <th class="th_master">
+                    <asp:TextBox ID="TextBox_rental_name" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" Placeholder="例：m2m_rental_pc" OnTextChanged="Change_Rental" MaxLength="50"></asp:TextBox>
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    リース品種別
+                </th>
+                <th class="th_master">
+                    <asp:TextBox ID="TextBox_rental_type" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" Placeholder="例：パソコン" OnTextChanged="Change_Rental" MaxLength="50"></asp:TextBox>
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    ＠単価
+                </th>
+                <th class="th_master">
+                    <asp:TextBox ID="TextBox_rental_tanka" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0" OnTextChanged="Change_Rental" MaxLength="50" AutoPostBack="true"></asp:TextBox>
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    数量
+                </th>
+                <th class="th_master">
+                    <asp:TextBox ID="TextBox_rental_amount" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="0" OnTextChanged="Change_Rental" MaxLength="50" AutoPostBack="true"></asp:TextBox>
+                </th>
+            </tr>
+            <tr>
+                <th class="th_master">
+                    合計
+                </th>
+                <th class="th_master">
+                    <asp:TextBox ID="TextBox_rental_total_amount" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" MaxLength="50" ReadOnly="true"></asp:TextBox>
+                </th>
+            </tr>
+        </table>
+        <asp:Button ID="Button_Rental_Correct" CssClass="btn-flat-border" runat="server" Text="登録/上書き" OnClick="Push_Rental_Correct" CausesValidation="False" />
+
+
+
+
+
+
+        <asp:GridView ID="GridView_Rental" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource_Rental" CssClass="DGTable" AllowPaging="True" AllowSorting="True" OnRowCommand="Grid_RowCommand">
+            <Columns>
+                <asp:BoundField DataField="uuid" HeaderText="uuid" SortExpression="uuid" HeaderStyle-ForeColor="White" ReadOnly="true" />
+                <asp:BoundField DataField="order_date" HeaderText="発注日" SortExpression="order_date" HeaderStyle-ForeColor="White" DataFormatString="{0:yyyy/MM/dd}" />
+                <asp:BoundField DataField="order_name" HeaderText="発注担当者" SortExpression="order_name" HeaderStyle-ForeColor="White" />
+                <asp:BoundField DataField="receive_date" HeaderText="受取日" SortExpression="receive_date" HeaderStyle-ForeColor="White" DataFormatString="{0:yyyy/MM/dd}" />
+                <asp:BoundField DataField="send_deadline" HeaderText="返却期限日" SortExpression="send_deadline" HeaderStyle-ForeColor="White" DataFormatString="{0:yyyy/MM/dd}" />
+                <asp:BoundField DataField="rental_name" HeaderText="リース品名" SortExpression="rental_name" HeaderStyle-ForeColor="White" />
+                <asp:BoundField DataField="rental_type" HeaderText="リース種別" SortExpression="rental_type" HeaderStyle-ForeColor="White" />
+                <asp:BoundField DataField="rental_tanka" HeaderText="＠単価" SortExpression="rental_tanka" HeaderStyle-ForeColor="White" DataFormatString="{0:C}" />
+                <asp:BoundField DataField="rental_amount" HeaderText="数量" SortExpression="rental_amount" HeaderStyle-ForeColor="White" DataFormatString="{0:#,0}" />
+                <asp:BoundField DataField="rental_total_amount" HeaderText="合計" SortExpression="rental_total_amount" HeaderStyle-ForeColor="White" DataFormatString="{0:C}" />
+                <asp:BoundField DataField="up_day" HeaderText="最終更新日" SortExpression="up_day" HeaderStyle-ForeColor="White" />
+                    <asp:ButtonField ButtonType="Button" Text="削除" HeaderText="削除" CommandName="RNRemove" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border-mini" />
+                    </asp:ButtonField>
+                    <asp:ButtonField ButtonType="Button" Text="参照" HeaderText="編集" CommandName="RNDownLoad" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border-mini" />
+                    </asp:ButtonField>
+            </Columns>
+        </asp:GridView>
+
+
+        <asp:SqlDataSource ID="SqlDataSource_Rental" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT [uuid], [order_date], [order_name], [receive_date], [send_deadline], [rental_name], [rental_type], [rental_tanka], [rental_amount], [rental_total_amount], [up_day] FROM [T_Rental] ORDER BY [up_day] DESC">
+        </asp:SqlDataSource>
+
+
+</div>
+</asp:Panel>
+
+
 
 
         </div>

@@ -161,6 +161,7 @@
     <Content Include="スケジュール\Schedule.js" />
     <Content Include="スケジュール\test1.aspx" />
     <Content Include="スケジュール\Wiki.aspx" />
+    <Content Include="スケジュール\wiki.css" />
     <Content Include="スケジュール\Wiki_Top.aspx" />
     <Content Include="チャット\purple.jpg" />
     <Content Include="チャット\yajirusi.png" />
@@ -271,6 +272,7 @@
     <Compile Include="ClassLibrary\Matrix.cs" />
     <Compile Include="ClassLibrary\MOMClass.cs" />
     <Compile Include="ClassLibrary\QRCodeClass.cs" />
+    <Compile Include="ClassLibrary\RentalClass.cs" />
     <Compile Include="ClassLibrary\ShinseiLog.cs" />
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
     <Compile Include="ClassLibrary\Soukan.cs" />

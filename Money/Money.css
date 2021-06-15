@@ -235,6 +235,25 @@ table {
     border-radius: 3px;
 }
 
+.btn-flat-border-textinnner {
+    text-align: center;
+    width: auto;
+    height: 1.5em;
+    display: inline-block;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    text-decoration: none;
+    color: white;
+    border: solid 1px white;
+    background: #1e1e1e;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
     .btn-flat-border-mini:hover {
         background: #808080;
         cursor: pointer;
