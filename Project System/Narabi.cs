@@ -34,6 +34,8 @@ namespace WhereEver.Project_System
                 {
                     dt1[i].PBigid--;
                 }
+                dt1[i].PTorokusya= SessionManager.User.M_User.id.Trim();
+                dt1[i].PTorokutime= DateTime.Now;
             }
             bigUpdate(dt1,Pid);
         }
@@ -43,12 +45,16 @@ namespace WhereEver.Project_System
             using (SqlConnection connection = new SqlConnection(cstr))
             {
                 string sql = "update T_PdbKanri set " +
-                    "PBigid = @PBigid " +
+                    "PBigid = @PBigid ," +
+                    "PTorokutime = @PTorokutime ," +
+                    "PTorokusya = @PTorokusya " +
                     "where Pid = @Pid and PBigname = @PBigname";
 
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
                 SqlDataAdapter da1 = new SqlDataAdapter(sql, connection);
 
+                da.SelectCommand.Parameters.AddWithValue("@PTorokutime", dt[0].PTorokutime);
+                da.SelectCommand.Parameters.AddWithValue("@PTorokusya", dt[0].PTorokusya);
                 da.SelectCommand.Parameters.AddWithValue("@PBigname", dt[0].PBigname);
                 da.SelectCommand.Parameters.AddWithValue("@PBigid", dt[0].PBigid);
                 da.SelectCommand.Parameters.AddWithValue("@Pid", Pid);
@@ -57,10 +63,13 @@ namespace WhereEver.Project_System
                 connection.Close();
 
                 sql = "update T_PdbKanri set " +
-                    "PBigid = @PBigid " +
+                    "PBigid = @PBigid ," +
+                    "PTorokutime = @PTorokutime ," +
+                    "PTorokusya = @PTorokusya " +
                     "where Pid = @Pid and PBigname = @PBigname";
 
-
+                da1.SelectCommand.Parameters.AddWithValue("@PTorokutime", dt[1].PTorokutime);
+                da1.SelectCommand.Parameters.AddWithValue("@PTorokusya", dt[1].PTorokusya);
                 da1.SelectCommand.Parameters.AddWithValue("@PBigname", dt[1].PBigname);
                 da1.SelectCommand.Parameters.AddWithValue("@PBigid", dt[1].PBigid);
                 da1.SelectCommand.Parameters.AddWithValue("@Pid", Pid);
@@ -95,6 +104,8 @@ namespace WhereEver.Project_System
                 {
                     dt1[i].PBigid++;
                 }
+                dt1[i].PTorokusya = SessionManager.User.M_User.id.Trim();
+                dt1[i].PTorokutime = DateTime.Now;
             }
             bigUpdate(dt1, Pid);
         }
@@ -120,6 +131,8 @@ namespace WhereEver.Project_System
                 {
                     dt1[i].PMiddleid--;
                 }
+                dt1[i].PTorokusya = SessionManager.User.M_User.id.Trim();
+                dt1[i].PTorokutime = DateTime.Now;
             }
             middleUpdate(dt1, Pid);
         }
@@ -144,6 +157,8 @@ namespace WhereEver.Project_System
                 {
                     dt1[i].PMiddleid++;
                 }
+                dt1[i].PTorokusya = SessionManager.User.M_User.id.Trim();
+                dt1[i].PTorokutime = DateTime.Now;
             }
             middleUpdate(dt1, Pid);
         }
@@ -154,12 +169,16 @@ namespace WhereEver.Project_System
             using (SqlConnection connection = new SqlConnection(cstr))
             {
                 string sql = "update T_PdbKanri set " +
-                    "PMiddleid = @PMiddleid " +
+                    "PMiddleid = @PMiddleid ," +
+                    "PTorokutime = @PTorokutime ," +
+                    "PTorokusya = @PTorokusya " +
                     "where Pid = @Pid and PMiddlename = @PMiddlename";
 
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
                 SqlDataAdapter da1 = new SqlDataAdapter(sql, connection);
 
+                da.SelectCommand.Parameters.AddWithValue("@PTorokutime", dt[0].PTorokutime);
+                da.SelectCommand.Parameters.AddWithValue("@PTorokusya", dt[0].PTorokusya);
                 da.SelectCommand.Parameters.AddWithValue("@PMiddlename", dt[0].PMiddlename);
                 da.SelectCommand.Parameters.AddWithValue("@PMiddleid", dt[0].PMiddleid);
                 da.SelectCommand.Parameters.AddWithValue("@Pid", Pid);
@@ -168,10 +187,13 @@ namespace WhereEver.Project_System
                 connection.Close();
 
                 sql = "update T_PdbKanri set " +
-                    "PMiddleid = @PMiddleid " +
+                    "PMiddleid = @PMiddleid ," +
+                    "PTorokutime = @PTorokutime ," +
+                    "PTorokusya = @PTorokusya " +
                     "where Pid = @Pid and PMiddlename = @PMiddlename";
 
-
+                da1.SelectCommand.Parameters.AddWithValue("@PTorokutime", dt[1].PTorokutime);
+                da1.SelectCommand.Parameters.AddWithValue("@PTorokusya", dt[1].PTorokusya);
                 da1.SelectCommand.Parameters.AddWithValue("@PMiddlename", dt[1].PMiddlename);
                 da1.SelectCommand.Parameters.AddWithValue("@PMiddleid", dt[1].PMiddleid);
                 da1.SelectCommand.Parameters.AddWithValue("@Pid", Pid);
