@@ -60,3 +60,18 @@
     </tr>
 </table>
 
+            <div id="MenuBtn"><img src="../スケジュール/Hamburger-Button (1).png" alt="MenuButton" /><span class="over"></span></div>
+            <div id="NavBar">
+                <span class="hr"></span>
+                <p class="nav_index1">Menu</p>
+                <span class="hr"></span>
+                <div class="article">
+                    <p>test</p>
+                    <p><input type="button" class="btn-flat-border" value="ページを印刷" onclick="window.print();" /></p>
+                </div>
+            </div>
+
+
+        <%-- J-Query --%>
+        <script type="text/jscript" src="../Scripts/jquery-3.6.0.min.js"></script>
+        <script type="text/jscript" src="../Scripts/topMenu.js"></script>

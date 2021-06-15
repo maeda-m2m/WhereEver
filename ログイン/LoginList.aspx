@@ -27,15 +27,7 @@
             </table>
 
 
-            <div id="MenuBtn"><img src="../スケジュール/Hamburger-Button (1).png" alt="MenuButton" /><span class="over"></span></div>
-            <div id="NavBar">
-                <span class="hr"></span>
-                <p class="nav_index1">Menu</p>
-                <span class="hr"></span>
-                <div class="article">
-                    <p>test</p>
-                </div>
-            </div>
+
 
 
           <asp:Panel ID="Panel_Navigation" runat="server" Visible="true">
@@ -275,9 +267,7 @@
 
         <asp:Literal ID="Literal_js" runat="server" ValidateRequestMode="Disabled" ></asp:Literal>
 
-        <%-- J-Query --%>
-        <script src="../Scripts/jquery-3.6.0.min.js"></script>
-        <script src="../Scripts/topMenu.js"></script>
+
 
     </form>
 </body>
