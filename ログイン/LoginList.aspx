@@ -10,7 +10,6 @@
     <meta http-equiv="Content-Type" content="application/json; charset=utf-8" />
     <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
     <link href="LoginList.css" type="text/css" rel="stylesheet" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>トップページ</title>
 </head>
@@ -26,6 +25,17 @@
                     </td>
                 </tr>
             </table>
+
+
+            <div id="MenuBtn"><img src="../スケジュール/Hamburger-Button (1).png" alt="MenuButton" /><span class="over"></span></div>
+            <div id="NavBar">
+                <span class="hr"></span>
+                <p class="nav_index1">Menu</p>
+                <span class="hr"></span>
+                <div class="article">
+                    <p>test</p>
+                </div>
+            </div>
 
 
           <asp:Panel ID="Panel_Navigation" runat="server" Visible="true">
@@ -264,6 +274,10 @@
 
 
         <asp:Literal ID="Literal_js" runat="server" ValidateRequestMode="Disabled" ></asp:Literal>
+
+        <%-- J-Query --%>
+        <script src="../Scripts/jquery-3.6.0.min.js"></script>
+        <script src="../Scripts/topMenu.js"></script>
 
     </form>
 </body>
