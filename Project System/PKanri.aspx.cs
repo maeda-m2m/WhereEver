@@ -51,6 +51,8 @@ namespace WhereEver.Project_System
 
             DgPKanri.DataSource = dt;
             DgPKanri.DataBind();
+
+            wbs.Visible = false;
         }
         public static DATASET.DataSet.T_PdbKanriDataTable GetT_PdbKanriDataTable(SqlConnection sqlConnection,int spId)
         {
@@ -393,6 +395,7 @@ namespace WhereEver.Project_System
             DATASET.DataSet.T_PdbKanriDataTable dt = GetT_PdbKanriDataTable(Global.GetConnection(), SessionManager.project.PdbRow.Pid);
             wbs.DataSource = dt;
             wbs.DataBind();
+            wbs.Visible = true;
         }
         public DateTime[] ar;
         protected void wbs_ItemDataBound(object sender, DataGridItemEventArgs e)
