@@ -66,8 +66,13 @@
                 <p class="nav_index1">Menu</p>
                 <span class="hr"></span>
                 <div class="article">
-                    <p>test</p>
-                    <p><input type="button" class="btn-flat-border" value="ページを印刷" onclick="window.print();" /></p>
+                    <p class="middle">テストメニュー</p>
+                    <p class="linkbox"><a href="#">test</a></p>
+                    <p class="linkbox"><a href="#">test</a></p>
+                    <p class="linkbox"><a href="#">test</a></p>
+                    <p class="linkbox"><a href="#">test</a></p>
+                    <p class="middle">ボタンを追加実装可能↓</p>
+                    <p class="middle"><input type="button" class="btn-flat-border" value="ページを印刷" onclick="window.print();" /></p>
                 </div>
             </div>
 
