@@ -128,6 +128,8 @@
     margin-bottom: 2em;
     margin-left: 1em;
     margin-right: 1em;
+    letter-spacing: 0.1em;
+    -webkit-text-stroke: 0.8px snow;
 }
 
 .nav_index1 {
@@ -144,7 +146,6 @@
 .article {
     margin-left: 2em;
     margin-right: 2em;
-    padding-top: 2em;
     padding-bottom: 2em;
 }
 

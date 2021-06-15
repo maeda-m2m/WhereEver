@@ -137,9 +137,23 @@
     z-index: 1000; /*ボタンより手前になるようにピクチャ番号を修正*/
 }
 
+.none {
+    display: none;
+}
+
+#MenuMaster input {
+    display: none;
+}
+
+    #MenuMaster input:checked ~ #NavBar {
+        transform: translate3d(+300px,0,0);
+    }
+
+/*
 .show {
     transform: translate3d(+300px,0,0);
 }
+*/
 
 .btn-flat-border {
     text-align: center;
