@@ -29,7 +29,7 @@
 
             </div>
 
-            <nav>
+            <nav>                    
 
                 <ul class="nav_main">
                     <li id="open_nav">

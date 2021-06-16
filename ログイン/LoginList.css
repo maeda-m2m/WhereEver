@@ -106,6 +106,8 @@
     display: inline-block;
 }
 
+
+/*天気予報関連*/
 .hot{
     color:red;
 }
@@ -113,20 +115,45 @@
     color: #4bbdfe;
 }
 
+/*m2mロゴ*/
 .logo {
     margin-top: 10em;
 }
 
+/*主題*/
 .index1 {
     font-size: large;
     font-weight: bold;
     margin-top: 2em;
     margin-bottom: 2em;
     margin-left: 1em;
+    margin-right: 1em;
+    letter-spacing: 0.1em;
+    -webkit-text-stroke: 0.8px snow;
 }
 
+.nav_index1 {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+/*本文*/
 .article {
     margin-left: 2em;
+    margin-right: 2em;
+    padding-bottom: 2em;
+}
+
+/*汎用　中央ぞろえ*/
+.middle {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
 }
 
 .center {
@@ -135,11 +162,13 @@
     text-align: center;
 }
 
+/*左枠のユーザーアイコン*/
 .icon {
     text-align: center;
     display: inline-block;
 }
 
+/*ログインリスト関連*/
 .log {
     text-align: center;
     display: inline-block;
@@ -175,6 +204,7 @@
     width: auto;
 }
 
+/*データグリッド　テーブルにも使える*/
 .DgTD {
     background-color: #1e1e1e;
     color: white;
@@ -219,3 +249,7 @@
         transform: translateX(-100%)
     }
 }
+
+
+
+

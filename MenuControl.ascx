@@ -60,3 +60,22 @@
     </tr>
 </table>
 
+<div id="MenuMaster">
+            <label id="MenuBtn" for="label1"><img src="../スケジュール/Hamburger-Button (1).png" alt="MenuButton" /><span class="over"></span></label>
+    	    <input type="checkbox" id="label1"/>
+            <div id="NavBar">
+                <span class="hr"></span>
+                <p class="nav_index1">Menu</p>
+                <span class="hr"></span>
+                <div class="article">
+                    <p class="middle">テストメニュー</p>
+                    <p class="linkbox"><a href="#">test</a></p>
+                    <p class="linkbox"><a href="#">test</a></p>
+                    <p class="linkbox"><a href="#">test</a></p>
+                    <p class="linkbox"><a href="#">test</a></p>
+                    <p class="middle">ボタンを追加実装可能↓</p>
+                    <p class="middle"><input type="button" class="btn-flat-border" value="ページを印刷" onclick="window.print();" /></p>
+                </div>
+            </div>
+</div>
+

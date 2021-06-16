@@ -10,7 +10,6 @@
     <meta http-equiv="Content-Type" content="application/json; charset=utf-8" />
     <link href="../MenuControl.css" type="text/css" rel="stylesheet" />
     <link href="LoginList.css" type="text/css" rel="stylesheet" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>トップページ</title>
 </head>
@@ -26,6 +25,9 @@
                     </td>
                 </tr>
             </table>
+
+
+
 
 
           <asp:Panel ID="Panel_Navigation" runat="server" Visible="true">
@@ -264,6 +266,8 @@
 
 
         <asp:Literal ID="Literal_js" runat="server" ValidateRequestMode="Disabled" ></asp:Literal>
+
+
 
     </form>
 </body>

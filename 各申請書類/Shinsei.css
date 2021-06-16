@@ -51,6 +51,86 @@
     margin-right: 0px;
 }
 
+#WeeklyTable {
+    border: 1px dashed black;
+    border-collapse: collapse;
+    text-align: center;
+    width: 1380px;
+    margin-left: 0px; /*左辺に大きな余白をつけると印刷プレビューが崩れてしまう*/
+    margin-right: 0px;
+    background-color: white;
+}
+
+#WeeklyTable td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+    #WeeklyTable .left {
+        text-align: left;
+    }
+
+    #WeeklyTable .company {
+        width: 10em;
+    }
+
+    #WeeklyTable .work {
+        width: 12em;
+    }
+
+    #WeeklyTable .time {
+        width: 3em;
+    }
+
+.dashrow {
+    text-align: center;
+    background-image: linear-gradient(-80deg, transparent 49%, black 49%, black 51%, transparent 51%, transparent); /* 右上がりの斜線 */
+}
+
+
+
+/* 新規チェックボックスデザイン */
+.weeklyobj input[type="checkbox"] {
+    display: none;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+/* ラベルの左に表示させる正方形のボックス□ */
+.weeklyobj input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    margin-top: -8px;
+    left: -3px;
+    top: 50%;
+    border: 1px solid;
+    border-color: #585753; /* 枠の色変更 お好きな色を */
+    background-color: #FFF; /* 背景の色変更 お好きな色を */
+}
+/* チェックが入った時のレ点 */
+    .weeklyobj input[type="checkbox"]:checked::after {
+        content: "";
+        position: absolute;
+        display: block;
+        box-sizing: border-box;
+        width: 18px;
+        height: 9px;
+        margin-top: -7px;
+        top: 50%;
+        left: 0;
+        transform: rotate(-45deg);
+        border-bottom: 3px solid;
+        border-left: 3px solid;
+        border-color: #585753; /* チェックの色変更 お好きな色を */
+    }
+
 .none {
     display: none;
 }
@@ -61,8 +141,11 @@
     resize: none;
 }
 
-.textbox {
+.textbox, .weeklytxt {
     border-radius: 3px;
+}
+.weeklytxt{
+    text-align: center;
 }
 
 h1 {
@@ -146,6 +229,17 @@ h1 {
     body {
         background-image: none;
     }
+    .weeklyobj, .weeklytxt {
+        background-color: white;
+        color: black;
+        -webkit-appearance: none; /* ベンダープレフィックス(Google Chrome、Safari用) */
+        -moz-appearance: none; /* ベンダープレフィックス(Firefox用) */
+        border: none;
+        text-decoration: none;
+    }
+        .weeklyobj input[type="checkbox"]::before {
+            border-color: transparent;
+        }
 }
 
 .zone {

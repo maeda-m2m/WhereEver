@@ -1356,6 +1356,7 @@
             </tr>
         </table>
         <asp:Button ID="Button_Rental_Correct" CssClass="btn-flat-border" runat="server" Text="登録/上書き" OnClick="Push_Rental_Correct" CausesValidation="False" />
+        <input type="button" class="btn-flat-border" value="印刷" onclick="window.print();" />
 
 
 
