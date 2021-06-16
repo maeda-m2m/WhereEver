@@ -47,7 +47,7 @@
 
                        <p><asp:Label ID="lblTop_0" runat="server" Text="各種申請書類を作成または管理できます。"></asp:Label></p>
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowCommand="grid_RowCommand" AllowPaging="True" AllowSorting="True">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id,uid" DataSourceID="SqlDataSource1" CssClass="DGTable" OnRowCommand="Grid_RowCommand" AllowPaging="True" AllowSorting="True">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="none" ItemStyle-CssClass="none" />
                     <asp:BoundField DataField="uid" HeaderText="uid" ReadOnly="True" SortExpression="uid" />
@@ -565,9 +565,10 @@
                     <asp:ListItem>来週</asp:ListItem>
                     </asp:DropDownList></p>
                 <asp:Button ID="Button_SaveWeeklyUI" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="Button_SaveWeeklyUI_Click" CausesValidation="False" PostBackUrl="#Weekly_Button" />
+                <asp:Button ID="ButtonSaveAsWeeklyUI" CssClass="btn-flat-border" runat="server" Text="DBに上書保存" OnClick="Button_SaveAsWeeklyUI_Click" CausesValidation="False" PostBackUrl="#Weekly_Button" />
                 <asp:Button ID="Button_WeeklyClose" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" PostBackUrl="#Weekly_Button" />
                 <asp:Button ID="Button_WeeklyPrint" CssClass="btn-flat-border" runat="server" Text="印刷ビュー" OnClick="WeeklyPrint_Click" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
-                <p><asp:Label ID="Label_WeeklyUI_SaveTest" runat="server" Text="チェックボックスの結果をここでテスト表示します。"></asp:Label></p>
+                <p><asp:Label ID="Label_WeeklyUI_SaveTest" runat="server" Text="Ready..."></asp:Label></p>
              </div>
             </asp:Panel>
 
@@ -643,6 +644,9 @@
                             </td>
                             <td colspan="3">
                                 <asp:Label ID="Label_Weekly_date7" runat="server" Text="M月d日"></asp:Label>
+                            </td>
+                            <td rowspan="3">
+                                問題点/特記事項/その他備考
                             </td>
                         </tr>
                         <tr>
@@ -806,6 +810,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly21" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly49" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -876,6 +883,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly42" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly50" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -948,6 +958,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly63" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly51" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -1018,6 +1031,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly84" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly52" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -1090,6 +1106,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly105" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly53" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -1160,6 +1179,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly126" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly54" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -1232,6 +1254,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly147" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly55" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -1302,6 +1327,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly168" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly56" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -1374,6 +1402,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly189" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly57" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -1444,6 +1475,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly210" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly58" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -1516,6 +1550,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly231" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly59" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -1586,6 +1623,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly252" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly60" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -1661,6 +1701,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly273" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly61" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -1731,6 +1774,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly294" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly62" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -1803,7 +1849,11 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly315" runat="server" CssClass="weeklyobj" />
                             </td>
-                        </tr>                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly63" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <asp:TextBox ID="TextBox_Weekly31" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
@@ -1872,6 +1922,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly336" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly64" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -1944,6 +1997,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly357" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly65" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -2014,6 +2070,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly378" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly66" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -2086,6 +2145,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly399" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly67" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -2156,6 +2218,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly420" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly68" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -2228,6 +2293,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly441" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly69" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -2298,6 +2366,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly462" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly70" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -2370,6 +2441,9 @@
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly483" runat="server" CssClass="weeklyobj" />
                             </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly71" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -2440,6 +2514,9 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="CheckBox_Weekly504" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly72" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
                             </td>
                         </tr>
                     </table>

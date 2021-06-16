@@ -888,6 +888,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Button Button_SaveWeeklyUI;
 
         /// <summary>
+        /// ButtonSaveAsWeeklyUI コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonSaveAsWeeklyUI;
+
+        /// <summary>
         /// Button_WeeklyClose コントロール。
         /// </summary>
         /// <remarks>
@@ -1212,6 +1221,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly21;
 
         /// <summary>
+        /// TextBox_Weekly49 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly49;
+
+        /// <summary>
         /// TextBox_Weekly3 コントロール。
         /// </summary>
         /// <remarks>
@@ -1417,6 +1435,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly42;
+
+        /// <summary>
+        /// TextBox_Weekly50 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly50;
 
         /// <summary>
         /// TextBox_Weekly5 コントロール。
@@ -1626,6 +1653,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly63;
 
         /// <summary>
+        /// TextBox_Weekly51 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly51;
+
+        /// <summary>
         /// TextBox_Weekly7 コントロール。
         /// </summary>
         /// <remarks>
@@ -1831,6 +1867,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly84;
+
+        /// <summary>
+        /// TextBox_Weekly52 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly52;
 
         /// <summary>
         /// TextBox_Weekly9 コントロール。
@@ -2040,6 +2085,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly105;
 
         /// <summary>
+        /// TextBox_Weekly53 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly53;
+
+        /// <summary>
         /// TextBox_Weekly11 コントロール。
         /// </summary>
         /// <remarks>
@@ -2245,6 +2299,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly126;
+
+        /// <summary>
+        /// TextBox_Weekly54 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly54;
 
         /// <summary>
         /// TextBox_Weekly13 コントロール。
@@ -2454,6 +2517,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly147;
 
         /// <summary>
+        /// TextBox_Weekly55 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly55;
+
+        /// <summary>
         /// TextBox_Weekly15 コントロール。
         /// </summary>
         /// <remarks>
@@ -2659,6 +2731,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly168;
+
+        /// <summary>
+        /// TextBox_Weekly56 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly56;
 
         /// <summary>
         /// TextBox_Weekly17 コントロール。
@@ -2868,6 +2949,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly189;
 
         /// <summary>
+        /// TextBox_Weekly57 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly57;
+
+        /// <summary>
         /// TextBox_Weekly19 コントロール。
         /// </summary>
         /// <remarks>
@@ -3073,6 +3163,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly210;
+
+        /// <summary>
+        /// TextBox_Weekly58 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly58;
 
         /// <summary>
         /// TextBox_Weekly21 コントロール。
@@ -3282,6 +3381,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly231;
 
         /// <summary>
+        /// TextBox_Weekly59 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly59;
+
+        /// <summary>
         /// TextBox_Weekly23 コントロール。
         /// </summary>
         /// <remarks>
@@ -3487,6 +3595,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly252;
+
+        /// <summary>
+        /// TextBox_Weekly60 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly60;
 
         /// <summary>
         /// TextBox_Weekly25 コントロール。
@@ -3696,6 +3813,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly273;
 
         /// <summary>
+        /// TextBox_Weekly61 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly61;
+
+        /// <summary>
         /// TextBox_Weekly27 コントロール。
         /// </summary>
         /// <remarks>
@@ -3901,6 +4027,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly294;
+
+        /// <summary>
+        /// TextBox_Weekly62 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly62;
 
         /// <summary>
         /// TextBox_Weekly29 コントロール。
@@ -4110,6 +4245,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly315;
 
         /// <summary>
+        /// TextBox_Weekly63 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly63;
+
+        /// <summary>
         /// TextBox_Weekly31 コントロール。
         /// </summary>
         /// <remarks>
@@ -4315,6 +4459,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly336;
+
+        /// <summary>
+        /// TextBox_Weekly64 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly64;
 
         /// <summary>
         /// TextBox_Weekly33 コントロール。
@@ -4524,6 +4677,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly357;
 
         /// <summary>
+        /// TextBox_Weekly65 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly65;
+
+        /// <summary>
         /// TextBox_Weekly35 コントロール。
         /// </summary>
         /// <remarks>
@@ -4729,6 +4891,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly378;
+
+        /// <summary>
+        /// TextBox_Weekly66 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly66;
 
         /// <summary>
         /// TextBox_Weekly37 コントロール。
@@ -4938,6 +5109,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly399;
 
         /// <summary>
+        /// TextBox_Weekly67 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly67;
+
+        /// <summary>
         /// TextBox_Weekly39 コントロール。
         /// </summary>
         /// <remarks>
@@ -5143,6 +5323,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly420;
+
+        /// <summary>
+        /// TextBox_Weekly68 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly68;
 
         /// <summary>
         /// TextBox_Weekly41 コントロール。
@@ -5352,6 +5541,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly441;
 
         /// <summary>
+        /// TextBox_Weekly69 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly69;
+
+        /// <summary>
         /// TextBox_Weekly43 コントロール。
         /// </summary>
         /// <remarks>
@@ -5557,6 +5755,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly462;
+
+        /// <summary>
+        /// TextBox_Weekly70 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly70;
 
         /// <summary>
         /// TextBox_Weekly45 コントロール。
@@ -5766,6 +5973,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly483;
 
         /// <summary>
+        /// TextBox_Weekly71 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly71;
+
+        /// <summary>
         /// TextBox_Weekly47 コントロール。
         /// </summary>
         /// <remarks>
@@ -5971,6 +6187,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox CheckBox_Weekly504;
+
+        /// <summary>
+        /// TextBox_Weekly72 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Weekly72;
 
         /// <summary>
         /// Panel4 コントロール。
