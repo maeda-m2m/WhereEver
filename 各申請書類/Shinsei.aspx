@@ -125,7 +125,7 @@
                                 申請書類                             
                             </td>
                             <td>
-                                <a name="master"></a>
+                                <a id="master"></a>
                                 <asp:Button ID="Button_Master_A" CssClass="btn-flat-border" runat="server" Text="物品購入" OnClick="Push_Master_A" CausesValidation="False" PostBackUrl="#master" />
                                 <asp:Button ID="Button_Master_B" CssClass="btn-flat-border" runat="server" Text="勤怠関連" OnClick="Push_Master_B" CausesValidation="False" PostBackUrl="#master" />
                                 <asp:Button ID="Button_Master_C" CssClass="btn-flat-border" runat="server" Text="立替金明細表" OnClick="Push_Master_C" CausesValidation="False" PostBackUrl="#master" />
@@ -239,7 +239,7 @@
               </div>
             </asp:Panel>
 
-            <asp:Panel ID="Panel3" runat="server" CssClass="noprint"><a name="Diligence_Button"></a>
+            <asp:Panel ID="Panel3" runat="server" CssClass="noprint"><a id="Diligence_Button"></a>
             <div class="panel">
                 <table runat="server" id="kyuka">
                     <tr>
@@ -533,7 +533,7 @@
 
                     
                     <tr>
-                        <td colspan="3"><a name ="Tatekae_Button"></a>
+                        <td colspan="3"><a id ="Tatekae_Button"></a>
                             <asp:Button ID="Button3" CssClass="btn-flat-border" runat="server" Text="挿入" OnClick="Button3_Click" PostBackUrl="#Tatekae_Button" />
                             <asp:Button ID="Button6" CssClass="btn-flat-border" runat="server" Text="初期化" OnClick="Button4_Click" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
                             <asp:Button ID="Button8" CssClass="btn-flat-border" runat="server" Text="UNDO" OnClick="Button_Undo" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
