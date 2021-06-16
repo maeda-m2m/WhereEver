@@ -1199,10 +1199,10 @@
                             OnUpdateCommand="DgBikou_UpdateCommand"
                             OnItemCommand="DgBikou_ItemCommand">
                 <Columns>
-                    <asp:BoundColumn DataField="BikouID" HeaderText="備考欄" ReadOnly="True" />
-                    <asp:BoundColumn DataField="Bikou" HeaderText="備考内容" />
-                    <asp:EditCommandColumn EditText="変更" CancelText="キャンセル" UpdateText="保存"></asp:EditCommandColumn>
-                    <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete"/>
+                    <asp:BoundColumn DataField="BikouID" HeaderText="備考欄" ReadOnly="True" HeaderStyle-Width="60px"/>
+                    <asp:BoundColumn DataField="Bikou" HeaderText="備考内容"　HeaderStyle-Width="550px"/>
+                    <asp:EditCommandColumn EditText="変更" CancelText="取消" UpdateText="保存"　HeaderStyle-Width="100px"></asp:EditCommandColumn>
+                    <asp:ButtonColumn ButtonType="LinkButton" Text="削除" CommandName="Delete" HeaderStyle-Width="50px"/>
                 </Columns>
             </asp:DataGrid>
             <asp:TextBox ID="txtPlus" runat="server" Width="500px" class="noprint"></asp:TextBox><asp:Button ID="btnPlus" runat="server" Text="追加"  class="noprint" OnClick="btnPlus_Click"/>
