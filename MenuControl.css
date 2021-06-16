@@ -208,9 +208,9 @@
         border-top: red solid 1px;
         border-bottom: red solid 1px;
         /* ブラウザの環境によっては対応なし↓　対応していなくても動作には支障なし */
-        border-image: -moz-radial-gradient(red 90%, transparent 95%);
+        /*border-image: -moz-radial-gradient(red 90%, transparent 95%);
         border-image: -webkit-radial-gradient(red 90%, transparent 95%);
-        border-image: radial-gradient(red 90%, transparent 95%);
+        border-image: radial-gradient(red 90%, transparent 95%);*/
         border-image-slice: 1;
     }
 
@@ -224,9 +224,9 @@
             border-top: white solid 1px;
             border-bottom: white solid 1px;
             /* ブラウザの環境によっては対応なし↓　対応していなくても動作には支障なし */
-            border-image: -moz-radial-gradient(white 90%, transparent 95%);
+            /*border-image: -moz-radial-gradient(white 90%, transparent 95%);
             border-image: -webkit-radial-gradient(white 90%, transparent 95%);
-            border-image: radial-gradient(white 90%, transparent 95%);
+            border-image: radial-gradient(white 90%, transparent 95%);*/
             border-image-slice: 1;
         }
 
@@ -240,9 +240,9 @@
             border-top: red solid 1px;
             border-bottom: red solid 1px;
             /* ブラウザの環境によっては対応なし↓　対応していなくても動作には支障なし */
-            border-image: -moz-radial-gradient(red 90%, transparent 95%);
+            /*border-image: -moz-radial-gradient(red 90%, transparent 95%);
             border-image: -webkit-radial-gradient(red 90%, transparent 95%);
-            border-image: radial-gradient(red 90%, transparent 95%);
+            border-image: radial-gradient(red 90%, transparent 95%);*/
             border-image-slice: 1;
         }
 

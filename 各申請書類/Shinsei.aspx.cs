@@ -8,6 +8,7 @@ using WhereEver.ClassLibrary;
 using System.ComponentModel.DataAnnotations;
 using static System.Web.HttpUtility;
 using System.Text;
+//using System.Reflection;
 
 namespace WhereEver
 {
@@ -58,6 +59,10 @@ namespace WhereEver
                 Panel6.Visible = false;
                 //立替金明細表印刷フォーム
                 Panel7.Visible = false;
+
+                //Weeklyフォーム
+                Panel_Weekly.Visible = false;
+                Panel_WeeklyUI.Visible = false;
 
                 //印刷ボタンパネル
                 Panel_Print.Visible = false;
@@ -122,6 +127,11 @@ namespace WhereEver
                 DropDownList_A_Time.SelectedValue = "9:00";
                 DropDownList_B_Time.SelectedValue = "9:00";
                 //-----------------------------------------------------
+
+
+                //週報のデフォルトを今週にセット
+                DropDownList_WeeklyDate.SelectedValue = "今週";
+
 
             }//!IsPostBack
 
@@ -742,7 +752,9 @@ namespace WhereEver
             Panel7.Visible = false;
             //印刷ボタンパネル
             Panel_Print.Visible = false;
-
+            //Weeklyフォーム
+            Panel_Weekly.Visible = false;
+            Panel_WeeklyUI.Visible = false;
         }
 
         protected void Button5_Click(object sender, EventArgs e)
@@ -765,7 +777,37 @@ namespace WhereEver
             Panel7.Visible = true;
             //印刷ボタンパネル
             Panel_Print.Visible = true;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = false;
+            Panel_WeeklyUI.Visible = false;
+        }
 
+        /// <summary>
+        /// 週報印刷フォームを開きます。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void WeeklyPrint_Click(object sender, EventArgs e)
+        {
+            //初期選択パネル
+            Panel1.Visible = true;
+            ////物品購入申請書パネル
+            Panel2.Visible = false;
+            ////勤怠パネル
+            Panel3.Visible = false;
+            ////物品購入申請書印刷フォーム
+            Panel4.Visible = false;
+            ////勤怠届印刷フォーム
+            Panel5.Visible = false;
+            //立替金明細表申請パネル
+            Panel6.Visible = false;
+            //立替金明細表印刷フォーム
+            Panel7.Visible = false;
+            //印刷ボタンパネル
+            Panel_Print.Visible = true;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = true;
+            Panel_WeeklyUI.Visible = true;
         }
 
         /// <summary>
@@ -2082,28 +2124,32 @@ namespace WhereEver
         /// <param name="e"></param>
         protected void Push_Master_A(object sender, EventArgs e)
         {
-                //初期選択パネル
-                Panel1.Visible = true;
-                //物品購入申請書パネル
-                Panel2.Visible = true;
-                //勤怠パネル
-                Panel3.Visible = false;
-                //物品購入申請書印刷フォーム
-                Panel4.Visible = false;
-                //勤怠届印刷フォーム
-                Panel5.Visible = false;
-                //立替金明細表申請パネル
-                Panel6.Visible = false;
-                //立替金明細表印刷フォーム
-                Panel7.Visible = false;
-                //印刷ボタンパネル
-                Panel_Print.Visible = false;
+            //初期選択パネル
+            Panel1.Visible = true;
+            //物品購入申請書パネル
+            Panel2.Visible = true;
+            //勤怠パネル
+            Panel3.Visible = false;
+            //物品購入申請書印刷フォーム
+            Panel4.Visible = false;
+            //勤怠届印刷フォーム
+            Panel5.Visible = false;
+            //立替金明細表申請パネル
+            Panel6.Visible = false;
+            //立替金明細表印刷フォーム
+            Panel7.Visible = false;
+            //印刷ボタンパネル
+            Panel_Print.Visible = false;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = false;
+            Panel_WeeklyUI.Visible = false;
 
-                name1.Text = "氏名：" + SessionManager.User.M_User.name1;
 
-                DateTime dt = DateTime.Now;
-                date.Text = dt.ToShortDateString();
-                //ChangeValidate(true);
+            name1.Text = "氏名：" + SessionManager.User.M_User.name1;
+
+            DateTime dt = DateTime.Now;
+            date.Text = dt.ToShortDateString();
+            //ChangeValidate(true);
         }
 
         /// <summary>
@@ -2129,6 +2175,9 @@ namespace WhereEver
             Panel7.Visible = false;
             //印刷ボタンパネル
             Panel_Print.Visible = false;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = false;
+            Panel_WeeklyUI.Visible = false;
 
             name1.Text = "氏名：" + SessionManager.User.M_User.name1;
 
@@ -2161,6 +2210,9 @@ namespace WhereEver
             Panel7.Visible = true;
             //印刷ボタンパネル
             Panel_Print.Visible = true;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = false;
+            Panel_WeeklyUI.Visible = false;
 
             name1.Text = SessionManager.User.M_User.name1;
 
@@ -2170,9 +2222,138 @@ namespace WhereEver
 
         }
 
+        /// <summary>
+        /// 週報
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Push_Master_D(object sender, EventArgs e)
+        {
+            //初期選択パネル
+            Panel1.Visible = true;
+            //物品購入申請書パネル
+            Panel2.Visible = false;
+            //勤怠パネル
+            Panel3.Visible = false;
+            //物品購入申請書印刷フォーム
+            Panel4.Visible = false;
+            //勤怠届印刷フォーム
+            Panel5.Visible = false;
+            //立替金明細表申請パネル
+            Panel6.Visible = false;
+            //立替金明細表印刷フォーム
+            Panel7.Visible = false;
+            //印刷ボタンパネル
+            Panel_Print.Visible = true;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = true;
+            Panel_WeeklyUI.Visible = true;
+
+            Label_Weekly_name1.Text = SessionManager.User.M_User.name1;
+            SetWeeklyValue();
+            return;
+        }
+
+        protected void DropDownList_WeeklyChanged(object sender, EventArgs e)
+        {
+            SetWeeklyValue();
+            return;
+        }
+
+        /// <summary>
+        /// 週報のドロップダウンリストが変更されたときの処理です。
+        /// </summary>
+        protected void SetWeeklyValue()
+        {
+            DateTime dt = DateTime.Now;
+
+            string val = DropDownList_WeeklyDate.SelectedValue;
+            if (val == "先週")
+            {
+                dt = DateTime.Now.AddDays(-7);
+            }
+            else if (val == "今週")
+            {
+                //なにもしない
+            }
+            else if (val == "来週")
+            {
+                dt = DateTime.Now.AddDays(7);
+            }
+
+            for (; ; )
+            {
+                if (dt.DayOfWeek != DayOfWeek.Monday)
+                {
+                    //月曜日になるまで日付に加算
+                    dt = dt.AddDays(1);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            const string yearformat = "yyyy年";
+            const string dateformat = "M月d日";
+            Label_Weekly_year.Text = dt.ToString(yearformat);
+            Label_Weekly_date1.Text = dt.ToString(dateformat);
+            Label_Weekly_date2.Text = dt.AddDays(1).ToString(dateformat);
+            Label_Weekly_date3.Text = dt.AddDays(2).ToString(dateformat);
+            Label_Weekly_date4.Text = dt.AddDays(3).ToString(dateformat);
+            Label_Weekly_date5.Text = dt.AddDays(4).ToString(dateformat);
+            Label_Weekly_date6.Text = dt.AddDays(5).ToString(dateformat);
+            Label_Weekly_date7.Text = dt.AddDays(6).ToString(dateformat);
+            return;
+        }
+
         protected void btnMoney_Click(object sender, EventArgs e)
         {
             Response.Redirect("../Money/Money.aspx", false);
         }
+
+
+        //------------------------------------------------------------------
+
+        protected void Button_SaveWeeklyUI_Click(object sender, EventArgs e)
+        {
+            //チェックボックスが多すぎるためリフレクションで入れる（GridViewでやってもよいが結局やることは同じ）
+            StringBuilder sb = new StringBuilder();
+
+            //TextBox 48こ
+            for (int i = 1; i <= 48; i++)
+            {
+                TextBox con_txt = (TextBox)FindControl("TextBox_Weekly" + i);    //※本番稼働では面倒でも１つずつ入れたほうがよい（不具合の原因がわかりにくいから）。
+                string txt = con_txt.Text;
+                sb.Append(txt);
+                sb.Append(",");
+            }
+
+            //CheckBox 504こ
+            for (int i=1; i<=504; i++)
+            {
+                
+                CheckBox con_ck = (CheckBox)FindControl("CheckBox_Weekly" + i);    //※本番稼働では面倒でも１つずつ入れたほうがよい（不具合の原因がわかりにくいから）。
+                bool b = con_ck.Checked;
+
+                if (b)
+                {
+                    sb.Append("1");
+                }
+                else
+                {
+                    sb.Append("0");
+                }
+                sb.Append(",");
+            }
+
+            //不正な改行コードを除去
+            sb.Replace("\r\f", "");
+
+            //テスト出力
+            Label_WeeklyUI_SaveTest.Text = HtmlEncode(sb.ToString());
+        }
+
+
     }
 }

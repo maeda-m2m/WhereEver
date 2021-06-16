@@ -129,14 +129,20 @@
                                 <asp:Button ID="Button_Master_A" CssClass="btn-flat-border" runat="server" Text="物品購入" OnClick="Push_Master_A" CausesValidation="False" PostBackUrl="#master" />
                                 <asp:Button ID="Button_Master_B" CssClass="btn-flat-border" runat="server" Text="勤怠関連" OnClick="Push_Master_B" CausesValidation="False" PostBackUrl="#master" />
                                 <asp:Button ID="Button_Master_C" CssClass="btn-flat-border" runat="server" Text="立替金明細表" OnClick="Push_Master_C" CausesValidation="False" PostBackUrl="#master" />
+                                <asp:Button ID="Button_Master_D" CssClass="btn-flat-border" runat="server" Text="週報" OnClick="Push_Master_D" CausesValidation="False" PostBackUrl="#master" />
                                 <asp:Button ID="Button_Money" runat="server" CssClass="btn-flat-border" Text="財務諸表" OnClick="btnMoney_Click" />
                             </td>
+                        </tr>
+                </table>
+                <table class="none">
+                    <tr>
                             <td class="text">
                                 <asp:DropDownList ID="DropDownList1" runat="server" OnTextChanged="DropDownList_Master_SelectionChanged" AutoPostBack="True" CausesValidation="False" Visible="false" >
                                     <asp:ListItem>【申請書類を選択】</asp:ListItem>
                                     <asp:ListItem>物品購入申請</asp:ListItem>
                                     <asp:ListItem>勤怠関連申請</asp:ListItem>
                                     <asp:ListItem>立替金明細表申請</asp:ListItem>
+                                    <asp:ListItem>週報</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                             <td>
@@ -548,6 +554,24 @@
             </div>
             </asp:Panel>
 
+
+            <asp:Panel ID="Panel_WeeklyUI" runat="server" DefaultButton="Button_SaveWeeklyUI">
+             <div class="panel">
+                 <p>週報登録</p>
+                <a id ="Weekly_Button"></a>
+                <p><asp:DropDownList ID="DropDownList_WeeklyDate" runat="server" AutoPostBack="True" ValidateRequestMode="Disabled" OnSelectedIndexChanged="DropDownList_WeeklyChanged" >
+                    <asp:ListItem>先週</asp:ListItem>
+                    <asp:ListItem>今週</asp:ListItem>
+                    <asp:ListItem>来週</asp:ListItem>
+                    </asp:DropDownList></p>
+                <asp:Button ID="Button_SaveWeeklyUI" CssClass="btn-flat-border" runat="server" Text="DBに新規保存" OnClick="Button_SaveWeeklyUI_Click" CausesValidation="False" PostBackUrl="#Weekly_Button" />
+                <asp:Button ID="Button_WeeklyClose" CssClass="btn-flat-border" runat="server" Text="閉じる" OnClick="ResetButton_Click" CausesValidation="False" PostBackUrl="#Weekly_Button" />
+                <asp:Button ID="Button_WeeklyPrint" CssClass="btn-flat-border" runat="server" Text="印刷ビュー" OnClick="WeeklyPrint_Click" CausesValidation="False" PostBackUrl="#Tatekae_Button" />
+                <p><asp:Label ID="Label_WeeklyUI_SaveTest" runat="server" Text="チェックボックスの結果をここでテスト表示します。"></asp:Label></p>
+             </div>
+            </asp:Panel>
+
+
             </div><%-- Wrap ここまでプリントしない --%>
 
 
@@ -580,7 +604,1846 @@
 
 
 
-
+                <asp:Panel ID="Panel_Weekly" runat="server">
+                    <table id="WeeklyTable">
+                        <tr>
+                            <td colspan="20" class="left">
+                                <asp:Label ID="Label_Weekly_year" runat="server" Text="yyyy年"></asp:Label>
+                            </td>
+                            <td colspan="4">
+                                <asp:Label ID="Label_Weekly_name1" runat="server" Text="M2M ASP"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3" class="dashrow">
+                            </td>
+                            <td rowspan="3" class="company">
+                                担当会社/団体
+                            </td>
+                            <td rowspan="3" class="work">
+                                主要業務内容
+                            </td>
+                            <td colspan="3">
+                                <asp:Label ID="Label_Weekly_date1" runat="server" Text="M月d日"></asp:Label>
+                            </td>
+                            <td colspan="3">
+                                <asp:Label ID="Label_Weekly_date2" runat="server" Text="M月d日"></asp:Label>
+                            </td>
+                            <td colspan="3">
+                                <asp:Label ID="Label_Weekly_date3" runat="server" Text="M月d日"></asp:Label>
+                            </td>
+                            <td colspan="3">
+                                <asp:Label ID="Label_Weekly_date4" runat="server" Text="M月d日"></asp:Label>
+                            </td>
+                            <td colspan="3">
+                                <asp:Label ID="Label_Weekly_date5" runat="server" Text="M月d日"></asp:Label>
+                            </td>
+                            <td colspan="3">
+                                <asp:Label ID="Label_Weekly_date6" runat="server" Text="M月d日"></asp:Label>
+                            </td>
+                            <td colspan="3">
+                                <asp:Label ID="Label_Weekly_date7" runat="server" Text="M月d日"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                （月）
+                            </td>
+                            <td colspan="3">
+                                （火）
+                            </td>
+                            <td colspan="3">
+                                （水）
+                            </td>
+                            <td colspan="3">
+                                （木）
+                            </td>
+                            <td colspan="3">
+                                （金）
+                            </td>
+                            <td colspan="3">
+                                （土）
+                            </td>
+                            <td colspan="3">
+                                （日）
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time">
+                                午前
+                            </td>
+                            <td class="time">
+                                午後
+                            </td>
+                            <td class="time">
+                                時間外
+                            </td>
+                            <td class="time">
+                                午前
+                            </td>
+                            <td class="time">
+                                午後
+                            </td>
+                            <td class="time">
+                                時間外
+                            </td>
+                            <td class="time">
+                                午前
+                            </td>
+                            <td class="time">
+                                午後
+                            </td>
+                            <td class="time">
+                                時間外
+                            </td>
+                            <td class="time">
+                                午前
+                            </td>
+                            <td class="time">
+                                午後
+                            </td>
+                            <td class="time">
+                                時間外
+                            </td>
+                            <td class="time">
+                                午前
+                            </td>
+                            <td class="time">
+                                午後
+                            </td>
+                            <td class="time">
+                                時間外
+                            </td>
+                            <td class="time">
+                                午前
+                            </td>
+                            <td class="time">
+                                午後
+                            </td>
+                            <td class="time">
+                                時間外
+                            </td>
+                            <td class="time">
+                                午前
+                            </td>
+                            <td class="time">
+                                午後
+                            </td>
+                            <td class="time">
+                                時間外
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="12">
+                                開<br />発<br />/<br />運<br />用
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly1" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly2" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly1" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly2" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly3" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly4" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly5" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly6" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly7" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly8" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly9" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly10" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly11" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly12" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly13" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly14" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly15" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly16" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly17" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly18" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly19" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly20" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly21" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly3" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly4" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly22" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly23" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly24" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly25" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly26" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly27" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly28" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly29" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly30" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly31" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly32" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly33" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly34" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly35" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly36" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly37" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly38" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly39" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly40" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly41" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly42" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly5" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly6" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly43" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly44" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly45" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly46" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly47" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly48" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly49" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly50" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly51" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly52" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly53" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly54" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly55" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly56" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly57" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly58" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly59" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly60" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly61" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly62" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly63" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly7" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly8" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly64" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly65" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly66" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly67" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly68" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly69" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly70" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly71" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly72" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly73" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly74" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly75" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly76" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly77" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly78" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly79" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly80" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly81" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly82" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly83" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly84" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly9" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly10" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly85" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly86" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly87" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly88" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly89" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly90" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly91" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly92" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly93" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly94" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly95" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly96" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly97" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly98" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly99" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly100" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly101" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly102" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly103" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly104" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly105" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly11" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly12" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly106" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly107" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly108" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly109" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly110" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly111" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly112" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly113" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly114" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly115" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly116" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly117" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly118" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly119" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly120" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly121" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly122" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly123" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly124" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly125" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly126" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly13" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly14" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly127" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly128" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly129" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly130" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly131" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly132" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly133" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly134" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly135" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly136" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly137" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly138" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly139" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly140" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly141" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly142" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly143" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly144" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly145" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly146" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly147" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly15" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly16" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly148" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly149" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly150" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly151" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly152" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly153" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly154" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly155" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly156" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly157" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly158" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly159" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly160" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly161" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly162" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly163" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly164" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly165" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly166" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly167" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly168" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly17" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly18" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly169" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly170" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly171" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly172" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly173" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly174" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly175" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly176" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly177" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly178" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly179" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly180" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly181" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly182" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly183" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly184" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly185" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly186" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly187" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly188" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly189" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly19" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly20" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly190" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly191" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly192" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly193" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly194" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly195" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly196" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly197" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly198" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly199" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly200" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly201" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly202" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly203" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly204" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly205" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly206" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly207" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly208" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly209" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly210" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly21" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly22" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly211" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly212" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly213" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly214" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly215" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly216" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly217" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly218" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly219" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly220" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly221" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly222" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly223" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly224" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly225" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly226" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly227" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly228" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly229" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly230" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly231" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly23" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly24" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly232" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly233" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly234" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly235" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly236" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly237" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly238" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly239" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly240" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly241" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly242" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly243" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly244" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly245" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly246" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly247" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly248" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly249" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly250" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly251" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly252" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="12">
+                                W<br />e<br />b<br />訪<br />問<br />等
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly25" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly26" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly253" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly254" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly255" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly256" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly257" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly258" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly259" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly260" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly261" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly262" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly263" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly264" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly265" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly266" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly267" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly268" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly269" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly270" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly271" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly272" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly273" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly27" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly28" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly274" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly275" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly276" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly277" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly278" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly279" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly280" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly281" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly282" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly283" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly284" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly285" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly286" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly287" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly288" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly289" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly290" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly291" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly292" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly293" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly294" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly29" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly30" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly295" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly296" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly297" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly298" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly299" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly300" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly301" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly302" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly303" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly304" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly305" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly306" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly307" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly308" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly309" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly310" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly311" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly312" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly313" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly314" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly315" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly31" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly32" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly316" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly317" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly318" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly319" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly320" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly321" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly322" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly323" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly324" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly325" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly326" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly327" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly328" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly329" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly330" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly331" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly332" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly333" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly334" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly335" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly336" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly33" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly34" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly337" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly338" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly339" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly340" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly341" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly342" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly343" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly344" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly345" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly346" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly347" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly348" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly349" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly350" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly351" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly352" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly353" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly354" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly355" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly356" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly357" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly35" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly36" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly358" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly359" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly360" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly361" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly362" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly363" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly364" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly365" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly366" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly367" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly368" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly369" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly370" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly371" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly372" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly373" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly374" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly375" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly376" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly377" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly378" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly37" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly38" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly379" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly380" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly381" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly382" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly383" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly384" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly385" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly386" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly387" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly388" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly389" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly390" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly391" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly392" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly393" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly394" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly395" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly396" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly397" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly398" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly399" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly39" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly40" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly400" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly401" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly402" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly403" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly404" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly405" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly406" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly407" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly408" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly409" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly410" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly411" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly412" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly413" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly414" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly415" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly416" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly417" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly418" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly419" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly420" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly41" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly42" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly421" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly422" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly423" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly424" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly425" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly426" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly427" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly428" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly429" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly430" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly431" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly432" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly433" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly434" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly435" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly436" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly437" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly438" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly439" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly440" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly441" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly43" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly44" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly442" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly443" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly444" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly445" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly446" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly447" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly448" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly449" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly450" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly451" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly452" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly453" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly454" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly455" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly456" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly457" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly458" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly459" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly460" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly461" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly462" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly45" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly46" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly463" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly464" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly465" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly466" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly467" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly468" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly469" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly470" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly471" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly472" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly473" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly474" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly475" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly476" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly477" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly478" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly479" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly480" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly481" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly482" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly483" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly47" runat="server" CssClass="weeklytxt" Width="10em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox_Weekly48" runat="server" CssClass="weeklytxt" Width="12em" ValidateRequestMode="Disabled" ToolTip="全角50文字以内" Text="" ></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly484" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly485" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly486" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly487" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly488" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly489" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly490" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly491" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly492" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly493" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly494" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly495" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly496" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly497" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly498" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly499" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly500" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly501" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly502" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly503" runat="server" CssClass="weeklyobj" />
+                            </td>
+                            <td>
+                                <asp:CheckBox ID="CheckBox_Weekly504" runat="server" CssClass="weeklyobj" />
+                            </td>
+                        </tr>
+                    </table>
+                </asp:Panel>
 
 
 
