@@ -45,6 +45,7 @@ body {
 /*上のヘッダーのCSS（文字と背景）*/
 #header_title {
     background-color: #16ba00;
+    transform:rotate(-15deg)
 }
 
 #header_index {
@@ -127,6 +128,16 @@ body {
 /*-------------------------------------------------*/
 /*登録画面のCSSの値*/
 #TextBox2 {
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+}
+#cb1 {
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+}
+#ddlist1 {
     border-style: solid;
     border-width: thin;
     border-color: black;

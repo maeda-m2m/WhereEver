@@ -30,8 +30,9 @@ namespace WhereEver
                 //Panel3、検索
                 //panel4、検索のメニュー
 
-                //TextBox1,2,3,5 used
+                //used_TextBox1,2,3,5
 
+                //used_Label1,2,3,4,5,6,
 
 
 
@@ -153,7 +154,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(+6).ToString("MMMMd日");//sun
 
 
-                   
+
                     Scdl3.Items[2].Cells[1].CssClass = "Center_cs_Color";
                     Scdl3.Items[4].Cells[1].CssClass = "Center_cs_Color";
                     Scdl3.Items[6].Cells[1].CssClass = "Center_cs_Color";
@@ -806,50 +807,124 @@ namespace WhereEver
 
         protected void Button2_Click(object sender, EventArgs e)//スケジュールを登録
         {
-
-            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-
-            var dr = dt.NewT_ScheduleRow();
-
-            string t = DropDownList1.SelectedValue;
-
-            string f = TextBox2.Text + " " + DropDownList1.SelectedValue;
-
-            DateTime dd = DateTime.Parse(f);
-
-            dr.date = dd;
-
-            dr.time = t;
-
-            dr.title = TextBox1.Text;
-
-            dr.name = "";
-
-            foreach (ListItem item in CheckBoxList1.Items)
+            if (cb1.Checked == true)
             {
-                if (item.Selected)
+                int i = int.Parse(ddlist1.Text);
+                DateTime datetime;
+
+                DateTime datetime2;
+
+
+                int ddlist10;
+
+                ddlist10 = int.Parse(ddlist1.Text) * 7;
+
+                ddlist10 -= 7;
+
+                string test = TextBox2.Text;
+
+                datetime = DateTime.Parse(test);
+
+                //datetime2 = DateTime.Parse(datetime.AddDays(+ddlist10).ToString());
+
+                for (; i > 0; i--)
                 {
-                    dr.name += item.Value + " ";
+                    var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+
+                    var dr = dt.NewT_ScheduleRow();
+
+                    string t = DropDownList1.SelectedValue;
+
+                    datetime2 = DateTime.Parse(datetime.AddDays(ddlist10).ToString());
+
+
+
+                    dr.date = datetime2;
+
+                    dr.time = t;
+
+                    dr.title = TextBox1.Text;
+
+                    dr.name = "";
+
+                    foreach (ListItem item in CheckBoxList1.Items)
+                    {
+                        if (item.Selected)
+                        {
+                            dr.name += item.Value + " ";
+                        }
+                    }
+
+                    var dl = Class1.MaxSdlNo(Global.GetConnection());
+
+                    int no = dl.SdlNo;
+
+                    dr.SdlNo = no + 1;
+
+                    dt.AddT_ScheduleRow(dr);
+
+                    Class1.InsertList(dt, Global.GetConnection());
+
+                    ddlist10 -= 7;
+
+
                 }
+                Create();
+                Create3();
+                Create2();
+
+                Panel1.Visible = true;
+                Panel2.Visible = true;
+                Panel3.Visible = false;
             }
+            else
+            {
 
-            var dl = Class1.MaxSdlNo(Global.GetConnection());
 
-            int no = dl.SdlNo;
+                var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
 
-            dr.SdlNo = no + 1;
+                var dr = dt.NewT_ScheduleRow();
 
-            dt.AddT_ScheduleRow(dr);
+                string t = DropDownList1.SelectedValue;
 
-            Class1.InsertList(dt, Global.GetConnection());
+                string f = TextBox2.Text + " " + DropDownList1.SelectedValue;
 
-            Create();
-            Create3();
-            Create2();
+                DateTime dd = DateTime.Parse(f);
 
-            Panel1.Visible = true;
-            Panel2.Visible = true;
-            Panel3.Visible = false;
+                dr.date = dd;
+
+                dr.time = t;
+
+                dr.title = TextBox1.Text;
+
+                dr.name = "";
+
+                foreach (ListItem item in CheckBoxList1.Items)
+                {
+                    if (item.Selected)
+                    {
+                        dr.name += item.Value + " ";
+                    }
+                }
+
+                var dl = Class1.MaxSdlNo(Global.GetConnection());
+
+                int no = dl.SdlNo;
+
+                dr.SdlNo = no + 1;
+
+                dt.AddT_ScheduleRow(dr);
+
+                Class1.InsertList(dt, Global.GetConnection());
+
+                Create();
+                Create3();
+                Create2();
+
+                Panel1.Visible = true;
+                Panel2.Visible = true;
+                Panel3.Visible = false;
+            }
         }
 
         protected void Button3_Click(object sender, EventArgs e)//登録パネル
@@ -864,6 +939,9 @@ namespace WhereEver
             Create2();
 
             Button2.Focus();
+
+
+
         }
 
         protected void Button10_Click(object sender, EventArgs e)//検索パネル

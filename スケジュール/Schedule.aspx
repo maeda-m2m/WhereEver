@@ -29,7 +29,7 @@
 
             </div>
 
-            <nav>                    
+            <nav>
 
                 <ul class="nav_main">
                     <li id="open_nav">
@@ -104,6 +104,7 @@
                     <asp:Button ID="Button4" runat="server" Text="前へ" class="btn-flat-border" OnClick="Button4_Click" />
                     <asp:Button ID="Button6" runat="server" Text="今週" class="btn-flat-border" OnClick="Button6_Click" />
                     <asp:Button ID="Button5" runat="server" Text="次へ" class="btn-flat-border" OnClick="Button5_Click" />
+                    <label runat="server" id="label6">test</label>
 
                 </asp:Panel>
 
@@ -123,6 +124,15 @@
                             <td>
                                 <asp:TextBox runat="server" ID="TextBox2" TextMode="Date"></asp:TextBox>
 
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="Center_Color">定例会議</th>
+                            <td>
+                                <label runat="server" id="label4">チェックを入れ、数字を入力してください。</label>
+                                <asp:CheckBox runat="server" ID="cb1" />
+                                <asp:TextBox runat="server" ID="ddlist1" TextMode="Number"></asp:TextBox>
+                                <label runat="server" id="label5">週間分</label>
                             </td>
                         </tr>
 
@@ -649,9 +659,9 @@
 
         <script>
 
-          
 
-        </script>
+
+</script>
 
     </form>
 
