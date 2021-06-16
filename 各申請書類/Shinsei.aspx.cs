@@ -8,6 +8,7 @@ using WhereEver.ClassLibrary;
 using System.ComponentModel.DataAnnotations;
 using static System.Web.HttpUtility;
 using System.Text;
+//using System.Reflection;
 
 namespace WhereEver
 {
@@ -58,6 +59,10 @@ namespace WhereEver
                 Panel6.Visible = false;
                 //立替金明細表印刷フォーム
                 Panel7.Visible = false;
+
+                //Weeklyフォーム
+                Panel_Weekly.Visible = false;
+                Panel_WeeklyUI.Visible = false;
 
                 //印刷ボタンパネル
                 Panel_Print.Visible = false;
@@ -122,6 +127,11 @@ namespace WhereEver
                 DropDownList_A_Time.SelectedValue = "9:00";
                 DropDownList_B_Time.SelectedValue = "9:00";
                 //-----------------------------------------------------
+
+
+                //週報のデフォルトを今週にセット
+                DropDownList_WeeklyDate.SelectedValue = "今週";
+
 
             }//!IsPostBack
 
@@ -742,7 +752,9 @@ namespace WhereEver
             Panel7.Visible = false;
             //印刷ボタンパネル
             Panel_Print.Visible = false;
-
+            //Weeklyフォーム
+            Panel_Weekly.Visible = false;
+            Panel_WeeklyUI.Visible = false;
         }
 
         protected void Button5_Click(object sender, EventArgs e)
@@ -765,7 +777,37 @@ namespace WhereEver
             Panel7.Visible = true;
             //印刷ボタンパネル
             Panel_Print.Visible = true;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = false;
+            Panel_WeeklyUI.Visible = false;
+        }
 
+        /// <summary>
+        /// 週報印刷フォームを開きます。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void WeeklyPrint_Click(object sender, EventArgs e)
+        {
+            //初期選択パネル
+            Panel1.Visible = true;
+            ////物品購入申請書パネル
+            Panel2.Visible = false;
+            ////勤怠パネル
+            Panel3.Visible = false;
+            ////物品購入申請書印刷フォーム
+            Panel4.Visible = false;
+            ////勤怠届印刷フォーム
+            Panel5.Visible = false;
+            //立替金明細表申請パネル
+            Panel6.Visible = false;
+            //立替金明細表印刷フォーム
+            Panel7.Visible = false;
+            //印刷ボタンパネル
+            Panel_Print.Visible = true;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = true;
+            Panel_WeeklyUI.Visible = true;
         }
 
         /// <summary>
@@ -1284,7 +1326,10 @@ namespace WhereEver
             {
                 ShinseiLog.DeleteT_Shinsei_C_Tatekae(Global.GetConnection(), isbn_name, isbn_uid);
             }
-
+            else if (isbn_kind == "週報入力")
+            {
+                ShinseiLog.DeleteT_Shinsei_D_WeeklyRow(Global.GetConnection(), isbn_uid);
+            }
             //一覧から削除
             ShinseiLog.DeleteT_Shinsei_MainRow(Global.GetConnection(), isbn_name, isbn_uid);
             lbluid.Text = "null";
@@ -1392,6 +1437,9 @@ namespace WhereEver
                 Panel7.Visible = false;
                 //印刷ボタンパネル
                 Panel_Print.Visible = true;
+                //週報パネル
+                Panel_Weekly.Visible = false;
+                Panel_WeeklyUI.Visible = false;
 
                 //SaveMessageを消去
                 lbl_SaveResult1.Text = "";
@@ -1446,6 +1494,10 @@ namespace WhereEver
                 //印刷ボタンパネル
                 Panel_Print.Visible = true;
 
+                //週報パネル
+                Panel_Weekly.Visible = false;
+                Panel_WeeklyUI.Visible = false;
+
                 //SaveMessageを消去
                 lbl_SaveResult2.Text = "";
 
@@ -1493,16 +1545,59 @@ namespace WhereEver
                 //印刷ボタンパネル
                 Panel_Print.Visible = true;
 
+                //週報パネル
+                Panel_Weekly.Visible = false;
+                Panel_WeeklyUI.Visible = false;
+
+
                 //SaveMessageを消去
                 lbl_SaveResult3.Text = "";
 
             }
+            else if (isbn_kind == "週報入力")
+            {
+
+                //DataTableを参照
+                DATASET.DataSet.T_Shinsei_D_WeeklyRow dr = ShinseiLog.GetT_Shinsei_D_WeeklyRow(Global.GetConnection(), isbn_uid);
+                if (dr == null)
+                {
+                    //error
+                    return;
+                }
+                InsertWeeklyUI(dr.D_Weekly_CSV);
+
+                //初期選択パネル
+                Panel1.Visible = true;
+                //物品購入申請書パネル
+                Panel2.Visible = false;
+                //勤怠パネル
+                Panel3.Visible = false;
+                //物品購入申請書印刷フォーム
+                Panel4.Visible = false;
+                //勤怠届印刷フォーム
+                Panel5.Visible = false;
+                //立替金明細表申請パネル
+                Panel6.Visible = false;
+                //立替金明細表印刷フォーム
+                Panel7.Visible = false;
+                //印刷ボタンパネル
+                Panel_Print.Visible = true;
+
+                //週報パネル
+                Panel_Weekly.Visible = true;
+                Panel_WeeklyUI.Visible = true;
+
+                //SaveMessageを消去
+                Label_WeeklyUI_SaveTest.Text = "";
+
+            }
+
         }
 
 
         //GridViewのRowCommand属性に参照可能なメソッドを入力すると↓が自動生成されます。
         //GridViewが読み込まれたときに実行されます。
-        protected void grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void Grid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             //好きなコードを入れて下さい。
 
@@ -2082,28 +2177,32 @@ namespace WhereEver
         /// <param name="e"></param>
         protected void Push_Master_A(object sender, EventArgs e)
         {
-                //初期選択パネル
-                Panel1.Visible = true;
-                //物品購入申請書パネル
-                Panel2.Visible = true;
-                //勤怠パネル
-                Panel3.Visible = false;
-                //物品購入申請書印刷フォーム
-                Panel4.Visible = false;
-                //勤怠届印刷フォーム
-                Panel5.Visible = false;
-                //立替金明細表申請パネル
-                Panel6.Visible = false;
-                //立替金明細表印刷フォーム
-                Panel7.Visible = false;
-                //印刷ボタンパネル
-                Panel_Print.Visible = false;
+            //初期選択パネル
+            Panel1.Visible = true;
+            //物品購入申請書パネル
+            Panel2.Visible = true;
+            //勤怠パネル
+            Panel3.Visible = false;
+            //物品購入申請書印刷フォーム
+            Panel4.Visible = false;
+            //勤怠届印刷フォーム
+            Panel5.Visible = false;
+            //立替金明細表申請パネル
+            Panel6.Visible = false;
+            //立替金明細表印刷フォーム
+            Panel7.Visible = false;
+            //印刷ボタンパネル
+            Panel_Print.Visible = false;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = false;
+            Panel_WeeklyUI.Visible = false;
 
-                name1.Text = "氏名：" + SessionManager.User.M_User.name1;
 
-                DateTime dt = DateTime.Now;
-                date.Text = dt.ToShortDateString();
-                //ChangeValidate(true);
+            name1.Text = "氏名：" + SessionManager.User.M_User.name1;
+
+            DateTime dt = DateTime.Now;
+            date.Text = dt.ToShortDateString();
+            //ChangeValidate(true);
         }
 
         /// <summary>
@@ -2129,6 +2228,9 @@ namespace WhereEver
             Panel7.Visible = false;
             //印刷ボタンパネル
             Panel_Print.Visible = false;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = false;
+            Panel_WeeklyUI.Visible = false;
 
             name1.Text = "氏名：" + SessionManager.User.M_User.name1;
 
@@ -2161,6 +2263,9 @@ namespace WhereEver
             Panel7.Visible = true;
             //印刷ボタンパネル
             Panel_Print.Visible = true;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = false;
+            Panel_WeeklyUI.Visible = false;
 
             name1.Text = SessionManager.User.M_User.name1;
 
@@ -2170,9 +2275,256 @@ namespace WhereEver
 
         }
 
+        /// <summary>
+        /// 週報
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Push_Master_D(object sender, EventArgs e)
+        {
+            //初期選択パネル
+            Panel1.Visible = true;
+            //物品購入申請書パネル
+            Panel2.Visible = false;
+            //勤怠パネル
+            Panel3.Visible = false;
+            //物品購入申請書印刷フォーム
+            Panel4.Visible = false;
+            //勤怠届印刷フォーム
+            Panel5.Visible = false;
+            //立替金明細表申請パネル
+            Panel6.Visible = false;
+            //立替金明細表印刷フォーム
+            Panel7.Visible = false;
+            //印刷ボタンパネル
+            Panel_Print.Visible = true;
+            //Weeklyフォーム
+            Panel_Weekly.Visible = true;
+            Panel_WeeklyUI.Visible = true;
+
+            Label_Weekly_name1.Text = SessionManager.User.M_User.name1;
+            SetWeeklyValue();
+            return;
+        }
+
+        protected void DropDownList_WeeklyChanged(object sender, EventArgs e)
+        {
+            SetWeeklyValue();
+            return;
+        }
+
+        /// <summary>
+        /// 週報のドロップダウンリストが変更されたときの処理です。
+        /// </summary>
+        protected void SetWeeklyValue()
+        {
+            DateTime dt = DateTime.Now;
+
+            string val = DropDownList_WeeklyDate.SelectedValue;
+            if (val == "先週")
+            {
+                dt = DateTime.Now.AddDays(-7);
+            }
+            else if (val == "今週")
+            {
+                //なにもしない
+            }
+            else if (val == "来週")
+            {
+                dt = DateTime.Now.AddDays(7);
+            }
+
+            for (; ; )
+            {
+                if (dt.DayOfWeek != DayOfWeek.Monday)
+                {
+                    //月曜日になるまで日付に加算
+                    dt = dt.AddDays(1);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            const string yearformat = "yyyy年";
+            const string dateformat = "M月d日";
+            Label_Weekly_year.Text = dt.ToString(yearformat);
+            Label_Weekly_date1.Text = dt.ToString(dateformat);
+            Label_Weekly_date2.Text = dt.AddDays(1).ToString(dateformat);
+            Label_Weekly_date3.Text = dt.AddDays(2).ToString(dateformat);
+            Label_Weekly_date4.Text = dt.AddDays(3).ToString(dateformat);
+            Label_Weekly_date5.Text = dt.AddDays(4).ToString(dateformat);
+            Label_Weekly_date6.Text = dt.AddDays(5).ToString(dateformat);
+            Label_Weekly_date7.Text = dt.AddDays(6).ToString(dateformat);
+            return;
+        }
+
         protected void btnMoney_Click(object sender, EventArgs e)
         {
             Response.Redirect("../Money/Money.aspx", false);
         }
+
+
+        //------------------------------------------------------------------
+
+        /// <summary>
+        /// 週報を上書き保存します。uuidが存在しない場合は新規保存します。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Button_SaveAsWeeklyUI_Click(object sender, EventArgs e)
+        {
+            //チェックボックスが多すぎるためリフレクションで入れる（GridViewでやってもよいが結局やることは同じ）
+            StringBuilder sb = new StringBuilder();
+
+            //TextBox 48こ + 備考24こ = 72
+            for (int i = 1; i <= 72; i++)
+            {
+                TextBox con_txt = (TextBox)FindControl("TextBox_Weekly" + i);    //※本番稼働では面倒でも１つずつ入れたほうがよい（不具合の原因がわかりにくいから）。
+                string txt = con_txt.Text;
+                txt = txt.Replace(",", "、");    //区切り文字は使用不可
+                sb.Append(txt);
+                sb.Append(",");
+            }
+
+            //CheckBox 504こ
+            for (int i=1; i<=504; i++)
+            {
+                
+                CheckBox con_ck = (CheckBox)FindControl("CheckBox_Weekly" + i);    //※本番稼働では面倒でも１つずつ入れたほうがよい（不具合の原因がわかりにくいから）。
+                bool b = con_ck.Checked;
+
+                if (b)
+                {
+                    sb.Append("1");
+                }
+                else
+                {
+                    sb.Append("0");
+                }
+                sb.Append(",");
+            }
+
+            //不正な改行コードを除去
+            sb.Replace("\r\f", "");
+
+            //テスト出力
+            //Label_WeeklyUI_SaveTest.Text = HtmlEncode(sb.ToString());
+
+            if (lbluid.Text == "null")
+            {
+
+                //UUID生成
+                string uid = Guid.NewGuid().ToString();
+                //ダブりなしまで無限ループ
+                for (; ; )
+                {
+                    if (ShinseiLog.GetT_Shinsei_D_WeeklyRow(Global.GetConnection(), uid) != null)
+                    {
+                        //true ダブりあり
+                        //強制終了
+                        Label_WeeklyUI_SaveTest.Text = "Save Failed E1: " + DateTime.Now;
+                        return;
+
+                    }
+                    else
+                    {
+                        //false ダブりなし
+                        Label_WeeklyUI_SaveTest.Text = "New Save: " + DateTime.Now;
+                        break;
+                    }
+
+                }
+
+                //Insert
+                ClassLibrary.ShinseiLog.SetT_Shinsei_D_Weekly_Insert(Global.GetConnection(), uid, HtmlEncode(sb.ToString()));
+                ShinseiLog.SetT_Shinsei_MainInsert(Global.GetConnection(), SessionManager.User.M_User.id, uid.Trim(), SessionManager.User.M_User.name1.Trim(), "週報入力");
+                lbluid.Text = uid;
+
+                //データバインド
+                BindData();
+
+            }
+            else
+            {
+
+                //UUID取得
+                string uid = lbluid.Text;
+
+                if (ShinseiLog.GetT_Shinsei_D_WeeklyRow(Global.GetConnection(), uid) != null)
+                {
+
+                    //Update
+                    ClassLibrary.ShinseiLog.SetT_Shinsei_D_Weekly_Update(Global.GetConnection(), uid, HtmlEncode(sb.ToString()));
+                    ShinseiLog.SetT_Shinsei_MainUpdate(Global.GetConnection(), SessionManager.User.M_User.id.Trim(), uid);
+                    Label_WeeklyUI_SaveTest.Text = "Save As: " + DateTime.Now;
+
+                    //データバインド
+                    BindData();
+
+                }
+                else
+                {
+
+                    //UUIDエラー
+                    Label_WeeklyUI_SaveTest.Text = "Save Failed E2: " + DateTime.Now;
+                    lbluid.Text = "null";
+
+                }
+
+
+            }
+
+
+            //テスト入力
+            //InsertWeeklyUI(sb.ToString());
+        }
+
+        /// <summary>
+        /// 週報を新規保存します。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Button_SaveWeeklyUI_Click(object sender, EventArgs e)
+        {
+            lbluid.Text = "null";
+            Button_SaveAsWeeklyUI_Click(sender, e);
+        }
+
+        protected void InsertWeeklyUI(string str)
+        {
+            string[] arr = str.Split(',');  //split
+
+            //TextBox→備考→CheckBoxの純に切り出し
+
+            //TextBox 48こ + 備考24こ = 72
+            for (int i = 1; i <= 72; i++)
+            {
+                TextBox con_txt = (TextBox)FindControl("TextBox_Weekly" + i);    //※本番稼働では面倒でも１つずつ入れたほうがよい（不具合の原因がわかりにくいから）。
+                con_txt.Text = HtmlDecode(arr[i-1]);
+            }
+
+            //CheckBox 504こ
+            for (int i = 1; i <= 504; i++)
+            {
+
+                CheckBox con_ck = (CheckBox)FindControl("CheckBox_Weekly" + i);    //※本番稼働では面倒でも１つずつ入れたほうがよい（不具合の原因がわかりにくいから）。
+
+                //[i - 1 + 72] = [i + 71];
+                if (HtmlDecode(arr[i + 71]) == "1")
+                {
+                    //true
+                    con_ck.Checked = true;
+                }
+                else
+                {
+                    //false
+                    con_ck.Checked = false;
+                }
+            }
+        }
+
+
     }
 }

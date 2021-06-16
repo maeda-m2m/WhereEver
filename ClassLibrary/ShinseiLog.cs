@@ -66,6 +66,226 @@ namespace WhereEver.ClassLibrary
 
 
         //------------------------------------------------------------------------------------------------------------
+        //T_Shinsei_D_Weekly
+        //------------------------------------------------------------------------------------------------------------
+
+        /// <summary>
+        /// T_Shinsei_D_WeeklyのDataRowを返します。
+        /// 引数はDATASET.DataSet.T_Shinsei_D_WeeklyRow型で参照して下さい。
+        /// 中身がない場合や入力値が不正な場合はnullを返します。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="uid"></param>
+        /// <returns>DATASET.DataSet.T_Shinsei_D_WeeklyRow</returns>
+        public static DATASET.DataSet.T_Shinsei_D_WeeklyRow GetT_Shinsei_D_WeeklyRow(SqlConnection sqlConnection, string uid)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //パラメータを取得（必要のないパラメータを設定するとコンパイルエラーする）
+            da.SelectCommand.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 50, "id")).Value = SessionManager.User.M_User.id.Trim();
+            da.SelectCommand.Parameters.Add(new SqlParameter("@uid", System.Data.SqlDbType.NVarChar, 50, "uid")).Value = uid;
+
+            da.SelectCommand.CommandText =
+                "SELECT * FROM [T_Shinsei_D_Weekly] WHERE id = LTRIM(RTRIM(@id)) AND uid = LTRIM(RTRIM(@uid))";
+
+            //特定のDataTableをインスタンス化
+            DATASET.DataSet.T_Shinsei_D_WeeklyDataTable dt = new DATASET.DataSet.T_Shinsei_D_WeeklyDataTable();
+
+
+            try
+            {
+                //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
+                da.Fill(dt);
+
+                if (dt.Count >= 1)
+                {
+                    //中身あり
+                    return dt[0];  //dt[0]の中にflag_del_popなどが入っています。
+
+                }
+                else
+                {
+                    //中身なし
+                    return null;
+                }
+
+            }
+            catch
+            {
+                //不正な値が入力された場合はnullを返します。
+                return null;
+            }
+
+        }
+
+        /// <summary>
+        /// T_Shinsei_D_Weeklyを１行削除します。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="uid"></param>
+        /// <returns>bool</returns>
+        public static bool DeleteT_Shinsei_D_WeeklyRow(SqlConnection sqlConnection, string uid)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //パラメータを取得（必要のないパラメータを設定するとコンパイルエラーする）
+            da.SelectCommand.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 50, "id")).Value = SessionManager.User.M_User.id.Trim();
+            da.SelectCommand.Parameters.Add(new SqlParameter("@uid", System.Data.SqlDbType.NVarChar, 50, "uid")).Value = uid;
+
+            da.SelectCommand.CommandText =
+                "DELETE TOP(1) FROM [T_Shinsei_D_Weekly] WHERE id = LTRIM(RTRIM(@id)) AND uid = LTRIM(RTRIM(@uid))";
+
+            //特定のDataTableをインスタンス化
+            DATASET.DataSet.T_Shinsei_D_WeeklyDataTable dt = new DATASET.DataSet.T_Shinsei_D_WeeklyDataTable();
+
+
+            try
+            {
+                //↓でコンパイルエラーが出るときはWeb.configに誤りがある場合があります。
+                da.Fill(dt);
+                return true;
+
+            }
+            catch
+            {
+                //不正な値
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// 週報テーブルにインサートします。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="uuid"></param>
+        /// <param name="str"></param>
+        public static void SetT_Shinsei_D_Weekly_Insert(SqlConnection sqlConnection, string uid,string str)
+        {
+            sqlConnection.Open();
+
+            //Create the Update Command.
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //Sql Commandを作成します。
+            SqlCommand command = sqlConnection.CreateCommand();
+
+            //ファイルを書き込み可能なようにオープンしてSqlのデータをアップデートします。
+            //Start a local transaction. usingブロックを抜けると自動でcloseされます。
+            using (SqlTransaction transaction = sqlConnection.BeginTransaction())
+            {
+
+                //Must assign both transaction object and connection
+                //to Command object for apending local transaction
+                command.Connection = sqlConnection;
+                command.Transaction = transaction;
+
+                try
+                {
+                    //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
+                    //-------------------------------------------------------------------------------------------------------------------
+                    command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 50, "id")).Value = SessionManager.User.M_User.id.Trim();
+                    command.Parameters.Add(new SqlParameter("@uid", System.Data.SqlDbType.NVarChar, 50, "uid")).Value = uid.Trim();
+                    command.Parameters.Add(new SqlParameter("@str", System.Data.SqlDbType.NVarChar, -1, "D_Weekly_CSV")).Value = str.Trim();
+
+                    //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
+                    command.CommandText = "INSERT INTO [T_Shinsei_D_Weekly]([id], [uid], [D_Weekly_CSV]) VALUES(LTRIM(RTRIM(@id)), LTRIM(RTRIM(@uid)),  CAST(LTRIM(RTRIM(@str)) AS NVarChar(max)))";
+
+
+                    //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
+                    //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。
+                    command.ExecuteNonQuery();
+
+
+                    //Attempt to commit the transaction.
+                    da.UpdateCommand = command;
+                    transaction.Commit();
+
+                    //Console.WriteLine("Update Completed");
+
+                }
+                catch
+                {
+                    //catch文
+                    //Console.WriteLine("Update Failed");
+                    transaction.Rollback();
+                }
+
+            } //sqlConnection.Close();
+
+            // データベースの接続終了
+            sqlConnection.Close();
+            return;
+
+        }
+
+        /// <summary>
+        /// 週報テーブルをアップデートします。
+        /// </summary>
+        /// <param name="sqlConnection"></param>
+        /// <param name="uuid"></param>
+        /// <param name="str"></param>
+        public static void SetT_Shinsei_D_Weekly_Update(SqlConnection sqlConnection, string uid, string str)
+        {
+            sqlConnection.Open();
+
+            //Create the Update Command.
+            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+
+            //Sql Commandを作成します。
+            SqlCommand command = sqlConnection.CreateCommand();
+
+            //ファイルを書き込み可能なようにオープンしてSqlのデータをアップデートします。
+            //Start a local transaction. usingブロックを抜けると自動でcloseされます。
+            using (SqlTransaction transaction = sqlConnection.BeginTransaction())
+            {
+
+                //Must assign both transaction object and connection
+                //to Command object for apending local transaction
+                command.Connection = sqlConnection;
+                command.Transaction = transaction;
+
+                try
+                {
+                    //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
+                    //-------------------------------------------------------------------------------------------------------------------
+                    command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 50, "id")).Value = SessionManager.User.M_User.id.Trim();
+                    command.Parameters.Add(new SqlParameter("@uid", System.Data.SqlDbType.NVarChar, 50, "uid")).Value = uid.Trim();
+                    command.Parameters.Add(new SqlParameter("@str", System.Data.SqlDbType.NVarChar, -1, "D_Weekly_CSV")).Value = str.Trim();
+
+                    //↓SqlCommand command = sqlConnection.CreateCommand();を実行した場合はこちらでSQL文を入力
+                    command.CommandText = "UPDATE [T_Shinsei_D_Weekly] SET[id] = LTRIM(RTRIM(@id)), [uid]=LTRIM(RTRIM(@uid)), [D_Weekly_CSV]=CAST(LTRIM(RTRIM(@str)) AS NVarChar(max)) WHERE([id] = LTRIM(RTRIM(@id)) AND [uid]=LTRIM(RTRIM(@uid)))";
+
+                    //このメソッドでは、XmlCommandTypeプロパティおよびCommandTextプロパティを使用してSQL文またはコマンドを実行し、影響を受ける行数を戻します（必須）。 
+                    //ここでエラーが出る場合は、宣言やSql文が不正な場合があります。
+                    command.ExecuteNonQuery();
+
+
+                    //Attempt to commit the transaction.
+                    da.UpdateCommand = command;
+                    transaction.Commit();
+
+                    //Console.WriteLine("Update Completed");
+
+                }
+                catch
+                {
+                    //catch文
+                    //Console.WriteLine("Update Failed");
+                    transaction.Rollback();
+                }
+
+            } //sqlConnection.Close();
+
+            // データベースの接続終了
+            sqlConnection.Close();
+            return;
+
+        }
+
+
+
+        //------------------------------------------------------------------------------------------------------------
         //T_Shinsei_Config
         //------------------------------------------------------------------------------------------------------------
 

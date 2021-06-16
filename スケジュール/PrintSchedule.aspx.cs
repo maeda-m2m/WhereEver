@@ -1263,7 +1263,7 @@ namespace WhereEver
             {
                 DATASET.DataSet.T_PrintScheduleRow dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_PrintScheduleRow;
                 e.Item.Cells[0].Text = "<font color = white>" + dr.bikouid.ToString();
-                e.Item.Cells[1].Text = dr.bikou.ToString();
+                e.Item.Cells[1].Text =  dr.bikou;
                 bikou.Text += dr.bikou.ToString() +"<br>";
             }
         }
