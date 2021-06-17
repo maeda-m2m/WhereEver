@@ -45,6 +45,8 @@ namespace WhereEver.XHTML5Editor
             sb.Append("\r\n");
             sb.Append(".userstyle { ");
             sb.Append("\r\n");
+            sb.Append("-webkit-appearance: none;");//スマホ対策
+            sb.Append("\r\n");
             sb.Append(" width: "); 
             if(DropDownList_Width.SelectedValue != "auto")
             {

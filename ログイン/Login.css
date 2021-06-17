@@ -49,6 +49,7 @@
 }
 
 .btn {
+    -webkit-appearance: none; /* スマホ対応 */
     width: 200px;
     height: 40px;
     position: relative;

@@ -494,6 +494,7 @@ h1 {
 }
 
 .btn-flat-border {
+    -webkit-appearance: none;   /* スマホ対応 */
     text-align: center;
     width: 120px;
     height: 32px;

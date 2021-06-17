@@ -55,6 +55,7 @@
 
 
 .btn {
+    -webkit-appearance: none; /* スマホ対応 */
     width: 150px;
     height: 40px;
     position: relative;
