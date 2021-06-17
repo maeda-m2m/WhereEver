@@ -50,6 +50,7 @@
         <aside id="aside">
             <h2>WhereEver</h2>
             <ul>
+                <li><a href="~/ログイン/LoginList.aspx" runat="server" class="header2_menu">トップページ</a></li>
                 <li><a href="~/スケジュール/Schedule.aspx" runat="server" class="header2_menu">スケジュール</a></li>
                 <li><a href="~/スケジュール/Wiki_Top.aspx" runat="server" class="header2_menu">社内Wiki</a></li>
                 <li><a href="~/各申請書類/Shinsei.aspx" runat="server" class="header2_menu">各申請書類</a></li>
@@ -57,39 +58,45 @@
                 <li><a href="~/ファイル共有/FileShare.aspx" runat="server" class="header2_menu">ファイル共有</a></li>
                 <li><a href="~/Project System/PIchiran.aspx" runat="server" class="header2_menu">プロジェクト</a></li>
                 <li><a href="~/管理ページ/Kanri.aspx" runat="server" class="header2_menu">マイページ</a></li>
+                <li>
+                    <h1 id="Image1">テスト</h1>
+                </li>
 
             </ul>
             <h2>MySchedule</h2>
-            <ul>
+            <asp:RadioButtonList runat="server" ID="rbl1" RepeatColumns="2" AutoPostBack="true" OnSelectedIndexChanged="rbl1_SelectedIndexChanged">
 
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-            </ul>
-            <h2>スケジュールの表示を変える</h2>
+                <asp:ListItem>石岡</asp:ListItem>
+                <asp:ListItem>木村</asp:ListItem>
+                <asp:ListItem>佐藤</asp:ListItem>
+                <asp:ListItem>白井</asp:ListItem>
+                <asp:ListItem>寺島</asp:ListItem>
+                <asp:ListItem>前田</asp:ListItem>
+                <asp:ListItem>三浦</asp:ListItem>
+                <asp:ListItem>三津谷</asp:ListItem>
+                <asp:ListItem>柳沢</asp:ListItem>
+                <asp:ListItem>張</asp:ListItem>
+                <asp:ListItem>鯉淵</asp:ListItem>
+                <asp:ListItem>坂口</asp:ListItem>
+                <asp:ListItem>坂田</asp:ListItem>
+                <asp:ListItem>一番ヶ瀬</asp:ListItem>
+                <asp:ListItem>髙栁社長</asp:ListItem>
 
-            <ul>
-                <li>月</li>
-                <li>週</li>
-                <li>日</li>
-            </ul>
-            <h2>登録・印刷</h2>
+
+            </asp:RadioButtonList>
+
+            <h2>登録・印刷・検索</h2>
             <ul>
                 <li>
                     <asp:Button ID="Button11" runat="server" Text="登録" OnClick="Button3_Click" /></li>
                 <li>
                     <asp:Button ID="Button12" runat="server" OnClick="Button1_Click" Text="印刷" /></li>
+                <li>
+                    <asp:Button ID="Button13" runat="server" Text="検索" OnClick="Button10_Click" /></li>
             </ul>
-            <h1 id="Image1">テストページへ</h1>
+
         </aside>
 
-        <%--<asp:Button runat="server" ID="ButtonA" Text="社内Wiki" OnClick="ButtonA_Click" />--%>
-        <%--  <asp:Button runat="server" ID="ButtonB" Text="" OnClick="ButtonB_Click" />--%>
 
         <main>
 
@@ -191,7 +198,7 @@
                         <tr>
                             <th class="Center_Color">担当者</th>
                             <td>
-                                <asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="CheckBoxList_Left">
+                                <asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="CheckBoxList_Left" RepeatDirection="Horizontal" RepeatColumns="2">
                                     <asp:ListItem>石岡</asp:ListItem>
                                     <asp:ListItem>木村</asp:ListItem>
                                     <asp:ListItem>佐藤</asp:ListItem>
@@ -213,12 +220,12 @@
                         </tr>
 
                         <tr>
-
-                            <td colspan="2">
+                            <th class="Center_Color">ボタン</th>
+                            <td>
 
                                 <asp:Button ID="Button2" runat="server" Text="登録" class="btn-flat-border" OnClick="Button2_Click" />
 
-                                <asp:Button ID="Button7" runat="server" Text="戻る" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" />
+                                <asp:Button ID="Button7" runat="server" Text="戻る" class="btn-flat-border" OnClick="Button7_Click" />
 
                             </td>
 
@@ -234,9 +241,7 @@
             <section>
                 <asp:DataGrid runat="server" ID="Scdl3" AutoGenerateColumns="False" OnItemDataBound="Scdl3_ItemDataBound" OnSelectedIndexChanged="Scdl3_SelectedIndexChanged" GridLines="Vertical">
 
-                    <HeaderStyle Width="200px" BackColor=" #16BA00" ForeColor="White" VerticalAlign="Middle" Font-Size="15px" HorizontalAlign="Center"></HeaderStyle>
-
-
+                    <HeaderStyle Width="200px" BackColor=" #16BA00" ForeColor="White" Font-Size="15px" HorizontalAlign="Center"></HeaderStyle>
 
                     <AlternatingItemStyle BackColor="#ccffcc" />
 
@@ -425,7 +430,7 @@
                         <tr>
                             <th class="Center_Color">担当者</th>
                             <td>
-                                <asp:CheckBoxList ID="CheckBoxList2" runat="server" CssClass="CheckBoxList_Left">
+                                <asp:CheckBoxList ID="CheckBoxList2" runat="server" CssClass="CheckBoxList_Left" RepeatDirection="Horizontal" RepeatColumns="2">
                                     <asp:ListItem>石岡</asp:ListItem>
                                     <asp:ListItem>木村</asp:ListItem>
                                     <asp:ListItem>佐藤</asp:ListItem>
@@ -447,7 +452,8 @@
                         </tr>
 
                         <tr>
-                            <td colspan="2">
+                            <th class="Center_Color">ボタン</th>
+                            <td>
                                 <asp:Button ID="Button8" runat="server" class="btn-flat-border" OnClick="Button8_Click" Text="検索" />
                                 <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" Text="戻る" />
                             </td>
@@ -460,61 +466,32 @@
 
             <section class="Center">
                 <asp:Label runat="server" ID="Label2" Text=""></asp:Label>
-                <asp:DataGrid runat="server" ID="ScdlList" AutoGenerateColumns="False"
-                    OnEditCommand="ScdlList_EditCommand"
-                    OnCancelCommand="ScdlList_CancelCommand"
-                    OnUpdateCommand="ScdlList_UpdateCommand"
-                    OnItemDataBound="ScdlList_ItemDataBound"
-                    OnItemCommand="ScdlList_ItemCommand">
+                <asp:DataGrid runat="server" ID="ScdlList" AutoGenerateColumns="False" OnEditCommand="ScdlList_EditCommand" OnCancelCommand="ScdlList_CancelCommand" OnUpdateCommand="ScdlList_UpdateCommand" OnItemDataBound="ScdlList_ItemDataBound" OnItemCommand="ScdlList_ItemCommand">
 
-                    <HeaderStyle Width="200px" Height="50px" BackColor="#16BA00" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px"></HeaderStyle>
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Font-Size="15px" />
+                    <HeaderStyle Width="200px" Height="50px" BackColor="#16BA00" Font-Bold="True" ForeColor="White" HorizontalAlign="Center"></HeaderStyle>
+
+
                     <AlternatingItemStyle BackColor="#ccffcc" />
+
                     <Columns>
 
+                        <asp:TemplateColumn HeaderText="選択" ItemStyle-Width="70px">
+                            <ItemTemplate>
+                                <asp:CheckBox runat="server" ID="checkbox1" />
+                            </ItemTemplate>
+                        </asp:TemplateColumn>
 
-                        <asp:BoundColumn DataField="date" HeaderText="日付" ItemStyle-Height="50px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="200px">
+                        <asp:BoundColumn DataField="date" HeaderText="日付" ItemStyle-Height="50px" ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Left"></asp:BoundColumn>
 
-                            <ItemStyle HorizontalAlign="Left" />
-                        </asp:BoundColumn>
+                        <asp:BoundColumn DataField="time" HeaderText="時間" ItemStyle-Width="150px" ItemStyle-HorizontalAlign="Left"></asp:BoundColumn>
 
-                        <asp:BoundColumn DataField="time" HeaderText="時間" ItemStyle-Width="100px">
+                        <asp:BoundColumn DataField="title" HeaderText="内容" ItemStyle-Width="150px" ItemStyle-HorizontalAlign="Left"></asp:BoundColumn>
 
-                            <ItemStyle HorizontalAlign="Left" Width="150px" />
-                        </asp:BoundColumn>
+                        <asp:BoundColumn DataField="name" HeaderText="担当者名" ItemStyle-Width="150px" ItemStyle-HorizontalAlign="Left"></asp:BoundColumn>
 
-                        <asp:BoundColumn DataField="title" HeaderText="内容" ItemStyle-Width="100px">
+                        <asp:ButtonColumn ItemStyle-Width="150px" HeaderText="削除" ButtonType="PushButton" Text="削除" CommandName="Delete" ItemStyle-BorderColor="Black" ItemStyle-BorderStyle="Solid" ItemStyle-BorderWidth="1px"></asp:ButtonColumn>
 
-                            <ItemStyle HorizontalAlign="Left" Width="150px" />
-                        </asp:BoundColumn>
-
-                        <asp:BoundColumn DataField="name" HeaderText="担当者名" ItemStyle-Width="100px">
-
-                            <ItemStyle HorizontalAlign="Left" Width="150px" />
-                        </asp:BoundColumn>
-
-
-
-
-                        <asp:ButtonColumn ItemStyle-CssClass="delete_check"
-                            ItemStyle-Width="100px"
-                            HeaderText="削除"
-                            ButtonType="PushButton"
-                            Text="削除"
-                            CommandName="Delete">
-
-
-                            <ItemStyle Width="100px"></ItemStyle>
-                        </asp:ButtonColumn>
-
-                        <asp:EditCommandColumn ItemStyle-CssClass="edit_focus"
-                            HeaderText="編集"
-                            ItemStyle-Width="100px"
-                            EditText="編集"
-                            CancelText="キャンセル"
-                            UpdateText="保存" ButtonType="PushButton">
-                            <ItemStyle Width="100px"></ItemStyle>
-                        </asp:EditCommandColumn>
+                        <asp:EditCommandColumn ItemStyle-CssClass="edit_focus" HeaderText="編集" ItemStyle-Width="150px" EditText="編集" CancelText="キャンセル" UpdateText="保存" ButtonType="PushButton" ItemStyle-BorderColor="Black" ItemStyle-BorderStyle="Solid" ItemStyle-BorderWidth="1px"></asp:EditCommandColumn>
 
                     </Columns>
 

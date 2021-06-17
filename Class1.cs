@@ -12,7 +12,7 @@ namespace WhereEver
     {
         public static DATASET.DataSet.T_PdbRow GetProjectRow(string id, SqlConnection sqlConnection)
         {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
+            var da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
                 "SELECT * FROM T_Pdb WHERE Pid = @id";
             da.SelectCommand.Parameters.AddWithValue("@id", id);
@@ -205,6 +205,26 @@ namespace WhereEver
         }
 
         public static DATASET.DataSet.T_ScheduleDataTable ScheduleSearch(string a, string b, string c, string d, SqlConnection Sqlco)//検索用
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+
+            da.SelectCommand.CommandText =
+              "SELECT * FROM T_Schedule WHERE date LIKE @a AND time LIKE @b AND title LIKE @c AND name LIKE @d order by date asc";
+
+
+            da.SelectCommand.Parameters.AddWithValue("@a", "%" + a + "%");
+            da.SelectCommand.Parameters.AddWithValue("@b", "%" + b + "%");
+            da.SelectCommand.Parameters.AddWithValue("@c", "%" + c + "%");
+            da.SelectCommand.Parameters.AddWithValue("@d", "%" + d + "%");
+
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        public static DATASET.DataSet.T_ScheduleDataTable MySchedule(string a, string b, string c, string d, SqlConnection Sqlco)//検索用
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 

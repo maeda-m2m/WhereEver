@@ -2,6 +2,7 @@
 using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows;
 
 namespace WhereEver
 {
@@ -24,6 +25,11 @@ namespace WhereEver
                 ViewState["Count"] = 0;
                 ViewState["Serch"] = 0;
                 ViewState["Count2"] = 0;
+                /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+                //この順番で記述する。createは下のリスト用。create3,2は上の表用。一度3でリセットしてから2で再度表示する。
+                //Create();
+                //Create3();
+                //Create2();
 
                 //Panel1、登録
                 //Panel2、登録のメニュー
@@ -34,11 +40,28 @@ namespace WhereEver
 
                 //used_Label1,2,3,4,5,6,
 
+                //MessageBoxResult result = MessageBox.Show("OKボタンを押して閉じてください", "メッセージボックス", MessageBoxButton.OKCancel, MessageBoxImage.Information);
 
-
+                //if (result == MessageBoxResult.Yes)
+                //{
+                //    // 「はい」ボタンを押した場合の処理
+                //}
+                //else if (result == MessageBoxResult.No)
+                //{
+                //    // 「いいえ」ボタンを押した場合の処理
+                //}
+                //else if (result == MessageBoxResult.Cancel)
+                //{
+                //    //　「キャンセル」ボタンを押した場合の処理
+                //}
+                //else
+                //{
+                //    //　その他の場合の処理
+                //}
+                /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
             }
         }
-
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
         public void Create()//スケジュールリストにデータを格納(日付が古い順)
         {
@@ -167,7 +190,7 @@ namespace WhereEver
                     Scdl3.Items[7].Cells[1].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[1].CssClass = "Center_cs_Color";
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z1 == "火")
                 {
@@ -193,7 +216,7 @@ namespace WhereEver
                     Scdl3.Items[7].Cells[2].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[2].CssClass = "Center_cs_Color";
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z2 == "水")
                 {
@@ -219,7 +242,7 @@ namespace WhereEver
                     Scdl3.Items[7].Cells[3].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[3].CssClass = "Center_cs_Color";
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z3 == "木")
                 {
@@ -247,7 +270,7 @@ namespace WhereEver
                     Scdl3.Items[7].Cells[4].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[4].CssClass = "Center_cs_Color";
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z4 == "金")
                 {
@@ -275,7 +298,7 @@ namespace WhereEver
                     Scdl3.Items[7].Cells[5].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[5].CssClass = "Center_cs_Color";
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z5 == "土")
                 {
@@ -301,7 +324,7 @@ namespace WhereEver
                     Scdl3.Items[7].Cells[6].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[6].CssClass = "Center_cs_Color";
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
 
                 }
                 else if (Z6 == "日")
@@ -329,7 +352,7 @@ namespace WhereEver
                     Scdl3.Items[7].Cells[7].CssClass = "Center_cs_Color";
                     Scdl3.Items[9].Cells[7].CssClass = "Center_cs_Color";
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
 
                 }
 
@@ -789,7 +812,7 @@ namespace WhereEver
         }
 
 
-        public void Create3()//スケジュール帳にデータを格納
+        public void Create3()//上のスケジュール表をリセットする
         {
             var dt = Class1.GetSchedule3DataTable(Global.GetConnection());
 
@@ -799,12 +822,12 @@ namespace WhereEver
         }
 
 
-
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         protected void Button1_Click(object sender, EventArgs e)//印刷
         {
             Response.Redirect("PrintSchedule.aspx");
         }
-
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         protected void Button2_Click(object sender, EventArgs e)//スケジュールを登録
         {
             if (cb1.Checked == true)
@@ -825,7 +848,7 @@ namespace WhereEver
 
                 datetime = DateTime.Parse(test);
 
-                //datetime2 = DateTime.Parse(datetime.AddDays(+ddlist10).ToString());
+
 
                 for (; i > 0; i--)
                 {
@@ -872,6 +895,8 @@ namespace WhereEver
                 Create();
                 Create3();
                 Create2();
+
+                MessageBox.Show("登録しました", "メッセージボックス", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Panel1.Visible = true;
                 Panel2.Visible = true;
@@ -921,12 +946,14 @@ namespace WhereEver
                 Create3();
                 Create2();
 
+                MessageBox.Show("登録しました", "メッセージボックス", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 Panel1.Visible = true;
                 Panel2.Visible = true;
                 Panel3.Visible = false;
             }
         }
-
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         protected void Button3_Click(object sender, EventArgs e)//登録パネル
         {
             Panel1.Visible = true;
@@ -939,6 +966,7 @@ namespace WhereEver
             Create2();
 
             Button2.Focus();
+
 
 
 
@@ -959,8 +987,9 @@ namespace WhereEver
 
 
         }
-
-        protected void Scdl3_ItemDataBound(object sender, DataGridItemEventArgs e)//scdl3の表示の枠を作っている
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+        //上のスケジュール表の曜日などの表示の枠を作っている。
+        protected void Scdl3_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
@@ -1003,24 +1032,24 @@ namespace WhereEver
             }
         }
 
-
-        protected void ScdlList_ItemDataBound(object sender, DataGridItemEventArgs e)//スケジュールリストを表示している
+        //下のスケジュールリストを表示している
+        protected void ScdlList_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
 
                 var dr = (e.Item.DataItem as DataRowView).Row as DATASET.DataSet.T_ScheduleRow;
 
-                e.Item.Cells[0].Text = dr.date.ToString("yyyy年MMMMd日") + " " + dr.date.ToString("dddd");
-                e.Item.Cells[1].Text = dr.time.ToString();
-                e.Item.Cells[2].Text = dr.title.ToString();
-                e.Item.Cells[3].Text = dr.name.ToString();
+                e.Item.Cells[1].Text = dr.date.ToString("yyyy年MMMMd日") + " " + dr.date.ToString("dddd");
+                e.Item.Cells[2].Text = dr.time.ToString();
+                e.Item.Cells[3].Text = dr.title.ToString();
+                e.Item.Cells[4].Text = dr.name.ToString();
                 //e.Item.Cells[4].Text = dr.SdlNo.ToString();
 
 
             }
         }
-
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
         protected void ScdlList_ItemCommand(object sender, DataGridCommandEventArgs e)//削除ボタンの処理
         {
@@ -1046,68 +1075,94 @@ namespace WhereEver
                 }
             }
 
-            if (Serch == 0 & Count2 >= 1)
+            MessageBoxResult result = MessageBox.Show("本当に実行しますか", "メッセージボックス", MessageBoxButton.YesNo, MessageBoxImage.None);
+
+            if (result == MessageBoxResult.Yes)
             {
-                int Delete = e.Item.ItemIndex;
-                var dt = Class1.GetT_Schedule3DataTableDesc(Global.GetConnection());
-                var dr = dt.Rows[Delete] as DATASET.DataSet.T_ScheduleRow;
-                int sdl = dr.SdlNo;
 
-                if (e.CommandName == "Delete")
+
+
+                if (Serch == 0 & Count2 >= 1)
                 {
-                    if (sdl > 0)
-                        Class1.DeleteList(sdl, Global.GetConnection());
-                    ScdlList.Items[Delete].FindControl("No");
+                    int Delete = e.Item.ItemIndex;
+                    var dt = Class1.GetT_Schedule3DataTableDesc(Global.GetConnection());
+                    var dr = dt.Rows[Delete] as DATASET.DataSet.T_ScheduleRow;
+                    int sdl = dr.SdlNo;
 
-                    Create_Desc();
+                    if (e.CommandName == "Delete")
+                    {
+                        if (sdl > 0)
+                            Class1.DeleteList(sdl, Global.GetConnection());
+                        ScdlList.Items[Delete].FindControl("No");
+
+                        Create_Desc();
+                        Create3();
+                        Create2();
+                    }
+                }
+                else if (Count <= Serch)
+                {
+                    int Delete = e.Item.ItemIndex;
+                    var dt = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
+                    var dr = dt.Rows[Delete] as DATASET.DataSet.T_ScheduleRow;
+                    int sdl = dr.SdlNo;
+
+                    if (e.CommandName == "Delete")
+                    {
+                        if (sdl > 0)
+                            Class1.DeleteList(sdl, Global.GetConnection());
+                        ScdlList.Items[Delete].FindControl("No");
+
+                        var dd = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
+                        ScdlList.DataSource = dd;
+                        ScdlList.DataBind();
+
+                        Create3();
+                        Create2();
+                    }
+
+                }
+                else
+                {
+                    int Delete = e.Item.ItemIndex;
+                    var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+                    var dr = dt.Rows[Delete] as DATASET.DataSet.T_ScheduleRow;
+                    int sdl = dr.SdlNo;
+
+                    if (e.CommandName == "Delete")
+                    {
+                        if (sdl > 0)
+                            Class1.DeleteList(sdl, Global.GetConnection());
+                        ScdlList.Items[Delete].FindControl("No");
+
+                        Create();
+                        Create3();
+                        Create2();
+                    }
+                }
+            }
+            else if (result == MessageBoxResult.No)
+            {
+                if (Count <= Serch)
+                {
                     Create3();
                     Create2();
                 }
-            }
-            else if (Count <= Serch)
-            {
-                int Delete = e.Item.ItemIndex;
-                var dt = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
-                var dr = dt.Rows[Delete] as DATASET.DataSet.T_ScheduleRow;
-                int sdl = dr.SdlNo;
-
-                if (e.CommandName == "Delete")
+                else
                 {
-                    if (sdl > 0)
-                        Class1.DeleteList(sdl, Global.GetConnection());
-                    ScdlList.Items[Delete].FindControl("No");
-
-                    var dd = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
-                    ScdlList.DataSource = dd;
-                    ScdlList.DataBind();
-
-                    Create3();
-                    Create2();
-                }
-
-            }
-            else
-            {
-                int Delete = e.Item.ItemIndex;
-                var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-                var dr = dt.Rows[Delete] as DATASET.DataSet.T_ScheduleRow;
-                int sdl = dr.SdlNo;
-
-                if (e.CommandName == "Delete")
-                {
-                    if (sdl > 0)
-                        Class1.DeleteList(sdl, Global.GetConnection());
-                    ScdlList.Items[Delete].FindControl("No");
-
                     Create();
                     Create3();
                     Create2();
                 }
 
-            }
+            };
+
 
         }
 
+
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+        /*編集ボタン関連の処理*/
         protected void ScdlList_EditCommand(object sender, DataGridCommandEventArgs e)//編集ボタンの処理
         {
             int Count = 1;
@@ -1168,8 +1223,8 @@ namespace WhereEver
 
         }
 
-
-        protected void ScdlList_CancelCommand(object sender, DataGridCommandEventArgs e)//編集ボタンをキャンセルした時の処理
+        //編集ボタンをキャンセルした時の処理
+        protected void ScdlList_CancelCommand(object sender, DataGridCommandEventArgs e)
         {
             ScdlList.EditItemIndex = -1;
             ScdlList.DataSource = Class1.GetT_Schedule3DataTable(Global.GetConnection());
@@ -1179,8 +1234,8 @@ namespace WhereEver
             Create3();
             Create2();
         }
-
-        public void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)//編集ボタンを押して編集を保存した時の処理(アップデート処理)
+        //編集ボタンを押して編集を保存した時の処理(アップデート処理)
+        public void ScdlList_UpdateCommand(object sender, DataGridCommandEventArgs e)
         {
 
             int Count = 1;
@@ -1206,17 +1261,17 @@ namespace WhereEver
             }
             if (Serch == 0 & Count2 >= 1)
             {
-                TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
-                TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
-                TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
-                TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
-                //TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
+                TextBox a1 = (TextBox)e.Item.Cells[1].Controls[0];
+                TextBox a2 = (TextBox)e.Item.Cells[2].Controls[0];
+                TextBox a3 = (TextBox)e.Item.Cells[3].Controls[0];
+                TextBox a4 = (TextBox)e.Item.Cells[4].Controls[0];
+
 
                 string b1 = a1.Text.Trim();
                 string b2 = a2.Text.Trim();
                 string b3 = a3.Text.Trim();
                 string b4 = a4.Text.Trim();
-                //string b5 = a5.Text.Trim();
+
 
                 var dt = Class1.GetT_Schedule3DataTableDesc(Global.GetConnection());
                 int ItemRow = e.Item.ItemIndex;
@@ -1226,7 +1281,7 @@ namespace WhereEver
                 dr[1] = b2.Trim();
                 dr[2] = b3.Trim();
                 dr[3] = b4.Trim();
-                //dr[4] = b5.Trim();
+
 
                 Class1.UpdateProject(dr, Global.GetConnection());
 
@@ -1239,27 +1294,27 @@ namespace WhereEver
             }
             else if (Count <= Serch)
             {
-                TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
-                TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
-                TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
-                TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
-                //TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
+                TextBox a1 = (TextBox)e.Item.Cells[1].Controls[0];
+                TextBox a2 = (TextBox)e.Item.Cells[2].Controls[0];
+                TextBox a3 = (TextBox)e.Item.Cells[3].Controls[0];
+                TextBox a4 = (TextBox)e.Item.Cells[4].Controls[0];
+
 
                 string b1 = a1.Text.Trim();
                 string b2 = a2.Text.Trim();
                 string b3 = a3.Text.Trim();
                 string b4 = a4.Text.Trim();
-                //string b5 = a5.Text.Trim();
+
 
                 var dt = Class1.ScheduleSearch(a, b, c, d, Global.GetConnection());
-                int A1 = e.Item.ItemIndex;
-                var dr = dt.Rows[A1] as DATASET.DataSet.T_ScheduleRow;
+                int ItemRow = e.Item.ItemIndex;
+                var dr = dt.Rows[ItemRow] as DATASET.DataSet.T_ScheduleRow;
 
                 dr[0] = b1.Trim();
                 dr[1] = b2.Trim();
                 dr[2] = b3.Trim();
                 dr[3] = b4.Trim();
-                //dr[4] = b5.Trim();
+
 
                 Class1.UpdateProject(dr, Global.GetConnection());
 
@@ -1275,27 +1330,27 @@ namespace WhereEver
             }
             else
             {
-                TextBox a1 = (TextBox)e.Item.Cells[0].Controls[0];
-                TextBox a2 = (TextBox)e.Item.Cells[1].Controls[0];
-                TextBox a3 = (TextBox)e.Item.Cells[2].Controls[0];
-                TextBox a4 = (TextBox)e.Item.Cells[3].Controls[0];
-                //TextBox a5 = (TextBox)e.Item.Cells[4].Controls[0];
+                TextBox a1 = (TextBox)e.Item.Cells[1].Controls[0];
+                TextBox a2 = (TextBox)e.Item.Cells[2].Controls[0];
+                TextBox a3 = (TextBox)e.Item.Cells[3].Controls[0];
+                TextBox a4 = (TextBox)e.Item.Cells[4].Controls[0];
 
-                string b1 = a1.Text.Trim();
-                string b2 = a2.Text.Trim();
-                string b3 = a3.Text.Trim();
-                string b4 = a4.Text.Trim();
-                //string b5 = a5.Text.Trim();
+
+                string b1 = a1.Text;
+                string b2 = a2.Text;
+                string b3 = a3.Text;
+                string b4 = a4.Text;
+
 
                 var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
-                int A1 = e.Item.ItemIndex;
-                var dr = dt.Rows[A1] as DATASET.DataSet.T_ScheduleRow;
+                int ItemRow = e.Item.ItemIndex;
+                var dr = dt.Rows[ItemRow] as DATASET.DataSet.T_ScheduleRow;
 
                 dr[0] = b1.Trim();
                 dr[1] = b2.Trim();
                 dr[2] = b3.Trim();
                 dr[3] = b4.Trim();
-                //dr[4] = b5.Trim();
+
 
                 Class1.UpdateProject(dr, Global.GetConnection());
 
@@ -1307,7 +1362,7 @@ namespace WhereEver
             }
 
         }
-
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
         protected void Button4_Click(object sender, EventArgs e)//前へボタンの処理
@@ -1389,7 +1444,7 @@ namespace WhereEver
 
 
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
 
                 }
                 else if (Z1 == "火")
@@ -1404,7 +1459,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 4).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 5).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z2 == "水")
                 {
@@ -1418,7 +1473,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 4).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z3 == "木")
                 {
@@ -1434,7 +1489,7 @@ namespace WhereEver
 
 
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z4 == "金")
                 {
@@ -1448,7 +1503,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z5 == "土")
                 {
@@ -1462,7 +1517,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z6 == "日")
                 {
@@ -1476,7 +1531,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week - 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
 
 
@@ -1938,7 +1993,7 @@ namespace WhereEver
         }
 
 
-
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         protected void Button5_Click(object sender, EventArgs e)//次へボタンの処理
         {
             int Count_Week;
@@ -2016,7 +2071,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 5).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 6).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
 
                 }
                 else if (Z1 == "火")
@@ -2031,7 +2086,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 4).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 5).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z2 == "水")
                 {
@@ -2045,7 +2100,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 4).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z3 == "木")
                 {
@@ -2059,7 +2114,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 3).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z4 == "金")
                 {
@@ -2073,7 +2128,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 2).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z5 == "土")
                 {
@@ -2087,7 +2142,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week + 1).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
                 else if (Z6 == "日")
                 {
@@ -2101,7 +2156,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(Count_Week - 1).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(Count_Week).ToString("MMMMd日");
 
-                    Scdl3.Items[10].Cells[1].Text = "Test 定例会議";
+
                 }
 
                 if (tm == "9:00" || tm == "9:15" || tm == "9:30" || tm == "9:45")
@@ -2558,7 +2613,7 @@ namespace WhereEver
                 }
             }
         }
-
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
         protected void Button6_Click(object sender, EventArgs e)
         {
@@ -2568,9 +2623,21 @@ namespace WhereEver
 
         protected void Button7_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Schedule.aspx");
-        }
+            MessageBoxResult result = MessageBox.Show("本当に実行しますか", "メッセージボックス", MessageBoxButton.YesNo, MessageBoxImage.None);
 
+            if (result == MessageBoxResult.Yes)
+            {
+                Response.Redirect("Schedule.aspx");
+            }
+            else if (result == MessageBoxResult.No)
+            {
+                Create();
+                Create3();
+                Create2();
+            };
+
+        }
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         protected void Button8_Click(object sender, EventArgs e)//検索用
         {
             ViewState["Serch"] = int.Parse(ViewState["Serch"].ToString()) + 1;
@@ -2608,7 +2675,7 @@ namespace WhereEver
             Label2.Text = "「" + "日付:" + a + " " + "時間:" + b + " " + "内容:" + c + " " + "担当者:" + d + " " + "」を検索中";
 
         }
-
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
         protected void TestGV_RowCreated(object sender, GridViewRowEventArgs e)
         {
             //if (e.Row.RowType == DataControlRowType.Footer)
@@ -2623,7 +2690,18 @@ namespace WhereEver
 
             //}
         }
+        /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+        protected void rbl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var dt = Class1.GetT_Schedule3DataTable(Global.GetConnection());
+
+            ScdlList.DataSource = dt;
+
+            ScdlList.DataBind();
+
+        }
         protected void Scdl3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -2642,16 +2720,7 @@ namespace WhereEver
 
         }
 
-        //protected void ButtonA_Click(object sender, EventArgs e)
-        //{
-        //    Response.Redirect("Wiki_Top.aspx");
 
-        //}
-        protected void ButtonB_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("test1.aspx");
-
-        }
     }
 }
 

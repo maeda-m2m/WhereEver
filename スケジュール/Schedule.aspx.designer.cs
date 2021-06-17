@@ -42,6 +42,15 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
+        /// rbl1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rbl1;
+
+        /// <summary>
         /// Button11 コントロール。
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button12;
+
+        /// <summary>
+        /// Button13 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button13;
 
         /// <summary>
         /// Panel2 コントロール。

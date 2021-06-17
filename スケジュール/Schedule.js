@@ -57,12 +57,7 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-    $(".delete_check").on("click", function () {
-        window.confirm('実行しますか？');
-    });
 
-});
 
 
 
