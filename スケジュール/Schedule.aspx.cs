@@ -234,7 +234,7 @@ namespace WhereEver
                     Scdl3.Items[0].Cells[6].Text = a.AddDays(+2).ToString("MMMMd日");
                     Scdl3.Items[0].Cells[7].Text = a.AddDays(+3).ToString("MMMMd日");
 
-                    Scdl3.Items[0].Cells[4].CssClass = "Center_cs_Color";
+
                     Scdl3.Items[2].Cells[4].CssClass = "Center_cs_Color";
                     Scdl3.Items[4].Cells[4].CssClass = "Center_cs_Color";
                     Scdl3.Items[6].Cells[4].CssClass = "Center_cs_Color";
