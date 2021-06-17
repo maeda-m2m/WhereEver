@@ -1572,6 +1572,10 @@ namespace WhereEver
                     //error
                     return;
                 }
+
+                //名前
+                Label_Weekly_name1.Text = SessionManager.User.M_User.name1.Trim();
+
                 InsertWeeklyUI(dr.D_Weekly_CSV);
 
                 //初期選択パネル
@@ -1597,7 +1601,6 @@ namespace WhereEver
 
                 //SaveMessageを消去
                 Label_WeeklyUI_SaveTest.Text = "";
-
             }
 
         }
