@@ -28,6 +28,14 @@ namespace WhereEver
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (SessionManager.User.M_User.id == null || SessionManager.User.M_User.id.Trim() == "")
+            {
+                //不正ログイン防止
+                this.Response.Redirect("../ログイン/Login.aspx", false);
+                return;
+            }
+
+
             if (!IsPostBack)
             {
 
@@ -2323,15 +2331,15 @@ namespace WhereEver
             string val = DropDownList_WeeklyDate.SelectedValue;
             if (val == "先週")
             {
-                dt = DateTime.Now.AddDays(-7);
+                dt = DateTime.Now.AddDays(-14);
             }
             else if (val == "今週")
             {
-                //なにもしない
+                dt = DateTime.Now.AddDays(-7);
             }
             else if (val == "来週")
             {
-                dt = DateTime.Now.AddDays(7);
+                //なにもしない
             }
 
             for (; ; )
@@ -2405,6 +2413,24 @@ namespace WhereEver
                 }
                 sb.Append(",");
             }
+
+            //504 + 71 + 1 = 576
+            sb.Append(Label_Weekly_year.Text);
+            sb.Append(",");
+            sb.Append(Label_Weekly_date1.Text);
+            sb.Append(",");
+            sb.Append(Label_Weekly_date2.Text);
+            sb.Append(",");
+            sb.Append(Label_Weekly_date3.Text);
+            sb.Append(",");
+            sb.Append(Label_Weekly_date4.Text);
+            sb.Append(",");
+            sb.Append(Label_Weekly_date5.Text);
+            sb.Append(",");
+            sb.Append(Label_Weekly_date6.Text);
+            sb.Append(",");
+            sb.Append(Label_Weekly_date7.Text);
+            sb.Append(",");
 
             //不正な改行コードを除去
             sb.Replace("\r\f", "");
@@ -2523,6 +2549,25 @@ namespace WhereEver
                     con_ck.Checked = false;
                 }
             }
+
+            //504 + 71 + 1 = 576
+            int val = 576;
+            Label_Weekly_year.Text = HtmlEncode(arr[val]);
+            val++;
+            Label_Weekly_date1.Text = HtmlEncode(arr[val]);
+            val++;
+            Label_Weekly_date2.Text = HtmlEncode(arr[val]);
+            val++;
+            Label_Weekly_date3.Text = HtmlEncode(arr[val]);
+            val++;
+            Label_Weekly_date4.Text = HtmlEncode(arr[val]);
+            val++;
+            Label_Weekly_date5.Text = HtmlEncode(arr[val]);
+            val++;
+            Label_Weekly_date6.Text = HtmlEncode(arr[val]);
+            val++;
+            Label_Weekly_date7.Text = HtmlEncode(arr[val]);
+            return;
         }
 
 

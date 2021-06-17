@@ -15,6 +15,14 @@ namespace WhereEver.ResearchAnalitics
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (SessionManager.User.M_User.id == null || SessionManager.User.M_User.id.Trim() == "")
+            {
+                //不正ログイン防止
+                this.Response.Redirect("../ログイン/Login.aspx", false);
+                return;
+            }
+
             //user id
             TextBox_Soukan_id.Text = HtmlEncode(SessionManager.User.M_User.id.Trim()).Trim();
 

@@ -52,13 +52,13 @@
 }
 
 #WeeklyTable {
-    border: 1px dashed black;
-    border-collapse: collapse;
-    text-align: center;
-    width: 1380px;
+    width: 1480px; /* 1380px */
     margin-left: 0px; /*左辺に大きな余白をつけると印刷プレビューが崩れてしまう*/
     margin-right: 0px;
     background-color: white;
+    border: 1px dashed black;
+    border-collapse: collapse;
+    text-align: center;
 }
 
 #WeeklyTable td {
@@ -72,23 +72,52 @@
     }
 
     #WeeklyTable .company {
-        width: 10em;
+        width: 8em;
     }
 
     #WeeklyTable .work {
-        width: 12em;
+        width: 8em;
+    }
+
+    #WeeklyTable .days {
+        width: 9em;
+    }
+
+    #WeeklyTable .extra {
+        width: 8em;
     }
 
     #WeeklyTable .time {
         width: 3em;
     }
 
-.dashrow {
-    text-align: center;
-    background-image: linear-gradient(-80deg, transparent 49%, black 49%, black 51%, transparent 51%, transparent); /* 右上がりの斜線 */
+    #WeeklyTable .name {
+        text-align: right;
+        padding-right: 2em;
+    }
+
+    #WeeklyTable .holiday {
+        background-color: #fce4d6;
+    }
+
+    #WeeklyTable .dashrow {
+        width: 0.8em;
+        text-align: center;
+        background-image: linear-gradient(-80deg, transparent 49%, black 49%, black 51%, transparent 51%, transparent); /* 右上がりの斜線 */
+    }
+
+.textbox, .weeklytxt {
+    border-radius: 3px;
 }
 
+.weeklytxt {
+    text-align: center;
+    width: 8em;
+}
 
+.weeklyobj {
+    text-align: center;
+}
 
 /* 新規チェックボックスデザイン */
 .weeklyobj input[type="checkbox"] {
@@ -139,13 +168,6 @@
     width: 300px;
     height: 40px;
     resize: none;
-}
-
-.textbox, .weeklytxt {
-    border-radius: 3px;
-}
-.weeklytxt{
-    text-align: center;
 }
 
 h1 {
@@ -238,8 +260,17 @@ h1 {
         text-decoration: none;
     }
         .weeklyobj input[type="checkbox"]::before {
-            border-color: transparent;
+            /* 余白を塗りつぶす */
+            border-color: white;
+            background-color: white;
+            margin-top: -10.5px;
+            left: -4px;
+            height: 24px;
         }
+    .holiday .weeklyobj input[type="checkbox"]::before {
+        background-color: #fce4d6;
+        border-color: #fce4d6;
+    }
 }
 
 .zone {
