@@ -193,6 +193,7 @@ table {
 }
 
 .form-flat-border-inner {
+    -webkit-appearance: none; /* スマホ対応 */
     background-color: white;
     margin-left: 10px;
     margin-right: 10px;
@@ -209,6 +210,7 @@ table {
 }
 
 .btn-flat-border {
+    -webkit-appearance: none; /* スマホ対応 */
     text-align: center;
     width: 180px;
     height: 32px;
@@ -229,6 +231,7 @@ table {
     }
 
 .btn-flat-border-mini {
+    -webkit-appearance: none; /* スマホ対応 */
     text-align: center;
     width: auto;
     height: 32px;

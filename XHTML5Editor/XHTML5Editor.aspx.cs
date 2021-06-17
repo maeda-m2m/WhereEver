@@ -153,6 +153,8 @@ namespace WhereEver.XHTML5Editor
             sb.Append("\r\n");
             sb.Append(".userstyle:hover { ");
             sb.Append("\r\n");
+            sb.Append("-webkit-appearance: none;");
+            sb.Append("\r\n");
             sb.Append(" color: ");
             sb.Append(hcolor);
             sb.Append("; ");
