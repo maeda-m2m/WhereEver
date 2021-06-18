@@ -58,12 +58,27 @@ table {
     background-color: black;
     color: white;
 }
+
+.textbox_IB {
+    text-align: left;
+    height: 1.5em;
+    width: 20em;
+    background-color: black;
+    color: white;
+}
+
 .textbox_Wide {
     text-align: left;
     height: 12em;
     width: 100%;
     background-color: black;
     color: white;
+}
+
+.ib_field {
+    width: auto;
+    height: auto;
+    margin-top: 0.5em;
 }
 
 .ddl_date {
@@ -249,6 +264,27 @@ table {
         cursor: pointer;
     }
 
+
+.btn-flat-border-ib {
+    -webkit-appearance: none; /* スマホ対応 */
+    text-align: center;
+    width: auto;
+    height: 2em;
+    display: inline-block;
+    padding: 0 0.25em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px white;
+    background: #1e1e1e;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+}
+
+    .btn-flat-border-ib:hover {
+        background: #808080;
+        cursor: pointer;
+    }
 
 @media print {
     .noprint {

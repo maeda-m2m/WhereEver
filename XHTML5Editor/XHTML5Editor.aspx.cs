@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using static System.Web.HttpUtility;
+using System.Net;
+using System.Net.Http;
 
 namespace WhereEver.XHTML5Editor
 {
@@ -211,6 +213,18 @@ namespace WhereEver.XHTML5Editor
             }
         }
 
+        protected void Push_IndexBox(object sender, EventArgs e)
+        {
+            if (Panel_IndexBox.Visible)
+            {
+                Panel_IndexBox.Visible = false;
+            }
+            else
+            {
+                Panel_IndexBox.Visible = true;
+            }
+        }
+
         protected void Push_QR_Create(object sender, EventArgs e)
         {
             if(TextBox_QR_Text.Text == "")
@@ -247,5 +261,83 @@ namespace WhereEver.XHTML5Editor
                 return;
             }
         }
+
+        protected void Push_IBCorrect(object sender, EventArgs e)
+        {
+
+            string ib = HtmlEncode(TextBox_IB.Text).Trim(); //空白スペースでsplitしてstring[]にしてもよい。
+            if (ib == "")
+            {
+                //検索不可能
+                return;
+            }
+
+            WebClient wc = new WebClient();
+            //HttpClient hc = new HttpClient();
+            try
+            {
+                //1 WebClientの場合
+                wc.Encoding = Encoding.UTF8;//utf-8エンコードを指定しないと文字化けする。
+
+                string url = Request.Url.AbsoluteUri + ".aspx";
+
+                //Request.Url.AbsoluteUriが使用できない？　→　Proxy経由の問題
+
+                //方法１　お手軽　コードイン　失敗
+                IWebProxy wp = WebRequest.DefaultWebProxy;
+                wp.Credentials = CredentialCache.DefaultCredentials;
+                wc.Proxy = wp;
+
+#if DEBUG
+                //方法２　方法１の亜種
+                /*
+                 *   WebProxy wp = new WebProxy(" proxy server url here");
+                 *   wc.Proxy = wp;
+                 *   string str = client.DownloadString("http://www.example.com");
+                 */
+
+                //方法３　リリース向け　おすすめ
+                /* Web.configに下記を追加
+                 * <configuration>
+                 * <system.net>
+                 * <defaultProxy>
+                 *   <proxy useDefaultCredentials="True" />
+                 *   
+                 *   ※↑でダメなら↓
+                 *   <proxy 
+                 *     usesystemdefault = "false"
+                 *     proxyaddress="http://proxyserver"
+                 *     bypassonlocal="true"
+                 *      />
+                 *   
+                 * </defaultProxy>
+                 * </system.net> 
+                 * <configuration>
+                 */
+#endif
+                //uif-8を指定
+                wc.Headers.Add("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows XP)");
+                string text = wc.DownloadString(url);    //ここでデータベース等をもとに複数のURLを入れ込んでLIKE文で検索するとよい。
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append("/* \"" + ib + "\" の検索結果 */\r\f");
+                if (text.Contains(ib))
+                {
+                    sb.Append("部分一致\r\f");
+                }
+                else
+                {
+                    sb.Append("不一致\r\f");
+                }
+                sb.Append(text);//テストのためHTMLエンコードは実行していない。
+                TextBox_IBResult.Text = sb.ToString();
+            }
+            catch (WebException ex)
+            {
+                TextBox_IBResult.Text = ex.Message;
+            }
+        }
+
+
     }
 }

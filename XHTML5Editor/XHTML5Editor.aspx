@@ -225,7 +225,7 @@
         </p>
 
         <div>
-            <p class=f-notice>[QR画像から文字列を読込]</p><asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
+            <p class="f-notice">[QR画像から文字列を読込]</p><asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
         </div>
 
 
@@ -265,7 +265,48 @@
 </div>
 </asp:Panel>
 
+           <span class="hr"></span>
 
+           <p class="index1">
+               ◆どこでも検索ボックス（工事中）
+               <asp:Button ID="Button_IndexBox" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_IndexBox" CausesValidation="False" />
+               　ホームページに手軽に実装できる検索ボックスのサンプルです。IoCサービス向け機能です。</p>
+
+           <hr />
+
+<asp:Panel ID="Panel_IndexBox" runat="server" Visible="false" DefaultButton="Button_IBCorrect">
+
+                    <div class="noprint">
+                       <span class="hr"></span>
+                        <p class="center">汎用の検索ボックスを作ります。HTMLページを読み込んでサイト内検索をできるようにする予定です。m2mのプロキシが不明なため保留。</p>
+                       <span class="hr"></span>
+                    </div>
+
+
+    <div class="center">
+          <table class="DGTable">
+            <tr>
+                <th class="th_master">
+                    検索ボックス
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="ib_field">
+                    <asp:TextBox ID="TextBox_IB" runat="server" CssClass="textbox_IB" ValidateRequestMode="Disabled" ToolTip="全角200文字以内" Text="" MaxLength="200" placeholder="サイト内検索" AutoCompleteType="Search" TextMode="Search" ></asp:TextBox>
+                    <asp:Button ID="Button_IBCorrect" CssClass="btn-flat-border-ib" runat="server" Text="検索" OnClick="Push_IBCorrect" CausesValidation="False" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:TextBox ID="TextBox_IBResult" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="ここに検索結果が自動生成されます。" CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
+                </td>
+            </tr>
+          </table>
+    </div>
+
+</asp:Panel>
 
 </div>
 
