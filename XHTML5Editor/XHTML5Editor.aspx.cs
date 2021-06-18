@@ -324,7 +324,60 @@ namespace WhereEver.XHTML5Editor
 
         }
 
+        protected void Set_IBDataBase()
+        {
+            //init
+            TextBox_IBResult.Text = "";
 
+            string ib = HtmlEncode(TextBox_IB.Text).Trim(); //空白スペースでsplitしてstring[]にしてもよい。
+
+            //登録用文字列 HtmlEncodeあり
+            string text = HtmlEncode(TextBox_IBText.Text);
+            if (text == "")
+            {
+                //登録不可能
+                TextBox_IBResult.Text = "対象ボックスに辞書データが入力されていません。";
+                return;
+            }
+
+            //textの中身が検索対象の文字列。キーワードが検索対象に部分一致するかどうか調べる。
+
+            text = text.Replace("、", "、；").Replace("。", "。；").Replace("\r", "；").Replace("\n", "；");//改行コードをchar'；'に置き換え　、と。を消えないように修正。
+            string[] sp = text.Split("；".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);//空白文字をトリム              
+
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("/* 辞書登録結果一覧 */\r\f");
+            sb.Append("センテンス(");
+            sb.Append(sp.Length);
+            sb.Append("件)\r\f");
+
+            for (int i = 0; i < sp.Length; i++)
+            {
+                string str = sp[i].ToString();
+                //int len = Math.Min(str.Length, 10);１行の文字数に制限をかける場合　辞書データが精確なら不要
+
+                if (!ClassLibrary.SentenceAIClass.GetIsT_SentenceAI(Global.GetConnection(), str))
+                {
+                    //string strを辞書(DB)に登録する
+                    ClassLibrary.SentenceAIClass.SetT_SentenceAI_Insert(Global.GetConnection(), str.Trim(), SessionManager.User.M_User.name1.Trim());
+
+                    //出力用メモ
+                    sb.Append(str);
+                    sb.Append("\r\f");
+                }
+                else
+                {
+                    ClassLibrary.SentenceAIClass.SetT_SentenceAI_Update(Global.GetConnection(), str.Trim());
+
+                    //出力用メモ
+                    sb.Append("[重複(DateTime_Update)]");
+                    sb.Append(str);
+                    sb.Append("\r\f");
+                }
+            }
+            TextBox_IBResult.Text = sb.ToString();
+        }
 
         protected void Push_IBCorrect(object sender, EventArgs e)
         {
@@ -347,8 +400,8 @@ namespace WhereEver.XHTML5Editor
             */
 
 
-            //実験用 HtmlEncodeなし　空でも可（出力なし）
-            string text = TextBox_IBText.Text;
+            //実験用 HtmlEncodeあり　空でも可（出力なし）
+            string text = HtmlEncode(TextBox_IBText.Text);
 
 
 
@@ -430,6 +483,9 @@ namespace WhereEver.XHTML5Editor
             TextBox_IBResult.Text = sb.ToString();
         }
 
-
+        protected void Push_SetIndexBook(object sender, EventArgs e)
+        {
+            Set_IBDataBase();
+        }
     }
 }

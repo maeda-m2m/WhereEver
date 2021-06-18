@@ -348,6 +348,15 @@ namespace WhereEver.XHTML5Editor
         protected global::System.Web.UI.WebControls.Button Button_IBCorrect;
 
         /// <summary>
+        /// Button_SetIndexBook コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_SetIndexBook;
+
+        /// <summary>
         /// TextBox_IBText コントロール。
         /// </summary>
         /// <remarks>

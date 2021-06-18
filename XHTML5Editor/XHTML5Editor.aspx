@@ -302,6 +302,11 @@
             </tr>
             <tr>
                 <td>
+                    <asp:Button ID="Button_SetIndexBook" CssClass="btn-flat-border" runat="server" Text="検索対象を辞書登録" OnClick="Push_SetIndexBook" CausesValidation="False" />
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <asp:TextBox ID="TextBox_IBText" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="検索したい文字列を入力して下さい。" CausesValidation="false" TextMode="MultiLine" Style="resize: none" placeholder="ここに検索したい文字列を入力して下さい。" ></asp:TextBox>
                 </td>
             </tr>
