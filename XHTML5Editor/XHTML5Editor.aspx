@@ -268,9 +268,9 @@
            <span class="hr"></span>
 
            <p class="index1">
-               ◆どこでも検索ボックス（工事中）
+               ◆お手軽検索ボックス
                <asp:Button ID="Button_IndexBox" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_IndexBox" CausesValidation="False" />
-               　ホームページに手軽に実装できる検索ボックスのサンプルです。IoCサービス向け機能です。</p>
+               　文字列からキーワードを検索する機能です。</p>
 
            <hr />
 
@@ -278,7 +278,9 @@
 
                     <div class="noprint">
                        <span class="hr"></span>
-                        <p class="center">汎用の検索ボックスを作ります。HTMLページを読み込んでサイト内検索をできるようにする予定です。m2mのプロキシが不明なため保留。</p>
+                        <p class="center">汎用の検索ボックスを作ります。上から、検索ボックス、検索対象、検索結果です。<br />
+                            HTMLページを読み込んでのサイト内検索は、m2mのプロキシが不明なため保留です。※キーワードに改行コードは使用できません。
+                        </p>
                        <span class="hr"></span>
                     </div>
 
@@ -293,9 +295,14 @@
             <tr>
                 <td>
                     <div class="ib_field">
-                    <asp:TextBox ID="TextBox_IB" runat="server" CssClass="textbox_IB" ValidateRequestMode="Disabled" ToolTip="全角200文字以内" Text="" MaxLength="200" placeholder="サイト内検索" AutoCompleteType="Search" TextMode="Search" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_IB" runat="server" CssClass="textbox_IB" ValidateRequestMode="Disabled" ToolTip="全角200文字以内" Text="" MaxLength="200" placeholder="検索キーワード" AutoCompleteType="Search" TextMode="Search" ></asp:TextBox>
                     <asp:Button ID="Button_IBCorrect" CssClass="btn-flat-border-ib" runat="server" Text="検索" OnClick="Push_IBCorrect" CausesValidation="False" />
                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:TextBox ID="TextBox_IBText" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="検索したい文字列を入力して下さい。" CausesValidation="false" TextMode="MultiLine" Style="resize: none" placeholder="ここに検索したい文字列を入力して下さい。" ></asp:TextBox>
                 </td>
             </tr>
             <tr>

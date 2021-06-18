@@ -2437,6 +2437,8 @@ namespace WhereEver
 
             //不正な改行コードを除去
             sb.Replace("\r\f", "");
+            sb.Replace("\r", "");
+            sb.Replace("\n", "");
 
             //テスト出力
             //Label_WeeklyUI_SaveTest.Text = HtmlEncode(sb.ToString());

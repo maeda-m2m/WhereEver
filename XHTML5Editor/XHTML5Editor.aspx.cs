@@ -262,16 +262,9 @@ namespace WhereEver.XHTML5Editor
             }
         }
 
-        protected void Push_IBCorrect(object sender, EventArgs e)
+
+        protected string GetWebString(string url)
         {
-
-            string ib = HtmlEncode(TextBox_IB.Text).Trim(); //空白スペースでsplitしてstring[]にしてもよい。
-            if (ib == "")
-            {
-                //検索不可能
-                return;
-            }
-
             WebClient wc = new WebClient();
             //HttpClient hc = new HttpClient();
             try
@@ -279,7 +272,11 @@ namespace WhereEver.XHTML5Editor
                 //1 WebClientの場合
                 wc.Encoding = Encoding.UTF8;//utf-8エンコードを指定しないと文字化けする。
 
-                string url = Request.Url.AbsoluteUri + ".aspx";
+                if (url == "" || url == null)
+                {
+                    url = Request.Url.AbsoluteUri + ".aspx";
+                }
+                
 
                 //Request.Url.AbsoluteUriが使用できない？　→　Proxy経由の問題
 
@@ -317,25 +314,120 @@ namespace WhereEver.XHTML5Editor
 #endif
                 //uif-8を指定
                 wc.Headers.Add("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows XP)");
-                string text = wc.DownloadString(url);    //ここでデータベース等をもとに複数のURLを入れ込んでLIKE文で検索するとよい。
-
-                StringBuilder sb = new StringBuilder();
-                sb.Append("/* \"" + ib + "\" の検索結果 */\r\f");
-                if (text.Contains(ib))
-                {
-                    sb.Append("部分一致\r\f");
-                }
-                else
-                {
-                    sb.Append("不一致\r\f");
-                }
-                sb.Append(text);//テストのためHTMLエンコードは実行していない。
-                TextBox_IBResult.Text = sb.ToString();
+                return wc.DownloadString(url);    //ここでデータベース等をもとに複数のURLを入れ込んでLIKE文で検索するとよい。
             }
             catch (WebException ex)
             {
                 TextBox_IBResult.Text = ex.Message;
+                return ex.Message;
             }
+
+        }
+
+
+
+        protected void Push_IBCorrect(object sender, EventArgs e)
+        {
+            //init
+            TextBox_IBResult.Text = "";
+
+            string ib = HtmlEncode(TextBox_IB.Text).Trim(); //空白スペースでsplitしてstring[]にしてもよい。
+            if (ib == "")
+            {
+                //検索不可能
+                TextBox_IBResult.Text = "検索ボックスにキーワードが入力されていません。";
+                return;
+            }
+
+
+            /*
+            //WebPageの情報をそのまま持ってくる m2mのプロキシ設定をWeb.configに直接記入しないと機能しない
+            string url = Request.Url.AbsoluteUri + ".aspx";
+            string text = GetWebString(url);
+            */
+
+
+            //実験用 HtmlEncodeなし　空でも可（出力なし）
+            string text = TextBox_IBText.Text;
+
+
+
+
+            //textの中身が検索対象の文字列。キーワードが検索対象に部分一致するかどうか調べる。
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("/* \"" + ib + "\" の検索結果 */\r\f");
+            if (text.Contains(ib))
+            {
+                //SplitはStringではなくCharとして扱うため、Stringを条件にしても１文字ずつ検証されてしまう。
+                //これを防ぐためには、元の文をibから独自の予約文字１字に置き換えるとよい。
+                //例えば、改行コードを除外した後で、改行コードに変換する。
+
+                text = text.Replace("\r", "").Replace("\n", "");
+                text = text.Replace(ib, "\r\f");
+
+                string[] sp = text.Split("\r\f".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);//空白文字をトリム
+                sb.Append("部分一致(");
+                sb.Append(sp.Length - 1);
+                sb.Append("件)\r\f");
+
+
+
+                for (int i = 0; i < sp.Length; i++)
+                {
+                    if (i + 1 >= sp.Length)
+                    {
+                        break;
+                    }
+
+
+                    string str = sp[i].ToString();
+                    int len = Math.Min(str.Length, 10);
+
+                    // ????????? + ib
+                    //len文字から末尾までとる（後ろからlen文字とる）
+                    //文字数が少ない場合は全部とる
+                    sb.Append("index: ");
+                    sb.Append(i);
+                    sb.Append("(Length: ");
+                    if (i + 1 < sp.Length)
+                    {
+                        sb.Append(str.Length + sp[i + 1].ToString().Length + ib.Length);
+                    }
+                    else
+                    {
+                        //文末
+                        sb.Append(str.Length + ib.Length);
+                    }
+                    sb.Append(")");
+                    //-----------------
+                    sb.Append("\r\f[...]");
+                    sb.Append(str.Substring(str.Length - len));
+                    sb.Append(" ");
+                    sb.Append(ib);
+                    sb.Append(" ");
+
+
+                    // ib + ?????????
+                    //前からlen文字とる
+                    //文字数が少ない場合は全部とる
+                    str = sp[i + 1].ToString();
+                    len = Math.Min(str.Length, 10);
+                    sb.Append(str.Substring(0, len));
+                    sb.Append("[...]\r\f");
+
+                }
+
+            }
+            else
+            {
+                sb.Append("不一致(0件)\r\f");
+            }
+
+            //全文
+            //sb.Append(text);
+
+            TextBox_IBResult.Text = sb.ToString();
         }
 
 
