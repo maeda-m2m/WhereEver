@@ -45,7 +45,7 @@ body {
 /*上のヘッダーのCSS（文字と背景）*/
 #header_title {
     background-color: #16ba00;
-    transform:rotate(-15deg)
+    transform: rotate(-15deg)
 }
 
 #header_index {
@@ -114,10 +114,14 @@ body {
 /*上の登録メニューのCSS*/
 
 .Center_Table {
-    margin: auto;
+    margin: 0 auto;
     text-align: center;
-    width: 500px;
+    width: 700px;
 }
+
+    .Center_Table td {
+        text-align: left;
+    }
 
 .Center_Color {
     background-color: #16ba00;
@@ -132,11 +136,13 @@ body {
     border-width: thin;
     border-color: black;
 }
+
 #cb1 {
     border-style: solid;
     border-width: thin;
     border-color: black;
 }
+
 #ddlist1 {
     border-style: solid;
     border-width: thin;
