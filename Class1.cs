@@ -142,7 +142,7 @@ namespace WhereEver
         }
 
 
-        internal static void DeleteList(int sdl, SqlConnection sql) //削除ボタン
+        public static void DeleteList(int sdl, SqlConnection sql) //削除ボタン
         {
             var da = new SqlCommand("", sql);
             da.CommandText =
