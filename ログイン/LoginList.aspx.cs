@@ -271,6 +271,11 @@ namespace WhereEver
                     if (!wdt[i].IsNull(@"Weather"))
                     {
                         @sb.Append(wdt[i].Weather);
+                        //４文字に揃える
+                        for(int k = 0; k< 4 - wdt[i].Weather.Length; k++)
+                        {
+                            @sb.Append("　");
+                        }
                         @sb.Append("　");
                     }
                     if (!wdt[i].IsNull(@"MaxTemp"))
@@ -298,8 +303,9 @@ namespace WhereEver
                 @sb.Append("</ul>");
                 @sb.Replace("（日）", "（<span class=\"hot\">日</span>）");
                 @sb.Replace("（土）", "（<span class=\"cold\">土</span>）");
-                Label_Weather.Text = sb.ToString();
-                Label_Weather2.Text = sb.ToString();
+                Label_Weather2.Text = @sb.ToString();
+                @sb.Replace("　　　", "");
+                Label_Weather.Text = @sb.ToString();
                 Label_WeatherComment.Text = weatherComment.ToString();
             }
             else
