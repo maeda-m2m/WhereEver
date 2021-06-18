@@ -67,7 +67,7 @@
                 <span class="hr"></span>
                 <p class="nav_index1">Menu</p>
                 <span class="hr"></span>
-                <div class="article">
+                <div class="m_article">
                     <p class="middle">テストメニュー</p>
                     <p class="linkbox"><a href="#">test</a></p>
                     <p class="linkbox"><a href="#">test</a></p>
