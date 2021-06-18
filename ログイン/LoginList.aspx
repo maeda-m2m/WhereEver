@@ -157,6 +157,7 @@
                                 <asp:ListItem Value="">--</asp:ListItem>
                                 <asp:ListItem Value="のち"></asp:ListItem>
                                 <asp:ListItem Value="時々"></asp:ListItem>
+                                <asp:ListItem Value="一時"></asp:ListItem>
                             </asp:DropDownList>
 
                             <asp:DropDownList ID="DropDownList_Weather2" runat="server" CssClass="textbox" >
