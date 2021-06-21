@@ -159,15 +159,6 @@ namespace WhereEver
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
 
         /// <summary>
-        /// label4 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl label4;
-
-        /// <summary>
         /// cb1 コントロール。
         /// </summary>
         /// <remarks>
@@ -195,6 +186,15 @@ namespace WhereEver
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl label5;
 
         /// <summary>
+        /// label4 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl label4;
+
+        /// <summary>
         /// DropDownList1 コントロール。
         /// </summary>
         /// <remarks>
@@ -220,6 +220,15 @@ namespace WhereEver
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
+
+        /// <summary>
+        /// tb1 コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb1;
 
         /// <summary>
         /// Button2 コントロール。

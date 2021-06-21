@@ -33,7 +33,8 @@
 
                 <ul class="nav_main">
                     <li id="open_nav">
-                        <img src="Hamburger-Button (1).png" alt="" /></li>
+                        <img src="batu_01.png" alt="" class="img1 img2" /></li>
+
                     <li><a href="~/スケジュール/Schedule.aspx" runat="server" class="header2_menu">スケジュール</a></li>
                     <li><a href="~/スケジュール/Wiki_Top.aspx" runat="server" class="header2_menu">社内Wiki</a></li>
                     <li><a href="~/各申請書類/Shinsei.aspx" runat="server" class="header2_menu">各申請書類</a></li>
@@ -48,8 +49,9 @@
         </header>
 
         <aside id="aside">
-            <h2>WhereEver</h2>
-            <ul>
+
+            <h2 class="aside_h2">WhereEver</h2>
+            <ul class="hidden">
                 <li><a href="~/ログイン/LoginList.aspx" runat="server" class="header2_menu">トップページ</a></li>
                 <li><a href="~/スケジュール/Schedule.aspx" runat="server" class="header2_menu">スケジュール</a></li>
                 <li><a href="~/スケジュール/Wiki_Top.aspx" runat="server" class="header2_menu">社内Wiki</a></li>
@@ -58,13 +60,11 @@
                 <li><a href="~/ファイル共有/FileShare.aspx" runat="server" class="header2_menu">ファイル共有</a></li>
                 <li><a href="~/Project System/PIchiran.aspx" runat="server" class="header2_menu">プロジェクト</a></li>
                 <li><a href="~/管理ページ/Kanri.aspx" runat="server" class="header2_menu">マイページ</a></li>
-                <li>
-                    <h1 id="Image1">テスト</h1>
-                </li>
+                <li id="Image1">テスト</li>
 
             </ul>
-            <h2>MySchedule</h2>
-            <asp:RadioButtonList runat="server" ID="rbl1" RepeatColumns="2" AutoPostBack="true" OnSelectedIndexChanged="rbl1_SelectedIndexChanged">
+            <h2 class="aside_h2">MySchedule</h2>
+            <asp:RadioButtonList runat="server" ID="rbl1" CssClass="hidden" RepeatColumns="2" AutoPostBack="true" OnSelectedIndexChanged="rbl1_SelectedIndexChanged">
 
                 <asp:ListItem>石岡</asp:ListItem>
                 <asp:ListItem>木村</asp:ListItem>
@@ -85,8 +85,8 @@
 
             </asp:RadioButtonList>
 
-            <h2>登録・印刷・検索</h2>
-            <ul>
+            <h2 class="aside_h2">登録・印刷・検索</h2>
+            <ul class="hidden">
                 <li>
                     <asp:Button ID="Button11" runat="server" Text="登録" OnClick="Button3_Click" /></li>
                 <li>
@@ -136,10 +136,11 @@
                         <tr>
                             <th class="Center_Color">定例会議</th>
                             <td>
-                                <label runat="server" id="label4">チェックを入れ、数字を入力してください。</label>
+
                                 <asp:CheckBox runat="server" ID="cb1" />
                                 <asp:TextBox runat="server" ID="ddlist1" TextMode="Number"></asp:TextBox>
                                 <label runat="server" id="label5">週間分</label>
+                                <label runat="server" id="label4">チェックを入れ、数字を入力してください。</label>
                             </td>
                         </tr>
 
@@ -217,6 +218,11 @@
                                     <asp:ListItem>藤川</asp:ListItem>
                                 </asp:CheckBoxList>
                             </td>
+                        </tr>
+                        <tr>
+                            <th class="Center_Color">備考</th>
+                            <td>
+                                <asp:TextBox runat="server" ID="tb1" TextMode="MultiLine" Wrap="true" BorderStyle="Solid"></asp:TextBox></td>
                         </tr>
 
                         <tr>
@@ -482,6 +488,12 @@
                             </ItemTemplate>
                         </asp:TemplateColumn>
 
+                        <asp:TemplateColumn HeaderText="詳細" ItemStyle-Width="70px">
+                            <ItemTemplate>
+                                <asp:Button runat="server" ID="btn9" Text="詳細" />
+                            </ItemTemplate>
+                        </asp:TemplateColumn>
+
                         <asp:BoundColumn DataField="date" HeaderText="日付" ItemStyle-Height="50px" ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Left"></asp:BoundColumn>
 
                         <asp:BoundColumn DataField="time" HeaderText="時間" ItemStyle-Width="150px" ItemStyle-HorizontalAlign="Left"></asp:BoundColumn>
@@ -502,122 +514,7 @@
             <br />
         </main>
 
-        <%--<div>
-            <asp:GridView runat="server" ID="TestGV" CssClass="Center" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="SdlNo" DataSourceID="Sql1" OnRowCreated="TestGV_RowCreated" ShowFooter="True">
 
-                <Columns>
-
-                    <asp:TemplateField HeaderText="管理番号" SortExpression="SdlNo">
-
-
-                        <EditItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("SdlNo") %>'></asp:Label>
-                        </EditItemTemplate>
-
-                        <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("SdlNo") %>'></asp:Label>
-                        </ItemTemplate>
-
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="日付" SortExpression="date">
-
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBoxA" runat="server" Text='<%# Bind("date") %>'></asp:TextBox>
-                        </EditItemTemplate>
-
-                        <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("date", "{0:yyyy年MM月dd日dddd}") %>'></asp:Label>
-                        </ItemTemplate>
-
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="時間" SortExpression="time">
-
-                        <EditItemTemplate>
-                            <asp:DropDownList ID="Test1" runat="server" Text='<%# Bind("time") %>' SelectedValue='<%# Bind("time", "{0:HH時MM分}") %>' DataSourceID="Sql1" DataTextField="time" DataValueField="time"></asp:DropDownList>
-                        </EditItemTemplate>
-
-                        <ItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("time", "{0:HH時MM分}") %>'></asp:Label>
-                        </ItemTemplate>
-
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="内容" SortExpression="title">
-
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBoxB" runat="server" Text='<%# Bind("title") %>'></asp:TextBox>
-                        </EditItemTemplate>
-
-                        <ItemTemplate>
-                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("title") %>'></asp:Label>
-                        </ItemTemplate>
-
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="担当者" SortExpression="name">
-
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBoxC" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
-                        </EditItemTemplate>
-
-                        <ItemTemplate>
-                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("name") %>'></asp:Label>
-                        </ItemTemplate>
-
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="選択">
-                        <EditItemTemplate>
-                            <asp:CheckBox ID="CheckBox1" runat="server" />
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:CheckBox ID="CheckBox1" runat="server" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="編集/削除" ShowHeader="False">
-
-                        <EditItemTemplate>
-                            <asp:Button ID="Button1" runat="server" CausesValidation="True" CommandName="Update" Text="更新" />
-                            &nbsp;<asp:Button ID="Button2" runat="server" CausesValidation="False" CommandName="Cancel" Text="キャンセル" />
-                        </EditItemTemplate>
-
-                        <ItemTemplate>
-                            <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Edit" Text="編集" />
-                            &nbsp;<asp:Button ID="Button2" runat="server" CausesValidation="False" CommandName="Delete" Text="削除" OnClientClick="return confirm('本当に削除しますか？')" />
-                        </ItemTemplate>
-
-                    </asp:TemplateField>
-
-                </Columns>
-
-            </asp:GridView>
-
-            <asp:SqlDataSource ID="Sql1" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" DeleteCommand="DELETE FROM [T_Schedule] WHERE [SdlNo] = @SdlNo" InsertCommand="INSERT INTO [T_Schedule] ([date], [time], [title], [name], [KanriFlag], [SdlNo]) VALUES (@date, @time, @title, @name, @KanriFlag, @SdlNo)" SelectCommand="SELECT * FROM [T_Schedule]" UpdateCommand="UPDATE [T_Schedule] SET [date] = @date, [time] = @time, [title] = @title, [name] = @name, [KanriFlag] = @KanriFlag WHERE [SdlNo] = @SdlNo">
-                <DeleteParameters>
-                    <asp:Parameter Name="SdlNo" Type="Int32" />
-                </DeleteParameters>
-                <InsertParameters>
-                    <asp:Parameter Name="date" Type="DateTime" />
-                    <asp:Parameter Name="time" Type="String" />
-                    <asp:Parameter Name="title" Type="String" />
-                    <asp:Parameter Name="name" Type="String" />
-                    <asp:Parameter Name="KanriFlag" Type="String" />
-                    <asp:Parameter Name="SdlNo" Type="Int32" />
-                </InsertParameters>
-                <UpdateParameters>
-                    <asp:Parameter Name="date" Type="DateTime" />
-                    <asp:Parameter Name="time" Type="String" />
-                    <asp:Parameter Name="title" Type="String" />
-                    <asp:Parameter Name="name" Type="String" />
-                    <asp:Parameter Name="KanriFlag" Type="String" />
-                    <asp:Parameter Name="SdlNo" Type="Int32" />
-                </UpdateParameters>
-            </asp:SqlDataSource>
-
-        </div>--%>
 
         <footer>
             <section class="Center">
@@ -635,7 +532,11 @@
         <script src="jquery-3.6.0.min.js"></script>
         <script src="Schedule.js"></script>
 
+
+
         <script>
+
+
 
 
 

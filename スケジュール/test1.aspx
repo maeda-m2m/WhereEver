@@ -16,192 +16,125 @@
 
     <!-- <link rel="icon" type="image/png" href=""> -->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <style>
-        @charset "UTF-8";
-        /*------------------------------------------------------*/
-        html {
-            font-size: 100%;
-            list-style: none;
-        }
 
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-
-        /*------------------------------------------------------*/
-        /*ヘッダーのCSS*/
-        .header_fb {
-            width: 100%;
-            text-decoration: none;
-            display: flex;
-            background-color: black;
-        }
-
-            .header_fb a {
-                text-decoration: none;
-                color: white;
-            }
-
-        header_title {
-            font-size: 30px;
-        }
-
-        .div1 {
-        }
-
-        .div2 {
-            text-align: center;
-        }
-
-
-
-
-        .header_ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            margin-top: 50px;
-        }
-
-            .header_ul li {
-                margin-left: 200px;
-                font-size: 20px;
-            }
-
-                .header_ul li:hover {
-                    border-width: 1px;
-                    border-style: solid;
-                    border-color: white;
-                }
-        /*------------------------------------------------------*/
-        /*フッターのCSS*/
-        .footer_fb {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            height: 500px;
-            background-color: black;
-        }
-
-            .footer_fb a {
-                text-decoration: none;
-                color: white;
-            }
-
-            .footer_fb div {
-                margin-left: 100px;
-            }
-
-            .footer_fb ul {
-                list-style: none;
-            }
-
-
-        /*------------------------------------------------------*/
-        .main1 {
-            width: 1280px;
-            height: 780px;
-            background-color: aqua;
-        }
-
-        .center {
-            margin: 0 auto;
-            text-align: center;
-        }
-        /*------------------------------------------------------*/
-        /* @media(){} */
-    </style>
 </head>
 <body>
 
-    <header class="header_fb">
-        <div class="div1">
-            <a href="#">
-                <img src="../ログイン/m2m-logo.png" alt="" /></a>
+    <div>
+        <asp:GridView runat="server" ID="TestGV" CssClass="Center" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="SdlNo" DataSourceID="Sql1" OnRowCreated="TestGV_RowCreated" ShowFooter="True">
 
-        </div>
-        <div class="div2">
-            <h1 id="header_title"><a href="#">株式会社エム・ツー・エム　　m2mConsulting&Services</a></h1>
+            <Columns>
+
+                <asp:TemplateField HeaderText="管理番号" SortExpression="SdlNo">
 
 
-            <ul class="header_ul">
-                <li><a href="#">株式会社エム・ツー・エムについて</a></li>
-                <li><a href="Schedule.aspx">製品/サービス</a> </li>
+                    <EditItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("SdlNo") %>'></asp:Label>
+                    </EditItemTemplate>
 
-                <li><a href="#">採用情報</a></li>
-                <li><a href="#">お問い合わせ</a></li>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("SdlNo") %>'></asp:Label>
+                    </ItemTemplate>
 
+                </asp:TemplateField>
 
-            </ul>
-        </div>
-    </header>
+                <asp:TemplateField HeaderText="日付" SortExpression="date">
 
-    <main>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxA" runat="server" Text='<%# Bind("date") %>'></asp:TextBox>
+                    </EditItemTemplate>
 
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("date", "{0:yyyy年MM月dd日dddd}") %>'></asp:Label>
+                    </ItemTemplate>
 
-    </main>
+                </asp:TemplateField>
 
-    <footer class="footer_fb">
-        <div>
-            <h3><a href="#">株式会社エム・ツー・エムについて</a></h3>
+                <asp:TemplateField HeaderText="時間" SortExpression="time">
 
-            <ul>
-                <li><a href="#">経営理念</a></li>
-                <li><a href="#">会社概要</a></li>
-                <li><a href="#">社長メッセージ</a></li>
-                <li><a href="#">沿革・歴史</a></li>
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="Test1" runat="server" Text='<%# Bind("time") %>' SelectedValue='<%# Bind("time", "{0:HH時MM分}") %>' DataSourceID="Sql1" DataTextField="time" DataValueField="time"></asp:DropDownList>
+                    </EditItemTemplate>
 
-            </ul>
-        </div>
-        <div>
-            <h3><a href="#">製品/サービス</a></h3>
-            <ul>
-                <li><a href="http://www.m2m-asp.com/prod_01.html">Web資材調達システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_02.html">Web受注システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_04.html">Web会計・販売管理システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_03.html">Web見積依頼システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_04.html">Web会計・販売管理システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_04.html">Web会計・販売管理システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_04.html">Web会計・販売管理システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_04.html">Web会計・販売管理システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_04.html">Web会計・販売管理システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_04.html">Web会計・販売管理システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_04.html">Web会計・販売管理システム</a></li>
-                <li><a href="http://www.m2m-asp.com/prod_04.html">Web会計・販売管理システム</a></li>
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("time", "{0:HH時MM分}") %>'></asp:Label>
+                    </ItemTemplate>
 
-            </ul>
-        </div>
+                </asp:TemplateField>
 
-        <div>
-            <h3><a href="#">採用情報</a></h3>
-            <a href="https://job.rikunabi.com/2022/company/r951891034/">リクナビ2022</a>
-        </div>
-        <div>
-            <h3><a href="#">お問い合わせ</a></h3>
+                <asp:TemplateField HeaderText="内容" SortExpression="title">
 
-        </div>
-    </footer>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxB" runat="server" Text='<%# Bind("title") %>'></asp:TextBox>
+                    </EditItemTemplate>
 
-    <footer>
-        <p class="center">プライバシーポリシーなど</p>
-    </footer>
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("title") %>'></asp:Label>
+                    </ItemTemplate>
 
-    <footer>
-        <p class="center"><small>&copy;2021 株式会社エム・ツー・エム　　m2mConsulting&Services</small></p>
-    </footer>
+                </asp:TemplateField>
 
+                <asp:TemplateField HeaderText="担当者" SortExpression="name">
 
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxC" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
+                    </EditItemTemplate>
 
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("name") %>'></asp:Label>
+                    </ItemTemplate>
+
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="選択">
+                    <EditItemTemplate>
+                        <asp:CheckBox ID="CheckBox1" runat="server" />
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:CheckBox ID="CheckBox1" runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="編集/削除" ShowHeader="False">
+
+                    <EditItemTemplate>
+                        <asp:Button ID="Button1" runat="server" CausesValidation="True" CommandName="Update" Text="更新" />
+                        &nbsp;<asp:Button ID="Button2" runat="server" CausesValidation="False" CommandName="Cancel" Text="キャンセル" />
+                    </EditItemTemplate>
+
+                    <ItemTemplate>
+                        <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Edit" Text="編集" />
+                        &nbsp;<asp:Button ID="Button2" runat="server" CausesValidation="False" CommandName="Delete" Text="削除" OnClientClick="return confirm('本当に削除しますか？')" />
+                    </ItemTemplate>
+
+                </asp:TemplateField>
+
+            </Columns>
+
+        </asp:GridView>
+
+        <asp:SqlDataSource ID="Sql1" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" DeleteCommand="DELETE FROM [T_Schedule] WHERE [SdlNo] = @SdlNo" InsertCommand="INSERT INTO [T_Schedule] ([date], [time], [title], [name], [KanriFlag], [SdlNo]) VALUES (@date, @time, @title, @name, @KanriFlag, @SdlNo)" SelectCommand="SELECT * FROM [T_Schedule]" UpdateCommand="UPDATE [T_Schedule] SET [date] = @date, [time] = @time, [title] = @title, [name] = @name, [KanriFlag] = @KanriFlag WHERE [SdlNo] = @SdlNo">
+            <DeleteParameters>
+                <asp:Parameter Name="SdlNo" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="date" Type="DateTime" />
+                <asp:Parameter Name="time" Type="String" />
+                <asp:Parameter Name="title" Type="String" />
+                <asp:Parameter Name="name" Type="String" />
+                <asp:Parameter Name="KanriFlag" Type="String" />
+                <asp:Parameter Name="SdlNo" Type="Int32" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="date" Type="DateTime" />
+                <asp:Parameter Name="time" Type="String" />
+                <asp:Parameter Name="title" Type="String" />
+                <asp:Parameter Name="name" Type="String" />
+                <asp:Parameter Name="KanriFlag" Type="String" />
+                <asp:Parameter Name="SdlNo" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+
+    </div>
 </body>
 </html>

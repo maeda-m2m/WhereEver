@@ -8,8 +8,9 @@ using System.Web;
 
 namespace WhereEver
 {
-    public class Class1
+    class Class1
     {
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
         public static DATASET.DataSet.T_PdbRow GetProjectRow(string id, SqlConnection sqlConnection)
         {
             var da = new SqlDataAdapter("", sqlConnection);
@@ -20,7 +21,7 @@ namespace WhereEver
             da.Fill(dt);
             return dt[0];
         }
-
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
         public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTable(SqlConnection Sqlco)//スケジュールリスト用
         {
             var da = new SqlDataAdapter("", Sqlco);
@@ -36,7 +37,8 @@ namespace WhereEver
 
         }
 
-        public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTableDesc(SqlConnection Sqlco)//スケジュールリスト用
+        //スケジュールリスト用 create
+        public static DATASET.DataSet.T_ScheduleDataTable GetT_Schedule3DataTableDesc(SqlConnection Sqlco)
         {
             var da = new SqlDataAdapter("", Sqlco);
 
@@ -50,9 +52,9 @@ namespace WhereEver
             return dt;
 
         }
-
-
-        public static DATASET.DataSet.T_EmptyTableDataTable GetSchedule3DataTable(SqlConnection Sqlco)//スケジュール表用
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
+        //スケジュール表用 create3
+        public static DATASET.DataSet.T_EmptyTableDataTable GetSchedule3DataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
 
@@ -66,7 +68,8 @@ namespace WhereEver
             return dt;
         }
 
-        public static DATASET.DataSet.T_ScheduleDataTable SwitchScdl3DataTable(SqlConnection Sqlco)//今週
+        //今週 create2
+        public static DATASET.DataSet.T_ScheduleDataTable SwitchScdl3DataTable(SqlConnection Sqlco)
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
@@ -75,7 +78,19 @@ namespace WhereEver
             da.Fill(dt);
             return dt;
         }
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static DATASET.DataSet.T_ScheduleDataTable Mysc(string a1, SqlConnection Sqlco)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
+            da.SelectCommand.CommandText =
+                "SELECT * FROM T_Schedule WHERE name like @a1 and DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()) order by date asc";
 
+            da.SelectCommand.Parameters.AddWithValue("@a1", "%" + a1 + "%");
+            var dt = new DATASET.DataSet.T_ScheduleDataTable();
+            da.Fill(dt);
+            return dt;
+        }
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
         public static DATASET.DataSet.T_ScheduleDataTable SwitchNextScdl3DataTable(object Count, SqlConnection Sqlco)//先週
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
@@ -98,7 +113,7 @@ namespace WhereEver
             return dt;
         }
 
-
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
 
         public static DATASET.DataSet.T_ScheduleRow MaxSdlNo(SqlConnection schedule)//SdlNoの最大値を持ってくる
         {
@@ -110,7 +125,7 @@ namespace WhereEver
             return dt[0];
         }
 
-
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
         public static void InsertList(DATASET.DataSet.T_ScheduleDataTable dt, SqlConnection sql) //スケジュールを追加する
@@ -141,7 +156,7 @@ namespace WhereEver
 
         }
 
-
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
         public static void DeleteList(int sdl, SqlConnection sql) //削除ボタン
         {
             var da = new SqlCommand("", sql);
@@ -169,7 +184,7 @@ namespace WhereEver
                 sql.Close();
             }
         }
-
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
         public static DATASET.DataSet.T_ScheduleRow UpdateProject(DATASET.DataSet.T_ScheduleRow dr, SqlConnection sql)//編集コマンドの値を変更する用
         {
             {
@@ -203,7 +218,7 @@ namespace WhereEver
 
             }
         }
-
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
         public static DATASET.DataSet.T_ScheduleDataTable ScheduleSearch(string a, string b, string c, string d, SqlConnection Sqlco)//検索用
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
@@ -243,7 +258,7 @@ namespace WhereEver
 
             return dt;
         }
-
+        //------------------------------------------------------------------------------------------------------------------------------------------------------
 
     }
 }

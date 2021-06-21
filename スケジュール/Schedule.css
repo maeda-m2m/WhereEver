@@ -15,7 +15,6 @@ body {
     font-family: 'Noto Sans JP', sans-serif;
 }
 /*-------------------------------------------------*/
-
 /*色々な要素を中央ぞろえにするためのCSS*/
 .Center {
     margin: 0 auto;
@@ -45,7 +44,7 @@ body {
 /*上のヘッダーのCSS（文字と背景）*/
 #header_title {
     background-color: #16ba00;
-    transform: rotate(-15deg)
+    /*  transform: rotate(-15deg)*/
 }
 
 #header_index {
@@ -81,7 +80,7 @@ body {
     }
 
 /*-------------------------------------------------*/
-/*左のハンバーガーメニューを動かすためのCSS*/
+/*左のハンバーガーメニュー関連のCSS*/
 #aside {
     position: fixed;
     left: -300px;
@@ -97,6 +96,35 @@ body {
 
 #wrapper, aside {
     transition: transform 0.3s;
+}
+
+.hidden {
+    display: none;
+}
+
+.aside_h2 {
+    border-style: solid;
+    border-width: thin;
+    border-color: green;
+}
+
+    .aside_h2:hover {
+        background: #16ba00;
+        color: white;
+        cursor: pointer;
+    }
+
+.img1 {
+    transform: rotate(-855deg);
+    transition: transform 0.3s;
+}
+
+    .img1:hover {
+        cursor: pointer;
+    }
+
+.img2 {
+    right: 30px;
 }
 
 /*-------------------------------------------------*/
@@ -266,6 +294,7 @@ body {
 
 .edit_focus {
 }
+
 
 /*-------------------------------------------------*/
 

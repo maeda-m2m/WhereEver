@@ -13,5 +13,20 @@ namespace WhereEver.スケジュール
         {
 
         }
+
+        public void TestGV_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            //if (e.Row.RowType == DataControlRowType.Footer)
+            //{
+            //    var ltr = new Literal();
+
+            //    ltr.Text = $"総ページ数:{TestGV.PageCount}";
+
+            //    e.Row.Cells[e.Row.Cells.Count - 1].Wrap = false;
+            //    e.Row.Cells[e.Row.Cells.Count - 1].Controls.Add(ltr);
+
+
+            //}
+        }
     }
 }
