@@ -8,6 +8,7 @@ using System.Text;
 using static System.Web.HttpUtility;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace WhereEver.XHTML5Editor
 {
@@ -619,6 +620,88 @@ namespace WhereEver.XHTML5Editor
             TextBox_IBResult.Text += sb.ToString();
         }
 
+        protected void Push_DeepBit(object sender, EventArgs e)
+        {
+            if (Panel_DeepBit.Visible)
+            {
+                Panel_DeepBit.Visible = false;
+            }
+            else
+            {
+                Panel_DeepBit.Visible = true;
+            }
+        }
+
+        protected void Push_SetBit(object sender, EventArgs e)
+        {
+            //テキストを2進数に変換
+            string s_bit_a = HtmlEncode(TextBox_Bit_a.Text);
+            string s_bit_b = HtmlEncode(TextBox_Bit_b.Text);
+            int length = Math.Max(s_bit_a.Length, s_bit_b.Length);
+            var pattern = "[0-1]";
+            if (!Regex.IsMatch(s_bit_a, pattern) || !Regex.IsMatch(s_bit_b, pattern))
+            {
+                //Error
+                TextBox_BitResult.Text = "Error: 不正な文字列が含まれています！;";
+                return;
+            }
+
+            int bit_a = Convert.ToInt32(s_bit_a, 2);
+            int bit_b = Convert.ToInt32(s_bit_b, 2);
+
+            //int bit_a = 0b0000111100001111; //交配対象A
+            //int bit_b = 0b1011101101100110; //交配者B
+            SetBit(bit_a, bit_b, length);
+        }
+
+
+/*
+        protected int randInt()  //unsignedにしないとダメ
+        {
+            int tx = 123456789, ty = 362436069, tz = 521288629, tw = 88675123;  //unsignedにしないとダメ
+            int tt = (tx ^ (tx << 11));  //unsignedにしないとダメ
+            tx = ty; ty = tz; tz = tw;
+            return (tw = (tw ^ (tw >> 19)) ^ (tt ^ (tt >> 8)));
+        }
+*/
+
+
+        /// <summary>
+        /// Bit演算のテスト
+        /// </summary>
+        protected void SetBit(int bit_a, int bit_b, int length)
+        {
+
+            //乱数をインスタンス化（あんまりよくはない）
+            Random rand = new Random();
+            
+            //一様交差　下桁からチェック 0～
+            for (int i = 0; i < Math.Max(Convert.ToString(bit_a, 2).PadLeft(length, '0').Length, Convert.ToString(bit_b, 2).PadLeft(length, '0').Length); i++) //桁数が上の0部分は文字列に変換してくれないため、Math.Maxを使う。
+            {
+                if((bit_a & (1 << i)) != (bit_b & (1 << i))|| (bit_a & (0 << i)) != (bit_b & (0 << i)))
+                {
+                    // 1/2の確率（ちなみにこの乱数生成はbitのほうが早い）
+                    if (rand.Next(0, 2) == 1)
+                    {
+                        if ((bit_a & (1 << i)) == 0)
+                        {
+                            //OR
+                            //0→1
+                            bit_a |= (int)Math.Pow(2, i);    //2のn乗
+                        }
+                        else
+                        {
+                            //XOR
+                            //1→0
+                            bit_a ^= (int)Math.Pow(2, i);    //2のn乗
+                        }
+                    }
+                }
+            }
+
+            TextBox_BitResult.Text = "交配結果：0b" + Convert.ToString(bit_a, 2).PadLeft(length, '0');
+
+        }
 
 
     }

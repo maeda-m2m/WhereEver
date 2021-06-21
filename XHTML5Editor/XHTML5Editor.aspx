@@ -309,7 +309,7 @@
                 <td>
                     <asp:Button ID="Button_SetIndexBook" CssClass="btn-flat-border" runat="server" Text="↓検索対象を辞書登録" OnClick="Push_SetIndexBook" CausesValidation="False" />
                     <asp:Button ID="Button_GetIndexBook" CssClass="btn-flat-border" runat="server" Text="↓検索対象から文章生成" OnClick="Push_GetIndexBook" CausesValidation="False" />
-                    （※検索対象は、必ず「、」と「。」で区切られた日本語の文章を入力して下さい！）</td>
+                    （※検索対象は、必ず「、,。,！,？,！？」のいずれかで区切られた日本語の文章を入力して下さい！）</td>
             </tr>
             <tr>
                 <td>
@@ -319,6 +319,59 @@
             <tr>
                 <td>
                     <asp:TextBox ID="TextBox_IBResult" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="ここに検索結果が自動生成されます。" CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
+                </td>
+            </tr>
+          </table>
+    </div>
+
+</asp:Panel>
+
+
+           <span class="hr"></span>
+
+           <p class="index1">
+               ◆遺伝的アルゴリズム（仮）
+               <asp:Button ID="Button_DeepBit" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_DeepBit" CausesValidation="False" />
+               　調整中です。</p>
+
+           <hr />
+
+<asp:Panel ID="Panel_DeepBit" runat="server" Visible="false" DefaultButton="Button_SetBit">
+
+                    <div class="noprint">
+                       <span class="hr"></span>
+                        <p class="center">
+				一様交差処理を行います。
+                        </p>
+                       <span class="hr"></span>
+                    </div>
+
+
+    <div class="center">
+          <table class="DGTable">
+            <tr>
+                <th class="th_master">
+                    Bit演算（仮）
+                </th>
+            </tr>
+            <tr>
+                <td>                    
+                    [交配先Int] 0b<asp:TextBox ID="TextBox_Bit_a" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角64文字以内" Text="0000111100001111" MaxLength="64"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>                    
+                    [交配者Int] 0b<asp:TextBox ID="TextBox_Bit_b" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角64文字以内" Text="1011101101100110" MaxLength="64"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Button ID="Button_SetBit" CssClass="btn-flat-border" runat="server" Text="演算開始" OnClick="Push_SetBit" CausesValidation="False" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:TextBox ID="TextBox_BitResult" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="ここに検索結果が自動生成されます。" CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
                 </td>
             </tr>
           </table>
