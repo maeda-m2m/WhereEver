@@ -8,6 +8,7 @@ using System.Text;
 using static System.Web.HttpUtility;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace WhereEver.XHTML5Editor
 {
@@ -342,7 +343,7 @@ namespace WhereEver.XHTML5Editor
 
             //textの中身が検索対象の文字列。キーワードが検索対象に部分一致するかどうか調べる。
 
-            text = text.Replace("、", "、；").Replace("。", "。；").Replace("\r", "；").Replace("\n", "；");//改行コードをchar'；'に置き換え　、と。を消えないように修正。
+            text = text.Replace("、", "、；").Replace("。", "。；").Replace("！？", "！？；").Replace("！", "！；").Replace("？", "？；").Replace("\r", "；").Replace("\n", "；");//改行コードをchar'；'に置き換え　、と。を消えないように修正。
             string[] sp = text.Split("；".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);//空白文字をトリム              
 
 
@@ -355,6 +356,16 @@ namespace WhereEver.XHTML5Editor
             for (int i = 0; i < sp.Length; i++)
             {
                 string str = sp[i].ToString();
+                if (!str.Contains("、") && !str.Contains("。") && !str.Contains("！？") && !str.Contains("！") && !str.Contains("？"))
+                {
+                    //センテンスではない可能性がある。
+                    //出力用メモ
+                    sb.Append("[センテンスではない？(Caution)]");
+                    sb.Append(str);
+                    sb.Append("\r\f");
+                    continue;
+                }
+
                 //int len = Math.Min(str.Length, 10);１行の文字数に制限をかける場合　辞書データが精確なら不要
 
                 if (!ClassLibrary.SentenceAIClass.GetIsT_SentenceAI(Global.GetConnection(), str))
@@ -368,6 +379,7 @@ namespace WhereEver.XHTML5Editor
                 }
                 else
                 {
+                    //アップデート
                     ClassLibrary.SentenceAIClass.SetT_SentenceAI_Update(Global.GetConnection(), str.Trim());
 
                     //出力用メモ
@@ -487,5 +499,210 @@ namespace WhereEver.XHTML5Editor
         {
             Set_IBDataBase();
         }
+
+        protected void Push_GetIndexBook(object sender, EventArgs e)
+        {
+            Get_IndexBook();
+        }
+
+
+
+        protected void Get_IndexBook()
+        {
+            //init
+            TextBox_IBResult.Text = "";
+
+            string ib = HtmlEncode(TextBox_IB.Text).Trim(); //空白スペースでsplitしてstring[]にしてもよい。
+
+            //登録用文字列 HtmlEncodeあり
+            string text = HtmlEncode(TextBox_IBText.Text);
+            if (text == "")
+            {
+                //登録不可能
+                TextBox_IBResult.Text = "対象ボックスに辞書データが入力されていません。";
+                return;
+            }
+
+            //textの中身が検索対象の文字列。キーワードが検索対象DBに部分一致するかどうか調べる。
+
+            text = text.Replace("、", "、；").Replace("。", "。；").Replace("！？", "！？；").Replace("！", "！；").Replace("？", "？；").Replace("\r", "；").Replace("\n", "；");//改行コードをchar'；'に置き換え　、と。を消えないように修正。
+            string[] sp = text.Split("；".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);//空白文字をトリム              
+
+
+            StringBuilder sb = new StringBuilder();
+            StringBuilder sb2 = new StringBuilder();
+            sb.Append("/* 辞書登録結果一覧 */\r\f");
+            sb.Append("センテンス(");
+            sb.Append(sp.Length);
+            sb.Append("件)\r\f");
+
+            for (int i = 0; i < sp.Length; i++)
+            {
+                string str = sp[i].ToString();
+
+                if(!str.Contains("、") && !str.Contains("。") && !str.Contains("！？") && !str.Contains("！") && !str.Contains("？"))
+                {
+                    //センテンスではない可能性がある。
+                    //出力用メモ
+                    sb.Append("[センテンスではない？(Caution)]");
+                    sb.Append(str);
+                    sb.Append("\r\f");
+                    continue;
+                }
+
+                //int len = Math.Min(str.Length, 10);１行の文字数に制限をかける場合　辞書データが精確なら不要
+
+                //キーワードをセンテンスに区切る。対象のセンテンスは含まれているか？
+                if (!ClassLibrary.SentenceAIClass.GetIsT_SentenceAI(Global.GetConnection(), str))
+                {
+                    //string strを辞書(DB)に登録する
+                    ClassLibrary.SentenceAIClass.SetT_SentenceAI_Insert(Global.GetConnection(), str.Trim(), SessionManager.User.M_User.name1.Trim());
+
+
+                    //部分一致を検索
+                    DATASET.DataSet.T_SentenceAIDataTable dt = ClassLibrary.SentenceAIClass.GetT_SentenceAIDataTable(Global.GetConnection(), str.Trim().Substring(0, str.Length / 10));
+                    if (dt != null)
+                    {
+                        Random rand = new Random();
+                        sb2.Append(dt[rand.Next(0, dt.Count-1)].sentence);
+                    }
+                    else
+                    {
+                        //部分一致を検索
+                        DATASET.DataSet.T_SentenceAIDataTable dt2 = ClassLibrary.SentenceAIClass.GetT_SentenceAIDataTable(Global.GetConnection(), str.Trim().Substring(0,str.Length/100));
+                        if (dt2 != null)
+                        {
+                            Random rand = new Random();
+                            sb2.Append(dt2[rand.Next(0, dt2.Count - 1)].sentence);
+                        }
+
+                    }
+
+                    //出力用メモ
+                    sb.Append(str);
+                    sb.Append("\r\f");
+                }
+                else
+                {
+                    //完全一致
+                    //アップデート
+                    ClassLibrary.SentenceAIClass.SetT_SentenceAI_Update(Global.GetConnection(), str.Trim());
+
+                    //部分一致を検索
+                    DATASET.DataSet.T_SentenceAIDataTable dt = ClassLibrary.SentenceAIClass.GetT_SentenceAIDataTable(Global.GetConnection(), str.Trim().Substring(0, str.Length / 10));
+                    if (dt != null)
+                    {
+                        Random rand = new Random();
+                        sb2.Append(dt[rand.Next(0, dt.Count - 1)].sentence);
+                    }
+                    else
+                    {
+                        //部分一致を検索
+                        DATASET.DataSet.T_SentenceAIDataTable dt2 = ClassLibrary.SentenceAIClass.GetT_SentenceAIDataTable(Global.GetConnection(), str.Trim().Substring(0, str.Length / 100));
+                        if (dt2 != null)
+                        {
+                            Random rand = new Random();
+                            sb2.Append(dt2[rand.Next(0, dt2.Count - 1)].sentence);
+                        }
+
+                    }
+
+                    //出力用メモ
+                    sb.Append("[重複(DateTime_Update)]");
+                    sb.Append(str);
+                    sb.Append("\r\f");
+                }
+            }
+            //応答
+            TextBox_IBResult.Text = sb2.ToString();
+            TextBox_IBResult.Text += "\r\f--------------------------------\r\f";
+            //ログ
+            TextBox_IBResult.Text += sb.ToString();
+        }
+
+        protected void Push_DeepBit(object sender, EventArgs e)
+        {
+            if (Panel_DeepBit.Visible)
+            {
+                Panel_DeepBit.Visible = false;
+            }
+            else
+            {
+                Panel_DeepBit.Visible = true;
+            }
+        }
+
+        protected void Push_SetBit(object sender, EventArgs e)
+        {
+            //テキストを2進数に変換
+            string s_bit_a = HtmlEncode(TextBox_Bit_a.Text);
+            string s_bit_b = HtmlEncode(TextBox_Bit_b.Text);
+            int length = Math.Max(s_bit_a.Length, s_bit_b.Length);
+            var pattern = "[0-1]";
+            if (!Regex.IsMatch(s_bit_a, pattern) || !Regex.IsMatch(s_bit_b, pattern))
+            {
+                //Error
+                TextBox_BitResult.Text = "Error: 不正な文字列が含まれています！;";
+                return;
+            }
+
+            int bit_a = Convert.ToInt32(s_bit_a, 2);
+            int bit_b = Convert.ToInt32(s_bit_b, 2);
+
+            //int bit_a = 0b0000111100001111; //交配対象A
+            //int bit_b = 0b1011101101100110; //交配者B
+            SetBit(bit_a, bit_b, length);
+        }
+
+
+/*
+        protected int randInt()  //unsignedにしないとダメ
+        {
+            int tx = 123456789, ty = 362436069, tz = 521288629, tw = 88675123;  //unsignedにしないとダメ
+            int tt = (tx ^ (tx << 11));  //unsignedにしないとダメ
+            tx = ty; ty = tz; tz = tw;
+            return (tw = (tw ^ (tw >> 19)) ^ (tt ^ (tt >> 8)));
+        }
+*/
+
+
+        /// <summary>
+        /// Bit演算のテスト
+        /// </summary>
+        protected void SetBit(int bit_a, int bit_b, int length)
+        {
+
+            //乱数をインスタンス化（あんまりよくはない）
+            Random rand = new Random();
+            
+            //一様交差　下桁からチェック 0～
+            for (int i = 0; i < Math.Max(Convert.ToString(bit_a, 2).PadLeft(length, '0').Length, Convert.ToString(bit_b, 2).PadLeft(length, '0').Length); i++) //桁数が上の0部分は文字列に変換してくれないため、Math.Maxを使う。
+            {
+                if((bit_a & (1 << i)) != (bit_b & (1 << i))|| (bit_a & (0 << i)) != (bit_b & (0 << i)))
+                {
+                    // 1/2の確率（ちなみにこの乱数生成はbitのほうが早い）
+                    if (rand.Next(0, 2) == 1)
+                    {
+                        if ((bit_a & (1 << i)) == 0)
+                        {
+                            //OR
+                            //0→1
+                            bit_a |= (int)Math.Pow(2, i);    //2のn乗
+                        }
+                        else
+                        {
+                            //XOR
+                            //1→0
+                            bit_a ^= (int)Math.Pow(2, i);    //2のn乗
+                        }
+                    }
+                }
+            }
+
+            TextBox_BitResult.Text = "交配結果：0b" + Convert.ToString(bit_a, 2).PadLeft(length, '0');
+
+        }
+
+
     }
 }
