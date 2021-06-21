@@ -301,9 +301,15 @@
                 </td>
             </tr>
             <tr>
+                <th class="th_master">
+                    でたらめ応答文章生成（Wikipediaの文章とユーザー入力を辞書に使用）
+                </th>
+            </tr>
+            <tr>
                 <td>
-                    <asp:Button ID="Button_SetIndexBook" CssClass="btn-flat-border" runat="server" Text="検索対象を辞書登録" OnClick="Push_SetIndexBook" CausesValidation="False" />
-                </td>
+                    <asp:Button ID="Button_SetIndexBook" CssClass="btn-flat-border" runat="server" Text="↓検索対象を辞書登録" OnClick="Push_SetIndexBook" CausesValidation="False" />
+                    <asp:Button ID="Button_GetIndexBook" CssClass="btn-flat-border" runat="server" Text="↓検索対象から文章生成" OnClick="Push_GetIndexBook" CausesValidation="False" />
+                    （※検索対象は、必ず「、」と「。」で区切られた日本語の文章を入力して下さい！）</td>
             </tr>
             <tr>
                 <td>

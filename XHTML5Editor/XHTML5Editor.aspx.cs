@@ -342,7 +342,7 @@ namespace WhereEver.XHTML5Editor
 
             //textの中身が検索対象の文字列。キーワードが検索対象に部分一致するかどうか調べる。
 
-            text = text.Replace("、", "、；").Replace("。", "。；").Replace("\r", "；").Replace("\n", "；");//改行コードをchar'；'に置き換え　、と。を消えないように修正。
+            text = text.Replace("、", "、；").Replace("。", "。；").Replace("！？", "！？；").Replace("！", "！；").Replace("？", "？；").Replace("\r", "；").Replace("\n", "；");//改行コードをchar'；'に置き換え　、と。を消えないように修正。
             string[] sp = text.Split("；".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);//空白文字をトリム              
 
 
@@ -355,6 +355,16 @@ namespace WhereEver.XHTML5Editor
             for (int i = 0; i < sp.Length; i++)
             {
                 string str = sp[i].ToString();
+                if (!str.Contains("、") && !str.Contains("。") && !str.Contains("！？") && !str.Contains("！") && !str.Contains("？"))
+                {
+                    //センテンスではない可能性がある。
+                    //出力用メモ
+                    sb.Append("[センテンスではない？(Caution)]");
+                    sb.Append(str);
+                    sb.Append("\r\f");
+                    continue;
+                }
+
                 //int len = Math.Min(str.Length, 10);１行の文字数に制限をかける場合　辞書データが精確なら不要
 
                 if (!ClassLibrary.SentenceAIClass.GetIsT_SentenceAI(Global.GetConnection(), str))
@@ -368,6 +378,7 @@ namespace WhereEver.XHTML5Editor
                 }
                 else
                 {
+                    //アップデート
                     ClassLibrary.SentenceAIClass.SetT_SentenceAI_Update(Global.GetConnection(), str.Trim());
 
                     //出力用メモ
@@ -487,5 +498,128 @@ namespace WhereEver.XHTML5Editor
         {
             Set_IBDataBase();
         }
+
+        protected void Push_GetIndexBook(object sender, EventArgs e)
+        {
+            Get_IndexBook();
+        }
+
+
+
+        protected void Get_IndexBook()
+        {
+            //init
+            TextBox_IBResult.Text = "";
+
+            string ib = HtmlEncode(TextBox_IB.Text).Trim(); //空白スペースでsplitしてstring[]にしてもよい。
+
+            //登録用文字列 HtmlEncodeあり
+            string text = HtmlEncode(TextBox_IBText.Text);
+            if (text == "")
+            {
+                //登録不可能
+                TextBox_IBResult.Text = "対象ボックスに辞書データが入力されていません。";
+                return;
+            }
+
+            //textの中身が検索対象の文字列。キーワードが検索対象DBに部分一致するかどうか調べる。
+
+            text = text.Replace("、", "、；").Replace("。", "。；").Replace("！？", "！？；").Replace("！", "！；").Replace("？", "？；").Replace("\r", "；").Replace("\n", "；");//改行コードをchar'；'に置き換え　、と。を消えないように修正。
+            string[] sp = text.Split("；".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);//空白文字をトリム              
+
+
+            StringBuilder sb = new StringBuilder();
+            StringBuilder sb2 = new StringBuilder();
+            sb.Append("/* 辞書登録結果一覧 */\r\f");
+            sb.Append("センテンス(");
+            sb.Append(sp.Length);
+            sb.Append("件)\r\f");
+
+            for (int i = 0; i < sp.Length; i++)
+            {
+                string str = sp[i].ToString();
+
+                if(!str.Contains("、") && !str.Contains("。") && !str.Contains("！？") && !str.Contains("！") && !str.Contains("？"))
+                {
+                    //センテンスではない可能性がある。
+                    //出力用メモ
+                    sb.Append("[センテンスではない？(Caution)]");
+                    sb.Append(str);
+                    sb.Append("\r\f");
+                    continue;
+                }
+
+                //int len = Math.Min(str.Length, 10);１行の文字数に制限をかける場合　辞書データが精確なら不要
+
+                //キーワードをセンテンスに区切る。対象のセンテンスは含まれているか？
+                if (!ClassLibrary.SentenceAIClass.GetIsT_SentenceAI(Global.GetConnection(), str))
+                {
+                    //string strを辞書(DB)に登録する
+                    ClassLibrary.SentenceAIClass.SetT_SentenceAI_Insert(Global.GetConnection(), str.Trim(), SessionManager.User.M_User.name1.Trim());
+
+
+                    //部分一致を検索
+                    DATASET.DataSet.T_SentenceAIDataTable dt = ClassLibrary.SentenceAIClass.GetT_SentenceAIDataTable(Global.GetConnection(), str.Trim().Substring(0, str.Length / 10));
+                    if (dt != null)
+                    {
+                        Random rand = new Random();
+                        sb2.Append(dt[rand.Next(0, dt.Count-1)].sentence);
+                    }
+                    else
+                    {
+                        //部分一致を検索
+                        DATASET.DataSet.T_SentenceAIDataTable dt2 = ClassLibrary.SentenceAIClass.GetT_SentenceAIDataTable(Global.GetConnection(), str.Trim().Substring(0,str.Length/100));
+                        if (dt2 != null)
+                        {
+                            Random rand = new Random();
+                            sb2.Append(dt2[rand.Next(0, dt2.Count - 1)].sentence);
+                        }
+
+                    }
+
+                    //出力用メモ
+                    sb.Append(str);
+                    sb.Append("\r\f");
+                }
+                else
+                {
+                    //完全一致
+                    //アップデート
+                    ClassLibrary.SentenceAIClass.SetT_SentenceAI_Update(Global.GetConnection(), str.Trim());
+
+                    //部分一致を検索
+                    DATASET.DataSet.T_SentenceAIDataTable dt = ClassLibrary.SentenceAIClass.GetT_SentenceAIDataTable(Global.GetConnection(), str.Trim().Substring(0, str.Length / 10));
+                    if (dt != null)
+                    {
+                        Random rand = new Random();
+                        sb2.Append(dt[rand.Next(0, dt.Count - 1)].sentence);
+                    }
+                    else
+                    {
+                        //部分一致を検索
+                        DATASET.DataSet.T_SentenceAIDataTable dt2 = ClassLibrary.SentenceAIClass.GetT_SentenceAIDataTable(Global.GetConnection(), str.Trim().Substring(0, str.Length / 100));
+                        if (dt2 != null)
+                        {
+                            Random rand = new Random();
+                            sb2.Append(dt2[rand.Next(0, dt2.Count - 1)].sentence);
+                        }
+
+                    }
+
+                    //出力用メモ
+                    sb.Append("[重複(DateTime_Update)]");
+                    sb.Append(str);
+                    sb.Append("\r\f");
+                }
+            }
+            //応答
+            TextBox_IBResult.Text = sb2.ToString();
+            TextBox_IBResult.Text += "\r\f--------------------------------\r\f";
+            //ログ
+            TextBox_IBResult.Text += sb.ToString();
+        }
+
+
+
     }
 }
