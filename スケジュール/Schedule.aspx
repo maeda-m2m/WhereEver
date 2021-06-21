@@ -475,6 +475,7 @@
 
                     <Columns>
 
+
                         <asp:TemplateColumn HeaderText="選択" ItemStyle-Width="70px">
                             <ItemTemplate>
                                 <asp:CheckBox runat="server" ID="checkbox1" />
