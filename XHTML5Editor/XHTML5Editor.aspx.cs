@@ -662,7 +662,7 @@ namespace WhereEver.XHTML5Editor
 
 
         /// <summary>
-        /// 遺伝子の評価値を返します。値が低いほうが評価が高くkなります。
+        /// 遺伝子の評価値を返します。値が低いほうが評価が高くなります。
         /// </summary>
         /// <returns></returns>
         protected int GetGeneRank(int bit)
@@ -678,8 +678,12 @@ namespace WhereEver.XHTML5Editor
         /// </summary>
         protected void SetRandomBit()
         {
+
+            StringBuilder sb = new StringBuilder();
+
             //生成要素数
             const int maxgene = 100;   // n >= 2 交配させるため2以上は必須
+            const int mutation = 50; //突然変異の確率(0.1n%)
             int bit_a;
             int bit_b;
             int bit_r;
@@ -715,7 +719,7 @@ namespace WhereEver.XHTML5Editor
                 //交配（総当たり）
                 //A-B, A-C, A-D...A-Z, B-C, B-D...
                 //gene数2→1, 3→3, 4→7...
-                int loop = 0;
+                int loop = 1;
                 for (int m = 0; m < maxgene - 1; m++)
                 {
                     for (int k = loop; k < maxgene - 1 - loop; k++)
@@ -730,21 +734,38 @@ namespace WhereEver.XHTML5Editor
                 }
 
 
-                if(n == mainloop)
+                //現在のエリートを取得
+                for (int r = 0; r < res.Count; r++)
+                {
+
+                    if (rank[r] == rank.Min())
+                    {
+                        //エリート                       
+                        sb.Append("\r\f");
+                        sb.Append("Status: 0b");
+                        sb.Append(Convert.ToString(res[r], 2).PadLeft(length, '0'));
+                        sb.Append("(");
+                        sb.Append(res[r].ToString());
+                        sb.Append(");");
+                        sb.Append("[");
+                        sb.Append(n);
+                        sb.Append("回目]");
+
+                        if (n == mainloop)
+                        {
+                            //終了　エリートをOutput
+                            TextBox_BitResult.Text = "Result: 0b" + Convert.ToString(res[r], 2).PadLeft(length, '0') + "(" + res[r].ToString() + ");";
+                            TextBox_BitResult.Text += "\r\fAnswer: 0b00110111000100010000111100001111" + "(" + 0b00110111000100010000111100001111 + ");";
+                            TextBox_BitResult.Text += sb.ToString();
+                        }
+
+                        break;
+                    }
+                }
+
+                if (n == mainloop)
                 {
                     //終了
-
-                    for (int r = 0; r < res.Count; r++)
-                    {
-
-                        if (rank[r] == rank.Min())
-                        {
-                            //エリート                       
-                            TextBox_BitResult.Text = "Result: 0b" + Convert.ToString(res[r], 2).PadLeft(length, '0') + "(" + res[r].ToString() + ")";
-                            TextBox_BitResult.Text += "\r\fAnswer: 0b00110111000100010000111100001111" + "(" + 0b00110111000100010000111100001111 + ")";
-                            break;
-                        }
-                    }
                     break;
                 }
 
@@ -757,12 +778,15 @@ namespace WhereEver.XHTML5Editor
                     {
                         //エリート                       
                         rou2.Add(res[p]);   //削除不要
-                        //+5枠
-                        rou.Add(res[p]);
-                        rou.Add(res[p]);
-                        rou.Add(res[p]);
-                        rou.Add(res[p]);
-                        rou.Add(res[p]);
+                        
+                        //エリート人工変異枠　1枠強制追加　オーバーフローしないように注意（今回は初期値の関係でまず起こらない）
+                        rou2.Add(res[p] + rand.Next(-1000, 1001));
+                        
+                        //エリート突然変異枠　１枠強制追加
+                        //rou2.Add(~res[p]);   //NOT
+                        
+                        //同一抽選枠なし（局所解防止）
+
                     }
                     //平均値より低い＝評価が高い
                     else if (rank[p] < (int)rank.Average())
@@ -781,12 +805,24 @@ namespace WhereEver.XHTML5Editor
                     }
                 }
 
-                for (int q = 0; q < maxgene - 1; q++)
+                for (int q = 0; rou2.Count < maxgene; q++)
                 {
+                    if (rou.Count == 0)
+                    {
+                        break;
+                    }
+
                     //0～2 → 0, 1, 2 Count=3 MaxValueは含まない
-                    int newgene = rou[rand.Next(0, rou.Count - q)]; //ランダム抽選
+                    int newgene = rou[rand.Next(0, rou.Count - q + 1)]; //ランダム抽選
+                   
+                    if (rand.Next(0, 1000 - mutation + 1) == 0 && mutation > 10)    //10/1000 = 1/100(%)
+                    {
+                        //突然変異 NOTで反転し上書き
+                        newgene = ~newgene;
+                    }
                     rou2.Add(newgene);
                     rou.RemoveAt(q);
+
                 }
 
 
