@@ -341,7 +341,9 @@
                     <div class="noprint">
                        <span class="hr"></span>
                         <p class="center">
-				一様交差処理を行います。
+                            演算開始ボタンを押すと一様交差処理のテストを行います。<br />
+            				ランダム演算は一様交差処理とルーレット選択による遺伝的アルゴリズムのテストを実行します。<br />
+                            ランダム演算の解は固定で0b00110111000100010000111100001111(923864847)です。<br />
                         </p>
                        <span class="hr"></span>
                     </div>
@@ -367,6 +369,7 @@
             <tr>
                 <td>
                     <asp:Button ID="Button_SetBit" CssClass="btn-flat-border" runat="server" Text="演算開始" OnClick="Push_SetBit" CausesValidation="False" />
+                    <asp:Button ID="Button_SetRandomBit" CssClass="btn-flat-border" runat="server" Text="ランダム演算開始" OnClick="Push_SetRandomBit" CausesValidation="False" />
                 </td>
             </tr>
             <tr>

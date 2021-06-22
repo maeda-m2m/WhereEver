@@ -429,6 +429,15 @@ namespace WhereEver.XHTML5Editor
         protected global::System.Web.UI.WebControls.Button Button_SetBit;
 
         /// <summary>
+        /// Button_SetRandomBit コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_SetRandomBit;
+
+        /// <summary>
         /// TextBox_BitResult コントロール。
         /// </summary>
         /// <remarks>

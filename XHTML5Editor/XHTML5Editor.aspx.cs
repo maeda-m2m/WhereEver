@@ -50,8 +50,8 @@ namespace WhereEver.XHTML5Editor
             sb.Append("\r\n");
             sb.Append("-webkit-appearance: none;");//スマホ対策
             sb.Append("\r\n");
-            sb.Append(" width: "); 
-            if(DropDownList_Width.SelectedValue != "auto")
+            sb.Append(" width: ");
+            if (DropDownList_Width.SelectedValue != "auto")
             {
                 if (DropDownList_Width.SelectedValue == "px")
                 {
@@ -228,7 +228,7 @@ namespace WhereEver.XHTML5Editor
 
         protected void Push_QR_Create(object sender, EventArgs e)
         {
-            if(TextBox_QR_Text.Text == "")
+            if (TextBox_QR_Text.Text == "")
             {
                 TextBox_QRCode_Result.Text = "QRコードに変換したいテキストを入力して下さい。";
                 return;
@@ -277,7 +277,7 @@ namespace WhereEver.XHTML5Editor
                 {
                     url = Request.Url.AbsoluteUri + ".aspx";
                 }
-                
+
 
                 //Request.Url.AbsoluteUriが使用できない？　→　Proxy経由の問題
 
@@ -540,7 +540,7 @@ namespace WhereEver.XHTML5Editor
             {
                 string str = sp[i].ToString();
 
-                if(!str.Contains("、") && !str.Contains("。") && !str.Contains("！？") && !str.Contains("！") && !str.Contains("？"))
+                if (!str.Contains("、") && !str.Contains("。") && !str.Contains("！？") && !str.Contains("！") && !str.Contains("？"))
                 {
                     //センテンスではない可能性がある。
                     //出力用メモ
@@ -564,12 +564,12 @@ namespace WhereEver.XHTML5Editor
                     if (dt != null)
                     {
                         Random rand = new Random();
-                        sb2.Append(dt[rand.Next(0, dt.Count-1)].sentence);
+                        sb2.Append(dt[rand.Next(0, dt.Count - 1)].sentence);
                     }
                     else
                     {
                         //部分一致を検索
-                        DATASET.DataSet.T_SentenceAIDataTable dt2 = ClassLibrary.SentenceAIClass.GetT_SentenceAIDataTable(Global.GetConnection(), str.Trim().Substring(0,str.Length/100));
+                        DATASET.DataSet.T_SentenceAIDataTable dt2 = ClassLibrary.SentenceAIClass.GetT_SentenceAIDataTable(Global.GetConnection(), str.Trim().Substring(0, str.Length / 100));
                         if (dt2 != null)
                         {
                             Random rand = new Random();
@@ -655,22 +655,167 @@ namespace WhereEver.XHTML5Editor
         }
 
 
-/*
-        protected int randInt()  //unsignedにしないとダメ
+        protected void Push_SetRandomBit(object sender, EventArgs e)
         {
-            int tx = 123456789, ty = 362436069, tz = 521288629, tw = 88675123;  //unsignedにしないとダメ
-            int tt = (tx ^ (tx << 11));  //unsignedにしないとダメ
-            tx = ty; ty = tz; tz = tw;
-            return (tw = (tw ^ (tw >> 19)) ^ (tt ^ (tt >> 8)));
+            SetRandomBit();
         }
-*/
+
+
+        /// <summary>
+        /// 遺伝子の評価値を返します。値が低いほうが評価が高くkなります。
+        /// </summary>
+        /// <returns></returns>
+        protected int GetGeneRank(int bit)
+        {
+            //test
+            int bit_answer = 0b00110111000100010000111100001111;
+            int res = Math.Abs(bit_answer - bit); // 差の絶対値
+            return res; //低いほうが評価が高い
+        }
+
+        /// <summary>
+        /// 初期生成
+        /// </summary>
+        protected void SetRandomBit()
+        {
+            //生成要素数
+            const int maxgene = 100;   // n >= 2 交配させるため2以上は必須
+            int bit_a;
+            int bit_b;
+            int bit_r;
+            const int length = 32;
+            const int mainloop = 100;
+
+            List<int> lis = new List<int>();
+            List<int> res = new List<int>();
+            List<int> rank = new List<int>();
+            List<int> rou = new List<int>();
+            List<int> rou2 = new List<int>();
+            Random rand = new Random();
+
+            for(int i = 0; i < maxgene; i++)
+            {
+                //正負の値で変数作成　右シフトしないため負の値でもOK　最大31+1=32桁
+                bit_a = rand.Next(int.MinValue / 10, int.MaxValue / 10);
+                lis.Add(bit_a);
+            }
+            //要素をソート
+            lis.Sort();
+
+
+
+            for(int n = 0; n <= mainloop; n++)
+            {
+
+                res = new List<int>();
+                rank = new List<int>();
+                rou = new List<int>();
+                rou2 = new List<int>();
+
+                //交配（総当たり）
+                //A-B, A-C, A-D...A-Z, B-C, B-D...
+                //gene数2→1, 3→3, 4→7...
+                int loop = 0;
+                for (int m = 0; m < maxgene - 1; m++)
+                {
+                    for (int k = loop; k < maxgene - 1 - loop; k++)
+                    {
+                        bit_a = lis[k];
+                        bit_b = lis[k + 1];
+                        bit_r = SetBit(bit_a, bit_b, length);
+                        res.Add(bit_r);
+                        rank.Add(GetGeneRank(bit_r));
+                    }
+                    loop += 1;
+                }
+
+
+                if(n == mainloop)
+                {
+                    //終了
+
+                    for (int r = 0; r < res.Count; r++)
+                    {
+
+                        if (rank[r] == rank.Min())
+                        {
+                            //エリート                       
+                            TextBox_BitResult.Text = "Result:  0b" + Convert.ToString(res[r], 2).PadLeft(length, '0') + "(" + res[r].ToString() + ")";
+                            TextBox_BitResult.Text += "\r\fAnsewer: 0b00110111000100010000111100001111" + "(" + 0b00110111000100010000111100001111 + ")";
+                            break;
+                        }
+                    }
+                    break;
+                }
+
+
+                //ルーレット選択 resとrankの[index]は紐づいている。
+                for (int p = 0; p < res.Count; p++)
+                {
+                  
+                    if(rank[p] == rank.Min())
+                    {
+                        //エリート                       
+                        rou2.Add(res[p]);   //削除不要
+                        //+5枠
+                        rou.Add(res[p]);
+                        rou.Add(res[p]);
+                        rou.Add(res[p]);
+                        rou.Add(res[p]);
+                        rou.Add(res[p]);
+                    }
+                    //平均値より低い＝評価が高い
+                    else if (rank[p] < (int)rank.Average())
+                    {
+                        //5枠
+                        rou.Add(res[p]);
+                        rou.Add(res[p]);
+                        rou.Add(res[p]);
+                        rou.Add(res[p]);
+                        rou.Add(res[p]);
+                    }
+                    else
+                    {
+                        //1枠
+                        rou.Add(res[p]);
+                    }
+                }
+
+                for (int q = 0; q < maxgene - 1; q++)
+                {
+                    //0～2 → 0, 1, 2 Count=3 MaxValueは含まない
+                    int newgene = rou[rand.Next(0, rou.Count - q)]; //ランダム抽選
+                    rou2.Add(newgene);
+                    rou.RemoveAt(q);
+                }
+
+
+                lis = rou2;  //List<int>上書き
+                //continue
+            }
+            //--------------------------
+            return;
+
+        }
+
+
+
+        /*
+                protected int randInt()  //unsignedにしないとダメ
+                {
+                    int tx = 123456789, ty = 362436069, tz = 521288629, tw = 88675123;  //unsignedにしないとダメ
+                    int tt = (tx ^ (tx << 11));  //unsignedにしないとダメ
+                    tx = ty; ty = tz; tz = tw;
+                    return (tw = (tw ^ (tw >> 19)) ^ (tt ^ (tt >> 8)));
+                }
+        */
 
 
         /// <summary>
         /// Bit演算のテスト
         /// </summary>
-        protected void SetBit(int bit_a, int bit_b, int length)
-        {
+        protected int SetBit(int bit_a, int bit_b, int length)
+            {
 
             //乱数をインスタンス化（あんまりよくはない）
             Random rand = new Random();
@@ -700,7 +845,7 @@ namespace WhereEver.XHTML5Editor
             }
 
             TextBox_BitResult.Text = "交配結果：0b" + Convert.ToString(bit_a, 2).PadLeft(length, '0');
-
+            return bit_a;
         }
 
 
