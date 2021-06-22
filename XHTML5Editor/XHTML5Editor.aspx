@@ -332,7 +332,7 @@
            <p class="index1">
                ◆遺伝的アルゴリズム（仮）
                <asp:Button ID="Button_DeepBit" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_DeepBit" CausesValidation="False" />
-               　調整中です。</p>
+               　遺伝的アルゴリズムのテストを実行します。</p>
 
            <hr />
 
