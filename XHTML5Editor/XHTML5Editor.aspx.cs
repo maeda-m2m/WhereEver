@@ -740,8 +740,8 @@ namespace WhereEver.XHTML5Editor
                         if (rank[r] == rank.Min())
                         {
                             //エリート                       
-                            TextBox_BitResult.Text = "Result:  0b" + Convert.ToString(res[r], 2).PadLeft(length, '0') + "(" + res[r].ToString() + ")";
-                            TextBox_BitResult.Text += "\r\fAnsewer: 0b00110111000100010000111100001111" + "(" + 0b00110111000100010000111100001111 + ")";
+                            TextBox_BitResult.Text = "Result: 0b" + Convert.ToString(res[r], 2).PadLeft(length, '0') + "(" + res[r].ToString() + ")";
+                            TextBox_BitResult.Text += "\r\fAnswer: 0b00110111000100010000111100001111" + "(" + 0b00110111000100010000111100001111 + ")";
                             break;
                         }
                     }
