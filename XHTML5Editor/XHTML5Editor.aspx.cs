@@ -22,6 +22,12 @@ namespace WhereEver.XHTML5Editor
                 this.Response.Redirect("../ログイン/Login.aspx", false);
                 return;
             }
+
+            if (Hidden_Label_item.Value == "red")
+            {
+                Label_item1.BackColor = System.Drawing.Color.Red;
+            }
+
         }
 
         protected void Push_Correct(object sender, EventArgs e)
@@ -883,6 +889,28 @@ namespace WhereEver.XHTML5Editor
             TextBox_BitResult.Text = "交配結果：0b" + Convert.ToString(bit_a, 2).PadLeft(length, '0');
             return bit_a;
         }
+
+        protected void Push_DD(object sender, EventArgs e)
+        {
+            if (Panel_DD.Visible)
+            {
+                Panel_DD.Visible = false;
+            }
+            else
+            {
+                Panel_DD.Visible = true;
+            }
+        }
+
+        protected void Push_GetLabelDD(object sender, EventArgs e)
+        {
+            //TextBox_LabelDDResult.Text = Label_dropbox.Text;
+            //TextBox_LabelDDResult.Text = Request["Label_dropbox"];//name属性から取得(idと同じ)
+            //TextBox_LabelDDResult.Text += Request["dropbox"];//name属性から取得(idと同じ)
+
+            TextBox_LabelDDResult.Text = Label_item1.BackColor.ToString();
+        }
+
 
 
     }

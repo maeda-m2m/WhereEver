@@ -399,11 +399,73 @@
 
 </asp:Panel>
 
+
+
+
+           <span class="hr"></span>
+
+           <p class="index1">
+               ◆ドラッグアンドドロップ機能
+               <asp:Button ID="Button_DD" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_DD" CausesValidation="False" />
+               　ドラッグアンドドロップのテストを実行します。中身はシンプルな.jsです。</p>
+
+           <hr />
+
+<asp:Panel ID="Panel_DD" runat="server" Visible="false" DefaultButton="Button_SetBit">
+
+                    <div class="noprint">
+                       <span class="hr"></span>
+                        <p class="center">
+                            ドラッグアンドドロップのテストです。
+                        </p>
+                       <span class="hr"></span>
+                    </div>
+
+    <div class="center">
+
+        <asp:Label ID="Label_dditems" runat="server" CssClass="dditems" ondragover="f_dragover(event)" ondrop="f_drop(event)" Text="">
+        <span id="item_1" draggable="true" ondragstart="f_dragstart(event)">通常アイテム１</span>
+        <span id="item_2" draggable="true" ondragstart="f_dragstart(event)">通常アイテム２</span>
+        <span id="item_3" draggable="true" ondragstart="f_dragstart(event)">通常アイテム３</span>
+        <asp:Label ID="Label_item1" runat="server" draggable="true" ondragstart="f_dragstart(event)" Text="Labelアイテム１"></asp:Label>
+        <asp:Label ID="Label_item2" runat="server" draggable="true" ondragstart="f_dragstart(event)" Text="Labelアイテム２"></asp:Label>
+        <asp:Label ID="Label_item3" runat="server" draggable="true" ondragstart="f_dragstart(event)" Text="Labelアイテム３"></asp:Label>
+        </asp:Label>
+        <asp:HiddenField ID="Hidden_Label_item" runat="server" />
+
+        <p>アイテムをドラッグアンドドロップで上下のボックスに移動することができます。</p>
+        <p>動的コントロールはTextからは抽出できないため、コントロールのIDから抽出する必要があります（調査済）。</p>
+        <p>→HiddenFieldで取得可能</p>
+
+        <p>label版</p>
+        <asp:Label ID="Label_dropbox" CssClass="dropbox" ondragover="f_dragover(event)" ondrop="f_drop1(event)" runat="server" Text=""></asp:Label>
+
+        <p>div版</p>
+        <div class="dropbox" ondragover="f_dragover(event)" ondrop="f_drop2(event)"></div>
+
+
+       <span class="hr"></span>
+
+
+        <asp:Button ID="Button_GetLabelDD" CssClass="btn-flat-border" runat="server" Text="Label抽出テスト（仮）" OnClick="Push_GetLabelDD" CausesValidation="False" />
+        <asp:TextBox ID="TextBox_LabelDDResult" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="Ready..." CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
+
+
+       <span class="hr"></span>
+
+    </div>
+</asp:Panel>
+
+
 </div>
 
 
 
         </div>
     </form>
+
+
+<script src="../Scripts/d_drop.js"></script>
+
 </body>
 </html>

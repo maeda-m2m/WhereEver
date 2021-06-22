@@ -141,6 +141,7 @@
     <Content Include="Money\Money.css" />
     <Content Include="ResearchAnalitics\ResearchAnalitics.css" />
     <Content Include="ResearchAnalitics\ResearchAnalitics.aspx" />
+    <Content Include="Scripts\d_drop.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
     <Content Include="Scripts\lastModified.js" />
     <Content Include="Scripts\setTwit.js" />
