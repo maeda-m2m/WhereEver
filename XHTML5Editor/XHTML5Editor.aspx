@@ -332,7 +332,7 @@
            <p class="index1">
                ◆遺伝的アルゴリズム
                <asp:Button ID="Button_DeepBit" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_DeepBit" CausesValidation="False" />
-               　遺伝的アルゴリズムのテストを実行します。株の自動取引や経路探索などに応用できます。</p>
+               　遺伝的アルゴリズムのテストを実行します。組み合わせ、順位、経路探索などに応用できます。</p>
 
            <hr />
 
