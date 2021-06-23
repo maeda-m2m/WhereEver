@@ -53,7 +53,7 @@
             <asp:SiteMapDataSource ID="smd" runat="server" />
         </td>
         <td colspan="2">
-            <p class="date">
+            <p class="mc_date">
                 <script src="../Scripts/lastModified.js" type="text/javascript" charset="utf-8"></script>
             </p>
         </td>
