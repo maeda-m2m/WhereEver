@@ -140,7 +140,7 @@
                                 <asp:CheckBox runat="server" ID="cb1" />
                                 <asp:TextBox runat="server" ID="ddlist1" TextMode="Number"></asp:TextBox>
                                 <label runat="server" id="label5">週間分</label>
-                                <label runat="server" id="label4">チェックを入れ、数字を入力してください。</label>
+                                <label runat="server" id="label4">（チェックを入れ、数字を入力してください。）</label>
                             </td>
                         </tr>
 
@@ -482,15 +482,15 @@
                     <Columns>
 
 
-                        <asp:TemplateColumn HeaderText="選択" ItemStyle-Width="70px">
+                        <asp:TemplateColumn HeaderText="選択" ItemStyle-Width="70px" >
                             <ItemTemplate>
-                                <asp:CheckBox runat="server" ID="checkbox1" />
+                                <asp:CheckBox runat="server" ID="checkbox1"  />
                             </ItemTemplate>
                         </asp:TemplateColumn>
 
                         <asp:TemplateColumn HeaderText="詳細" ItemStyle-Width="70px">
                             <ItemTemplate>
-                                <asp:Button runat="server" ID="btn9" Text="詳細" />
+                                <asp:Button runat="server" ID="btn9" Text="詳細" CommandName="syousai" />
                             </ItemTemplate>
                         </asp:TemplateColumn>
 

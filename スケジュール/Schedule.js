@@ -57,22 +57,13 @@ $(document).ready(function () {
     });
 });
 
-
-
-
-
-
-
-
 $(document).ready(function () {
     $(".edit_focus").on("click", function () {
         $(this).find(".edit_focus").focus();
     });
 });
 
-const current = `<img src="batu_01.png" alt="" class="test3" />`;
 
-const current2 = `<img src="Hamburger-Button (1).png" alt="" />`;
 
 $(document).ready(function () {
     $("#open_nav").on("click", function () {
