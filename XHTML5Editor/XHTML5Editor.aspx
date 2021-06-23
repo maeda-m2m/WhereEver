@@ -405,9 +405,9 @@
            <span class="hr"></span>
 
            <p class="index1">
-               ◆ドラッグアンドドロップ機能
+               ◆進捗管理（β版）
                <asp:Button ID="Button_DD" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_DD" CausesValidation="False" />
-               　ドラッグアンドドロップのテストを実行します。中身はシンプルな.jsです。</p>
+               　ドラッグアンドドロップを用いた進捗管理システムです。</p>
 
            <hr />
 
@@ -423,33 +423,45 @@
 
     <div class="center">
 
-        <asp:Label ID="Label_dditems" runat="server" CssClass="dditems" ondragover="f_dragover(event)" ondrop="f_drop(event)" Text="">
-        <span id="item_1" draggable="true" ondragstart="f_dragstart(event)">通常アイテム１</span>
-        <span id="item_2" draggable="true" ondragstart="f_dragstart(event)">通常アイテム２</span>
-        <span id="item_3" draggable="true" ondragstart="f_dragstart(event)">通常アイテム３</span>
-        <asp:Label ID="Label_item1" runat="server" draggable="true" ondragstart="f_dragstart(event)" Text="Labelアイテム１"></asp:Label>
-        <asp:Label ID="Label_item2" runat="server" draggable="true" ondragstart="f_dragstart(event)" Text="Labelアイテム２"></asp:Label>
-        <asp:Label ID="Label_item3" runat="server" draggable="true" ondragstart="f_dragstart(event)" Text="Labelアイテム３"></asp:Label>
-        </asp:Label>
+        <p>アイテムをドラッグアンドドロップボックス間を移動することができます。</p>
+        <%-- <p>動的コントロールはTextからは抽出できないため、コントロールのIDから抽出する必要があります（調査済）。</p>
+        <p>→HiddenFieldで取得可能</p>--%>
+
         <asp:HiddenField ID="Hidden_Label_item" runat="server" />
 
-        <p>アイテムをドラッグアンドドロップで上下のボックスに移動することができます。</p>
-        <p>動的コントロールはTextからは抽出できないため、コントロールのIDから抽出する必要があります（調査済）。</p>
-        <p>→HiddenFieldで取得可能</p>
-
-        <p>label版</p>
-        <asp:Label ID="Label_dropbox" CssClass="dropbox" ondragover="f_dragover(event)" ondrop="f_drop1(event)" runat="server" Text=""></asp:Label>
-
-        <p>div版</p>
-        <div class="dropbox" ondragover="f_dragover(event)" ondrop="f_drop2(event)"></div>
-
+<p class="index1"><a id="DD">進捗管理(β版)</a></p>
+<div class="flex_ul">
+        <span class="flex_title">未処理</span>
+        <span class="flex_title">作業中</span>
+        <span class="flex_title">テスト中</span>
+        <span class="flex_title">完成</span>
+</div>
+<div class="flex_ul">
+    <span>
+        <asp:Label ID="Label_dropbox_black" runat="server" CssClass="dditems" ondragover="f_dragover(event)" ondrop="f_drop(event)" Text="">
+        </asp:Label>
+    </span>
+    <span>
+        <asp:Label ID="Label_dropbox_red" CssClass="dropbox_red" ondragover="f_dragover(event)" ondrop="f_drop1(event)" runat="server" Text="" ValidateRequestMode="Disabled" >
+        </asp:Label>
+    </span>
+    <span>
+        <asp:Label ID="Label_dropbox_blue" CssClass="dropbox_blue" ondragover="f_dragover(event)" ondrop="f_drop2(event)" runat="server" Text="" ValidateRequestMode="Disabled">
+        </asp:Label>
+    </span>
+    <span>
+        <asp:Label ID="Label_dropbox_green" CssClass="dropbox_green" ondragover="f_dragover(event)" ondrop="f_drop3(event)" runat="server" Text="" ValidateRequestMode="Disabled">
+        </asp:Label>
+    </span>
+</div>
 
        <span class="hr"></span>
 
-
-        <asp:Button ID="Button_GetLabelDD" CssClass="btn-flat-border" runat="server" Text="Label抽出テスト（仮）" OnClick="Push_GetLabelDD" CausesValidation="False" />
+        <asp:Button ID="Button_GetLabelDD" CssClass="btn-flat-border" runat="server" Text="送受信（仮実装）" OnClick="Push_GetLabelDD" CausesValidation="False" PostBackUrl="#DD" />
+        <asp:Button ID="Button_DeleteBlackDD" CssClass="btn-flat-border" runat="server" Text="却下（SQL未実装）" OnClick="Push_DeleteBlackDD" CausesValidation="False" PostBackUrl="#DD" />
+        
+        <p class="index1">デバッグコンソール</p>
         <asp:TextBox ID="TextBox_LabelDDResult" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="Ready..." CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
-
 
        <span class="hr"></span>
 

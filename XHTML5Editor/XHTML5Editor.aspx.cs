@@ -23,12 +23,126 @@ namespace WhereEver.XHTML5Editor
                 return;
             }
 
-            if (Hidden_Label_item.Value == "red")
+            if (!IsPostBack)
             {
-                Label_item1.BackColor = System.Drawing.Color.Red;
+                //Label生成（初期化）
+                ResetItems();
             }
 
+            ChangeItemsColor();
         }
+
+
+        protected void ResetItems()
+        {
+            //初期化
+            Label_dropbox_black.Text = "";
+            Label_dropbox_red.Text = "";
+            Label_dropbox_blue.Text = "";
+            Label_dropbox_green.Text = "";
+        }
+
+        protected bool SetItems(string item_id, string color)
+        {
+            //ラベルに書く文章をここに入力(SQLからの入力でも可)
+            string content = "タスク("+ item_id + color + ")"; //テスト専用
+
+            if (content == null || content == "")
+            {
+                //未処理がなければfalseを返す
+                return false;
+            }
+
+            Label lbl = (Label)FindControl("Label_dropbox_" + color);
+            //Label_transparent.Text = "";
+            //リフレクション
+            lbl.Text += "<span id=\"" + item_id + "\" runat=\"server\" class=\"item\" draggable=\"true\" ondragstart=\"f_dragstart(event)\" style=\"background-color: " + color + ";\" >" + content + "<br /><br /></span>";
+            return true;
+        }
+
+        protected void ChangeItemsColor()
+        {
+            // 宣言と定義
+
+            //初期化
+            ResetItems();
+
+            // HiddenからViewStateのValue（文字列）を読み出し
+            //string sp [p1:アイテム名], [p2:カラー]; 文字配列数は2nに等しくなる。
+            string text = HtmlEncode(Hidden_Label_item.Value);//管理者ツールで弄れるため必ずエンコードする
+
+            //とりあえず10件まで表示
+            for (int k=1; k<=10; k++)
+            {
+                //transparent追加
+                if (!text.Contains("Label_item" + k)){
+
+                    //Label_item_id{n}, color
+                    if(!SetItems("Label_item" + k, "black"))
+                    {
+                        //未処理がなければループ中断
+                        break;
+                    }
+
+                }
+            }
+
+
+            string[] sp = text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);//空白文字をトリム 
+
+            //デバッグ用
+            TextBox_LabelDDResult.Text = text;
+            //初期化
+            Hidden_Label_item.Value = "";
+
+            // 総アイテム数
+            int maxvalue = sp.Length;
+
+            for (int i = 0; i < maxvalue; i++)
+            {
+
+                // ViewStateからリフレクションで読み出し
+                //Label lbl = (Label)FindControl("Label_item" + i);
+                Label lbl = new Label();
+
+                if (sp[i].Contains("Label_item"))
+                {
+                    //Label生成（これを先にやらないとLabelが存在しない）
+                    SetItems(sp[i], sp[i + 1]); //Label_item_id{n}, color
+
+                    //[p1:アイテム名]を取得し一時保存する
+                    //lbl = (Label)FindControl(sp[i]);
+                    Hidden_Label_item.Value += sp[i] + "," + sp[i+1] + ",";
+                }
+
+                /*
+                //取得した[p1:アイテム名]があるなら[p2:カラー]に応じて処理
+                if (lbl != null) {
+                    if (lbl.Text != "")
+                    {
+                        if (sp[i + 1].Contains("red"))
+                        {
+                            lbl.BackColor = System.Drawing.Color.Red;
+                            Hidden_Label_item.Value += "red,";
+                        }
+                        else if (sp[i + 1].Contains("blue"))
+                        {
+                            lbl.BackColor = System.Drawing.Color.Blue;
+                            Hidden_Label_item.Value += "blue,";
+                        }
+                        else if (sp[i + 1].Contains("green"))
+                        {
+                            lbl.BackColor = System.Drawing.Color.Green;
+                            Hidden_Label_item.Value += "green,";
+                        }
+                }
+                */
+            }
+        }
+
+
+
+
 
         protected void Push_Correct(object sender, EventArgs e)
         {
@@ -904,14 +1018,27 @@ namespace WhereEver.XHTML5Editor
 
         protected void Push_GetLabelDD(object sender, EventArgs e)
         {
-            //TextBox_LabelDDResult.Text = Label_dropbox.Text;
-            //TextBox_LabelDDResult.Text = Request["Label_dropbox"];//name属性から取得(idと同じ)
-            //TextBox_LabelDDResult.Text += Request["dropbox"];//name属性から取得(idと同じ)
+            //なにもしない（ポストバックだけ）
+            //Label_dropbox_black.Text = "";
 
-            TextBox_LabelDDResult.Text = Label_item1.BackColor.ToString();
         }
 
+        protected void Push_DeleteBlackDD(object sender, EventArgs e)
+        {
+            //未処理を破棄（SQL未実装）
+            string str = HtmlEncode(Hidden_Label_item.Value);
+            StringBuilder sb = new StringBuilder();
+            sb.Append(str);
 
-
+            MatchCollection matche = Regex.Matches(str, "Label_item[0-9]*,[a-z]*,");
+            foreach (Match m in matche)
+            {
+                sb.Replace(m.ToString(), "");
+                //Regex reg = new Regex(m.ToString());
+                //str = reg.Replace(str, "");
+            }
+            Hidden_Label_item.Value = sb.ToString();
+            Label_dropbox_black.Text = "";
+        }
     }
 }
