@@ -159,6 +159,28 @@ table {
     text-align: right;
 }
 
+.dditems {
+    /* 単なるスタイリング ドラッグアンドドロップできるアイテムの配置元 */
+    display: inline-block;
+    width: 500px;
+    height: 100px;
+    margin: 20px;
+    background-color: #FF9966;
+    border: 1px solid #cc3333;
+}
+
+.dropbox {
+    /* 単なるスタイリング ドラッグアンドドロップの配置先 */
+    display: inline-block;
+    width: 500px;
+    height: 100px;
+    margin: 20px;
+    background-color: #CCFF66;
+    border: 1px solid #00cc00;
+    /*以下はwebkit系ブラウザでドラッグ＆ドロップを動かすための指定（ブラウザのサポートが進めば、必要なくなると思われます）*/
+    /*-khtml-user-drag: element;*/
+}
+
 .index1 {
     font-size: large;
     font-weight: bold;
