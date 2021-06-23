@@ -138,8 +138,29 @@
     z-index: 1000; /*ボタンより手前になるようにピクチャ番号を修正*/
 }
 
+/*汎用　中央ぞろえ*/
+.nav_middle {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+.nav_index1 {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
 .none {
     display: none;
+}
+
+#MenuMaster{
+    font-family: 'Times New Roman', Times, sans-serif;
 }
 
 #MenuMaster input {
