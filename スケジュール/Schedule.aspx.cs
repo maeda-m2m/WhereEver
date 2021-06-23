@@ -2689,17 +2689,10 @@ namespace WhereEver
 
             Create3();
 
-
-
-            //List<string> list = new List<string>();
-
             var dt = Class1.SwitchScdl3DataTable(Global.GetConnection());
-
-
 
             for (int j = 0; j < dt.Count; j++)
             {
-
 
                 var dl = dt.Rows[j] as DATASET.DataSet.T_ScheduleRow;
 
@@ -2711,9 +2704,13 @@ namespace WhereEver
 
                 string a1 = rbl1.SelectedValue;
 
+                string a2 = dl.name.Trim();
 
-                if (a1 == a1)
+
+                if (a2.Contains(a1))
                 {
+
+
                     DateTime dtt = DateTime.Now;
 
                     Scdl3.Items[0].Cells[1].Text = dtt.ToString("ddd");
@@ -2942,9 +2939,9 @@ namespace WhereEver
                         Scdl3.Items[7].Cells[7].CssClass = "Center_cs_Color";
                         Scdl3.Items[9].Cells[7].CssClass = "Center_cs_Color";
 
-
-
                     }
+
+
                     if (tm == "9:00" || tm == "9:15" || tm == "9:30" || tm == "9:45")
                     {
                         if (week == "月")
@@ -2956,15 +2953,15 @@ namespace WhereEver
                         }
                         if (week == "火")
                         {
-                            string A2 = Scdl3.Items[1].Cells[2].Text;
-                            A2 += dl.time + "\r\n" + dl.title + "<font color=#16ba00>" + "\r\n" + dl.name + "</font color>" + "\r\n";
-                            Scdl3.Items[1].Cells[2].Text = A2.Replace("\r\n", "<br>");
+                            string aaa2 = Scdl3.Items[1].Cells[2].Text;
+                            aaa2 += dl.time + "\r\n" + dl.title + "<font color=#16ba00>" + "\r\n" + dl.name + "</font color>" + "\r\n";
+                            Scdl3.Items[1].Cells[2].Text = aaa2.Replace("\r\n", "<br>");
                         }
                         if (week == "水")
                         {
-                            string A3 = Scdl3.Items[1].Cells[3].Text;
-                            A3 += dl.time + "\r\n" + dl.title + "<font color=#16ba00>" + "\r\n" + dl.name + "</font color>" + "\r\n";
-                            Scdl3.Items[1].Cells[3].Text = A3.Replace("\r\n", "<br>");
+                            string aa2 = Scdl3.Items[1].Cells[3].Text;
+                            aa2 += dl.time + "\r\n" + dl.title + "<font color=#16ba00>" + "\r\n" + dl.name + "</font color>" + "\r\n";
+                            Scdl3.Items[1].Cells[3].Text = aa2.Replace("\r\n", "<br>");
                         }
                         if (week == "木")
                         {
@@ -3399,9 +3396,11 @@ namespace WhereEver
                     }
 
                 }
-            }
 
+            }
         }
+
+
         public void Scdl3_SelectedIndexChanged(object sender, EventArgs e)
         {
 

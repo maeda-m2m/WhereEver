@@ -139,8 +139,8 @@
 
                                 <asp:CheckBox runat="server" ID="cb1" />
                                 <asp:TextBox runat="server" ID="ddlist1" TextMode="Number"></asp:TextBox>
-                                <label runat="server" id="label5">週間分</label>
-                                <label runat="server" id="label4">（チェックを入れ、数字を入力してください。）</label>
+                                <label runat="server">週間分</label>
+                                <label runat="server">（チェックを入れ、数字を入力してください。）</label>
                             </td>
                         </tr>
 
@@ -188,7 +188,19 @@
                                 </asp:DropDownList>
                             </td>
                         </tr>
-
+                        <tr>
+                            <th class="Center_Color">カテゴリー</th>
+                            <td>
+                                <asp:DropDownList runat="server" ID="ddl2">
+                                    <asp:ListItem></asp:ListItem>
+                                    <asp:ListItem>会議（対面）</asp:ListItem>
+                                    <asp:ListItem>会議（Web）</asp:ListItem>
+                                    <asp:ListItem>訪問</asp:ListItem>
+                                    <asp:ListItem>来社</asp:ListItem>
+                                    <asp:ListItem>その他</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
                         <tr>
                             <th class="Center_Color">内容</th>
                             <td>
@@ -482,9 +494,9 @@
                     <Columns>
 
 
-                        <asp:TemplateColumn HeaderText="選択" ItemStyle-Width="70px" >
+                        <asp:TemplateColumn HeaderText="選択" ItemStyle-Width="70px">
                             <ItemTemplate>
-                                <asp:CheckBox runat="server" ID="checkbox1"  />
+                                <asp:CheckBox runat="server" ID="checkbox1" />
                             </ItemTemplate>
                         </asp:TemplateColumn>
 
