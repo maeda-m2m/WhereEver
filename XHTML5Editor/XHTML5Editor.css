@@ -242,6 +242,15 @@ table {
     margin: auto;
     padding: 1em;
     white-space: pre-line;
+    transition: 4s;
+}
+
+.item:hover{
+    color: lightblue;
+}
+
+.item:active{
+    color: lightgreen;
 }
 
 .index1 {
