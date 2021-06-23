@@ -195,7 +195,6 @@
 }
 
     .linkbox a {
-        /* ※本来はtransparentを継承して背景が透明になるはずだが、WebFormは仕様が古いためか、何故か透明にならない。 */
         background-color: none;
         background-image: -moz-linear-gradient(left, transparent 5%, black 50%, transparent 95%);
         background-image: -webkit-linear-gradient(left, transparent 5%, black 50%, transparent 95%);

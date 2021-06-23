@@ -96,7 +96,7 @@
     text-decoration: none;
 }
 
-.linkbox {
+.ll_linkbox {
     background-color: aliceblue;
     color: blue;
     /* -webkit-appearance: none; ベンダープレフィックス(Google Chrome、Safari用) */

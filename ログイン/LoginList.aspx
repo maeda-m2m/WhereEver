@@ -133,7 +133,7 @@
                        <a name="editweather"><p class="index1"> ◆天気予報編集</p></a>
                         <div class="article">
                            <p>気象庁発表の天気予報を入力して下さい（有料APIを導入する場合は不要です）。</p>
-                           <p class="linkbox"><a href="https://tenki.jp/forecast/3/16/4410/13104/" target="_blank" >気象庁公式ホームページ|新宿区10日間天気予報</a></p>
+                           <p class="ll_linkbox"><a href="https://tenki.jp/forecast/3/16/4410/13104/" target="_blank" >気象庁公式ホームページ|新宿区10日間天気予報</a></p>
 
                           <div id="weather"></div><%-- Scroll Target --%>
 
