@@ -83,7 +83,7 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", Sqlco);
             da.SelectCommand.CommandText =
-                "SELECT * FROM T_Schedule WHERE name like @a1 and DATEPART(WEEK,date) = DATEPART(WEEK,GETDATE()) order by date asc";
+                "SELECT * FROM T_Schedule WHERE name like @a1 order by date asc";
 
             da.SelectCommand.Parameters.AddWithValue("@a1", "%" + a1 + "%");
             var dt = new DATASET.DataSet.T_ScheduleDataTable();
