@@ -79,7 +79,7 @@
                     <p class="linkbox"><a href="/管理ページ/Kanri.aspx">マイページ</a></p>
                     <p class="linkbox"><a href="/ログイン/Login.aspx">ログアウト</a></p>
                     <p class="linkbox"><a href="#" onclick="window.print();">画面を印刷</a></p>
-                    <p class="nav_middle">Presented by<br />m2m Consulting and Services co. Ltd.</p>
+                    <p class="nav_middle">Presented by<br />m2m Consulting and Services<br />Co. Ltd.</p>
                     <p class="nav_middle"><input type="button" class="btn-flat-border" value="ページを印刷" onclick="window.print();" /></p>
                 </div>
             </div>
