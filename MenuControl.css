@@ -45,7 +45,7 @@
         background-color: red;
     }
 
-.date {
+.mc_date {
     background-color: #1e1e1e;
     color: white;
     font-weight: bold;
@@ -138,8 +138,29 @@
     z-index: 1000; /*ボタンより手前になるようにピクチャ番号を修正*/
 }
 
+/*汎用　中央ぞろえ*/
+.nav_middle {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+.nav_index1 {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
 .none {
     display: none;
+}
+
+#MenuMaster{
+    font-family: 'Times New Roman', Times, sans-serif;
 }
 
 #MenuMaster input {
@@ -195,7 +216,6 @@
 }
 
     .linkbox a {
-        /* ※本来はtransparentを継承して背景が透明になるはずだが、WebFormは仕様が古いためか、何故か透明にならない。 */
         background-color: none;
         background-image: -moz-linear-gradient(left, transparent 5%, black 50%, transparent 95%);
         background-image: -webkit-linear-gradient(left, transparent 5%, black 50%, transparent 95%);

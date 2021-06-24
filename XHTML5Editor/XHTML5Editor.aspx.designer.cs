@@ -465,42 +465,6 @@ namespace WhereEver.XHTML5Editor
         protected global::System.Web.UI.WebControls.Panel Panel_DD;
 
         /// <summary>
-        /// Label_dditems コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_dditems;
-
-        /// <summary>
-        /// Label_item1 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_item1;
-
-        /// <summary>
-        /// Label_item2 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_item2;
-
-        /// <summary>
-        /// Label_item3 コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_item3;
-
-        /// <summary>
         /// Hidden_Label_item コントロール。
         /// </summary>
         /// <remarks>
@@ -510,13 +474,40 @@ namespace WhereEver.XHTML5Editor
         protected global::System.Web.UI.WebControls.HiddenField Hidden_Label_item;
 
         /// <summary>
-        /// Label_dropbox コントロール。
+        /// Label_dropbox_black コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_dropbox;
+        protected global::System.Web.UI.WebControls.Label Label_dropbox_black;
+
+        /// <summary>
+        /// Label_dropbox_red コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_dropbox_red;
+
+        /// <summary>
+        /// Label_dropbox_blue コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_dropbox_blue;
+
+        /// <summary>
+        /// Label_dropbox_green コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_dropbox_green;
 
         /// <summary>
         /// Button_GetLabelDD コントロール。
@@ -526,6 +517,15 @@ namespace WhereEver.XHTML5Editor
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_GetLabelDD;
+
+        /// <summary>
+        /// Button_DeleteBlackDD コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_DeleteBlackDD;
 
         /// <summary>
         /// TextBox_LabelDDResult コントロール。

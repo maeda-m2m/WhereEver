@@ -23,12 +23,145 @@ namespace WhereEver.XHTML5Editor
                 return;
             }
 
-            if (Hidden_Label_item.Value == "red")
+            if (!IsPostBack)
             {
-                Label_item1.BackColor = System.Drawing.Color.Red;
+                //Label生成（初期化）
+                ResetItems();
             }
 
+            ChangeItemsColor();
         }
+
+
+        protected void ResetItems()
+        {
+            //初期化
+            Label_dropbox_black.Text = "";
+            Label_dropbox_red.Text = "";
+            Label_dropbox_blue.Text = "";
+            Label_dropbox_green.Text = "";
+        }
+
+        protected bool SetItems(string item_id, string taskname, string color)
+        {
+
+            if (taskname == "")
+            {
+                //SQLからユーザーに関連する作業一覧を読み込み
+                DATASET.DataSet.T_PdbDataTable dt = ClassLibrary.ToDoManagerClass.GetT_Pdb_DataTable(Global.GetConnection());
+                if (dt != null)
+                {
+                    //GET
+                    string dtid = item_id.Replace("Label_item", "");
+                    if (!dt[int.Parse(dtid) - 1].IsNull("Pname"))
+                    {
+                        if (!dt[int.Parse(dtid) - 1].IsNull("Povertime"))
+                        {
+                            DateTime Povertime = dt[int.Parse(dtid)].Povertime;
+                            taskname = HtmlEncode(dt[int.Parse(dtid) - 1].Pname.Trim() + "(" + Povertime + "〆");
+                        }
+                        else
+                        {
+                            taskname = HtmlEncode(dt[int.Parse(dtid) - 1].Pname.Trim() + "(〆未定)");
+                        }
+                    }
+                }
+            }
+
+            //ラベルに書く文章をここに入力(SQLからの入力でも可)
+            string content = taskname;  //"タスク("+ item_id + color + ")"; //テスト専用
+
+            if (content == null || content == "")
+            {
+                //未処理がなければfalseを返す
+                return false;
+            }
+
+            Label lbl = (Label)FindControl("Label_dropbox_" + color);
+            //Label_transparent.Text = "";
+            //リフレクション
+            lbl.Text += "<span id=\"" + item_id + "\" runat=\"server\" class=\"item\" draggable=\"true\" ondragstart=\"f_dragstart(event)\" style=\"background-color: " + color + ";\" >" + content + "<br /><br /></span>";
+            return true;
+        }
+
+        protected void ChangeItemsColor()
+        {
+            // 宣言と定義
+
+            //初期化
+            ResetItems();
+
+            // HiddenからViewStateのValue（文字列）を読み出し
+            //string sp [p1:アイテム名], [p2:カラー]; 文字配列数は2nに等しくなる。
+            string text = HtmlEncode(Hidden_Label_item.Value);//管理者ツールで弄れるため必ずエンコードする
+
+            //SQLからユーザーに関連する作業一覧を読み込み
+            DATASET.DataSet.T_PdbDataTable dt = ClassLibrary.ToDoManagerClass.GetT_Pdb_DataTable(Global.GetConnection());
+
+
+            if (dt != null)
+            {
+                //とりあえず10件まで表示
+                for (int k = 0; k < Math.Min(10, dt.Count); k++)
+                {
+                    //Label_item_id{n}, color
+                    if (!dt[k].IsNull("Pname") && !dt[k].IsNull("Pid") && !text.Contains("Label_item" + k))
+                    {
+                        DateTime Povertime = dt[k].Povertime;
+                        if (!dt[k].IsNull("Povertime"))
+                        {
+                            DateTime Povertime2 = dt[k].Povertime;
+                            SetItems("Label_item" + dt[k].Pid, HtmlEncode(dt[k].Pname.Trim() + "(" + Povertime2 + "〆)"), "black");
+                        }
+                        else
+                        {
+                            SetItems("Label_item" + dt[k].Pid, HtmlEncode(dt[k].Pname.Trim() + "(〆未定)"), "black");
+                        }
+
+                    }
+                    else
+                    {
+                        //警告：中身なし
+                    }
+                }
+
+            }
+
+
+
+            string[] sp = text.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);//空白文字をトリム 
+
+            //デバッグ用
+            TextBox_LabelDDResult.Text = text;
+            //初期化
+            Hidden_Label_item.Value = "";
+
+            // 総アイテム数
+            int maxvalue = sp.Length;
+
+            for (int i = 0; i < maxvalue; i++)
+            {
+
+                // ViewStateからリフレクションで読み出し
+                //Label lbl = (Label)FindControl("Label_item" + i);
+                Label lbl = new Label();
+
+                if (sp[i].Contains("Label_item"))
+                {
+                    //Label生成（これを先にやらないとLabelが存在しない）
+                    SetItems(sp[i], "", sp[i + 1]); //Label_item_id{n}, color
+
+                    //[p1:アイテム名]を取得し一時保存する
+                    //lbl = (Label)FindControl(sp[i]);
+                    Hidden_Label_item.Value += sp[i] + "," + sp[i+1] + ",";
+                }
+
+            }
+        }
+
+
+
+
 
         protected void Push_Correct(object sender, EventArgs e)
         {
@@ -904,14 +1037,83 @@ namespace WhereEver.XHTML5Editor
 
         protected void Push_GetLabelDD(object sender, EventArgs e)
         {
-            //TextBox_LabelDDResult.Text = Label_dropbox.Text;
-            //TextBox_LabelDDResult.Text = Request["Label_dropbox"];//name属性から取得(idと同じ)
-            //TextBox_LabelDDResult.Text += Request["dropbox"];//name属性から取得(idと同じ)
+            //完成を反映して除去（ポストバック）
+            //Label_dropbox_black.Text = "";
+            DeleteHiddenFieldDD("green");
+            Label_dropbox_green.Text = "";
 
-            TextBox_LabelDDResult.Text = Label_item1.BackColor.ToString();
+            //承認
+            UpdateHiddenFiledDD();
+        }
+
+        protected void Push_DeleteBlackDD(object sender, EventArgs e)
+        {
+            //未処理を破棄（SQL未実装）
+            DeleteHiddenFieldDD("black");
+            Label_dropbox_black.Text = "";
         }
 
 
+        protected void UpdateHiddenFiledDD(string color = "red")
+        {
+            string str = HtmlEncode(Hidden_Label_item.Value);
+            StringBuilder sb = new StringBuilder();
+            sb.Append(str);
+
+            MatchCollection matche = Regex.Matches(str, "Label_item[0-9]*," + color + ",");
+            foreach (Match m in matche)
+            {
+                string dtid = m.ToString().Replace("Label_item", "");
+                dtid = dtid.Replace("," + color + ",", "");
+                if (color == "red" || color == "blue")
+                {
+
+                    DATASET.DataSet.T_PdbDataTable dt = ClassLibrary.ToDoManagerClass.GetT_Pdb_DataTable(Global.GetConnection());
+
+                    //PstarttimeがNULLなら本日の日付でアップデートする。
+                    if (dt[int.Parse(dtid)].IsNull("Pstarttime"))
+                    {
+                        //承認 UPDATE p2=false
+                        ClassLibrary.ToDoManagerClass.SetT_Pdb_Update(Global.GetConnection(), int.Parse(dtid), false);
+                    }
+
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// HiddenFieldの指定したValueを破棄します。
+        /// 自動PostBack時の未処理反映を妨害します（ラベルに投入されたアイテムは残ります）。
+        /// </summary>
+        protected void DeleteHiddenFieldDD(string color = "black")
+        {           
+            string str = HtmlEncode(Hidden_Label_item.Value);
+            StringBuilder sb = new StringBuilder();
+            sb.Append(str);
+           
+            MatchCollection matche = Regex.Matches(str, "Label_item[0-9]*," + color + ",");
+            foreach (Match m in matche)
+            {
+                string dtid = m.ToString().Replace("Label_item", "");
+                dtid = dtid.Replace("," + color + ",", "");
+                if (color == "black")
+                {
+                    //DELETE
+                    ClassLibrary.ToDoManagerClass.DeleteT_Pdb_DataRow(Global.GetConnection(), int.Parse(dtid));
+                }
+                if (color == "green")
+                {
+                    //完成　UPDATE p2=true
+                    ClassLibrary.ToDoManagerClass.SetT_Pdb_Update(Global.GetConnection(), int.Parse(dtid), true);
+                }
+
+                sb.Replace(m.ToString(), "");
+                //Regex reg = new Regex(m.ToString());
+                //str = reg.Replace(str, "");
+            }
+            Hidden_Label_item.Value = sb.ToString();
+        }
 
     }
 }

@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace WhereEver.ClassLibrary
 {
-    public class ShinseiLog
+    public static class ShinseiLog
     {
 
 

@@ -71,7 +71,7 @@
     float: left;
     font-size: 12px;
     margin: 0px;
-    height: 25em;   /*縦長なら85em*/
+    height: 25em; /*縦長なら85em*/
     top: 150px; /*疑似フレームの上からの座標（デフォルトでは左上）*/
 }
 
@@ -96,7 +96,7 @@
     text-decoration: none;
 }
 
-.linkbox {
+.ll_linkbox {
     background-color: aliceblue;
     color: blue;
     /* -webkit-appearance: none; ベンダープレフィックス(Google Chrome、Safari用) */
@@ -130,16 +130,6 @@
     margin-right: 1em;
     letter-spacing: 0.1em;
     -webkit-text-stroke: 0.8px snow;
-}
-
-.nav_index1 {
-    font-size: large;
-    font-weight: bold;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    width: 100%;
-    text-align: center;
-    display: inline-block;
 }
 
 /*本文*/

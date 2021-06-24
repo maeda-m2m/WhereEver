@@ -162,23 +162,95 @@ table {
 .dditems {
     /* 単なるスタイリング ドラッグアンドドロップできるアイテムの配置元 */
     display: inline-block;
-    width: 500px;
-    height: 100px;
-    margin: 20px;
-    background-color: #FF9966;
-    border: 1px solid #cc3333;
+    width: 14em;
+    height: 40em;
+    margin: 0;
+    padding: 2em;
+    background-color: gray;
+    border: 1px solid red;
 }
 
-.dropbox {
+.dropbox_red {
     /* 単なるスタイリング ドラッグアンドドロップの配置先 */
     display: inline-block;
-    width: 500px;
-    height: 100px;
-    margin: 20px;
-    background-color: #CCFF66;
-    border: 1px solid #00cc00;
+    width: 14em;
+    height: 40em;
+    margin: 0;
+    padding: 2em;
+    background-color: lightcoral;
+    border: 1px solid red;
     /*以下はwebkit系ブラウザでドラッグ＆ドロップを動かすための指定（ブラウザのサポートが進めば、必要なくなると思われます）*/
     /*-khtml-user-drag: element;*/
+}
+
+.dropbox_blue {
+    /* 単なるスタイリング ドラッグアンドドロップの配置先 */
+    display: inline-block;
+    width: 14em;
+    height: 40em;
+    margin: 0;
+    padding: 2em;
+    background-color: lightblue;
+    border: 1px solid blue;
+    /*以下はwebkit系ブラウザでドラッグ＆ドロップを動かすための指定（ブラウザのサポートが進めば、必要なくなると思われます）*/
+    /*-khtml-user-drag: element;*/
+}
+
+.dropbox_green {
+    /* 単なるスタイリング ドラッグアンドドロップの配置先 */
+    display: inline-block;
+    width: 14em;
+    height: 40em;
+    margin: 0;
+    padding: 2em;
+    background-color: lightgreen;
+    border: 1px solid green;
+    /*以下はwebkit系ブラウザでドラッグ＆ドロップを動かすための指定（ブラウザのサポートが進めば、必要なくなると思われます）*/
+    /*-khtml-user-drag: element;*/
+}
+
+.flex_title {
+    /* ラベルタイトルエリア */
+    display: inline-block;
+    width: 16em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 1px solid black;
+    background-color: black;
+    margin: 0;
+}
+
+.flex_ul {
+    /* ラベルアイテムエリア */
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+}
+
+　
+
+.item {
+    /* ラベルアイテム */
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: auto;
+    padding: 1em;
+    white-space: pre-line;
+    transition: 4s;
+}
+
+.item:hover{
+    color: lightblue;
+}
+
+.item:active{
+    color: lightgreen;
 }
 
 .index1 {

@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace WhereEver.ClassLibrary
 {
-    public class RentalClass
+    public static class RentalClass
     {
 
         /// <summary>

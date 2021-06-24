@@ -9,7 +9,7 @@ using static System.Web.HttpUtility;
 
 namespace WhereEver.ClassLibrary
 {
-    public class MOMClass
+    public static class MOMClass
     {
 
         //------------------------------------------------------------------------------------------------------------

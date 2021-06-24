@@ -11,7 +11,7 @@ using System.IO.Compression;
 
 namespace WhereEver.ClassLibrary
 {
-    public class FileShareClass
+    public static class FileShareClass
     {
 
         //-----------------------------------------------------------------------------------------------------------
