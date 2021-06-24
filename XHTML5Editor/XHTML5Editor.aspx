@@ -418,7 +418,8 @@
                         <p class="center">
                             アイテムをドラッグアンドドロップすると、ボックス間を移動させることができます。<br />
                             「送受信」を押すと現在の配置をもとにプロジェクト管理テーブルをアップデートし、新しいタスクがあればロードします。<br />
-                            「却下」を押すと未処理タスクを破棄（削除）します。《注意！》一度削除すると元には戻せません！
+                            「却下」を押すと未処理タスクを破棄（削除）します。《注意！》一度削除すると元には戻せません！<br />
+                            ※現状の仕様：作業中とテスト中のいずれに配置しても、残り期限をもとに自動で振り分けられます。
                         </p>
                        <span class="hr"></span>
                     </div>
@@ -431,6 +432,7 @@
         <asp:HiddenField ID="Hidden_Label_item" runat="server" />
 
 <p class="index1"><a id="DD">進捗管理(γ版)</a></p>
+                <asp:Button ID="Button_NewProj" CssClass="btn-flat-border" runat="server" Text="プロジェクト新規作成" OnClick="Push_NewProj" CausesValidation="False"/>
 <div class="flex_ul">
         <span class="flex_title">未処理</span>
         <span class="flex_title">作業中</span>
@@ -443,7 +445,7 @@
         </asp:Label>
     </span>
     <span>
-        <asp:Label ID="Label_dropbox_red" CssClass="dropbox_red" ondragover="f_dragover(event)" ondrop="f_drop1(event)" runat="server" Text="" ValidateRequestMode="Disabled" >
+        <asp:Label ID="Label_dropbox_red" CssClass="dropbox_red" ondragover="f_dragover(event)" ondrop="f_drop1(event)" runat="server" Text="" ValidateRequestMode="Disabled">
         </asp:Label>
     </span>
     <span>

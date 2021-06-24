@@ -458,7 +458,7 @@ namespace WhereEver.ClassLibrary
                                 return "Size_TryParse_Failed";
                             }
 
-                            value = value * (float)(1024 ^ n);
+                            value = value * (float)(Math.Pow(1024, n));
 
                             if (value > maxsize / 100)
                             {
