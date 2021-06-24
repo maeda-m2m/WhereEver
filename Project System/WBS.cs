@@ -27,7 +27,7 @@ namespace WhereEver.Project_System
             da.SelectCommand.Parameters.AddWithValue("@spId", spId);
             DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
             da.Fill(dt);
-            return (int)dt[0][9];
+            return (int)dt[0][10];
         }
     }
 }

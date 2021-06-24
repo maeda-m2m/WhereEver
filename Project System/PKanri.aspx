@@ -46,6 +46,11 @@
                                 </asp:TemplateColumn>
                                 <asp:BoundColumn DataField="PMiddleid" HeaderText="中項目ID" ReadOnly="True" HeaderStyle-Width="10px" HeaderStyle-Font-Size="Small" ItemStyle-Width="10px"/>
                                 <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目"/>
+                                <asp:TemplateColumn HeaderText="進捗率">
+                                        <ItemTemplate>
+                                            
+                                    </ItemTemplate>
+                                </asp:TemplateColumn>
                                 <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
                                         <ItemTemplate>
                                             <asp:Button ID="uemiddle" Text="↑" runat="server" CommandName="uemiddle" CssClass="visibility_hidden"/><br>
@@ -117,11 +122,30 @@
                         <input id="date2" runat="server" type="date" min="2018-01-01"/></td>
                 </tr>
                 <tr>
-                    <td class="auto-style2">
+                    <td>
                         &nbsp;</td>
                     <td colspan="2" class="auto-style2">
                         <asp:Label ID="lblCalendarError" runat="server" ForeColor="Red"></asp:Label>
                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;</td>
+                    <td colspan="2" class="auto-style2">
+                        <asp:Label ID="lblShintyoku" runat="server" Text="進捗率"></asp:Label>
+                        <select id="Shintyoku" name="D1">
+                            <option></option>
+                            <option>10%</option>
+                            <option>20%</option>
+                            <option>30%</option>
+                            <option>40%</option>
+                            <option>50%</option>
+                            <option>60%</option>
+                            <option>70%</option>
+                            <option>80%</option>
+                            <option>90%</option>
+                            <option>100%</option>
+                        </select></td>
                 </tr>
                 <tr>
                     <td class="auto-style2">
@@ -137,7 +161,7 @@
                         <asp:Button ID="btnWBS" CssClass="btn" runat="server" Text="WBS表一覧↓" OnClick="btnWBS_Click" />
                     </td>
                     <td colspan="2" >
-                        &nbsp;</td>
+                        
                 </tr>
             </table>
         </div>
