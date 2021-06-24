@@ -156,7 +156,7 @@ namespace WhereEver.Project_System
                 
                 e.Item.Cells[3].Text = dr.PMiddlename.ToString();
 
-                e.Item.Cells[4].Text = "<progress id = &quot;shityoku&quot; max = &quot;100&quot; value = &quot;" + dr.PShintyoku+ "&quot; ></ progress >";
+                e.Item.Cells[4].Text = "<progress max = 100 value = " + dr.PShintyoku+ " style = width:100px; ></ progress >";
 
                 e.Item.Cells[6].Text = dr.PMiddlestart.ToShortDateString();
                 e.Item.Cells[7].Text = dr.PMiddleover.ToShortDateString();
@@ -244,6 +244,7 @@ namespace WhereEver.Project_System
                             t_PdbKanriRow.PTorokutime = DateTime.Now;
                             t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
                             t_PdbKanriRow.Pid = SessionManager.project.PdbRow.Pid;
+                            t_PdbKanriRow.PShintyoku = int.Parse(ddpShintyoku.SelectedItem.Value);
                             Update.UpdateMiddleNew(t_PdbKanriRow, ddlPBigList.SelectedItem.ToString());
                         }
                         else
@@ -257,9 +258,11 @@ namespace WhereEver.Project_System
                             t_PdbKanriRow.PTorokutime = DateTime.Now;
                             t_PdbKanriRow.PTorokusya = SessionManager.User.M_User.id.Trim();
                             t_PdbKanriRow.Pid = SessionManager.project.PdbRow.Pid;
+                            t_PdbKanriRow.PShintyoku = int.Parse(ddpShintyoku.SelectedItem.Value);
                             t_PdbKanris.Rows.Add(t_PdbKanriRow);
                             Insert.InsertPBig(t_PdbKanris, Global.GetConnection());
                         }
+                        ddpShintyoku.Text = "";
                         ddlPBigList.Text = "";
                         txtPMiddle.Text = "";
                         date1.Value = null;
@@ -465,6 +468,7 @@ namespace WhereEver.Project_System
         {
             txtPBig.Text = "";
             ddlPBigList.Text = "";
+            ddpShintyoku.Text = "";
             txtPMiddle.Text = "";
             lblStart.Text = "開始";
             lblOver.Text = "開始";

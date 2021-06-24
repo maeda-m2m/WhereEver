@@ -204,6 +204,15 @@ namespace WhereEver.Project_System
         protected global::System.Web.UI.WebControls.Label lblShintyoku;
 
         /// <summary>
+        /// ddpShintyoku コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddpShintyoku;
+
+        /// <summary>
         /// lblJyunbanError コントロール。
         /// </summary>
         /// <remarks>

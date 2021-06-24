@@ -133,19 +133,20 @@
                         &nbsp;</td>
                     <td colspan="2" class="auto-style2">
                         <asp:Label ID="lblShintyoku" runat="server" Text="進捗率"></asp:Label>
-                        <select id="Shintyoku" name="D1">
-                            <option></option>
-                            <option>10%</option>
-                            <option>20%</option>
-                            <option>30%</option>
-                            <option>40%</option>
-                            <option>50%</option>
-                            <option>60%</option>
-                            <option>70%</option>
-                            <option>80%</option>
-                            <option>90%</option>
-                            <option>100%</option>
-                        </select></td>
+                        <asp:DropDownList ID="ddpShintyoku" runat="server">
+                            <asp:ListItem Value="0">0%</asp:ListItem>
+                            <asp:ListItem Value="10">10%</asp:ListItem>
+                            <asp:ListItem Value="20">20%</asp:ListItem>
+                            <asp:ListItem Value="30">30%</asp:ListItem>
+                            <asp:ListItem Value="40">40%</asp:ListItem>
+                            <asp:ListItem>50%</asp:ListItem>
+                            <asp:ListItem Value="60">60%</asp:ListItem>
+                            <asp:ListItem Value="70">70%</asp:ListItem>
+                            <asp:ListItem Value="80">80%</asp:ListItem>
+                            <asp:ListItem Value="90">90%</asp:ListItem>
+                            <asp:ListItem Value="100">100%</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style2">

@@ -46,3 +46,7 @@
     border-color: black;
     visibility: hidden;
 }
+.progress{
+    width:100px;
+    height:20px;
+}
