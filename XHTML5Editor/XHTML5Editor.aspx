@@ -430,7 +430,7 @@
 
         <asp:HiddenField ID="Hidden_Label_item" runat="server" />
 
-<p class="index1"><a id="DD">進捗管理(β版)</a></p>
+<p class="index1"><a id="DD">進捗管理(γ版)</a></p>
 <div class="flex_ul">
         <span class="flex_title">未処理</span>
         <span class="flex_title">作業中</span>
