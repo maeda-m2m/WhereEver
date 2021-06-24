@@ -155,21 +155,24 @@ namespace WhereEver.Project_System
                 }
                 
                 e.Item.Cells[3].Text = dr.PMiddlename.ToString();
-                e.Item.Cells[5].Text = dr.PMiddlestart.ToShortDateString();
-                e.Item.Cells[6].Text = dr.PMiddleover.ToShortDateString();
+
+                e.Item.Cells[4].Text = "<progress id = &quot;shityoku&quot; max = &quot;100&quot; value = &quot;" + dr.PShintyoku+ "&quot; ></ progress >";
+
+                e.Item.Cells[6].Text = dr.PMiddlestart.ToShortDateString();
+                e.Item.Cells[7].Text = dr.PMiddleover.ToShortDateString();
                 if (dr.PMiddleover < DateTime.Now)
                 {
-                    e.Item.Cells[7].Text = "完了";
+                    e.Item.Cells[8].Text = "完了";
                 }
                 else
                 {
                     if (dr.PMiddleover == DateTime.Parse("2100/01/01 00:00:00"))
                     {
-                        e.Item.Cells[6].Text = "";
+                        e.Item.Cells[7].Text = "";
                     }
                 }
-                e.Item.Cells[8].Text = dr.PTorokutime.ToShortDateString();
-                e.Item.Cells[9].Text = dr.PTorokusya.ToString();
+                e.Item.Cells[9].Text = dr.PTorokutime.ToShortDateString();
+                e.Item.Cells[10].Text = dr.PTorokusya.ToString();
 
             }
         }
@@ -315,8 +318,8 @@ namespace WhereEver.Project_System
         protected void DgPKanri_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
             TextBox txtPMiddlename = (TextBox)e.Item.Cells[3].Controls[0];
-            TextBox txtPMiddlestart = (TextBox)e.Item.Cells[5].Controls[0];
-            TextBox txtPMiddleover = (TextBox)e.Item.Cells[6].Controls[0];
+            TextBox txtPMiddlestart = (TextBox)e.Item.Cells[6].Controls[0];
+            TextBox txtPMiddleover = (TextBox)e.Item.Cells[7].Controls[0];
             DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = new DATASET.DataSet.T_PdbKanriDataTable();
             DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
 
