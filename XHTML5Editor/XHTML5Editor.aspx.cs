@@ -48,21 +48,31 @@ namespace WhereEver.XHTML5Editor
             if (taskname == "")
             {
                 //SQLからユーザーに関連する作業一覧を読み込み
-                DATASET.DataSet.T_PdbDataTable dt = ClassLibrary.ToDoManagerClass.GetT_Pdb_DataTable(Global.GetConnection());
+                //GET
+                string dtid = item_id.Replace("Label_item", "");
+                DATASET.DataSet.T_PdbDataTable dt = ClassLibrary.ToDoManagerClass.GetT_Pdb_DataTable(Global.GetConnection(), int.Parse(dtid));  //Pidで取得
                 if (dt != null)
                 {
-                    //GET
-                    string dtid = item_id.Replace("Label_item", "");
-                    if (!dt[int.Parse(dtid) - 1].IsNull("Pname"))
+                    if (!dt[0].IsNull("Pname"))
                     {
-                        if (!dt[int.Parse(dtid) - 1].IsNull("Povertime"))
+                        if (!dt[0].IsNull("Povertime"))
                         {
-                            DateTime Povertime = dt[int.Parse(dtid)].Povertime;
-                            taskname = HtmlEncode(dt[int.Parse(dtid) - 1].Pname.Trim() + "(" + Povertime + "〆");
+                            DateTime Povertime = dt[0].Povertime;
+                            if(Povertime != DateTime.Parse("2100/01/01"))
+                            {
+                                //Poverttimeが有効
+                                taskname = HtmlEncode(dt[0].Pname.Trim() + "(" + Povertime.ToString("yyyy年MM月dd日") + "〆)");
+                            }
+                            else
+                            {
+                                //Povertimeが無効
+                                taskname = HtmlEncode(dt[0].Pname.Trim() + "(〆未定)");
+                            }
                         }
                         else
                         {
-                            taskname = HtmlEncode(dt[int.Parse(dtid) - 1].Pname.Trim() + "(〆未定)");
+                            //PovertimeがNull（普通はここに来ない）
+                            taskname = HtmlEncode(dt[0].Pname.Trim() + "(〆未定)");
                         }
                     }
                 }
@@ -79,8 +89,19 @@ namespace WhereEver.XHTML5Editor
 
             Label lbl = (Label)FindControl("Label_dropbox_" + color);
             //Label_transparent.Text = "";
+
+            string inst = "<span id=\"" + item_id + "\" runat=\"server\" class=\"item\" draggable=\"true\" ondragstart=\"f_dragstart(event)\" style=\"background-color: " + color + ";\" >" + content + "<br /><br /></span>";
+
+            if (Label_dropbox_black.Text.Contains(item_id) || Label_dropbox_red.Text.Contains(item_id) || Label_dropbox_blue.Text.Contains(item_id) || Label_dropbox_green.Text.Contains(item_id))
+            {
+                Label_dropbox_black.Text = Label_dropbox_black.Text.Replace("black",color).Replace(inst, "");
+                Label_dropbox_red.Text = Label_dropbox_red.Text.Replace("red",color).Replace(inst, "");
+                Label_dropbox_blue.Text = Label_dropbox_blue.Text.Replace("blue",color).Replace(inst, "");
+                Label_dropbox_green.Text = Label_dropbox_green.Text.Replace("green",color).Replace(inst, "");
+            }
+
             //リフレクション
-            lbl.Text += "<span id=\"" + item_id + "\" runat=\"server\" class=\"item\" draggable=\"true\" ondragstart=\"f_dragstart(event)\" style=\"background-color: " + color + ";\" >" + content + "<br /><br /></span>";
+            lbl.Text += inst;
             return true;
         }
 
@@ -98,24 +119,58 @@ namespace WhereEver.XHTML5Editor
             //SQLからユーザーに関連する作業一覧を読み込み
             DATASET.DataSet.T_PdbDataTable dt = ClassLibrary.ToDoManagerClass.GetT_Pdb_DataTable(Global.GetConnection());
 
-
             if (dt != null)
             {
                 //とりあえず10件まで表示
                 for (int k = 0; k < Math.Min(10, dt.Count); k++)
                 {
+                    //init
+                    string color = "black";
+
                     //Label_item_id{n}, color
                     if (!dt[k].IsNull("Pname") && !dt[k].IsNull("Pid") && !text.Contains("Label_item" + k))
                     {
+
+                        if (!dt[k].IsNull("Pstarttime"))
+                        {
+                            if(DateTime.Now >= dt[k].Pstarttime)
+                            {
+                                //スタートが決まっている
+                                color = "red";
+
+                                if (DateTime.Now.AddDays(-14) >= dt[k].Povertime)
+                                {
+                                    //完成２週間前
+                                    color = "blue";
+                                }
+
+                            }
+                        }
+
                         DateTime Povertime = dt[k].Povertime;
                         if (!dt[k].IsNull("Povertime"))
                         {
+                            if (DateTime.Now >= dt[k].Povertime)
+                            {
+                                //すでに完了している（実際に表示されるのは==のみ）
+                                color = "green";
+                            }
+
                             DateTime Povertime2 = dt[k].Povertime;
-                            SetItems("Label_item" + dt[k].Pid, HtmlEncode(dt[k].Pname.Trim() + "(" + Povertime2 + "〆)"), "black");
+                            if (Povertime2 != DateTime.Parse("2100/01/01"))
+                            {
+                                //Poverttimeが有効
+                                SetItems("Label_item" + dt[k].Pid, HtmlEncode(dt[k].Pname.Trim() + "(" + Povertime2.ToString("yyyy年MM月dd日") + "〆)"), color);
+                            }
+                            else
+                            {
+                                //Povertimeが無効
+                                SetItems("Label_item" + dt[k].Pid, HtmlEncode(dt[k].Pname.Trim() + "(〆未定)"), color);
+                            }
                         }
                         else
                         {
-                            SetItems("Label_item" + dt[k].Pid, HtmlEncode(dt[k].Pname.Trim() + "(〆未定)"), "black");
+                            SetItems("Label_item" + dt[k].Pid, HtmlEncode(dt[k].Pname.Trim() + "(〆未定)"), color);
                         }
 
                     }
@@ -1043,7 +1098,8 @@ namespace WhereEver.XHTML5Editor
             Label_dropbox_green.Text = "";
 
             //承認
-            UpdateHiddenFiledDD();
+            UpdateHiddenFiledDD("red");
+            UpdateHiddenFiledDD("blue");
         }
 
         protected void Push_DeleteBlackDD(object sender, EventArgs e)
@@ -1068,13 +1124,16 @@ namespace WhereEver.XHTML5Editor
                 if (color == "red" || color == "blue")
                 {
 
-                    DATASET.DataSet.T_PdbDataTable dt = ClassLibrary.ToDoManagerClass.GetT_Pdb_DataTable(Global.GetConnection());
+                    DATASET.DataSet.T_PdbDataTable dt = ClassLibrary.ToDoManagerClass.GetT_Pdb_DataTable(Global.GetConnection(), int.Parse(dtid));
 
-                    //PstarttimeがNULLなら本日の日付でアップデートする。
-                    if (dt[int.Parse(dtid)].IsNull("Pstarttime"))
+                    //Pstarttimeは必須。開始日が未来なら本日の日付でアップデートする。
+                    if (!dt[0].IsNull("Pstarttime"))
                     {
-                        //承認 UPDATE p2=false
-                        ClassLibrary.ToDoManagerClass.SetT_Pdb_Update(Global.GetConnection(), int.Parse(dtid), false);
+                        if(dt[0].Pstarttime > DateTime.Now)
+                        {
+                            //承認 UPDATE p2=false
+                            ClassLibrary.ToDoManagerClass.SetT_Pdb_Update(Global.GetConnection(), int.Parse(dtid), false);
+                        }
                     }
 
                 }
@@ -1115,5 +1174,15 @@ namespace WhereEver.XHTML5Editor
             Hidden_Label_item.Value = sb.ToString();
         }
 
+        /// <summary>
+        /// プロジェクト新規作成
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Push_NewProj(object sender, EventArgs e)
+        {
+            //プロジェクト管理にジャンプ
+            this.Response.Redirect("/Project System/PIchiran.aspx", false);
+        }
     }
 }

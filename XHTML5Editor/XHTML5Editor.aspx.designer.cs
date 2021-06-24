@@ -474,6 +474,15 @@ namespace WhereEver.XHTML5Editor
         protected global::System.Web.UI.WebControls.HiddenField Hidden_Label_item;
 
         /// <summary>
+        /// Button_NewProj コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_NewProj;
+
+        /// <summary>
         /// Label_dropbox_black コントロール。
         /// </summary>
         /// <remarks>

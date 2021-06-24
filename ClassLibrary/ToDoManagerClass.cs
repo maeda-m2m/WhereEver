@@ -16,15 +16,25 @@ namespace WhereEver.ClassLibrary
         /// </summary>
         /// <param name="sqlConnection"></param>
         /// <returns></returns>
-        public static DATASET.DataSet.T_PdbDataTable GetT_Pdb_DataTable(SqlConnection sqlConnection)
+        public static DATASET.DataSet.T_PdbDataTable GetT_Pdb_DataTable(SqlConnection sqlConnection, int Pid = -1)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
 
-            //パラメータを取得（必要のないパラメータを設定するとコンパイルエラーする）
-            da.SelectCommand.Parameters.Add(new SqlParameter("@name1", System.Data.SqlDbType.NVarChar, 50, "Presponsible")).Value = SessionManager.User.M_User.name1.Trim();
 
-            da.SelectCommand.CommandText =
-                "SELECT * FROM [T_Pdb] WHERE LTRIM(RTRIM(@name1)) LIKE '%' + [Presponsible] + '%' AND CONVERT(DateTime,[Pstarttime]) <= CONVERT(DateTime,SYSDATETIME ()) AND CONVERT(DateTime,[Povertime]) >= CONVERT(DateTime,SYSDATETIME ()) OR [Povertime]IS NULL ORDER BY [Pid] ASC";
+            if (Pid < 0)
+            {
+                //パラメータを取得（必要のないパラメータを設定するとコンパイルエラーする）
+                da.SelectCommand.Parameters.Add(new SqlParameter("@name1", System.Data.SqlDbType.NVarChar, 50, "Presponsible")).Value = SessionManager.User.M_User.name1.Trim();
+                da.SelectCommand.CommandText =
+                    "SELECT * FROM [T_Pdb] WHERE LTRIM(RTRIM(@name1)) LIKE '%' + [Presponsible] + '%' AND  CONVERT(DateTime,[Povertime]) >= CONVERT(DateTime,SYSDATETIME ()) OR  LTRIM(RTRIM(@name1)) LIKE '%' + [Presponsible] + '%' AND CONVERT(DateTime,[Povertime]) >= CONVERT(DateTime,SYSDATETIME ()) AND CONVERT(DateTime,[Povertime])= CONVERT(DateTime,'2100/01/01') ORDER BY [Pid] ASC";
+            }
+            else
+            {
+                //パラメータを取得（必要のないパラメータを設定するとコンパイルエラーする）
+                da.SelectCommand.Parameters.Add(new SqlParameter("@Pid", System.Data.SqlDbType.Int, 4, "Pid")).Value = Pid;
+                da.SelectCommand.CommandText =
+                    "SELECT * FROM [T_Pdb] WHERE [Pid] = @Pid";
+            }
 
             //特定のDataTableをインスタンス化
             DATASET.DataSet.T_PdbDataTable dt = new DATASET.DataSet.T_PdbDataTable();
