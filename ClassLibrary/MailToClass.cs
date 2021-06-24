@@ -8,7 +8,7 @@ using System.Text;
 
 namespace WhereEver.ClassLibrary
 {
-    public class MailToClass
+    public static class MailToClass
     {
         //----------------------------------------------------------------------------------------------
         //メール送信

@@ -7,7 +7,7 @@ using static System.Web.HttpUtility;
 
 namespace WhereEver.ClassLibrary
 {
-    public class SentenceAIClass
+    public static class SentenceAIClass
     {
 
 

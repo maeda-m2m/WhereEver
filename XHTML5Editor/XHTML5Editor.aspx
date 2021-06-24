@@ -405,7 +405,7 @@
            <span class="hr"></span>
 
            <p class="index1">
-               ◆進捗管理（β版）
+               ◆進捗管理（γ版）
                <asp:Button ID="Button_DD" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_DD" CausesValidation="False" />
                　ドラッグアンドドロップを用いた進捗管理システムです。</p>
 
@@ -416,8 +416,9 @@
                     <div class="noprint">
                        <span class="hr"></span>
                         <p class="center">
-                            アイテムをドラッグアンドドロップでボックス間を移動することができます。<br />
-                            「送受信」を押すと現在の配置を記録し、新しいタスクをロードします（β版ではSQL処理をしません。次回実装予定）。<br />「却下」を押すと未処理タスクを破棄します（β版ではSQL処理をしません。次回実装予定）。
+                            アイテムをドラッグアンドドロップすると、ボックス間を移動させることができます。<br />
+                            「送受信」を押すと現在の配置をもとにプロジェクト管理テーブルをアップデートし、新しいタスクがあればロードします。<br />
+                            「却下」を押すと未処理タスクを破棄（削除）します。《注意！》一度削除すると元には戻せません！
                         </p>
                        <span class="hr"></span>
                     </div>
@@ -457,8 +458,8 @@
 
        <span class="hr"></span>
 
-        <asp:Button ID="Button_GetLabelDD" CssClass="btn-flat-border" runat="server" Text="送受信（仮実装）" OnClick="Push_GetLabelDD" CausesValidation="False" PostBackUrl="#DD" />
-        <asp:Button ID="Button_DeleteBlackDD" CssClass="btn-flat-border" runat="server" Text="却下（SQL未実装）" OnClick="Push_DeleteBlackDD" CausesValidation="False" PostBackUrl="#DD" />
+        <asp:Button ID="Button_GetLabelDD" CssClass="btn-flat-border" runat="server" Text="送受信" OnClick="Push_GetLabelDD" CausesValidation="False" PostBackUrl="#DD" />
+        <asp:Button ID="Button_DeleteBlackDD" CssClass="btn-flat-border" runat="server" Text="却下" OnClick="Push_DeleteBlackDD" CausesValidation="False" PostBackUrl="#DD" />
         
         <p class="index1">デバッグコンソール</p>
         <asp:TextBox ID="TextBox_LabelDDResult" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="Ready..." CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>

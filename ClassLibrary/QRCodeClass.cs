@@ -9,7 +9,7 @@ using System.Web;
 
 namespace WhereEver.ClassLibrary
 {
-    public class QRCodeClass
+    public static class QRCodeClass
     {
 
         //This script includes the work that is 'ZXing 0.16.6 (created by Michael Jahn)' distributed in the Apache License 2.0.
