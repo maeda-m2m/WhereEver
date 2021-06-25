@@ -323,6 +323,7 @@ namespace WhereEver.Project_System
             TextBox txtPMiddlename = (TextBox)e.Item.Cells[3].Controls[0];
             TextBox txtPMiddlestart = (TextBox)e.Item.Cells[6].Controls[0];
             TextBox txtPMiddleover = (TextBox)e.Item.Cells[7].Controls[0];
+            DropDownList dropDownListChange = e.Item.FindControl("ddpShintyokuChange") as DropDownList;
             DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = new DATASET.DataSet.T_PdbKanriDataTable();
             DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
 
@@ -331,6 +332,7 @@ namespace WhereEver.Project_System
             t_PdbKanriRow[5] = txtPMiddleover.Text;
             t_PdbKanriRow[6] = SessionManager.User.M_User.id.Trim();
             t_PdbKanriRow[7] = DateTime.Now;
+            t_PdbKanriRow[9] = dropDownListChange.SelectedItem.Value;
             Update.UpdateMiddle(t_PdbKanriRow, e.Item.Cells[0].Text, e.Item.Cells[2].Text);
             DgPKanri.EditItemIndex = -1;
             CreateDataGrid(SessionManager.project.PdbRow.Pid);

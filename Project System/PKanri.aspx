@@ -46,9 +46,21 @@
                                 </asp:TemplateColumn>
                                 <asp:BoundColumn DataField="PMiddleid" HeaderText="中項目ID" ReadOnly="True" HeaderStyle-Width="10px" HeaderStyle-Font-Size="Small" ItemStyle-Width="10px"/>
                                 <asp:BoundColumn DataField="PMiddlename" HeaderText="中項目"/>
-                                <asp:TemplateColumn HeaderText="進捗率">
+                                <asp:TemplateColumn HeaderText="進捗率" HeaderStyle-Width="120px">
                                         <ItemTemplate>
-                                            
+                                            <asp:DropDownList ID="ddpShintyokuChange" runat="server">
+                                                <asp:ListItem Value="0">0%</asp:ListItem>
+                                                <asp:ListItem Value="10">10%</asp:ListItem>
+                                                <asp:ListItem Value="20">20%</asp:ListItem>
+                                                <asp:ListItem Value="30">30%</asp:ListItem>
+                                                <asp:ListItem Value="40">40%</asp:ListItem>
+                                                <asp:ListItem Value="50">50%</asp:ListItem>
+                                                <asp:ListItem Value="60">60%</asp:ListItem>
+                                                <asp:ListItem Value="70">70%</asp:ListItem>
+                                                <asp:ListItem Value="80">80%</asp:ListItem>
+                                                <asp:ListItem Value="90">90%</asp:ListItem>
+                                                <asp:ListItem Value="100">100%</asp:ListItem>
+                                            </asp:DropDownList>   
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
                                 <asp:TemplateColumn HeaderText="" HeaderStyle-Width="10px">
@@ -57,8 +69,8 @@
                                             <asp:Button ID="sitamiddle" Text="↓" runat="server" CommandName="sitamiddle" CssClass="visibility_hidden"/>
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
-                                <asp:BoundColumn DataField="PMiddlestart" HeaderText="開始" HeaderStyle-Width="200px"/>
-                                <asp:BoundColumn DataField="PMiddleover" HeaderText="終了" HeaderStyle-Width="200px"/>
+                                <asp:BoundColumn DataField="PMiddlestart" HeaderText="開始" HeaderStyle-Width="180px"/>
+                                <asp:BoundColumn DataField="PMiddleover" HeaderText="終了" HeaderStyle-Width="180px"/>
                                 <asp:BoundColumn ReadOnly="True" HeaderStyle-Width="40px"/>
                                 <asp:BoundColumn DataField="PTorokutime" HeaderText="最新編集日付" ReadOnly="True" HeaderStyle-Width="200px"/>
                                 <asp:BoundColumn DataField="PTorokusya" HeaderText="最新編集者" ReadOnly="True" HeaderStyle-Width="100px"/>

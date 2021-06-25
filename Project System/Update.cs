@@ -39,7 +39,7 @@ namespace WhereEver.Project_System
             using (SqlConnection connection = new SqlConnection(cstr))
             {
                 string sql = "update T_PdbKanri set " +
-                    "PMiddlename = @PMiddlename , PMiddlestart = @PMiddlestart ,PMiddleover = @PMiddleover ,PTorokutime = @PTorokutime ,PTorokusya = @PTorokusya " +
+                    "PMiddlename = @PMiddlename , PMiddlestart = @PMiddlestart ,PMiddleover = @PMiddleover ,PTorokutime = @PTorokutime ,PTorokusya = @PTorokusya ,PShintyoku = @PShintyoku " +
                     "where PBigname = @PBigname and PMiddleid = @PMiddleid";
 
                 SqlDataAdapter da = new SqlDataAdapter(sql, connection);
@@ -50,6 +50,7 @@ namespace WhereEver.Project_System
                 da.SelectCommand.Parameters.AddWithValue("@PMiddleover", dt.PMiddleover);
                 da.SelectCommand.Parameters.AddWithValue("@PTorokutime", dt.PTorokutime);
                 da.SelectCommand.Parameters.AddWithValue("@PTorokusya", dt.PTorokusya);
+                da.SelectCommand.Parameters.AddWithValue("@PShintyoku", dt.PShintyoku);
                 da.SelectCommand.Parameters.AddWithValue("@PBigname", name);
                 connection.Open();
                 int cnt = da.SelectCommand.ExecuteNonQuery();
