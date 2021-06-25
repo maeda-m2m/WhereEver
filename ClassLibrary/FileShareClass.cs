@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using static System.Web.HttpUtility;
 using System.Security.Cryptography;
 using System.IO.Compression;
+using System.Net;
 
 namespace WhereEver.ClassLibrary
 {
@@ -278,21 +279,50 @@ namespace WhereEver.ClassLibrary
 
 
         //-----------------------------------------------------------------------------------------------------------
+
+
         /// <summary>
-        /// 1つのファイルをDBからロードするためのクラスです。
-        /// p1 必須　ロードページのPage.Response
-        /// p2 必須　ファイル名　uuid.xxx
-        /// p3 任意変更　ファイルのパスワード
-        /// p4 任意変更　一度の転送容量
-        /// return bool true:成功（Flushされるため取得不可）　false:失敗
+        /// 現在のページをテキスト形式でロードします。
         /// </summary>
         /// <param name="response">必須　Page.Response</param>
-        /// <param name="file">必須</param>
-        /// <param name="pass">あれば</param>
-        /// <param name="separatesize">任意変更　初期設定は8000</param>
-        /// <returns>bool</returns>
-        public static bool Get_File_DownLoad(HttpResponse response, string file, string pass = "", int separatesize = 8000)
+        /// <returns></returns>
+        public static void Get_Page_Index(HttpResponse response)
         {
+            //現在のページをまるごと取得
+
+            // HTTPレスポンスのヘッダ＆エンティティのクリア（初期化）
+            response.Clear();
+            // MIME Typeを取得（平文テキスト扱い）
+            response.ContentType = "text/plain";
+            //↓のエンコードはしなくても動く（標準でutf-8）
+            response.HeaderEncoding = System.Text.Encoding.GetEncoding("UTF-8");
+            response.ContentEncoding = System.Text.Encoding.GetEncoding("UTF-8");
+            //Flushすると日本語データが文字化けするため使用しない
+            //response.Flush();
+            response.SuppressContent = false;    //必ずResponse.Flush();の後！              
+
+            return;
+
+        }
+
+
+            //-----------------------------------------------------------------------------------------------------------
+            /// <summary>
+            /// 1つのファイルをDBからロードするためのクラスです。
+            /// p1 必須　ロードページのPage.Response
+            /// p2 必須　ファイル名　uuid.xxx
+            /// p3 任意変更　ファイルのパスワード
+            /// p4 任意変更　一度の転送容量
+            /// return bool true:成功（Flushされるため取得不可）　false:失敗
+            /// </summary>
+            /// <param name="response">必須　Page.Response</param>
+            /// <param name="file">ダウンロードなら必須　検索ならString.Emptyでよい</param>
+            /// <param name="pass">あれば</param>
+            /// <param name="separatesize">任意変更　初期設定は8000</param>
+            /// <returns>bool</returns>
+            public static bool Get_File_DownLoad(HttpResponse response, string file = "", string pass = "", int separatesize = 8000)
+             {
+
             //Password
             string basepass = pass;
             if (pass != "")
@@ -349,7 +379,7 @@ namespace WhereEver.ClassLibrary
                     response.Clear();
 
                     // ダウンロード用ファイルの種別とデフォルトの名前を指定
-                    response.ContentType = @"application/octet-stream"; //デフォルト設定: @"application/octet-stream"
+                    response.ContentType = @"application/octet-stream"; //デフォルト設定: @"application/octet-stream" .exeファイルを指す
                     response.AppendHeader("Content-Disposition", "attachment; filename=" + file);
 
                     // MIME Typeを取得

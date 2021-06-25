@@ -104,7 +104,7 @@ namespace WhereEver.管理ページ
             {
                 smtpvalue = 2;
             }
-            else if (DropDownList_SMTP.SelectedValue == "192.168.2.209")
+            else if (DropDownList_SMTP.SelectedValue == "192.168.2.140")
             {
                 smtpvalue = 3;
             }

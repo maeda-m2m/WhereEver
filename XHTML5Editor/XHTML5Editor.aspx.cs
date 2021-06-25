@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
@@ -30,6 +31,7 @@ namespace WhereEver.XHTML5Editor
             }
 
             ChangeItemsColor();
+            PreView();
         }
 
 
@@ -439,7 +441,7 @@ namespace WhereEver.XHTML5Editor
             width = Math.Max(100, width);
             height = Math.Max(100, height);
 
-            Label_QRCode_Area.Text = ClassLibrary.QRCodeClass.GetQRCode(HtmlEncode(TextBox_QR_Text.Text), width, height);
+            Label_QRCode_Area.Text = ClassLibrary.QRCodeClass.GetQRCode(HtmlEncode(TextBox_QR_Text.Text), width, height, CheckBox_EAN.Checked);
             TextBox_QRCode_Result.Text = "/*[生成されたコード]*/\r\f" + Label_QRCode_Area.Text;
         }
 
@@ -1183,6 +1185,152 @@ namespace WhereEver.XHTML5Editor
         {
             //プロジェクト管理にジャンプ
             this.Response.Redirect("/Project System/PIchiran.aspx", false);
+        }
+
+        protected void Push_IBPageCorrect(object sender, EventArgs e)
+        {
+
+            try
+            {
+                //TextBox_IBResult.Text = Page.Response.ToString();
+                Encoding enc = Encoding.GetEncoding("UTF-8");
+                //string url = "http://www.google.co.jp/";
+                string url = Request.Url.AbsoluteUri;
+                WebRequest req = WebRequest.Create(url);
+                //↓localhostだとエラーの原因になる
+                WebResponse res = req.GetResponse();
+                Stream st = res.GetResponseStream();
+                StreamReader sr = new StreamReader(st, enc);
+                string html = sr.ReadToEnd();
+                TextBox_IBResult.Text = html;
+                sr.Close();
+                st.Close();
+            }
+            catch
+            {
+                //プロキシエラーが出たときはページ丸ごとロード
+                ClassLibrary.FileShareClass.Get_Page_Index(Page.Response);
+            }
+        }
+
+
+
+        protected void Button_MeiboUpLoad(object sender, EventArgs e)
+        {
+            //ラベル初期化
+            lblMeiboPictureResult.Text = "";
+
+            if (FileUpload_userfile.HasFile)
+            {
+                //パスを排除したファイル名を取得
+                string fileName = FileUpload_userfile.PostedFile.FileName;
+
+                //拡張子を取得
+                string extension = Path.GetExtension(fileName);
+
+                if (extension != "png" && extension != "jpg" && extension != "jpeg" && extension != "gif")
+                {
+                    lblMeiboPictureResult.Text = "ファイル形式に対応していません！";
+                }
+
+
+                //File Upload to Database
+                int result = ClassLibrary.FileShareClass.Set_Thumbnail_UpLoad(FileUpload_userfile.PostedFile, 20000);
+                if (result == 0)
+                {
+                    lblMeiboPictureResult.Text = "ファイル名が見つかりません！";
+                }
+                else if (result == -1)
+                {
+                    lblMeiboPictureResult.Text = "アップロードに失敗しました。";
+                }
+                else if (result == 1)
+                {
+                    lblMeiboPictureResult.Text = "アップロードファイルが完了しました！";
+                    PreView();
+                }
+
+            }
+            else
+            {
+                lblMeiboPictureResult.Text = "ローカルからファイルを選択して下さい。";
+            }
+            return;
+        }
+
+        protected void PreView()
+        {
+            //ThumbnailDownLoad by DataBase
+            string result = ClassLibrary.FileShareClass.Get_Thumbnail_DownLoad_src(Page.Response, SessionManager.User.M_User.id.Trim(), 20000);
+            lblMeiboPictureResult.Text = @result;
+            return;
+        }
+
+
+        protected void Push_MeiboDelete(object sender, EventArgs e)
+        {
+            if (ClassLibrary.FileShareClass.DeleteT_ThumbnailRow(Global.GetConnection(), SessionManager.User.M_User.id.Trim()))
+            {
+                lblMeiboPictureResult.Text = "サムネイルをリセットしました。";
+                lblMeiboPictureResult.Text = "Thumbnail_Deleted";
+            }
+            else
+            {
+                lblMeiboPictureResult.Text = "サムネイルが見つかりませんでした。";
+            }
+        }
+
+        protected void Push_MeiboCorrect(object sender, EventArgs e)
+        {
+            // 1px = 0.026cm;
+            // すなわち、
+            // 1cm = 任意のpx / 0.026cm;
+            // 証明写真は30mm*40mm ≒ 354px * 472px
+
+            StringBuilder sb = new StringBuilder();
+
+            //NVarChar
+            sb.Append(HtmlEncode(TextBox_CompanyName.Text).Trim());
+            sb.Append("\r\f");
+            sb.Append(HtmlEncode(TextBox_MeiboWork.Text).Trim());
+            sb.Append("\r\f");
+            sb.Append(HtmlEncode(TextBox_MeiboName.Text).Trim());
+            sb.Append("\r\f");
+            sb.Append(HtmlEncode(TextBox_MeiboArea.Text).Trim());
+            sb.Append("\r\f");
+            //Date split('/')で分割可能
+            sb.Append(HtmlEncode(TextBox_Meibo_year.Text).Trim());
+            sb.Append("/");
+            sb.Append(HtmlEncode(TextBox_Meibo_month.Text).Trim());
+            sb.Append("/");
+            sb.Append(HtmlEncode(TextBox_Meibo_day.Text).Trim());
+            sb.Append("/");
+            //TextBox_Meibo_TelX split('-')で分割可能
+            sb.Append(HtmlEncode(TextBox_Meibo_Tel1.Text).Trim());
+            sb.Append("-");
+            sb.Append(HtmlEncode(TextBox_Meibo_Tel2.Text).Trim());
+            sb.Append("-");
+            sb.Append(HtmlEncode(TextBox_Meibo_Tel3.Text).Trim());
+            sb.Append("-");
+            //TextBox_MeiboAddress
+            sb.Append(HtmlEncode(TextBox_MeiboAddress.Text).Trim());
+            sb.Append("@m2m-asp.com");
+
+
+            //return sb.ToString();
+
+        }
+
+        protected void Push_MeiboButton(object sender, EventArgs e)
+        {
+            if (Panel_Meibo.Visible)
+            {
+                Panel_Meibo.Visible = false;
+            }
+            else
+            {
+                Panel_Meibo.Visible = true;
+            }
         }
     }
 }

@@ -73,7 +73,7 @@
                 フォントファミリー
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_FontFamily" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" Text="Meiryo" MaxLength="30"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_FontFamily" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角/半角30文字以内" Text="Meiryo" MaxLength="30"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -81,7 +81,7 @@
                 横幅
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox_Width" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角8文字以内(Max 300px or 25em, Min n >= 0)" Text="200" MaxLength="8"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Width" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="半角8文字以内(Max 300px or 25em, Min n >= 0)" Text="200" MaxLength="8"></asp:TextBox>
                     <asp:DropDownList ID="DropDownList_Width" runat="server" CssClass="ddl_date">
                         <asp:ListItem Value="px"></asp:ListItem>
                         <asp:ListItem Value="em"></asp:ListItem>
@@ -94,7 +94,7 @@
                 高さ
                 </td>
                 <td>                    
-                    <asp:TextBox ID="TextBox_Height" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角8文字以内(Max 300px or 25em, Min n >= 0)" Text="50" MaxLength="8"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Height" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="半角8文字以内(Max 300px or 25em, Min n >= 0)" Text="50" MaxLength="8"></asp:TextBox>
                     <asp:DropDownList ID="DropDownList_Height" runat="server" CssClass="ddl_date">
                         <asp:ListItem Value="px"></asp:ListItem>
                         <asp:ListItem Value="em"></asp:ListItem>
@@ -107,7 +107,7 @@
                 線の太さ
                 </td>
                 <td>                    
-                    <asp:TextBox ID="TextBox_Border" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角8文字以内(Max 300px or 25em, Min n >= 0)" Text="2" MaxLength="8"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Border" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="半角8文字以内(Max 300px or 25em, Min n >= 0)" Text="2" MaxLength="8"></asp:TextBox>
                     <asp:DropDownList ID="DropDownList_Border" runat="server" CssClass="ddl_date">
                         <asp:ListItem Value="px"></asp:ListItem>
                         <asp:ListItem Value="em"></asp:ListItem>
@@ -120,7 +120,7 @@
                 線の丸み
                 </td>
                 <td>                    
-                    <asp:TextBox ID="TextBox_Radius" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="全角8文字以内(Max 3000px or 250em, Min n >= 0)" Text="4" MaxLength="8"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Radius" runat="server" CssClass="textbox_pl" ValidateRequestMode="Disabled" ToolTip="半角8文字以内(Max 3000px or 250em, Min n >= 0)" Text="4" MaxLength="8"></asp:TextBox>
                     <asp:DropDownList ID="DropDownList_Radius" runat="server" CssClass="ddl_date">
                         <asp:ListItem Value="px"></asp:ListItem>
                         <asp:ListItem Value="em"></asp:ListItem>
@@ -133,7 +133,7 @@
                 線の色名/色コード
                 </td>
                 <td>                    
-                    <asp:TextBox ID="TextBox_BorderColor" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" Text="white" MaxLength="30"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BorderColor" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="半角30文字以内" Text="white" MaxLength="30"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -141,7 +141,7 @@
                 文字色名/色コード
                 </td>
                 <td>                    
-                    <asp:TextBox ID="TextBox_Color" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" Text="white" MaxLength="30"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Color" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="半角30文字以内" Text="white" MaxLength="30"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -149,7 +149,7 @@
                 背景色名/色コード
                 </td>
                 <td>                    
-                    <asp:TextBox ID="TextBox_BColor" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" Text="#1e1e1e" MaxLength="30"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_BColor" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="半角30文字以内" Text="#1e1e1e" MaxLength="30"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -157,7 +157,7 @@
                 選択中文字色名/色コード
                 </td>
                 <td>                    
-                    <asp:TextBox ID="TextBox_HColor" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" Text="white" MaxLength="30"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_HColor" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="半角30文字以内" Text="white" MaxLength="30"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -165,7 +165,7 @@
                 選択中背景色名/色コード
                 </td>
                 <td>                    
-                    <asp:TextBox ID="TextBox_HBColor" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" Text="#808080" MaxLength="30"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_HBColor" runat="server" CssClass="textbox_BS" ValidateRequestMode="Disabled" ToolTip="半角30文字以内" Text="#808080" MaxLength="30"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -228,7 +228,9 @@
             <p class="f-notice">[QR画像から文字列を読込]</p><asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
         </div>
 
-
+    <p>
+        <asp:CheckBox ID="CheckBox_EAN" runat="server" Text="EAN-13バーコードを発行する（発行のみ対応）" Visible="false" CssClass="none" />
+    </p>
     <p>
         <asp:Button ID="Button_CreateQRCode" CssClass="btn-flat-border" runat="server" Text="発行" OnClick="Push_QR_Create" CausesValidation="False" />
         <asp:Button ID="Button_EncodeQRCode" CssClass="btn-flat-border" runat="server" Text="読込" OnClick="Push_QR_Encode" CausesValidation="False" />
@@ -279,7 +281,10 @@
                     <div class="noprint">
                        <span class="hr"></span>
                         <p class="center">汎用の検索ボックスを作ります。上から、検索ボックス、検索対象、検索結果です。<br />
-                            HTMLページを読み込んでのサイト内検索は、m2mのプロキシが不明なため保留です。※キーワードに改行コードは使用できません。
+                            HTMLページを読み込んでのサイト内検索は、m2mのプロキシが不明なためできません。<br />
+                            少なくともlocalhost時はできませんでした。<br />
+                            ロード失敗時はHTMLページをそのまま画面に貼り付けますので、検索対象のボックスに丸ごとコピペして下さい。<br />
+                            ※キーワードに改行コードは使用できません。
                         </p>
                        <span class="hr"></span>
                     </div>
@@ -297,6 +302,7 @@
                     <div class="ib_field">
                     <asp:TextBox ID="TextBox_IB" runat="server" CssClass="textbox_IB" ValidateRequestMode="Disabled" ToolTip="全角200文字以内" Text="" MaxLength="200" placeholder="検索キーワード" AutoCompleteType="Search" TextMode="Search" ></asp:TextBox>
                     <asp:Button ID="Button_IBCorrect" CssClass="btn-flat-border-ib" runat="server" Text="検索" OnClick="Push_IBCorrect" CausesValidation="False" />
+                    <asp:Button ID="Button_IBPageCorrect" CssClass="btn-flat-border-ib" runat="server" Text="ページ検索" OnClick="Push_IBPageCorrect" CausesValidation="False" />
                     </div>
                 </td>
             </tr>
@@ -418,8 +424,8 @@
                         <p class="center">
                             アイテムをドラッグアンドドロップすると、ボックス間を移動させることができます。<br />
                             「送受信」を押すと現在の配置をもとにプロジェクト管理テーブルをアップデートし、新しいタスクがあればロードします。<br />
-                            「却下」を押すと未処理タスクを破棄（削除）します。《注意！》一度削除すると元には戻せません！<br />
-                            ※現状の仕様：作業中とテスト中のいずれに配置しても、残り期限をもとに自動で振り分けられます。
+                            プロジェクトを却下や中止する場合は、タスクを未処理に入れた状態で「破棄」ボタンを押して下さい。《注意！》一度削除すると元には戻せません！<br />
+                            ※現状の仕様：作業中と納期間近のいずれに配置しても、残り期限をもとに自動で振り分けられます。
                         </p>
                        <span class="hr"></span>
                     </div>
@@ -434,10 +440,10 @@
 <p class="index1"><a id="DD">進捗管理(γ版)</a></p>
                 <asp:Button ID="Button_NewProj" CssClass="btn-flat-border" runat="server" Text="プロジェクト新規作成" OnClick="Push_NewProj" CausesValidation="False"/>
 <div class="flex_ul">
-        <span class="flex_title">未処理</span>
-        <span class="flex_title">作業中</span>
-        <span class="flex_title">テスト中</span>
-        <span class="flex_title">完成</span>
+        <span class="flex_title">未処理（見積～受注可否決定まで）</span>
+        <span class="flex_title">作業中（要件定義等～開発まで）</span>
+        <span class="flex_title">納期間近（完成まで２週間以内）</span>
+        <span class="flex_title">完成（本番稼働）</span>
 </div>
 <div class="flex_ul">
     <span>
@@ -461,18 +467,172 @@
        <span class="hr"></span>
 
         <asp:Button ID="Button_GetLabelDD" CssClass="btn-flat-border" runat="server" Text="送受信" OnClick="Push_GetLabelDD" CausesValidation="False" PostBackUrl="#DD" />
-        <asp:Button ID="Button_DeleteBlackDD" CssClass="btn-flat-border" runat="server" Text="却下" OnClick="Push_DeleteBlackDD" CausesValidation="False" PostBackUrl="#DD" />
+        <asp:Button ID="Button_DeleteBlackDD" CssClass="btn-flat-border" runat="server" Text="破棄" OnClick="Push_DeleteBlackDD" CausesValidation="False" PostBackUrl="#DD" />
         
+                        <span class="hr"></span>
+                        <p class="center">
+                            開発担当者の名前で部分一致による参照をしています（プロジェクトのDBに主キーがないため）。<br />
+                            複数人で開発する際は、複数の姓名を入力するとタスクの状況を共有できます。<br />
+                            個別のタスク機能が欲しい等のご要望がありましたらチャットにてお知らせください。
+                        </p>
+                       <span class="hr"></span>
+
+        <%-- 非表示欄（デバッグ専用） --%>
+        <div class="none">
         <p class="index1">デバッグコンソール</p>
         <asp:TextBox ID="TextBox_LabelDDResult" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="Ready..." CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
+        </div>
 
        <span class="hr"></span>
 
     </div>
 </asp:Panel>
 
+           <span class="hr"></span>
 
-</div>
+
+
+
+           <p class="index1">
+               ◆名簿管理
+               <asp:Button ID="Button_Meibo" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_MeiboButton" CausesValidation="False" />
+               　社員名簿を管理します（工事中）。</p>
+
+           <hr />
+
+<asp:Panel ID="Panel_Meibo" runat="server" Visible="false" DefaultButton="Button_MeiboCorrect">
+
+                    <div class="noprint">
+                       <span class="hr"></span>
+                        <p class="center">社員名簿の登録や閲覧をします（まだ登録はできません。サムネイルは変えられます）。</p>
+                       <span class="hr"></span>
+                    </div>
+
+
+    <div class="center">
+          <table class="DGTable">
+            <tr>
+                <th class="th_master" colspan="2">
+                    設定
+                </th>
+                <th class="th_master">
+                    サムネイル
+                </th>
+            </tr>
+            <tr>
+                <td>
+                企業名
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_CompanyName" runat="server" CssClass="textbox_LBSW" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" placeholder="例：株式会社エム・ツー・エム" Text="株式会社エム・ツー・エム" MaxLength="30"></asp:TextBox>
+                </td>
+                <td rowspan="9" class="th_master"> <%-- rowspan --%>
+                <asp:Label ID="lblMeiboPictureResult" runat="server" Text="ここにサムネイルがプレビューされます。" CssClass="lbl_pl" ValidateRequestMode="Disabled"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    サムネイル
+                </td>
+                <td>
+                    <asp:FileUpload ID="FileUpload_MeiboPicture" runat="server" Width="485px" CssClass="form-flat-border-inner" /><br />
+                    <asp:Button ID="Button_MeiboUpload" runat="server" CssClass="btn-flat-border" Text="アップロード" OnClick="Button_MeiboUpLoad" />
+                    <asp:Button ID="Button_MeiboDelete" runat="server" CssClass="btn-flat-border" Text="画像初期化" OnClick="Push_MeiboDelete" />
+                </td>
+            </tr>
+<%--
+            <tr>
+                <td>
+                顔写真横幅
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_MeiboWidth" runat="server" CssClass="textbox_mini" ValidateRequestMode="Disabled" ToolTip="半角3文字以内(Max 500px or 25em, Min n >= 0)　※1px=0.026cm" Text="354" MaxLength="8"></asp:TextBox>
+                    px
+                </td>
+            </tr>
+            <tr>
+                <td>
+                顔写真高さ
+                </td>
+                <td>                    
+                    <asp:TextBox ID="TextBox_MeiboHeight" runat="server" CssClass="textbox_mini" ValidateRequestMode="Disabled" ToolTip="半角3文字以内(Max 500px or 25em, Min n >= 0)　※1px=0.026cm" Text="472" MaxLength="8"></asp:TextBox>
+                    px
+                </td>
+            </tr>
+--%>
+            <tr>
+                <td>
+                役職
+                </td>
+                <td>                    
+                    <asp:TextBox ID="TextBox_MeiboWork" runat="server" CssClass="textbox_LBSW" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" placeholder="例：係長" Text="" MaxLength="30"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                氏名
+                </td>
+                <td>                    
+                    <asp:TextBox ID="TextBox_MeiboName" runat="server" CssClass="textbox_LBSW" ValidateRequestMode="Disabled" ToolTip="全角30文字以内　姓と名の間は全角１文字スペースをあける" placeholder="例：山田　太郎" Text="" MaxLength="30"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                配属
+                </td>
+                <td>                    
+                    <asp:TextBox ID="TextBox_MeiboArea" runat="server" CssClass="textbox_LBSW" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" placeholder="例：〇〇グループ" Text="" MaxLength="30"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                生年月日
+                </td>
+                <td>                    
+                    <asp:TextBox ID="TextBox_Meibo_year" runat="server" CssClass="textbox_mini" ValidateRequestMode="Disabled" ToolTip="半角4文字以内" placeholder="例：2000" Text="" MaxLength="4"></asp:TextBox>年
+                    <asp:TextBox ID="TextBox_Meibo_month" runat="server" CssClass="textbox_mini" ValidateRequestMode="Disabled" ToolTip="半角2文字以内" placeholder="例：01" Text="" MaxLength="2"></asp:TextBox>月
+                    <asp:TextBox ID="TextBox_Meibo_day" runat="server" CssClass="textbox_mini" ValidateRequestMode="Disabled" ToolTip="半角2文字以内" placeholder="例：01" Text="" MaxLength="2"></asp:TextBox>日 生</td>
+            </tr>
+            <tr>
+                <td>
+                    スマホ/携帯電話番号
+                </td>
+                <td> 
+                    <asp:TextBox ID="TextBox_Meibo_Tel1" runat="server" CssClass="textbox_mini" ValidateRequestMode="Disabled" ToolTip="半角4文字以内" placeholder="例：0120" Text="" MaxLength="4" TextMode="Phone"></asp:TextBox>-
+                    <asp:TextBox ID="TextBox_Meibo_Tel2" runat="server" CssClass="textbox_mini" ValidateRequestMode="Disabled" ToolTip="半角4文字以内" placeholder="例：0123" Text="" MaxLength="4" TextMode="Phone"></asp:TextBox>-
+                    <asp:TextBox ID="TextBox_Meibo_Tel3" runat="server" CssClass="textbox_mini" ValidateRequestMode="Disabled" ToolTip="半角4文字以内" placeholder="例：4567" Text="" MaxLength="4" TextMode="Phone"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                社用メールアドレス
+                </td>
+                <td>                    
+                    <asp:TextBox ID="TextBox_MeiboAddress" runat="server" CssClass="textbox_LBS" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" placeholder="例：xxxxx" Text="" MaxLength="30" TextMode="Email"></asp:TextBox>
+                    @m2m-asp.com</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                <asp:CheckBox ID="CheckBox_MeiboPB" runat="server" Checked="true" Text="社内で公開" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="th_master">
+                    <asp:Button ID="Button_MeiboCorrect" CssClass="btn-flat-border" runat="server" Text="登録" OnClick="Push_MeiboCorrect" CausesValidation="False" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <asp:TextBox ID="TextBox12" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="デバッグコンソール" CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
+                </td>
+            </tr>
+          </table>
+    </div>
+
+</asp:Panel>
+
+
+</div><%-- noprint --%>
 
 
 

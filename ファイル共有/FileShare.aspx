@@ -36,7 +36,7 @@
 
            <p class ="form-flat-border">
             <span class="f-notice">[アップロードファイル]</span>　<asp:FileUpload ID="FileUpload_userfile" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
-            <span class="f-notice">[パスワード]</span>　<asp:TextBox ID="TextBox_UploadPass" runat="server" CssClass="form-flat-border-inner" Width="100px" MaxLength="20" placeholder="未設定"></asp:TextBox>
+            <span class="f-notice">[パスワード]</span>　<asp:TextBox ID="TextBox_UploadPass" runat="server" CssClass="form-flat-border-inner" Width="100px" MaxLength="20" placeholder="未設定" TextMode="Password"></asp:TextBox>
             <asp:Button ID="Button_Upload" runat="server" Text="アップロード" OnClick="Button_UpLoad" CssClass="btn-flat-border" /><br />
             <span class="f-notice">[コメント]</span>　<asp:TextBox ID="TextBox_Upload_Comment" runat="server" CssClass="form-flat-border-inner" Width="896px" MaxLength="40" placeholder="ファイルの説明　なければ「無題」"></asp:TextBox>
             <asp:CheckBox ID="CheckBox_Annonimas" runat="server" Text="[匿名]" CssClass="f-notice" />
@@ -53,7 +53,7 @@
            <asp:Panel ID="Panel1" runat="server" DefaultButton="Button_Download">
             <p class ="form-flat-border">
             <span class="f-notice">[ダウンロードファイル]</span>　<asp:TextBox ID="TextBox_dl" runat="server" Width="485px" CssClass="form-flat-border-inner" placeholder="テーブルの「参照」ボタンを押して下さい"></asp:TextBox>
-            <span class="f-notice">[パスワード]</span>　<asp:TextBox ID="TextBox_DownloadPass" runat="server" CssClass="form-flat-border-inner" Width="100px" MaxLength="20" placeholder="未設定"></asp:TextBox>
+            <span class="f-notice">[パスワード]</span>　<asp:TextBox ID="TextBox_DownloadPass" runat="server" CssClass="form-flat-border-inner" Width="100px" MaxLength="20" placeholder="未設定" TextMode="Password"></asp:TextBox>
                 <asp:Button ID="Button_Download" runat="server" Text="ダウンロード" OnClick="Button_DownLoad" CssClass="btn-flat-border" PostBackUrl="#" />
                 <asp:Button ID="Button_Preview" runat="server" Text="プレビュー" OnClick="Button_PreView" CssClass="btn-flat-border" PostBackUrl="#" />
             </p>

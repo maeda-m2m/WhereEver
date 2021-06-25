@@ -51,10 +51,33 @@ table {
     color: white;
 }
 
+.textbox_LBS {
+    text-align: left;
+    height: auto;
+    width: 20em;
+    background-color: black;
+    color: white;
+}
+.textbox_LBSW {
+    text-align: left;
+    height: auto;
+    width: 40em;
+    background-color: black;
+    color: white;
+}
+
 .textbox_BS {
     text-align: right;
     height: auto;
     width: 20em;
+    background-color: black;
+    color: white;
+}
+
+.textbox_mini {
+    text-align: right;
+    height: auto;
+    width: 5em;
     background-color: black;
     color: white;
 }
@@ -455,6 +478,28 @@ table {
         text-decoration: none;
         border: none;
     }
+
+    .textbox_LBS {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    .textbox_LBSW {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    .textbox_mini {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;       
+    }
+
 
     .textbox_Wide {
         background-color: white;

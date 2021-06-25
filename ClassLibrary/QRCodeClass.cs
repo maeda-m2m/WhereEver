@@ -80,7 +80,17 @@ namespace WhereEver.ClassLibrary
             return text;
         }
 
-        public static string GetQRCode(string encodetext, int width, int height)
+
+
+        /// <summary>
+        /// QRコード等を生成します。バーコードなども生成できます（要改造）。
+        /// </summary>
+        /// <param name="encodetext"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="isFormat">任意。デフォルトでfalse(QRCode) trueならEAN-13バーコード</param>
+        /// <returns></returns>
+        public static string GetQRCode(string encodetext, int width, int height, bool isFormat=false)
         {
 
             if (encodetext == null || encodetext == "")
@@ -106,7 +116,20 @@ namespace WhereEver.ClassLibrary
             //p2=ZXing.BarcodeFormat.QR_COD ここで指定を変えればバーコードなども作れる模様
             //p3=width
             //p4=height
-            System.Drawing.Bitmap bImage = writer.Write(encoder.encode(encodetext, ZXing.BarcodeFormat.QR_CODE, width, height, encodeHints));
+
+            BarcodeFormat format;
+
+            if (!isFormat)
+            {
+                format = ZXing.BarcodeFormat.QR_CODE;
+            }
+            else
+            {
+                format = ZXing.BarcodeFormat.EAN_13;
+            }
+
+
+            System.Drawing.Bitmap bImage = writer.Write(encoder.encode(encodetext, format, width, height, encodeHints));
 
             //ASP.NetではSystem.Drawingの使用は非推奨のため、Class内でstring（imgタグ）に変換する。
             System.IO.MemoryStream ms = new System.IO.MemoryStream();

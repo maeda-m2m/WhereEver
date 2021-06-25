@@ -166,11 +166,11 @@ namespace WhereEver.ClassLibrary
                     }
                     else if (usersmtp == 2)
                     {
-                        client.Connect("192.168.2.156", 25);    //公開用（サーバーが異なるため、このホスト名だとつながらない？）
+                        client.Connect("192.168.2.156", 25);    //公開用（サーバーが異なるため、このホスト名だとつながらない）
                     }
                     else if (usersmtp == 3)
                     {
-                        client.Connect("192.168.2.209", 25);    //公開用（DBに合わせたもの。つながらない？）
+                        client.Connect("192.168.2.140", 25);    //公開用（WhereEverのあるサーバーに合わせたもの。ポートはこれで合っているか？）
                     }
                     else if (usersmtp == 0)
                     {
