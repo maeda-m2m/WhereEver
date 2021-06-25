@@ -1314,10 +1314,9 @@ namespace WhereEver.XHTML5Editor
             sb.Append("-");
             //TextBox_MeiboAddress
             sb.Append(HtmlEncode(TextBox_MeiboAddress.Text).Trim());
-            sb.Append("@m2m-asp.com");
 
 
-            //return sb.ToString();
+            TextBox_MeiboResult.Text = sb.ToString();
 
         }
 

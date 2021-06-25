@@ -735,12 +735,12 @@ namespace WhereEver.XHTML5Editor
         protected global::System.Web.UI.WebControls.Button Button_MeiboCorrect;
 
         /// <summary>
-        /// TextBox12 コントロール。
+        /// TextBox_MeiboResult コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_MeiboResult;
     }
 }

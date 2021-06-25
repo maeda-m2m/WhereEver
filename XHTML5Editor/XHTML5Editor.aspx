@@ -609,7 +609,7 @@
                 </td>
                 <td>                    
                     <asp:TextBox ID="TextBox_MeiboAddress" runat="server" CssClass="textbox_LBS" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" placeholder="例：xxxxx" Text="" MaxLength="30" TextMode="Email"></asp:TextBox>
-                    @m2m-asp.com</td>
+                </td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -623,7 +623,7 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <asp:TextBox ID="TextBox12" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="デバッグコンソール" CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_MeiboResult" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="デバッグコンソール" CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
                 </td>
             </tr>
           </table>
