@@ -21,7 +21,7 @@ namespace WhereEver.ClassLibrary
         /// </summary>
         /// <param name="uid"></param>
         /// <param name="sqlConnection"></param>
-        /// <returns></returns>
+        /// <returns>bool</returns>
         public static bool GetT_Shinsei_Main_isuid(SqlConnection sqlConnection, string uid)
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
@@ -158,7 +158,7 @@ namespace WhereEver.ClassLibrary
         /// 週報テーブルにインサートします。
         /// </summary>
         /// <param name="sqlConnection"></param>
-        /// <param name="uuid"></param>
+        /// <param name="uid"></param>
         /// <param name="str"></param>
         public static void SetT_Shinsei_D_Weekly_Insert(SqlConnection sqlConnection, string uid,string str)
         {

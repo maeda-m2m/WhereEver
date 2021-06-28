@@ -1304,7 +1304,6 @@ namespace WhereEver.XHTML5Editor
             sb.Append(HtmlEncode(TextBox_Meibo_month.Text).Trim());
             sb.Append("/");
             sb.Append(HtmlEncode(TextBox_Meibo_day.Text).Trim());
-            sb.Append("/");
             //TextBox_Meibo_TelX split('-')で分割可能
             sb.Append(HtmlEncode(TextBox_Meibo_Tel1.Text).Trim());
             sb.Append("-");
@@ -1315,9 +1314,22 @@ namespace WhereEver.XHTML5Editor
             //TextBox_MeiboAddress
             sb.Append(HtmlEncode(TextBox_MeiboAddress.Text).Trim());
 
+            StringBuilder sb2 = new StringBuilder();
+            sb2.Append(HtmlEncode(TextBox_Meibo_year.Text).Trim());
+            sb2.Append("/");
+            sb2.Append(HtmlEncode(TextBox_Meibo_month.Text).Trim());
+            sb2.Append("/");
+            sb2.Append(HtmlEncode(TextBox_Meibo_day.Text).Trim());
+
+            StringBuilder sb3 = new StringBuilder();
+            sb3.Append(HtmlEncode(TextBox_Meibo_Tel1.Text).Trim());
+            sb3.Append("-");
+            sb3.Append(HtmlEncode(TextBox_Meibo_Tel2.Text).Trim());
+            sb3.Append("-");
+            sb3.Append(HtmlEncode(TextBox_Meibo_Tel3.Text).Trim());
 
             TextBox_MeiboResult.Text = sb.ToString();
-
+            ClassLibrary.WorkRosterClass.SetT_WorkRosterInsert(Global.GetConnection(), Guid.NewGuid().ToString(), HtmlEncode(TextBox_CompanyName.Text).Trim(), null, HtmlEncode(TextBox_MeiboName.Text).Trim(), HtmlEncode(TextBox_MeiboWork.Text).Trim(), HtmlEncode(TextBox_MeiboArea.Text).Trim(), DateTime.Parse(sb2.ToString()), sb3.ToString(), HtmlEncode(TextBox_MeiboAddress.Text).Trim(), CheckBox_MeiboPB.Checked);
         }
 
         protected void Push_MeiboButton(object sender, EventArgs e)
