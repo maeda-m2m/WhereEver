@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 //参考：https://tech-blog.link-u.co.jp/2018/08/27/q-learning/
@@ -10,6 +11,8 @@ namespace WhereEver.ClassLibrary
 {
     public class DQLClass
     {
+
+        //-------------------------------[ここから Deep Q-Learning 基幹部]-------------------------------//
 
         /* コマンドプロンプトでMain処理するときはこれを使用する
         class Program
@@ -31,26 +34,37 @@ namespace WhereEver.ClassLibrary
         }
         */
 
+        //----------[コンフィグ]----------//
+        private static readonly StringBuilder sb = new StringBuilder();  //GetQLeearningでreturnする文字列用
+        private const int cMainProcess = 3000000;   //メインプロセスの待機フレームです。
+        private const int cMaxQSafety = 100; //cMainProcessおよびcmaxQを任意の値で除算します。ASP.Netでは100程度に設定して下さい。そうしないとタイムアウトして502エラーになるかGPUが焼き切れます。
+        private const int cmaxIndex = 1;    //初期値このまま
+        private const int cmaxQ = 1000000 / cMaxQSafety;  //試行回数（負の値）デフォルトで-1000000回
+        //--------------------------------//
+
         /// <summary>
         /// Q-Learningを実行します（出力はコメントアウトしてあります。好きにつけて下さい）
         /// 処理回数が1000000万回と非常に多いため、実行テストは保留にしてあります。TASK実行周辺が怪しいです。
         /// ここに書いたようなフルスクラッチをしなくても、PythonのライブラリをC#でラップしたほうが簡単です。
         /// いずれにせよ今積まれているGPUではTASKにしてもふっとびそうですので、むやみに実行しないで下さい。
+        /// 実行結果はstring型にして返します。
         /// </summary>
-        public void SetQLeearning(){
-            var rb = new QLearning.Seisan();
-            rb.MainProcess(3000000);
+        /// <returns>string</returns>
+        public string GetQLeearning(){
+            QLearning.Seisan rb = new QLearning.Seisan();
+            rb.MainProcess(cMainProcess / cMaxQSafety);
+            return sb.ToString();
         }
 
 
         //基幹部の処理はどのQLでもほぼ同じ
-        public class QLearning
+        private class QLearning
         {
             public double[,] qValues;
             public double alpha;
             public double gamma;
 
-            public QLearning(int sSize, int aSize, int fillValue, double alpha = 0.01, double gamma = 0.8)
+            private QLearning(int sSize, int aSize, int fillValue, double alpha = 0.01, double gamma = 0.8)
             {
                 this.alpha = alpha;
                 this.gamma = gamma;
@@ -64,25 +78,25 @@ namespace WhereEver.ClassLibrary
                 }
             }
 
-            public void updateQ(int situationNo, int nextSituation, int actionNo, double reward, List<int> unselectableActions = null, List<int> nextUnselectableActions = null)
+            private void updateQ(int situationNo, int nextSituation, int actionNo, double reward, List<int> unselectableActions = null, List<int> nextUnselectableActions = null)
             {
-                int maxIndex = -1;      //初期値このまま
-                double maxQ = -10000000;    //試行回数（負の値）デフォルトで-1000000回
+                int maxIndex = -cmaxIndex;      //初期値このまま
+                double maxQ = -cmaxQ;    //試行回数（負の値）デフォルトで-1000000回
 
                 this.qValues[situationNo, actionNo] = (1 - this.alpha) * this.qValues[situationNo, actionNo]
                     + this.alpha * (reward + this.gamma * serachMaxAndArgmax(nextSituation, ref maxIndex, ref maxQ, nextUnselectableActions));
             }
 
-            public int SelectActionByGreedy(int situationNo, List<int> unselectableActions = null)
+            private int SelectActionByGreedy(int situationNo, List<int> unselectableActions = null)
             {
                 unselectableActions = unselectableActions ?? new List<int>();
-                int maxIndex = -1;      //初期値このまま
-                double maxQ = -10000000;    //試行回数（負の値）デフォルトで-1000000回
+                int maxIndex = -cmaxIndex;      //初期値このまま
+                double maxQ = -cmaxQ;    //試行回数（負の値）デフォルトで-1000000回
                 this.serachMaxAndArgmax(situationNo, ref maxIndex, ref maxQ, unselectableActions);
                 return maxIndex;
             }
 
-            public int SelectActionByEGreedy(double epsilon, int situationNo, List<int> unselectableActions = null)
+            private int SelectActionByEGreedy(double epsilon, int situationNo, List<int> unselectableActions = null)
             {
                 Random r = new Random();
                 if (r.NextDouble() < epsilon)
@@ -121,7 +135,7 @@ namespace WhereEver.ClassLibrary
             }
 
 
-            public void PrintQValues()
+            private void PrintQValues()
             {
                 var rowCount = this.qValues.GetLength(0);
                 var colCount = this.qValues.GetLength(1);
@@ -130,10 +144,13 @@ namespace WhereEver.ClassLibrary
                     for (int col = 0; col < colCount; col++) {
                         //Console.Write(String.Format("{0}t", this.qValues[row, col]));
                         //Console.WriteLine();
+                        sb.Append(String.Format("{0}t", this.qValues[row, col]));
+                        sb.Append("\r\f");
                     }
                 }
             }
-            //-----------------------------------------------------
+
+            //--------------------------------------------------------------------------
 
             public abstract class Task
             {
@@ -147,6 +164,71 @@ namespace WhereEver.ClassLibrary
             //報酬
             public class Seisan : Task
             {
+
+                /// <summary>
+                /// Deep Q-Learning基幹部その２。p1=エピソード番号は現在の試行回数を代入します。
+                /// </summary>
+                /// <param name="nEpisodes"></param>
+                /// <returns></returns>
+                public override int MainProcess(int nEpisodes)
+                {
+                    //this.player = new Player();
+                    //this.SetEnemyList();
+
+                    //p1=状態組み合わせ最大数（例えばリバーシなら8*8=64マス通り）、p2=行動種別の総数、p3=fill値(基本0); p3=alphaとp4=gammaは初期設定でうまくいかないときにだけ弄る
+                    QLearning q = new QLearning(this.GetSituationSize(), this.GetActionSize(), 0);
+
+                    //宣言
+                    int situationNo;    //実行組み合わせNo.
+                    int nextSituationNo;    //次回実行組み合わせNo.
+                    int e = 0;  //ループカウンタ 内部でインクリメントします
+
+                    //すべてのエピソードを検討します。O(n+1)試行回数が増えるほど負荷が大きくなります。
+                    while (e < nEpisodes)//１回ぶんのの試行
+                    {
+                        //初期化
+                        PutResetValues();
+
+                        do  //１回文のTASK分配
+                        {
+
+                            situationNo = this.GetSituationNo();    //実行組み合わせNo.
+                            nextSituationNo = -1;   //  次回実行組み合わせNo.    オーバーライドのためこれでよい
+                            List<int> unselectable = this.GetUnselectableActions(situationNo);  //普通の人間には決められない行動のパターン一覧<int>を取得
+                            int actionNo = q.SelectActionByEGreedy(0.05, situationNo, unselectable);    //行動パターンNo.をAIから取得（=AIが選択）
+
+                            //報酬獲得結果の取得
+                            double reward = this.CalcActionResult(situationNo, ref nextSituationNo, actionNo);
+                            List<int> nextUnselectable = this.GetUnselectableActions(nextSituationNo);  //次回の行動パターン一覧<int>を取得
+                            q.updateQ(situationNo, nextSituationNo, actionNo, reward, unselectable, nextUnselectable);  //Q関数をアップデート
+
+                        } while (nextSituationNo != TASK_LIMIT_OVER && nextSituationNo != TASK_COMPLETE);
+
+                        if (e % 1000 == 0)
+                        {
+                            //結果表示１
+                            //Console.WriteLine();
+                            //Console.Write(String.Format("Progress {0:f4}%", (double)100 * e / nEpisodes));
+                            //Console.WriteLine();
+                            //this.PrintQValuesWithParams(q);
+                            sb.Append(String.Format("Progress {0:f4}%", (double)100 * e / nEpisodes));
+                            sb.Append("\r\f");
+                        }
+                        e++;    //ループカウンタ インクリメント
+                    }
+
+                    //結果表示２
+                    //Console.WriteLine();
+                    //this.PrintQValuesWithParams(q);
+                    sb.Append("-------------------------------------------\r\f");
+
+
+                    return 0;
+                }
+
+                //-------------------------------[ここまで Deep Q-Learning 基幹部]-------------------------------//
+
+
                 //public const int PLAYER_DEATH = 27;
                 //public const int ENEMY_DEATH = 28;
 
@@ -174,7 +256,16 @@ namespace WhereEver.ClassLibrary
                 private const int myMaxTasks = 10;
                 private static int myHoldTasks = 0;
                 private static int myRequiredTaskCost = 0;
-                private Dictionary<int, Action> actions;
+                private readonly Dictionary<int, Action> actions;
+
+                /// <summary>
+                /// 変数を初期化します（メモリは残ります）
+                /// </summary>
+                protected void PutResetValues()
+                {
+                    myHoldTasks = 0;
+                    myRequiredTaskCost = 0;
+                }
 
                 protected int GetMyHoldTasks()
                 {
@@ -198,7 +289,7 @@ namespace WhereEver.ClassLibrary
                         actions.Add(ActionTable.heaveyTask.id, ActionTable.heaveyTask);
                     return actions;
                 }
-                public Dictionary<int, Action> GetActions()
+                private Dictionary<int, Action> GetActions()
                 {
                     return this.actions;
                 }
@@ -213,7 +304,7 @@ namespace WhereEver.ClassLibrary
                     public bool taskSW = true;
                     public bool zan = false;
 
-                    public Action(int id, int wasteTimes, int holdTasks, ref int count)
+                    public Action(int id, int wasteTimes, int holdTasks)
                     {
                         if (this.wasteTimes + wasteTimes > timeLimits)
                         {
@@ -233,7 +324,7 @@ namespace WhereEver.ClassLibrary
                         }
 
                         //共通
-                        this.id = id;
+                        this.id = id; //string出力用
                         this.wasteTimes += wasteTimes;
                         this.holdTasks += holdTasks;
 
@@ -241,80 +332,27 @@ namespace WhereEver.ClassLibrary
                         myHoldTasks = holdTasks;
 
 
-                        ++count;
+                        //++count;
                     }
                 }
 
                 //行動内容
-                static class ActionTable
+                private static class ActionTable
                 {
-                    public static int count;
+                    public static int count = 0;    //string出力用
                     public static Action easyTask;
                     public static Action normalTask;
                     public static Action heaveyTask;
 
                     static ActionTable()
                     {
-                        count = 0;
-                        easyTask = new Action(count, 60, 1, ref count);
-                        normalTask = new Action(count, 120, 2, ref count);
-                        heaveyTask = new Action(count, 180, 3, ref count);
+                        //count = 0;
+                        easyTask = new Action(count, 60, 1);
+                        normalTask = new Action(count, 120, 2);
+                        heaveyTask = new Action(count, 180, 3);
+                        count++;    //追加分
                     }
                 }
-
-                public override int MainProcess(int nEpisodes)
-                {
-                    //this.player = new Player();
-                    //this.SetEnemyList();
-
-                    var q = new QLearning(
-                        this.GetSituationSize(),
-                        this.GetActionSize(),
-                        0
-                    );
-                    int situationNo;
-                    int nextSituationNo;
-                    int e = 0;
-                    while (e < nEpisodes)
-                    {
-                        //初期化
-                        //this.enemy = this.SelectRandomEnemy();
-                        //this.enemy = this.enemyList[e % 3];
-                        //player.RestoreHp();
-                        //player.RestoreMp();
-                        //enemy.RestoreHp();
-                        //enemy.RestoreMp();
-                        do
-                        {
-                            situationNo = this.GetSituationNo();
-                            nextSituationNo = -1;
-                            var unselectable = this.GetUnselectableActions(situationNo);
-                            int actionNo = q.SelectActionByEGreedy(0.05, situationNo, unselectable);
-
-                            double reward = this.CalcActionResult(situationNo, ref nextSituationNo, actionNo);
-                            var nextUnselectable = this.GetUnselectableActions(nextSituationNo);
-                            q.updateQ(situationNo, nextSituationNo, actionNo, reward, unselectable, nextUnselectable);
-
-                        } while (nextSituationNo != TASK_LIMIT_OVER && nextSituationNo != TASK_COMPLETE);
-
-                        if (e % 1000 == 0)
-                        {
-                            //結果表示１
-                            //Console.WriteLine();
-                            //Console.Write(String.Format("Progress {0:f4}%", (double)100 * e / nEpisodes));
-                            //Console.WriteLine();
-                            //this.PrintQValuesWithParams(q);
-                        }
-                        e++;
-                    }
-
-                    //結果表示２
-                    //Console.WriteLine();
-                    //this.PrintQValuesWithParams(q);
-
-                    return 0;
-                }
-
 
                 //------------------------------------------------------
 
@@ -339,20 +377,20 @@ namespace WhereEver.ClassLibrary
                 //----------------------------------------------------
                 //評価関数
                 //----------------------------------------------------
-                public int GetSituationNo()
+                protected int GetSituationNo()
                 {
                     //return 9 * (this.enemy.GetId() - 1) + 3 * this.GetHpSituation() + this.GetMpSituation();
                     return this.GetHoldTaskSituation();   //乗算して重み付けし、それぞれ加算して評価を出す。GetSituationIndexByParamsやGetParamsBySituationIndexと同じ評価関数にする必要あり。
                 }
 
-                private int GetSituationIndexByParams(int holdTaskSituation) //(int charactterId, int hpSituation, int mpSituation)
+                protected int GetSituationIndexByParams(int holdTaskSituation) //(int charactterId, int hpSituation, int mpSituation)
                 {
                     //return 9 * (charactterId - 1) + 3 * hpSituation + mpSituation;
                     return holdTaskSituation;   //乗算して重み付けし、それぞれ加算して評価を出す。GetSituationNoやGetParamsBySituationIndexと同じ評価関数にする必要あり。
                 }
 
                 //上記２つをもとに評価関数からもとに戻す関数をつくる
-                private void GetParamsBySituationIndex(int situationId, int holdTaskSituation)    //(int situationId, ref int characterId, ref int hpSituation, ref int mpSituation)
+                protected void GetParamsBySituationIndex(int situationId, int holdTaskSituation)    //(int situationId, ref int characterId, ref int hpSituation, ref int mpSituation)
                 {
                     //characterId = situationId / 9;
                     //hpSituation = (situationId - 9 * characterId) / 3;
@@ -363,7 +401,7 @@ namespace WhereEver.ClassLibrary
                 }
                 //-----------------------------------------------------
                 //行動条件をパターン分け
-                private int GetHoldTaskSituation()
+                protected int GetHoldTaskSituation()
                 {
                     if (this.GetMyHoldTasks() > 8)
                     {
@@ -519,64 +557,8 @@ namespace WhereEver.ClassLibrary
 
                     }
 
-                    /* コピー元の処理
-
-                    if (situationNo == PLAYER_DEATH)
-                    {
-                        nextSituation = PLAYER_DEATH;
-                        return PLAYER_DEATH_REWARD;
-                    }
-                    if (situationNo == ENEMY_DEATH)
-                    {
-                        nextSituation = ENEMY_DEATH;
-                        return ENEMY_DEATH_REWARD;
-                    }
-
-                    int playerHp = this.player.GetHp();
-                    int playerMp = this.player.GetMp();
-                    int playerMpOrg = playerMp;
-                    int enemyHp = this.enemy.GetHp();
-                    int enemyMp = this.enemy.GetMp();
-
-                    Action playerAction = this.player.GetActions()[actionNo];
-                    string playerAttackAttribute = playerAction.attribute;
-                    enemyHp -= (int)(playerAction.hpDamage * this.enemy.GetWeekness()[playerAttackAttribute]);
-                    playerHp += this.player.GetActions()[actionNo].hpHeal;
-                    if (playerHp > this.player.GetMaxHp())
-                        playerHp = this.player.GetMaxHp();
-                    playerMp -= this.player.GetActions()[actionNo].mpCost;
-                    if (enemyHp <= 0)
-                    {
-                        nextSituation = ENEMY_DEATH;
-                        return ENEMY_DEATH_REWARD;
-                    }
-                    Action enemyAction = this.SelectRandomAction(enemy);
-                    string enemyAttackAttribute = enemyAction.attribute;
-                    playerHp -= (int)(enemyAction.hpDamage * this.player.GetWeekness()[enemyAttackAttribute]);
-                    enemyHp += enemyAction.hpHeal;
-                    if (enemyHp > this.enemy.GetMaxHp())
-                        enemyHp = this.enemy.GetMaxHp();
-                    enemyMp -= enemyAction.mpCost;
-                    if (playerHp <= 0)
-                    {
-                        nextSituation = PLAYER_DEATH;
-                        return PLAYER_DEATH_REWARD;
-                    }
-                    this.player.SetHp(playerHp);
-                    this.player.SetMp(playerMp);
-                    this.enemy.SetHp(enemyHp);
-                    this.enemy.SetMp(enemyMp);
-
-
                     nextSituation = this.GetSituationNo();
-
-                    return (playerMp - playerMpOrg) * MP_CONSUMPTION_REWARD_RATE;
-
-                    */
-
-
-                    nextSituation = this.GetSituationNo();
-                    return 0f;//仮
+                    return 0f;//仮　元プログラムでも定数MPRateで0倍していた→いらない？
                 }
 
 
