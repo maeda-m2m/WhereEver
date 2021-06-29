@@ -507,7 +507,7 @@
 
                     <div class="noprint">
                        <span class="hr"></span>
-                        <p class="center">社員名簿の登録や閲覧をします（登録テスト途中。参照未実装。サムネイル周辺改修予定）。</p>
+                        <p class="center">社員名簿の登録や閲覧をします（無印版。リッチデータの一覧化を実装予定）。</p>
                        <span class="hr"></span>
                     </div>
 
@@ -521,6 +521,15 @@
                 <th class="th_master">
                     サムネイル
                 </th>
+            </tr>
+            <tr>
+                <td>
+                UUID
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox_Work_uuid" runat="server" CssClass="textbox_LBSW" ValidateRequestMode="Disabled" ToolTip="UUID" placeholder="ここにUUIDが表示されます。" Text="" MaxLength="50" ReadOnly="true"></asp:TextBox>
+                    <asp:Button ID="Button_Work_uuid_reset" CssClass="btn-flat-border-textinnner" runat="server" Text="Reset" OnClick="Push_Reset_Work" CausesValidation="False" />
+                </td>
             </tr>
             <tr>
                 <td>
@@ -621,7 +630,7 @@
             </tr>
             <tr>
                 <td colspan="3" class="th_master">
-                    <asp:Button ID="Button_MeiboCorrect" CssClass="btn-flat-border" runat="server" Text="登録" OnClick="Push_MeiboCorrect" CausesValidation="False" />
+                    <asp:Button ID="Button_MeiboCorrect" CssClass="btn-flat-border" runat="server" Text="登録/上書き" OnClick="Push_MeiboCorrect" CausesValidation="False" />
                 </td>
             </tr>
             <tr>

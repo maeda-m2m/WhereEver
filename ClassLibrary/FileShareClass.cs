@@ -563,14 +563,10 @@ namespace WhereEver.ClassLibrary
         /// <summary>
         /// 1つのファイルをT_Thumbnailからロードし、img srcにするためのクラスです。
         /// p1 必須　ロードページのPage.Response
-        /// p2 必須　ファイル名　uuid.xxx
-        /// p3 任意変更　ファイルのパスワード
-        /// p4 任意変更　一度の転送容量
+        /// p2 任意変更　一度の転送容量
         /// return string <img src=\"data:image/png;base64,.......\" />
         /// </summary>
         /// <param name="response">必須　Page.Response</param>
-        /// <param name="file">必須</param>
-        /// <param name="pass">あれば</param>
         /// <param name="separatesize">任意変更　初期設定は8000</param>
         /// <returns>string</returns>
         public static string Get_Thumbnail_DownLoad_src(HttpResponse response, string id, int separatesize = 8000)
@@ -659,8 +655,7 @@ namespace WhereEver.ClassLibrary
         /// countは1～数えます。lengthは一度にロードするbyte数です。
         /// </summary>
         /// <param name="sqlConnection"></param>
-        /// <param name="FileName"></param>
-        /// <param name="pass"></param>
+        /// <param name="id"></param>
         /// <param name="count">処理は何回目か？</param>
         /// <param name="length"></param>
         /// <returns>DATASET.DataSet.T_Thumbnail</returns>
@@ -1132,7 +1127,7 @@ namespace WhereEver.ClassLibrary
 
                 //Add the paramaters for the Updatecommand.必ずダブルクオーテーションで@変数の宣言を囲んでください。command.CommandTextで使用するものは、必ずすべて宣言してください。
                 //-------------------------------------------------------------------------------------------------------------------
-                command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 20, "id")).Value = id;
+                command.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.NVarChar, 50, "id")).Value = id;
                 command.Parameters.Add(new SqlParameter("@datum", System.Data.SqlDbType.VarBinary, -1, "datum")).Value = datum;
 
                 if (isinsert)
@@ -1195,7 +1190,7 @@ namespace WhereEver.ClassLibrary
         /// <summary>
         /// 文字列をAESで暗号化
         /// </summary>
-        private static string SetTextEncrypt(string text)
+        public static string SetTextEncrypt(string text)
         {
             // AES暗号化サービスプロバイダ
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
@@ -1221,7 +1216,7 @@ namespace WhereEver.ClassLibrary
         /// <summary>
         /// 文字列をAESで復号化
         /// </summary>
-        private static string GetTextDecrypt(string text)
+        public static string GetTextDecrypt(string text)
         {
             // AES暗号化サービスプロバイダ
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
@@ -1248,7 +1243,7 @@ namespace WhereEver.ClassLibrary
         /// <summary>
         /// ByteをAESで暗号化
         /// </summary>
-        private static byte[] SetAESEncrypt(byte[] src, string pass, string filename)
+        public static byte[] SetAESEncrypt(byte[] src, string pass, string filename)
         {
             // AES暗号化サービスプロバイダ
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
@@ -1299,7 +1294,7 @@ namespace WhereEver.ClassLibrary
         /// <summary>
         /// ByteをAESで復号化
         /// </summary>
-        private static byte[] GetAESDecrypt(byte[] src, string pass, string filename)
+        public static byte[] GetAESDecrypt(byte[] src, string pass, string filename)
         {
             // AES暗号化サービスプロバイダ
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();

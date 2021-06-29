@@ -582,6 +582,24 @@ namespace WhereEver.XHTML5Editor
         protected global::System.Web.UI.WebControls.Panel Panel_Meibo;
 
         /// <summary>
+        /// TextBox_Work_uuid コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Work_uuid;
+
+        /// <summary>
+        /// Button_Work_uuid_reset コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Work_uuid_reset;
+
+        /// <summary>
         /// TextBox_CompanyName コントロール。
         /// </summary>
         /// <remarks>
