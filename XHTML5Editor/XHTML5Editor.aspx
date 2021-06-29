@@ -530,6 +530,9 @@
                     <asp:TextBox ID="TextBox_Work_uuid" runat="server" CssClass="textbox_LBSW" ValidateRequestMode="Disabled" ToolTip="UUID" placeholder="ここにUUIDが表示されます。" Text="" MaxLength="50" ReadOnly="true"></asp:TextBox>
                     <asp:Button ID="Button_Work_uuid_reset" CssClass="btn-flat-border-textinnner" runat="server" Text="Reset" OnClick="Push_Reset_Work" CausesValidation="False" />
                 </td>
+                <td rowspan="10" class="th_master"> <%-- rowspan --%>
+                <asp:Label ID="lblMeiboPictureResult" runat="server" Text="ここにサムネイルがプレビューされます。" CssClass="lbl_pl" ValidateRequestMode="Disabled"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -537,9 +540,6 @@
                 </td>
                 <td>
                     <asp:TextBox ID="TextBox_CompanyName" runat="server" CssClass="textbox_LBSW" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" placeholder="例：株式会社エム・ツー・エム" Text="株式会社エム・ツー・エム" MaxLength="30"></asp:TextBox>
-                </td>
-                <td rowspan="9" class="th_master"> <%-- rowspan --%>
-                <asp:Label ID="lblMeiboPictureResult" runat="server" Text="ここにサムネイルがプレビューされます。" CssClass="lbl_pl" ValidateRequestMode="Disabled"></asp:Label>
                 </td>
             </tr>
             <tr>
