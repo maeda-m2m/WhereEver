@@ -26,9 +26,33 @@ namespace WhereEver.XHTML5Editor
 
             if (!IsPostBack)
             {
+                //user id 取得
+                lbluid.Text = HtmlEncode(SessionManager.User.M_User.id.Trim());
+
                 //Label生成（初期化）
                 ResetItems();
+
+                //セッション変数argsを初期化
+                Session.Add("args", (string)"null");
+                Session.Add("uuid", (string)"null");
             }
+
+
+            /* 編集中UUID確認フォームを用いるなら利用可能
+            //消去すると１段ずれることがあるため、選択行かどうか１段ずつ検索し直す。
+            for (int i = 0; i < GridView_Meibo.Rows.Count; i++)
+            {
+                if (GridView_Meibo.Rows[i].Cells[0].Text == TextBox_Meibo_uuid.Text)    //編集中uuidのテキストボックスを右辺に代入
+                {
+                    Session.Add("args", i);
+                    Session.Add("uuid", GridView_Meibo.Rows[i].Cells[0].Text);
+                    //GridView_Resetの選択行を赤色にする
+                    //int resetargs = int.Parse(Session["args"].ToString());
+                    GridView_Meibo.Rows[i].BackColor = System.Drawing.Color.Red;
+                    break;
+                }
+            }
+            */
 
             ChangeItemsColor();
             PreView();
@@ -1298,38 +1322,42 @@ namespace WhereEver.XHTML5Editor
             sb.Append("\r\f");
             sb.Append(HtmlEncode(TextBox_MeiboArea.Text).Trim());
             sb.Append("\r\f");
-            //Date split('/')で分割可能
-            sb.Append(HtmlEncode(TextBox_Meibo_year.Text).Trim());
-            sb.Append("/");
-            sb.Append(HtmlEncode(TextBox_Meibo_month.Text).Trim());
-            sb.Append("/");
-            sb.Append(HtmlEncode(TextBox_Meibo_day.Text).Trim());
-            //TextBox_Meibo_TelX split('-')で分割可能
-            sb.Append(HtmlEncode(TextBox_Meibo_Tel1.Text).Trim());
-            sb.Append("-");
-            sb.Append(HtmlEncode(TextBox_Meibo_Tel2.Text).Trim());
-            sb.Append("-");
-            sb.Append(HtmlEncode(TextBox_Meibo_Tel3.Text).Trim());
-            sb.Append("-");
-            //TextBox_MeiboAddress
-            sb.Append(HtmlEncode(TextBox_MeiboAddress.Text).Trim());
 
+
+            //Date split('/')で分割可能
             StringBuilder sb2 = new StringBuilder();
             sb2.Append(HtmlEncode(TextBox_Meibo_year.Text).Trim());
             sb2.Append("/");
             sb2.Append(HtmlEncode(TextBox_Meibo_month.Text).Trim());
             sb2.Append("/");
             sb2.Append(HtmlEncode(TextBox_Meibo_day.Text).Trim());
+            sb.Append(sb2.ToString());
+            sb.Append("\r\f");
 
+            //TextBox_Meibo_TelX split('-')で分割可能
             StringBuilder sb3 = new StringBuilder();
             sb3.Append(HtmlEncode(TextBox_Meibo_Tel1.Text).Trim());
             sb3.Append("-");
             sb3.Append(HtmlEncode(TextBox_Meibo_Tel2.Text).Trim());
             sb3.Append("-");
             sb3.Append(HtmlEncode(TextBox_Meibo_Tel3.Text).Trim());
+            sb.Append(sb3.ToString());
+            sb.Append("\r\f");
 
+            //TextBox_MeiboAddress
+            sb.Append(HtmlEncode(TextBox_MeiboAddress.Text).Trim());
+            sb.Append("\r\f");
+
+            //デバッグコンソールに追加
             TextBox_MeiboResult.Text = sb.ToString();
-            ClassLibrary.WorkRosterClass.SetT_WorkRosterInsert(Global.GetConnection(), Guid.NewGuid().ToString(), HtmlEncode(TextBox_CompanyName.Text).Trim(), null, HtmlEncode(TextBox_MeiboName.Text).Trim(), HtmlEncode(TextBox_MeiboWork.Text).Trim(), HtmlEncode(TextBox_MeiboArea.Text).Trim(), DateTime.Parse(sb2.ToString()), sb3.ToString(), HtmlEncode(TextBox_MeiboAddress.Text).Trim(), CheckBox_MeiboPB.Checked);
+
+            //サムネイル
+            //公開用（非暗号化埋め込みコードをDBにアップロード）
+            string s_datum = HtmlEncode(ClassLibrary.FileShareClass.Get_Thumbnail_DownLoad_src(Page.Response, SessionManager.User.M_User.id.Trim(), 20000));
+            byte[] datum = Encoding.GetEncoding("UTF-8").GetBytes(s_datum);
+
+            //データベースに追加(Insert)
+            ClassLibrary.WorkRosterClass.SetT_WorkRosterInsert(Global.GetConnection(), Guid.NewGuid().ToString(), HtmlEncode(TextBox_CompanyName.Text).Trim(), datum, HtmlEncode(TextBox_MeiboName.Text).Trim(), HtmlEncode(TextBox_MeiboWork.Text).Trim(), HtmlEncode(TextBox_MeiboArea.Text).Trim(), DateTime.Parse(sb2.ToString()), sb3.ToString(), HtmlEncode(TextBox_MeiboAddress.Text).Trim(), CheckBox_MeiboPB.Checked);
         }
 
         protected void Push_MeiboButton(object sender, EventArgs e)
@@ -1343,5 +1371,97 @@ namespace WhereEver.XHTML5Editor
                 Panel_Meibo.Visible = true;
             }
         }
+
+
+
+
+
+
+
+
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+        protected void Grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //好きなコードを入れて下さい。
+
+            // コマンド名が“Remove”の場合にのみ処理（独自の削除ボタン）
+            if (e.CommandName == "Remove")
+            {
+
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
+
+                //セッション変数argsを初期化
+                Session.Add("args", (string)"null");
+                Session.Add("uuid", (string)"null");
+
+                string uuid = GridView_Meibo.Rows[args].Cells[0].Text;
+                ClassLibrary.MOMClass.DeleteT_PLRow(Global.GetConnection(), uuid);
+
+                GridView_Meibo.DataBind();
+
+
+                // コマンド名が“DownLoad”の場合にのみ処理（選択ボタン）
+            }
+            else if (e.CommandName == "DownLoad")
+            {
+                //コマンドの引数を取得
+                int args = Int32.Parse(e.CommandArgument.ToString());
+
+                //ロードのためにテーブルには用いるデータをバインドし、Visible=trueにしている必要がある。falseでも配列int[]は数える。
+                //【重要】ReadOnly属性がついていないと読み込みできない。
+
+                //ResetMeibo();
+
+                //主キー呼び出しのため、参照されるDataTableは必ずRow=1（ロード前に他アカウントで削除されていたら0）となる。
+                string uuid = GridView_Meibo.Rows[args].Cells[0].Text;
+                DATASET.DataSet.T_WorkRosterDataTable dt = ClassLibrary.WorkRosterClass.GetT_WorkRoster(Global.GetConnection(), uuid);
+
+
+                if (Session["args"].ToString() != "null")
+                {
+                    //GridView1の色を変えた色をもとに戻す
+                    int resetargs = int.Parse(Session["args"].ToString());
+                    GridView_Meibo.Rows[resetargs].BackColor = System.Drawing.Color.Empty;
+                }
+
+                if (dt == null)
+                {
+                    //Fatal Error
+                    return;
+                }
+
+                Session.Add("uuid", uuid);
+
+                //編集テーブルに代入
+                TextBox_CompanyName.Text = dt[0].workUserName.ToString();
+
+                //SUM
+                //Sum_PL();
+                GridView_Meibo.DataBind();
+
+                //新たに色を変更する行を記憶
+                Session.Add("args", args);
+
+                //行の色変更（選択行を強調表示）
+                GridView_Meibo.Rows[args].BackColor = System.Drawing.Color.Red;
+
+            }
+        }
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
     }
 }

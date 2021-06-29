@@ -735,6 +735,33 @@ namespace WhereEver.XHTML5Editor
         protected global::System.Web.UI.WebControls.Button Button_MeiboCorrect;
 
         /// <summary>
+        /// GridView_Meibo コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView_Meibo;
+
+        /// <summary>
+        /// SqlDataSource_Meibo コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Meibo;
+
+        /// <summary>
+        /// lbluid コントロール。
+        /// </summary>
+        /// <remarks>
+        /// 自動生成されたフィールド。
+        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbluid;
+
+        /// <summary>
         /// TextBox_MeiboResult コントロール。
         /// </summary>
         /// <remarks>

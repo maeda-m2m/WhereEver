@@ -397,6 +397,9 @@
                         例えば、目的地に到着する時間が短いほど賞を与えます。また、障害物にぶつかるほど罰を与えます。<br />
                         もし、安全運転を必要とするなら、速度超過した場合に賞よりも大きい罰を与える必要があります。<br />
                         何度も試行することで、素早くぶつからずに移動する最適解が得られるでしょう。<br />
+                        遺伝的アルゴリズムは、静的環境を前提とします。動的環境にはDeep Q-Learningのような深層学習による強化学習を用います。<br />
+                        強化学習は生産管理の効率化などに役立ちます。内部にコードサンプルを置いておきましたが、ASP.Netで動かすのは非推奨です（重い）。<br />
+                        機能性や汎用性を考慮して、GPUを積んだデスクトップPCでPythonやUnity(C#)を用いるとよいでしょう。<br />
                     </p>
                 </td>
             </tr>
@@ -496,7 +499,7 @@
            <p class="index1">
                ◆名簿管理
                <asp:Button ID="Button_Meibo" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_MeiboButton" CausesValidation="False" />
-               　社員名簿を管理します（工事中）。</p>
+               　社員名簿を管理します（α版）。</p>
 
            <hr />
 
@@ -504,7 +507,7 @@
 
                     <div class="noprint">
                        <span class="hr"></span>
-                        <p class="center">社員名簿の登録や閲覧をします（まだ登録はできません。サムネイルは変えられます）。</p>
+                        <p class="center">社員名簿の登録や閲覧をします（登録テスト途中。参照未実装。サムネイル周辺改修予定）。</p>
                        <span class="hr"></span>
                     </div>
 
@@ -608,7 +611,7 @@
                 社用メールアドレス
                 </td>
                 <td>                    
-                    <asp:TextBox ID="TextBox_MeiboAddress" runat="server" CssClass="textbox_LBS" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" placeholder="例：xxxxx" Text="" MaxLength="30" TextMode="Email"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_MeiboAddress" runat="server" CssClass="textbox_LBS" ValidateRequestMode="Disabled" ToolTip="全角30文字以内" placeholder="例：yamada@m2m-asp.com" Text="" MaxLength="30" TextMode="Email"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -623,6 +626,40 @@
             </tr>
             <tr>
                 <td colspan="3">
+
+        <asp:GridView ID="GridView_Meibo" runat="server" CssClass="DGTable" AutoGenerateColumns="False" DataSourceID="SqlDataSource_Meibo" AllowPaging="True" AllowSorting="True" OnRowCommand="Grid_RowCommand">
+            <Columns>
+                <asp:BoundField DataField="uid" HeaderText="uid" SortExpression="uid" HeaderStyle-CssClass="none" ItemStyle-CssClass="none" HeaderStyle-ForeColor="Red" />
+                <asp:BoundField DataField="workCompanyName" HeaderText="会社名" SortExpression="workCompanyName" />
+                <asp:BoundField DataField="workPost" HeaderText="役職" SortExpression="workPost" />
+                <asp:BoundField DataField="workUserName" HeaderText="氏名" SortExpression="workUserName" />
+                <asp:BoundField DataField="workAssignment" HeaderText="配属" SortExpression="workAssignment" />
+                <asp:BoundField DataField="workBirthday" HeaderText="生年月日" DataFormatString="{0:d}" SortExpression="workBirthday" />
+                <asp:BoundField DataField="workPhoneNo" HeaderText="スマホ/携帯電話番号" SortExpression="workPhoneNo" />
+                <asp:BoundField DataField="workMail" HeaderText="社用メールアドレス" SortExpression="workMail" />
+
+                    <asp:ButtonField ButtonType="Button" Text="削除" HeaderText="削除" CommandName="Remove" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border-mini" />
+                    </asp:ButtonField>
+
+                    <asp:ButtonField ButtonType="Button" Text="参照" HeaderText="編集" CommandName="DownLoad" CausesValidation="False" >
+                    <ControlStyle CssClass="btn-flat-border-mini" />
+                    </asp:ButtonField>
+
+            </Columns>
+        <HeaderStyle BackColor="Black" ForeColor="White" />
+        <RowStyle BackColor="#1E1E1E" ForeColor="White" />
+        </asp:GridView>
+
+        <asp:SqlDataSource ID="SqlDataSource_Meibo" runat="server" ConnectionString="<%$ ConnectionStrings:WhereverConnectionString %>" SelectCommand="SELECT [uid], [workCompanyName], [workThumbnail], [workPost], [workUserName], [workAssignment], [workBirthday], [workPhoneNo], [workMail] FROM [T_WorkRoster] WHERE ([isPublic] = @isPublic OR [editorId] = @editorId) ORDER BY [workUserName]">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="True" Name="isPublic" Type="Boolean" />
+                <asp:ControlParameter ControlID="lbluid" DefaultValue="null" Name="editorId" PropertyName="Text" Type="String" />
+            </SelectParameters>
+                    </asp:SqlDataSource>
+
+
+                    <asp:Label ID="lbluid" runat="server" Text="null" Visible="false"></asp:Label>
                     <asp:TextBox ID="TextBox_MeiboResult" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="デバッグコンソール" CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true" ></asp:TextBox>
                 </td>
             </tr>
