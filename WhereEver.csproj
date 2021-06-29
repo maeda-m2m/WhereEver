@@ -202,6 +202,8 @@
     </Content>
     <Content Include="管理ページ\Kanri.css" />
     <Content Include="管理ページ\Kanri.aspx" />
+    <Content Include="管理ページ\WorkManager.aspx" />
+    <Content Include="管理ページ\WorkManager.css" />
     <None Include="DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -497,6 +499,13 @@
     </Compile>
     <Compile Include="管理ページ\Kanri.aspx.designer.cs">
       <DependentUpon>Kanri.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="管理ページ\WorkManager.aspx.cs">
+      <DependentUpon>WorkManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="管理ページ\WorkManager.aspx.designer.cs">
+      <DependentUpon>WorkManager.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

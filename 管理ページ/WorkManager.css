@@ -1,0 +1,544 @@
+﻿body {
+    background-image: url(../ログイン/white.jpg);
+    background-repeat: no-repeat; /* 画像重複しない */
+    background-size: cover;
+    font-weight: bold; /*太字にする*/
+    font-family: Meiryo;
+}
+
+#Wrap {
+    background-color: #1e1e1e;
+    color: white;
+    width: 1280px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.textbox {
+    height: 2em;
+    width: 16em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.lbl_pl {
+    text-align: right;
+    height: auto;
+    width: 20em;
+    color: white;
+}
+
+.lbl_BS {
+    text-align: right;
+    height: auto;
+    width: 20em;
+    color: white;
+}
+
+.none {
+    display: none;
+}
+
+.textbox_pl {
+    text-align: right;
+    height: auto;
+    width: 16em;
+    background-color: black;
+    color: white;
+}
+
+.textbox_LBS {
+    text-align: left;
+    height: auto;
+    width: 20em;
+    background-color: black;
+    color: white;
+}
+.textbox_LBSW {
+    text-align: left;
+    height: auto;
+    width: 40em;
+    background-color: black;
+    color: white;
+}
+
+.textbox_BS {
+    text-align: right;
+    height: auto;
+    width: 20em;
+    background-color: black;
+    color: white;
+}
+
+.textbox_mini {
+    text-align: right;
+    height: auto;
+    width: 5em;
+    background-color: black;
+    color: white;
+}
+
+.textbox_IB {
+    text-align: left;
+    height: 1.5em;
+    width: 20em;
+    background-color: black;
+    color: white;
+}
+
+.textbox_Wide {
+    text-align: left;
+    height: 12em;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.ib_field {
+    width: auto;
+    height: auto;
+    margin-top: 0.5em;
+}
+
+.ddl_date {
+    text-align: right;
+    height: auto;
+    width: auto;
+    background-color: black;
+    color: white;
+}
+
+.th_master{
+    background-color: black;
+}
+
+.td_master {
+    width: 61em;
+}
+
+.td_master_q {
+    width: 20%;
+}
+
+
+.minus{
+    color: red;
+}
+
+.sum {
+    color: lightblue;
+}
+
+.per {
+    color: lightgreen;
+}
+
+.even {
+    color: lightyellow;
+}
+
+.hr {
+    display: block;
+    height: 0;
+    width: auto;
+    margin: 0.5em;
+    border: 1px inset;
+    border-color: red;
+}
+
+.DGTable {
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align: center;
+    width: 1260px;
+    padding: 0.3em 1em;
+    border: solid 2px red;
+    border-radius: 3px;
+    font-family: Meiryo;
+}
+
+
+    .DGTable td {
+        border: groove 1px white;
+        border-collapse: collapse;
+    }
+
+.f-notice {
+    height: 2.25em;
+    display: inline-block;
+}
+
+.center {
+    width: 1230px;
+    margin-top: 1.85em;
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.dditems {
+    /* 単なるスタイリング ドラッグアンドドロップできるアイテムの配置元 */
+    display: inline-block;
+    width: 14em;
+    height: 40em;
+    margin: 0;
+    padding: 2em;
+    background-color: gray;
+    border: 1px solid red;
+}
+
+.dropbox_red {
+    /* 単なるスタイリング ドラッグアンドドロップの配置先 */
+    display: inline-block;
+    width: 14em;
+    height: 40em;
+    margin: 0;
+    padding: 2em;
+    background-color: lightcoral;
+    border: 1px solid red;
+    /*以下はwebkit系ブラウザでドラッグ＆ドロップを動かすための指定（ブラウザのサポートが進めば、必要なくなると思われます）*/
+    /*-khtml-user-drag: element;*/
+}
+
+.dropbox_blue {
+    /* 単なるスタイリング ドラッグアンドドロップの配置先 */
+    display: inline-block;
+    width: 14em;
+    height: 40em;
+    margin: 0;
+    padding: 2em;
+    background-color: lightblue;
+    border: 1px solid blue;
+    /*以下はwebkit系ブラウザでドラッグ＆ドロップを動かすための指定（ブラウザのサポートが進めば、必要なくなると思われます）*/
+    /*-khtml-user-drag: element;*/
+}
+
+.dropbox_green {
+    /* 単なるスタイリング ドラッグアンドドロップの配置先 */
+    display: inline-block;
+    width: 14em;
+    height: 40em;
+    margin: 0;
+    padding: 2em;
+    background-color: lightgreen;
+    border: 1px solid green;
+    /*以下はwebkit系ブラウザでドラッグ＆ドロップを動かすための指定（ブラウザのサポートが進めば、必要なくなると思われます）*/
+    /*-khtml-user-drag: element;*/
+}
+
+.flex_title {
+    /* ラベルタイトルエリア */
+    display: inline-block;
+    width: 16em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 1px solid black;
+    background-color: black;
+    margin: 0;
+}
+
+.flex_ul {
+    /* ラベルアイテムエリア */
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+}
+
+　
+
+.item {
+    /* ラベルアイテム */
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: auto;
+    padding: 1em;
+    white-space: pre-line;
+    transition: 4s;
+}
+
+.item:hover{
+    color: lightblue;
+}
+
+.item:active{
+    color: lightgreen;
+}
+
+.index1 {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+    background-color: black;
+}
+
+.btn-wrap {
+    width: auto;
+    height: auto;
+    background-color: #1e1e1e;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px red;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+.form-flat-border {
+    width: 1225px;
+    height: auto;
+    background-color: #1e1e1e;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px red;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+.form-flat-border-inner {
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: black;
+    border: solid 1px black;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+.btn-flat-border {
+    -webkit-appearance: none; /* スマホ対応 */
+    text-align: center;
+    width: 180px;
+    height: 32px;
+    display: inline-block;
+    padding: 0.15em 1em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px white;
+    background: #1e1e1e;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+    .btn-flat-border:hover {
+        background: #808080;
+        cursor: pointer;
+    }
+
+.btn-flat-border-mini {
+    -webkit-appearance: none; /* スマホ対応 */
+    text-align: center;
+    width: auto;
+    height: 32px;
+    display: inline-block;
+    padding: 0.15em 1em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px white;
+    background: #1e1e1e;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+}
+
+    .btn-flat-border-mini:hover {
+        background: #808080;
+        cursor: pointer;
+    }
+
+
+.btn-flat-border-ib {
+    -webkit-appearance: none; /* スマホ対応 */
+    text-align: center;
+    width: auto;
+    height: 2em;
+    display: inline-block;
+    padding: 0 0.25em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px white;
+    background: #1e1e1e;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+}
+
+    .btn-flat-border-ib:hover {
+        background: #808080;
+        cursor: pointer;
+    }
+
+.btn-flat-border-textinnner {
+    -webkit-appearance: none; /* スマホ対応 */
+    text-align: center;
+    width: auto;
+    height: 1.5em;
+    display: inline-block;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    text-decoration: none;
+    color: white;
+    border: solid 1px white;
+    background: #1e1e1e;
+    border-radius: 3px;
+    transition: .4s;
+    font-family: Meiryo;
+    border-radius: 3px;
+}
+
+    .btn-flat-border-textinnner:hover {
+        background: #808080;
+        cursor: pointer;
+    }
+
+@media print {
+    .noprint {
+        display: none;
+    }
+
+    #Wrap {
+        margin-left: 0em;
+        margin-right: 0em;
+    }
+
+    .th_master {
+        background-color: white;
+    }
+
+    .ddl_date {
+        background-color: white;
+        color: black;
+        -webkit-appearance: none; /* ベンダープレフィックス(Google Chrome、Safari用) */
+        -moz-appearance: none; /* ベンダープレフィックス(Firefox用) */
+        border: none;
+        text-decoration: none;
+    }
+
+    .minus {
+        color: inherit;
+    }
+
+    .sum {
+        color: inherit;
+    }
+
+    .per {
+        color: inherit;
+    }
+
+    .even {
+        color: inherit;
+    }
+
+    .DGTable {
+        border: solid 2px black;
+        background-color: white;
+        color: black;
+    }
+
+        .DGTable td {
+            border: groove 1px black;
+            border-collapse: collapse;
+        }
+
+    .hr {
+        display: none;
+    }
+
+    .lbl_pl {
+        color: black;
+    }
+
+    .lbl_BS {
+        color: black;
+    }
+
+    .textbox_pl {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    .textbox_BS {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    .textbox_LBS {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    .textbox_LBSW {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    .textbox_mini {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;       
+    }
+
+
+    .textbox_Wide {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        border: none;
+    }
+
+    #Wrap {
+        background-color: white;
+        color: black;
+    }
+
+    body {
+        background-image: none;
+    }
+}

@@ -7,11 +7,11 @@
 // </自動生成>
 //------------------------------------------------------------------------------
 
-namespace WhereEver.XHTML5Editor
+namespace WhereEver.管理ページ
 {
 
 
-    public partial class WebForm1
+    public partial class WorkManager
     {
 
         /// <summary>
@@ -33,435 +33,327 @@ namespace WhereEver.XHTML5Editor
         protected global::WhereEver.MenuControl m;
 
         /// <summary>
-        /// Button_Button コントロール。
+        /// Button_DD コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Button;
+        protected global::System.Web.UI.WebControls.Button Button_DD;
 
         /// <summary>
-        /// Panel_BT コントロール。
+        /// Panel_DD コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_BT;
+        protected global::System.Web.UI.WebControls.Panel Panel_DD;
 
         /// <summary>
-        /// TextBox_BTNText コントロール。
+        /// Hidden_Label_item コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_BTNText;
+        protected global::System.Web.UI.WebControls.HiddenField Hidden_Label_item;
 
         /// <summary>
-        /// Label_ButtonResult コントロール。
+        /// Button_NewProj コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_ButtonResult;
+        protected global::System.Web.UI.WebControls.Button Button_NewProj;
 
         /// <summary>
-        /// TextBox_FontFamily コントロール。
+        /// Label_dropbox_black コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_FontFamily;
+        protected global::System.Web.UI.WebControls.Label Label_dropbox_black;
 
         /// <summary>
-        /// TextBox_Width コントロール。
+        /// Label_dropbox_red コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Width;
+        protected global::System.Web.UI.WebControls.Label Label_dropbox_red;
 
         /// <summary>
-        /// DropDownList_Width コントロール。
+        /// Label_dropbox_blue コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Width;
+        protected global::System.Web.UI.WebControls.Label Label_dropbox_blue;
 
         /// <summary>
-        /// TextBox_Height コントロール。
+        /// Label_dropbox_green コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Height;
+        protected global::System.Web.UI.WebControls.Label Label_dropbox_green;
 
         /// <summary>
-        /// DropDownList_Height コントロール。
+        /// Button_GetLabelDD コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Height;
+        protected global::System.Web.UI.WebControls.Button Button_GetLabelDD;
 
         /// <summary>
-        /// TextBox_Border コントロール。
+        /// Button_DeleteBlackDD コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Border;
+        protected global::System.Web.UI.WebControls.Button Button_DeleteBlackDD;
 
         /// <summary>
-        /// DropDownList_Border コントロール。
+        /// TextBox_LabelDDResult コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Border;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_LabelDDResult;
 
         /// <summary>
-        /// TextBox_Radius コントロール。
+        /// Button_Meibo コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Radius;
+        protected global::System.Web.UI.WebControls.Button Button_Meibo;
 
         /// <summary>
-        /// DropDownList_Radius コントロール。
+        /// Panel_Meibo コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Radius;
+        protected global::System.Web.UI.WebControls.Panel Panel_Meibo;
 
         /// <summary>
-        /// TextBox_BorderColor コントロール。
+        /// TextBox_Work_uuid コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_BorderColor;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Work_uuid;
 
         /// <summary>
-        /// TextBox_Color コントロール。
+        /// Button_Work_uuid_reset コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Color;
+        protected global::System.Web.UI.WebControls.Button Button_Work_uuid_reset;
 
         /// <summary>
-        /// TextBox_BColor コントロール。
+        /// lblMeiboPictureResult コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_BColor;
+        protected global::System.Web.UI.WebControls.Label lblMeiboPictureResult;
 
         /// <summary>
-        /// TextBox_HColor コントロール。
+        /// TextBox_CompanyName コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_HColor;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_CompanyName;
 
         /// <summary>
-        /// TextBox_HBColor コントロール。
+        /// FileUpload_MeiboPicture コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_HBColor;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_MeiboPicture;
 
         /// <summary>
-        /// CheckBox_Pointer コントロール。
+        /// Button_MeiboUpload コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_Pointer;
+        protected global::System.Web.UI.WebControls.Button Button_MeiboUpload;
 
         /// <summary>
-        /// Button_Correct コントロール。
+        /// Button_MeiboDelete コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Correct;
+        protected global::System.Web.UI.WebControls.Button Button_MeiboDelete;
 
         /// <summary>
-        /// TextBox_ButtonCodeResult コントロール。
+        /// TextBox_MeiboWork コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_ButtonCodeResult;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_MeiboWork;
 
         /// <summary>
-        /// Button_QRCode コントロール。
+        /// TextBox_MeiboName コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_QRCode;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_MeiboName;
 
         /// <summary>
-        /// Panel_QRCode コントロール。
+        /// TextBox_MeiboArea コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_QRCode;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_MeiboArea;
 
         /// <summary>
-        /// TextBox_QR_Text コントロール。
+        /// TextBox_Meibo_year コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_QR_Text;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Meibo_year;
 
         /// <summary>
-        /// TextBox_QRCode_Width コントロール。
+        /// TextBox_Meibo_month コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_QRCode_Width;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Meibo_month;
 
         /// <summary>
-        /// TextBox_QRCode_Height コントロール。
+        /// TextBox_Meibo_day コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_QRCode_Height;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Meibo_day;
 
         /// <summary>
-        /// FileUpload_userfile コントロール。
+        /// TextBox_Meibo_Tel1 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload_userfile;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Meibo_Tel1;
 
         /// <summary>
-        /// CheckBox_EAN コントロール。
+        /// TextBox_Meibo_Tel2 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox_EAN;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Meibo_Tel2;
 
         /// <summary>
-        /// Button_CreateQRCode コントロール。
+        /// TextBox_Meibo_Tel3 コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_CreateQRCode;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Meibo_Tel3;
 
         /// <summary>
-        /// Button_EncodeQRCode コントロール。
+        /// TextBox_MeiboAddress コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_EncodeQRCode;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_MeiboAddress;
 
         /// <summary>
-        /// Label_QRCode_Area コントロール。
+        /// CheckBox_MeiboPB コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_QRCode_Area;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox_MeiboPB;
 
         /// <summary>
-        /// TextBox_QRCode_Result コントロール。
+        /// Button_MeiboCorrect コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_QRCode_Result;
+        protected global::System.Web.UI.WebControls.Button Button_MeiboCorrect;
 
         /// <summary>
-        /// Button_IndexBox コントロール。
+        /// GridView_Meibo コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_IndexBox;
+        protected global::System.Web.UI.WebControls.GridView GridView_Meibo;
 
         /// <summary>
-        /// Panel_IndexBox コントロール。
+        /// SqlDataSource_Meibo コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_IndexBox;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Meibo;
 
         /// <summary>
-        /// TextBox_IB コントロール。
+        /// lbluid コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_IB;
+        protected global::System.Web.UI.WebControls.Label lbluid;
 
         /// <summary>
-        /// Button_IBCorrect コントロール。
+        /// TextBox_MeiboResult コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_IBCorrect;
-
-        /// <summary>
-        /// Button_IBPageCorrect コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_IBPageCorrect;
-
-        /// <summary>
-        /// Button_SetIndexBook コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_SetIndexBook;
-
-        /// <summary>
-        /// Button_GetIndexBook コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_GetIndexBook;
-
-        /// <summary>
-        /// TextBox_IBText コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_IBText;
-
-        /// <summary>
-        /// TextBox_IBResult コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_IBResult;
-
-        /// <summary>
-        /// Button_DeepBit コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_DeepBit;
-
-        /// <summary>
-        /// Panel_DeepBit コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel_DeepBit;
-
-        /// <summary>
-        /// TextBox_Bit_a コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Bit_a;
-
-        /// <summary>
-        /// TextBox_Bit_b コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Bit_b;
-
-        /// <summary>
-        /// Button_SetBit コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_SetBit;
-
-        /// <summary>
-        /// Button_SetRandomBit コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_SetRandomBit;
-
-        /// <summary>
-        /// TextBox_BitResult コントロール。
-        /// </summary>
-        /// <remarks>
-        /// 自動生成されたフィールド。
-        /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_BitResult;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_MeiboResult;
     }
 }

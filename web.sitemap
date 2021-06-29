@@ -34,7 +34,12 @@
 			</siteMapNode>
 
 			<siteMapNode title="マイページ"
-			  description="名前とパスワードの管理やサムネイルの登録などができます" url="管理ページ/Kanri.aspx" />
+			  description="名前とパスワードの管理やサムネイルの登録などができます" url="管理ページ/Kanri.aspx">
+
+				<siteMapNode title="業務管理"
+				description="基本的な業務管理システム" url="管理ページ/WorkManager.aspx" />
+				
+			</siteMapNode>
 
 			<siteMapNode title="Html＆QRボタン生成"
 			  description="web上で使えるお好みのボタンやQRコードを生成できます" url="XHTML5Editor/XHTML5Editor.aspx" />
