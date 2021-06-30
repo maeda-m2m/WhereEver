@@ -615,7 +615,14 @@ namespace WhereEver
                 }
                 else
                 {
-                    lblLogoutTime.Text = dt.Date.ToString();
+                    if (!dt.IsNull("Date"))
+                    {
+                        lblLogoutTime.Text = dt.Date.ToString();
+                    }
+                    else
+                    {
+                        lblLogoutTime.Text = "Null";
+                    }
                 }
 
                 //----------------------------------------------------
