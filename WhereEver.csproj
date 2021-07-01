@@ -271,6 +271,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Class2.cs" />
     <Compile Include="ClassLibrary\DQLClass.cs" />
+    <Compile Include="ClassLibrary\SlimDQLClass.cs" />
     <Compile Include="ClassLibrary\ToDoManagerClass.cs" />
     <Compile Include="ClassLibrary\CoinClass.cs" />
     <Compile Include="ClassLibrary\MailToClass.cs" />
@@ -284,6 +285,7 @@
     <Compile Include="ClassLibrary\ShinseiClass.cs" />
     <Compile Include="ClassLibrary\Soukan.cs" />
     <Compile Include="ClassLibrary\WorkRosterClass.cs" />
+    <Compile Include="ClassLibrary\XorShift.cs" />
     <Compile Include="Class\Chat.cs" />
     <Compile Include="Class\Chat_CH.cs" />
     <Compile Include="Class\Toppage.cs" />

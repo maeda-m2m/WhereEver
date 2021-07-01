@@ -41,7 +41,7 @@ namespace WhereEver.ClassLibrary
         private const int cmaxIndex = 1;    //初期値このまま
         private const int cmaxQ = 1000000 / cMaxQSafety;  //試行回数（負の値）デフォルトで-1000000回
         private const double cAlpha = 0.01f;    //α
-        private const double cGammma = 0.8f;    //γ　割引率　1なら目先の報酬を最優先する
+        private const double cGammma = 0.8f;    //γ　割引率　0なら目先の報酬を最優先する
         //--------------------------------//
 
         /// <summary>
