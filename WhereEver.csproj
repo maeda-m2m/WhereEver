@@ -270,6 +270,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Class2.cs" />
+    <Compile Include="ClassLibrary\CNNClass.cs" />
     <Compile Include="ClassLibrary\DQLClass.cs" />
     <Compile Include="ClassLibrary\SlimDQLClass.cs" />
     <Compile Include="ClassLibrary\ToDoManagerClass.cs" />

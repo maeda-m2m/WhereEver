@@ -918,11 +918,22 @@ namespace WhereEver.XHTML5Editor
             return bit_a;
         }
 
+        protected void Push_CNNPanel(object sender, EventArgs e)
+        {
+            if (Panel_CNN.Visible)
+            {
+                Panel_CNN.Visible = false;
+            }
+            else
+            {
+                Panel_CNN.Visible = true;
+            }
+        }
 
-
-
-
-
+        protected void Push_CNN_Create(object sender, EventArgs e)
+        {
+            TextBox_CNN_Result.Text = ClassLibrary.CNNClass.SetCNNFile(FileUpload_CNN.PostedFile);
+        }
 
 
 

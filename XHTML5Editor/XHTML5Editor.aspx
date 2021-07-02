@@ -410,15 +410,51 @@
 
 
 
+<div class="noprint">
+ <span class="hr"></span>
 
 
+           <p class="index1">
+               ◆Bitmap CNN
+               <asp:Button ID="Button1" CssClass="btn-flat-border" runat="server" Text="パネル開閉" OnClick="Push_CNNPanel" CausesValidation="False" />　画像認識(CNN)のテストです。
+           </p>
+
+ <hr />
+</div>
+
+<asp:Panel ID="Panel_CNN" runat="server" Visible="false" DefaultButton="Button_CNN_Correct">
+
+<div class="noprint">
+
+<span class="hr"></span>
+
+<div class="center"><a name="CNN"></a>
+    <p class="index1">認識してほしい画像を入力して下さい。アラビア数字に対応予定です。(Ver.0.6α)</p>
+
+        <div>
+            <p class="f-notice">[画像から文字列を判別]</p><asp:FileUpload ID="FileUpload_CNN" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
+        </div>
+    <p>
+        <asp:Button ID="Button_CNN_Correct" CssClass="btn-flat-border" runat="server" Text="判定" OnClick="Push_CNN_Create" CausesValidation="False" />
+    </p>
+
+    <p>
+        <span class="hr"></span>
+        <asp:Label ID="Label1" runat="server" ValidateRequestMode="Disabled" Text="※このスペースにCNN解析結果が生成されます。"></asp:Label>
+        <span class="hr"></span>
+    </p>
+
+     <div>
+       <asp:TextBox ID="TextBox_CNN_Result" runat="server" CssClass="textbox_Wide" ValidateRequestMode="Disabled" Text="Ready..." CausesValidation="false" TextMode="MultiLine" Style="resize: none" ReadOnly="true"></asp:TextBox>
+     </div>
+    </div>
+</div>
+</asp:Panel>
 
 
 </div><%-- noprint --%>
 
-
-
-        </div>
+    </div>       
     </form>
 
 
