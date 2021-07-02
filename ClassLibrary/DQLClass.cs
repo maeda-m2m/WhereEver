@@ -40,6 +40,8 @@ namespace WhereEver.ClassLibrary
         private const int cMaxQSafety = 100; //cMainProcessおよびcmaxQを任意の値で除算します。ASP.Netでは100程度に設定して下さい。そうしないとタイムアウトして502エラーになるかGPUが焼き切れます。
         private const int cmaxIndex = 1;    //初期値このまま
         private const int cmaxQ = 1000000 / cMaxQSafety;  //試行回数（負の値）デフォルトで-1000000回
+        private const double cAlpha = 0.01f;    //α
+        private const double cGammma = 0.8f;    //γ　割引率　0なら目先の報酬を最優先する
         //--------------------------------//
 
         /// <summary>
@@ -50,7 +52,8 @@ namespace WhereEver.ClassLibrary
         /// 実行結果はstring型にして返します。
         /// </summary>
         /// <returns>string</returns>
-        public string GetQLeearning(){
+        public string GetQLeearning()
+        {
             QLearning.Seisan rb = new QLearning.Seisan();
             rb.MainProcess(cMainProcess / cMaxQSafety);
             return sb.ToString();
@@ -64,7 +67,7 @@ namespace WhereEver.ClassLibrary
             public double alpha;
             public double gamma;
 
-            private QLearning(int sSize, int aSize, int fillValue, double alpha = 0.01, double gamma = 0.8)
+            private QLearning(int sSize, int aSize, int fillValue, double alpha = cAlpha, double gamma = cGammma)
             {
                 this.alpha = alpha;
                 this.gamma = gamma;
@@ -87,6 +90,12 @@ namespace WhereEver.ClassLibrary
                     + this.alpha * (reward + this.gamma * serachMaxAndArgmax(nextSituation, ref maxIndex, ref maxQ, nextUnselectableActions));
             }
 
+            /// <summary>
+            /// 設定をもとに最大Q値を検索します。
+            /// </summary>
+            /// <param name="situationNo"></param>
+            /// <param name="unselectableActions"></param>
+            /// <returns></returns>
             private int SelectActionByGreedy(int situationNo, List<int> unselectableActions = null)
             {
                 unselectableActions = unselectableActions ?? new List<int>();
@@ -96,52 +105,71 @@ namespace WhereEver.ClassLibrary
                 return maxIndex;
             }
 
+            /// <summary>
+            /// ε
+            /// </summary>
+            /// <param name="epsilon"></param>
+            /// <param name="situationNo"></param>
+            /// <param name="unselectableActions"></param>
+            /// <returns>int</returns>
             private int SelectActionByEGreedy(double epsilon, int situationNo, List<int> unselectableActions = null)
             {
                 Random r = new Random();
-                if (r.NextDouble() < epsilon)
+                if (r.NextDouble() < epsilon) //乱数がε未満のとき
                 {
                     int action = -1;
                     do
                     {
                         action = r.Next(this.qValues.GetLength(1));
-                    } while (unselectableActions.Contains(action));
+                    } while (unselectableActions.Contains(action)); //選択不可能idが見つかるまでQ値を検索
                     return action;
                 }
-                else
+                else //乱数がεより大きいとき
                 {
                     return this.SelectActionByGreedy(situationNo, unselectableActions);
                 }
             }
 
+            /// <summary>
+            /// Qテーブルから最大Q値を抽出します。
+            /// </summary>
+            /// <param name="situationNo"></param>
+            /// <param name="maxIndex"></param>
+            /// <param name="maxQ"></param>
+            /// <param name="unselectableActions"></param>
+            /// <returns>ref double maxQ</returns>
             private double serachMaxAndArgmax(int situationNo, ref int maxIndex, ref double maxQ, List<int> unselectableActions = null)
             {
                 unselectableActions = unselectableActions ?? new List<int>();
                 for (int j = 0; j < this.qValues.GetLength(1); j++)
                 {
 
-                    if (unselectableActions.Contains(j))
+                    if (unselectableActions.Contains(j))//選択不可能リストに含まれているか？
                     {
+                        //選択不可能のため考慮しない
                         continue;
                     }
-                    else if (this.qValues[situationNo, j] > maxQ)
+                    else if (this.qValues[situationNo, j] > maxQ)   //Qテーブルから[列, 行]の（最も大きい）Q値を参照する（同値なら前の値を優先）
                     {
-                        maxIndex = j;
-                        maxQ = this.qValues[situationNo, j];
+                        maxIndex = j;   //拡張時の参照渡し用（デフォルトでは使用しない）
+                        maxQ = this.qValues[situationNo, j];    //Qテーブルから[列, 行]の（最も大きい）Q値を参照する
                     }
                 }
 
                 return maxQ;
             }
 
-
+            /// <summary>
+            /// デバッグ用
+            /// </summary>
             private void PrintQValues()
             {
                 var rowCount = this.qValues.GetLength(0);
                 var colCount = this.qValues.GetLength(1);
                 for (int row = 0; row < rowCount; row++)
                 {
-                    for (int col = 0; col < colCount; col++) {
+                    for (int col = 0; col < colCount; col++)
+                    {
                         //Console.Write(String.Format("{0}t", this.qValues[row, col]));
                         //Console.WriteLine();
                         sb.Append(String.Format("{0}t", this.qValues[row, col]));
@@ -278,15 +306,15 @@ namespace WhereEver.ClassLibrary
                 protected int GetMyTasks()
                 {
                     Random rand = new Random();
-                    myRequiredTaskCost = rand.Next(0,4);
+                    myRequiredTaskCost = rand.Next(0, 4);
                     return myRequiredTaskCost;
                 }
                 protected Dictionary<int, Action> SetActions()
                 {
                     Dictionary<int, Action> actions = new Dictionary<int, Action>();
-                        actions.Add(ActionTable.easyTask.id, ActionTable.easyTask);
-                        actions.Add(ActionTable.normalTask.id, ActionTable.normalTask);
-                        actions.Add(ActionTable.heaveyTask.id, ActionTable.heaveyTask);
+                    actions.Add(ActionTable.easyTask.id, ActionTable.easyTask);
+                    actions.Add(ActionTable.normalTask.id, ActionTable.normalTask);
+                    actions.Add(ActionTable.heaveyTask.id, ActionTable.heaveyTask);
                     return actions;
                 }
                 private Dictionary<int, Action> GetActions()
@@ -408,7 +436,7 @@ namespace WhereEver.ClassLibrary
                     }
 
 
-                        if (this.GetMyHoldTasks() >= 10)
+                    if (this.GetMyHoldTasks() >= 10)
                     {
                         //過多
                         return 6;

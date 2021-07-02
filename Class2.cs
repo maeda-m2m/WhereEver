@@ -76,7 +76,7 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "SELECT DISTINCT name FROM T_LoginList";
+                "SELECT DISTINCT [name], Max([Date]) AS Date FROM [T_LoginList] GROUP BY [name]";
             DATASET.DataSet.T_LoginListDataTable dt = new DATASET.DataSet.T_LoginListDataTable();
             da.Fill(dt);
             return dt;
@@ -96,7 +96,7 @@ namespace WhereEver
         {
             SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
             da.SelectCommand.CommandText =
-                "SELECT DISTINCT name FROM T_LogoutList";
+                "SELECT DISTINCT [name], Max([Date]) AS Date FROM [T_LogoutList] GROUP BY [name]";
             DATASET.DataSet.T_LogoutListDataTable dt = new DATASET.DataSet.T_LogoutListDataTable();
             da.Fill(dt);
             return dt;
