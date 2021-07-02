@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace WhereEver.Project_System
 {
@@ -156,8 +157,8 @@ namespace WhereEver.Project_System
                 
                 e.Item.Cells[3].Text = dr.PMiddlename.ToString();
 
-                e.Item.Cells[4].Text = "<progress max = 100 value = " + dr.PShintyoku+ " style = width:100px; ></ progress >";
-
+                e.Item.Cells[4].Text = "<progress max = 100 value = " + dr.PShintyoku+ " class = progress ></ progress >";
+                                            
                 e.Item.Cells[6].Text = dr.PMiddlestart.ToShortDateString();
                 e.Item.Cells[7].Text = dr.PMiddleover.ToShortDateString();
                 if (dr.PMiddleover < DateTime.Now)
@@ -307,7 +308,6 @@ namespace WhereEver.Project_System
 
         protected void DgPKanri_EditCommand(object source, DataGridCommandEventArgs e)
         {
-            
             DgPKanri.EditItemIndex = e.Item.ItemIndex;
             CreateDataGrid(SessionManager.project.PdbRow.Pid);
         }
@@ -320,16 +320,17 @@ namespace WhereEver.Project_System
 
         protected void DgPKanri_UpdateCommand(object source, DataGridCommandEventArgs e)
         {
-            TextBox txtPMiddlename = (TextBox)e.Item.Cells[3].Controls[0];
-            TextBox txtPMiddlestart = (TextBox)e.Item.Cells[6].Controls[0];
-            TextBox txtPMiddleover = (TextBox)e.Item.Cells[7].Controls[0];
+            TextBox txtPMiddlename = (TextBox)e.Item.FindControl("PMiddlename");
+            string xx = e.Item.Cells[6].Text;
+            string yy = e.Item.Cells[7].Text;
+            //TextBox txtPMiddleover = (TextBox)e.Item.FindControl("txtPMiddleover");
             DropDownList dropDownListChange = e.Item.FindControl("ddpShintyokuChange") as DropDownList;
             DATASET.DataSet.T_PdbKanriDataTable t_PdbKanris = new DATASET.DataSet.T_PdbKanriDataTable();
             DATASET.DataSet.T_PdbKanriRow t_PdbKanriRow = t_PdbKanris.NewT_PdbKanriRow();
 
             t_PdbKanriRow[3] = txtPMiddlename.Text;
-            t_PdbKanriRow[4] = txtPMiddlestart.Text;
-            t_PdbKanriRow[5] = txtPMiddleover.Text;
+            //t_PdbKanriRow[4] = txtPMiddlestart;
+            //t_PdbKanriRow[5] = txtPMiddleover.Text;
             t_PdbKanriRow[6] = SessionManager.User.M_User.id.Trim();
             t_PdbKanriRow[7] = DateTime.Now;
             t_PdbKanriRow[9] = dropDownListChange.SelectedItem.Value;
