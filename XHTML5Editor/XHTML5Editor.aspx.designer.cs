@@ -501,13 +501,13 @@ namespace WhereEver.XHTML5Editor
         protected global::System.Web.UI.WebControls.Button Button_CNN_Correct;
 
         /// <summary>
-        /// Label1 コントロール。
+        /// Label_CNN_Result コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label Label_CNN_Result;
 
         /// <summary>
         /// TextBox_CNN_Result コントロール。

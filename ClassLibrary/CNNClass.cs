@@ -64,11 +64,231 @@ namespace WhereEver.ClassLibrary
             //150px*150pxなら、150px*4bit+150px*4bit=3000bit、区切り文字"-"が2999個になる。
             string[] sp = str.Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);  //空白文字をトリム              
             StringBuilder sb = new StringBuilder();
+            StringBuilder sb2 = new StringBuilder();
 
             if (CNNClass.errorFlag == true)
             {
                 sb.Append("警告：画像サイズの縮尺比が不正です。正常に縮小できませんでした。\r\f");
             }
+
+
+            //0(-1)と1(+1)の合計値SUM
+            List<int> sum = new List<int>();
+            //List Index
+            int sumId = 0;
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+            sum.Add(0);
+
+            //DataBase
+            List<int> sum0 = new List<int>();
+            sum0.Add(-128);
+            sum0.Add(-128);
+            sum0.Add(-118);
+            sum0.Add(-118);
+            sum0.Add(-120);
+            sum0.Add(-122);
+            sum0.Add(-128);
+            sum0.Add(-122);
+            sum0.Add(-122);
+            sum0.Add(-128);
+            sum0.Add(-120);
+            sum0.Add(-124);
+            sum0.Add(-124);
+            sum0.Add(-114);
+            sum0.Add(-128);
+            sum0.Add(-128);
+
+            List<int> sum1 = new List<int>();
+            sum1.Add(-128);
+            sum1.Add(-128);
+            sum1.Add(-122);
+            sum1.Add(-124);
+            sum1.Add(-128);
+            sum1.Add(-128);
+            sum1.Add(-128);
+            sum1.Add(-128);
+            sum1.Add(-112);
+            sum1.Add(-126);
+            sum1.Add(-128);
+            sum1.Add(-128);
+            sum1.Add(-128);
+            sum1.Add(-128);
+            sum1.Add(-128);
+            sum1.Add(-128);
+
+            List<int> sum2 = new List<int>();
+            sum2.Add(-128);
+            sum2.Add(-128);
+            sum2.Add(-120);
+            sum2.Add(-122);
+            sum2.Add(-124);
+            sum2.Add(-124);
+            sum2.Add(-124);
+            sum2.Add(-124);
+            sum2.Add(-126);
+            sum2.Add(-124);
+            sum2.Add(-124);
+            sum2.Add(-118);
+            sum2.Add(-110);
+            sum2.Add(-128);
+            sum2.Add(-128);
+            sum2.Add(-128);
+
+            List<int> sum3 = new List<int>();
+            sum3.Add(-128);
+            sum3.Add(-128);
+            sum3.Add(-118);
+            sum3.Add(-128);
+            sum3.Add(-122);
+            sum3.Add(-124);
+            sum3.Add(-126);
+            sum3.Add(-120);
+            sum3.Add(-106);
+            sum3.Add(-128);
+            sum3.Add(-114);
+            sum3.Add(-112);
+            sum3.Add(-120);
+            sum3.Add(-124);
+            sum3.Add(-114);
+            sum3.Add(-128);
+
+            List<int> sum4 = new List<int>();
+            sum4.Add(-128);
+            sum4.Add(-128);
+            sum4.Add(-124);
+            sum4.Add(-122);
+            sum4.Add(-124);
+            sum4.Add(-126);
+            sum4.Add(-112);
+            sum4.Add(-128);
+            sum4.Add(-128);
+            sum4.Add(-128);
+            sum4.Add(-118);
+            sum4.Add(-128);
+            sum4.Add(-128);
+            sum4.Add(-128);
+            sum4.Add(-128);
+            sum4.Add(-128);
+
+            List<int> sum5 = new List<int>();
+            sum5.Add(-128);
+            sum5.Add(-128);
+            sum5.Add(-128);
+            sum5.Add(-118);
+            sum5.Add(-128);
+            sum5.Add(-124);
+            sum5.Add(-126);
+            sum5.Add(-124);
+            sum5.Add(-120);
+            sum5.Add(-116);
+            sum5.Add(-112);
+            sum5.Add(-116);
+            sum5.Add(-120);
+            sum5.Add(-128);
+            sum5.Add(-128);
+            sum5.Add(-128);
+
+            List<int> sum6 = new List<int>();
+            sum6.Add(-128);
+            sum6.Add(-128);
+            sum6.Add(-126);
+            sum6.Add(-126);
+            sum6.Add(-122);
+            sum6.Add(-126);
+            sum6.Add(-128);
+            sum6.Add(-122);
+            sum6.Add(-128);
+            sum6.Add(-114);
+            sum6.Add(-128);
+            sum6.Add(-112);
+            sum6.Add(-110);
+            sum6.Add(-122);
+            sum6.Add(-116);
+            sum6.Add(-128);
+
+            List<int> sum7 = new List<int>();
+            sum7.Add(-128);
+            sum7.Add(-128);
+            sum7.Add(-128);
+            sum7.Add(-118);
+            sum7.Add(-122);
+            sum7.Add(-122);
+            sum7.Add(-124);
+            sum7.Add(-128);
+            sum7.Add(-126);
+            sum7.Add(-126);
+            sum7.Add(-128);
+            sum7.Add(-128);
+            sum7.Add(-120);
+            sum7.Add(-120);
+            sum7.Add(-128);
+            sum7.Add(-128);
+
+            List<int> sum8 = new List<int>();
+            sum8.Add(-128);
+            sum8.Add(-128);
+            sum8.Add(-128);
+            sum8.Add(-124);
+            sum8.Add(-122);
+            sum8.Add(-128);
+            sum8.Add(-120);
+            sum8.Add(-122);
+            sum8.Add(-120);
+            sum8.Add(-124);
+            sum8.Add(-122);
+            sum8.Add(-122);
+            sum8.Add(-114);
+            sum8.Add(-128);
+            sum8.Add(-128);
+            sum8.Add(-128);
+
+            List<int> sum9 = new List<int>();
+            sum9.Add(-128);
+            sum9.Add(-128);
+            sum9.Add(-120);
+            sum9.Add(-120);
+            sum9.Add(-128);
+            sum9.Add(-126);
+            sum9.Add(-108);
+            sum9.Add(-128);
+            sum9.Add(-122);
+            sum9.Add(-128);
+            sum9.Add(-124);
+            sum9.Add(-128);
+            sum9.Add(-124);
+            sum9.Add(-120);
+            sum9.Add(-128);
+            sum9.Add(-128);
+
+            //0～9
+            List<int> sumAnswer = new List<int>();
+            sumAnswer.Add(0);
+            sumAnswer.Add(0);
+            sumAnswer.Add(0);
+            sumAnswer.Add(0);
+            sumAnswer.Add(0);
+            sumAnswer.Add(0);
+            sumAnswer.Add(0);
+            sumAnswer.Add(0);
+            sumAnswer.Add(0);
+            sumAnswer.Add(0);
+
+            //init
+            int sumMax = 0;
 
             //256bit
             for (int i = 0; i < sp.Length; i++)
@@ -76,6 +296,7 @@ namespace WhereEver.ClassLibrary
                 //初期化
                 int num = 0;
 
+                /*
                 if (i > 0)
                 {
                     //例えば、縦16*横16なら64bit、if((i) % 8 == 0)にする（小さすぎて差が出ない）。32*32なら=128bit、64*64なら=512bit(*2 /8で横長)、128*128なら=2048bit(/2 /8で縦長)、いずれも√で余りが出る。√1024なら32になる。
@@ -84,8 +305,18 @@ namespace WhereEver.ClassLibrary
                         sb.Append("\r\f");
                     }
                 }
+                */
 
-                num = Convert.ToInt32(sp[i], 16);      //RGB256(モノクロ変換後)
+                if (i > 0)
+                {
+                    if ((i) % (sp.Length /2 /8) == 0)
+                    {
+                        sumId += 1;
+                    }
+                }
+
+
+                    num = Convert.ToInt32(sp[i], 16);      //RGB256(モノクロ変換後)
 
                 //num += Convert.ToInt32(sp[i], 16);      //R
                 //i++;
@@ -102,11 +333,15 @@ namespace WhereEver.ClassLibrary
                 //256 /2 = 128
                 if (num > 128)
                 {
-                    sb.Append("□");
+                    //sb.Append("□");
+                    //sb2.Append("0");
+                    sum[sumId] -= 1;
                 }
                 else
                 {
-                    sb.Append("■");
+                    //sb.Append("■");
+                    //sb2.Append("1");
+                    sum[sumId] += 1;
                 }
 
                 /*
@@ -127,6 +362,115 @@ namespace WhereEver.ClassLibrary
             }
 
             //-----------------------
+            sb.Append("\r\f");
+            sb.Append(sb2.ToString());
+            sb.Append("\r\f");
+
+            for (int k =0; k < sum.Count; k++)
+            {
+                sb.Append("SUM[");
+                sb.Append(k);
+                sb.Append("] = ");
+                sb.Append(sum[k]);
+                sb.Append("\r\f");
+
+                //差の絶対値で上書き（変数の使いまわし）
+                sum0[k] = Math.Abs(sum[k] - sum0[k]);
+                sum1[k] = Math.Abs(sum[k] - sum1[k]);
+                sum2[k] = Math.Abs(sum[k] - sum2[k]);
+                sum3[k] = Math.Abs(sum[k] - sum3[k]);
+                sum4[k] = Math.Abs(sum[k] - sum4[k]);
+                sum5[k] = Math.Abs(sum[k] - sum5[k]);
+                sum6[k] = Math.Abs(sum[k] - sum6[k]);
+                sum7[k] = Math.Abs(sum[k] - sum7[k]);
+                sum8[k] = Math.Abs(sum[k] - sum8[k]);
+                sum9[k] = Math.Abs(sum[k] - sum9[k]);
+
+                //最小の差を算出
+                sumMax = Math.Min(sum0[k], sum1[k]);
+                sumMax = Math.Min(sumMax, sum2[k]);
+                sumMax = Math.Min(sumMax, sum3[k]);
+                sumMax = Math.Min(sumMax, sum4[k]);
+                sumMax = Math.Min(sumMax, sum5[k]);
+                sumMax = Math.Min(sumMax, sum6[k]);
+                sumMax = Math.Min(sumMax, sum7[k]);
+                sumMax = Math.Min(sumMax, sum8[k]);
+                sumMax = Math.Min(sumMax, sum9[k]);
+                sumMax = Math.Min(sumMax, sum0[k]);
+
+                if (sumMax >= sum0[k])
+                {
+                    sumAnswer[0] += 1;
+                }
+                if (sumMax >= sum1[k])
+                {
+                    sumAnswer[1] += 1;
+                }
+                if (sumMax >= sum2[k])
+                {
+                    sumAnswer[2] += 1;
+                }
+                if (sumMax >= sum3[k])
+                {
+                    sumAnswer[3] += 1;
+                }
+                if (sumMax >= sum4[k])
+                {
+                    sumAnswer[4] += 1;
+                }
+                if (sumMax >= sum5[k])
+                {
+                    sumAnswer[5] += 1;
+                }
+                if (sumMax >= sum6[k])
+                {
+                    sumAnswer[6] += 1;
+                }
+                if (sumMax >= sum7[k])
+                {
+                    sumAnswer[7] += 1;
+                }
+                if (sumMax >= sum8[k])
+                {
+                    sumAnswer[8] += 1;
+                }
+                if (sumMax >= sum9[k])
+                {
+                    sumAnswer[9] += 1;
+                }
+
+
+
+            }
+
+            //最大点数計算
+            sumMax = Math.Max(sumAnswer[9], sumAnswer[0]);
+            sumMax = Math.Max(sumMax, sumAnswer[1]);
+            sumMax = Math.Max(sumMax, sumAnswer[2]);
+            sumMax = Math.Max(sumMax, sumAnswer[3]);
+            sumMax = Math.Max(sumMax, sumAnswer[4]);
+            sumMax = Math.Max(sumMax, sumAnswer[5]);
+            sumMax = Math.Max(sumMax, sumAnswer[6]);
+            sumMax = Math.Max(sumMax, sumAnswer[7]);
+            sumMax = Math.Max(sumMax, sumAnswer[8]);
+            sumMax = Math.Max(sumMax, sumAnswer[9]);
+
+            sb.Append("\r\f");
+            sb.Append("Result_Num = ");
+
+            for(int p=0; p<10; p++)
+            {
+                if (sumMax <= sumAnswer[p])
+                {
+                    sb.Append(p);
+                    sb.Append("(");
+                    sb.Append(sumAnswer[p]);
+                    sb.Append("pts.)");
+                    sb.Append("\r\f");
+                }
+            }
+
+
             sb.Append("\r\f");
             sb.Append(str);
 

@@ -429,7 +429,7 @@
 <span class="hr"></span>
 
 <div class="center"><a name="CNN"></a>
-    <p class="index1">認識してほしい画像を入力して下さい。アラビア数字に対応予定です。(Ver.0.6α)</p>
+    <p class="index1">認識してほしい画像(150px*150px程度)を入力して下さい。アラビア数字１文字を読み取ります。(Ver.0.8α)</p>
 
         <div>
             <p class="f-notice">[画像から文字列を判別]</p><asp:FileUpload ID="FileUpload_CNN" runat="server" Width="485px"  CssClass="form-flat-border-inner" />
@@ -440,7 +440,7 @@
 
     <p>
         <span class="hr"></span>
-        <asp:Label ID="Label1" runat="server" ValidateRequestMode="Disabled" Text="※このスペースにCNN解析結果が生成されます。"></asp:Label>
+        <asp:Label ID="Label_CNN_Result" runat="server" ValidateRequestMode="Disabled" Text="※下記にCNN解析結果が生成されます。"></asp:Label>
         <span class="hr"></span>
     </p>
 
