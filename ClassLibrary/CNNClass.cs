@@ -12,9 +12,22 @@ namespace WhereEver.ClassLibrary
     public class CNNClass
     {
 
+        // やること：
+
+        // 数字１字(150px*150px)の描かれた画像データをbitに直して、入力されたbitとAND演算する。
+        // ReLU関数（かSoftMax）により、一致率が高い数字１字を演算する。
+        // 部分認識はbitの仕様上、素のC#では難しいため、このような仕様をとる。
+
+
+        //画像縮小エラーフラグ trueなら画像縮小エラー
+        private static bool errorFlag = false;
+
 
         public static string SetCNNFile(HttpPostedFile postedFile)
         {
+            //init
+            CNNClass.errorFlag = false;
+
             //PNG形式などの画像をBMP形式に変換
             byte[] buffer = new byte[postedFile.InputStream.Length];
             postedFile.InputStream.Read(buffer, 0, (int)postedFile.InputStream.Length);
@@ -22,6 +35,19 @@ namespace WhereEver.ClassLibrary
             // C#ではFileStreamではなくMemoryStreamを使用する。
             System.IO.MemoryStream memoryStream = new System.IO.MemoryStream(buffer);
             Bitmap bitmap = new Bitmap(memoryStream);
+
+            //インデックスの範囲外にあるとコンパイルエラーになるため、セーフティーをつける。縦横比はなるべく同じにする。
+            const int width = 128;
+            const int height = width;
+            if(bitmap.Width > 16 && bitmap.Height > 16)
+            {
+                //BMPを高精度バイキュービック法でリサイズ（モノクロ8bps以外はカラー扱いされる）
+                bitmap = CNNClass.ResizeBitmap(bitmap, width, height, System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic);
+            }
+            else
+            {
+                return "エラー：画像サイズが小さすぎます。縦16*横16px以上にして下さい。";
+            }
 
             //高さと横幅を保存
             //int bitmap_width = bitmap.Width;
@@ -39,28 +65,52 @@ namespace WhereEver.ClassLibrary
             string[] sp = str.Split("-".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);  //空白文字をトリム              
             StringBuilder sb = new StringBuilder();
 
+            if (CNNClass.errorFlag == true)
+            {
+                sb.Append("警告：画像サイズの縮尺比が不正です。正常に縮小できませんでした。\r\f");
+            }
+
             //256bit
             for (int i = 0; i < sp.Length; i++)
             {
+                //初期化
                 int num = 0;
 
                 if (i > 0)
                 {
-                    if (i % (sp.Length / 3 / 10 -1) == 0)
+                    //例えば、縦16*横16なら64bit、if((i) % 8 == 0)にする（小さすぎて差が出ない）。32*32なら=128bit、64*64なら=512bit(*2 /8で横長)、128*128なら=2048bit(/2 /8で縦長)、いずれも√で余りが出る。√1024なら32になる。
+                    if ((i) % (sp.Length /2 / 8) == 0)
                     {
                         sb.Append("\r\f");
                     }
                 }
 
+                num = Convert.ToInt32(sp[i], 16);      //RGB256(モノクロ変換後)
 
-                num += Convert.ToInt32(sp[i], 16);      //R
-                i++;
-                num += Convert.ToInt32(sp[i], 16);      //G
-                i++;
-                num += Convert.ToInt32(sp[i], 16);      //B
+                //num += Convert.ToInt32(sp[i], 16);      //R
+                //i++;
+                //num += Convert.ToInt32(sp[i], 16);      //G
+                //i++;
+                //num += Convert.ToInt32(sp[i], 16);      //B
                 //i++;
                 //num += Convert.ToInt32(sp[i], 16);    //輝度
 
+
+                //RGB256モノクロ形式
+                //FFに近ければ白
+                //00に近ければ黒
+                //256 /2 = 128
+                if (num > 128)
+                {
+                    sb.Append("□");
+                }
+                else
+                {
+                    sb.Append("■");
+                }
+
+                /*
+                //R+G+B(+輝度)形式
                 //FFに近ければ白
                 //00に近ければ黒
                 //256*3=768 /2=384
@@ -72,6 +122,7 @@ namespace WhereEver.ClassLibrary
                 {
                     sb.Append("■");
                 }
+                */
 
             }
 
@@ -357,6 +408,130 @@ namespace WhereEver.ClassLibrary
         }
 
 
+
+
+        /// <summary>
+        /// Bitmap画像データのリサイズ
+        /// ソースコード参照元：https://imagingsolution.net/program/csharp/rezise_bitmap_data/
+        /// </summary>
+        /// <param name="original">元のBitmapクラスオブジェクト</param>
+        /// <param name="width">リサイズ後の幅</param>
+        /// <param name="height">リサイズ後の高さ</param>
+        /// <param name="interpolationMode">補間モード</param>
+        /// <returns>リサイズされたBitmap</returns>
+        private static Bitmap ResizeBitmap(Bitmap original, int width, int height, System.Drawing.Drawing2D.InterpolationMode interpolationMode)
+        {
+            Bitmap bmpResize;
+            Bitmap bmpResizeColor;
+            Graphics graphics = null;
+
+            try
+            {
+                System.Drawing.Imaging.PixelFormat pf = original.PixelFormat;
+
+                if (original.PixelFormat == System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+                {
+                    // モノクロの時は仮に24bitとする
+                    pf = System.Drawing.Imaging.PixelFormat.Format24bppRgb;
+                }
+
+                bmpResizeColor = new Bitmap(width, height, pf);
+                var dstRect = new RectangleF(0, 0, width, height);
+                var srcRect = new RectangleF(-0.5f, -0.5f, original.Width, original.Height);
+                graphics = Graphics.FromImage(bmpResizeColor);
+                graphics.Clear(Color.Transparent);
+                graphics.InterpolationMode = interpolationMode;
+                graphics.DrawImage(original, dstRect, srcRect, GraphicsUnit.Pixel);
+
+            }
+            finally
+            {
+                if (graphics != null)
+                {
+                    graphics.Dispose();
+                }
+            }
+
+            if (original.PixelFormat == System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+            {
+                // モノクロ画像のとき、24bit→8bitへ変換
+
+                // モノクロBitmapを確保
+                bmpResize = new Bitmap(
+                    bmpResizeColor.Width,
+                    bmpResizeColor.Height,
+                    System.Drawing.Imaging.PixelFormat.Format8bppIndexed
+                    );
+
+                var pal = bmpResize.Palette;
+                for (int i = 0; i < bmpResize.Palette.Entries.Length; i++)
+                {
+                    try
+                    {
+                        pal.Entries[i] = original.Palette.Entries[i];
+                    }
+                    catch
+                    {
+                        //サイズによっては境界外になることがある。その場合は無視。
+                        CNNClass.errorFlag = true;
+                    }
+                }
+                bmpResize.Palette = pal;
+
+                // カラー画像のポインタへアクセス
+                var bmpDataColor = bmpResizeColor.LockBits(
+                        new Rectangle(0, 0, bmpResizeColor.Width, bmpResizeColor.Height),
+                        System.Drawing.Imaging.ImageLockMode.ReadWrite,
+                        bmpResizeColor.PixelFormat
+                        );
+
+                // モノクロ画像のポインタへアクセス
+                var bmpDataMono = bmpResize.LockBits(
+                        new Rectangle(0, 0, bmpResize.Width, bmpResize.Height),
+                        System.Drawing.Imaging.ImageLockMode.ReadWrite,
+                        bmpResize.PixelFormat
+                        );
+
+                int colorStride = bmpDataColor.Stride;
+                int monoStride = bmpDataMono.Stride;
+
+                //byte配列型ポインタを使用しないように改造 (byte*)→(byte)
+                //unsafe
+                //{
+                byte[] pColor = BitConverter.GetBytes((byte)bmpDataColor.Scan0);
+                byte[] pMono = BitConverter.GetBytes((byte)bmpDataMono.Scan0);
+                for (int y = 0; y < bmpDataColor.Height; y++)
+                {
+                    for (int x = 0; x < bmpDataColor.Width; x++)
+                    {
+                        try
+                        {
+                            // R,G,B同じ値のため、Bの値を代表してモノクロデータへ代入
+                            pMono[x + y * monoStride] = pColor[x * 3 + y * colorStride];
+                        }
+                        catch
+                        {
+                            //サイズによっては境界外になることがある。その場合は無視。
+                            CNNClass.errorFlag = true;
+                        }
+                    }
+                }
+                //}
+
+                bmpResize.UnlockBits(bmpDataMono);
+                bmpResizeColor.UnlockBits(bmpDataColor);
+
+                //　解放
+                bmpResizeColor.Dispose();
+            }
+            else
+            {
+                // カラー画像のとき
+                bmpResize = bmpResizeColor;
+            }
+
+            return bmpResize;
+        }
 
 
 
