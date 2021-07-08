@@ -35,15 +35,6 @@ namespace WhereEver.Project_System
                 }
                 CreateDropDownList(spId);
                 CreateDataGrid(spId);
-                DgPKanri.EditCommand +=
-                    new DataGridCommandEventHandler(this.DgPKanri_EditCommand);
-                DgPKanri.CancelCommand +=
-                    new DataGridCommandEventHandler(this.DgPKanri_CancelCommand);
-                DgPKanri.UpdateCommand +=
-                    new DataGridCommandEventHandler(this.DgPKanri_UpdateCommand);
-                DgPKanri.ItemCommand +=
-                    new DataGridCommandEventHandler(this.DgPKanri_ItemCommand);
-
             }
         }
         private void CreateDataGrid(int spId)
@@ -310,6 +301,11 @@ namespace WhereEver.Project_System
         {
             DgPKanri.EditItemIndex = e.Item.ItemIndex;
             CreateDataGrid(SessionManager.project.PdbRow.Pid);
+
+            DataGridItem line = DgPKanri.Items[e.Item.ItemIndex];
+            TextBox tb1 = (TextBox)line.Cells[0].Controls[0];
+
+            tb1.CssClass = "pMiddlename";
         }
 
         protected void DgPKanri_CancelCommand(object source, DataGridCommandEventArgs e)

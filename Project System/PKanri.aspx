@@ -47,7 +47,6 @@
                                 <asp:BoundColumn DataField="PMiddleid" HeaderText="中項目ID" ReadOnly="True" HeaderStyle-Width="10px" HeaderStyle-Font-Size="Small" ItemStyle-Width="10px"/>
                                 <asp:TemplateColumn HeaderText="中項目" HeaderStyle-Width="120px">
                                         <ItemTemplate>
-                                            <asp:TextBox ID="PMiddlename" runat="server" CssClass="pMiddlename"></asp:TextBox>  
                                     </ItemTemplate>
                                 </asp:TemplateColumn>
                                 <asp:TemplateColumn HeaderText="進捗率" HeaderStyle-Width="120px">
@@ -75,9 +74,12 @@
                                 </asp:TemplateColumn>
                                 <asp:TemplateColumn HeaderText="開始" HeaderStyle-Width="130px">
                                         <ItemTemplate>
-
-                                    </ItemTemplate>
+                                            <asp:TextBox ID="StartYear" runat="server" CssClass="time"></asp:TextBox>-
+                                            <asp:TextBox ID="StartMonth" runat="server" CssClass="time"></asp:TextBox>-
+                                            <asp:TextBox ID="StartDay" runat="server" CssClass="time"></asp:TextBox>
+                                        </ItemTemplate>
                                 </asp:TemplateColumn>
+
                                 <asp:TemplateColumn HeaderText="終了" HeaderStyle-Width="130px">
                                         <ItemTemplate>
                                             <input type="date" id="txtPMiddleover" min="2020-01-01" max="2025-12-31" class="pInputdate">

@@ -71,3 +71,8 @@
     height: 20px;
     border-width: 1px;
 }
+.time {
+    background-color: #272525;
+    color: white;
+    width: 10px;
+}
