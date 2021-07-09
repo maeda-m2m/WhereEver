@@ -895,7 +895,7 @@ namespace WhereEver
                 Create3();
                 Create2();
 
-                MessageBox.Show("登録しました", "メッセージボックス", MessageBoxButton.OK, MessageBoxImage.Information);
+                //MessageBox.Show("登録しました", "メッセージボックス", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Panel1.Visible = true;
                 Panel2.Visible = true;
@@ -945,7 +945,7 @@ namespace WhereEver
                 Create3();
                 Create2();
 
-                MessageBox.Show("登録しました", "メッセージボックス", MessageBoxButton.OK, MessageBoxImage.Information);
+                //MessageBox.Show("登録しました", "メッセージボックス", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Panel1.Visible = true;
                 Panel2.Visible = true;

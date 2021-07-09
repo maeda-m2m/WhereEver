@@ -22,6 +22,7 @@
 <body>
     <form runat="server">
 
+
         <header id="wrapper">
             <div id="header_title">
 
@@ -44,7 +45,7 @@
                     <li><a href="~/管理ページ/Kanri.aspx" runat="server" class="header2_menu">マイページ</a></li>
 
                 </ul>
-
+                
             </nav>
         </header>
 
