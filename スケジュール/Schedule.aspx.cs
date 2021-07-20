@@ -38,9 +38,9 @@ namespace WhereEver
                 //Panel3、検索
                 //panel4、検索のメニュー
 
-                //used_TextBox1,2,3,5
+                //used_TextBox:1,2,3,5
 
-                //used_Label1,2,3,4,5,6,
+                //used_Label:1,2,3,4,5,6,
 
                 //MessageBoxResult result = MessageBox.Show("OKボタンを押して閉じてください", "メッセージボックス", MessageBoxButton.OKCancel, MessageBoxImage.Information);
 
@@ -895,7 +895,7 @@ namespace WhereEver
                 Create3();
                 Create2();
 
-                //MessageBox.Show("登録しました", "メッセージボックス", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("登録しました", "メッセージボックス", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Cancel, MessageBoxOptions.DefaultDesktopOnly);
 
                 Panel1.Visible = true;
                 Panel2.Visible = true;
@@ -945,7 +945,7 @@ namespace WhereEver
                 Create3();
                 Create2();
 
-                //MessageBox.Show("登録しました", "メッセージボックス", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("登録しました", "メッセージボックス", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.Cancel, MessageBoxOptions.DefaultDesktopOnly);
 
                 Panel1.Visible = true;
                 Panel2.Visible = true;
@@ -1082,7 +1082,7 @@ namespace WhereEver
                     }
                 }
 
-                MessageBoxResult result = MessageBox.Show("本当に実行しますか", "メッセージボックス", MessageBoxButton.YesNo, MessageBoxImage.None);
+                MessageBoxResult result = MessageBox.Show("本当に実行しますか", "メッセージボックス", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.Cancel,MessageBoxOptions.DefaultDesktopOnly);
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -2627,9 +2627,9 @@ namespace WhereEver
             Create2();
         }
 
-        public void Button7_Click(object sender, EventArgs e)
+        public void Button7_Click(object sender, EventArgs e)//戻るボタン
         {
-            MessageBoxResult result = MessageBox.Show("本当に実行しますか", "メッセージボックス", MessageBoxButton.YesNo, MessageBoxImage.None);
+            MessageBoxResult result = MessageBox.Show("本当に実行しますか", "メッセージボックス", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.Cancel, MessageBoxOptions.DefaultDesktopOnly);
 
             if (result == MessageBoxResult.Yes)
             {
