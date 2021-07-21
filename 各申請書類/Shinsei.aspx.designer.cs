@@ -24,13 +24,13 @@ namespace WhereEver
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// c コントロール。
+        /// m コントロール。
         /// </summary>
         /// <remarks>
         /// 自動生成されたフィールド。
         /// 変更するには、フィールドの宣言をデザイナー ファイルから分離コード ファイルに移動します。
         /// </remarks>
-        protected global::WhereEver.MenuControl c;
+        protected global::WhereEver.MenuControl m;
 
         /// <summary>
         /// Panel00 コントロール。
