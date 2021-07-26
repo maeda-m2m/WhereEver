@@ -302,31 +302,6 @@ namespace WhereEver.Project_System
             DgPKanri.EditItemIndex = e.Item.ItemIndex;
             CreateDataGrid(SessionManager.project.PdbRow.Pid);
 
-            DataGridItem line = DgPKanri.Items[e.Item.ItemIndex];
-            
-            DATASET.DataSet.T_PdbKanriDataTable dt = finddata(Global.GetConnection(),e.Item.Cells[0].Text, Int32.Parse(e.Item.Cells[3].Text) , SessionManager.project.PdbRow.Pid);
-            
-            TextBox txtPMiddlename = (TextBox)line.Cells[3].Controls[0];
-            DropDownList dropDownList = (DropDownList)line.FindControl("ddpShintyokuChange");
-            TextBox StartYear = (TextBox)e.Item.FindControl("StartYear");
-
-            txtPMiddlename.Width=Unit.Percentage(90);
-            //txtPMiddlename.Text = dt[0].PMiddlename;
-            //dropDownList.SelectedValue = dt[0].PShintyoku.ToString();
-
-            txtPMiddlename.Text = dt[0].PMiddlename;
-        }
-        internal static DATASET.DataSet.T_PdbKanriDataTable finddata(SqlConnection sqlConnection, string name,int pmiddleid, int Pid)
-        {
-            SqlDataAdapter da = new SqlDataAdapter("", sqlConnection);
-            da.SelectCommand.CommandText =
-                "select * from T_PdbKanri where PBigname like @name and @pmiddleid like pmiddleid and Pid like @Pid";
-            da.SelectCommand.Parameters.AddWithValue("@name", name);
-            da.SelectCommand.Parameters.AddWithValue("@pmiddleid", pmiddleid);
-            da.SelectCommand.Parameters.AddWithValue("@Pid", Pid);
-            DATASET.DataSet.T_PdbKanriDataTable dt = new DATASET.DataSet.T_PdbKanriDataTable();
-            da.Fill(dt);
-            return dt;
         }
 
         protected void DgPKanri_CancelCommand(object source, DataGridCommandEventArgs e)
