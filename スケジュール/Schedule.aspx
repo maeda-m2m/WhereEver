@@ -45,7 +45,7 @@
                     <li><a href="~/管理ページ/Kanri.aspx" runat="server" class="header2_menu">マイページ</a></li>
 
                 </ul>
-                
+
             </nav>
         </header>
 
@@ -474,7 +474,7 @@
                             <th class="Center_Color">ボタン</th>
                             <td>
                                 <asp:Button ID="Button8" runat="server" class="btn-flat-border" OnClick="Button8_Click" Text="検索" />
-                                <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" OnClientClick="if (A() == false) return(false)" Text="戻る" />
+                                <asp:Button ID="Button9" runat="server" class="btn-flat-border" OnClick="Button7_Click" Text="戻る" />
                             </td>
                         </tr>
                     </table>

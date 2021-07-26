@@ -22,7 +22,7 @@
             <table class="noprint">
                 <tr>
                     <td id="menu">
-                        <Menu:c_menu ID="c" runat="server"></Menu:c_menu>
+                        <Menu:c_menu ID="m" runat="server"></Menu:c_menu>
                     </td>
                 </tr>
             </table>
