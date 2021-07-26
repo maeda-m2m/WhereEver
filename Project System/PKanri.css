@@ -74,5 +74,5 @@
 .time {
     background-color: #272525;
     color: white;
-    width: 10px;
+    border-width: 1px;
 }
